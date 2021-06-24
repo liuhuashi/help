@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>db2_server_info - 开发帮助文档</title> 
+    <meta name="keyword" content="function.db2-server-info"> 
+    <meta name="description" content="function.db2-server-info"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="953" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-autocommit.html" title="db2_autocommit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_autocommit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-bind-param.html" title="db2_bind_param">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_bind_param
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-client-info.html" title="db2_client_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_client_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-close.html" title="db2_close">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_close
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-column-privileges.html" title="db2_column_privileges">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_column_privileges
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-columns.html" title="db2_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-commit.html" title="db2_commit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_commit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-conn-error.html" title="db2_conn_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_conn_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-conn-errormsg.html" title="db2_conn_errormsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_conn_errormsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-connect.html" title="db2_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-cursor-type.html" title="db2_cursor_type">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_cursor_type
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-escape-string.html" title="db2_escape_string">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_escape_string
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-exec.html" title="db2_exec">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_exec
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-execute.html" title="db2_execute">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_execute
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-array.html" title="db2_fetch_array">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_array
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-assoc.html" title="db2_fetch_assoc">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_assoc
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-both.html" title="db2_fetch_both">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_both
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-object.html" title="db2_fetch_object">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_object
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-row.html" title="db2_fetch_row">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_row
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-display-size.html" title="db2_field_display_size">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_display_size
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-name.html" title="db2_field_name">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_name
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-num.html" title="db2_field_num">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_num
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-precision.html" title="db2_field_precision">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_precision
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-scale.html" title="db2_field_scale">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_scale
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-type.html" title="db2_field_type">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_type
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-width.html" title="db2_field_width">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_width
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-foreign-keys.html" title="db2_foreign_keys">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_foreign_keys
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-free-result.html" title="db2_free_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_free_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-free-stmt.html" title="db2_free_stmt">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_free_stmt
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-get-option.html" title="db2_get_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_get_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-last-insert-id.html" title="db2_last_insert_id">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_last_insert_id
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-lob-read.html" title="db2_lob_read">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_lob_read
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-next-result.html" title="db2_next_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_next_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-num-fields.html" title="db2_num_fields">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_num_fields
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-num-rows.html" title="db2_num_rows">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_num_rows
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-pclose.html" title="db2_pclose">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_pclose
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-pconnect.html" title="db2_pconnect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_pconnect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-prepare.html" title="db2_prepare">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_prepare
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-primary-keys.html" title="db2_primary_keys">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_primary_keys
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-procedure-columns.html" title="db2_procedure_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_procedure_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-procedures.html" title="db2_procedures">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_procedures
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-result.html" title="db2_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-rollback.html" title="db2_rollback">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_rollback
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-server-info.html" title="db2_server_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_server_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-set-option.html" title="db2_set_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_set_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-special-columns.html" title="db2_special_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_special_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-statistics.html" title="db2_statistics">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_statistics
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-stmt-error.html" title="db2_stmt_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_stmt_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-stmt-errormsg.html" title="db2_stmt_errormsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_stmt_errormsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-table-privileges.html" title="db2_table_privileges">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_table_privileges
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-tables.html" title="db2_tables">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_tables
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.db2-rollback.html">« db2_rollback</a></li>
+      <li style="float: right;"><a href="function.db2-set-option.html">db2_set_option »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.ibm-db2.html">IBM DB2 函数</a></li>
+    <li>Returns an object with properties that describe the DB2 database server</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.db2-server-info" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_server_info</h1>
+  <p class="verinfo">(PECL ibm_db2 &gt;= 1.1.1)</p><p class="refpurpose"><span class="refname">db2_server_info</span> — <span class="dc-title">Returns an object with properties that describe the DB2 database server</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.db2-server-info-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>db2_server_info</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
+   ) : <span class="type">object</span></div>
+
+
+  <p class="para rdfs-comment">
+   This function returns an object with read-only properties that return
+   information about the IBM DB2, Cloudscape, or Apache Derby database server.
+   The following table lists the database server properties:
+   </p><table class="doctable table">
+    <caption><strong>Database server properties</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Property name</th>
+       <th>Return type</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>DBMS_NAME</td>
+       <td>string</td>
+       <td>The name of the database server to which you are
+        connected. For DB2 servers this is a combination of
+        <code class="literal">DB2</code> followed by the operating system on which
+        the database server is running.</td>
+      </tr>
+
+      <tr>
+       <td>DBMS_VER</td>
+       <td>string</td>
+       <td>The version of the database server, in the form of a string
+       "MM.mm.uuuu" where <var class="varname">MM</var> is the major version, 
+        <var class="varname">mm</var> is the minor version,
+        and <var class="varname">uuuu</var> is the update. For example, "08.02.0001"
+        represents major version 8, minor version 2, update 1.
+       </td>
+      </tr>
+
+      <tr>
+       <td>DB_CODEPAGE</td>
+       <td>int</td>
+       <td>The code page of the database to which you are connected.</td>
+      </tr>
+
+      <tr>
+       <td>DB_NAME</td>
+       <td>string</td>
+       <td>The name of the database to which you are connected.</td>
+      </tr>
+
+      <tr>
+       <td>DFT_ISOLATION</td>
+       <td>string</td>
+       <td>
+        <p class="para">The default transaction isolation level supported by the
+        server:
+        </p><dl>
+
+         
+          <dt>
+UR</dt>
+
+          <dd>
+
+           <p class="para">
+            Uncommitted read: changes are immediately visible by all
+            concurrent transactions.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+CS</dt>
+
+          <dd>
+
+           <p class="para">
+            Cursor stability: a row read by one transaction can be altered and
+            committed by a second concurrent transaction.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+RS</dt>
+
+          <dd>
+
+           <p class="para">
+            Read stability: a transaction can add or remove rows matching a
+            search condition or a pending transaction.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+RR</dt>
+
+          <dd>
+
+           <p class="para">
+            Repeatable read: data affected by pending transaction is not
+            available to other transactions.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+NC</dt>
+
+          <dd>
+
+           <p class="para">
+            No commit: any changes are visible at the end of a successful
+            operation. Explicit commits and rollbacks are not allowed.
+           </p>
+          </dd>
+
+         
+        </dl>
+
+        
+       </td>
+      </tr>
+
+      <tr>
+       <td>IDENTIFIER_QUOTE_CHAR</td>
+       <td>string</td>
+       <td>The character used to delimit an identifier.</td>
+      </tr>
+
+      <tr>
+       <td>INST_NAME</td>
+       <td>string</td>
+       <td>The instance on the database server that contains the
+        database.</td>
+      </tr>
+
+      <tr>
+       <td>ISOLATION_OPTION</td>
+       <td>array</td>
+       <td>An array of the isolation options supported by the
+        database server. The isolation options are described in
+        the DFT_ISOLATION property.</td>
+      </tr>
+
+      <tr>
+       <td>KEYWORDS</td>
+       <td>array</td>
+       <td>An array of the keywords reserved by the database
+        server.</td>
+      </tr>
+
+      <tr>
+       <td>LIKE_ESCAPE_CLAUSE</td>
+       <td>bool</td>
+       <td><strong><code>true</code></strong> if the database server supports the
+       use of <code class="literal">%</code> and <code class="literal">_</code> wildcard
+       characters. <strong><code>false</code></strong> if the database server does not
+       support these wildcard characters.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_COL_NAME_LEN</td>
+       <td>int</td>
+       <td>Maximum length of a column name supported by the database
+       server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_IDENTIFIER_LEN</td>
+       <td>int</td>
+       <td>Maximum length of an SQL identifier supported by the database
+       server, expressed in characters.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_INDEX_SIZE</td>
+       <td>int</td>
+       <td>Maximum size of columns combined in an index supported by the
+        database server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_PROC_NAME_LEN</td>
+       <td>int</td>
+       <td>Maximum length of a procedure name supported by the database
+       server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_ROW_SIZE</td>
+       <td>int</td>
+       <td>Maximum length of a row in a base table supported by the
+       database server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_SCHEMA_NAME_LEN</td>
+       <td>int</td>
+       <td>Maximum length of a schema name supported by the database
+       server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_STATEMENT_LEN</td>
+       <td>int</td>
+       <td>Maximum length of an SQL statement supported by the database
+       server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>MAX_TABLE_NAME_LEN</td>
+       <td>int</td>
+       <td>Maximum length of a table name supported by the database
+       server, expressed in bytes.</td>
+      </tr>
+
+      <tr>
+       <td>NON_NULLABLE_COLUMNS</td>
+       <td>bool</td>
+       <td><strong><code>true</code></strong> if the database server supports columns that can be
+        defined as NOT NULL, <strong><code>false</code></strong> if the database server does not support
+        columns defined as NOT NULL.</td>
+      </tr>
+
+      <tr>
+       <td>PROCEDURES</td>
+       <td>bool</td>
+       <td><strong><code>true</code></strong> if the database server supports the use of the CALL
+        statement to call stored procedures, <strong><code>false</code></strong> if the database
+        server does not support the CALL statement.</td>
+      </tr>
+
+      <tr>
+       <td>SPECIAL_CHARS</td>
+       <td>string</td>
+       <td>A string containing all of the characters other than
+       a-Z, 0-9, and underscore that can be used in an identifier name.</td>
+      </tr>
+
+      <tr>
+       <td>SQL_CONFORMANCE</td>
+       <td>string</td>
+       <td>
+        <p class="para">The level of conformance to the ANSI/ISO SQL-92 specification
+        offered by the database server:
+        </p><dl>
+
+         
+          <dt>
+ENTRY</dt>
+
+          <dd>
+
+           <p class="para">
+            Entry-level SQL-92 compliance.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+FIPS127</dt>
+
+          <dd>
+
+           <p class="para">
+            FIPS-127-2 transitional compliance.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+FULL</dt>
+
+          <dd>
+
+           <p class="para">
+            Full level SQL-92 compliance.
+           </p>
+          </dd>
+
+         
+         
+          <dt>
+INTERMEDIATE</dt>
+
+          <dd>
+
+           <p class="para">
+            Intermediate level SQL-92 compliance.
+           </p>
+          </dd>
+
+         
+        </dl>
+
+        
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-server-info-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">connection</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Specifies an active DB2 client connection.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-server-info-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns an object on a successful call. Returns <strong><code>false</code></strong> on failure.
+  </p>
+ </div>
+
+
+ 
+
+
+ 
+
+
+ <div class="refsect1 examples" id="refsect1-function.db2-server-info-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-1239">
+    <p><strong>示例 #1 A <span class="function"><strong>db2_server_info()</strong></span> example</strong></p>
+    <div class="example-contents"><p>
+     To retrieve information about the server, you must pass a valid
+     database connection resource to <span class="function"><strong>db2_server_info()</strong></span>.
+    </p></div>
+    <div class="example-contents"><div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'sample'</span><span style="color: #007700">, </span><span style="color: #DD0000">'db2inst1'</span><span style="color: #007700">, </span><span style="color: #DD0000">'ibmdb2'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$server </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_server_info</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn </span><span style="color: #007700">);<br><br>if (</span><span style="color: #0000BB">$server</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"DBMS_NAME: "</span><span style="color: #007700">;                 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">DBMS_NAME </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"DBMS_VER: "</span><span style="color: #007700">;                  </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">DBMS_VER </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"DB_CODEPAGE: "</span><span style="color: #007700">;               </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">DB_CODEPAGE </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"DB_NAME: "</span><span style="color: #007700">;                   </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">DB_NAME </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"INST_NAME: "</span><span style="color: #007700">;                 </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">INST_NAME </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"SPECIAL_CHARS: "</span><span style="color: #007700">;             </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">SPECIAL_CHARS </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"KEYWORDS: "</span><span style="color: #007700">;                  </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">sizeof</span><span style="color: #007700">(</span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">KEYWORDS</span><span style="color: #007700">) );<br>    echo </span><span style="color: #DD0000">"DFT_ISOLATION: "</span><span style="color: #007700">;             </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">DFT_ISOLATION </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"ISOLATION_OPTION: "</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$il </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br>    foreach( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ISOLATION_OPTION </span><span style="color: #007700">as </span><span style="color: #0000BB">$opt </span><span style="color: #007700">)<br>    {<br>       </span><span style="color: #0000BB">$il </span><span style="color: #007700">.= </span><span style="color: #0000BB">$opt</span><span style="color: #007700">.</span><span style="color: #DD0000">" "</span><span style="color: #007700">;<br>    }<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$il </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"SQL_CONFORMANCE: "</span><span style="color: #007700">;           </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">SQL_CONFORMANCE </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"PROCEDURES: "</span><span style="color: #007700">;                </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PROCEDURES </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"IDENTIFIER_QUOTE_CHAR: "</span><span style="color: #007700">;     </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">IDENTIFIER_QUOTE_CHAR </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"LIKE_ESCAPE_CLAUSE: "</span><span style="color: #007700">;        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">LIKE_ESCAPE_CLAUSE </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_COL_NAME_LEN: "</span><span style="color: #007700">;          </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_COL_NAME_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_ROW_SIZE: "</span><span style="color: #007700">;              </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_ROW_SIZE </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_IDENTIFIER_LEN: "</span><span style="color: #007700">;        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_IDENTIFIER_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_INDEX_SIZE: "</span><span style="color: #007700">;            </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_INDEX_SIZE </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_PROC_NAME_LEN: "</span><span style="color: #007700">;         </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_PROC_NAME_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_SCHEMA_NAME_LEN: "</span><span style="color: #007700">;       </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_SCHEMA_NAME_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_STATEMENT_LEN: "</span><span style="color: #007700">;         </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_STATEMENT_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"MAX_TABLE_NAME_LEN: "</span><span style="color: #007700">;        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MAX_TABLE_NAME_LEN </span><span style="color: #007700">);<br>    echo </span><span style="color: #DD0000">"NON_NULLABLE_COLUMNS: "</span><span style="color: #007700">;      </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">NON_NULLABLE_COLUMNS </span><span style="color: #007700">);<br><br>    </span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div></div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen"><div class="cdata"><pre>DBMS_NAME: string(9) "DB2/LINUX"
+DBMS_VER: string(10) "08.02.0000"
+DB_CODEPAGE: int(1208)
+DB_NAME: string(6) "SAMPLE"
+INST_NAME: string(8) "db2inst1"
+SPECIAL_CHARS: string(2) "@#"
+KEYWORDS: int(179)
+DFT_ISOLATION: string(2) "CS"
+ISOLATION_OPTION: string(12) "UR CS RS RR "
+SQL_CONFORMANCE: string(7) "FIPS127"
+PROCEDURES: bool(true)
+IDENTIFIER_QUOTE_CHAR: string(1) """
+LIKE_ESCAPE_CLAUSE: bool(true)
+MAX_COL_NAME_LEN: int(30)
+MAX_ROW_SIZE: int(32677)
+MAX_IDENTIFIER_LEN: int(18)
+MAX_INDEX_SIZE: int(1024)
+MAX_PROC_NAME_LEN: int(128)
+MAX_SCHEMA_NAME_LEN: int(30)
+MAX_STATEMENT_LEN: int(2097152)
+MAX_TABLE_NAME_LEN: int(128)
+NON_NULLABLE_COLUMNS: bool(true)</pre></div></div>
+   </div>
+  
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.db2-server-info-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.db2-client-info.html" class="function" rel="rdfs-seeAlso">db2_client_info()</a> - Returns an object with properties that describe the DB2 database client</span></li>
+   </ul>
+  
+ </div>
+
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2810);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

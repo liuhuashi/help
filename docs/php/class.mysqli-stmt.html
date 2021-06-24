@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>MySQLi_STMT类 - 开发帮助文档</title> 
+    <meta name="keyword" content="class.mysqli-stmt"> 
+    <meta name="description" content="class.mysqli-stmt"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="887" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-driver.html" title="MySQLi_Driver类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_Driver类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-result.html" title="mysqli_result类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli_result类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-sql-exception.html" title="mysqli异常类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli异常类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-stmt.html" title="MySQLi_STMT类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_STMT类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-warning.html" title="MySQLi_Warning类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_Warning类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli.html" title="MySQLi类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.mysqli.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.notes.html" title="Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.overview.html" title="Overview">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Overview
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.persistconns.html" title="mysqli 扩展和持久化连接">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli 扩展和持久化连接
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.quickstart.html" title="Quick start guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Quick start guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.summary.html" title="MySQLi 扩展的功能概述">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi 扩展的功能概述
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.mysqli.html" title="别名和过时的 Mysqli 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    别名和过时的 Mysqli 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.warning-count.html">« mysqli::$warning_count</a></li>
+      <li style="float: right;"><a href="mysqli-stmt.affected-rows.html">mysqli_stmt::$affected_rows »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.mysqli.html">Mysqli</a></li>
+    <li>MySQLi_STMT类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.mysqli-stmt" class="reference">
+ <h1 class="title">MySQLi_STMT类</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7)</p>
+ 
+
+  <div class="section" id="mysqli-stmt.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+   代表一个预编译 SQL 语句。
+   </p>
+  </div>
+
+ 
+  <div class="section" id="mysqli-stmt.synopsis">
+   <h2 class="title">类摘要</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">mysqli_stmt</strong>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis"><span class="type"><span class="type">int</span>|<span class="type">string</span></span> <var class="varname"><a href="mysqli-stmt.affected-rows.html">$<var class="varname">affected_rows</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">int</span> <var class="varname"><a href="mysqli-stmt.errno.html">$<var class="varname">errno</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">array</span> <var class="varname"><a href="mysqli-stmt.error-list.html">$<var class="varname">error_list</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">string</span> <var class="varname"><a href="mysqli-stmt.error.html">$<var class="varname">error</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">int</span> <var class="varname"><a href="mysqli-stmt.field-count.html">$<var class="varname">field_count</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">int</span> <var class="varname"><a href="mysqli-stmt.insert-id.html">$<var class="varname">insert_id</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">int</span> <var class="varname"><a href="mysqli-stmt.num-rows.html">$<var class="varname">num_rows</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">int</span> <var class="varname"><a href="mysqli-stmt.param-count.html">$<var class="varname">param_count</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="type">string</span> <var class="varname"><a href="mysqli-stmt.sqlstate.html">$<var class="varname">sqlstate</var></a></var>;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_affected_rows</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type"><span class="type">int</span>|<span class="type">string</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.attr-get.html" class="methodname">attr_get</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$attribute</code></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.attr-set.html" class="methodname">attr_set</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.bind-param.html" class="methodname">bind_param</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&amp;$var</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&amp;...$vars</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.bind-result.html" class="methodname">bind_result</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&amp;$var</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter reference">&amp;...$vars</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.close.html" class="methodname">close</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.data-seek.html" class="methodname">data_seek</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_errno</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_error_list</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">array</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_error</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.execute.html" class="methodname">execute</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.fetch.html" class="methodname">fetch</a></span>
+    (
+   ) : <span class="type"><span class="type">bool</span>|<span class="type">null</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_field_count</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.free-result.html" class="methodname">free_result</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.get-result.html" class="methodname">get_result</a></span>
+    (
+   ) : <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.get-warnings.html" class="methodname">get_warnings</a></span>
+    (
+   ) : <span class="type"><span class="type"><a href="class.mysqli-warning.html" class="type mysqli_warning">mysqli_warning</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_insert_id</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type"><span class="type">int</span>|<span class="type">string</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.more-results.html" class="methodname">more_results</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.next-result.html" class="methodname">next_result</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.num-rows.html" class="methodname">num_rows</a></span>
+    (
+   ) : <span class="type"><span class="type">int</span>|<span class="type">string</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_param_count</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.prepare.html" class="methodname">prepare</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.reset.html" class="methodname">reset</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.result-metadata.html" class="methodname">result_metadata</a></span>
+    (
+   ) : <span class="type"><span class="type"><a href="class.mysqli-result.html" class="type mysqli_result">mysqli_result</a></span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.send-long-data.html" class="methodname">send_long_data</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$param_num</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_stmt_sqlstate</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli-stmt.html" class="type mysqli_stmt">mysqli_stmt</a></span> <code class="parameter">$statement</code></span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mysqli-stmt.store-result.html" class="methodname">store_result</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+
+   }</div>
+
+ 
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="mysqli-stmt.affected-rows.html">mysqli_stmt::$affected_rows</a> — Returns the total number of rows changed, deleted, inserted, or
+  matched by the last statement executed</li><li><a href="mysqli-stmt.attr-get.html">mysqli_stmt::attr_get</a> — Used to get the current value of a statement attribute</li><li><a href="mysqli-stmt.attr-set.html">mysqli_stmt::attr_set</a> — Used to modify the behavior of a prepared statement</li><li><a href="mysqli-stmt.bind-param.html">mysqli_stmt::bind_param</a> — Binds variables to a prepared statement as parameters</li><li><a href="mysqli-stmt.bind-result.html">mysqli_stmt::bind_result</a> — Binds variables to a prepared statement for result storage</li><li><a href="mysqli-stmt.close.html">mysqli_stmt::close</a> — Closes a prepared statement</li><li><a href="mysqli-stmt.construct.html">mysqli_stmt::__construct</a> — Constructs a new mysqli_stmt object</li><li><a href="mysqli-stmt.data-seek.html">mysqli_stmt::data_seek</a> — Seeks to an arbitrary row in statement result set</li><li><a href="mysqli-stmt.errno.html">mysqli_stmt::$errno</a> — Returns the error code for the most recent statement call</li><li><a href="mysqli-stmt.error-list.html">mysqli_stmt::$error_list</a> — Returns a list of errors from the last statement executed</li><li><a href="mysqli-stmt.error.html">mysqli_stmt::$error</a> — Returns a string description for last statement error</li><li><a href="mysqli-stmt.execute.html">mysqli_stmt::execute</a> — Executes a prepared statement</li><li><a href="mysqli-stmt.fetch.html">mysqli_stmt::fetch</a> — Fetch results from a prepared statement into the bound variables</li><li><a href="mysqli-stmt.field-count.html">mysqli_stmt::$field_count</a> — Returns the number of columns in the given statement</li><li><a href="mysqli-stmt.free-result.html">mysqli_stmt::free_result</a> — Frees stored result memory for the given statement handle</li><li><a href="mysqli-stmt.get-result.html">mysqli_stmt::get_result</a> — Gets a result set from a prepared statement</li><li><a href="mysqli-stmt.get-warnings.html">mysqli_stmt::get_warnings</a> — Get result of SHOW WARNINGS</li><li><a href="mysqli-stmt.insert-id.html">mysqli_stmt::$insert_id</a> — Get the ID generated from the previous INSERT operation</li><li><a href="mysqli-stmt.more-results.html">mysqli_stmt::more_results</a> — Check if there are more query results from a multiple query</li><li><a href="mysqli-stmt.next-result.html">mysqli_stmt::next_result</a> — Reads the next result from a multiple query</li><li><a href="mysqli-stmt.num-rows.html">mysqli_stmt::$num_rows</a> — Returns the number of rows fetched from the server</li><li><a href="mysqli-stmt.param-count.html">mysqli_stmt::$param_count</a> — Returns the number of parameters for the given statement</li><li><a href="mysqli-stmt.prepare.html">mysqli_stmt::prepare</a> — Prepares an SQL statement for execution</li><li><a href="mysqli-stmt.reset.html">mysqli_stmt::reset</a> — Resets a prepared statement</li><li><a href="mysqli-stmt.result-metadata.html">mysqli_stmt::result_metadata</a> — Returns result set metadata from a prepared statement</li><li><a href="mysqli-stmt.send-long-data.html">mysqli_stmt::send_long_data</a> — Send data in blocks</li><li><a href="mysqli-stmt.sqlstate.html">mysqli_stmt::$sqlstate</a> — Returns SQLSTATE error from previous statement operation</li><li><a href="mysqli-stmt.store-result.html">mysqli_stmt::store_result</a> — Stores a result set in an internal buffer</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 980);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

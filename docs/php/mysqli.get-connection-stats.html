@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>mysqli::get_connection_stats - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqli.get-connection-stats"> 
+    <meta name="description" content="mysqli.get-connection-stats"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="893" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.affected-rows.html" title="mysqli::$affected_rows">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$affected_rows
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.autocommit.html" title="mysqli::autocommit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::autocommit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.begin-transaction.html" title="mysqli::begin_transaction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::begin_transaction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.change-user.html" title="mysqli::change_user">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::change_user
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.character-set-name.html" title="mysqli::character_set_name">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::character_set_name
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.close.html" title="mysqli::close">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::close
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.commit.html" title="mysqli::commit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::commit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.connect-errno.html" title="mysqli::$connect_errno">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$connect_errno
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.connect-error.html" title="mysqli::$connect_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$connect_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.construct.html" title="mysqli::__construct">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::__construct
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.debug.html" title="mysqli::debug">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::debug
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.dump-debug-info.html" title="mysqli::dump_debug_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::dump_debug_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.errno.html" title="mysqli::errno">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::errno
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.error-list.html" title="mysqli::$error_list">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$error_list
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.error.html" title="mysqli::$error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.field-count.html" title="mysqli::$field_count">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$field_count
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-charset.html" title="mysqli::get_charset">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::get_charset
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-client-info.html" title="mysqli::$client_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$client_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-client-version.html" title="mysqli_get_client_version">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli_get_client_version
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-connection-stats.html" title="mysqli::get_connection_stats">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::get_connection_stats
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-host-info.html" title="mysqli::$host_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$host_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-proto-info.html" title="mysqli::$protocol_version">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$protocol_version
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-server-info.html" title="mysqli::$server_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$server_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-server-version.html" title="mysqli::$server_version">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$server_version
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.get-warnings.html" title="mysqli::get_warnings">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::get_warnings
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.info.html" title="mysqli::$info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.init.html" title="mysqli::init">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::init
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.insert-id.html" title="mysqli::$insert_id">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$insert_id
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.kill.html" title="mysqli::kill">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::kill
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.more-results.html" title="mysqli::more_results">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::more_results
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.multi-query.html" title="mysqli::multi_query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::multi_query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.next-result.html" title="mysqli::next_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::next_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.options.html" title="mysqli::options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::options
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.ping.html" title="mysqli::ping">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::ping
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.poll.html" title="mysqli::poll">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::poll
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.prepare.html" title="mysqli::prepare">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::prepare
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.query.html" title="mysqli::query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.real-connect.html" title="mysqli::real_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::real_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.real-escape-string.html" title="mysqli::real_escape_string">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::real_escape_string
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.real-query.html" title="mysqli::real_query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::real_query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.reap-async-query.html" title="mysqli::reap_async_query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::reap_async_query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.refresh.html" title="mysqli::refresh">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::refresh
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.release-savepoint.html" title="mysqli::release_savepoint">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::release_savepoint
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.rollback.html" title="mysqli::rollback">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::rollback
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.savepoint.html" title="mysqli::savepoint">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::savepoint
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.select-db.html" title="mysqli::select_db">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::select_db
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.set-charset.html" title="mysqli::set_charset">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::set_charset
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.sqlstate.html" title="mysqli::$sqlstate">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$sqlstate
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.ssl-set.html" title="mysqli::ssl_set">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::ssl_set
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.stat.html" title="mysqli::stat">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::stat
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.stmt-init.html" title="mysqli::stmt_init">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::stmt_init
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.store-result.html" title="mysqli::store_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::store_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.thread-id.html" title="mysqli::$thread_id">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$thread_id
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.thread-safe.html" title="mysqli::thread_safe">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::thread_safe
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.use-result.html" title="mysqli::use_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::use_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.warning-count.html" title="mysqli::$warning_count">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli::$warning_count
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.get-client-version.html">« mysqli_get_client_version</a></li>
+      <li style="float: right;"><a href="mysqli.get-host-info.html">mysqli::$host_info »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="class.mysqli.html">MySQLi</a></li>
+    <li>返回客户端连接的统计数据</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.get-connection-stats" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::get_connection_stats</h1>
+  <h1 class="refname">mysqli_get_connection_stats</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">mysqli::get_connection_stats</span> -- <span class="refname">mysqli_get_connection_stats</span> — <span class="dc-title">返回客户端连接的统计数据</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.get-connection-stats-description">
+  <h3 class="title">说明</h3>
+  <p class="para">面向对象风格</p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli::get_connection_stats</strong></span>
+    (
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">过程化风格</p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysqli_get_connection_stats</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.mysqli.html" class="type mysqli">mysqli</a></span> <code class="parameter">$link</code></span>
+   ) : <span class="type">array</span></div>
+
+  <p class="para rdfs-comment">
+   返回客户端连接的统计数据，
+   仅可用于 <a href="book.mysqlnd.html" class="link">mysqlnd</a>。。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.get-connection-stats-parameters">
+  <h3 class="title">参数</h3>
+   <dl>
+
+    <dt>
+<code class="parameter">
+link</code></dt>
+<dd>
+<p class="para">仅以过程化样式：由<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span> 或 <span class="function"><a href="mysqli.init.html" class="function">mysqli_init()</a></span>
+返回的链接标识。</p></dd>
+
+   </dl>
+
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.get-connection-stats-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   返回一个数组，包含客户端连接的统计数据，否则 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.get-connection-stats-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-1412">
+    <p><strong>示例 #1 A <span class="function"><strong>mysqli_get_connection_stats()</strong></span> 例程</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$link </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">();<br></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqli_get_connection_stats</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [bytes_sent] =&gt; 43
+    [bytes_received] =&gt; 80
+    [packets_sent] =&gt; 1
+    [packets_received] =&gt; 2
+    [protocol_overhead_in] =&gt; 8
+    [protocol_overhead_out] =&gt; 4
+    [bytes_received_ok_packet] =&gt; 11
+    [bytes_received_eof_packet] =&gt; 0
+    [bytes_received_rset_header_packet] =&gt; 0
+    [bytes_received_rset_field_meta_packet] =&gt; 0
+    [bytes_received_rset_row_packet] =&gt; 0
+    [bytes_received_prepare_response_packet] =&gt; 0
+    [bytes_received_change_user_packet] =&gt; 0
+    [packets_sent_command] =&gt; 0
+    [packets_received_ok] =&gt; 1
+    [packets_received_eof] =&gt; 0
+    [packets_received_rset_header] =&gt; 0
+    [packets_received_rset_field_meta] =&gt; 0
+    [packets_received_rset_row] =&gt; 0
+    [packets_received_prepare_response] =&gt; 0
+    [packets_received_change_user] =&gt; 0
+    [result_set_queries] =&gt; 0
+    [non_result_set_queries] =&gt; 0
+    [no_index_used] =&gt; 0
+    [bad_index_used] =&gt; 0
+    [slow_queries] =&gt; 0
+    [buffered_sets] =&gt; 0
+    [unbuffered_sets] =&gt; 0
+    [ps_buffered_sets] =&gt; 0
+    [ps_unbuffered_sets] =&gt; 0
+    [flushed_normal_sets] =&gt; 0
+    [flushed_ps_sets] =&gt; 0
+    [ps_prepared_never_executed] =&gt; 0
+    [ps_prepared_once_executed] =&gt; 0
+    [rows_fetched_from_server_normal] =&gt; 0
+    [rows_fetched_from_server_ps] =&gt; 0
+    [rows_buffered_from_client_normal] =&gt; 0
+    [rows_buffered_from_client_ps] =&gt; 0
+    [rows_fetched_from_client_normal_buffered] =&gt; 0
+    [rows_fetched_from_client_normal_unbuffered] =&gt; 0
+    [rows_fetched_from_client_ps_buffered] =&gt; 0
+    [rows_fetched_from_client_ps_unbuffered] =&gt; 0
+    [rows_fetched_from_client_ps_cursor] =&gt; 0
+    [rows_skipped_normal] =&gt; 0
+    [rows_skipped_ps] =&gt; 0
+    [copy_on_write_saved] =&gt; 0
+    [copy_on_write_performed] =&gt; 0
+    [command_buffer_too_small] =&gt; 0
+    [connect_success] =&gt; 1
+    [connect_failure] =&gt; 0
+    [connection_reused] =&gt; 0
+    [reconnect] =&gt; 0
+    [pconnect_success] =&gt; 0
+    [active_connections] =&gt; 1
+    [active_persistent_connections] =&gt; 0
+    [explicit_close] =&gt; 0
+    [implicit_close] =&gt; 0
+    [disconnect_close] =&gt; 0
+    [in_middle_of_command_close] =&gt; 0
+    [explicit_free_result] =&gt; 0
+    [implicit_free_result] =&gt; 0
+    [explicit_stmt_close] =&gt; 0
+    [implicit_stmt_close] =&gt; 0
+    [mem_emalloc_count] =&gt; 0
+    [mem_emalloc_ammount] =&gt; 0
+    [mem_ecalloc_count] =&gt; 0
+    [mem_ecalloc_ammount] =&gt; 0
+    [mem_erealloc_count] =&gt; 0
+    [mem_erealloc_ammount] =&gt; 0
+    [mem_efree_count] =&gt; 0
+    [mem_malloc_count] =&gt; 0
+    [mem_malloc_ammount] =&gt; 0
+    [mem_calloc_count] =&gt; 0
+    [mem_calloc_ammount] =&gt; 0
+    [mem_realloc_count] =&gt; 0
+    [mem_realloc_ammount] =&gt; 0
+    [mem_free_count] =&gt; 0
+    [proto_text_fetched_null] =&gt; 0
+    [proto_text_fetched_bit] =&gt; 0
+    [proto_text_fetched_tinyint] =&gt; 0
+    [proto_text_fetched_short] =&gt; 0
+    [proto_text_fetched_int24] =&gt; 0
+    [proto_text_fetched_int] =&gt; 0
+    [proto_text_fetched_bigint] =&gt; 0
+    [proto_text_fetched_decimal] =&gt; 0
+    [proto_text_fetched_float] =&gt; 0
+    [proto_text_fetched_double] =&gt; 0
+    [proto_text_fetched_date] =&gt; 0
+    [proto_text_fetched_year] =&gt; 0
+    [proto_text_fetched_time] =&gt; 0
+    [proto_text_fetched_datetime] =&gt; 0
+    [proto_text_fetched_timestamp] =&gt; 0
+    [proto_text_fetched_string] =&gt; 0
+    [proto_text_fetched_blob] =&gt; 0
+    [proto_text_fetched_enum] =&gt; 0
+    [proto_text_fetched_set] =&gt; 0
+    [proto_text_fetched_geometry] =&gt; 0
+    [proto_text_fetched_other] =&gt; 0
+    [proto_binary_fetched_null] =&gt; 0
+    [proto_binary_fetched_bit] =&gt; 0
+    [proto_binary_fetched_tinyint] =&gt; 0
+    [proto_binary_fetched_short] =&gt; 0
+    [proto_binary_fetched_int24] =&gt; 0
+    [proto_binary_fetched_int] =&gt; 0
+    [proto_binary_fetched_bigint] =&gt; 0
+    [proto_binary_fetched_decimal] =&gt; 0
+    [proto_binary_fetched_float] =&gt; 0
+    [proto_binary_fetched_double] =&gt; 0
+    [proto_binary_fetched_date] =&gt; 0
+    [proto_binary_fetched_year] =&gt; 0
+    [proto_binary_fetched_time] =&gt; 0
+    [proto_binary_fetched_datetime] =&gt; 0
+    [proto_binary_fetched_timestamp] =&gt; 0
+    [proto_binary_fetched_string] =&gt; 0
+    [proto_binary_fetched_blob] =&gt; 0
+    [proto_binary_fetched_enum] =&gt; 0
+    [proto_binary_fetched_set] =&gt; 0
+    [proto_binary_fetched_geometry] =&gt; 0
+    [proto_binary_fetched_other] =&gt; 0
+)
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.get-connection-stats-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><a href="mysqlnd.stats.html" class="link">统计数据描述</a></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8179);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

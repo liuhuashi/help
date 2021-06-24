@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>使用远程文件 - 开发帮助文档</title> 
+    <meta name="keyword" content="features.remote-files"> 
+    <meta name="description" content="features.remote-files"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1106" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.html" title="PHP 的命令行模式">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 的命令行模式
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.connection-handling.html" title="连接处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    连接处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.cookies.html" title="Cookie">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cookie
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.dtrace.html" title="DTrace 动态跟踪">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    DTrace 动态跟踪
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.file-upload.html" title="文件上传处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    文件上传处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.gc.html" title="垃圾回收机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    垃圾回收机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.http-auth.html" title="用 PHP 进行 HTTP 认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用 PHP 进行 HTTP 认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.persistent-connections.html" title="数据库持久连接">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库持久连接
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.remote-files.html" title="使用远程文件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    使用远程文件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.sessions.html" title="会话">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    会话
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.xforms.html" title="处理 XForms">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    处理 XForms
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.file-upload.errors.seealso.html">« 参见</a></li>
+      <li style="float: right;"><a href="features.connection-handling.html">连接处理 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="features.html">特点</a></li>
+    <li>使用远程文件</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.remote-files" class="chapter">
+ <h1>使用远程文件</h1>
+
+
+ <p class="para">
+  只要在 <var class="filename">php.ini</var> 文件中激活了 <strong class="option unknown">allow_url_fopen</strong>
+  选项，就可以在大多数需要用文件名作为参数的函数中使用
+  <acronym title="Hypertext Transfer Protocol">HTTP</acronym> 和 <acronym title="File Transfer Protocol">FTP</acronym> 的 URL
+  来代替文件名。同时，也可以在
+  <span class="function"><a href="function.include.html" class="function">include</a></span>、<span class="function"><a href="function.include-once.html" class="function">include_once</a></span>、<span class="function"><a href="function.require.html" class="function">require</a></span> 及
+  <span class="function"><a href="function.require-once.html" class="function">require_once</a></span> 语句中使用 URL。PHP
+  所支持协议的更多信息参见<a href="wrappers.html" class="xref">支持的协议和封装协议</a>。
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   要在 PHP 4.0.3 及其更早的版本中使用 URL 封装协议，需要在编译时用
+  <strong class="option unknown">--enable-url-fopen-wrapper</strong> 参数来配置 PHP。
+  </p>
+ </blockquote>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   Windows 版本的 PHP 4.3
+   版之前不支持以下函数的远程访问：<span class="function"><a href="function.include.html" class="function">include</a></span>，<span class="function"><a href="function.include-once.html" class="function">include_once</a></span>，<span class="function"><a href="function.require.html" class="function">require</a></span>，<span class="function"><a href="function.require-once.html" class="function">require_once</a></span>
+   以及<a href="ref.image.html" class="xref">GD 和图像处理 函数</a>中的 imagecreatefromXXX 函数。
+  </p>
+ </blockquote>
+
+ <p class="para">
+  例如，可以用以下范例来打开远程 web
+  服务器上的文件，解析需要的输出数据，然后将这些数据用在数据库的检索中，或者简单地以和自己网站其它页面相同的风格输出其内容。
+ </p>
+
+ <p class="para">
+  </p><div class="example" id="example-420">
+   <p><strong>示例 #1 获取远程文件的标题</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$file </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen </span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/"</span><span style="color: #007700">, </span><span style="color: #DD0000">"r"</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$file</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"&lt;p&gt;Unable to open remote file.\n"</span><span style="color: #007700">;<br>    exit;<br>}<br>while (!</span><span style="color: #0000BB">feof </span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">)) {<br>    </span><span style="color: #0000BB">$line </span><span style="color: #007700">= </span><span style="color: #0000BB">fgets </span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">, </span><span style="color: #0000BB">1024</span><span style="color: #007700">);<br>    </span><span style="color: #FF8000">/* This only works if the title and its tags are on one line */<br>    </span><span style="color: #007700">if (</span><span style="color: #0000BB">eregi </span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;title&gt;(.*)&lt;/title&gt;"</span><span style="color: #007700">, </span><span style="color: #0000BB">$line</span><span style="color: #007700">, </span><span style="color: #0000BB">$out</span><span style="color: #007700">)) {<br>        </span><span style="color: #0000BB">$title </span><span style="color: #007700">= </span><span style="color: #0000BB">$out</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br>        break;<br>    }<br>}<br></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ 
+
+ <p class="para">
+  如果有合法的访问权限，以一个用户的身份和某 FTP
+  服务器建立了链接，还可以向该 FTP
+  服务器端的文件进行写操作。仅能用该方法来创建新的文件；如果尝试覆盖已经存在的文件，<span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>
+  函数的调用将会失败。
+ </p>
+
+ <p class="para">
+  要以“anonymous”以外的用户名连接服务器，需要指明用户名（可能还有密码），例如“ftp://user:password@ftp.example.com/path/to/file”（也可以在通过需要
+  Basic 认证的 HTTP 协议访问远程文件时使用相同的语法）。
+ </p>
+
+ <p class="para">
+  </p><div class="example" id="example-421">
+   <p><strong>示例 #2 将数据保存到远程服务器</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$file </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen </span><span style="color: #007700">(</span><span style="color: #DD0000">"ftp://ftp.example.com/incoming/outputfile"</span><span style="color: #007700">, </span><span style="color: #DD0000">"w"</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$file</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"&lt;p&gt;Unable to open remote file for writing.\n"</span><span style="color: #007700">;<br>    exit;<br>}<br></span><span style="color: #FF8000">/* Write the data here. */<br></span><span style="color: #0000BB">fwrite </span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">, </span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'HTTP_USER_AGENT'</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">fclose </span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ 
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   或许可以从以上范例中得到启发，用该技术来存储远程日志文件。但是正如以上提到的，在用
+    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> 方式打开的 URL
+    中，仅能对新文件进行写操作。如果远程文件已经存在则
+    <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span> 函数的操作将会失败。要做类似于分布式日志的事，可以参考
+    <span class="function"><a href="function.syslog.html" class="function">syslog()</a></span> 函数。
+  </p>
+ </blockquote>
+
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2325);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

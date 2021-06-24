@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>数据库：查询构造器 - 开发帮助文档</title> 
+    <meta name="keyword" content="queries"> 
+    <meta name="description" content="queries"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="7" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/artisan.html" title="Artisan 命令行">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan 命令行
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authentication.html" title="用户认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authorization.html" title="用户授权">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户授权
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/blade.html" title="Blade 模板">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade 模板
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/broadcasting.html" title="广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/cache.html" title="缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/collections.html" title="集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/console-tests.html" title="控制台测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    控制台测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/container.html" title="服务容器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务容器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contracts.html" title="契约">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    契约
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contributions.html" title="贡献导引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    贡献导引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/csrf.html" title="CSRF 保护">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF 保护
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database-testing.html" title="数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database.html" title="数据库: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/deployment.html" title="部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/documentation.html" title="前言">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    前言
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-collections.html" title="Eloquent: 集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-mutators.html" title="Eloquent: 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-relationships.html" title="Eloquent: 关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/encryption.html" title="加密解密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    加密解密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/errors.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/events.html" title="事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/frontend.html" title="JavaScript &amp; CSS 脚手架">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    JavaScript &amp; CSS 脚手架
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/hashing.html" title="哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/helpers.html" title="辅助函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    辅助函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-client.html" title="HTTP 客户端">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 客户端
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/lifecycle.html" title="请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/localization.html" title="本地化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    本地化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/logging.html" title="日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mail.html" title="邮件发送">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    邮件发送
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/middleware.html" title="中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/migrations.html" title="数据库：迁移">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：迁移
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mix.html" title="编辑资源 (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    编辑资源 (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/notifications.html" title="消息通知">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    消息通知
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/pagination.html" title="数据库: 分页">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 分页
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passwords.html" title="重置密码">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重置密码
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/providers.html" title="服务提供者">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务提供者
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queries.html" title="数据库：查询构造器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：查询构造器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queues.html" title="队列">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    队列
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/requests.html" title="HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/routing.html" title="路由">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    路由
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scheduling.html" title="任务调度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    任务调度
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/seeding.html" title="数据库：填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/session.html" title="HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/socialite.html" title="Laravel 社会化登录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 社会化登录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/structure.html" title="目录结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    目录结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/testing.html" title="测试：入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    测试：入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/upgrade.html" title="升级指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    升级指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/urls.html" title="生成 URL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    生成 URL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/validation.html" title="表单验证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单验证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/verification.html" title="Email 认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email 认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/views.html" title="视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>数据库：查询构造器</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#retrieving-results">获取结果</a>
+<ul>
+<li><a href="#chunking-results">分块结果</a></li>
+<li><a href="#aggregates">聚合</a></li>
+</ul></li>
+<li><a href="#selects">查询</a></li>
+<li><a href="#raw-expressions">原生表达式</a></li>
+<li><a href="#joins">Joins</a></li>
+<li><a href="#unions">Unions</a></li>
+<li><a href="#where-clauses">Where 语句</a>
+<ul>
+<li><a href="#parameter-grouping">参数分组</a></li>
+<li><a href="#where-exists-clauses">Where Exists 语句</a></li>
+<li><a href="#subquery-where-clauses">子查询 Where 语句</a></li>
+<li><a href="#json-where-clauses">JSON Where 语句</a></li>
+</ul></li>
+<li><a href="#ordering-grouping-limit-and-offset">Ordering, Grouping, Limit &amp; Offset</a></li>
+<li><a href="#conditional-clauses">条件语句</a></li>
+<li><a href="#inserts">插入</a></li>
+<li><a href="#updates">更新</a>
+<ul>
+<li><a href="#updating-json-columns">更新 JSON</a></li>
+<li><a href="#increment-and-decrement">自增自减</a></li>
+</ul></li>
+<li><a href="#deletes">删除</a></li>
+<li><a href="#pessimistic-locking">悲观锁</a></li>
+<li><a href="#debugging">调试</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>Laravel 的数据库查询构造器为创建和运行数据库查询提供了一个方便的接口。它可以用于支持大部分数据库操作，并且在所有支持的数据库系统上统一运行。</p>
+<p>Laravel 的查询构造器使用 PDO 参数绑定的形式，保护您的应用程序免受 SQL 注入攻击。因此不必清理因参数绑定而传入的字符串。</p>
+<blockquote>
+<p>注意：PDO 不支持绑定列名。因此，不能让用户通过输入的方式，来指定查询语句从而引用的列名，包括 order by 字段等等。如果必须通过查询用户选择的方式引入的某些列，请始终根据允许列的白名单来校验列名。</p>
+</blockquote>
+<p><a name="retrieving-results"></a></p>
+<h2>获取结果</h2>
+<h4>从一个数据表中获取所有行</h4>
+<p>你可以使用 <code>DB</code> facade 里的 <code>table</code> 方法来开始查询。<code>table</code> 方法为给定的表返回一个查询构造器实例，允许你在查询上链式调用更多的约束，最后使用 <code>get</code> 方法获取结果：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * 展示用户列表
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $users = DB::table('users')-&gt;get();
+
+        return view('user.index', ['users' =&gt; $users]);
+    }
+}</code></pre>
+<p><code>get</code> 方法返回一个包含 <code>Illuminate\Support\Collection</code> 实例的结果，其中每一条记录都是 PHP <code>stdClass</code> 对象的一个实例。你可以通过对象属性的方式来获取每个字段的值：</p>
+<pre><code>foreach ($users as $user) {
+    echo $user-&gt;name;
+}</code></pre>
+<h4>从数据表中获取单行或单列</h4>
+<p>如果你只需要从数据表中获取一行数据，你可以使用 <code>first</code> 方法。该方法返回一个 <code>stdClass</code> 对象：</p>
+<pre><code>$user = DB::table('users')-&gt;where('name', 'John')-&gt;first();
+
+echo $user-&gt;name;</code></pre>
+<p>如果你甚至不需要整行数据，则可以使用 <code>value</code> 方法从记录中获取单个值。该方法将直接返回该字段的值：</p>
+<pre><code>$email = DB::table('users')-&gt;where('name', 'John')-&gt;value('email');</code></pre>
+<p>如果是通过 <code>id</code> 字段值获取一行数据，可以使用 <code>find</code> 方法：</p>
+<pre><code>$user = DB::table('users')-&gt;find(3);</code></pre>
+<h4>获取一列的值</h4>
+<p>如果你想获取单列数据的集合，则可以使用 <code>pluck</code> 方法。在下面的例子中，我们将获取角色表中标题的集合：</p>
+<pre><code>$titles = DB::table('roles')-&gt;pluck('title');
+
+foreach ($titles as $title) {
+    echo $title;
+}</code></pre>
+<p>你还可以在返回的集合中指定字段的自定义键名：</p>
+<pre><code>$roles = DB::table('roles')-&gt;pluck('title', 'name');
+
+foreach ($roles as $name =&gt; $title) {
+    echo $title;
+}</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3>分块结果</h3>
+<p>如果你需要处理上千上万条数据库记录，你可以考虑使用 <code>chunk</code> 方法。该方法每次获取结果集的一小块，并将其传递给 <code>Closure</code> 函数进行处理。该方法在 <a href="/docs/laravel_8_zh/artisan.html">Artisan 命令</a> 中处理大量查询数据的时候非常有用。例如，我们可以将全部 <code>users</code> 表数据切割成一次处理 100 条记录的一小块：</p>
+<pre><code>DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    foreach ($users as $user) {
+        //
+    }
+});</code></pre>
+<p>你可以通过在 <code>Closure</code> 中返回 <code>false</code> 来终止继续获取分块结果：</p>
+<pre><code>DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    // Process the records...
+
+    return false;
+});</code></pre>
+<p>如果要在分块结果中更新数据库记录，则块结果可能会和预计的返回结果不一致。 因此，在分块更新记录时，最好使用 <code>chunkById</code> 方法。 此方法将根据记录的主键自动对结果进行分页：</p>
+<pre><code>DB::table('users')-&gt;where('active', false)
+    -&gt;chunkById(100, function ($users) {
+        foreach ($users as $user) {
+            DB::table('users')
+                -&gt;where('id', $user-&gt;id)
+                -&gt;update(['active' =&gt; true]);
+        }
+    });</code></pre>
+<blockquote>
+<p>注意：在分块的回调里面更新或删除记录时，对主键或外键的任何更改都可能影响分块查询。这可能会导致记录没有包含在分块结果中。</p>
+</blockquote>
+<p><a name="aggregates"></a></p>
+<h3>聚合</h3>
+<p>查询构造器还提供了各种聚合方法，比如<code>count</code>，<code>max</code>，<code>min</code>，<code>avg</code>，还有 <code>sum</code>。你可以在构造查询后调用任何方法：</p>
+<pre><code>$users = DB::table('users')-&gt;count();
+
+$price = DB::table('orders')-&gt;max('price');</code></pre>
+<p>当然，你也可以将这些聚合方法与其他的查询语句相结合：</p>
+<pre><code>$price = DB::table('orders')
+                -&gt;where('finalized', 1)
+                -&gt;avg('price');</code></pre>
+<h4>判断记录是否存在</h4>
+<p>除了通过 <code>count</code> 方法可以确定查询条件的结果是否存在之外，还可以使用 <code>exists</code> 和 <code>doesntExist</code> 方法：</p>
+<pre><code>return DB::table('orders')-&gt;where('finalized', 1)-&gt;exists();
+
+return DB::table('orders')-&gt;where('finalized', 1)-&gt;doesntExist();</code></pre>
+<p><a name="selects"></a></p>
+<h2>Selects</h2>
+<h4>指定一个 Select 语句</h4>
+<p>当然你可能不是总是希望从数据库表中获取所有列。使用 <code>select</code> 方法，你可以自定义一个 <code>select</code> 查询语句来查询指定的字段：</p>
+<pre><code>$users = DB::table('users')-&gt;select('name', 'email as user_email')-&gt;get();</code></pre>
+<p><code>distinct</code> 方法会强制让查询返回的结果不重复：</p>
+<pre><code>$users = DB::table('users')-&gt;distinct()-&gt;get();</code></pre>
+<p>如果你已经有了一个查询构造器实例，并且希望在现有的查询语句中加入一个字段，那么你可以使用 <code>addSelect</code> 方法：</p>
+<pre><code>$query = DB::table('users')-&gt;select('name');
+
+$users = $query-&gt;addSelect('age')-&gt;get();</code></pre>
+<p><a name="raw-expressions"></a></p>
+<h2>原生表达式</h2>
+<p>有时候你可能需要在查询中使用原生表达式。你可以使用 <code>DB::raw</code> 创建一个原生表达式：</p>
+<pre><code>$users = DB::table('users')
+                     -&gt;select(DB::raw('count(*) as user_count, status'))
+                     -&gt;where('status', '&lt;&gt;', 1)
+                     -&gt;groupBy('status')
+                     -&gt;get();</code></pre>
+<blockquote>
+<p>注意：原生表达式将会被当做字符串注入到查询中，因此你应该小心使用，避免创建 SQL 注入的漏洞。</p>
+</blockquote>
+<p><a name="raw-methods"></a></p>
+<h3>原生方法</h3>
+<p>可以使用以下方法代替 <code>DB::raw</code>，将原生表达式插入查询的各个部分。</p>
+<h4><code>selectRaw</code></h4>
+<p><code>selectRaw</code> 方法可以代替 <code>select(DB::raw(...))</code>。该方法的第二个参数是可选项，值是一个绑定参数的数组：</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;selectRaw('price * ? as price_with_tax', [1.0825])
+                -&gt;get();</code></pre>
+<h4><code>whereRaw / orWhereRaw</code></h4>
+<p><code>whereRaw</code> 和 <code>orWhereRaw</code> 方法将原生的 <code>where</code>
+注入到你的查询中。这两个方法的第二个参数还是可选项，值还是绑定参数的数组：</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;whereRaw('price &gt; IF(state = "TX", ?, 100)', [200])
+                -&gt;get();</code></pre>
+<h4><code>havingRaw / orHavingRaw</code></h4>
+<p><code>havingRaw</code> 和 <code>orHavingRaw</code> 方法可以用于将原生字符串设置为 <code>having</code> 语句的值：</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('department', DB::raw('SUM(price) as total_sales'))
+                -&gt;groupBy('department')
+                -&gt;havingRaw('SUM(price) &gt; ?', [2500])
+                -&gt;get();</code></pre>
+<h4><code>orderByRaw</code></h4>
+<p><code>orderByRaw</code> 方法可用于将原生字符串设置为 <code>order by</code> 语句的值：</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;orderByRaw('updated_at - created_at DESC')
+                -&gt;get();</code></pre>
+<h3><code>groupByRaw</code></h3>
+<p><code>groupByRaw</code> 方法可以用于将原生字符串设置为 <code>group by</code> 语句的值：</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('city', 'state')
+                -&gt;groupByRaw('city, state')
+                -&gt;get();</code></pre>
+<p><a name="joins"></a></p>
+<h2>Joins</h2>
+<h4>Inner Join 语句</h4>
+<p>查询构造器也可以编写 <code>join</code> 方法。若要执行基本的「内链接」，你可以在查询构造器实例上使用 <code>join</code> 方法。传递给 <code>join</code> 方法的第一个参数是你需要连接的表的名称，而其他参数则使用指定连接的字段约束。你还可以在单个查询中连接多个数据表：</p>
+<pre><code>$users = DB::table('users')
+            -&gt;join('contacts', 'users.id', '=', 'contacts.user_id')
+            -&gt;join('orders', 'users.id', '=', 'orders.user_id')
+            -&gt;select('users.*', 'contacts.phone', 'orders.price')
+            -&gt;get();</code></pre>
+<h4>Left Join / Right Join 语句</h4>
+<p>如果你想使用 「左连接」或者 「右连接」代替「内连接」 ，可以使用 <code>leftJoin</code> 或者 <code>rightJoin</code> 方法。这两个方法与 <code>join</code> 方法用法相同：</p>
+<pre><code>$users = DB::table('users')
+            -&gt;leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();
+
+$users = DB::table('users')
+            -&gt;rightJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();</code></pre>
+<h4>Cross Join 语句</h4>
+<p>使用 <code>crossJoin</code> 方法和你想要连接的表名做「交叉连接」。交叉连接在第一个表和被连接的表之间会生成笛卡尔积:</p>
+<pre><code>$sizes = DB::table('sizes')
+            -&gt;crossJoin('colors')
+            -&gt;get();</code></pre>
+<h4>高级 Join 语句</h4>
+<p>你可以指定更高级的 <code>join</code> 语句。比如传递一个闭包作为 <code>join</code> 方法的第二个参数。此闭包接收一个 <code>JoinClause</code> 对象，从而指定 <code>join</code> 语句中指定的约束：</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')-&gt;orOn(...);
+        })
+        -&gt;get();</code></pre>
+<p>如果你想要在连接上使用「where」 风格的语句，你可以在连接上使用 <code>where</code> 和 <code>orWhere</code> 方法。这些方法会将列和值进行比较，而不是列和列进行比较：</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')
+                 -&gt;where('contacts.user_id', '&gt;', 5);
+        })
+        -&gt;get();</code></pre>
+<h4>子连接查询</h4>
+<p>你可以使用 <code>joinSub</code>，<code>leftJoinSub</code> 和 <code>rightJoinSub</code> 方法关联一个查询作为子查询。他们每一种方法都会接收三个参数：子查询，表别名和定义关联字段的闭包：</p>
+<pre><code>$latestPosts = DB::table('posts')
+                   -&gt;select('user_id', DB::raw('MAX(created_at) as last_post_created_at'))
+                   -&gt;where('is_published', true)
+                   -&gt;groupBy('user_id');
+
+$users = DB::table('users')
+        -&gt;joinSub($latestPosts, 'latest_posts', function ($join) {
+            $join-&gt;on('users.id', '=', 'latest_posts.user_id');
+        })-&gt;get();</code></pre>
+<p><a name="unions"></a></p>
+<h2>Unions</h2>
+<p>查询构造器还提供了将两个查询「联合」的快捷方式。比如，你可以先创建一个查询，然后使用 <code>union</code> 方法将其和第二个查询进行联合：</p>
+<pre><code>$first = DB::table('users')
+            -&gt;whereNull('first_name');
+
+$users = DB::table('users')
+            -&gt;whereNull('last_name')
+            -&gt;union($first)
+            -&gt;get();</code></pre>
+<blockquote>
+<p>技巧：你也可以使用 unionAll 方法，用法 union 方法是的一样。</p>
+</blockquote>
+<p><a name="where-clauses"></a></p>
+<h2>Where Clauses</h2>
+<h4>简单的 Where 语句</h4>
+<p>在构造 <code>where</code> 查询实例中，你可以使用 <code>where</code> 方法。调用 <code>where</code> 最基本的方式是需要传递三个参数：第一个参数是列名，第二个参数是任意一个数据库系统支持的运算符，第三个是该列要比较的值。</p>
+<p>例如，下面是一个要验证 「votes」 字段的值等于 100 的查询：</p>
+<pre><code>$users = DB::table('users')-&gt;where('votes', '=', 100)-&gt;get();</code></pre>
+<p>为了方便，如果你只是简单比较列值和给定数值是否相等，可以将数值直接作为 <code>where</code> 方法的第二个参数：</p>
+<pre><code>$users = DB::table('users')-&gt;where('votes', 100)-&gt;get();</code></pre>
+<p>当然，你也可以使用其他的运算符来编写 <code>where</code> 子句：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('votes', '&gt;=', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('votes', '&lt;&gt;', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('name', 'like', 'T%')
+                -&gt;get();</code></pre>
+<p>你还可以传递条件数组到 <code>where</code> 函数中：</p>
+<pre><code>$users = DB::table('users')-&gt;where([
+    ['status', '=', '1'],
+    ['subscribed', '&lt;&gt;', '1'],
+])-&gt;get();</code></pre>
+<h4>Or 语句</h4>
+<p>你可以一起链式调用 <code>where</code> 约束，也可以在查询中添加 <code>or</code> 字句。<code>orWhere</code> 方法和 <code>where</code> 方法接收的参数一样：</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;where('votes', '&gt;', 100)
+                    -&gt;orWhere('name', 'John')
+                    -&gt;get();</code></pre>
+<p>如果需要在括号内对 <code>or</code> 条件进行分组，将闭包作为 <code>orWhere</code> 方法的第一个参数也是可以的：</p>
+<pre><code>$users = DB::table('users')
+            -&gt;where('votes', '&gt;', 100)
+            -&gt;orWhere(function($query) {
+                $query-&gt;where('name', 'Abigail')
+                      -&gt;where('votes', '&gt;', 50);
+            })
+            -&gt;get();
+
+// SQL语句: select * from users where votes &gt; 100 or (name = 'Abigail' and votes &gt; 50)</code></pre>
+<h4>附加 Where 语句</h4>
+<p><strong>whereBetween / orWhereBetween</strong></p>
+<p><code>whereBetween</code> 方法验证字段值是否在给定的两个值之间：</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereBetween('votes', [1, 100])
+           -&gt;get();</code></pre>
+<p><strong>whereNotBetween / orWhereNotBetween</strong></p>
+<p><code>whereNotBetween</code> 方法用于验证字段值是否在给定的两个值之外：</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotBetween('votes', [1, 100])
+                    -&gt;get();</code></pre>
+<p><strong>whereIn / whereNotIn / orWhereIn / orWhereNotIn</strong></p>
+<p><code>whereIn</code> 方法验证给定列的值是否包含在给定数组中：</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereIn('id', [1, 2, 3])
+                    -&gt;get();</code></pre>
+<p><code>whereNotIn</code> 方法验证给定列的值是否<strong>不存在</strong>给定的数组中：</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotIn('id', [1, 2, 3])
+                    -&gt;get();</code></pre>
+<blockquote>
+<p>技巧：如果要在查询中添加大量整数绑定，则可以使用 <code>whereIntegerInRaw</code> 或  <code>whereIntegerNotInRaw</code> 方法来大大减少内存使用。</p>
+</blockquote>
+<p><strong>whereNull / whereNotNull / orWhereNull / orWhereNotNull</strong></p>
+<p><code>whereNull</code> 方法验证指定的字段必须是 <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNull('updated_at')
+                    -&gt;get();</code></pre>
+<p><code>whereNotNull</code> 方法验证指定的字段肯定不是 <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotNull('updated_at')
+                    -&gt;get();</code></pre>
+<p><strong>whereDate / whereMonth / whereDay / whereYear / whereTime</strong></p>
+<p><code>whereDate</code> 方法用于比较字段值与给定的日期（年月日）：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDate('created_at', '1989-01-09')
+                -&gt;get();</code></pre>
+<p><code>whereMonth</code> 方法可用于将字段值与一年中的特定月份进行比较：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereMonth('created_at', '01')
+                -&gt;get();</code></pre>
+<p><code>whereDay</code> 方法可用于将字段值与一个月中的几号进行比较：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDay('created_at', '09')
+                -&gt;get();</code></pre>
+<p><code>whereYear</code> 方法用于比较字段值与指定的年份：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereYear('created_at', '1989')
+                -&gt;get();</code></pre>
+<p><code>whereTime</code> 方法用于比较字段值与指定的时间（时分秒）:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereTime('created_at', '=', '11:20:45')
+                -&gt;get();</code></pre>
+<p><strong>whereColumn / orWhereColumn</strong></p>
+<p><code>whereColumn</code> 方法用于比较两个字段的值是否相等：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('first_name', 'last_name')
+                -&gt;get();</code></pre>
+<p>你也可以传入一个比较运算符:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('updated_at', '&gt;', 'created_at')
+                -&gt;get();</code></pre>
+<p>你也可以给 <code>whereColumn</code> 传递一个数组，他们之间会使用 <code>and</code> 运算符连接:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn([
+                    ['first_name', '=', 'last_name'],
+                    ['updated_at', '&gt;', 'created_at'],
+                ])-&gt;get();</code></pre>
+<p><a name="parameter-grouping"></a></p>
+<h3>参数分组</h3>
+<p>有时候你需要创建更高级的 where 子句，例如「where exists」或者嵌套的参数分组。 Laravel 的查询构造器也能够处理这些。下面，让我们看一个在括号中进行分组约束的例子：</p>
+<pre><code>$users = DB::table('users')
+           -&gt;where('name', '=', 'John')
+           -&gt;where(function ($query) {
+               $query-&gt;where('votes', '&gt;', 100)
+                     -&gt;orWhere('title', '=', 'Admin');
+           })
+           -&gt;get();</code></pre>
+<p>你可以看到，通过使用 <code>闭包</code> 写入 <code>where</code> 的方法来创建一个查询构造器，用来约束一个分组。这个  <code>闭包</code> 接收一个查询实例，你可以使用这个实例来设置应该包含的约束。上面的例子将生成以下 SQL 语句：</p>
+<pre><code>select * from users where name = 'John' and (votes &gt; 100 or title = 'Admin')</code></pre>
+<blockquote>
+<p>技巧：你在调用 <code>orWhere</code> 的时候，应该始终使用分组，以避免应用全局作用出现意外。</p>
+</blockquote>
+<p><a name="where-exists-clauses"></a></p>
+<h3>Where Exists 语句</h3>
+<p><code>whereExists</code> 方法允许你使用 <code>where exists</code> SQL 语句。<code>whereExists</code> 方法接收一个 <code>闭包</code> 作为参数，该闭包获取一个查询构建器实例，从而允许你定义放置在 「exists」 字句中的查询：</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereExists(function ($query) {
+               $query-&gt;select(DB::raw(1))
+                     -&gt;from('orders')
+                     -&gt;whereRaw('orders.user_id = users.id');
+           })
+           -&gt;get();</code></pre>
+<p>上述查询将产生如下的 SQL 语句：</p>
+<pre><code>select * from users
+where exists (
+    select 1 from orders where orders.user_id = users.id
+)</code></pre>
+<p><a name="subquery-where-clauses"></a></p>
+<h3>子查询 Where 语句</h3>
+<p>有时候，您可能需要构造一个 where 子句，将子查询的结果与给定值进行比较。您可以通过向 <code>where</code> 方法传递一个闭包和一个值来完成此操作。例如，下面的查询将检索最后一次「会员」购买记录是 「Pro」 类型的所有用户：</p>
+<pre><code>use App\Models\User;
+
+$users = User::where(function ($query) {
+    $query-&gt;select('type')
+        -&gt;from('membership')
+        -&gt;whereColumn('user_id', 'users.id')
+        -&gt;orderByDesc('start_date')
+        -&gt;limit(1);
+}, 'Pro')-&gt;get();</code></pre>
+<p><a name="json-where-clauses"></a></p>
+<h3>JSON Where 语句</h3>
+<p>Laravel 也支持查询 JSON 类型的字段（仅在对 JSON 类型支持的数据库上）。目前，本特性仅支持 MySQL 5.7、PostgreSQL、SQL Server 2016 以及 SQLite 3.9.0 (with the <a href="https://www.sqlite.org/json1.html">JSON1 extension</a>)。使用 <code>-&gt;</code> 操作符查询 JSON 数据：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('options-&gt;language', 'en')
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('preferences-&gt;dining-&gt;meal', 'salad')
+                -&gt;get();</code></pre>
+<p>你也可以使用 <code>whereJsonContains</code> 来查询 JSON 数组 (在 SQLite 上不支持)</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', 'en')
+                -&gt;get();</code></pre>
+<p>MySQL 和 PostgreSQL 的 <code>whereJsonContains</code> 可以支持多个值：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', ['en', 'de'])
+                -&gt;get();</code></pre>
+<p>你可以使用 <code>whereJsonLength</code> 来查询 JSON 数组的长度：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', 0)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', '&gt;', 1)
+                -&gt;get();</code></pre>
+<p><a name="ordering-grouping-limit-and-offset"></a></p>
+<h2>Ordering, Grouping, Limit &amp; Offset</h2>
+<h4>orderBy</h4>
+<p><code>orderBy</code> 方法允许你通过给定字段对结果集进行排序。 <code>orderBy</code> 的第一个参数应该是你希望排序的字段，第二个参数控制排序的方向，可以是 <code>asc</code> 或 <code>desc</code>：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;get();</code></pre>
+<p>如果你需要使用多个字段进行排序，你可以多次引用 <code>orderBy</code>：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;orderBy('email', 'asc')
+                -&gt;get();</code></pre>
+<h4>latest / oldest</h4>
+<p><code>latest</code> 和 <code>oldest</code> 方法让你以一种便捷的方式通过日期进行排序。它们默认使用 <code>created_at</code> 列作为排序依据。当然，你也可以传递自定义的列名：</p>
+<pre><code>$user = DB::table('users')
+                -&gt;latest()
+                -&gt;first();</code></pre>
+<h4>inRandomOrder</h4>
+<p><code>inRandomOrder</code> 方法被用来将结果进行随机排序。例如，你可以使用此方法随机找到一个用户：</p>
+<pre><code>$randomUser = DB::table('users')
+                -&gt;inRandomOrder()
+                -&gt;first();</code></pre>
+<h4>reorder</h4>
+<p><code>reorder</code> 方法允许你删除已经存在的所有排序，如果你愿意，可以在之后附加一个新的排序。例如，你可以删除所有已存在的排序：</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$unorderedUsers = $query-&gt;reorder()-&gt;get();</code></pre>
+<p>删除所有已存在的排序并且附加新的排序，并且在方法上提供新的排序字段和顺序，用于重新排序：</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$usersOrderedByEmail = $query-&gt;reorder('email', 'desc')-&gt;get();</code></pre>
+<h4>groupBy / having</h4>
+<p><code>groupBy</code> 和 <code>having</code> 方法用于将结果分组。 <code>having</code> 方法的使用与 <code>where</code> 方法十分相似：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('account_id')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();</code></pre>
+<p>你可以向 groupBy 方法传递多个参数，来对结果使用多个字段进行分组：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('first_name', 'status')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();</code></pre>
+<p>对于更高级的 <code>having</code> 语法，参见 <a href="#raw-methods"><code>havingRaw</code></a> 方法。</p>
+<h4>skip / take</h4>
+<p>要限制结果的返回数量，或跳过指定数量的结果，你可以使用 <code>skip</code> 和 <code>take</code> 方法：</p>
+<pre><code>$users = DB::table('users')-&gt;skip(10)-&gt;take(5)-&gt;get();</code></pre>
+<p>或者你也可以使用 <code>limit</code> 和 <code>offset</code> 方法：</p>
+<pre><code>$users = DB::table('users')
+                -&gt;offset(10)
+                -&gt;limit(5)
+                -&gt;get();</code></pre>
+<p><a name="conditional-clauses"></a></p>
+<h2>条件语句</h2>
+<p>有时候你可能想要子句只适用于某个情况为真时才执行查询。例如你可能只想给定值在请求中存在的情况下才应用 <code>where</code> 语句。 你可以通过使用 <code>when</code> 方法来实现：</p>
+<pre><code>$role = $request-&gt;input('role');
+
+$users = DB::table('users')
+                -&gt;when($role, function ($query, $role) {
+                    return $query-&gt;where('role_id', $role);
+                })
+                -&gt;get();</code></pre>
+<p><code>when</code> 方法只有在第一个参数为 <code>true</code> 的时候才执行给的的闭包。如果第一个参数为 <code>false</code> ，那么这个闭包将不会被执行</p>
+<p>你可以传递另一个闭包作为 <code>when</code> 方法的第三个参数。 该闭包会在第一个参数为 <code>false</code> 的情况下执行。为了说明如何使用这个特性，我们来配置一个查询的默认排序：</p>
+<pre><code>$sortBy = null;
+
+$users = DB::table('users')
+                -&gt;when($sortBy, function ($query, $sortBy) {
+                    return $query-&gt;orderBy($sortBy);
+                }, function ($query) {
+                    return $query-&gt;orderBy('name');
+                })
+                -&gt;get();</code></pre>
+<p><a name="inserts"></a></p>
+<h2>插入</h2>
+<p>查询构造器还提供了 <code>insert</code> 方法用于插入记录到数据库中。 <code>insert</code> 方法接收数组形式的字段名和字段值进行插入操作：</p>
+<pre><code>DB::table('users')-&gt;insert(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);</code></pre>
+<p>你甚至可以将二维数组传递给 <code>insert</code> 方法，依次将多个记录插入到表中：</p>
+<pre><code>DB::table('users')-&gt;insert([
+    ['email' =&gt; 'taylor@example.com', 'votes' =&gt; 0],
+    ['email' =&gt; 'dayle@example.com', 'votes' =&gt; 0],
+]);</code></pre>
+<p><code>insertOrIgnore</code> 方法在将记录插入数据库时将忽略重复记录错误：</p>
+<pre><code>DB::table('users')-&gt;insertOrIgnore([
+    ['id' =&gt; 1, 'email' =&gt; 'taylor@example.com'],
+    ['id' =&gt; 2, 'email' =&gt; 'dayle@example.com'],
+]);</code></pre>
+<h4>自增 IDs</h4>
+<p>如果数据表有自增 ID ，使用 <code>insertGetId</code> 方法来插入记录可以返回 ID 值：</p>
+<pre><code>$id = DB::table('users')-&gt;insertGetId(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);</code></pre>
+<blockquote>
+<p>注意：当使用 PostgreSQL 时，<code>insertGetId</code> 方法将默认把 <code>id</code> 作为自动递增字段的名称。如果你要从其他「字段」来获取 ID ，则需要将字段名称作为第二个参数传递给 <code>insertGetId</code> 方法。</p>
+</blockquote>
+<p><a name="updates"></a></p>
+<h2>更新</h2>
+<p>当然， 除了插入记录到数据库中，查询构造器也可以通过 <code>update</code> 方法更新已有的记录。 <code>update</code>  方法和 <code>insert</code> 方法一样，接受包含要更新的字段及值的数组。你可以通过 <code>where</code> 子句对 <code>update</code> 查询进行约束：</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['votes' =&gt; 1]);</code></pre>
+<h4>更新或新增</h4>
+<p>有时您可能希望更新数据库中的现有记录，或者如果不存在匹配记录则创建它。 在这种情况下，可以使用 <code>updateOrInsert</code> 方法。 <code>updateOrInsert</code> 方法接受两个参数：一个用于查找记录的条件数组，以及一个包含要更该记录的键值对数组。</p>
+<p><code>updateOrInsert</code> 方法将首先尝试使用第一个参数的键和值对来查找匹配的数据库记录。 如果记录存在，则使用第二个参数中的值去更新记录。 如果找不到记录，将插入一个新记录，新增的数据是两个数组的集合：</p>
+<pre><code>DB::table('users')
+    -&gt;updateOrInsert(
+        ['email' =&gt; 'john@example.com', 'name' =&gt; 'John'],
+        ['votes' =&gt; '2']
+    );</code></pre>
+<p><a name="updating-json-columns"></a></p>
+<h3>更新 JSON 字段</h3>
+<p>更新 JSON 字段时，你可以使用 <code>-&gt;</code> 语法访问 JSON 对象中相应的值。注意，此操作只能支持 MySQL 5.7+ 和 PostgreSQL 9.5+ ：</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['options-&gt;enabled' =&gt; true]);</code></pre>
+<p><a name="increment-and-decrement"></a></p>
+<h3>自增与自减</h3>
+<p>查询构造器还为给定字段的递增或递减提供了便捷的方式。此方法提供了一个比手动编写 <code>update</code> 语句更具表达力且更精练的接口。</p>
+<p>这两种方法都至少接收一个参数：需要修改的列。可选的第二个参数用于控制列递增或递减的量：</p>
+<pre><code>DB::table('users')-&gt;increment('votes');
+
+DB::table('users')-&gt;increment('votes', 5);
+
+DB::table('users')-&gt;decrement('votes');
+
+DB::table('users')-&gt;decrement('votes', 5);</code></pre>
+<p>你也可以在操作过程中指定要更新的其他字段：</p>
+<pre><code>DB::table('users')-&gt;increment('votes', 1, ['name' =&gt; 'John']);</code></pre>
+<blockquote>
+<p>注意：当你使用模型中的 <code>increment</code> 和 <code>decrement</code> 方法时，会触发 updating 和 updated 模型事件。而在构造器中直接使用  <code>increment</code> 和 <code>decrement</code>，不会触发模型事件。</p>
+</blockquote>
+<p><a name="deletes"></a></p>
+<h2>删除</h2>
+<p>查询构造器也可以使用 <code>delete</code> 方法从表中删除记录。 在使用 <code>delete</code> 前，可以添加 <code>where</code> 子句来约束 <code>delete</code> 语法：</p>
+<pre><code>DB::table('users')-&gt;delete();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;delete();</code></pre>
+<p>您可以使用 <code>truncate</code> 方法来清空整个表，这将移除所有的数据并重置所有的自增 ID 为 0 ：</p>
+<pre><code>DB::table('users')-&gt;truncate();</code></pre>
+<p><a name="pessimistic-locking"></a></p>
+<h2>悲观锁</h2>
+<p>查询构造器也包含了一些能够帮助您在 <code>select</code> 语句中实现「悲观锁」的函数。要执行一个含有「共享锁」的语句，您可以在查询中使用 <code>sharedLock</code> 方法。共享锁可防止指定的数据列被篡改，直到事务被提交为止：</p>
+<pre><code>DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;sharedLock()-&gt;get();</code></pre>
+<p>或者，您亦可使用 <code>lockForUpdate</code> 方法。使用「 update 」锁可以避免数据行被其他共享锁修改或选定：</p>
+<pre><code>DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;lockForUpdate()-&gt;get();</code></pre>
+<p><a name="debugging"></a></p>
+<h2>调试</h2>
+<p>在绑定查询的时候，您可以使用 <code>dd</code> 或 <code>dump</code> 方法来输出查询绑定和 SQL。<code>dd</code> 方法将会显示调试信息并终止执行请求，而 <code>dump</code> 方法则会显示调试信息并允许请求继续执行：</p>
+<pre><code>DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dd();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dump();</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 358);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

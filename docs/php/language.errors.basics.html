@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>基础概要 - 开发帮助文档</title> 
+    <meta name="keyword" content="language.errors.basics"> 
+    <meta name="description" content="language.errors.basics"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1137" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.errors.basics.html" title="基础概要">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基础概要
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.errors.php7.html" title="PHP 7 错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 7 错误处理
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.errors.html">« 错误</a></li>
+      <li style="float: right;"><a href="language.errors.php7.html">PHP 7 错误处理 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.errors.html">错误</a></li>
+    <li>基础概要</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.errors.basics" class="sect1">
+ <h2 class="title">基础概要</h2>
+
+ <p class="para">
+  PHP 遇到一系列内部错误时，会报告出来作为应对。
+  它可以用来标示不同的情况，可以要求将错误显示出来或记录到日志中。
+ </p>
+
+ <p class="para">
+    每个 PHP 产生的错误都包含了类型。可查看
+  <a href="errorfunc.constants.html" class="link">错误类型清单</a>，它附带了不同类型行为的简短描述和
+  产生的原因。
+ </p>
+
+ <div class="sect2" id="language.errors.basics.handling">
+  <h3 class="title">PHP 错误处理</h3>
+
+  <p class="para">
+   当未设置错误处理函数时，PHP 会根据配置处理所有出现的错误。
+   php.ini 中 
+   <a href="errorfunc.configuration.html#ini.error-reporting" class="link"><code class="parameter">error_reporting</code></a> 的配置
+   或者是运行时调用 <span class="function"><a href="function.error-reporting.html" class="function">error_reporting()</a></span> 控制了哪些错误需要报告，哪些错误需要自动忽略。
+   由于有些错误会在运行用户脚本前就可能出现，所以强烈推荐用配置指令来设置。
+  </p>
+
+  <p class="para">
+   在开发环境里为了发现并修复 PHP 产生的问题，
+   应该总是把 <a href="errorfunc.configuration.html#ini.error-reporting" class="link"><code class="parameter">error_reporting</code></a>
+   设置为 <strong><code>E_ALL</code></strong>。
+   
+   在生产环境里，用户可能为了降低信息的详细程度，
+   想要将它设置为类似 <code class="code">E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED</code>，
+   但很多情况下 <strong><code>E_ALL</code></strong> 也同样适用，这样可以更早地警告潜在问题。
+  </p>
+
+  <p class="para">
+    PHP 对这些错误的处理方式，取决于两个更深的 php.ini 指令。
+
+   <a href="errorfunc.configuration.html#ini.display-errors" class="link"><code class="parameter">display_errors</code></a> 
+   控制了是否要将错位作为脚本输出的一部分显示。
+   在生产环境里应该禁用，因为可能包含类似数据库密码这样的敏感信息，
+   而在开发环境中应该启用，能确保立即报告问题。
+  </p>
+
+  <p class="para">
+    PHP 不仅能显示错误，还可以开启 <a href="errorfunc.configuration.html#ini.log-errors" class="link"><code class="parameter">log_errors</code></a>
+    指令来记录错误日志。它能根据 <a href="errorfunc.configuration.html#ini.error-log" class="link"><code class="parameter">error_log</code></a> 的设置，
+    记录任意错误到文件或者 syslog。
+   特别适用于生产环境，用户可以记录发生的错误，并根据这些错误生成报告。
+  </p>
+ </div>
+
+ <div class="sect2" id="language.errors.basics.user">
+  <h3 class="title">用户的错误处理器</h3>
+
+  <p class="para">
+    如果 PHP 默认错误处理器还不能满足要求，用户可以通过 <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span> 
+    设置自定义错误处理器，可处理很多类型的错误。
+   虽然有些类型的错误不能通过这种方式处理，但能处理的类型可以用脚本合适的方式处理：
+   例如为用户显示自定义错误页面，同时以一种比日志更直接的方式上报错误，例如发送邮件。
+  </p>
+ </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7264);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

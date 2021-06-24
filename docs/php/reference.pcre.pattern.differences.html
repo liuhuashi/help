@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>与 perl 的不同之处 - 开发帮助文档</title> 
+    <meta name="keyword" content="reference.pcre.pattern.differences"> 
+    <meta name="description" content="reference.pcre.pattern.differences"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="211" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/reference.pcre.pattern.differences.html" title="与 perl 的不同之处">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    与 perl 的不同之处
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/reference.pcre.pattern.modifiers.html" title="模式修饰符">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模式修饰符
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/reference.pcre.pattern.syntax.html" title="模式语法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模式语法
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="reference.pcre.pattern.modifiers.html">« 正则表达式模式中可用的模式修饰符</a></li>
+      <li style="float: right;"><a href="ref.pcre.html">PCRE 函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="pcre.pattern.html">PCRE模式</a></li>
+    <li>与 perl 的不同之处</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="reference.pcre.pattern.differences" class="article">
+ <h1>与 perl 的不同之处</h1>
+
+ 
+ <p class="para">
+ 这里讨论的不同之处是与 perl 5.005相比的。
+  </p><ol type="1">
+   <li class="listitem">
+    <span class="simpara">
+   尽管可以使用字符类编译 pcre 进行替代，但仍然默认使用 c 库函数 isspace()
+   判定一个字符是否是空白字符。通常 isspace() 匹配空格、换页符、换行符、
+   回车符、水平制表符和垂直制表符。 Perl5 不再将垂直制表符包括到空白字符集中。
+   \v 这个转义实际上在很长时间都没有得到 perl 文档的承认。然而，这个字符自身
+   被认为是一个空白字符至少是在 5.002 以上。 在 5.004 和 5.005 它不和 \s 匹配。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+    PCRE 不允许前瞻断言的量词修饰，perl 允许这样做，但是这并不是你想象的那样。
+    例如，(?!a){3}并不意味着接下来 3 个字符不是 a，而是断言下一个字符不是 a 并进行了
+    3 次断言.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+    捕获子组发生在消极前瞻断言中时被计算在内，但是在偏移向量中并没有设置它们的条目。
+    Perl 从断言失败之前匹配得到的这些模式匹配结果中设置了它的数值变量(因此是成功的)，
+    但这也仅在消极前瞻断言只有一个分支的时候。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+    尽管目标字符串中支持二进制 0 字符，但是它们在模式字符串中是不允许的，因为它们是通过普通的
+    c 字符串传递的，而 c 字符串是以 0 字符结束的。转义序列"\x00"可以在模式中表示二进制 0 字符。
+    </span>
+    </li>
+    <li class="listitem">
+    <span class="simpara">
+    不支持下面的 perl 转义序列：\l、\u、 \L、 \U。 实际上这些都是通过 perl 一般的字符串处理来实现
+    的，而不是模式匹配引擎的一部分。
+    </span>
+    </li>
+    <li class="listitem">
+    <span class="simpara">
+    不支持 perl 的 \G 断言，因为它与单模式匹配没有关系。
+    </span>
+    </li>
+    <li class="listitem">
+    <span class="simpara">
+    很显然，PCRE不支持(?{code}) 和 (??{code})的结构，但是它支持递归模式。
+    </span>
+    </li>
+    <li class="listitem">
+    <span class="simpara">
+    在 perl 5.005_2 中档设置为捕获字符串的模式中有部分重复的时候会有一些古怪的现象发生， 
+    比如: /^(a(b)?)+$/ 捕获 aba 的时候， $2 会被设置为 b，然而，如果把模式修改为/^(aa(bb)?)+$/，
+    用aabbaa去匹配，$2讲不会得到匹配结果。
+     如果将模式修改为 /^(aa(b(b))?)+$/， $2 和 $3 又都能
+    得到匹配结果。在 perl 5.004 中 $2 在这几种情况下都能够得到匹配结果，并且 pcre 也是这样。如果
+    未来 perl 修改为一致那就不同了。pcre 可能接下来会修改.
+    </span>
+    </li>
+    <li class="listitem">
+    <span class="simpara">
+    还有一个没有解决的差异是 perl 5.005_02中，模式 /^(a)?(?(1)a|b)+$/ 会匹配字符串 "a"，
+    而 pcre 中不会，然而，perl 和 pcre 中 /^(a)?a/ 匹配 "a" 都会得到相同的结果，$1 都未被设置。
+    </span>
+    </li>
+    <li class="listitem">
+    <p class="para">
+    PCRE 提供了一些对 perl 正则表达式的扩展：
+      </p><ol type="1">
+       <li class="listitem">
+        <span class="simpara">
+        虽然后瞻断言要求必须匹配固定长度的字符串，然而后瞻断言的每个可选分支
+        还是可以使用不同长度的字符串的，而perl 5.005 中要求它们必须拥有同样
+        的长度。
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+       如果设置了 <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOLLAR_ENDONLY</a>
+        并且没有设置 <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_MULTILINE</a>，
+       元字符 $ 仅仅匹配字符串的末尾(而不是某个换行符之前)。
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+       如果设置了 <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_EXTRA</a>，
+       反斜线后紧跟一个没有特殊含义的字符讲会导致错误。
+       </span>
+      </li>
+      <li class="listitem">
+       <span class="simpara">
+       如果设置了 <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_UNGREEDY</a>，
+       贪婪量词修饰被逆转，也就是说，默认它们都是非贪婪的了，但如果紧跟一个问号它们就会变成
+       贪婪的。(译注：既完全将贪婪模式逆转。)
+       </span>
+      </li>
+     </ol>
+    
+   </li>
+  </ol>
+ 
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9242);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

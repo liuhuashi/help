@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>匿名函数 - 开发帮助文档</title> 
+    <meta name="keyword" content="functions.anonymous"> 
+    <meta name="description" content="functions.anonymous"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1140" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.anonymous.html" title="匿名函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    匿名函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.arguments.html" title="函数的参数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    函数的参数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.arrow.html" title="箭头函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    箭头函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.internal.html" title="内部（内置）函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    内部（内置）函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.returning-values.html" title="返回值">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    返回值
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.user-defined.html" title="用户自定义函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户自定义函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/functions.variable-functions.html" title="可变函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    可变函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="functions.internal.html">« 内部（内置）函数</a></li>
+      <li style="float: right;"><a href="functions.arrow.html">箭头函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.functions.html">函数</a></li>
+    <li>匿名函数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="functions.anonymous" class="sect1">
+   <h2 class="title">匿名函数</h2>
+
+   <p class="simpara">
+    匿名函数（Anonymous functions），也叫闭包函数（<code class="literal">closures</code>），允许
+    临时创建一个没有指定名称的函数。最经常用作回调函数 <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>参数的值。当然，也有其它应用的情况。
+   </p>
+   <p class="simpara">
+    匿名函数目前是通过 <a href="class.closure.html" class="link">
+    </a><a href="class.closure.html" class="classname">Closure</a> 类来实现的。
+   </p>
+
+   <div class="example" id="example-178">
+    <p><strong>示例 #1 匿名函数示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">preg_replace_callback</span><span style="color: #007700">(</span><span style="color: #DD0000">'~-([a-z])~'</span><span style="color: #007700">, function (</span><span style="color: #0000BB">$match</span><span style="color: #007700">) {<br>    return </span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br>}, </span><span style="color: #DD0000">'hello-world'</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// 输出 helloWorld<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    闭包函数也可以作为变量的值来使用。PHP 会自动把此种表达式转换成内置类
+    <a href="class.closure.html" class="classname">Closure</a> 的对象实例。把一个 closure
+    对象赋值给一个变量的方式与普通变量赋值的语法是一样的，最后也要加上分号：
+   </p>
+
+   <div class="example" id="example-179">
+    <p><strong>示例 #2 匿名函数变量赋值示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$greet </span><span style="color: #007700">= function(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br>{<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello %s\r\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br>};<br><br></span><span style="color: #0000BB">$greet</span><span style="color: #007700">(</span><span style="color: #DD0000">'World'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$greet</span><span style="color: #007700">(</span><span style="color: #DD0000">'PHP'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="simpara">
+    闭包可以从父作用域中继承变量。
+   任何此类变量都应该用 <code class="literal">use</code> 语言结构传递进去。
+    PHP 7.1 起，不能传入此类变量：  <a href="language.variables.predefined.html" class="link">superglobals</a>、 <var class="varname">$this</var> 或者和参数重名。
+   </p>
+
+   <div class="example" id="example-180">
+    <p><strong>示例 #3 从父作用域继承变量</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$message </span><span style="color: #007700">= </span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// 没有 "use"<br></span><span style="color: #0000BB">$example </span><span style="color: #007700">= function () {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br>};<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// 继承 $message<br></span><span style="color: #0000BB">$example </span><span style="color: #007700">= function () use (</span><span style="color: #0000BB">$message</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br>};<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// Inherited variable's value is from when the function<br>// is defined, not when called<br></span><span style="color: #0000BB">$message </span><span style="color: #007700">= </span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// Reset message<br></span><span style="color: #0000BB">$message </span><span style="color: #007700">= </span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// Inherit by-reference<br></span><span style="color: #0000BB">$example </span><span style="color: #007700">= function () use (&amp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br>};<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// The changed value in the parent scope<br>// is reflected inside the function call<br></span><span style="color: #0000BB">$message </span><span style="color: #007700">= </span><span style="color: #DD0000">'world'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// Closures can also accept regular arguments<br></span><span style="color: #0000BB">$example </span><span style="color: #007700">= function (</span><span style="color: #0000BB">$arg</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$message</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg </span><span style="color: #007700">. </span><span style="color: #DD0000">' ' </span><span style="color: #007700">. </span><span style="color: #0000BB">$message</span><span style="color: #007700">);<br>};<br></span><span style="color: #0000BB">$example</span><span style="color: #007700">(</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Notice: Undefined variable: message in /example.php on line 6
+NULL
+string(5) "hello"
+string(5) "hello"
+string(5) "hello"
+string(5) "world"
+string(11) "hello world"
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    从 PHP 8.0.0 开始，作用域继承的变量列表可能包含一个尾部的逗号，这个逗号将被忽略。
+   </p>
+  <p class="simpara">
+    这些变量都必须在函数或类的头部声明。
+
+    从父作用域中继承变量与使用全局变量是<em class="emphasis">不同</em>的。全局变量存在于一个全局的范围，无论当前在执行的是哪个函数。而
+    闭包的父作用域是定义该闭包的函数（不一定是调用它的函数）。示例如下：
+   </p>
+
+   <div class="example" id="example-181">
+    <p><strong>示例 #4 Closures 和作用域</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// 一个基本的购物车，包括一些已经添加的商品和每种商品的数量。<br>// 其中有一个方法用来计算购物车中所有商品的总价格，该方法使<br>// 用了一个 closure 作为回调函数。<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Cart<br></span><span style="color: #007700">{<br>    const </span><span style="color: #0000BB">PRICE_BUTTER  </span><span style="color: #007700">= </span><span style="color: #0000BB">1.00</span><span style="color: #007700">;<br>    const </span><span style="color: #0000BB">PRICE_MILK    </span><span style="color: #007700">= </span><span style="color: #0000BB">3.00</span><span style="color: #007700">;<br>    const </span><span style="color: #0000BB">PRICE_EGGS    </span><span style="color: #007700">= </span><span style="color: #0000BB">6.95</span><span style="color: #007700">;<br><br>    protected </span><span style="color: #0000BB">$products </span><span style="color: #007700">= array();<br><br>    public function </span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">, </span><span style="color: #0000BB">$quantity</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">] = </span><span style="color: #0000BB">$quantity</span><span style="color: #007700">;<br>    }<br><br>    public function </span><span style="color: #0000BB">getQuantity</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">)<br>    {<br>        return isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">]) ? </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">[</span><span style="color: #0000BB">$product</span><span style="color: #007700">] :<br>               </span><span style="color: #0000BB">FALSE</span><span style="color: #007700">;<br>    }<br><br>    public function </span><span style="color: #0000BB">getTotal</span><span style="color: #007700">(</span><span style="color: #0000BB">$tax</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$total </span><span style="color: #007700">= </span><span style="color: #0000BB">0.00</span><span style="color: #007700">;<br><br>        </span><span style="color: #0000BB">$callback </span><span style="color: #007700">=<br>            function (</span><span style="color: #0000BB">$quantity</span><span style="color: #007700">, </span><span style="color: #0000BB">$product</span><span style="color: #007700">) use (</span><span style="color: #0000BB">$tax</span><span style="color: #007700">, &amp;</span><span style="color: #0000BB">$total</span><span style="color: #007700">)<br>            {<br>                </span><span style="color: #0000BB">$pricePerItem </span><span style="color: #007700">= </span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #0000BB">__CLASS__ </span><span style="color: #007700">. </span><span style="color: #DD0000">"::PRICE_" </span><span style="color: #007700">.<br>                    </span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$product</span><span style="color: #007700">));<br>                </span><span style="color: #0000BB">$total </span><span style="color: #007700">+= (</span><span style="color: #0000BB">$pricePerItem </span><span style="color: #007700">* </span><span style="color: #0000BB">$quantity</span><span style="color: #007700">) * (</span><span style="color: #0000BB">$tax </span><span style="color: #007700">+ </span><span style="color: #0000BB">1.0</span><span style="color: #007700">);<br>            };<br><br>        </span><span style="color: #0000BB">array_walk</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">products</span><span style="color: #007700">, </span><span style="color: #0000BB">$callback</span><span style="color: #007700">);<br>        return </span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$total</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br>    }<br>}<br><br></span><span style="color: #0000BB">$my_cart </span><span style="color: #007700">= new </span><span style="color: #0000BB">Cart</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// 往购物车里添加条目<br></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'butter'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'milk'</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'eggs'</span><span style="color: #007700">, </span><span style="color: #0000BB">6</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// 打出出总价格，其中有 5% 的销售税.<br></span><span style="color: #007700">print </span><span style="color: #0000BB">$my_cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTotal</span><span style="color: #007700">(</span><span style="color: #0000BB">0.05</span><span style="color: #007700">) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #FF8000">// 最后结果是 54.29<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <div class="example" id="example-182">
+    <p><strong>示例 #5 自动绑定 <code class="literal">$this</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">Test<br></span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">testing</span><span style="color: #007700">()<br>    {<br>        return function() {<br>            </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br>        };<br>    }<br>}<br><br></span><span style="color: #0000BB">$object </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$function </span><span style="color: #007700">= </span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testing</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$function</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(Test)#1 (0) {
+}
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    当在类的上下文中声明时，当前的类会自动与之绑定，使得
+    <code class="literal">$this</code> 在函数的作用域中可用。如果不需要当前类的自动绑定，可以使用
+    <a href="functions.anonymous.html#functions.anonymous-functions.static" class="link">静态匿名函数</a> 替代。
+   </p>
+
+   <div class="sect2" id="functions.anonymous-functions.static">
+    <h3 class="title">静态匿名函数</h3>
+    <p class="para">
+     匿名函数允许被定义为静态化。这样可以防止当前类自动绑定到它们身上，对象在运行时也可能不会被绑定到它们上面。
+    </p>
+    <p class="para">
+     </p><div class="example" id="example-183">
+      <p><strong>示例 #6 试图在静态匿名函数中使用 <code class="literal">$this</code></strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">Foo<br></span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br>    {<br>        </span><span style="color: #0000BB">$func </span><span style="color: #007700">= static function() {<br>            </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br>        };<br>        </span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br>    }<br>};<br>new </span><span style="color: #0000BB">Foo</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Notice: Undefined variable: this in %s on line %d
+NULL
+</pre></div>
+      </div>
+     </div>
+    
+
+    <p class="para">
+     </p><div class="example" id="example-184">
+      <p><strong>示例 #7 试图将对象绑定到静态匿名函数</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$func </span><span style="color: #007700">= static function() {<br>    </span><span style="color: #FF8000">// function body<br></span><span style="color: #007700">};<br></span><span style="color: #0000BB">$func </span><span style="color: #007700">= </span><span style="color: #0000BB">$func</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindTo</span><span style="color: #007700">(new </span><span style="color: #0000BB">StdClass</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$func</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>以上例程会输出：</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: Cannot bind an instance to a static closure in %s on line %d
+</pre></div>
+      </div>
+     </div>
+    
+   </div>
+
+   <div class="sect2">
+    <h3 class="title">更新日志</h3>
+    <p class="para">
+     </p><table class="doctable informaltable">
+      
+       <thead>
+        <tr>
+         <th>版本</th>
+         <th>说明</th>
+        </tr>
+
+       </thead>
+
+       <tbody class="tbody">
+        <tr>
+         <td>7.1.0</td>
+         <td>
+          Anonymous functions may not close over <a href="language.variables.predefined.html" class="link">superglobals</a>,
+          <var class="varname">$this</var>, or any variable with the same name as a
+          parameter.
+         </td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    
+   </div>
+
+   <div class="sect2">
+    <h3 class="title">注释</h3>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">
+      可以在闭包中使用
+      <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>，<span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>
+      和 <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span>。
+     </span>
+    </p></blockquote>
+   </div>
+
+  </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 5863);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

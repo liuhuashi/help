@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的 Blade 模板引擎 - 开发帮助文档</title> 
+    <meta name="keyword" content="blade"> 
+    <meta name="description" content="blade"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的 Blade 模板引擎</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#template-inheritance">模板继承</a>
+<ul>
+<li><a href="#defining-a-layout">定义布局</a></li>
+<li><a href="#extending-a-layout">继承布局</a></li>
+</ul></li>
+<li><a href="#components-and-slots">Components &amp; Slots</a></li>
+<li><a href="#displaying-data">显示数据</a>
+<ul>
+<li><a href="#blade-and-javascript-frameworks">Blade &amp; JavaScript 框架</a></li>
+</ul></li>
+<li><a href="#control-structures">流程控制</a>
+<ul>
+<li><a href="#if-statements">If 语句</a></li>
+<li><a href="#switch-statements">Switch 语句</a></li>
+<li><a href="#loops">循环</a></li>
+<li><a href="#the-loop-variable">循环变量</a></li>
+<li><a href="#comments">注释</a></li>
+<li><a href="#php">PHP</a></li>
+</ul></li>
+<li><a href="#including-sub-views">引入子视图</a>
+<ul>
+<li><a href="#rendering-views-for-collections">为集合渲染视图</a></li>
+</ul></li>
+<li><a href="#stacks">堆栈</a></li>
+<li><a href="#service-injection">服务注入</a></li>
+<li><a href="#extending-blade">Blade 扩展</a>
+<ul>
+<li><a href="#custom-if-statements">自定义 If 语句</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>Blade 是 Laravel 提供的一个简单而又强大的模板引擎。和其他流行的 PHP 模板引擎不同，Blade 并不限制你在视图中使用原生 PHP 代码。所有 Blade 视图文件都将被编译成原生的 PHP 代码并缓存起来，除非它被修改，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何负担。Blade 视图文件使用 <code>.blade.php</code> 作为文件扩展名，被存放在 <code>resources/views</code> 目录。</p>
+<p><a name="template-inheritance"></a></p>
+<h2>模板继承</h2>
+<p><a name="defining-a-layout"></a></p>
+<h3>定义布局</h3>
+<p>Blade 的两个主要优点是 <em>模板继承</em> 和 <em>区块</em> 。为方便开始，让我们先通过一个简单的例子来上手。首先，我们来研究一个「主」页面布局。因为大多数 web 应用会在不同的页面中使用相同的布局方式，因此可以很方便地定义单个 Blade 布局视图：</p>
+<pre><code>&lt;!-- 文件保存于 resources/views/layouts/app.blade.php --&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;应用程序名称 - @yield('title')&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        @section('sidebar')
+            这是主布局的侧边栏。
+        @show
+
+        &lt;div class="container"&gt;
+            @yield('content')
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>如你所见，该文件包含了典型的 HTML 语法。不过，请注意 <code>@section</code> 和 <code>@yield</code> 命令。顾名思义，<code>@section</code> 命令定义了视图的一部分内容，而  <code>@yield</code> 指令是用来显示指定部分的内容。</p>
+<p>现在，我们已经定义好了这个应用程序的布局，接下来，我们定义一个继承此布局的子页面。</p>
+<p><a name="extending-a-layout"></a></p>
+<h3>继承布局</h3>
+<p>当定义子视图时，你可以使用 Blade 提供的 <code>@extends</code> 命令来为子视图指定应该 「继承」 的布局。 继承 Blade 布局的视图可使用 <code>@section</code> 命令将内容注入于布局的 <code>@section</code> 中。而「主」布局中使用 <code>@yield</code> 的地方会显示这些子视图中的  <code>@section</code> 间的内容：</p>
+<pre><code>&lt;!-- 文件保存于 resources/views/layouts/child.blade.php --&gt;
+
+@extends('layouts.app')
+
+@section('title', 'Page Title')
+
+@section('sidebar')
+    @parent
+
+    &lt;p&gt;这将追加到主布局的侧边栏。&lt;/p&gt;
+@endsection
+
+@section('content')
+    &lt;p&gt;这是主体内容。&lt;/p&gt;
+@endsection</code></pre>
+<p>在上面的例子里，<code>@section</code> 中的 <code>sidebar</code> 使用 <code>@parent</code> 命令在「主」布局的 <code>@section('sidebar')</code> 中增加内容（不是覆盖）。渲染视图时，<code>@parent</code> 指令会被替换为「主」布局中 <code>@section('sidebar')</code> 间的内容。</p>
+<blockquote>
+<p>{tip} 与上一个示例相反，此侧边栏部分以 <code>@endsection</code> 而不是 <code>@show</code> 结尾。 <code>@endsection</code> 指令只定义一个区块，而 <code>@show</code> 则是定义并立即生成该区块。</p>
+</blockquote>
+<p>你也可以通过在路由中使用全局辅助函数 <code>view</code> 来返回 Blade 视图：</p>
+<pre><code>Route::get('blade', function () {
+    return view('child');
+});</code></pre>
+<p><a name="components-and-slots"></a></p>
+<h2>Components &amp; Slots</h2>
+<p>Components 和 slots 类似于布局中的 <code>@section</code>，但其使用方式更容易使人理解。首先，假设我们有一个能在整个应用程序中被重复使用的「警告」组件:</p>
+<pre><code>&lt;!-- /resources/views/alert.blade.php --&gt;
+
+&lt;div class="alert alert-danger"&gt;
+    {{ $slot }}
+&lt;/div&gt;</code></pre>
+<p><code>{{ $slot }}</code> 变量将包含我们希望注入到组件的内容。然后，我们可以使用 Blade 命令 <code>@component</code> 来构建这个组件：</p>
+<pre><code>@component('alert')
+    &lt;strong&gt;Whoops!&lt;/strong&gt; Something went wrong!
+@endcomponent</code></pre>
+<p>有时为组件定义多个 slots 是很有帮助的。现在我们要对「警报」组件进行修改，让它可以注入「标题」。通过简单地 「打印」匹配其名称的变量来显示被命名的 <code>@slot</code> 之间的内容：</p>
+<pre><code>&lt;!-- /resources/views/alert.blade.php --&gt;
+
+&lt;div class="alert alert-danger"&gt;
+    &lt;div class="alert-title"&gt;{{ $title }}&lt;/div&gt;
+
+    {{ $slot }}
+&lt;/div&gt;</code></pre>
+<p>现在，我们可以使用 <code>@slot</code> 指令注入内容到已命名的 slot 中，任何没有被 <code>@slot</code> 指令包裹住的内容将传递给组件中的 <code>$slot</code> 变量:</p>
+<pre><code>@component('alert')
+    @slot('title')
+        Forbidden
+    @endslot
+
+    你没有权限访问这个资源！
+@endcomponent</code></pre>
+<h4>传递额外的数据给组件</h4>
+<p>有时候你可能需要传递额外的数据给组件。你可以传递一个数组作为第二个参数传递给 <code>@component</code> 指令。所有的数据都将以变量的形式传递给组件模版:</p>
+<pre><code>@component('alert', ['foo' =&gt; 'bar'])
+    ...
+@endcomponent</code></pre>
+<p><a name="displaying-data"></a></p>
+<h2>显示数据</h2>
+<p>你可以使用 「中括号」 包住变量将数据传递给 Blade 视图。如下面的路由设置：</p>
+<pre><code>Route::get('greeting', function () {
+    return view('welcome', ['name' =&gt; 'Samantha']);
+});</code></pre>
+<p>你可以像这样显示 <code>name</code> 变量的内容：</p>
+<pre><code>Hello, {{ $name }}.</code></pre>
+<p>当然，不仅仅只能用传递数据的方式让视图来显示变量内容。你也可以打印 PHP 函数的结果。其实，你可以在 Blade 打印语法中放置任何 PHP 代码：</p>
+<pre><code>The current UNIX timestamp is {{ time() }}.</code></pre>
+<blockquote>
+<p>{note} Blade 的 <code>{{ }}</code> 语法会自动调用 PHP <code>htmlspecialchars</code> 函数来避免 XSS 攻击。</p>
+</blockquote>
+<h4>显示未转义的数据</h4>
+<p>默认情况下，Blade 的 <code>{{ }}</code> 语法将会自动调用 PHP <code>htmlspecialchars</code> 函数来避免 XSS 攻击。如果你不想你的数据被转义，你可以使用下面的语法：</p>
+<pre><code>Hello, {!! $name !!}.</code></pre>
+<blockquote>
+<p>{note} 处理用户输入的数据时要非常小心。在显示用户提供的数据时，你应该始终使用转义的 <code>{{  }}</code> 语法来防止 XSS 攻击。</p>
+</blockquote>
+<p><a name="blade-and-javascript-frameworks"></a></p>
+<h4>渲染 JSON</h4>
+<p>当你将数组传递给视图时，会将数组转化成  JSON 数据，以此来初始化 JavaScript 变量。例如：</p>
+<pre><code>&lt;script&gt;
+    var app = &lt;?php json_encode($array); ?&gt;;
+&lt;/script&gt;</code></pre>
+<p>你可以使用 Blade 指令 <code>@json</code> 来代替手动调用 <code>json_encode</code>：</p>
+<pre><code>&lt;script&gt;
+    var app = @json($array)
+&lt;/script&gt;</code></pre>
+<h3>Blade &amp; JavaScript 框架</h3>
+<p>由于很多 JavaScript 框架都使用花括号来表示给定的表达式应该在浏览器中显示，你可以使用 <code>@</code> 符号来告知 Blade 渲染引擎你需要保留这个表达式原始形态，例如：</p>
+<pre><code>&lt;h1&gt;Laravel&lt;/h1&gt;
+
+Hello, @{{ name }}.</code></pre>
+<p>在这个例子里，<code>@</code> 符号最终会被 Blade 引擎删除，达到不受 Blade 模板引擎影响的目的，最终 <code>{{ name }}</code> 表达式会保持不变使得  JavaScript 框架可以使用它。</p>
+<h4><code>@verbatim</code> 指令</h4>
+<p>如果你需要在页面中大部分内容中展示 JavaScript 变量，你可以使用 <code>@verbatim</code> 指令来包裹 HTML 内容，这样你就不必在每个Blade 打印语句前加上 <code>@</code> 符号：</p>
+<pre><code>@verbatim
+    &lt;div class="container"&gt;
+        Hello, {{ name }}.
+    &lt;/div&gt;
+@endverbatim</code></pre>
+<p><a name="control-structures"></a></p>
+<h2>流程控制</h2>
+<p>除了模板继承与数据显示的功能以外，Blade 还提供了常见的 PHP 流程控制语句，比如条件表达式和循环语句。这些语句与 PHP 语句的相似，与其一样清晰简明。</p>
+<p><a name="if-statements"></a></p>
+<h3>If 语句</h3>
+<p>你可以使用 <code>@if</code>、<code>@elseif</code>、<code>@else</code> 及  <code>@endif</code> 指令来构建 <code>if</code> 表达式。这些命令的功能等同于 PHP 中的语法：</p>
+<pre><code>@if (count($records) === 1)
+    我有一条记录！
+@elseif (count($records) &gt; 1)
+    我有多条记录！
+@else
+    我没有任何记录！
+@endif</code></pre>
+<p>为了方便，Blade 还提供了一个 <code>@unless</code> 命令：</p>
+<pre><code>@unless (Auth::check())
+    你尚未登录。
+@endunless</code></pre>
+<p>除了以上的条件指令之外，<code>@isset</code> 和 <code>@empty</code> 指令也可以视为与 PHP 函数有相同的功能：</p>
+<pre><code>@isset($records)
+    // $records 被定义并且不为空...
+@endisset
+
+@empty($records)
+    // $records 是「空」的...
+@endempty</code></pre>
+<h4>身份验证快捷方式</h4>
+<p><code>@auth</code> 和 <code>@guest</code> 指令可以用来快速确定当前用户是否已通过身份验证，是否为访客：</p>
+<pre><code>@auth
+    // 用户已经通过身份认证...
+@endauth
+
+@guest
+    // 用户没有通过身份认证...
+@endguest</code></pre>
+<p><a name="switch-statements"></a></p>
+<h3>Switch 语句</h3>
+<p>可以使用 <code>@switch</code>、<code>@case</code>、<code>@break</code>、<code>@default</code> 和 <code>@endswitch</code> 指令来构建 Switch 语句：</p>
+<pre><code>@switch($i)
+    @case(1)
+        First case...
+        @break
+
+    @case(2)
+        Second case...
+        @break
+
+    @default
+        Default case...
+@endswitch</code></pre>
+<p><a name="loops"></a></p>
+<h3>循环</h3>
+<p>除了条件表达式外，Blade 也支持 PHP 的循环结构。同样，以下这些指令中的每一个都与其 PHP 对应的函数相同：</p>
+<pre><code>@for ($i = 0; $i &lt; 10; $i++)
+    目前的值为 {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    &lt;p&gt;此用户为 {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach
+
+@forelse ($users as $user)
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+@empty
+    &lt;p&gt;没有用户&lt;/p&gt;
+@endforelse
+
+@while (true)
+    &lt;p&gt;死循环了。&lt;/p&gt;
+@endwhile</code></pre>
+<blockquote>
+<p>{tip} 循环时，你可以使用 <a href="#the-loop-variable">循环变量</a> 来获取循环的信息，例如是否在循环中进行第一次或最后一次迭代。</p>
+</blockquote>
+<p>当使用循环时，你也可以结束循环或跳过当前迭代：</p>
+<pre><code>@foreach ($users as $user)
+    @if ($user-&gt;type == 1)
+        @continue
+    @endif
+
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+
+    @if ($user-&gt;number == 5)
+        @break
+    @endif
+@endforeach</code></pre>
+<p>你还可以使用一行代码包含指令声明的条件：</p>
+<pre><code>@foreach ($users as $user)
+    @continue($user-&gt;type == 1)
+
+    &lt;li&gt;{{ $user-&gt;name }}&lt;/li&gt;
+
+    @break($user-&gt;number == 5)
+@endforeach</code></pre>
+<p><a name="the-loop-variable"></a></p>
+<h3>循环变量</h3>
+<p>循环时，可以在循环内使用 <code>$loop</code> 变量。这个变量可以提供一些有用的信息，比如当前循环的索引，当前循环是不是首次迭代，又或者当前循环是不是最后一次迭代：</p>
+<pre><code>@foreach ($users as $user)
+    @if ($loop-&gt;first)
+        这是第一个迭代。
+    @endif
+
+    @if ($loop-&gt;last)
+        这是最后一个迭代。
+    @endif
+
+    &lt;p&gt;This is user {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach</code></pre>
+<p>在一个嵌套的循环中，可以通过使用 <code>$loop</code> 变量的 <code>parent</code> 属性来获取父循环中的 <code>$loop</code> 变量：</p>
+<pre><code>@foreach ($users as $user)
+    @foreach ($user-&gt;posts as $post)
+        @if ($loop-&gt;parent-&gt;first)
+            This is first iteration of the parent loop.
+        @endif
+    @endforeach
+@endforeach</code></pre>
+<p><code>$loop</code> 变量也包含了其它各种有用的属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$loop-&gt;index</code></td>
+<td>当前循环迭代的索引（从0开始）。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;iteration</code></td>
+<td>当前循环迭代 （从1开始）。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;remaining</code></td>
+<td>循环中剩余迭代数量。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;count</code></td>
+<td>迭代中的数组项目总数。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;first</code></td>
+<td>当前迭代是否是循环中的首次迭代。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;last</code></td>
+<td>当前迭代是否是循环中的最后一次迭代。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;depth</code></td>
+<td>当前循环的嵌套级别。</td>
+</tr>
+<tr>
+<td><code>$loop-&gt;parent</code></td>
+<td>在嵌套循环中，父循环的变量。</td>
+</tr>
+</tbody>
+</table>
+<p><a name="comments"></a></p>
+<h3>注释</h3>
+<p>Blade 也能在视图中定义注释。然而，跟 HTML 的注释不同的，Blade 注释不会被包含在应用程序返回的 HTML 内：</p>
+<pre><code>{{-- 此注释将不会出现在渲染后的 HTML --}}</code></pre>
+<p><a name="php"></a></p>
+<h3>PHP</h3>
+<p>在某些情况下，将 PHP 代码嵌入到视图中很有用。你可以使用 Blade 的 <code>@php</code> 指令在模板中执行一段纯 PHP 代码：</p>
+<pre><code>@php
+    //
+@endphp</code></pre>
+<blockquote>
+<p>{tip} 虽然 Blade 提供了这个功能，但频繁地使用意味着你的模版被嵌入了太多的逻辑。</p>
+</blockquote>
+<p><a name="including-sub-views"></a></p>
+<h2>引入子视图</h2>
+<p>你可以使用 Blade 的 <code>@include</code> 命令来引入一个已存在的视图，所有在父视图的可用变量在被引入的视图中都是可用的。</p>
+<p>使用 Blade 的 <code>@include</code> 指令可以在 Blade 视图中引入另一个视图。父视图可用的所有变量将提供给引入的视图：</p>
+<pre><code>&lt;div&gt;
+    @include('shared.errors')
+
+    &lt;form&gt;
+        &lt;!-- Form Contents --&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+<p>被引入的视图会继承父视图中的所有数据，同时也可以向引入的视图传递额外的数组数据：</p>
+<pre><code>@include('view.name', ['some' =&gt; 'data'])</code></pre>
+<p>当然，如果尝试使用 <code>@include</code> 去引入一个不存在的视图，Laravel 会抛出错误。如果想引入一个可能存在或可能不存在的视图，就使用 <code>@includeIf</code> 指令:</p>
+<pre><code>@includeIf('view.name', ['some' =&gt; 'data'])</code></pre>
+<p>如果要根据给定的布尔条件 <code>@include</code> 视图，可以使用 <code>@includeWhen</code> 指令：</p>
+<pre><code>@includeWhen($boolean, 'view.name', ['some' =&gt; 'data'])</code></pre>
+<blockquote>
+<p>{note} 请避免在 Blade 视图中使用 <code>__DIR__</code> 及 <code>__FILE__</code> 常量，因为它们会引用编译视图时缓存的位置。</p>
+</blockquote>
+<p><a name="rendering-views-for-collections"></a></p>
+<h3>为集合渲染视图</h3>
+<p>你可以使用 Blade 的 <code>@each</code> 命令将循环及引入写成一行代码：</p>
+<pre><code>@each('view.name', $jobs, 'job')</code></pre>
+<p>第一个参数是对数组或集合中的每个元素进行渲染的部分视图。第二个参数是要迭代的数组或集合，而第三个参数是将被分配给视图中当前迭代的变量名称。举个例子，如果你要迭代一个 <code>jobs</code> 数组，通常会使用子视图中的变量 <code>job</code> 来获取每个 job。当前迭代的 <code>key</code> 将作为子视图中的 <code>key</code> 变量。</p>
+<p>你也可以传递第四个参数到 <code>@each</code> 命令。当需要迭代的数组为空时，将会使用这个参数提供的视图来渲染。</p>
+<pre><code>@each('view.name', $jobs, 'job', 'view.empty')</code></pre>
+<blockquote>
+<p>{note} 通过 <code>@each</code> 渲染的视图不会从父视图继承变量。 如果子视图需要这些变量，则应该使用 <code>@foreach</code> 和 <code>@include</code>。</p>
+</blockquote>
+<p><a name="stacks"></a></p>
+<h2>堆栈</h2>
+<p>Blade 可以被推送到在其他视图或布局中的其他位置渲染的命名堆栈。这在子视图中指定所需的 JavaScript 库时非常有用：</p>
+<pre><code>@push('scripts')
+    &lt;script src="/example.js"&gt;&lt;/script&gt;
+@endpush</code></pre>
+<p>你可以根据需要多次压入堆栈，通过 <code>@stack</code> 命令中传递堆栈的名称来渲染完整的堆栈内容：</p>
+<pre><code>&lt;head&gt;
+    &lt;!-- Head Contents --&gt;
+
+    @stack('scripts')
+&lt;/head&gt;</code></pre>
+<p><a name="service-injection"></a></p>
+<h2>服务注入</h2>
+<p><code>@inject</code> 命令可用于从 Larvel <a href="/docs/laravel_5.8_zh/container.html">服务容器</a> 中检索服务。传递给 <code>@inject</code> 的第一个参数为置放该服务的变量名称，而第二个参数是要解析的服务的类或是接口的名称：</p>
+<pre><code>@inject('metrics', 'App\Services\MetricsService')
+
+&lt;div&gt;
+    Monthly Revenue: {{ $metrics-&gt;monthlyRevenue() }}.
+&lt;/div&gt;</code></pre>
+<p><a name="extending-blade"></a></p>
+<h2>拓展 Blade</h2>
+<p>Blade 甚至允许你使用 <code>directive</code> 方法来定义自定义指令。当 Blade 编译器遇到自定义指令时，它将使用指令包含的表达式调用提供的回调。</p>
+<p>以下示例创建一个 <code>@datetime($var)</code> 伪指令，该伪指令格式化给定的 <code>DateTime</code> 实例 <code>$var</code>：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 执行注册后引导服务。
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Blade::directive('datetime', function ($expression) {
+            return "&lt;?php echo ($expression)-&gt;format('m/d/Y H:i'); ?&gt;";
+        });
+    }
+
+    /**
+     * 在容器中注册绑定。
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}</code></pre>
+<p>如你所见，我们可以链式调用在指令中传递的任何表达式的 <code>format</code> 方法。所以，在这个例子里，该指令最终生成了以下 PHP 代码：</p>
+<pre><code>&lt;?php echo ($var)-&gt;format('m/d/Y H:i'); ?&gt;</code></pre>
+<blockquote>
+<p>{note} 更新 Blade 指令的逻辑后，你需要删除所有已缓存的 Blade 视图。使用 Artisan 命令 <code>view:clear</code> 来清除被缓存的视图。</p>
+</blockquote>
+<p><a name="custom-if-statements"></a></p>
+<h3>自定义 If 语句</h3>
+<p>编写自定义指令有时候比定义简单、常见的条件语句更复杂，但是它又非常必要。因此，Blade 提供了一个 <code>Blade::if</code> 方法，它能使用闭包来快速定义自定义条件指令。 例如，定义一个自定义条件来检查当前的应用程序环境。我们可以在 <code>AppServiceProvider</code> 的 <code>boot</code> 方法中这样做：</p>
+<pre><code>use Illuminate\Support\Facades\Blade;
+
+/**
+ * Perform post-registration booting of services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Blade::if('env', function ($environment) {
+        return app()-&gt;environment($environment);
+    });
+}</code></pre>
+<p>定义了自定义条件之后，就可以很轻松地在模板中使用它：</p>
+<pre><code>@env('local')
+    // The application is in the local environment...
+@else
+    // The application is not in the local environment...
+@endenv</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 149);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

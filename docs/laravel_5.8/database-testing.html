@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Database Testing - 开发帮助文档</title> 
+    <meta name="keyword" content="database-testing"> 
+    <meta name="description" content="database-testing"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="4" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/artisan.html" title="Artisan Console">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan Console
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/authentication.html" title="Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/authorization.html" title="Authorization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authorization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/billing.html" title="Laravel Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/blade.html" title="Blade Templates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade Templates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/broadcasting.html" title="Broadcasting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Broadcasting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/cache.html" title="Cache">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/collections.html" title="Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/container.html" title="Service Container">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Container
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/contracts.html" title="Contracts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contracts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/contributions.html" title="Contribution Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contribution Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/csrf.html" title="CSRF Protection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF Protection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/database-testing.html" title="Database Testing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database Testing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/database.html" title="Database: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/deployment.html" title="Deployment">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deployment
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent-collections.html" title="Eloquent: Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent-mutators.html" title="Eloquent: Mutators">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Mutators
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent-relationships.html" title="Eloquent: Relationships">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Relationships
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent-resources.html" title="Eloquent: API Resources">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API Resources
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent-serialization.html" title="Eloquent: Serialization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Serialization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/eloquent.html" title="Eloquent: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/encryption.html" title="Encryption">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Encryption
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/errors.html" title="Error Handling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error Handling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/events.html" title="Events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/frontend.html" title="JavaScript &amp; CSS Scaffolding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    JavaScript &amp; CSS Scaffolding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/hashing.html" title="Hashing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Hashing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/helpers.html" title="Helpers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Helpers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/installation.html" title="Installation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/lifecycle.html" title="Request Lifecycle">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Lifecycle
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/localization.html" title="Localization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Localization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/mail.html" title="Mail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/middleware.html" title="Middleware">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Middleware
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/migrations.html" title="Database: Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/mix.html" title="Compiling Assets (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Compiling Assets (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/notifications.html" title="Notifications">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notifications
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/pagination.html" title="Database: Pagination">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Pagination
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/passwords.html" title="Resetting Passwords">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resetting Passwords
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/providers.html" title="Service Providers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Providers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/queries.html" title="Database: Query Builder">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Query Builder
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/queues.html" title="Queues">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Queues
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/redirects.html" title="HTTP Redirects">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Redirects
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/releases.html" title="Release Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Release Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/requests.html" title="HTTP Requests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Requests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/routing.html" title="Routing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Routing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/scheduling.html" title="Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/seeding.html" title="Database: Seeding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Seeding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/session.html" title="HTTP Session">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Session
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/socialite.html" title="Laravel Socialite">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Socialite
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/structure.html" title="Directory Structure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Directory Structure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/testing.html" title="Testing: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Testing: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/upgrade.html" title="Upgrade Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Upgrade Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/urls.html" title="URL Generation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    URL Generation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/validation.html" title="Validation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Validation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8/views.html" title="Views">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Views
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Database Testing</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-factories">Generating Factories</a></li>
+<li><a href="#resetting-the-database-after-each-test">Resetting The Database After Each Test</a></li>
+<li><a href="#writing-factories">Writing Factories</a>
+<ul>
+<li><a href="#factory-states">Factory States</a></li>
+<li><a href="#factory-callbacks">Factory Callbacks</a></li>
+</ul></li>
+<li><a href="#using-factories">Using Factories</a>
+<ul>
+<li><a href="#creating-models">Creating Models</a></li>
+<li><a href="#persisting-models">Persisting Models</a></li>
+<li><a href="#relationships">Relationships</a></li>
+</ul></li>
+<li><a href="#available-assertions">Available Assertions</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>Introduction</h2>
+<p>Laravel provides a variety of helpful tools to make it easier to test your database driven applications. First, you may use the <code>assertDatabaseHas</code> helper to assert that data exists in the database matching a given set of criteria. For example, if you would like to verify that there is a record in the <code>users</code> table with the <code>email</code> value of <code>sally@example.com</code>, you can do the following:</p>
+<pre><code>public function testDatabase()
+{
+    // Make call to application...
+
+    $this-&gt;assertDatabaseHas('users', [
+        'email' =&gt; 'sally@example.com'
+    ]);
+}</code></pre>
+<p>You can also use the <code>assertDatabaseMissing</code> helper to assert that data does not exist in the database.</p>
+<p>The <code>assertDatabaseHas</code> method and other helpers like it are for convenience. You are free to use any of PHPUnit's built-in assertion methods to supplement your tests.</p>
+<p><a name="generating-factories"></a></p>
+<h2>Generating Factories</h2>
+<p>To create a factory, use the <code>make:factory</code> <a href="/docs/laravel_5.8/artisan.html">Artisan command</a>:</p>
+<pre><code>php artisan make:factory PostFactory</code></pre>
+<p>The new factory will be placed in your <code>database/factories</code> directory.</p>
+<p>The <code>--model</code> option may be used to indicate the name of the model created by the factory. This option will pre-fill the generated factory file with the given model:</p>
+<pre><code>php artisan make:factory PostFactory --model=Post</code></pre>
+<p><a name="resetting-the-database-after-each-test"></a></p>
+<h2>Resetting The Database After Each Test</h2>
+<p>It is often useful to reset your database after each test so that data from a previous test does not interfere with subsequent tests. The <code>RefreshDatabase</code> trait takes the most optimal approach to migrating your test database depending on if you are using an in-memory database or a traditional database. Use the trait on your test class and everything will be handled for you:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
+class ExampleTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function testBasicExample()
+    {
+        $response = $this-&gt;get('/');
+
+        // ...
+    }
+}</code></pre>
+<p><a name="writing-factories"></a></p>
+<h2>Writing Factories</h2>
+<p>When testing, you may need to insert a few records into your database before executing your test. Instead of manually specifying the value of each column when you create this test data, Laravel allows you to define a default set of attributes for each of your <a href="/docs/laravel_5.8/eloquent.html">Eloquent models</a> using model factories. To get started, take a look at the <code>database/factories/UserFactory.php</code> file in your application. Out of the box, this file contains one factory definition:</p>
+<pre><code>use Illuminate\Support\Str;
+use Faker\Generator as Faker;
+
+$factory-&gt;define(App\User::class, function (Faker $faker) {
+    return [
+        'name' =&gt; $faker-&gt;name,
+        'email' =&gt; $faker-&gt;unique()-&gt;safeEmail,
+        'email_verified_at' =&gt; now(),
+        'password' =&gt; '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'remember_token' =&gt; Str::random(10),
+    ];
+});</code></pre>
+<p>Within the Closure, which serves as the factory definition, you may return the default test values of all attributes on the model. The Closure will receive an instance of the <a href="https://github.com/fzaninotto/Faker">Faker</a> PHP library, which allows you to conveniently generate various kinds of random data for testing.</p>
+<p>You may also create additional factory files for each model for better organization. For example, you could create <code>UserFactory.php</code> and <code>CommentFactory.php</code> files within your <code>database/factories</code> directory. All of the files within the <code>factories</code> directory will automatically be loaded by Laravel.</p>
+<blockquote>
+<p>{tip} You can set the Faker locale by adding a <code>faker_locale</code> option to your <code>config/app.php</code> configuration file.</p>
+</blockquote>
+<p><a name="factory-states"></a></p>
+<h3>Factory States</h3>
+<p>States allow you to define discrete modifications that can be applied to your model factories in any combination. For example, your <code>User</code> model might have a <code>delinquent</code> state that modifies one of its default attribute values. You may define your state transformations using the <code>state</code> method. For simple states, you may pass an array of attribute modifications:</p>
+<pre><code>$factory-&gt;state(App\User::class, 'delinquent', [
+    'account_status' =&gt; 'delinquent',
+]);</code></pre>
+<p>If your state requires calculation or a <code>$faker</code> instance, you may use a Closure to calculate the state's attribute modifications:</p>
+<pre><code>$factory-&gt;state(App\User::class, 'address', function ($faker) {
+    return [
+        'address' =&gt; $faker-&gt;address,
+    ];
+});</code></pre>
+<p><a name="factory-callbacks"></a></p>
+<h3>Factory Callbacks</h3>
+<p>Factory callbacks are registered using the <code>afterMaking</code> and <code>afterCreating</code> methods, and allow you to perform additional tasks after making or creating a model. For example, you may use callbacks to relate additional models to the created model:</p>
+<pre><code>$factory-&gt;afterMaking(App\User::class, function ($user, $faker) {
+    // ...
+});
+
+$factory-&gt;afterCreating(App\User::class, function ($user, $faker) {
+    $user-&gt;accounts()-&gt;save(factory(App\Account::class)-&gt;make());
+});</code></pre>
+<p>You may also define callbacks for <a href="#factory-states">factory states</a>:</p>
+<pre><code>$factory-&gt;afterMakingState(App\User::class, 'delinquent', function ($user, $faker) {
+    // ...
+});
+
+$factory-&gt;afterCreatingState(App\User::class, 'delinquent', function ($user, $faker) {
+    // ...
+});</code></pre>
+<p><a name="using-factories"></a></p>
+<h2>Using Factories</h2>
+<p><a name="creating-models"></a></p>
+<h3>Creating Models</h3>
+<p>Once you have defined your factories, you may use the global <code>factory</code> function in your tests or seed files to generate model instances. So, let's take a look at a few examples of creating models. First, we'll use the <code>make</code> method to create models but not save them to the database:</p>
+<pre><code>public function testDatabase()
+{
+    $user = factory(App\User::class)-&gt;make();
+
+    // Use model in tests...
+}</code></pre>
+<p>You may also create a Collection of many models or create models of a given type:</p>
+<pre><code>// Create three App\User instances...
+$users = factory(App\User::class, 3)-&gt;make();</code></pre>
+<h4>Applying States</h4>
+<p>You may also apply any of your <a href="#factory-states">states</a> to the models. If you would like to apply multiple state transformations to the models, you should specify the name of each state you would like to apply:</p>
+<pre><code>$users = factory(App\User::class, 5)-&gt;states('delinquent')-&gt;make();
+
+$users = factory(App\User::class, 5)-&gt;states('premium', 'delinquent')-&gt;make();</code></pre>
+<h4>Overriding Attributes</h4>
+<p>If you would like to override some of the default values of your models, you may pass an array of values to the <code>make</code> method. Only the specified values will be replaced while the rest of the values remain set to their default values as specified by the factory:</p>
+<pre><code>$user = factory(App\User::class)-&gt;make([
+    'name' =&gt; 'Abigail',
+]);</code></pre>
+<p><a name="persisting-models"></a></p>
+<h3>Persisting Models</h3>
+<p>The <code>create</code> method not only creates the model instances but also saves them to the database using Eloquent's <code>save</code> method:</p>
+<pre><code>public function testDatabase()
+{
+    // Create a single App\User instance...
+    $user = factory(App\User::class)-&gt;create();
+
+    // Create three App\User instances...
+    $users = factory(App\User::class, 3)-&gt;create();
+
+    // Use model in tests...
+}</code></pre>
+<p>You may override attributes on the model by passing an array to the <code>create</code> method:</p>
+<pre><code>$user = factory(App\User::class)-&gt;create([
+    'name' =&gt; 'Abigail',
+]);</code></pre>
+<p><a name="relationships"></a></p>
+<h3>Relationships</h3>
+<p>In this example, we'll attach a relation to some created models. When using the <code>create</code> method to create multiple models, an Eloquent <a href="/docs/laravel_5.8/eloquent-collections.html">collection instance</a> is returned, allowing you to use any of the convenient functions provided by the collection, such as <code>each</code>:</p>
+<pre><code>$users = factory(App\User::class, 3)
+           -&gt;create()
+           -&gt;each(function ($user) {
+                $user-&gt;posts()-&gt;save(factory(App\Post::class)-&gt;make());
+            });</code></pre>
+<h4>Relations &amp; Attribute Closures</h4>
+<p>You may also attach relationships to models using Closure attributes in your factory definitions. For example, if you would like to create a new <code>User</code> instance when creating a <code>Post</code>, you may do the following:</p>
+<pre><code>$factory-&gt;define(App\Post::class, function ($faker) {
+    return [
+        'title' =&gt; $faker-&gt;title,
+        'content' =&gt; $faker-&gt;paragraph,
+        'user_id' =&gt; function () {
+            return factory(App\User::class)-&gt;create()-&gt;id;
+        }
+    ];
+});</code></pre>
+<p>These Closures also receive the evaluated attribute array of the factory that defines them:</p>
+<pre><code>$factory-&gt;define(App\Post::class, function ($faker) {
+    return [
+        'title' =&gt; $faker-&gt;title,
+        'content' =&gt; $faker-&gt;paragraph,
+        'user_id' =&gt; function () {
+            return factory(App\User::class)-&gt;create()-&gt;id;
+        },
+        'user_type' =&gt; function (array $post) {
+            return App\User::find($post['user_id'])-&gt;type;
+        }
+    ];
+});</code></pre>
+<p><a name="available-assertions"></a></p>
+<h2>Available Assertions</h2>
+<p>Laravel provides several database assertions for your <a href="https://phpunit.de/">PHPUnit</a> tests:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$this-&gt;assertDatabaseHas($table, array $data);</code></td>
+<td>Assert that a table in the database contains the given data.</td>
+</tr>
+<tr>
+<td><code>$this-&gt;assertDatabaseMissing($table, array $data);</code></td>
+<td>Assert that a table in the database does not contain the given data.</td>
+</tr>
+<tr>
+<td><code>$this-&gt;assertSoftDeleted($table, array $data);</code></td>
+<td>Assert that the given record has been soft deleted.</td>
+</tr>
+</tbody>
+</table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 81);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

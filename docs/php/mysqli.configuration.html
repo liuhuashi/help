@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>运行时配置 - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqli.configuration"> 
+    <meta name="description" content="mysqli.configuration"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="894" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.configuration.html" title="运行时配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    运行时配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.requirements.html" title="需求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    需求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.resources.html" title="资源类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    资源类型
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="mysqli.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqli.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  </p><table class="doctable table">
+   <caption><strong>MySQLi配置选项</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.allow-local-infile" class="link">mysqli.allow_local_infile</a></td>
+      <td>"0"</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>自PHP 5.2.4起可用。在 PHP 7.2.16 和 7.3.3 之前，默认值为 "1"</td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.local-infile-directory" class="link">mysqli.local_infile_directory</a></td>
+      <td class="empty"> </td>
+      <td>PHP_INI_SYSTEM</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.allow-persistent" class="link">mysqli.allow_persistent</a></td>
+      <td>"1"</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>自PHP 5.3.0起可用。</td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.max-persistent" class="link">mysqli.max_persistent</a></td>
+      <td>"-1"</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>自PHP 5.3.0起可用。</td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.max-links" class="link">mysqli.max_links</a></td>
+      <td>"-1"</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.default-port" class="link">mysqli.default_port</a></td>
+      <td>"3306"</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.default-socket" class="link">mysqli.default_socket</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.default-host" class="link">mysqli.default_host</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.default-user" class="link">mysqli.default_user</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_ALL</td>
+      <td>自PHP 5.0.0起可用。</td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.default-pw" class="link">mysqli.default_pw</a></td>
+      <td>NULL</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.reconnect" class="link">mysqli.reconnect</a></td>
+      <td>"0"</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqli.configuration.html#ini.mysqli.rollback-on-cached-plink" class="link">mysqli.rollback_on_cached_plink</a></td>
+      <td>TRUE</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>自 PHP 5.6.0 起可用。</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ 
+ <p class="para">
+ 关于前面出现的PHP_INI_*系列常量的详细定义，请参阅<a href="configuration.changes.html" class="link">配置的修改</a>一章。
+ </p>
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+ </p><dl>
+
+  
+  
+  
+   <dt id="ini.mysqli.allow-local-infile">
+    <code class="parameter">mysqli.allow_local_infile</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     允许Mysql的Load Data语句访问PHP角度看的本地文件。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.mysqli.local-infile-directory">
+    <code class="parameter">mysqli.local_infile_directory</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     限制加载 LOCAL DATA 文件为指定的目录。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.mysqli.allow-persistent">
+    <code class="parameter">mysqli.allow_persistent</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    开启使用<span class="function"><a href="function.mysqli-connect.html" class="function">mysqli_connect()</a></span>函数创建持久化连接的能力。
+    </p>
+   </dd>
+
+  
+  
+   <dt id="ini.mysqli.max-persistent">
+    <code class="parameter">mysqli.max_persistent</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    可以创建的持久化连接的最大数量，设置为0表明不限制。
+    </p>
+   </dd>
+
+  
+  
+   <dt id="ini.mysqli.max-links">
+    <code class="parameter">mysqli.max_links</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    每个进程中Mysql连接的最大数量。
+    </p>
+   </dd>
+
+  
+   
+   <dt id="ini.mysqli.default-port">
+    <code class="parameter">mysqli.default_port</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当没有指定其他端口号时使用的默认的用于连接数据库服务器的TCP端口号。如果没有设置默认值，
+    端口号将会按照顺序从环境变量<code class="literal">MYSQL_TCP_PORT</code>，<var class="filename">/etc/services</var>
+    文件中的<code class="literal">mysql-tcp</code>条目或编译期的<code class="literal">MYSQL_PORT</code>常量等位置获取。
+    Win32仅使用<code class="literal">MYSQL_PORT</code>常量。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.mysqli.default-socket">
+    <code class="parameter">mysqli.default_socket</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当连接到本地数据库服务器时如果没有指定其他socket名称，使用的默认socket名称。
+    </p>
+   </dd>
+
+  
+  
+  
+
+  
+   
+   <dt id="ini.mysqli.default-host">
+    <code class="parameter">mysqli.default_host</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当连接到数据库服务器时， 如果没有指定其他主机地址，使用的默认服务器主机。
+    </p>
+   </dd>
+
+  
+
+  
+
+  
+  
+   <dt id="ini.mysqli.default-user">
+    <code class="parameter">mysqli.default_user</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当连接到数据库服务器时，如果没有指定其他用户名，使用的默认用户名。
+    </p>
+   </dd>
+
+  
+  
+    
+   <dt id="ini.mysqli.default-pw">
+    <code class="parameter">mysqli.default_pw</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当连接到数据库服务器时，如果没有指定其他密码，使用的默认密码。
+    </p>
+   </dd>
+
+  
+  
+  
+    
+   <dt id="ini.mysqli.reconnect">
+    <code class="parameter">mysqli.reconnect</code>
+    <span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    连接丢失时是否自动重新连接。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     <span class="simpara">mysqlnd 驱动会此忽略 <var class="filename">php.ini</var> 设置。</span>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.mysqli.rollback-on-cached-plink">
+    <code class="parameter">mysqli.rollback_on_cached_plink</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     If this option is enabled, closing a persistent connection will rollback
+     any pending transactions of this connection before it is put back into the
+     persistent connection pool. Otherwise, pending transactions will be rolled
+     back only when the connection is reused, or when it is actually closed.
+    </p>
+   </dd>
+
+  
+  
+ </dl>
+
+ 
+ <p class="para">
+ 用户不能通过API调用或运行时配置来设置<code class="literal">MYSQL_OPT_READ_TIMEOUT</code>。
+ 注意，如果可能这样做那么<code class="literal">libmysqlclient</code>和流对<code class="literal">MYSQL_OPT_READ_TIMEOUT</code>
+ 的值将会有不同的解释。 
+ </p>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8165);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

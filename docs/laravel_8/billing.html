@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel Cashier (Stripe) - 开发帮助文档</title> 
+    <meta name="keyword" content="billing"> 
+    <meta name="description" content="billing"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="6" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/artisan.html" title="Artisan Console">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan Console
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authentication.html" title="Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authorization.html" title="Authorization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authorization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/billing.html" title="Laravel Cashier (Stripe)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Stripe)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/blade.html" title="Blade Templates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade Templates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/broadcasting.html" title="Broadcasting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Broadcasting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cache.html" title="Cache">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cashier-paddle.html" title="Laravel Cashier (Paddle)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Paddle)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/collections.html" title="Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/container.html" title="Service Container">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Container
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contracts.html" title="Contracts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contracts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contributions.html" title="Contribution Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contribution Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/csrf.html" title="CSRF Protection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF Protection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database-testing.html" title="Database Testing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database Testing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database.html" title="Database: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/deployment.html" title="Deployment">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deployment
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/documentation.html" title="Prologue">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Prologue
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-collections.html" title="Eloquent: Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-mutators.html" title="Eloquent: Mutators &amp; Casting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Mutators &amp; Casting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-relationships.html" title="Eloquent: Relationships">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Relationships
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-resources.html" title="Eloquent: API Resources">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API Resources
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-serialization.html" title="Eloquent: Serialization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Serialization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent.html" title="Eloquent: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/encryption.html" title="Encryption">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Encryption
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/errors.html" title="Error Handling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error Handling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/events.html" title="Events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/fortify.html" title="Laravel Fortify">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Fortify
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/hashing.html" title="Hashing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Hashing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/helpers.html" title="Helpers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Helpers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-client.html" title="HTTP Client">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Client
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/installation.html" title="Installation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/lifecycle.html" title="Request Lifecycle">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Lifecycle
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/localization.html" title="Localization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Localization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mail.html" title="Mail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/middleware.html" title="Middleware">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Middleware
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/migrations.html" title="Database: Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mix.html" title="Compiling Assets (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Compiling Assets (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/notifications.html" title="Notifications">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notifications
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/pagination.html" title="Database: Pagination">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Pagination
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passwords.html" title="Resetting Passwords">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resetting Passwords
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/providers.html" title="Service Providers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Providers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queries.html" title="Database: Query Builder">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Query Builder
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queues.html" title="Queues">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Queues
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redirects.html" title="HTTP Redirects">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Redirects
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/releases.html" title="Release Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Release Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/requests.html" title="HTTP Requests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Requests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/routing.html" title="Routing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Routing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scheduling.html" title="Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/seeding.html" title="Database: Seeding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Seeding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/session.html" title="HTTP Session">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Session
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/socialite.html" title="Laravel Socialite">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Socialite
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/starter-kits.html" title="Starter Kits">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Starter Kits
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/structure.html" title="Directory Structure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Directory Structure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/testing.html" title="Testing: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Testing: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/upgrade.html" title="Upgrade Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Upgrade Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/urls.html" title="URL Generation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    URL Generation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/validation.html" title="Validation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Validation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/views.html" title="Views">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Views
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel Cashier (Stripe)</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#upgrading-cashier">Upgrading Cashier</a></li>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#database-migrations">Database Migrations</a></li>
+</ul></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#billable-model">Billable Model</a></li>
+<li><a href="#api-keys">API Keys</a></li>
+<li><a href="#currency-configuration">Currency Configuration</a></li>
+<li><a href="#logging">Logging</a></li>
+</ul></li>
+<li><a href="#customers">Customers</a>
+<ul>
+<li><a href="#retrieving-customers">Retrieving Customers</a></li>
+<li><a href="#creating-customers">Creating Customers</a></li>
+<li><a href="#updating-customers">Updating Customers</a></li>
+<li><a href="#billing-portal">Billing Portal</a></li>
+</ul></li>
+<li><a href="#payment-methods">Payment Methods</a>
+<ul>
+<li><a href="#storing-payment-methods">Storing Payment Methods</a></li>
+<li><a href="#retrieving-payment-methods">Retrieving Payment Methods</a></li>
+<li><a href="#check-for-a-payment-method">Determining If A User Has A Payment Method</a></li>
+<li><a href="#updating-the-default-payment-method">Updating The Default Payment Method</a></li>
+<li><a href="#adding-payment-methods">Adding Payment Methods</a></li>
+<li><a href="#deleting-payment-methods">Deleting Payment Methods</a></li>
+</ul></li>
+<li><a href="#subscriptions">Subscriptions</a>
+<ul>
+<li><a href="#creating-subscriptions">Creating Subscriptions</a></li>
+<li><a href="#checking-subscription-status">Checking Subscription Status</a></li>
+<li><a href="#changing-plans">Changing Plans</a></li>
+<li><a href="#subscription-quantity">Subscription Quantity</a></li>
+<li><a href="#multiplan-subscriptions">Multiplan Subscriptions</a></li>
+<li><a href="#subscription-taxes">Subscription Taxes</a></li>
+<li><a href="#subscription-anchor-date">Subscription Anchor Date</a></li>
+<li><a href="#cancelling-subscriptions">Cancelling Subscriptions</a></li>
+<li><a href="#resuming-subscriptions">Resuming Subscriptions</a></li>
+</ul></li>
+<li><a href="#subscription-trials">Subscription Trials</a>
+<ul>
+<li><a href="#with-payment-method-up-front">With Payment Method Up Front</a></li>
+<li><a href="#without-payment-method-up-front">Without Payment Method Up Front</a></li>
+<li><a href="#extending-trials">Extending Trials</a></li>
+</ul></li>
+<li><a href="#handling-stripe-webhooks">Handling Stripe Webhooks</a>
+<ul>
+<li><a href="#defining-webhook-event-handlers">Defining Webhook Event Handlers</a></li>
+<li><a href="#verifying-webhook-signatures">Verifying Webhook Signatures</a></li>
+</ul></li>
+<li><a href="#single-charges">Single Charges</a>
+<ul>
+<li><a href="#simple-charge">Simple Charge</a></li>
+<li><a href="#charge-with-invoice">Charge With Invoice</a></li>
+<li><a href="#refunding-charges">Refunding Charges</a></li>
+</ul></li>
+<li><a href="#invoices">Invoices</a>
+<ul>
+<li><a href="#retrieving-invoices">Retrieving Invoices</a></li>
+<li><a href="#generating-invoice-pdfs">Generating Invoice PDFs</a></li>
+</ul></li>
+<li><a href="#handling-failed-payments">Handling Failed Payments</a></li>
+<li><a href="#strong-customer-authentication">Strong Customer Authentication (SCA)</a>
+<ul>
+<li><a href="#payments-requiring-additional-confirmation">Payments Requiring Additional Confirmation</a></li>
+<li><a href="#off-session-payment-notifications">Off-session Payment Notifications</a></li>
+</ul></li>
+<li><a href="#stripe-sdk">Stripe SDK</a></li>
+<li><a href="#testing">Testing</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>Introduction</h2>
+<p>Laravel Cashier provides an expressive, fluent interface to <a href="https://stripe.com">Stripe's</a> subscription billing services. It handles almost all of the boilerplate subscription billing code you are dreading writing. In addition to basic subscription management, Cashier can handle coupons, swapping subscription, subscription &quot;quantities&quot;, cancellation grace periods, and even generate invoice PDFs.</p>
+<p><a name="upgrading-cashier"></a></p>
+<h2>Upgrading Cashier</h2>
+<p>When upgrading to a new version of Cashier, it's important that you carefully review <a href="https://github.com/laravel/cashier-stripe/blob/master/UPGRADE.md">the upgrade guide</a>.</p>
+<blockquote>
+<p>{note} To prevent breaking changes, Cashier uses a fixed Stripe API version. Cashier 12 utilizes Stripe API version <code>2020-03-02</code>. The Stripe API version will be updated on minor releases in order to make use of new Stripe features and improvements.</p>
+</blockquote>
+<p><a name="installation"></a></p>
+<h2>Installation</h2>
+<p>First, install the Cashier package for Stripe using the Composer package manager:</p>
+<pre><code>composer require laravel/cashier</code></pre>
+<blockquote>
+<p>{note} To ensure Cashier properly handles all Stripe events, remember to <a href="#handling-stripe-webhooks">set up Cashier's webhook handling</a>.</p>
+</blockquote>
+<p><a name="database-migrations"></a></p>
+<h3>Database Migrations</h3>
+<p>Cashier's service provider registers its own database migration directory, so remember to migrate your database after installing the package. The Cashier migrations will add several columns to your <code>users</code> table as well as create a new <code>subscriptions</code> table to hold all of your customer's subscriptions:</p>
+<pre><code>php artisan migrate</code></pre>
+<p>If you need to overwrite the migrations that ship with Cashier, you can publish them using the <code>vendor:publish</code> Artisan command:</p>
+<pre><code>php artisan vendor:publish --tag="cashier-migrations"</code></pre>
+<p>If you would like to prevent Cashier's migrations from running entirely, you may use the <code>ignoreMigrations</code> method provided by Cashier. Typically, this method should be called in the <code>register</code> method of your <code>AppServiceProvider</code>:</p>
+<pre><code>use Laravel\Cashier\Cashier;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    Cashier::ignoreMigrations();
+}</code></pre>
+<blockquote>
+<p>{note} Stripe recommends that any column used for storing Stripe identifiers should be case-sensitive. Therefore, you should ensure the column collation for the <code>stripe_id</code> column is set to <code>utf8_bin</code> when using MySQL. More information regarding this can be found in the <a href="https://stripe.com/docs/upgrades#what-changes-does-stripe-consider-to-be-backwards-compatible">Stripe documentation</a>.</p>
+</blockquote>
+<p><a name="configuration"></a></p>
+<h2>Configuration</h2>
+<p><a name="billable-model"></a></p>
+<h3>Billable Model</h3>
+<p>Before using Cashier, add the <code>Billable</code> trait to your billable model definition. Typically, this will be the <code>App\Models\User</code> model. This trait provides various methods to allow you to perform common billing tasks, such as creating subscriptions, applying coupons, and updating payment method information:</p>
+<pre><code>use Laravel\Cashier\Billable;
+
+class User extends Authenticatable
+{
+    use Billable;
+}</code></pre>
+<p>Cashier assumes your billable model will be the <code>App\Models\User</code> class that ships with Laravel. If you wish to change this you can specify a different model in your <code>.env</code> file:</p>
+<pre><code>CASHIER_MODEL=App\Models\User</code></pre>
+<blockquote>
+<p>{note} If you're using a model other than Laravel's supplied <code>App\Models\User</code> model, you'll need to publish and alter the <a href="#installation">Cashier migrations</a> provided to match your alternative model's table name.</p>
+</blockquote>
+<p><a name="api-keys"></a></p>
+<h3>API Keys</h3>
+<p>Next, you should configure your Stripe API keys in your application's <code>.env</code> file. You can retrieve your Stripe API keys from the Stripe control panel:</p>
+<pre><code>STRIPE_KEY=your-stripe-key
+STRIPE_SECRET=your-stripe-secret</code></pre>
+<p><a name="currency-configuration"></a></p>
+<h3>Currency Configuration</h3>
+<p>The default Cashier currency is United States Dollars (USD). You can change the default currency by setting the <code>CASHIER_CURRENCY</code> environment variable within your application's <code>.env</code> file:</p>
+<pre><code>CASHIER_CURRENCY=eur</code></pre>
+<p>In addition to configuring Cashier's currency, you may also specify a locale to be used when formatting money values for display on invoices. Internally, Cashier utilizes <a href="https://www.php.net/manual/en/class.numberformatter.php">PHP's <code>NumberFormatter</code> class</a> to set the currency locale:</p>
+<pre><code>CASHIER_CURRENCY_LOCALE=nl_BE</code></pre>
+<blockquote>
+<p>{note} In order to use locales other than <code>en</code>, ensure the <code>ext-intl</code> PHP extension is installed and configured on your server.</p>
+</blockquote>
+<p><a name="logging"></a></p>
+<h3>Logging</h3>
+<p>Cashier allows you to specify the log channel to be used when logging all Stripe related exceptions. You may specify the log channel by defining the <code>CASHIER_LOGGER</code> environment variable within your application's <code>.env</code> file:</p>
+<pre><code>CASHIER_LOGGER=stack</code></pre>
+<p><a name="customers"></a></p>
+<h2>Customers</h2>
+<p><a name="retrieving-customers"></a></p>
+<h3>Retrieving Customers</h3>
+<p>You can retrieve a customer by their Stripe ID using the <code>Cashier::findBillable</code> method. This method will return an instance of the billable model:</p>
+<pre><code>use Laravel\Cashier\Cashier;
+
+$user = Cashier::findBillable($stripeId);</code></pre>
+<p><a name="creating-customers"></a></p>
+<h3>Creating Customers</h3>
+<p>Occasionally, you may wish to create a Stripe customer without beginning a subscription. You may accomplish this using the <code>createAsStripeCustomer</code> method:</p>
+<pre><code>$stripeCustomer = $user-&gt;createAsStripeCustomer();</code></pre>
+<p>Once the customer has been created in Stripe, you may begin a subscription at a later date. You may provide an optional <code>$options</code> array to pass in any additional <a href="https://stripe.com/docs/api/customers/create">customer creation parameters that are supported by the Stripe API</a>:</p>
+<pre><code>$stripeCustomer = $user-&gt;createAsStripeCustomer($options);</code></pre>
+<p>You may use the <code>asStripeCustomer</code> method if you want to return the Stripe customer object for a billable model:</p>
+<pre><code>$stripeCustomer = $user-&gt;asStripeCustomer();</code></pre>
+<p>The <code>createOrGetStripeCustomer</code> method may be used if you would like to retrieve the Stripe customer object for a given billable model but are not sure whether the billable model is already a customer within Stripe. This method will create a new customer in Stripe if one does not already exist:</p>
+<pre><code>$stripeCustomer = $user-&gt;createOrGetStripeCustomer();</code></pre>
+<p><a name="updating-customers"></a></p>
+<h3>Updating Customers</h3>
+<p>Occasionally, you may wish to update the Stripe customer directly with additional information. You may accomplish this using the <code>updateStripeCustomer</code> method. This method accepts an array of <a href="https://stripe.com/docs/api/customers/update">customer update options supported by the Stripe API</a>:</p>
+<pre><code>$stripeCustomer = $user-&gt;updateStripeCustomer($options);</code></pre>
+<p><a name="billing-portal"></a></p>
+<h3>Billing Portal</h3>
+<p>Stripe offers <a href="https://stripe.com/docs/billing/subscriptions/customer-portal">an easy way to set up a billing portal</a> so that your customer can manage their subscription, payment methods, and view their billing history. You can redirect your users to the billing portal by invoking the <code>redirectToBillingPortal</code> method on the billable model from a controller or route:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/billing-portal', function (Request $request) {
+    return $request-&gt;user()-&gt;redirectToBillingPortal();
+});</code></pre>
+<p>By default, when the user is finished managing their subscription, they will be able to return to the <code>home</code> route of your application via a link within the Stripe billing portal. You may provide a custom URL that the user should return to by passing the URL as an argument to the <code>redirectToBillingPortal</code> method:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/billing-portal', function (Request $request) {
+    return $request-&gt;user()-&gt;redirectToBillingPortal(route('billing'));
+});</code></pre>
+<p>If you would like to generate the URL to the billing portal without generating an HTTP redirect response, you may invoke the <code>billingPortalUrl</code> method:</p>
+<pre><code>$url = $request-&gt;user()-&gt;billingPortalUrl(route('billing'));</code></pre>
+<p><a name="payment-methods"></a></p>
+<h2>Payment Methods</h2>
+<p><a name="storing-payment-methods"></a></p>
+<h3>Storing Payment Methods</h3>
+<p>In order to create subscriptions or perform &quot;one off&quot; charges with Stripe, you will need to store a payment method and retrieve its identifier from Stripe. The approach used to accomplish this differs based on whether you plan to use the payment method for subscriptions or single charges, so we will examine both below.</p>
+<p><a name="payment-methods-for-subscriptions"></a></p>
+<h4>Payment Methods For Subscriptions</h4>
+<p>When storing a customer's credit card information for future use by a subscription, the Stripe &quot;Setup Intents&quot; API must be used to securely gather the customer's payment method details. A &quot;Setup Intent&quot; indicates to Stripe the intention to charge a customer's payment method. Cashier's <code>Billable</code> trait includes the <code>createSetupIntent</code> method to easily create a new Setup Intent. You should invoke this method from the route or controller that will render the form which gathers your customer's payment method details:</p>
+<pre><code>return view('update-payment-method', [
+    'intent' =&gt; $user-&gt;createSetupIntent()
+]);</code></pre>
+<p>After you have created the Setup Intent and passed it to the view, you should attach its secret to the element that will gather the payment method. For example, consider this &quot;update payment method&quot; form:</p>
+<pre><code class="language-html">&lt;input id="card-holder-name" type="text"&gt;
+
+&lt;!-- Stripe Elements Placeholder --&gt;
+&lt;div id="card-element"&gt;&lt;/div&gt;
+
+&lt;button id="card-button" data-secret="{{ $intent-&gt;client_secret }}"&gt;
+    Update Payment Method
+&lt;/button&gt;</code></pre>
+<p>Next, the Stripe.js library may be used to attach a <a href="https://stripe.com/docs/stripe-js">Stripe Element</a> to the form and securely gather the customer's payment details:</p>
+<pre><code class="language-html">&lt;script src="https://js.stripe.com/v3/"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    const stripe = Stripe('stripe-public-key');
+
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+
+    cardElement.mount('#card-element');
+&lt;/script&gt;</code></pre>
+<p>Next, the card can be verified and a secure &quot;payment method identifier&quot; can be retrieved from Stripe using <a href="https://stripe.com/docs/js/setup_intents/confirm_card_setup">Stripe's <code>confirmCardSetup</code> method</a>:</p>
+<pre><code class="language-js">const cardHolderName = document.getElementById('card-holder-name');
+const cardButton = document.getElementById('card-button');
+const clientSecret = cardButton.dataset.secret;
+
+cardButton.addEventListener('click', async (e) =&gt; {
+    const { setupIntent, error } = await stripe.confirmCardSetup(
+        clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: { name: cardHolderName.value }
+            }
+        }
+    );
+
+    if (error) {
+        // Display "error.message" to the user...
+    } else {
+        // The card has been verified successfully...
+    }
+});</code></pre>
+<p>After the card has been verified by Stripe, you may pass the resulting <code>setupIntent.payment_method</code> identifier to your Laravel application, where it can be attached to the customer. The payment method can either be <a href="#adding-payment-methods">added as a new payment method</a> or <a href="#updating-the-default-payment-method">used to update the default payment method</a>. You can also immediately use the payment method identifier to <a href="#creating-subscriptions">create a new subscription</a>.</p>
+<blockquote>
+<p>{tip} If you would like more information about Setup Intents and gathering customer payment details please <a href="https://stripe.com/docs/payments/save-and-reuse#php">review this overview provided by Stripe</a>.</p>
+</blockquote>
+<p><a name="payment-methods-for-single-charges"></a></p>
+<h4>Payment Methods For Single Charges</h4>
+<p>Of course, when making a single charge against a customer's payment method, we will only need to use a payment method identifier once. Due to Stripe limitations, you may not use the stored default payment method of a customer for single charges. You must allow the customer to enter their payment method details using the Stripe.js library. For example, consider the following form:</p>
+<pre><code class="language-html">&lt;input id="card-holder-name" type="text"&gt;
+
+&lt;!-- Stripe Elements Placeholder --&gt;
+&lt;div id="card-element"&gt;&lt;/div&gt;
+
+&lt;button id="card-button"&gt;
+    Process Payment
+&lt;/button&gt;</code></pre>
+<p>After defining such a form, the Stripe.js library may be used to attach a <a href="https://stripe.com/docs/stripe-js">Stripe Element</a> to the form and securely gather the customer's payment details:</p>
+<pre><code class="language-html">&lt;script src="https://js.stripe.com/v3/"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    const stripe = Stripe('stripe-public-key');
+
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+
+    cardElement.mount('#card-element');
+&lt;/script&gt;</code></pre>
+<p>Next, the card can be verified and a secure &quot;payment method identifier&quot; can be retrieved from Stripe using <a href="https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method">Stripe's <code>createPaymentMethod</code> method</a>:</p>
+<pre><code class="language-js">const cardHolderName = document.getElementById('card-holder-name');
+const cardButton = document.getElementById('card-button');
+
+cardButton.addEventListener('click', async (e) =&gt; {
+    const { paymentMethod, error } = await stripe.createPaymentMethod(
+        'card', cardElement, {
+            billing_details: { name: cardHolderName.value }
+        }
+    );
+
+    if (error) {
+        // Display "error.message" to the user...
+    } else {
+        // The card has been verified successfully...
+    }
+});</code></pre>
+<p>If the card is verified successfully, you may pass the <code>paymentMethod.id</code> to your Laravel application and process a <a href="#simple-charge">single charge</a>.</p>
+<p><a name="retrieving-payment-methods"></a></p>
+<h3>Retrieving Payment Methods</h3>
+<p>The <code>paymentMethods</code> method on the billable model instance returns a collection of <code>Laravel\Cashier\PaymentMethod</code> instances:</p>
+<pre><code>$paymentMethods = $user-&gt;paymentMethods();</code></pre>
+<p>To retrieve the customer's default payment method, the <code>defaultPaymentMethod</code> method may be used:</p>
+<pre><code>$paymentMethod = $user-&gt;defaultPaymentMethod();</code></pre>
+<p>You can retrieve a specific payment method that is attached to the billable model using the <code>findPaymentMethod</code> method:</p>
+<pre><code>$paymentMethod = $user-&gt;findPaymentMethod($paymentMethodId);</code></pre>
+<p><a name="check-for-a-payment-method"></a></p>
+<h3>Determining If A User Has A Payment Method</h3>
+<p>To determine if a billable model has a default payment method attached to their account, invoke the <code>hasDefaultPaymentMethod</code> method:</p>
+<pre><code>if ($user-&gt;hasDefaultPaymentMethod()) {
+    //
+}</code></pre>
+<p>You may use the <code>hasPaymentMethod</code> method to determine if a billable model has at least one payment method attached to their account:</p>
+<pre><code>if ($user-&gt;hasPaymentMethod()) {
+    //
+}</code></pre>
+<p><a name="updating-the-default-payment-method"></a></p>
+<h3>Updating The Default Payment Method</h3>
+<p>The <code>updateDefaultPaymentMethod</code> method may be used to update a customer's default payment method information. This method accepts a Stripe payment method identifier and will assign the new payment method as the default billing payment method:</p>
+<pre><code>$user-&gt;updateDefaultPaymentMethod($paymentMethod);</code></pre>
+<p>To sync your default payment method information with the customer's default payment method information in Stripe, you may use the <code>updateDefaultPaymentMethodFromStripe</code> method:</p>
+<pre><code>$user-&gt;updateDefaultPaymentMethodFromStripe();</code></pre>
+<blockquote>
+<p>{note} The default payment method on a customer can only be used for invoicing and creating new subscriptions. Due to limitations imposed by Stripe, it may not be used for single charges.</p>
+</blockquote>
+<p><a name="adding-payment-methods"></a></p>
+<h3>Adding Payment Methods</h3>
+<p>To add a new payment method, you may call the <code>addPaymentMethod</code> method on the billable model, passing the payment method identifier:</p>
+<pre><code>$user-&gt;addPaymentMethod($paymentMethod);</code></pre>
+<blockquote>
+<p>{tip} To learn how to retrieve payment method identifiers please review the <a href="#storing-payment-methods">payment method storage documentation</a>.</p>
+</blockquote>
+<p><a name="deleting-payment-methods"></a></p>
+<h3>Deleting Payment Methods</h3>
+<p>To delete a payment method, you may call the <code>delete</code> method on the <code>Laravel\Cashier\PaymentMethod</code> instance you wish to delete:</p>
+<pre><code>$paymentMethod-&gt;delete();</code></pre>
+<p>The <code>deletePaymentMethods</code> method will delete all of the payment method information for the billable model:</p>
+<pre><code>$user-&gt;deletePaymentMethods();</code></pre>
+<blockquote>
+<p>{note} If a user has an active subscription, your application should not allow them to delete their default payment method.</p>
+</blockquote>
+<p><a name="subscriptions"></a></p>
+<h2>Subscriptions</h2>
+<p>Subscriptions provide a way to set up recurring payments for your customers. Stripe subscriptions managed by Cashier provide support for multiple subscription plans, subscription quantities, trials, and more.</p>
+<p><a name="creating-subscriptions"></a></p>
+<h3>Creating Subscriptions</h3>
+<p>To create a subscription, first retrieve an instance of your billable model, which typically will be an instance of <code>App\Models\User</code>. Once you have retrieved the model instance, you may use the <code>newSubscription</code> method to create the model's subscription:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::post('/user/subscribe', function (Request $request) {
+    $request-&gt;user()-&gt;newSubscription(
+        'default', 'price_premium'
+    )-&gt;create($request-&gt;paymentMethodId);
+
+    // ...
+});</code></pre>
+<p>The first argument passed to the <code>newSubscription</code> method should be the name of the subscription. If your application only offers a single subscription, you might call this <code>default</code> or <code>primary</code>. The second argument is the specific plan the user is subscribing to. This value should correspond to the plan's price identifier in Stripe.</p>
+<p>The <code>create</code> method, which accepts <a href="#storing-payment-methods">a Stripe payment method identifier</a> or Stripe <code>PaymentMethod</code> object, will begin the subscription as well as update your database with the billable model's Stripe customer ID and other relevant billing information.</p>
+<blockquote>
+<p>{note} Passing a payment method identifier directly to the <code>create</code> subscription method will also automatically add it to the user's stored payment methods.</p>
+</blockquote>
+<p><a name="subscription-quantities"></a></p>
+<h4>Quantities</h4>
+<p>If you would like to set a specific <a href="https://stripe.com/docs/billing/subscriptions/quantities">quantity</a> for the plan when creating the subscription, you should invoke the <code>quantity</code> method on the subscription builder before creating the subscription:</p>
+<pre><code>$user-&gt;newSubscription('default', 'price_monthly')
+     -&gt;quantity(5)
+     -&gt;create($paymentMethod);</code></pre>
+<p><a name="additional-details"></a></p>
+<h4>Additional Details</h4>
+<p>If you would like to specify additional <a href="https://stripe.com/docs/api/customers/create">customer</a> or <a href="https://stripe.com/docs/api/subscriptions/create">subscription</a> options supported by Stripe, you may do so by passing them as the second and third arguments to the <code>create</code> method:</p>
+<pre><code>$user-&gt;newSubscription('default', 'price_monthly')-&gt;create($paymentMethod, [
+    'email' =&gt; $email,
+], [
+    'metadata' =&gt; ['note' =&gt; 'Some extra information.'],
+]);</code></pre>
+<p><a name="coupons"></a></p>
+<h4>Coupons</h4>
+<p>If you would like to apply a coupon when creating the subscription, you may use the <code>withCoupon</code> method:</p>
+<pre><code>$user-&gt;newSubscription('default', 'price_monthly')
+     -&gt;withCoupon('code')
+     -&gt;create($paymentMethod);</code></pre>
+<p>Or, if you would like to apply a <a href="https://stripe.com/docs/billing/subscriptions/discounts/codes">Stripe promotion code</a>, you may use the <code>withPromotionCode</code> method:</p>
+<pre><code>$user-&gt;newSubscription('default', 'price_monthly')
+     -&gt;withPromotionCode('promo_code')
+     -&gt;create($paymentMethod);</code></pre>
+<p><a name="adding-subscriptions"></a></p>
+<h4>Adding Subscriptions</h4>
+<p>If you would like to add a subscription to a customer who already has a default payment method you may invoke the <code>add</code> method on the subscription builder:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;newSubscription('default', 'price_premium')-&gt;add();</code></pre>
+<p><a name="checking-subscription-status"></a></p>
+<h3>Checking Subscription Status</h3>
+<p>Once a customer is subscribed to your application, you may easily check their subscription status using a variety of convenient methods. First, the <code>subscribed</code> method returns <code>true</code> if the customer has an active subscription, even if the subscription is currently within its trial period. The <code>subscribed</code> method accepts the name of the subscription as its first argument:</p>
+<pre><code>if ($user-&gt;subscribed('default')) {
+    //
+}</code></pre>
+<p>The <code>subscribed</code> method also makes a great candidate for a <a href="/docs/laravel_8/middleware.html">route middleware</a>, allowing you to filter access to routes and controllers based on the user's subscription status:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class EnsureUserIsSubscribed
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if ($request-&gt;user() &amp;&amp; ! $request-&gt;user()-&gt;subscribed('default')) {
+            // This user is not a paying customer...
+            return redirect('billing');
+        }
+
+        return $next($request);
+    }
+}</code></pre>
+<p>If you would like to determine if a user is still within their trial period, you may use the <code>onTrial</code> method. This method can be useful for determining if you should display a warning to the user that they are still on their trial period:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;onTrial()) {
+    //
+}</code></pre>
+<p>The <code>subscribedToPlan</code> method may be used to determine if the user is subscribed to a given plan based on a given Stripe plan's price identifier. In this example, we will determine if the user's <code>default</code> subscription is actively subscribed to the application's &quot;monthly&quot; plan. The given Stripe plan price identifier should correspond to one of your plan's price identifiers in the Stripe dashboard:</p>
+<pre><code>if ($user-&gt;subscribedToPlan('price_monthly', 'default')) {
+    //
+}</code></pre>
+<p>By passing an array to the <code>subscribedToPlan</code> method, you may determine if the user's <code>default</code> subscription is actively subscribed to the application's &quot;monthly&quot; or &quot;yearly&quot; plan:</p>
+<pre><code>if ($user-&gt;subscribedToPlan(['price_monthly', 'price_yearly'], 'default')) {
+    //
+}</code></pre>
+<p>The <code>recurring</code> method may be used to determine if the user is currently subscribed and is no longer within their trial period:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;recurring()) {
+    //
+}</code></pre>
+<blockquote>
+<p>{note} If a user has two subscriptions with the same name, the most recent subscription will always be returned by the <code>subscription</code> method. For example, a user might have two subscription records named <code>default</code>; however, one of the subscriptions may be an old, expired subscription, while the other is the current, active subscription. The most recent subscription will always be returned while older subscriptions are kept in the database for historical review.</p>
+</blockquote>
+<p><a name="cancelled-subscription-status"></a></p>
+<h4>Cancelled Subscription Status</h4>
+<p>To determine if the user was once an active subscriber but has cancelled their subscription, you may use the <code>cancelled</code> method:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;cancelled()) {
+    //
+}</code></pre>
+<p>You may also determine if a user has cancelled their subscription but are still on their &quot;grace period&quot; until the subscription fully expires. For example, if a user cancels a subscription on March 5th that was originally scheduled to expire on March 10th, the user is on their &quot;grace period&quot; until March 10th. Note that the <code>subscribed</code> method still returns <code>true</code> during this time:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;onGracePeriod()) {
+    //
+}</code></pre>
+<p>To determine if the user has cancelled their subscription and is no longer within their &quot;grace period&quot;, you may use the <code>ended</code> method:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;ended()) {
+    //
+}</code></pre>
+<p><a name="incomplete-and-past-due-status"></a></p>
+<h4>Incomplete and Past Due Status</h4>
+<p>If a subscription requires a secondary payment action after creation the subscription will be marked as <code>incomplete</code>. Subscription statuses are stored in the <code>stripe_status</code> column of Cashier's <code>subscriptions</code> database table.</p>
+<p>Similarly, if a secondary payment action is required when swapping plans the subscription will be marked as <code>past_due</code>. When your subscription is in either of these states it will not be active until the customer has confirmed their payment. Determining if a subscription has an incomplete payment may be accomplished using the <code>hasIncompletePayment</code> method on the billable model or a subscription instance:</p>
+<pre><code>if ($user-&gt;hasIncompletePayment('default')) {
+    //
+}
+
+if ($user-&gt;subscription('default')-&gt;hasIncompletePayment()) {
+    //
+}</code></pre>
+<p>When a subscription has an incomplete payment, you should direct the user to Cashier's payment confirmation page, passing the <code>latestPayment</code> identifier. You may use the <code>latestPayment</code> method available on subscription instance to retrieve this identifier:</p>
+<pre><code class="language-html">&lt;a href="{{ route('cashier.payment', $subscription-&gt;latestPayment()-&gt;id) }}"&gt;
+    Please confirm your payment.
+&lt;/a&gt;</code></pre>
+<p>If you would like the subscription to still be considered active when it's in a <code>past_due</code> state, you may use the <code>keepPastDueSubscriptionsActive</code> method provided by Cashier. Typically, this method should be called in the <code>register</code> method of your <code>App\Providers\AppServiceProvider</code>:</p>
+<pre><code>use Laravel\Cashier\Cashier;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    Cashier::keepPastDueSubscriptionsActive();
+}</code></pre>
+<blockquote>
+<p>{note} When a subscription is in an <code>incomplete</code> state it cannot be changed until the payment is confirmed. Therefore, the <code>swap</code> and <code>updateQuantity</code> methods will throw an exception when the subscription is in an <code>incomplete</code> state.</p>
+</blockquote>
+<p><a name="subscription-scopes"></a></p>
+<h4>Subscription Scopes</h4>
+<p>Most subscription states are also available as query scopes so that you may easily query your database for subscriptions that are in a given state:</p>
+<pre><code>// Get all active subscriptions...
+$subscriptions = Subscription::query()-&gt;active()-&gt;get();
+
+// Get all of the cancelled subscriptions for a user...
+$subscriptions = $user-&gt;subscriptions()-&gt;cancelled()-&gt;get();</code></pre>
+<p>A complete list of available scopes is available below:</p>
+<pre><code>Subscription::query()-&gt;active();
+Subscription::query()-&gt;cancelled();
+Subscription::query()-&gt;ended();
+Subscription::query()-&gt;incomplete();
+Subscription::query()-&gt;notCancelled();
+Subscription::query()-&gt;notOnGracePeriod();
+Subscription::query()-&gt;notOnTrial();
+Subscription::query()-&gt;onGracePeriod();
+Subscription::query()-&gt;onTrial();
+Subscription::query()-&gt;pastDue();
+Subscription::query()-&gt;recurring();</code></pre>
+<p><a name="changing-plans"></a></p>
+<h3>Changing Plans</h3>
+<p>After a customer is subscribed to your application, they may occasionally want to change to a new subscription plan. To swap a customer to a new plan, pass the Stripe plan's price identifier to the <code>swap</code> method. The given price identifier should correspond to a Stripe plan price identifier available in the Stripe dashboard:</p>
+<pre><code>use App\Models\User;
+
+$user = App\Models\User::find(1);
+
+$user-&gt;subscription('default')-&gt;swap('price_id');</code></pre>
+<p>If the customer is on trial, the trial period will be maintained. Also, if a &quot;quantity&quot; exists for the subscription, that quantity will also be maintained.</p>
+<p>If you would like to swap plans and cancel any trial period the customer is currently on, you may invoke the <code>skipTrial</code> method:</p>
+<pre><code>$user-&gt;subscription('default')
+        -&gt;skipTrial()
+        -&gt;swap('price_id');</code></pre>
+<p>If you would like to swap plans and immediately invoice the customer instead of waiting for their next billing cycle, you may use the <code>swapAndInvoice</code> method:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;swapAndInvoice('price_id');</code></pre>
+<p><a name="prorations"></a></p>
+<h4>Prorations</h4>
+<p>By default, Stripe prorates charges when swapping between plans. The <code>noProrate</code> method may be used to update the subscription's plan without prorating the charges:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;noProrate()-&gt;swap('price_id');</code></pre>
+<p>For more information on subscription proration, consult the <a href="https://stripe.com/docs/billing/subscriptions/prorations">Stripe documentation</a>.</p>
+<blockquote>
+<p>{note} Executing the <code>noProrate</code> method before the <code>swapAndInvoice</code> method will have no affect on proration. An invoice will always be issued.</p>
+</blockquote>
+<p><a name="subscription-quantity"></a></p>
+<h3>Subscription Quantity</h3>
+<p>Sometimes subscriptions are affected by &quot;quantity&quot;. For example, a project management application might charge $10 per month per project. You may use the <code>incrementQuantity</code> and <code>decrementQuantity</code> methods to easily increment or decrement your subscription quantity:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;incrementQuantity();
+
+// Add five to the subscription's current quantity...
+$user-&gt;subscription('default')-&gt;incrementQuantity(5);
+
+$user-&gt;subscription('default')-&gt;decrementQuantity();
+
+// Subtract five from the subscription's current quantity...
+$user-&gt;subscription('default')-&gt;decrementQuantity(5);</code></pre>
+<p>Alternatively, you may set a specific quantity using the <code>updateQuantity</code> method:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;updateQuantity(10);</code></pre>
+<p>The <code>noProrate</code> method may be used to update the subscription's quantity without prorating the charges:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;noProrate()-&gt;updateQuantity(10);</code></pre>
+<p>For more information on subscription quantities, consult the <a href="https://stripe.com/docs/subscriptions/quantities">Stripe documentation</a>.</p>
+<p><a name="multiplan-subscription-quantities"></a></p>
+<h4>Multiplan Subscription Quantities</h4>
+<p>If your subscription is a <a href="#multiplan-subscriptions">multiplan subscription</a>, you should pass the name of the plan whose quantity you wish to increment or decrement as the second argument to the increment / decrement methods:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;incrementQuantity(1, 'chat-plan');</code></pre>
+<p><a name="multiplan-subscriptions"></a></p>
+<h3>Multiplan Subscriptions</h3>
+<p><a href="https://stripe.com/docs/billing/subscriptions/multiplan">Multiplan subscriptions</a> allow you to assign multiple billing plans to a single subscription. For example, imagine you are building a customer service &quot;helpdesk&quot; application that has a base subscription plan of $10 per month but offers a live chat add-on plan for an additional $15 per month. Multiplan subscription information is stored in Cashier's <code>subscription_items</code> database table.</p>
+<p>You may specify multiple plans for a given subscription by passing an array of plans as the second argument to the <code>newSubscription</code> method:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::post('/user/subscribe', function (Request $request) {
+    $request-&gt;user()-&gt;newSubscription('default', [
+        'price_monthly',
+        'chat-plan',
+    ])-&gt;create($request-&gt;paymentMethodId);
+
+    // ...
+});</code></pre>
+<p>In the example above, the customer will have two plans attached to their <code>default</code> subscription. Both plans will be charged on their respective billing intervals. If necessary, you may use the <code>quantity</code> method to indicate a specific quantity for each plan:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;newSubscription('default', ['price_monthly', 'chat-plan'])
+    -&gt;quantity(5, 'chat-plan')
+    -&gt;create($paymentMethod);</code></pre>
+<p>If you would like to add another plan to an existing subscription, you may invoke the subscription's <code>addPlan</code> method:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;addPlan('chat-plan');</code></pre>
+<p>The example above will add the new plan and the customer will be billed for it on their next billing cycle. If you would like to bill the customer immediately you may use the <code>addPlanAndInvoice</code> method:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;addPlanAndInvoice('chat-plan');</code></pre>
+<p>If you would like to add a plan with a specific quantity, you can pass the quantity as the second argument of the <code>addPlan</code> or <code>addPlanAndInvoice</code> methods:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;addPlan('chat-plan', 5);</code></pre>
+<p>You may remove plans from subscriptions using the <code>removePlan</code> method:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;removePlan('chat-plan');</code></pre>
+<blockquote>
+<p>{note} You may not remove the last plan on a subscription. Instead, you should simply cancel the subscription.</p>
+</blockquote>
+<p><a name="swapping-multiplan-plans"></a></p>
+<h4>Swapping Plans</h4>
+<p>You may also change the plans attached to a multiplan subscription. For example, imagine a customer has a <code>basic-plan</code> subscription with a <code>chat-plan</code> add-on plan and you want to upgrade the customer from the <code>basic-plan</code> to the <code>pro-plan</code> plan:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;swap(['pro-plan', 'chat-plan']);</code></pre>
+<p>When executing the example above, the underlying subscription item with the <code>basic-plan</code> is deleted and the one with the <code>chat-plan</code> is preserved. Additionally, a new subscription item for the <code>pro-plan</code> is created.</p>
+<p>You can also specify subscription item options by passing an array of key / value pairs to the <code>swap</code> method. For example, you may need to specify the subscription plan quantities:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;swap([
+    'pro-plan' =&gt; ['quantity' =&gt; 5],
+    'chat-plan'
+]);</code></pre>
+<p>If you want to swap a single plan on a subscription, you may do so using the <code>swap</code> method on the subscription item itself. This approach is particularly useful if you would like to preserve all of the existing metadata on the subscription's other plans:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')
+        -&gt;findItemOrFail('basic-plan')
+        -&gt;swap('pro-plan');</code></pre>
+<p><a name="proration"></a></p>
+<h4>Proration</h4>
+<p>By default, Stripe will prorate charges when adding or removing plans from a multiplan subscription. If you would like to make a plan adjustment without proration, you should chain the <code>noProrate</code> method onto your plan operation:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;noProrate()-&gt;removePlan('chat-plan');</code></pre>
+<p><a name="swapping-quantities"></a></p>
+<h4>Quantities</h4>
+<p>If you would like to update quantities on individual subscription plans, you may do so using the <a href="#subscription-quantity">existing quantity methods</a> by passing the name of the plan as an additional argument to the method:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription('default')-&gt;incrementQuantity(5, 'chat-plan');
+
+$user-&gt;subscription('default')-&gt;decrementQuantity(3, 'chat-plan');
+
+$user-&gt;subscription('default')-&gt;updateQuantity(10, 'chat-plan');</code></pre>
+<blockquote>
+<p>{note} When a subscription has multiple plans the <code>stripe_plan</code> and <code>quantity</code> attributes on the <code>Subscription</code> model will be <code>null</code>. To access the individual plan attributes, you should use the <code>items</code> relationship available on the <code>Subscription</code> model.</p>
+</blockquote>
+<p><a name="subscription-items"></a></p>
+<h4>Subscription Items</h4>
+<p>When a subscription has multiple plans, it will have multiple subscription &quot;items&quot; stored in your database's <code>subscription_items</code> table. You may access these via the <code>items</code> relationship on the subscription:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$subscriptionItem = $user-&gt;subscription('default')-&gt;items-&gt;first();
+
+// Retrieve the Stripe plan and quantity for a specific item...
+$stripePlan = $subscriptionItem-&gt;stripe_plan;
+$quantity = $subscriptionItem-&gt;quantity;</code></pre>
+<p>You can also retrieve a specific plan using the <code>findItemOrFail</code> method:</p>
+<pre><code>$user = User::find(1);
+
+$subscriptionItem = $user-&gt;subscription('default')-&gt;findItemOrFail('chat-plan');</code></pre>
+<p><a name="subscription-taxes"></a></p>
+<h3>Subscription Taxes</h3>
+<p>To specify the tax rates a user pays on a subscription, you should implement the <code>taxRates</code> method on your billable model and return an array containing the Stripe tax rate IDs. You can define these tax rates in <a href="https://dashboard.stripe.com/test/tax-rates">your Stripe dashboard</a>:</p>
+<pre><code>/**
+ * The tax rates that should apply to the customer's subscriptions.
+ *
+ * @return array
+ */
+public function taxRates()
+{
+    return ['tax-rate-id'];
+}</code></pre>
+<p>The <code>taxRates</code> method enables you to apply a tax rate on a customer-by-customer basis, which may be helpful for a user base that spans multiple countries and tax rates.</p>
+<p>If you're offering multiplan subscriptions, you may define different tax rates for each plan by implementing a <code>planTaxRates</code> method on your billable model:</p>
+<pre><code>/**
+ * The tax rates that should apply to the customer's subscriptions.
+ *
+ * @return array
+ */
+public function planTaxRates()
+{
+    return [
+        'plan-id' =&gt; ['tax-rate-id'],
+    ];
+}</code></pre>
+<blockquote>
+<p>{note} The <code>taxRates</code> method only applies to subscription charges. If you use Cashier to make &quot;one off&quot; charges, you will need to manually specify the tax rate at that time.</p>
+</blockquote>
+<p><a name="syncing-tax-rates"></a></p>
+<h4>Syncing Tax Rates</h4>
+<p>When changing the hard-coded tax rate IDs returned by the <code>taxRates</code> method, the tax settings on any existing subscriptions for the user will remain the same. If you wish to update the tax value for existing subscriptions with the new <code>taxRates</code> values, you should call the <code>syncTaxRates</code> method on the user's subscription instance:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;syncTaxRates();</code></pre>
+<p>This will also sync any multiplan subscription item tax rates. If your application is offering multiplan subscriptions, you should ensure that your billable model implements the <code>planTaxRates</code> method <a href="#subscription-taxes">discussed above</a>.</p>
+<p><a name="tax-exemption"></a></p>
+<h4>Tax Exemption</h4>
+<p>Cashier also offers the <code>isNotTaxExempt</code>, <code>isTaxExempt</code>, and <code>reverseChargeApplies</code> methods to determine if the customer is tax exempt. These methods will call the Stripe API to determine a customer's tax exemption status:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;isTaxExempt();
+$user-&gt;isNotTaxExempt();
+$user-&gt;reverseChargeApplies();</code></pre>
+<blockquote>
+<p>{note} These methods are also available on any <code>Laravel\Cashier\Invoice</code> object. However, when invoked on an <code>Invoice</code> object, the methods will determine the exemption status at the time the invoice was created.</p>
+</blockquote>
+<p><a name="subscription-anchor-date"></a></p>
+<h3>Subscription Anchor Date</h3>
+<p>By default, the billing cycle anchor is the date the subscription was created or, if a trial period is used, the date that the trial ends. If you would like to modify the billing anchor date, you may use the <code>anchorBillingCycleOn</code> method:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::post('/user/subscribe', function (Request $request) {
+    $anchor = Carbon::parse('first day of next month');
+
+    $request-&gt;user()-&gt;newSubscription('default', 'price_premium')
+                -&gt;anchorBillingCycleOn($anchor-&gt;startOfDay())
+                -&gt;create($request-&gt;paymentMethodId);
+
+    // ...
+});</code></pre>
+<p>For more information on managing subscription billing cycles, consult the <a href="https://stripe.com/docs/billing/subscriptions/billing-cycle">Stripe billing cycle documentation</a></p>
+<p><a name="cancelling-subscriptions"></a></p>
+<h3>Cancelling Subscriptions</h3>
+<p>To cancel a subscription, call the <code>cancel</code> method on the user's subscription:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;cancel();</code></pre>
+<p>When a subscription is cancelled, Cashier will automatically set the <code>ends_at</code> column in your <code>subscriptions</code> database table. This column is used to know when the <code>subscribed</code> method should begin returning <code>false</code>.</p>
+<p>For example, if a customer cancels a subscription on March 1st, but the subscription was not scheduled to end until March 5th, the <code>subscribed</code> method will continue to return <code>true</code> until March 5th. This is done because a user is typically allowed to continue using an application until the end of their billing cycle.</p>
+<p>You may determine if a user has cancelled their subscription but are still on their &quot;grace period&quot; using the <code>onGracePeriod</code> method:</p>
+<pre><code>if ($user-&gt;subscription('default')-&gt;onGracePeriod()) {
+    //
+}</code></pre>
+<p>If you wish to cancel a subscription immediately, call the <code>cancelNow</code> method on the user's subscription:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;cancelNow();</code></pre>
+<p><a name="resuming-subscriptions"></a></p>
+<h3>Resuming Subscriptions</h3>
+<p>If a customer has cancelled their subscription and you wish to resume it, you may invoke the <code>resume</code> method on the subscription. The customer must still be within their &quot;grace period&quot; in order to resume a subscription:</p>
+<pre><code>$user-&gt;subscription('default')-&gt;resume();</code></pre>
+<p>If the customer cancels a subscription and then resumes that subscription before the subscription has fully expired the customer will not be billed immediately. Instead, their subscription will be re-activated and they will be billed on the original billing cycle.</p>
+<p><a name="subscription-trials"></a></p>
+<h2>Subscription Trials</h2>
+<p><a name="with-payment-method-up-front"></a></p>
+<h3>With Payment Method Up Front</h3>
+<p>If you would like to offer trial periods to your customers while still collecting payment method information up front, you should use the <code>trialDays</code> method when creating your subscriptions:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::post('/user/subscribe', function (Request $request) {
+    $request-&gt;user()-&gt;newSubscription('default', 'price_monthly')
+                -&gt;trialDays(10)
+                -&gt;create($request-&gt;paymentMethodId);
+
+    // ...
+});</code></pre>
+<p>This method will set the trial period ending date on the subscription record within the database and instruct Stripe to not begin billing the customer until after this date. When using the <code>trialDays</code> method, Cashier will overwrite any default trial period configured for the plan in Stripe.</p>
+<blockquote>
+<p>{note} If the customer's subscription is not cancelled before the trial ending date they will be charged as soon as the trial expires, so you should be sure to notify your users of their trial ending date.</p>
+</blockquote>
+<p>The <code>trialUntil</code> method allows you to provide a <code>DateTime</code> instance that specifies when the trial period should end:</p>
+<pre><code>use Carbon\Carbon;
+
+$user-&gt;newSubscription('default', 'price_monthly')
+            -&gt;trialUntil(Carbon::now()-&gt;addDays(10))
+            -&gt;create($paymentMethod);</code></pre>
+<p>You may determine if a user is within their trial period using either the <code>onTrial</code> method of the user instance or the <code>onTrial</code> method of the subscription instance. The two examples below are equivalent:</p>
+<pre><code>if ($user-&gt;onTrial('default')) {
+    //
+}
+
+if ($user-&gt;subscription('default')-&gt;onTrial()) {
+    //
+}</code></pre>
+<p><a name="defining-trial-days-in-stripe-cashier"></a></p>
+<h4>Defining Trial Days In Stripe / Cashier</h4>
+<p>You may choose to define how many trial days your plan's receive in the Stripe dashboard or always pass them explicitly using Cashier. If you choose to define your plan's trial days in Stripe you should be aware that new subscriptions, including new subscriptions for a customer that had a subscription in the past, will always receive a trial period unless you explicitly call the <code>trialDays(0)</code> method.</p>
+<p><a name="without-payment-method-up-front"></a></p>
+<h3>Without Payment Method Up Front</h3>
+<p>If you would like to offer trial periods without collecting the user's payment method information up front, you may set the <code>trial_ends_at</code> column on the user record to your desired trial ending date. This is typically done during user registration:</p>
+<pre><code>use App\Models\User;
+
+$user = User::create([
+    // ...
+    'trial_ends_at' =&gt; now()-&gt;addDays(10),
+]);</code></pre>
+<blockquote>
+<p>{note} Be sure to add a <a href="/docs/laravel_8/eloquent-mutators.html##date-casting">date cast</a> for the <code>trial_ends_at</code> attribute within your billable model's class definition.</p>
+</blockquote>
+<p>Cashier refers to this type of trial as a &quot;generic trial&quot;, since it is not attached to any existing subscription. The <code>onTrial</code> method on the billable model instance will return <code>true</code> if the current date is not past the value of <code>trial_ends_at</code>:</p>
+<pre><code>if ($user-&gt;onTrial()) {
+    // User is within their trial period...
+}</code></pre>
+<p>Once you are ready to create an actual subscription for the user, you may use the <code>newSubscription</code> method as usual:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;newSubscription('default', 'price_monthly')-&gt;create($paymentMethod);</code></pre>
+<p>To retrieve the user's trial ending date, you may use the <code>trialEndsAt</code> method. This method will return a Carbon date instance if a user is on a trial or <code>null</code> if they aren't. You may also pass an optional subscription name parameter if you would like to get the trial ending date for a specific subscription other than the default one:</p>
+<pre><code>if ($user-&gt;onTrial()) {
+    $trialEndsAt = $user-&gt;trialEndsAt('main');
+}</code></pre>
+<p>You may also use the <code>onGenericTrial</code> method if you wish to know specifically that the user is within their &quot;generic&quot; trial period and has not yet created an actual subscription:</p>
+<pre><code>if ($user-&gt;onGenericTrial()) {
+    // User is within their "generic" trial period...
+}</code></pre>
+<p><a name="extending-trials"></a></p>
+<h3>Extending Trials</h3>
+<p>The <code>extendTrial</code> method allows you to extend the trial period of a subscription after the subscription has been created. If the trial has already expired and the customer is already being billed for the subscription, you can still offer them an extended trial. The time spent within the trial period will be deducted from the customer's next invoice:</p>
+<pre><code>use App\Models\User;
+
+$subscription = User::find(1)-&gt;subscription('default');
+
+// End the trial 7 days from now...
+$subscription-&gt;extendTrial(
+    now()-&gt;addDays(7)
+);
+
+// Add an additional 5 days to the trial...
+$subscription-&gt;extendTrial(
+    $subscription-&gt;trial_ends_at-&gt;addDays(5)
+);</code></pre>
+<p><a name="handling-stripe-webhooks"></a></p>
+<h2>Handling Stripe Webhooks</h2>
+<blockquote>
+<p>{tip} You may use <a href="https://stripe.com/docs/stripe-cli">the Stripe CLI</a> to help test webhooks during local development.</p>
+</blockquote>
+<p>Stripe can notify your application of a variety of events via webhooks. By default, a route that points to Cashier's webhook controller is automatically registered by the Cashier service provider. This controller will handle all incoming webhook requests.</p>
+<p>By default, the Cashier webhook controller will automatically handle cancelling subscriptions that have too many failed charges (as defined by your Stripe settings), customer updates, customer deletions, subscription updates, and payment method changes; however, as we'll soon discover, you can extend this controller to handle any Stripe webhook event you like.</p>
+<p>To ensure your application can handle Stripe webhooks, be sure to configure the webhook URL in the Stripe control panel. By default, Cashier's webhook controller responds to the <code>/stripe/webhook</code> URL path. The full list of all webhooks you should enable in the Stripe control panel are:</p>
+<ul>
+<li><code>customer.subscription.updated</code></li>
+<li><code>customer.subscription.deleted</code></li>
+<li><code>customer.updated</code></li>
+<li><code>customer.deleted</code></li>
+<li><code>invoice.payment_action_required</code></li>
+</ul>
+<blockquote>
+<p>{note} Make sure you protect incoming Stripe webhook requests with Cashier's included <a href="/docs/laravel_8/billing.html#verifying-webhook-signatures">webhook signature verification</a> middleware.</p>
+</blockquote>
+<p><a name="webhooks-csrf-protection"></a></p>
+<h4>Webhooks &amp; CSRF Protection</h4>
+<p>Since Stripe webhooks need to bypass Laravel's <a href="/docs/laravel_8/csrf.html">CSRF protection</a>, be sure to list the URI as an exception in your application's <code>App\Http\Middleware\VerifyCsrfToken</code> middleware or list the route outside of the <code>web</code> middleware group:</p>
+<pre><code>protected $except = [
+    'stripe/*',
+];</code></pre>
+<p><a name="defining-webhook-event-handlers"></a></p>
+<h3>Defining Webhook Event Handlers</h3>
+<p>Cashier automatically handles subscription cancellations for failed charges and other common Stripe webhook events. However, if you have additional webhook events you would like to handle, you may do so by extending the Cashier webhook controller.</p>
+<p>Your controller's method names should correspond to Cashier's controller conventions. Specifically, methods should be prefixed with <code>handle</code> and the &quot;camel case&quot; name of the webhook you wish to handle. For example, if you wish to handle the <code>invoice.payment_succeeded</code> webhook, you should add a <code>handleInvoicePaymentSucceeded</code> method to the controller:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Laravel\Cashier\Http\Controllers\WebhookController as CashierController;
+
+class WebhookController extends CashierController
+{
+    /**
+     * Handle invoice payment succeeded.
+     *
+     * @param  array  $payload
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function handleInvoicePaymentSucceeded($payload)
+    {
+        // Handle the incoming event...
+    }
+}</code></pre>
+<p>Next, define a route to your Cashier webhook controller within your application's <code>routes/web.php</code> file. This will overwrite the default route registered by Cashier's service provider:</p>
+<pre><code>use App\Http\Controllers\WebhookController;
+
+Route::post(
+    '/stripe/webhook',
+    [WebhookController::class, 'handleWebhook']
+);</code></pre>
+<blockquote>
+<p>{tip} Cashier emits a <code>Laravel\Cashier\Events\WebhookReceived</code> event when a webhook is received and a <code>Laravel\Cashier\Events\WebhookHandled</code> event when a webhook was handled by Cashier. Both events contain the full payload of the Stripe webhook.</p>
+</blockquote>
+<p><a name="verifying-webhook-signatures"></a></p>
+<h3>Verifying Webhook Signatures</h3>
+<p>To secure your webhooks, you may use <a href="https://stripe.com/docs/webhooks/signatures">Stripe's webhook signatures</a>. For convenience, Cashier automatically includes a middleware which validates that the incoming Stripe webhook request is valid.</p>
+<p>To enable webhook verification, ensure that the <code>STRIPE_WEBHOOK_SECRET</code> environment variable is set in your application's <code>.env</code> file. The webhook <code>secret</code> may be retrieved from your Stripe account dashboard.</p>
+<p><a name="single-charges"></a></p>
+<h2>Single Charges</h2>
+<p><a name="simple-charge"></a></p>
+<h3>Simple Charge</h3>
+<blockquote>
+<p>{note} The <code>charge</code> method accepts the amount you would like to charge in the lowest denominator of the currency used by your application. For example, when using United States Dollars, amounts should be specified in pennies.</p>
+</blockquote>
+<p>If you would like to make a one-time charge against a customer, you may use the <code>charge</code> method on a billable model instance. You will need to <a href="#payment-methods-for-single-charges">provide a payment method identifier</a> as the second argument to the <code>charge</code> method:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::post('/purchase', function (Request $request) {
+    $stripeCharge = $request-&gt;user()-&gt;charge(
+        100, $request-&gt;paymentMethodId
+    );
+
+    // ...
+});</code></pre>
+<p>The <code>charge</code> method accepts an array as its third argument, allowing you to pass any options you wish to the underlying Stripe charge creation. More information regarding the options available to you when creating charges may be found in the <a href="https://stripe.com/docs/api/charges/create">Stripe documentation</a>:</p>
+<pre><code>$user-&gt;charge(100, $paymentMethod, [
+    'custom_option' =&gt; $value,
+]);</code></pre>
+<p>You may also use the <code>charge</code> method without an underlying customer or user. To accomplish this, invoke the <code>charge</code> method on an new instance of your application's billable model:</p>
+<pre><code>use App\Models\User;
+
+$stripeCharge = (new User)-&gt;charge(100, $paymentMethod);</code></pre>
+<p>The <code>charge</code> method will throw an exception if the charge fails. If the charge is successful, an instance of <code>Laravel\Cashier\Payment</code> will be returned from the method:</p>
+<pre><code>try {
+    $payment = $user-&gt;charge(100, $paymentMethod);
+} catch (Exception $e) {
+    //
+}</code></pre>
+<p><a name="charge-with-invoice"></a></p>
+<h3>Charge With Invoice</h3>
+<p>Sometimes you may need to make a one-time charge and offer a PDF receipt to your customer. The <code>invoiceFor</code> method lets you do just that. For example, let's invoice a customer $5.00 for a &quot;Maintenance Fee&quot;:</p>
+<pre><code>$user-&gt;invoiceFor('One Time Fee', 500);</code></pre>
+<p>The invoice will be charged immediately against the user's default payment method. The <code>invoiceFor</code> method also accepts an array as its third argument. This array contains the billing options for the invoice item. The fourth argument accepted by the method is also an array which should contain the billing options for the invoice itself:</p>
+<pre><code>$user-&gt;invoiceFor('Stickers', 500, [
+    'quantity' =&gt; 50,
+], [
+    'default_tax_rates' =&gt; ['tax-rate-id'],
+]);</code></pre>
+<blockquote>
+<p>{note} The <code>invoiceFor</code> method will create a Stripe invoice which will retry failed billing attempts. If you do not want invoices to retry failed charges, you will need to close them using the Stripe API after the first failed charge.</p>
+</blockquote>
+<p><a name="refunding-charges"></a></p>
+<h3>Refunding Charges</h3>
+<p>If you need to refund a Stripe charge, you may use the <code>refund</code> method. This method accepts the Stripe <a href="#payment-methods-for-single-charges">payment intent ID</a> as its first argument:</p>
+<pre><code>$payment = $user-&gt;charge(100, $paymentMethodId);
+
+$user-&gt;refund($payment-&gt;id);</code></pre>
+<p><a name="invoices"></a></p>
+<h2>Invoices</h2>
+<p><a name="retrieving-invoices"></a></p>
+<h3>Retrieving Invoices</h3>
+<p>You may easily retrieve an array of a billable model's invoices using the <code>invoices</code> method. The <code>invoices</code> method returns a collection of <code>Laravel\Cashier\Invoice</code> instances:</p>
+<pre><code>$invoices = $user-&gt;invoices();</code></pre>
+<p>If you would like to include pending invoices in the results, you may use the <code>invoicesIncludingPending</code> method:</p>
+<pre><code>$invoices = $user-&gt;invoicesIncludingPending();</code></pre>
+<p>You may use the <code>findInvoice</code> method to retrieve a specific invoice by its ID:</p>
+<pre><code>$invoice = $user-&gt;findInvoice($invoiceId);</code></pre>
+<p><a name="displaying-invoice-information"></a></p>
+<h4>Displaying Invoice Information</h4>
+<p>When listing the invoices for the customer, you may use the invoice's methods to display the relevant invoice information. For example, you may wish to list every invoice in a table, allowing the user to easily download any of them:</p>
+<pre><code>&lt;table&gt;
+    @foreach ($invoices as $invoice)
+        &lt;tr&gt;
+            &lt;td&gt;{{ $invoice-&gt;date()-&gt;toFormattedDateString() }}&lt;/td&gt;
+            &lt;td&gt;{{ $invoice-&gt;total() }}&lt;/td&gt;
+            &lt;td&gt;&lt;a href="/user/invoice/{{ $invoice-&gt;id }}"&gt;Download&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    @endforeach
+&lt;/table&gt;</code></pre>
+<p><a name="generating-invoice-pdfs"></a></p>
+<h3>Generating Invoice PDFs</h3>
+<p>From within a route or controller, you may use the <code>downloadInvoice</code> method to generate a PDF download of a given invoice. This method will automatically generate the proper HTTP response needed to download the invoice:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/user/invoice/{invoice}', function (Request $request, $invoiceId) {
+    return $request-&gt;user()-&gt;downloadInvoice($invoiceId, [
+        'vendor' =&gt; 'Your Company',
+        'product' =&gt; 'Your Product',
+    ]);
+});</code></pre>
+<p>The <code>downloadInvoice</code> method also allows for a custom filename via its third argument. This filename will automatically be suffixed with <code>.pdf</code> for you:</p>
+<pre><code>return $request-&gt;user()-&gt;downloadInvoice($invoiceId, [
+    'vendor' =&gt; 'Your Company',
+    'product' =&gt; 'Your Product',
+], 'my-invoice');</code></pre>
+<p><a name="handling-failed-payments"></a></p>
+<h2>Handling Failed Payments</h2>
+<p>Sometimes, payments for subscriptions or single charges can fail. When this happens, Cashier will throw an <code>Laravel\Cashier\Exceptions\IncompletePayment</code> exception that informs you that this happened. After catching this exception, you have two options on how to proceed.</p>
+<p>First, you could redirect your customer to the dedicated payment confirmation page which is included with Cashier. This page already has an associated named route that is registered via Cashier's service provider. So, you may catch the <code>IncompletePayment</code> exception and redirect the user to the payment confirmation page:</p>
+<pre><code>use Laravel\Cashier\Exceptions\IncompletePayment;
+
+try {
+    $subscription = $user-&gt;newSubscription('default', $planId)
+                            -&gt;create($paymentMethod);
+} catch (IncompletePayment $exception) {
+    return redirect()-&gt;route(
+        'cashier.payment',
+        [$exception-&gt;payment-&gt;id, 'redirect' =&gt; route('home')]
+    );
+}</code></pre>
+<p>On the payment confirmation page, the customer will be prompted to enter their credit card information again and perform any additional actions required by Stripe, such as &quot;3D Secure&quot; confirmation. After confirming their payment, the user will be redirected to the URL provided by the <code>redirect</code> parameter specified above. Upon redirection, <code>message</code> (string) and <code>success</code> (integer) query string variables will be added to the URL.</p>
+<p>Alternatively, you could allow Stripe to handle the payment confirmation for you. In this case, instead of redirecting to the payment confirmation page, you may <a href="https://dashboard.stripe.com/account/billing/automatic">setup Stripe's automatic billing emails</a> in your Stripe dashboard. However, if an <code>IncompletePayment</code> exception is caught, you should still inform the user they will receive an email with further payment confirmation instructions.</p>
+<p>Payment exceptions may be thrown for the following methods: <code>charge</code>, <code>invoiceFor</code>, and <code>invoice</code> on models using the <code>Billable</code> trait. When interacting with subscriptions, the <code>create</code> method on the <code>SubscriptionBuilder</code>, and the <code>incrementAndInvoice</code> and <code>swapAndInvoice</code> methods on the <code>Subscription</code> model may throw incomplete payment exceptions.</p>
+<p>Determining if an existing subscription has an incomplete payment may be accomplished using the <code>hasIncompletePayment</code> method on the billable model or a subscription instance:</p>
+<pre><code>if ($user-&gt;hasIncompletePayment('default')) {
+    //
+}
+
+if ($user-&gt;subscription('default')-&gt;hasIncompletePayment()) {
+    //
+}</code></pre>
+<p>There are currently two types of payment exceptions which extend <code>IncompletePayment</code>. You can catch these separately if needed so that you can customize the user experience:</p>
+<div class="content-list">
+<ul>
+<li><code>Laravel\Cashier\Exceptions\PaymentActionRequired</code>: this exception indicates that Stripe requires extra verification in order to confirm and process a payment.</li>
+<li><code>Laravel\Cashier\Exceptions\PaymentFailure</code>: this exception indicates that a payment failed for various other reasons, such as being out of available funds.</li>
+</ul>
+</div>
+<p><a name="strong-customer-authentication"></a></p>
+<h2>Strong Customer Authentication</h2>
+<p>If your business is based in Europe you will need to abide by the EU's Strong Customer Authentication (SCA) regulations. These regulations were imposed in September 2019 by the European Union to prevent payment fraud. Luckily, Stripe and Cashier are prepared for building SCA compliant applications.</p>
+<blockquote>
+<p>{note} Before getting started, review <a href="https://stripe.com/guides/strong-customer-authentication">Stripe's guide on PSD2 and SCA</a> as well as their <a href="https://stripe.com/docs/strong-customer-authentication">documentation on the new SCA APIs</a>.</p>
+</blockquote>
+<p><a name="payments-requiring-additional-confirmation"></a></p>
+<h3>Payments Requiring Additional Confirmation</h3>
+<p>SCA regulations often require extra verification in order to confirm and process a payment. When this happens, Cashier will throw a <code>Laravel\Cashier\Exceptions\PaymentActionRequired</code> exception that informs you that extra verification is needed. More information on how to handle these exceptions be found can be found in the documentation on <a href="#handling-failed-payments">handling failed payments</a>.</p>
+<p><a name="incomplete-and-past-due-state"></a></p>
+<h4>Incomplete and Past Due State</h4>
+<p>When a payment needs additional confirmation, the subscription will remain in an <code>incomplete</code> or <code>past_due</code> state as indicated by its <code>stripe_status</code> database column. Cashier will automatically activate the customer's subscription as soon as payment confirmation is complete and your application is notified by Stripe via webhook of its completion.</p>
+<p>For more information on <code>incomplete</code> and <code>past_due</code> states, please refer to <a href="#incomplete-and-past-due-status">our additional documentation on these states</a>.</p>
+<p><a name="off-session-payment-notifications"></a></p>
+<h3>Off-Session Payment Notifications</h3>
+<p>Since SCA regulations require customers to occasionally verify their payment details even while their subscription is active, Cashier can send a notification to the customer when off-session payment confirmation is required. For example, this may occur when a subscription is renewing. Cashier's payment notification can be enabled by setting the <code>CASHIER_PAYMENT_NOTIFICATION</code> environment variable to a notification class. By default, this notification is disabled. Of course, Cashier includes a notification class you may use for this purpose, but you are free to provide your own notification class if desired:</p>
+<pre><code>CASHIER_PAYMENT_NOTIFICATION=Laravel\Cashier\Notifications\ConfirmPayment</code></pre>
+<p>To ensure that off-session payment confirmation notifications are delivered, verify that <a href="#handling-stripe-webhooks">Stripe webhooks are configured</a> for your application and the <code>invoice.payment_action_required</code> webhook is enabled in your Stripe dashboard. In addition, your <code>Billable</code> model should also use Laravel's <code>Illuminate\Notifications\Notifiable</code> trait.</p>
+<blockquote>
+<p>{note} Notifications will be sent even when customers are manually making a payment that requires additional confirmation. Unfortunately, there is no way for Stripe to know that the payment was done manually or &quot;off-session&quot;. But, a customer will simply see a &quot;Payment Successful&quot; message if they visit the payment page after already confirming their payment. The customer will not be allowed to accidentally confirm the same payment twice and incur an accidental second charge.</p>
+</blockquote>
+<p><a name="stripe-sdk"></a></p>
+<h2>Stripe SDK</h2>
+<p>Many of Cashier's objects are wrappers around Stripe SDK objects. If you would like to interact with the Stripe objects directly, you may conveniently retrieve them using the <code>asStripe</code> method:</p>
+<pre><code>$stripeSubscription = $subscription-&gt;asStripeSubscription();
+
+$stripeSubscription-&gt;application_fee_percent = 5;
+
+$stripeSubscription-&gt;save();</code></pre>
+<p>You may also use the <code>updateStripeSubscription</code> method to update a Stripe subscription directly:</p>
+<pre><code>$subscription-&gt;updateStripeSubscription(['application_fee_percent' =&gt; 5]);</code></pre>
+<p><a name="testing"></a></p>
+<h2>Testing</h2>
+<p>When testing an application that uses Cashier, you may mock the actual HTTP requests to the Stripe API; however, this requires you to partially re-implement Cashier's own behavior. Therefore, we recommend allowing your tests to hit the actual Stripe API. While this is slower, it provides more confidence that your application is working as expected and any slow tests may be placed within their own PHPUnit testing group.</p>
+<p>When testing, remember that Cashier itself already has a great test suite, so you should only focus on testing the subscription and payment flow of your own application and not every underlying Cashier behavior.</p>
+<p>To get started, add the <strong>testing</strong> version of your Stripe secret to your <code>phpunit.xml</code> file:</p>
+<pre><code>&lt;env name="STRIPE_SECRET" value="sk_test_&lt;your-key&gt;"/&gt;</code></pre>
+<p>Now, whenever you interact with Cashier while testing, it will send actual API requests to your Stripe testing environment. For convenience, you should pre-fill your Stripe testing account with subscriptions / plans that you may use during testing.</p>
+<blockquote>
+<p>{tip} In order to test a variety of billing scenarios, such as credit card denials and failures, you may use the vast range of <a href="https://stripe.com/docs/testing">testing card numbers and tokens</a> provided by Stripe.</p>
+</blockquote>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 226);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

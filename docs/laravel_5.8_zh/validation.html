@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的表单验证机制详解 - 开发帮助文档</title> 
+    <meta name="keyword" content="validation"> 
+    <meta name="description" content="validation"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的表单验证机制详解</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#validation-quickstart">快速验证</a>
+<ul>
+<li><a href="#quick-defining-the-routes">定义路由</a></li>
+<li><a href="#quick-creating-the-controller">创建控制器</a></li>
+<li><a href="#quick-writing-the-validation-logic">编写验证逻辑</a></li>
+<li><a href="#quick-displaying-the-validation-errors">显示验证错误</a></li>
+<li><a href="#a-note-on-optional-fields">可选字段上的注意事项</a></li>
+</ul></li>
+<li><a href="#form-request-validation">表单请求验证</a>
+<ul>
+<li><a href="#creating-form-requests">创建表单请求</a></li>
+<li><a href="#authorizing-form-requests">授权表单请求</a></li>
+<li><a href="#customizing-the-error-messages">自定义错误消息</a></li>
+</ul></li>
+<li><a href="#manually-creating-validators">手动创建验证器</a>
+<ul>
+<li><a href="#automatic-redirection">自动重定向</a></li>
+<li><a href="#named-error-bags">命名错误包</a></li>
+<li><a href="#after-validation-hook">验证后钩子</a></li>
+</ul></li>
+<li><a href="#working-with-error-messages">处理错误消息</a>
+<ul>
+<li><a href="#custom-error-messages">自定义错误消息</a></li>
+</ul></li>
+<li><a href="#available-validation-rules">可用的验证规则</a></li>
+<li><a href="#conditionally-adding-rules">按条件增加规则</a></li>
+<li><a href="#validating-arrays">验证数组</a></li>
+<li><a href="#custom-validation-rules">自定义验证规则</a>
+<ul>
+<li><a href="#using-rule-objects">使用规则对象</a></li>
+<li><a href="#using-extensions">使用扩展</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>Laravel 提供了几种不同的方法来验证传入应用程序的数据。默认情况下，Laravel 的控制器基类使用 <code>ValidatesRequests</code> Trait，它提供了一种方便的方法使用各种强大的验证规则来验证传入的 HTTP 请求。</p>
+<p><a name="validation-quickstart"></a></p>
+<h2>快速验证</h2>
+<p>为了解 Laravel 强大的验证功能，我们先来看看一个完整的验证表单并返回错误消息的示例。</p>
+<p><a name="quick-defining-the-routes"></a></p>
+<h3>定义路由</h3>
+<p>首先，假设我们在 <code>routes/web.php</code> 文件中定义了以下路由：</p>
+<pre><code>Route::get('post/create', 'PostController@create');
+
+Route::post('post', 'PostController@store');</code></pre>
+<p><code>GET</code> 路由用来显示一个供用户创建新的博客文章的表单，<code>POST</code> 路由则是会将新的博客文章保存到数据库。</p>
+<p><a name="quick-creating-the-controller"></a></p>
+<h3>创建控制器</h3>
+<p>下一步，我们来看一个处理这些路由的控制器。我们将 <code>store</code> 方法置空：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    /**
+     * 显示创建博客文章的表单。
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    /**
+     * 保存一个新的博客文章。
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // 验证以及保存博客文章...
+    }
+}</code></pre>
+<p><a name="quick-writing-the-validation-logic"></a></p>
+<h3>编写验证逻辑</h3>
+<p>现在我们准备开始在 <code>store</code> 方法中编写逻辑来验证新的博客文章。为此，我们将使用 <code>Illuminate\Http\Request</code> 对象提供的 <code>validate</code> 方法 。如果验证通过，你的代码就可以正常的运行。但是如果验证失败，就会抛出异常，并自动将对应的错误响应返回给用户。在典型的 HTTP 请求的情况下，会生成一个重定向响应，而对于 AJAX 请求则会发送 JSON 响应。</p>
+<p>让我们接着回到 <code>store</code> 方法来深入理解 <code>validate</code> 方法：</p>
+<pre><code>/**
+ * 保存一篇新的博客文章。
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+public function store(Request $request)
+{
+    $this-&gt;validate($request, [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ]);
+
+    // 文章内容是符合规则的，存入数据库
+}</code></pre>
+<p>如你所见，我们将所需的验证规则传递至 <code>validate</code> 方法中。另外再提醒一次，如果验证失败，会自动生成一个对应的响应。如果验证通过，那我们的控制器将会继续正常运行。</p>
+<h4>在第一次验证失败后停止</h4>
+<p>有时，你希望在某个属性第一次验证失败后停止运行验证规则。为了达到这个目的，附加 <code>bail</code> 规则到该属性：</p>
+<pre><code>$this-&gt;validate($request, [
+    'title' =&gt; 'bail|required|unique:posts|max:255',
+    'body' =&gt; 'required',
+]);</code></pre>
+<p>在这个例子里，如果 <code>title</code> 字段没有通过 <code>unique</code>，那么不会检查 <code>max</code> 规则。规则会按照分配的顺序来验证。</p>
+<h4>关于数组数据的注意事项</h4>
+<p>如果你的 HTTP 请求包含一个 「嵌套」 参数（即数组），那你可以在验证规则中通过 「点」 语法来指定这些参数。</p>
+<pre><code>$this-&gt;validate($request, [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'author.name' =&gt; 'required',
+    'author.description' =&gt; 'required',
+]);</code></pre>
+<p><a name="quick-displaying-the-validation-errors"></a></p>
+<h3>显示验证错误</h3>
+<p>如果传入的请求参数未通过给定的验证规则呢？正如前面所提到的，Laravel 会自动把用户重定向到先前的位置。另外，所有的验证错误信息会被自动 <a href="/docs/laravel_5.8_zh/session.html#flash-data">闪存至 session</a>。</p>
+<p>重申一次，我们不必在 <code>GET</code> 路由中将错误消息显式绑定到视图。因为 Lavarel 会检查在 Session 数据中的错误信息，并自动将其绑定到视图（如果存在）。而其中的变量 <code>$errors</code> 是 <code>Illuminate\Support\MessageBag</code> 的一个实例。要获取关于这个对象的更多信息，请 <a href="#working-with-error-messages">查阅这个文档</a>。</p>
+<blockquote>
+<p>{tip} <code>$errors</code> 变量被由Web中间件组提供的 <code>Illuminate\View\Middleware\ShareErrorsFromSession</code> 中间件绑定到视图。<strong>当这个中间件被应用后，在你的视图中就可以获取到 <code>$errors</code> 变量</strong>，可以使一直假定 <code>$errors</code> 变量存在并且可以安全地使用。</p>
+</blockquote>
+<p>所以，在我们的例子中，当验证失败的时候，用户将会被重定向到控制器的 <code>create</code> 方法，让我们在视图中显示错误信息：</p>
+<pre><code>&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;h1&gt;创建文章&lt;/h1&gt;
+
+@if (count($errors) &gt; 0)
+    &lt;div class="alert alert-danger"&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+
+&lt;!-- 创建文章表单 --&gt;</code></pre>
+<p><a name="a-note-on-optional-fields"></a></p>
+<h3>可选字段上的注意事项</h3>
+<p>默认情况下，Laravel 在你应用的全局中间件堆栈中包含在 <code>App\Http\Kernel</code> 类中的 <code>TrimStrings</code> 和 <code>ConvertEmptyStringsToNull</code> 中间件。因此，如果你不希望验证程序将 <code>null</code> 值视为无效的，那就将「可选」的请求字段标记为 <code>nullable</code>。</p>
+<pre><code>$this-&gt;validate($request, [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+    'publish_at' =&gt; 'nullable|date',
+]);</code></pre>
+<p>在这个例子里，我们指定 <code>publish_at</code> 字段可以为 <code>null</code> 或者一个有效的日期格式。如果 <code>nullable</code> 的修饰词没有被添加到规则定义中，验证器会认为 <code>null</code> 是一个无效的日期格式。</p>
+<p><a name="quick-ajax-requests-and-validation"></a></p>
+<h4>AJAX 请求 &amp; 验证</h4>
+<p>在这个例子中，我们使用传统的表单将数据发送到应用程序。但实际情况中，很多程序都会使用 AJAX 来发送请求。当我们对 AJAX 的请求中使用 <code>validate</code> 方法时，Laravel 并不会生成一个重定向响应，而是会生成一个包含所有验证错误信息的 JSON 响应。这个 JSON 响应会包含一个 HTTP 状态码 422 被发送出去。</p>
+<p><a name="form-request-validation"></a></p>
+<h2>表单请求验证</h2>
+<p><a name="creating-form-requests"></a></p>
+<h3>创建表单请求</h3>
+<p>面对更复杂的验证情境中，你可以创建一个「表单请求」来处理更为复杂的逻辑。表单请求是包含验证逻辑的自定义请求类。可使用 Artisan 命令 <code>make:request</code> 来创建表单请求类：</p>
+<pre><code>php artisan make:request StoreBlogPost</code></pre>
+<p>新生成的类保存在 <code>app/Http/Requests</code> 目录下。如果这个目录不存在，运行 <code>make:request</code> 命令时它会被创建出来。让我们添加一些验证规则到 <code>rules</code> 方法中：</p>
+<pre><code>/**
+ * 获取适用于请求的验证规则。
+ *
+ * @return array
+ */
+public function rules()
+{
+    return [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ];
+}</code></pre>
+<p>验证规则是如何运行的呢？你所需要做的就是在控制器方法中类型提示传入的请求。在调用控制器方法之前验证传入的表单请求，这意味着你不需要在控制器中写任何验证逻辑：</p>
+<pre><code>/**
+ * 保存传入的博客文章。
+ *
+ * @param  StoreBlogPost  $request
+ * @return Response
+ */
+public function store(StoreBlogPost $request)
+{
+    // The incoming request is valid...
+}</code></pre>
+<p>如果验证失败，就会生成一个让用户返回到先前的位置的重定向响应。这些错误也会被闪存到 Session 中，以便这些错误都可以在页面中显示出来。如果传入的请求是 AJAX，会向用户返回具有 422 状态代码和验证错误信息的 JSON 数据的 HTTP 响应。</p>
+<h4>添加表单请求后钩子</h4>
+<p>如果你想在表单请求「之后」添加钩子，可以使用 <code>withValidator</code> 方法。这个方法接收一个完整的验证构造器，允许你在验证结果返回之前调用任何方法：</p>
+<pre><code>/**
+ * 配置验证器实例。
+ *
+ * @param  \Illuminate\Validation\Validator  $validator
+ * @return void
+ */
+public function withValidator($validator)
+{
+    $validator-&gt;after(function ($validator) {
+        if ($this-&gt;somethingElseIsInvalid()) {
+            $validator-&gt;errors()-&gt;add('field', 'Something is wrong with this field!');
+        }
+    });
+}</code></pre>
+<p><a name="authorizing-form-requests"></a></p>
+<h3>授权表单请求</h3>
+<p>表单请求类内也包含了 <code>authorize</code> 方法。在这个方法中，你可以检查经过身份验证的用户确定其是否具有更新给定资源的权限。比方说，你可以判断用户是否拥有更新文章评论的权限：</p>
+<pre><code>/**
+ * 判断用户是否有权限做出此请求。
+ *
+ * @return bool
+ */
+public function authorize()
+{
+    $comment = Comment::find($this-&gt;route('comment'));
+
+    return $comment &amp;&amp; $this-&gt;user()-&gt;can('update', $comment);
+}</code></pre>
+<p>由于所有的表单请求都是继承了 Laravel 中的请求基类，所以我们可以使用 <code>user</code> 方法去获取当前认证登录的用户。同时请注意上述例子中对 <code>route</code> 方法的调用。这个方法允许你在被调用的路由上获取其定义的 URI 参数，譬如下面例子中的 <code>{comment}</code> 参数：</p>
+<pre><code>Route::post('comment/{comment}');</code></pre>
+<p>如果 <code>authorize</code> 方法返回 <code>false</code>，则会自动返回一个包含 403 状态码的 HTTP 响应，也不会运行控制器的方法。</p>
+<p>如果你打算在应用程序的其它部分也能处理授权逻辑，只需从 <code>authorize</code> 方法返回 <code>true</code> ：</p>
+<pre><code>/**
+ * 判断用户是否有权限进行此请求。
+ *
+ * @return bool
+ */
+public function authorize()
+{
+    return true;
+}</code></pre>
+<p><a name="customizing-the-error-messages"></a></p>
+<h3>自定义错误消息</h3>
+<p>你可以通过重写表单请求的 <code>messages</code> 方法来自定义错误消息。此方法应该如下所示返回属性/规则对数组及其对应错误消息：</p>
+<pre><code>/**
+ * 获取已定义的验证规则的错误消息。
+ *
+ * @return array
+ */
+public function messages()
+{
+    return [
+        'title.required' =&gt; 'A title is required',
+        'body.required'  =&gt; 'A message is required',
+    ];
+}</code></pre>
+<p><a name="manually-creating-validators"></a></p>
+<h2>手动创建验证器</h2>
+<p>如果你不想要使用请求上使用 <code>validate</code> 方法，你可以通过 <code>validator</code> <a href="/docs/laravel_5.8_zh/facades.html">Facade</a> 手动创建一个验证器实例。用 Facade 上的 <code>make</code> 方法生成一个新的验证器实例：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Validator;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    /**
+     * 保存一篇新的博客文章。
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request-&gt;all(), [
+            'title' =&gt; 'required|unique:posts|max:255',
+            'body' =&gt; 'required',
+        ]);
+
+        if ($validator-&gt;fails()) {
+            return redirect('post/create')
+                        -&gt;withErrors($validator)
+                        -&gt;withInput();
+        }
+
+        // 保存文章
+    }
+}</code></pre>
+<p>传给 <code>make</code> 方法的第一个参数是要验证的数据。第二个参数则是该数据的验证规则。</p>
+<p>如果请求没有通过验证，则可以使用 <code>withErrors</code> 方法把错误消息闪存到 Session。使用这个方法进行重定向之后，<code>$errors</code> 变量会自动与视图中共享，你可以将这些消息显示给用户。<code>withErrors</code> 方法接收验证器、<code>MessageBag</code> 或 PHP <code>array</code>。</p>
+<p><a name="automatic-redirection"></a></p>
+<h3>自动重定向</h3>
+<p>如果想手动创建验证器实例，又想利用请求中 <code>validates</code> 方法提供的自动重定向，那么你可以在现有的验证器实例上调用 <code>validate</code> 方法。如果验证失败，用户会自动重定向，如果是 AJAX 请求，将会返回 JSON 格式的响应：</p>
+<pre><code>Validator::make($request-&gt;all(), [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+])-&gt;validate();</code></pre>
+<p><a name="named-error-bags"></a></p>
+<h3>命名错误包</h3>
+<p>如果你一个页面中有多个表单，你可以命名错误信息的 <code>MessageBag</code> 来检索特定表单的错误消息。只需给 <code>withErrors</code> 方法传递一个名字作为第二个参数：</p>
+<pre><code>return redirect('register')
+            -&gt;withErrors($validator, 'login');</code></pre>
+<p>然后你能从 <code>$errors</code> 变量中获取命名的 <code>MessageBag</code> 实例：</p>
+<pre><code>{{ $errors-&gt;login-&gt;first('email') }}</code></pre>
+<p><a name="after-validation-hook"></a></p>
+<h3>验证后钩子</h3>
+<p>验证器还允许你添加在验证完成之后运行的回调函数。以便你进行进一步的验证，甚至是在消息集合中添加更多的错误消息。使用它只需在验证实例上使用 <code>after</code> 方法：</p>
+<pre><code>$validator = Validator::make(...);
+
+$validator-&gt;after(function ($validator) {
+    if ($this-&gt;somethingElseIsInvalid()) {
+        $validator-&gt;errors()-&gt;add('field', 'Something is wrong with this field!');
+    }
+});
+
+if ($validator-&gt;fails()) {
+    //
+}</code></pre>
+<p><a name="working-with-error-messages"></a></p>
+<h2>处理错误消息</h2>
+<p>在 <code>Validator</code> 实例上调用 <code>errors</code> 方法后，会得到一个 <code>Illuminate\Support\MessageBag</code> 实例，该实例具有各种方便的处理错误消息的方法。<code>$errors</code> 变量是自动提供给所有视图的 <code>MessageBag</code> 类的一个实例。</p>
+<h4>查看特定字段的第一个错误消息</h4>
+<p>如果要查看特定字段的第一个错误消息，可以使用 <code>first</code> 方法：</p>
+<pre><code>$errors = $validator-&gt;errors();
+
+echo $errors-&gt;first('email');</code></pre>
+<h4>查看特定字段的所有错误消息</h4>
+<p>如果你想以数组的形式获取指定字段的所有错误消息，则可以使用 <code>get</code> 方法：</p>
+<pre><code>foreach ($errors-&gt;get('email') as $message) {
+    //
+}</code></pre>
+<p>如果要验证表单的数组字段，你可以使用 <code>*</code> 来获取每个数组元素的所有错误消息：</p>
+<pre><code>foreach ($errors-&gt;get('attachments.*') as $message) {
+    //
+}</code></pre>
+<h4>查看所有字段的错误消息</h4>
+<p>如果你想要得到所有字段的错误消息，可以使用 <code>all</code> 方法：</p>
+<pre><code>foreach ($errors-&gt;all() as $message) {
+    //
+}</code></pre>
+<h4>判断特定字段是否含有错误消息</h4>
+<p>可以使用 <code>has</code> 方法来检测一个给定的字段是否存在错误消息：</p>
+<pre><code>if ($errors-&gt;has('email')) {
+    //
+}</code></pre>
+<p><a name="custom-error-messages"></a></p>
+<h3>自定义错误消息</h3>
+<p>如果有需要的话，你也可以自定义错误消息取代默认值进行验证。有几种方法可以指定自定义消息。首先，你可以将自定义消息作为第三个参数传递给 <code>Validator::make</code> 方法：</p>
+<pre><code>$messages = [
+    'required' =&gt; 'The :attribute field is required.',
+];
+
+$validator = Validator::make($input, $rules, $messages);</code></pre>
+<p>在这个例子中，<code>:attribute</code> 占位符会被验证字段的实际名称取代。除此之外，你还可以在验证消息中使用其他占位符。例如：</p>
+<pre><code>$messages = [
+    'same'    =&gt; 'The :attribute and :other must match.',
+    'size'    =&gt; 'The :attribute must be exactly :size.',
+    'between' =&gt; 'The :attribute must be between :min - :max.',
+    'in'      =&gt; 'The :attribute must be one of the following types: :values',
+];</code></pre>
+<h4>为给定属性指定自定义消息</h4>
+<p>有时候你可能只想为特定的字段自定义错误消息。只需在属性名称后使用「点」语法来指定验证的规则即可：</p>
+<pre><code>$messages = [
+    'email.required' =&gt; 'We need to know your e-mail address!',
+];</code></pre>
+<p><a name="localization"></a></p>
+<h4>在语言文件中指定自定义消息</h4>
+<p>现实中大多数情况下，我们可能不仅仅只是将自定义消息传递给 <code>Validator</code>，而是想要会使用不同的语言文件来指定自定义消息。实现它需要在 <code>resources/lang/xx/validation.php</code> 语言文件中将定制的消息添加到 <code>custom</code> 数组。</p>
+<pre><code>'custom' =&gt; [
+    'email' =&gt; [
+        'required' =&gt; 'We need to know your e-mail address!',
+    ],
+],</code></pre>
+<h4>在语言文件中指定自定义属性</h4>
+<p>如果要使用自定义属性名称替换验证消息的 <code>:attribute</code> 部分，就在 <code>resources/lang/xx/validation.php</code> 语言文件的 <code>attributes</code> 数组中指定自定义名称：</p>
+<pre><code>'attributes' =&gt; [
+    'email' =&gt; 'email address',
+],</code></pre>
+<p><a name="available-validation-rules"></a></p>
+<h2>可用的验证规则</h2>
+<p>以下是所有可用的验证规则及其功能的清单：</p>
+<style>
+    .collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    .collection-method-list a {
+        display: block;
+    }
+</style>
+<div class="collection-method-list">
+<p><a href="#rule-accepted">Accepted</a>
+<a href="#rule-active-url">Active URL</a>
+<a href="#rule-after">After (Date)</a>
+<a href="#rule-after-or-equal">After Or Equal (Date)</a>
+<a href="#rule-alpha">Alpha</a>
+<a href="#rule-alpha-dash">Alpha Dash</a>
+<a href="#rule-alpha-num">Alpha Numeric</a>
+<a href="#rule-array">Array</a>
+<a href="#rule-before">Before (Date)</a>
+<a href="#rule-before-or-equal">Before Or Equal (Date)</a>
+<a href="#rule-between">Between</a>
+<a href="#rule-boolean">Boolean</a>
+<a href="#rule-confirmed">Confirmed</a>
+<a href="#rule-date">Date</a>
+<a href="#rule-date-equals">Date Equals</a>
+<a href="#rule-date-format">Date Format</a>
+<a href="#rule-different">Different</a>
+<a href="#rule-digits">Digits</a>
+<a href="#rule-digits-between">Digits Between</a>
+<a href="#rule-dimensions">Dimensions (Image Files)</a>
+<a href="#rule-distinct">Distinct</a>
+<a href="#rule-email">E-Mail</a>
+<a href="#rule-exists">Exists (Database)</a>
+<a href="#rule-file">File</a>
+<a href="#rule-filled">Filled</a>
+<a href="#rule-image">Image (File)</a>
+<a href="#rule-in">In</a>
+<a href="#rule-in-array">In Array</a>
+<a href="#rule-integer">Integer</a>
+<a href="#rule-ip">IP Address</a>
+<a href="#rule-json">JSON</a>
+<a href="#rule-max">Max</a>
+<a href="#rule-mimetypes">MIME Types</a>
+<a href="#rule-mimes">MIME Type By File Extension</a>
+<a href="#rule-min">Min</a>
+<a href="#rule-nullable">Nullable</a>
+<a href="#rule-not-in">Not In</a>
+<a href="#rule-numeric">Numeric</a>
+<a href="#rule-present">Present</a>
+<a href="#rule-regex">Regular Expression</a>
+<a href="#rule-required">Required</a>
+<a href="#rule-required-if">Required If</a>
+<a href="#rule-required-unless">Required Unless</a>
+<a href="#rule-required-with">Required With</a>
+<a href="#rule-required-with-all">Required With All</a>
+<a href="#rule-required-without">Required Without</a>
+<a href="#rule-required-without-all">Required Without All</a>
+<a href="#rule-same">Same</a>
+<a href="#rule-size">Size</a>
+<a href="#rule-string">String</a>
+<a href="#rule-timezone">Timezone</a>
+<a href="#rule-unique">Unique (Database)</a>
+<a href="#rule-url">URL</a></p>
+</div>
+<p><a name="rule-accepted"></a></p>
+<h4>accepted</h4>
+<p>验证的字段必须为 <em>yes</em>、 <em>on</em>、 <em>1</em>、或 <em>true</em>。这在确认「服务条款」是否同意时相当有用。</p>
+<p><a name="rule-active-url"></a></p>
+<h4>active_url</h4>
+<p>相当于使用了 PHP 函数 <code>dns_get_record</code>，验证的字段必须具有有效的 A 或 AAAA 记录。</p>
+<p><a name="rule-after"></a></p>
+<h4>after:<em>date</em></h4>
+<p>验证的字段必须是给定日期后的值。这个日期将会通过 PHP 函数 <code>strtotime</code> 来验证。</p>
+<pre><code>'start_date' =&gt; 'required|date|after:tomorrow'</code></pre>
+<p>你也可以指定其它的字段来比较日期：</p>
+<pre><code>'finish_date' =&gt; 'required|date|after:start_date'</code></pre>
+<p><a name="rule-after-or-equal"></a></p>
+<h4>after_or_equal:<em>date</em></h4>
+<p>验证的字段必须等于给定日期之后的值。更多信息请参见 <a href="#rule-after">after</a> 规则。</p>
+<p><a name="rule-alpha"></a></p>
+<h4>alpha</h4>
+<p>验证的字段必须完全是字母的字符。</p>
+<p><a name="rule-alpha-dash"></a></p>
+<h4>alpha_dash</h4>
+<p>验证的字段可能具有字母、数字、破折号（ - ）以及下划线（ _ ）。</p>
+<p><a name="rule-alpha-num"></a></p>
+<h4>alpha_num</h4>
+<p>验证的字段必须完全是字母、数字。</p>
+<p><a name="rule-array"></a></p>
+<h4>array</h4>
+<p>验证的字段必须是一个 PHP 数组。</p>
+<p><a name="rule-before"></a></p>
+<h4>before:<em>date</em></h4>
+<p>验证的字段必须是给定日期之前的值。这个日期将会通过 PHP 函数 <code>strtotime</code> 来验证。</p>
+<p><a name="rule-before-or-equal"></a></p>
+<h4>before_or_equal:<em>date</em></h4>
+<p>验证的字段必须是给定日期之前或之前的值。这个日期将会使用 PHP 函数 <code>strtotime</code> 来验证。</p>
+<p><a name="rule-between"></a></p>
+<h4>between:<em>min</em>,<em>max</em></h4>
+<p>验证的字段的大小必须在给定的 <em>min</em> 和 <em>max</em> 之间。字符串、数字、数组或是文件大小的计算方式都用 <a href="#rule-size"><code>size</code></a> 方法进行评估。</p>
+<p><a name="rule-boolean"></a></p>
+<h4>boolean</h4>
+<p>验证的字段必须能够被转换为布尔值。可接受的参数为 <code>true</code>、<code>false</code>、<code>1</code>、<code>0</code>、<code>"1"</code> 以及 <code>"0"</code>。</p>
+<p><a name="rule-confirmed"></a></p>
+<h4>confirmed</h4>
+<p>验证的字段必须和 <code>foo_confirmation</code> 的字段值一致。例如，如果要验证的字段是 <code>password</code>，输入中必须存在匹配的 <code>password_confirmation</code> 字段。</p>
+<p><a name="rule-date"></a></p>
+<h4>date</h4>
+<p>验证的字段值必须是通过 PHP 函数 <code>strtotime</code> 校验的有效日期。</p>
+<p><a name="rule-date-equals"></a></p>
+<h4>date_equals:<em>date</em></h4>
+<p>验证的字段必须等于给定的日期。该日期会被传递到 PHP 函数 <code>strtotime</code>。</p>
+<p><a name="rule-date-format"></a></p>
+<h4>date_format:<em>format</em></h4>
+<p>验证的字段必须与给定的格式相匹配。你应该只使用 <code>date</code> 或 <code>date_format</code> <strong>其中一个</strong>用于验证，而不应该同时使用两者。</p>
+<p><a name="rule-different"></a></p>
+<h4>different:<em>field</em></h4>
+<p>验证的字段值必须与字段 (<em>field</em>) 的值不同。</p>
+<p><a name="rule-digits"></a></p>
+<h4>digits:<em>value</em></h4>
+<p>验证的字段必须是数字，并且必须具有确切的值。</p>
+<p><a name="rule-digits-between"></a></p>
+<h4>digits_between:<em>min</em>,<em>max</em></h4>
+<p>验证的字段的长度必须在给定的 <em>min</em> 和 <em>max</em> 之间。</p>
+<p><a name="rule-dimensions"></a></p>
+<h4>dimensions</h4>
+<p>验证的文件必须是图片并且图片比例必须符合规则：</p>
+<pre><code>'avatar' =&gt; 'dimensions:min_width=100,min_height=200'</code></pre>
+<p>可用的规则为： <em>min_width</em>、 <em>max_width</em> 、 <em>min_height</em> 、 <em>max_height</em> 、 <em>width</em> 、 <em>height</em> 、 <em>ratio</em>。</p>
+<p>比例应该使用宽度除以高度的方式来约束。这样可以通过 3/2 这样的语句或像 1.5 这样的浮点的约束：</p>
+<pre><code>'avatar' =&gt; 'dimensions:ratio=3/2'</code></pre>
+<p>由于此规则需要多个参数，因此你可以 <code>Rule::dimensions</code> 方法来构造可读性高的规则：</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'avatar' =&gt; [
+        'required',
+        Rule::dimensions()-&gt;maxWidth(1000)-&gt;maxHeight(500)-&gt;ratio(3 / 2),
+    ],
+]);</code></pre>
+<p><a name="rule-distinct"></a></p>
+<h4>distinct</h4>
+<p>验证数组时，指定的字段不能有任何重复值。</p>
+<pre><code>'foo.*.id' =&gt; 'distinct'</code></pre>
+<p><a name="rule-email"></a></p>
+<h4>email</h4>
+<p>验证的字段必须符合 e-mail 地址格式。</p>
+<p><a name="rule-exists"></a></p>
+<h4>exists:<em>table</em>,<em>column</em></h4>
+<p>验证的字段必须存在于给定的数据库表中。</p>
+<h4>Exists 规则的基本使用方法</h4>
+<pre><code>'state' =&gt; 'exists:states'</code></pre>
+<h4>指定自定义字段名称</h4>
+<pre><code>'state' =&gt; 'exists:states,abbreviation'</code></pre>
+<p>如果你需要指定 <code>exists</code> 方法用来查询的数据库。你可以通过使用「点」语法将数据库的名称添加到数据表前面来实现这个目的：</p>
+<pre><code>'email' =&gt; 'exists:connection.staff,email'</code></pre>
+<p>如果要自定义验证规则执行的查询，可以使用 <code>Rule</code> 类来定义规则。在这个例子中，我们使用数组指定验证规则，而不是使用 <code>|</code> 字符来分隔它们：</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::exists('staff')-&gt;where(function ($query) {
+            $query-&gt;where('account_id', 1);
+        }),
+    ],
+]);</code></pre>
+<p><a name="rule-file"></a></p>
+<h4>file</h4>
+<p>验证的字段必须是成功上传的文件。</p>
+<p><a name="rule-filled"></a></p>
+<h4>filled</h4>
+<p>验证的字段在存在时不能为空。</p>
+<p><a name="rule-image"></a></p>
+<h4>image</h4>
+<p>验证的文件必须是一个图像（ jpeg、png、bmp、gif、或 svg ）。</p>
+<p><a name="rule-in"></a></p>
+<h4>in:<em>foo</em>,<em>bar</em>,...</h4>
+<p>验证的字段必须包含在给定的值列表中。因为这个规则通常需要你 <code>implode</code> 一个数组，<code>Rule::in</code> 方法可以用来构造规则：</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'zones' =&gt; [
+        'required',
+        Rule::in(['first-zone', 'second-zone']),
+    ],
+]);</code></pre>
+<p><a name="rule-in-array"></a></p>
+<h4>in_array:<em>anotherfield</em></h4>
+<p>验证的字段必须存在于另一个字段（anotherfield）的值中。</p>
+<p><a name="rule-integer"></a></p>
+<h4>integer</h4>
+<p>验证的字段必须是整数。</p>
+<p><a name="rule-ip"></a></p>
+<h4>ip</h4>
+<p>验证的字段必须是 IP 地址。</p>
+<h4>ipv4</h4>
+<p>验证的字段必须是 IPv4 地址。</p>
+<h4>ipv6</h4>
+<p>验证的字段必须是 IPv6 地址。</p>
+<p><a name="rule-json"></a></p>
+<h4>json</h4>
+<p>验证的字段必须是有效的 JSON 字符串。</p>
+<p><a name="rule-max"></a></p>
+<h4>max:<em>value</em></h4>
+<p>验证中的字段必须小于或等于 <em>value</em>。字符串、数字、数组或是文件大小的计算方式都用 <a href="#rule-size"><code>size</code></a> 方法进行评估。</p>
+<p><a name="rule-mimetypes"></a></p>
+<h4>mimetypes:<em>text/plain</em>,...</h4>
+<p>验证的文件必须与给定 MIME 类型之一匹配：</p>
+<pre><code>'video' =&gt; 'mimetypes:video/avi,video/mpeg,video/quicktime'</code></pre>
+<p>要确定上传文件的 MIME 类型，会读取文件的内容来判断 MIME 类型，这可能与客户端提供的 MIME 类型不同。</p>
+<p><a name="rule-mimes"></a></p>
+<h4>mimes:<em>foo</em>,<em>bar</em>,...</h4>
+<p>验证的文件必须具有与列出的其中一个扩展名相对应的 MIME 类型。</p>
+<h4>MIME 规则基本用法</h4>
+<pre><code>'photo' =&gt; 'mimes:jpeg,bmp,png'</code></pre>
+<p>即使你可能只需要验证指定扩展名，但此规则实际上会验证文件的 MIME 类型，其通过读取文件的内容以猜测它的 MIME 类型。</p>
+<p>这个过程看起来只需要你指定扩展名，但实际上该规则是通过读取文件的内容并判断其 MIME 的类型来验证的。</p>
+<p>可以在以下链接中找到完整的 MIME 类型列表及其相应的扩展名：</p>
+<p><a href="https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types">https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types</a></p>
+<p><a name="rule-min"></a></p>
+<h4>min:<em>value</em></h4>
+<p>验证中的字段必须具有最小值。字符串、数字、数组或是文件大小的计算方式都用 <a href="#rule-size"><code>size</code></a> 方法进行评估。</p>
+<p><a name="rule-nullable"></a></p>
+<h4>nullable</h4>
+<p>验证的字段可以为 <code>null</code>。这在验证基本数据类型时特别有用，例如可以包含空值的字符串和整数。</p>
+<p><a name="rule-not-in"></a></p>
+<h4>not_in:<em>foo</em>,<em>bar</em>,...</h4>
+<p>验证的字段不能包含在给定的值列表中。<code>Rule::notIn</code> 方法可以用来构建规则：</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'toppings' =&gt; [
+        'required',
+        Rule::notIn(['sprinkles', 'cherries']),
+    ],
+]);</code></pre>
+<p><a name="rule-numeric"></a></p>
+<h4>numeric</h4>
+<p>验证的字段必须是数字。</p>
+<p><a name="rule-present"></a></p>
+<h4>present</h4>
+<p>验证的字段必须存在于输入数据中，但可以为空。</p>
+<p><a name="rule-regex"></a></p>
+<h4>regex:<em>pattern</em></h4>
+<p>验证的字段必须与给定的正则表达式匹配。</p>
+<p><strong>注意</strong>： 当使用 <code>regex</code> 规则时，你必须使用数组，而不是使用 <code>|</code> 分隔符，特别是如果正则表达式包含 <code>|</code> 字符。</p>
+<p><a name="rule-required"></a></p>
+<h4>required</h4>
+<p>验证的字段必须存在于输入数据中，而不是空。如果满足以下条件之一，则字段被视为「空」：</p>
+<div class="content-list">
+<ul>
+<li>该值为 <code>null</code>.</li>
+<li>该值为空字符串。</li>
+<li>该值为空数组或空的 <code>可数</code> 对象。</li>
+<li>该值为没有路径的上传文件。</li>
+</ul>
+</div>
+<p><a name="rule-required-if"></a></p>
+<h4>required_if:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>如果指定的其它字段（ <em>anotherfield</em> ）等于任何一个 <em>value</em> 时，被验证的字段必须存在且不为空。</p>
+<p><a name="rule-required-unless"></a></p>
+<h4>required_unless:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>如果指定的其它字段（ <em>anotherfield</em> ）等于任何一个 <em>value</em> 时，被验证的字段不必存在。</p>
+<p><a name="rule-required-with"></a></p>
+<h4>required_with:<em>foo</em>,<em>bar</em>,...</h4>
+<p>只要在指定的其他字段中有任意一个字段存在时，被验证的字段就必须存在并且不能为空。</p>
+<p><a name="rule-required-with-all"></a></p>
+<h4>required_with_all:<em>foo</em>,<em>bar</em>,...</h4>
+<p>只有当所有的其他指定字段全部存在时，被验证的字段才必须存在并且不能为空。</p>
+<p><a name="rule-required-without"></a></p>
+<h4>required_without:<em>foo</em>,<em>bar</em>,...</h4>
+<p>只要在其他指定的字段中有任意一个字段不存在，被验证的字段就必须存在且不为空。</p>
+<p><a name="rule-required-without-all"></a></p>
+<h4>required_without_all:<em>foo</em>,<em>bar</em>,...</h4>
+<p>只有当所有的其他指定的字段都不存在时，被验证的字段才必须存在且不为空。</p>
+<p><a name="rule-same"></a></p>
+<h4>same:<em>field</em></h4>
+<p>给定字段必须与验证的字段匹配。</p>
+<p><a name="rule-size"></a></p>
+<h4>size:<em>value</em></h4>
+<p>验证的字段必须具有与给定值匹配的大小。对于字符串来说，<em>value</em> 对应于字符数。对于数字来说，<em>value</em> 对应于给定的整数值。对于数组来说， <em>size</em> 对应的是数组的 <code>count</code> 值。对文件来说，<em>size</em> 对应的是文件大小（单位 kb ）。</p>
+<p><a name="rule-string"></a></p>
+<h4>string</h4>
+<p>验证的字段必须是字符串。如果要允许该字段的值为 <code>null</code> ，就将 <code>nullable</code> 规则附加到该字段中。</p>
+<p><a name="rule-timezone"></a></p>
+<h4>timezone</h4>
+<p>验证的字段必须是有效的时区标识符，会根据 PHP 函数 <code>timezone_identifiers_list</code> 来判断。</p>
+<p><a name="rule-unique"></a></p>
+<h4>unique:<em>table</em>,<em>column</em>,<em>except</em>,<em>idColumn</em></h4>
+<p>验证的字段在给定的数据库表中必须是唯一的。如果没有指定 <code>column</code>，将会使用字段本身的名称。</p>
+<p><strong>指定自定义字段名称：</strong></p>
+<pre><code>'email' =&gt; 'unique:users,email_address'</code></pre>
+<p><strong>自定义数据库连接</strong></p>
+<p>有时，你可能需要为验证程序创建的数据库查询设置自定义连接。上面的例子中，将 <code>unique：users</code> 设置为验证规则，等于使用默认数据库连接来查询数据库。如果要对其进行修改，请使用「点」语法指定连接和表名：</p>
+<pre><code>'email' =&gt; 'unique:connection.users,email_address'</code></pre>
+<p><strong>强迫 Unique 规则忽略指定 ID：</strong></p>
+<p>如果你想在进行字段唯一性验证时忽略指定 ID 。例如，在「更新个人资料」页面会包含用户名、邮箱和地点。这时你会想要验证更新的 E-mail 值是否唯一。如果用户仅更改了用户名字段而没有改 E-mail 字段，就不需要抛出验证错误，因为此用户已经是这个 E-mail 的拥有者了。</p>
+<p>使用 <code>Rule</code> 类定义规则来指示验证器忽略用户的 ID。 这个例子中通过数组来指定验证规则，而不是使用 <code>|</code> 字符来分隔：</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::unique('users')-&gt;ignore($user-&gt;id),
+    ],
+]);</code></pre>
+<p>如果你的数据表使用的主键名称不是 <code>id</code>，那就在调用 <code>ignore</code> 方法时指定字段的名称：</p>
+<pre><code>'email' =&gt; Rule::unique('users')-&gt;ignore($user-&gt;id, 'user_id')</code></pre>
+<p><strong>增加额外的 Where 语句：</strong></p>
+<p>你也可以通过 <code>where</code> 方法指定额外的查询条件。例如，我们添加 <code>account_id</code> 为 <code>1</code> 的约束：</p>
+<pre><code>'email' =&gt; Rule::unique('users')-&gt;where(function ($query) {
+    $query-&gt;where('account_id', 1);
+})</code></pre>
+<p><a name="rule-url"></a></p>
+<h4>url</h4>
+<p>验证的字段必须是有效的 URL。</p>
+<p><a name="conditionally-adding-rules"></a></p>
+<h2>按条件增加规则</h2>
+<h4>存在才验证</h4>
+<p>在某些情况下，只有在该字段存在于输入数组中时，才可以对字段执行验证检查。可通过增加 <code>sometimes</code> 到规则列表来实现：</p>
+<pre><code>$v = Validator::make($data, [
+    'email' =&gt; 'sometimes|required|email',
+]);</code></pre>
+<p>在上面的例子中，<code>email</code> 字段只有在 <code>$data</code> 数组中存在时才会被验证。</p>
+<blockquote>
+<p>{tip} 如果你尝试验证应该始终存在但可能为空的字段，请查阅 <a href="#a-note-on-optional-fields">可选字段的注意事项</a>。</p>
+</blockquote>
+<h4>复杂的条件验证</h4>
+<p>有时候你可能需要增加基于更复杂的条件逻辑的验证规则。例如，你可以希望某个指定字段在另一个字段的值超过 100 时才为必填。或者当某个指定字段存在时，另外两个字段才能具有给定的值。增加这样的验证条件并不难。首先，使用静态规则创建一个 <code>Validator</code> 实例：</p>
+<pre><code>$v = Validator::make($data, [
+    'email' =&gt; 'required|email',
+    'games' =&gt; 'required|numeric',
+]);</code></pre>
+<p>假设我们有一个专为游戏收藏家所设计的网页应用程序。如果游戏收藏家收藏超过一百款游戏，我们会希望他们来说明下为什么他们会拥有这么多游戏。比如说他们有可能经营了一家游戏分销商店，或者只是为了享受收集的乐趣。为了在特定条件下加入此验证需求，可以在 <code>Validator</code> 实例中使用 <code>sometimes</code> 方法。</p>
+<pre><code>$v-&gt;sometimes('reason', 'required|max:500', function ($input) {
+    return $input-&gt;games &gt;= 100;
+});</code></pre>
+<p>传入 <code>sometimes</code> 方法的第一个参数是要用来验证的字段名称。第二个参数是我们想使用的验证规则。<code>闭包</code> 作为第三个参数传入，如果其返回 <code>true</code>，则额外的规则就会被加入。这个方法可以轻松地创建复杂的条件验证。你甚至可以一次对多个字段增加条件验证：</p>
+<pre><code>$v-&gt;sometimes(['reason', 'cost'], 'required', function ($input) {
+    return $input-&gt;games &gt;= 100;
+});</code></pre>
+<blockquote>
+<p>{tip} 传入 <code>闭包</code> 的 <code>$input</code> 参数是 <code>Illuminate\Support\Fluent</code> 的一个实例，可用来访问你的输入或文件对象。</p>
+</blockquote>
+<p><a name="validating-arrays"></a></p>
+<h2>验证数组</h2>
+<p>验证表单的输入为数组的字段也不难。你可以使用「点」语法来验证数组中的属性。例如，如果传入的 HTTP 请求中包含 <code>photos[profile]</code> 字段，可以如下验证：</p>
+<pre><code>$validator = Validator::make($request-&gt;all(), [
+    'photos.profile' =&gt; 'required|image',
+]);</code></pre>
+<p>你还可以验证数组中的每个元素。例如，要验证指定数组输入字段中的每一个 email 是唯一的，可以这么做：</p>
+<pre><code>$validator = Validator::make($request-&gt;all(), [
+    'person.*.email' =&gt; 'email|unique:users',
+    'person.*.first_name' =&gt; 'required_with:person.*.last_name',
+]);</code></pre>
+<p>同理，你可以在语言文件定义验证信息时使用 <code>*</code> 字符，为基于数组的字段使用单个验证消息：</p>
+<pre><code>'custom' =&gt; [
+    'person.*.email' =&gt; [
+        'unique' =&gt; 'Each person must have a unique e-mail address',
+    ]
+],</code></pre>
+<p><a name="custom-validation-rules"></a></p>
+<h2>自定义验证规则</h2>
+<p><a name="using-rule-objects"></a></p>
+<h3>使用规则对象</h3>
+<p>Laravel 提供了许多有用的验证规则，同时也支持自定义规则。注册自定义验证规则的方法之一，就是使用规则对象。可以使用 Artisan 命令 <code>make:rule</code> 来生成新的规则对象。接下来，让我们用这个命令生成一个验证字符串是大写的规则。Laravel 会将新的规则存放在 <code>app/Rules</code> 目录中：</p>
+<pre><code>php artisan make:rule Uppercase</code></pre>
+<p>一旦创建了规则，我们就可以定义它的行为。规则对象包含两个方法： <code>passes</code> 和 <code>message</code> 。 <code>passes</code> 方法接收属性值和名称，并根据属性值是否符合规则而返回 <code>true</code> 或者 <code>false</code>。 <code>message</code> 应返回验证失败时应使用的验证错误消息：</p>
+<pre><code>&lt;?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class Uppercase implements Rule
+{
+    /**
+     * 判断验证规则是否通过。
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return strtoupper($value) === $value;
+    }
+
+    /**
+     * 获取验证错误信息。
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'The :attribute must be uppercase.';
+    }
+}</code></pre>
+<p>当然，如果你希望从翻译文件中返回一个错误信息，你可以从 <code>message</code> 方法中调用辅助函数 <code>trans</code>：</p>
+<pre><code>/**
+ * 获取验证错误信息。
+ *
+ * @return string
+ */
+public function message()
+{
+    return trans('validation.uppercase');
+}</code></pre>
+<p>一旦规则对象被定义好后，你可以通过将规则对象的实例传递给其他验证规则来将其附加到验证器：</p>
+<pre><code>use App\Rules\Uppercase;
+
+$request-&gt;validate([
+    'name' =&gt; ['required', new Uppercase],
+]);</code></pre>
+<p><a name="using-extensions"></a></p>
+<h3>使用扩展</h3>
+<p>另外一个注册自定义验证规则的方法，就是使用 <code>Validator</code> <a href="/docs/laravel_5.8_zh/facades">Facade</a> 中的 <code>extend</code> 方法。让我们在 <a href="/docs/laravel_5.html.8_zh/providers">服务提供器</a> 中使用这个方法来注册自定义验证规则：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 引导任何应用服务。
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Validator::extend('foo', function ($attribute, $value, $parameters, $validator) {
+            return $value == 'foo';
+        });
+    }
+
+    /**
+     * 注册服务提供器。
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}</code></pre>
+<p>自定义的验证闭包接收四个参数：要被验证的属性名称 <code>$attribute</code>、属性的值 <code>$value</code>、传入验证规则的参数数组 <code>$parameters</code>、及 <code>Validator</code> 实例。</p>
+<p>除了使用闭包，你也可以传入类和方法到 <code>extend</code> 方法中：</p>
+<pre><code>Validator::extend('foo', 'FooValidator@validate');</code></pre>
+<h4>自定义错误消息</h4>
+<p>你还需要为自定义规则定义错误消息。这可以通过使用自定义内联消息数组或是在验证语言文件中加入新的规则来实现。此消息应该被放在数组的第一级，而不是被放在 <code>custom</code> 数组内，这是仅针对特定属性的错误消息:</p>
+<pre><code>"foo" =&gt; "你的输入是无效的!",
+
+"accepted" =&gt; ":attribute 必须被接受。",
+
+// 其余的验证错误消息...</code></pre>
+<p>创建自定义验证规则时，可能需要为错误消息定义自定义替换占位符。你可以像上面所描述的那样通过 <code>Validator</code> Facade 来使用 <code>replacer</code> 方法创建一个自定义验证器。你可以在 <a href="/docs/laravel_5.8_zh/providers.html">服务提供器</a> 中的 <code>boot</code> 方法中执行此操作：</p>
+<pre><code>/**
+ * 引导任何应用服务。
+ *
+ * @return void
+ */
+public function boot()
+{
+    Validator::extend(...);
+
+    Validator::replacer('foo', function ($message, $attribute, $rule, $parameters) {
+        return str_replace(...);
+    });
+}</code></pre>
+<h4>隐式扩展</h4>
+<p>默认情况下，当所要验证的属性不存在或包含由 <a href="#rule-required"><code>required</code></a> 规则定义的空值时，将不会运行正常的验证规则（包括自定义扩展）。例如，<a href="#rule-unique"><code>unique</code></a> 规则不会针对 <code>null</code> 运行：</p>
+<pre><code>$rules = ['name' =&gt; 'unique'];
+
+$input = ['name' =&gt; null];
+
+Validator::make($input, $rules)-&gt;passes(); // true</code></pre>
+<p>即使属性为空的规则也可以运行，该规则必须意味着该属性是必需的。要创建这样一个「隐式」扩展，可以使用 <code>Validator::extendImplicit()</code> 方法：</p>
+<pre><code>Validator::extendImplicit('foo', function ($attribute, $value, $parameters, $validator) {
+    return $value == 'foo';
+});</code></pre>
+<blockquote>
+<p>{note} 「隐式」扩展只 <em>暗示</em> 该属性是必需的。是否使一个丢失或为空的属性无效主要取决于你。</p>
+</blockquote>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 220);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

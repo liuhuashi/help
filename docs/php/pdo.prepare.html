@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>PDO::prepare - 开发帮助文档</title> 
+    <meta name="keyword" content="pdo.prepare"> 
+    <meta name="description" content="pdo.prepare"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="984" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.begintransaction.html" title="PDO::beginTransaction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::beginTransaction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.commit.html" title="PDO::commit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::commit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.construct.html" title="PDO::__construct">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::__construct
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.errorcode.html" title="PDO::errorCode">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::errorCode
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.errorinfo.html" title="PDO::errorInfo">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::errorInfo
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.exec.html" title="PDO::exec">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::exec
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.getattribute.html" title="PDO::getAttribute">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::getAttribute
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.getavailabledrivers.html" title="PDO::getAvailableDrivers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::getAvailableDrivers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.intransaction.html" title="PDO::inTransaction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::inTransaction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.lastinsertid.html" title="PDO::lastInsertId">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::lastInsertId
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.prepare.html" title="PDO::prepare">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::prepare
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.query.html" title="PDO::query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.quote.html" title="PDO::quote">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::quote
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.rollback.html" title="PDO::rollBack">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::rollBack
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/pdo.setattribute.html" title="PDO::setAttribute">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO::setAttribute
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="pdo.lastinsertid.html">« PDO::lastInsertId</a></li>
+      <li style="float: right;"><a href="pdo.query.html">PDO::query »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="class.pdo.html">PDO</a></li>
+    <li>准备要执行的语句，并返回语句对象</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="pdo.prepare" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::prepare</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PHP 8,PECL pdo &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">PDO::prepare</span> — <span class="dc-title">
+    准备要执行的语句，并返回语句对象
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.prepare-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>PDO::prepare</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$driver_options</code><span class="initializer"> = array()</span></span>
+   ) : <span class="type"><a href="class.pdostatement.html" class="type PDOStatement">PDOStatement</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   为 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> 方法准备待执行的 SQL 语句。
+   语句模板可以包含零个或多个参数占位标记，格式是命名（:name）或问号（?）的形式，当它执行时将用真实数据取代。
+   
+   在同一个语句模板里，命名形式和问号形式不能同时使用；只能选择其中一种参数形式。
+   请用参数形式绑定用户输入的数据，不要直接字符串拼接到查询里。
+  </p>
+  <p class="para">
+   调用 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> 时，每一个值的参数占位标记，名称必须唯一。
+   除非启用模拟（emulation）模式，同一个语句里无法使用重名的参数。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+     参数占位符仅能字面上展示完整的数据。不能是字面的一部分，不能是关键词，不能是标识符，不能是其他任意的范围。
+     举例说明：不能把多个值绑到单个参数里，然后在 SQL 语句里用 IN() 查询。
+   </p>
+  </blockquote>
+  <p class="para">
+    如果用不同参数，通过 <span class="function"><strong>PDO::prepare()</strong></span> 和 <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span>
+   多次调用同一个 SQL 语句，将提升应用的性能 —— 驱动可以让客户端/服务器缓存查询和元信息。
+   同时，调用 <span class="function"><strong>PDO::prepare()</strong></span> 和
+   <span class="function"><a href="pdostatement.execute.html" class="function">PDOStatement::execute()</a></span> 还能阻止 SQL 注入攻击，不需要给参数手动加引号与转义。
+  </p>
+  <p class="para">
+    如果内置驱动不支持参数，PDO 将模拟出参数的功能；如果驱动仅仅支持其中一种风格（命名参数和问号参数两种），也会自动重写到另外一种风格。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    The parser used for emulated prepared statements and for
+    rewriting named or question mark style parameters supports the non standard
+    backslash escapes for single- and double quotes. That means that terminating
+    quotes immediately preceeded by a backslash are not recognized as such, which
+    may result in wrong detection of parameters causing the prepared statement to
+    fail when it is executed. A work-around is to not use emulated prepares for
+    such SQL queries, and to avoid rewriting of parameters by using a parameter style
+    which is natively supported by the driver.
+   </span>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdo.prepare-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">statement</code></dt>
+
+     <dd>
+
+      <p class="para">
+        必须是对目标数据库服务器有效的 SQL 语句模板。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">driver_options</code></dt>
+
+     <dd>
+
+      <p class="para">
+        数组包含一个或多个 key=&gt;value 键值对，为返回的 PDOStatement 对象设置属性。
+       常见用法是：设置 <code class="literal">PDO::ATTR_CURSOR</code> 为 <code class="literal">PDO::CURSOR_SCROLL</code>，将得到可滚动的光标。
+       某些驱动有驱动级的选项，在 prepare 时就设置。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.prepare-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+    如果数据库服务器完成准备了语句，
+   <span class="function"><strong>PDO::prepare()</strong></span> 返回
+   <a href="class.pdostatement.html" class="classname">PDOStatement</a> 对象。
+   
+   如果数据库服务器无法准备语句，
+   <span class="function"><strong>PDO::prepare()</strong></span> 返回 <strong><code>false</code></strong> 或抛出
+   <a href="class.pdoexception.html" class="classname">PDOException</a> (取决于 <a href="pdo.error-handling.html" class="link">错误处理器</a>)。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+     模拟模式下的 prepare 语句不会和数据库服务器交互，所以 <span class="function"><strong>PDO::prepare()</strong></span> 不会检查语句。
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo.prepare-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-977"><p><strong>示例 #1 命名参数形式的 SQL 语句模板</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* 传入数组的值，并执行准备好的语句 */<br></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">'SELECT name, colour, calories<br>    FROM fruit<br>    WHERE calories &lt; :calories AND colour = :colour'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$sth </span><span style="color: #007700">= </span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">, array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CURSOR </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">CURSOR_FWDONLY</span><span style="color: #007700">));<br></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #DD0000">':calories' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">150</span><span style="color: #007700">, </span><span style="color: #DD0000">':colour' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br></span><span style="color: #0000BB">$red </span><span style="color: #007700">= </span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #DD0000">':calories' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">175</span><span style="color: #007700">, </span><span style="color: #DD0000">':colour' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">));<br></span><span style="color: #0000BB">$yellow </span><span style="color: #007700">= </span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-978">
+    <p><strong>示例 #2 问号形式的 SQL 语句模板</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* 传入数组的值，并执行准备好的语句 */<br></span><span style="color: #0000BB">$sth </span><span style="color: #007700">= </span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT name, colour, calories<br>    FROM fruit<br>    WHERE calories &lt; ? AND colour = ?'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #0000BB">150</span><span style="color: #007700">, </span><span style="color: #DD0000">'red'</span><span style="color: #007700">));<br></span><span style="color: #0000BB">$red </span><span style="color: #007700">= </span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #0000BB">175</span><span style="color: #007700">, </span><span style="color: #DD0000">'yellow'</span><span style="color: #007700">));<br></span><span style="color: #0000BB">$yellow </span><span style="color: #007700">= </span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchAll</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.prepare-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="pdo.exec.html" class="function" rel="rdfs-seeAlso">PDO::exec()</a> - 执行一条 SQL 语句，并返回受影响的行数</span></li>
+    <li class="member"><span class="function"><a href="pdo.query.html" class="function" rel="rdfs-seeAlso">PDO::query()</a> - 执行 SQL 语句，以 PDOStatement 对象形式返回结果集</span></li>
+    <li class="member"><span class="function"><a href="pdostatement.execute.html" class="function" rel="rdfs-seeAlso">PDOStatement::execute()</a> - 执行一条预处理语句</span></li>
+   </ul>
+  
+ </div>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8723);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

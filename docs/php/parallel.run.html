@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>parallel\run - 开发帮助文档</title> 
+    <meta name="keyword" content="parallel.run"> 
+    <meta name="description" content="parallel.run"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="605" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/parallel.bootstrap.html" title="parallel\bootstrap">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    parallel\bootstrap
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/parallel.run.html" title="parallel\run">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    parallel\run
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="parallel.bootstrap.html">« parallel\bootstrap</a></li>
+      <li style="float: right;"><a href="class.parallel-runtime.html">parallel\Runtime »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="functional.parallel.html">Functional API</a></li>
+    <li>Execution</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="parallel.run" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">parallel\run</h1>
+  <p class="verinfo">(1.0.0)</p><p class="refpurpose"><span class="refname">parallel\run</span> — <span class="dc-title">Execution</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-parallel.run-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>parallel\run</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$task</code></span>
+   ) : <span class="type"><span class="type"><span class="type Future">Future</span></span>|<span class="type">null</span></span></div>
+
+  <p class="para rdfs-comment">
+   Shall schedule <code class="parameter">task</code> for execution in parallel.
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>parallel\run</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$task</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$argv</code></span>
+   ) : <span class="type"><span class="type"><span class="type Future">Future</span></span>|<span class="type">null</span></span></div>
+
+  <p class="para rdfs-comment">
+   Shall schedule <code class="parameter">task</code> for execution in parallel, passing <code class="parameter">argv</code> at execution time.
+  </p>
+ </div>
+
+
+ <div class="refsect1 scheduling-characteristics" id="refsect1-parallel.run-scheduling-characteristics">
+  <h3 class="title">Automatic Scheduling</h3>
+  <p class="para">
+   If a <strong class="classname">\parallel\Runtime</strong> internally created and cached by a previous call to <span class="function"><strong>parallel\run()</strong></span> is idle, 
+   it will be used to execute the task. If no <strong class="classname">\parallel\Runtime</strong> is idle parallel will create and cache a 
+   <strong class="classname">\parallel\Runtime</strong>.
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    <strong class="classname">\parallel\Runtime</strong> objects created by the programmer are not used for automatic scheduling.
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-parallel.run-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">task</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A <a href="class.closure.html" class="classname">Closure</a> with specific characteristics.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">argv</code></dt>
+
+    <dd>
+
+     <p class="para">
+      An <span class="type">array</span> of arguments with specific characteristics to be passed to <code class="parameter">task</code> at execution time.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 closure-characteristics" id="refsect1-parallel.run-closure-characteristics">
+ <h3 class="title">Task Characteristics</h3>
+ <p class="para">
+  Closures scheduled for parallel execution must not:
+  </p><ul class="simplelist">
+   <li class="member">accept or return by reference</li>
+   <li class="member">accept or return internal objects (see notes)</li>
+   <li class="member">execute a limited set of instructions</li>
+  </ul>
+ 
+ <p class="para">
+  Instructions prohibited in Closures intended for parallel execution are:
+  </p><ul class="simplelist">
+   <li class="member">yield</li>
+   <li class="member">use by-reference</li>
+   <li class="member">declare class</li>
+   <li class="member">declare named function</li>
+  </ul>
+ 
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   Nested closures may yield or use by-reference, but must not contain class or named function declarations.
+  </p>
+ </blockquote>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   No instructions are prohibited in the files which the task may include.
+  </p>
+ </blockquote>
+ </div>
+
+ <div class="refsect1 argv-characteristics" id="refsect1-parallel.run-argv-characteristics">
+ <h3 class="title">Arguments Characteristics</h3>
+ <p class="para">
+  Arguments must not:
+  </p><ul class="simplelist">
+   <li class="member">contain references</li>
+   <li class="member">contain resources</li>
+   <li class="member">contain internal objects (see notes)</li>
+  </ul>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    In the case of file stream resources, the resource will be cast to the file descriptor and passed as <span class="type">int</span> where possible, this is unsupported on Windows.
+   </p>
+  </blockquote>
+ 
+ </div>
+
+ <div class="refsect1 object-characteristics" id="refsect1-parallel.run-object-characteristics">
+  <h3 class="title">Internal Objects Notes</h3>
+  <p class="para">
+   Internal objects generally use a custom structure which cannot be copied by value safely, PHP currently lacks the mechanics to do this (without serialization) 
+   and so only objects that do not use a custom structure may be shared.
+  </p>
+  <p class="para">
+   Some internal objects do not use a custom structure, for example <a href="class.parallel-events-event.html" class="classname">parallel\Events\Event</a> and so may be shared.
+  </p>
+  <p class="para">
+   Closures are a special kind of internal object and support being copied by value, and so may be shared.
+  </p>
+  <p class="para">
+   Channels are central to writing parallel code and support concurrent access and execution by necessity, and so may be shared.
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    A user class that extends an internal class may use a custom structure as defined by the internal class, in which case they cannot be copied by value safely, 
+    and so may not be shared.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-parallel.run-returnvalues">
+  <h3 class="title">返回值</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    The return <span class="type"><a href="class.parallel-future.html" class="type parallel\Future">parallel\Future</a></span> must not be ignored when the task contains a return or throw statement.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 exceptions" id="refsect1-parallel.run-exceptions">
+  <h3 class="title">Exceptions</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Runtime\Error\Closed">parallel\Runtime\Error\Closed</span></span> if <span class="type"><a href="class.parallel-runtime.html" class="type parallel\Runtime">parallel\Runtime</a></span> was closed.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Runtime\Error\IllegalFunction">parallel\Runtime\Error\IllegalFunction</span></span> if <code class="parameter">task</code> is a closure created from an internal function.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Runtime\Error\IllegalInstruction">parallel\Runtime\Error\IllegalInstruction</span></span> if <code class="parameter">task</code> contains illegal instructions.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Runtime\Error\IllegalParameter">parallel\Runtime\Error\IllegalParameter</span></span> if <code class="parameter">task</code> accepts or <code class="parameter">argv</code> contains illegal variables.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    Shall throw <span class="type"><span class="type parallel\Runtime\Error\IllegalReturn">parallel\Runtime\Error\IllegalReturn</span></span> if <code class="parameter">task</code> returns illegally.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-parallel.run-seealso">
+   <h3 class="title">参见</h3>
+   <ul class="simplelist">
+    <li class="member"><a href="parallel-runtime.run.html" class="xref">parallel\Runtime::run</a></li>
+   </ul>
+  </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8599);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

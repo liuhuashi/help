@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Script Injection Attacks - 开发帮助文档</title> 
+    <meta name="keyword" content="mongodb.security.script_injection"> 
+    <meta name="description" content="mongodb.security.script_injection"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="946" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.security.request_injection.html" title="Request Injection Attacks">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Injection Attacks
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.security.script_injection.html" title="Script Injection Attacks">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Script Injection Attacks
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.security.request_injection.html">« Request Injection Attacks</a></li>
+      <li style="float: right;"><a href="book.mongodb.html">MongoDB\Driver »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mongodb.security.html">Security</a></li>
+    <li>Script Injection Attacks</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.security.script_injection" class="article">
+  <h1>Script Injection Attacks</h1>
+
+  <p class="para">
+   If you are using JavaScript, make sure that any variables that cross the PHP-
+   to-JavaScript boundry are passed in the <code class="literal">scope</code> field of
+   <a href="class.mongodb-bson-javascript.html" class="classname">MongoDB\BSON\Javascript</a>, not interpolated into the
+   JavaScript string. This can come up when using <code class="literal">$where</code>
+   clauses in queries, mapReduce and group commands, and any other time you may
+   pass JavaScript into the database.
+  </p>
+  <p class="para">
+   For example, suppose we have some JavaScript to greet a user in the database
+   logs.  We could do:
+  </p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// Don't do this!!!<br></span><span style="color: #0000BB">$username </span><span style="color: #007700">= </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'field'</span><span style="color: #007700">]; <br><br></span><span style="color: #0000BB">$cmd </span><span style="color: #007700">= new \</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">( [<br>    </span><span style="color: #DD0000">'eval' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"print('Hello, </span><span style="color: #0000BB">$username</span><span style="color: #DD0000">!');"<br></span><span style="color: #007700">] );<br><br></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">( </span><span style="color: #DD0000">'dramio'</span><span style="color: #007700">, </span><span style="color: #0000BB">$cmd </span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">
+   However, what if a malicious user passes in some JavaScript?
+  </p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">// Don't do this!!!<br></span><span style="color: #0000BB">$username </span><span style="color: #007700">= </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'field'</span><span style="color: #007700">]; <br></span><span style="color: #FF8000">// $username is set to "'); db.users.drop(); print('"<br><br></span><span style="color: #0000BB">$cmd </span><span style="color: #007700">= new \</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">( [<br>    </span><span style="color: #DD0000">'eval' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"print('Hello, </span><span style="color: #0000BB">$username</span><span style="color: #DD0000">!');"<br></span><span style="color: #007700">] );<br><br></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">( </span><span style="color: #DD0000">'dramio'</span><span style="color: #007700">, </span><span style="color: #0000BB">$cmd </span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">
+   Now MongoDB executes the JavaScript string
+   <code class="literal">"print('Hello, '); db.users.drop(); print('!');"</code>.
+   This attack is easy to avoid: use <code class="literal">args</code> to pass
+   variables from PHP to JavaScript:
+  </p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'field'</span><span style="color: #007700">] = </span><span style="color: #DD0000">'derick'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$args </span><span style="color: #007700">= [ </span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'field'</span><span style="color: #007700">] ];<br><br></span><span style="color: #0000BB">$cmd </span><span style="color: #007700">= new \</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">( [<br>    </span><span style="color: #DD0000">'eval' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"function greet(username) { print('Hello, ' + username + '!'); }"</span><span style="color: #007700">,<br>    </span><span style="color: #DD0000">'args' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$args</span><span style="color: #007700">,<br>] );<br><br></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">( </span><span style="color: #DD0000">'dramio'</span><span style="color: #007700">, </span><span style="color: #0000BB">$cmd </span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">
+   This adds an argument to the JavaScript scope, which gets used as argument
+   for the <code class="literal">greet</code> function. Now if
+   someone tries to send malicious code, MongoDB will harmlessly print
+   <code class="literal">Hello, '); db.dropDatabase(); print('!</code>.
+  </p>
+
+  <p class="para">
+   Using arguments helps to prevent malicious input from being executed by the
+   database.  However, you must make sure that your code does not turn around
+   and execute the input anyway! It is best to avoid executing
+   <em class="emphasis">any</em> JavaScript on the server in the first place.
+  </p>
+
+  <p class="para">
+   You are strongly recommended to stay clear of the <a href="https://docs.mongodb.com/manual/reference/operator/query/where/#considerations" class="link external">» $where
+   clause</a> with queries, as it impacts performance significantly. Where
+   possible, use either normal query operators, or the <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline" class="link external">» Aggregation
+   Framework</a>.
+  </p>
+
+  <p class="para">
+   As alternative to <a href="https://docs.mongodb.com/manual/core/map-reduce/" class="link external">» MapReduce</a>, which uses
+   JavaScript, consider using the <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline" class="link external">» Aggregation
+   Framework</a>. Unlike Map/Reduce, it uses an idiomatic language to
+   construct queries, without having to write, and use, the slower JavaScript
+   approach that Map/Reduce requires.
+  </p>
+
+  <p class="para">
+   The <a href="https://docs.mongodb.com/manual/reference/command/eval/" class="link external">» eval command</a>
+   has been deprecated since MongoDB 3.0, and should also be avoided.
+  </p>
+ </div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7882);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>db2_execute - 开发帮助文档</title> 
+    <meta name="keyword" content="function.db2-execute"> 
+    <meta name="description" content="function.db2-execute"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="953" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-autocommit.html" title="db2_autocommit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_autocommit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-bind-param.html" title="db2_bind_param">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_bind_param
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-client-info.html" title="db2_client_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_client_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-close.html" title="db2_close">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_close
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-column-privileges.html" title="db2_column_privileges">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_column_privileges
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-columns.html" title="db2_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-commit.html" title="db2_commit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_commit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-conn-error.html" title="db2_conn_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_conn_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-conn-errormsg.html" title="db2_conn_errormsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_conn_errormsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-connect.html" title="db2_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-cursor-type.html" title="db2_cursor_type">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_cursor_type
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-escape-string.html" title="db2_escape_string">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_escape_string
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-exec.html" title="db2_exec">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_exec
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-execute.html" title="db2_execute">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_execute
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-array.html" title="db2_fetch_array">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_array
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-assoc.html" title="db2_fetch_assoc">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_assoc
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-both.html" title="db2_fetch_both">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_both
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-object.html" title="db2_fetch_object">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_object
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-fetch-row.html" title="db2_fetch_row">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_fetch_row
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-display-size.html" title="db2_field_display_size">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_display_size
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-name.html" title="db2_field_name">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_name
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-num.html" title="db2_field_num">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_num
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-precision.html" title="db2_field_precision">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_precision
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-scale.html" title="db2_field_scale">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_scale
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-type.html" title="db2_field_type">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_type
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-field-width.html" title="db2_field_width">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_field_width
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-foreign-keys.html" title="db2_foreign_keys">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_foreign_keys
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-free-result.html" title="db2_free_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_free_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-free-stmt.html" title="db2_free_stmt">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_free_stmt
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-get-option.html" title="db2_get_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_get_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-last-insert-id.html" title="db2_last_insert_id">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_last_insert_id
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-lob-read.html" title="db2_lob_read">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_lob_read
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-next-result.html" title="db2_next_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_next_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-num-fields.html" title="db2_num_fields">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_num_fields
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-num-rows.html" title="db2_num_rows">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_num_rows
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-pclose.html" title="db2_pclose">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_pclose
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-pconnect.html" title="db2_pconnect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_pconnect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-prepare.html" title="db2_prepare">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_prepare
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-primary-keys.html" title="db2_primary_keys">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_primary_keys
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-procedure-columns.html" title="db2_procedure_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_procedure_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-procedures.html" title="db2_procedures">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_procedures
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-result.html" title="db2_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-rollback.html" title="db2_rollback">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_rollback
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-server-info.html" title="db2_server_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_server_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-set-option.html" title="db2_set_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_set_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-special-columns.html" title="db2_special_columns">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_special_columns
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-statistics.html" title="db2_statistics">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_statistics
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-stmt-error.html" title="db2_stmt_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_stmt_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-stmt-errormsg.html" title="db2_stmt_errormsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_stmt_errormsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-table-privileges.html" title="db2_table_privileges">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_table_privileges
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.db2-tables.html" title="db2_tables">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    db2_tables
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.db2-exec.html">« db2_exec</a></li>
+      <li style="float: right;"><a href="function.db2-fetch-array.html">db2_fetch_array »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.ibm-db2.html">IBM DB2 函数</a></li>
+    <li>Executes a prepared SQL statement</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.db2-execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_execute</h1>
+  <p class="verinfo">(PECL ibm_db2 &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">db2_execute</span> — <span class="dc-title">
+   Executes a prepared SQL statement
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.db2-execute-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>db2_execute</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stmt</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$parameters</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+
+
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>db2_execute()</strong></span> executes an SQL statement that was
+   prepared by <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span>.
+  </p>
+  <p class="para">
+   If the SQL statement returns a result set, for example, a SELECT statement
+   or a CALL to a stored procedure that returns one or more result sets, you
+   can retrieve a row as an array from the <code class="literal">stmt</code> resource
+   using <span class="function"><a href="function.db2-fetch-assoc.html" class="function">db2_fetch_assoc()</a></span>,
+   <span class="function"><a href="function.db2-fetch-both.html" class="function">db2_fetch_both()</a></span>, or
+   <span class="function"><a href="function.db2-fetch-array.html" class="function">db2_fetch_array()</a></span>. Alternatively, you can use
+   <span class="function"><a href="function.db2-fetch-row.html" class="function">db2_fetch_row()</a></span> to move the result set pointer to the
+   next row and fetch a column at a time from that row with
+   <span class="function"><a href="function.db2-result.html" class="function">db2_result()</a></span>.
+  </p>
+  <p class="para">
+   Refer to <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> for a brief discussion of the
+   advantages of using <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span> and
+   <span class="function"><strong>db2_execute()</strong></span> rather than <span class="function"><a href="function.db2-exec.html" class="function">db2_exec()</a></span>.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-execute-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A prepared statement returned from <span class="function"><a href="function.db2-prepare.html" class="function">db2_prepare()</a></span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">parameters</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of input parameters matching any parameter markers contained
+       in the prepared statement.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-execute-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.db2-execute-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-1214">
+    <p><strong>示例 #1 Preparing and executing an SQL statement with parameter markers</strong></p>
+    <div class="example-contents"><p>
+     The following example prepares an INSERT statement that accepts four
+     parameter markers, then iterates over an array of arrays containing the
+     input values to be passed to <span class="function"><strong>db2_execute()</strong></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$pet </span><span style="color: #007700">= array(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #DD0000">'cat'</span><span style="color: #007700">, </span><span style="color: #DD0000">'Pook'</span><span style="color: #007700">, </span><span style="color: #0000BB">3.2</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$insert </span><span style="color: #007700">= </span><span style="color: #DD0000">'INSERT INTO animals (id, breed, name, weight)<br>    VALUES (?, ?, ?, ?)'</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$insert</span><span style="color: #007700">);<br>if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">$pet</span><span style="color: #007700">);<br>    if (</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br>        print </span><span style="color: #DD0000">"Successfully added new pet."</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Successfully added new pet.
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1215">
+    <p><strong>示例 #2 Calling a stored procedure with an OUT parameter</strong></p>
+    <div class="example-contents"><p>
+     The following example prepares a CALL statement that accepts one 
+     parameter marker representing an OUT parameter, binds the PHP variable
+     <code class="literal">$my_pets</code> to the parameter using
+     <span class="function"><a href="function.db2-bind-param.html" class="function">db2_bind_param()</a></span>, then issues
+     <span class="function"><strong>db2_execute()</strong></span> to execute the CALL statement. After the
+     CALL to the stored procedure has been made, the value of
+     <code class="literal">$num_pets</code> changes to reflect the value returned by the
+     stored procedure for that OUT parameter.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$num_pets </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #DD0000">"CALL count_my_pets(?)"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$rc </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"num_pets"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_OUT</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$rc </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br>print </span><span style="color: #DD0000">"I have </span><span style="color: #0000BB">$num_pets</span><span style="color: #DD0000"> pets!"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+I have 7 pets!
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1216">
+    <p><strong>示例 #3 Returning XML data as an SQL ResultSet</strong></p>
+    <div class="example-contents"><p>
+     The following example demonstrates how to work with documents stored 
+     in a XML column using the SAMPLE database. Using some pretty simple 
+     SQL/XML, this example returns some of the nodes in a XML document in 
+     an SQL ResultSet format that most users are familiar with.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'SELECT * FROM XMLTABLE(<br>    XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br>    \'db2-fn:xmlcolumn("CUSTOMER.INFO")/customerinfo\'<br>    COLUMNS<br>    "CID" VARCHAR (50) PATH \'@Cid\',<br>    "NAME" VARCHAR (50) PATH \'name\',<br>    "PHONE" VARCHAR (50) PATH \'phone [ @type = "work"]\'<br>    ) AS T<br>    WHERE NAME = ?<br>    '</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$name </span><span style="color: #007700">= </span><span style="color: #DD0000">'Kathy Smith'</span><span style="color: #007700">;<br><br>if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br><br>    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CID</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">NAME</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PHONE</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br>    }<br>}<br></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+1000     Kathy Smith     416-555-1358
+1001     Kathy Smith     905-555-7258
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1217">
+    <p><strong>示例 #4 Performing a "JOIN" with XML data</strong></p>
+    <div class="example-contents"><p>
+     The following example works with documents stored in 2 different 
+     XML columns in the SAMPLE database. It creates 2 temporary 
+     tables from the XML documents from 2 different columns and 
+     returns an SQL ResultSet with information regarding shipping 
+     status for the customer.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'<br>SELECT A.CID, A.NAME, A.PHONE, C.PONUM, C.STATUS<br>FROM<br>XMLTABLE(<br>XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br>\'db2-fn:xmlcolumn("CUSTOMER.INFO")/customerinfo\'<br>COLUMNS<br>"CID" BIGINT PATH \'@Cid\',<br>"NAME" VARCHAR (50) PATH \'name\',<br>"PHONE" VARCHAR (50) PATH \'phone [ @type = "work"]\'<br>) as A,<br>PURCHASEORDER AS B,<br>XMLTABLE (<br>XMLNAMESPACES (DEFAULT \'http://posample.org\'),<br>\'db2-fn:xmlcolumn("PURCHASEORDER.PORDER")/PurchaseOrder\'<br>COLUMNS<br>"PONUM"  BIGINT PATH \'@PoNum\',<br>"STATUS" VARCHAR (50) PATH \'@Status\'<br>) as C<br>WHERE A.CID = B.CUSTID AND<br>    B.POID = C.PONUM AND<br>    A.NAME = ?<br>'</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$name </span><span style="color: #007700">= </span><span style="color: #DD0000">'Kathy Smith'</span><span style="color: #007700">;<br><br>if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"name"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br><br>    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">CID</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">NAME</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PHONE</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">PONUM</span><span style="color: #DD0000">     </span><span style="color: #0000BB">$row</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">STATUS</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br>    }<br>}<br><br></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+1001     Kathy Smith     905-555-7258     5002     Shipped
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1218">
+    <p><strong>示例 #5 Returning SQL data as part of a larger XML document</strong></p>
+    <div class="example-contents"><p>
+     The following example works with a portion of the PRODUCT.DESCRIPTION 
+     documents in the SAMPLE database. It creates a XML document containing 
+     product description (XML data) and pricing info (SQL data).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">, </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #DD0000">'<br>SELECT<br>XMLSERIALIZE(<br>XMLQUERY(\'<br>    declare boundary-space strip;<br>    declare default element namespace "http://posample.org";<br>    &lt;promoList&gt; {<br>    for $prod in $doc/product<br>    where $prod/description/price &lt; 10.00<br>    order by $prod/description/price ascending<br>    return(<br>        &lt;promoitem&gt; {<br>        $prod,<br>        &lt;startdate&gt; {$start} &lt;/startdate&gt;,<br>        &lt;enddate&gt; {$end} &lt;/enddate&gt;,<br>        &lt;promoprice&gt; {$promo} &lt;/promoprice&gt;<br>            } &lt;/promoitem&gt;<br>    )<br>    } &lt;/promoList&gt;<br>\' passing by ref DESCRIPTION AS "doc",<br>PROMOSTART as "start",<br>PROMOEND as "end",<br>PROMOPRICE as "promo"<br>RETURNING SEQUENCE)<br>AS CLOB (32000))<br>AS NEW_PRODUCT_INFO<br>FROM PRODUCT<br>WHERE PID = ?<br>'</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$pid </span><span style="color: #007700">= </span><span style="color: #DD0000">"100-100-01"</span><span style="color: #007700">;<br><br>if (</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">db2_bind_param</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">"pid"</span><span style="color: #007700">, </span><span style="color: #0000BB">DB2_PARAM_IN</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">db2_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br><br>    while(</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)){<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">\n"</span><span style="color: #007700">);<br>    }<br>}<br><br></span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;promoList xmlns="http://posample.org"&gt;
+    &lt;promoitem&gt;
+    &lt;product pid="100-100-01"&gt;
+        &lt;description&gt;
+            &lt;name&gt;Snow Shovel, Basic 22 inch&lt;/name&gt;
+            &lt;details&gt;Basic Snow Shovel, 22 inches wide, straight handle with D-Grip&lt;/details&gt;
+            &lt;price&gt;9.99&lt;/price&gt;
+            &lt;weight&gt;1 kg&lt;/weight&gt;
+        &lt;/description&gt;
+    &lt;/product&gt;
+    &lt;startdate&gt;2004-11-19&lt;/startdate&gt;
+    &lt;enddate&gt;2004-12-19&lt;/enddate&gt;
+    &lt;promoprice&gt;7.25&lt;/promoprice&gt;
+    &lt;/promoitem&gt;
+&lt;/promoList&gt;
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.db2-execute-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.db2-exec.html" class="function" rel="rdfs-seeAlso">db2_exec()</a> - Executes an SQL statement directly</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-array.html" class="function" rel="rdfs-seeAlso">db2_fetch_array()</a> - Returns an array, indexed by column position, representing a row in a result set</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-assoc.html" class="function" rel="rdfs-seeAlso">db2_fetch_assoc()</a> - Returns an array, indexed by column name, representing a row in a result set</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-both.html" class="function" rel="rdfs-seeAlso">db2_fetch_both()</a> - Returns an array, indexed by both column name and position, representing a row in a result set</span></li>
+    <li class="member"><span class="function"><a href="function.db2-fetch-row.html" class="function" rel="rdfs-seeAlso">db2_fetch_row()</a> - Sets the result set pointer to the next row or requested row</span></li>
+    <li class="member"><span class="function"><a href="function.db2-prepare.html" class="function" rel="rdfs-seeAlso">db2_prepare()</a> - Prepares an SQL statement to be executed</span></li>
+    <li class="member"><span class="function"><a href="function.db2-result.html" class="function" rel="rdfs-seeAlso">db2_result()</a> - Returns a single column from a row in the result set</span></li>
+   </ul>
+  
+ </div>
+
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2780);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

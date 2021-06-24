@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Global transaction IDs (GTID) - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-ms.quickstart.gtid"> 
+    <meta name="description" content="mysqlnd-ms.quickstart.gtid"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="846" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.cache.html" title="Cache integration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache integration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.configuration.html" title="Setup">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setup
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.connectionpooling.html" title="连接状态">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    连接状态
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.failover.html" title="故障转移">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    故障转移
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.gtid.html" title="Global transaction IDs (GTID)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Global transaction IDs (GTID)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.mysql_fabric.html" title="MySQL Fabric">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQL Fabric
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.partitioning.html" title="分区和分片">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    分区和分片
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.qos-consistency.html" title="服务级别和一致性">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务级别和一致性
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.sqlhints.html" title="SQL Hints (SQL 优化器)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    SQL Hints (SQL 优化器)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.transactions.html" title="事务">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事务
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.usage.html" title="Running statements">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Running statements
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.quickstart.xa_transactions.html" title="XA/Distributed Transactions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    XA/Distributed Transactions
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-ms.quickstart.qos-consistency.html">« 服务级别和一致性</a></li>
+      <li style="float: right;"><a href="mysqlnd-ms.quickstart.cache.html">Cache integration »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-ms.quickstart.html">快速入门与例子</a></li>
+    <li>Global transaction IDs (GTID)</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-ms.quickstart.gtid" class="section">
+  <h2 class="title">Global transaction IDs (GTID)</h2>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>版本需求</strong><br>
+   </p><p class="para">
+    从 1.2.0-alpha 版本开始客户端 GTID 可以使用，这个功能并不需要在同步集群中使用，
+    例如 MySQL Cluster。他用于异步集群，例如 MySQL 主从同步。
+   </p>
+   <p class="para">
+    从 MySQL 5.6.5-m8 版本开始，MySQL 使用内置的 GTID，这需要 1.3.0-alpha 以后版本支持。
+   </p>
+  </blockquote>
+  <p class="para">
+   PECL/mysqlnd_ms 可以使用自己的 GTID 仿真，或者使用 MySQL 内置的 GTID。无论使用哪种方式，
+   对于使用服务级别来说都是一样的。他们的区别，在 <a href="mysqlnd-ms.gtid.html" class="link">concepts section</a>
+   进行说明。
+  </p>
+  <p class="para">
+   这里先使用插件内部的 GTID 模拟来展示如何使用服务端的副本。
+  </p>
+  <p class="para">
+   <em class="emphasis">概念和客户端模拟</em>
+  </p>
+  <p class="para">
+   GTID 是 slave 需要同步的 table 在 master 上基于这个 table 的一个计数器，每当事务提交他都会增加。
+   这个计数器有两个作用，如果 master 产生故障，他帮助数据库管理员确定使用最新的 slave 来
+   恢复新的 master。最新的 slave 就是那个数值最高的。应用可以使用 GTID 查询某一次写入，
+   是否已经在 slave 被同步。
+  </p>
+  <p class="para">
+   插件可以在每次提交事务的时候，增加 GTID。当然这个 GTID 也可以让应用判断写操作是否同步。
+   这样就可以实现在 session 一致性服务级别中，不一定从 master 读取数据，也可以从已经同步
+   的 slave 中获取数据，从而减轻 master 的读负载。
+  </p>
+  <p class="para">
+   客户端 GTID 模拟有一些限制，可以参考 <a href="mysqlnd-ms.gtid.html" class="link">concepts section</a>
+   说明。在生产换金钟使用前，请细致全面的理解他的工作原理和概念。相关背景的支持，
+   不在本参考中进行说明。
+  </p>
+  <p class="para">
+   首先在 master 建立一个计数器表，并且插入一条记录。插件并不会帮助你建立这个表，
+   数据库管理员需要帮助你操作。如果表不存在或者有问题，基于错误报告机制，
+   你可能得不到任何错误信息。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1761">
+    <p><strong>示例 #1 在 master 创建计数器表</strong></p>
+    <div class="example-contents">
+<div class="sqlcode"><pre class="sqlcode">CREATE TABLE `trx` (
+  `trx_id` int(11) DEFAULT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+INSERT INTO `trx`(`trx_id`) VALUES (1);</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   在插件的配置文件中，需要在 <code class="literal">global_transaction_id_injection</code>
+   章节中设定 <code class="literal">on_commit</code> 参数。一定要确认在 
+   <code class="literal">UPDATE</code> 中使用的表明是可达的，例如：使用上一步创建的表，
+   <code class="literal">test.trx</code> 要比 <code class="literal">trx</code> 更合适。
+   这一点非常重要，因为不同的数据库连接，可能的默认数据库选择并不相同。
+   并且确认，使用连接的用户，有权限对这个表执行 <code class="literal">UPDATE</code>
+   命令。
+  </p>
+  <p class="para">
+   当 GTID 更新时，打开错误报告。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1762">
+    <p><strong>示例 #2 Plugin config: SQL for client-side GTID injection</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost",
+                "socket": "\/tmp\/mysql.sock"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "127.0.0.1",
+                "port": "3306"
+            }
+        },
+        "global_transaction_id_injection":{
+            "on_commit":"UPDATE test.trx SET trx_id = trx_id + 1",
+            "report_error":true
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-1763">
+    <p><strong>示例 #3 Transparent global transaction ID injection</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"username"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">)<br>  </span><span style="color: #FF8000">/* Of course, your error handling is nicer... */<br>  </span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(), </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br><br></span><span style="color: #FF8000">/* auto commit mode, transaction on master, GTID must be incremented */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">/* auto commit mode, transaction on master, GTID must be incremented */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">/* auto commit mode, transaction on master, GTID must be incremented */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1)"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">/* auto commit mode, read on slave, no increment */<br></span><span style="color: #007700">if (!(</span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT id FROM test"</span><span style="color: #007700">)))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  ["id"]=&gt;
+  string(1) "1"
+}
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   上面的范例运行 3 条语句在 master 上，他们都是在 autocommit 下执行，这样会引起
+   3 次 GTID 的增加。每次插件都会在执行语句以前，根据配置中的 <code class="literal">UPDATE</code> 设定
+   增加 GTID。
+  </p>
+  <p class="para">
+   第四条语句，因为是 <code class="literal">SELECT</code> 语句，并不会在 master 上执行，
+   所以不会引发 master 增加 GTID。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>基于 SQL 的 GTID 如何有效率的工作</strong><br>
+   </p><p class="para">
+    在客户端通过 GTID 模拟在每个 SQL 执行的时候处理是很没有效率的做法。
+    这样做，是为了能够清楚的说明情况，而不是为了执行效率，不要在实际的
+    生产环境中这样使用。可以在本文中找到更有效率的做法。
+   </p>
+  </blockquote>
+  <p class="para">
+   </p><div class="example" id="example-1764">
+    <p><strong>示例 #4 Plugin config: SQL for fetching GTID</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost",
+                "socket": "\/tmp\/mysql.sock"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "127.0.0.1",
+                "port": "3306"
+            }
+        },
+        "global_transaction_id_injection":{
+            "on_commit":"UPDATE test.trx SET trx_id = trx_id + 1",
+            "fetch_last_gtid" : "SELECT MAX(trx_id) FROM test.trx",
+            "report_error":true
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-1765">
+    <p><strong>示例 #5 Obtaining GTID after injection</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"username"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">)<br>  </span><span style="color: #FF8000">/* Of course, your error handling is nicer... */<br>  </span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(), </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br><br></span><span style="color: #FF8000">/* auto commit mode, transaction on master, GTID must be incremented */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"GTID after transaction %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqlnd_ms_get_last_gtid</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">/* auto commit mode, transaction on master, GTID must be incremented */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"GTID after transaction %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqlnd_ms_get_last_gtid</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+GTID after transaction 7
+GTID after transaction 8
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   应用可以通过插件获取最后一次写操作产生的 GTID。函数<span class="function"><a href="function.mysqlnd-ms-get-last-gtid.html" class="function">mysqlnd_ms_get-last-gtid()</a></span>
+   通过在配置文件中 <code class="literal">global_transaction_id_injection</code> 章节中
+   定义的 <code class="literal">fetch_last-gtid</code> 方法，返回最后一次
+   写操作产生的 GTID。函数应该在 GTID 增加后调用。
+  </p>
+  <p class="para">
+   不建议应用运行自己运行哪些可能产生风险的 SQL 语句，从而增加 GTID。并且，使用函数
+   可以轻松的将查询 GTID 迁移到其他应用中。例如，使用任何 MySQL 内置的 GTID。
+  </p>
+  <p class="para">
+   这里展现了一个 SQL 语句获得了他的 GTID 或者比实际执行得到的 GTID 更大的数据。
+   在 <code class="literal">SELECT</code> 和 查询 GTID 之间，可能有其他的客户端执行
+   SQL 语句，从而增加了 GTID，所以获得的 GTID 可能比实际数据大。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1766">
+    <p><strong>示例 #6 Plugin config: Checking for a certain GTID</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost",
+                "socket": "\/tmp\/mysql.sock"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "127.0.0.1",
+                "port": "3306"
+            }
+        },
+        "global_transaction_id_injection":{
+            "on_commit":"UPDATE test.trx SET trx_id = trx_id + 1",
+            "fetch_last_gtid" : "SELECT MAX(trx_id) FROM test.trx",
+            "check_for_gtid" : "SELECT trx_id FROM test.trx WHERE trx_id &gt;= #GTID",
+            "report_error":true
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-1767">
+    <p><strong>示例 #7 Session consistency service level and GTID combined</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"username"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">)<br>  </span><span style="color: #FF8000">/* Of course, your error handling is nicer... */<br>  </span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(), </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br><br></span><span style="color: #FF8000">/* autocommit 模式下，在 master 执行，用于增加 GTID */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">) ||<br>    !</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">) ||<br>    !</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1)"</span><span style="color: #007700">))<br>  die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">/* 获取最后一次写入的 GTID */<br></span><span style="color: #0000BB">$gtid </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqlnd_ms_get_last_gtid</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Session 一致性，尝试从 slave 读取，而不只从 master 读取 */<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">false </span><span style="color: #007700">== </span><span style="color: #0000BB">mysqlnd_ms_set_qos</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">, </span><span style="color: #0000BB">MYSQLND_MS_QOS_CONSISTENCY_SESSION</span><span style="color: #007700">, </span><span style="color: #0000BB">MYSQLND_MS_QOS_OPTION_GTID</span><span style="color: #007700">, </span><span style="color: #0000BB">$gtid</span><span style="color: #007700">)) {<br>    die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[006] [%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br>}<br><br></span><span style="color: #FF8000">/* Either run on master or a slave which has replicated the INSERT */<br></span><span style="color: #007700">if (!(</span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT id FROM test"</span><span style="color: #007700">))) {<br>    die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   通过 <span class="function"><a href="function.mysqlnd-ms-get-last-gtid.html" class="function">mysqlnd_ms_get_last_gtid()</a></span> 获取的 GTID 可以被用于
+   Session 一致性服务级别。通过 <span class="function"><a href="function.mysqlnd-ms-set-qos.html" class="function">mysqlnd_ms_set_qos()</a></span>
+   设定 Session 一致性服务级别，他决定从哪里读取写入的数据。在范例中，
+   通过判断 <code class="literal">INSERT</code> 是否已经被同步，来决定 
+   <code class="literal">SELECT</code> 从哪个服务器中读取数据，
+  </p>
+  <p class="para">
+   插件检查配置中的所有 slave 服务器，通过查看 GTID 表中的值，判断是否
+   <code class="literal">INSERT</code> 已经被同步。检查的方法在
+   <code class="literal">global_transaction_id_injection</code> 章节中，使用
+   <code class="literal">check_for_gtid</code> 参数定义。
+   请注意，这是一种低效，浪费资源的方法。
+   在 master 的读取压力很大的时候，应用可以零星的采用这种方式，来降低读取压力。
+  </p>
+  <p class="para">
+   <em class="emphasis">使用服务器端的 GTID</em>
+  </p>
+  <p class="para">
+   自从 MySQL 5.6.5-m8 版本开始，MySQL 主从同步开始支持服务器端的 GTID。GTID 的
+   创建和增长由服务器控制，用户可以不再关心这些问题。这也就是说，不需要再添加任何
+   数据库表用于记录 GTID，也不用设置 <code class="literal">on_commit</code> 方法。客户端模拟
+   的 GTID 不再需要使用。
+  </p>
+  <p class="para">
+   客户端可以顺畅使用 GTID 完成 Session 一致性服务，运算的方式与上面描述的 GTID 模拟
+   是一样的。不同的是 <code class="literal">check_for_gtid</code> 和 <code class="literal">fetch_last_gtid</code>
+   还是需要进行配置。
+   请注意，MySQL 5.6.5-m8 是一个研发版本，具体执行细节在实际的运行版本对于这些功能可能有改变。
+  </p>
+  <p class="para">
+   使用下面的配置，可以上上面讨论过的任何一个脚本，能够利用服务器端的 GTID 正常工作。
+   函数 <span class="function"><a href="function.mysqlnd-ms-get-last-gtid.html" class="function">mysqlnd_ms_get_last_gtid()</a></span> 和
+   <span class="function"><a href="function.mysqlnd-ms-set-qos.html" class="function">mysqlnd_ms_set_qos()</a></span> 工作也一样正常。不同点在于，
+   服务器并不采用简单的顺序序列，而是采用一个包含服务器标识号和序列数字的字符串。
+   所以，用户并不能简单的通过 <span class="function"><a href="function.mysqlnd-ms-get-last-gtid.html" class="function">mysqlnd_ms_get_last_gtid()</a></span>
+   得到的顺序判断 GTID。
+   译者注：从 MySQL 5.6.9 版本开始 GTID_DONE 已经被 GTID_EXECUTED 替代，所以下面的
+   范例中，应该做相应变更。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1768">
+    <p><strong>示例 #8 使用 MySQL 5.6.5-m8 内置 GTID</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost",
+                "socket": "\/tmp\/mysql.sock"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "127.0.0.1",
+                "port": "3306"
+            }
+        },
+        "global_transaction_id_injection":{
+            "fetch_last_gtid" : "SELECT @@GLOBAL.GTID_DONE AS trx_id FROM DUAL",
+            "check_for_gtid" : "SELECT GTID_SUBSET('#GTID', @@GLOBAL.GTID_DONE) AS trx_id FROM DUAL",
+            "report_error":true
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8276);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

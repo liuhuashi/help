@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Installing a proxy - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-uh.quickstart.proxy-installation"> 
+    <meta name="description" content="mysqlnd-uh.quickstart.proxy-installation"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="835" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-uh.quickstart.configuration.html" title="Setup">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setup
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-uh.quickstart.how-it-works.html" title="How it works">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    How it works
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-uh.quickstart.proxy-installation.html" title="Installing a proxy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installing a proxy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-uh.quickstart.query-monitoring.html" title="Basic query monitoring">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Basic query monitoring
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-uh.quickstart.how-it-works.html">« How it works</a></li>
+      <li style="float: right;"><a href="mysqlnd-uh.quickstart.query-monitoring.html">Basic query monitoring »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-uh.quickstart.html">Quickstart and Examples</a></li>
+    <li>Installing a proxy</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-uh.quickstart.proxy-installation" class="section">
+  <h2 class="title">Installing a proxy</h2>
+  <p class="para">
+   The extension provides two built-in classes: <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>
+   and <a href="class.mysqlnduhpreparedstatement.html" class="classname">MysqlndUhPreparedStatement</a>. The classes are used
+   for hooking <code class="literal">mysqlnd</code> library calls. Their methods correspond
+   to <code class="literal">mysqlnd</code> internal functions. By default they act like
+   a transparent proxy and do nothing but call their <code class="literal">mysqlnd</code> counterparts.
+   By subclassing the classes you can install your own proxy to monitor <code class="literal">mysqlnd</code>.
+  </p>
+  <p class="para">
+   See also the <a href="mysqlnd-uh.quickstart.how-it-works.html" class="link">How it works</a>
+   guide to learn about the inner workings of this extension.
+  </p>
+  <p class="para">
+   Connection proxies are objects of the type <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>.
+   Connection proxy objects are installed by
+   <span class="function"><a href="function.mysqlnd-uh-set-connection-proxy.html" class="function">mysqlnd_uh_set_connection_proxy()</a></span>.
+   If you install the built-in class <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>
+   as a proxy, nothing happens. It behaves like a transparent proxy.
+  </p>
+ <p class="para">
+   </p><div class="example" id="example-1868">
+    <p><strong>示例 #1 Proxy registration, mysqlnd_uh.enable=1</strong></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new </span><span style="color: #0000BB">MysqlndUhConnection</span><span style="color: #007700">());<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   The <code class="literal">PHP_INI_SYSTEM</code> configuration setting
+   <code class="literal"><a href="mysqlnd-uh.configuration.html#ini.mysqlnd-uh.enable" class="link">mysqlnd_uh.enable</a></code>
+   controls whether a proxy may be set. If disabled, the extension
+   will throw errors of type <code class="literal">E_WARNING</code>
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1869">
+    <p><strong>示例 #2 Proxy installation disabled</strong></p>
+     <div class="example-contents">
+<div class="inicode"><pre class="inicode">mysqlnd_uh.enable=0</pre>
+</div>
+    </div>
+
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new </span><span style="color: #0000BB">MysqlndUhConnection</span><span style="color: #007700">());<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP Warning:  MysqlndUhConnection::__construct(): (Mysqlnd User Handler) The plugin has been disabled by setting the configuration parameter mysqlnd_uh.enabled = false.  You must not use any of the base classes in %s on line %d
+PHP Warning:  mysqlnd_uh_set_connection_proxy(): (Mysqlnd User Handler) The plugin has been disabled by setting the configuration parameter mysqlnd_uh.enable = false. The proxy has not been installed  in %s on line %d
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   To monitor <code class="literal">mysqlnd</code>, you have to write your own
+   proxy object subclassing <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>.
+   Please, see the function reference for a the list of methods that
+   can be subclassed. Alternatively, you can use reflection to inspect
+   the built-in <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>.
+  </p>
+  <p class="para">
+    Create a new class <code class="literal">proxy</code>. Derive it from the
+    built-in class <a href="class.mysqlnduhconnection.html" class="classname">MysqlndUhConnection</a>.
+    Replace the
+    <span class="function"><a href="mysqlnduhconnection.connect.html" class="function">MysqlndUhConnection::connect()</a></span>.
+    method. Print out the host parameter value passed to the method.
+    Make sure that you call the parent implementation of the <code class="literal">connect</code>
+    method. Failing to do so may give unexpected and undesired results, including
+    memory leaks and crashes.
+  </p>
+  <p class="para">
+   Register your proxy and open three connections using the PHP MySQL
+   extensions <a href="ref.mysqli.html" class="link">mysqli</a>,
+   <a href="ref.mysql.html" class="link">mysql</a>,
+   <a href="ref.pdo-mysql.html" class="link">PDO_MYSQL</a>. If the extensions have been
+   compiled to use the <code class="literal">mysqlnd</code> library, the
+   <code class="literal">proxy::connect</code> method will be called three times, once
+   for each connection opened.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1870">
+    <p><strong>示例 #3 Connection proxy</strong></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">proxy </span><span style="color: #007700">extends </span><span style="color: #0000BB">MysqlndUhConnection </span><span style="color: #007700">{<br>  public function </span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">$host</span><span style="color: #007700">, </span><span style="color: #0000BB">$user</span><span style="color: #007700">, </span><span style="color: #0000BB">$passwd</span><span style="color: #007700">, </span><span style="color: #0000BB">$db</span><span style="color: #007700">, </span><span style="color: #0000BB">$port</span><span style="color: #007700">, </span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysql_flags</span><span style="color: #007700">) {<br>   </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Connection opened to '%s'\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$host</span><span style="color: #007700">);<br>   </span><span style="color: #FF8000">/* Always call the parent implementation! */<br>   </span><span style="color: #007700">return </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">$host</span><span style="color: #007700">, </span><span style="color: #0000BB">$user</span><span style="color: #007700">, </span><span style="color: #0000BB">$passwd</span><span style="color: #007700">, </span><span style="color: #0000BB">$db</span><span style="color: #007700">, </span><span style="color: #0000BB">$port</span><span style="color: #007700">, </span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysql_flags</span><span style="color: #007700">);<br>  }<br>}<br></span><span style="color: #0000BB">mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new </span><span style="color: #0000BB">proxy</span><span style="color: #007700">());<br><br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysql </span><span style="color: #007700">= </span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$pdo </span><span style="color: #007700">= new </span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">"mysql:host=localhost;dbname=test"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Connection opened to 'localhost'
+Connection opened to 'localhost'
+Connection opened to 'localhost'
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   The use of prepared statement proxies follows the same pattern: create a
+   proxy object of the type <a href="class.mysqlnduhpreparedstatement.html" class="classname">MysqlndUhPreparedStatement</a>
+   and install the proxy using
+   <span class="function"><a href="function.mysqlnd-uh-set-statement-proxy.html" class="function">mysqlnd_uh_set_statement_proxy()</a></span>.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1871">
+    <p><strong>示例 #4 Prepared statement proxy</strong></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">stmt_proxy </span><span style="color: #007700">extends </span><span style="color: #0000BB">MysqlndUhPreparedStatement </span><span style="color: #007700">{<br> public function </span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">) {<br>  </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s(%s)\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>  return </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br> }<br>}<br></span><span style="color: #0000BB">mysqlnd_uh_set_statement_proxy</span><span style="color: #007700">(new </span><span style="color: #0000BB">stmt_proxy</span><span style="color: #007700">());<br><br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">, </span><span style="color: #DD0000">"root"</span><span style="color: #007700">, </span><span style="color: #DD0000">""</span><span style="color: #007700">, </span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT 'mysqlnd hacking made easy' AS _msg FROM DUAL"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+stmt_proxy::prepare(SELECT 'mysqlnd hacking made easy' AS _msg FROM DUAL)
+</pre></div>
+    </div>
+   </div>
+  
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8329);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

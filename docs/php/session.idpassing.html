@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>传送会话ID - 开发帮助文档</title> 
+    <meta name="keyword" content="session.idpassing"> 
+    <meta name="description" content="session.idpassing"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="244" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.customhandler.html" title="自定义会话管理器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义会话管理器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.examples.basic.html" title="基本用法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基本用法
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.idpassing.html" title="传送会话ID">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    传送会话ID
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.examples.basic.html">« 基本用法</a></li>
+      <li style="float: right;"><a href="session.customhandler.html">自定义会话管理器 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="session.examples.html">范例</a></li>
+    <li>传送会话ID</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.idpassing" class="section">
+  <h2 class="title">传送会话ID</h2>
+  <p class="para">
+   有两种方式用来传送会话 ID：
+   </p><ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Cookies
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      URL 参数
+     </span>
+    </li>
+   </ul>
+  
+  <p class="para">
+   会话模块支持这两种方式。
+   Cookie 方式相对好一些，但是用户可能在浏览器中关闭 Cookie，所以
+   第二种方案就是把会话 ID 直接并入到 URL 中，以保证会话 ID 的传送。
+  </p>
+  <p class="para">
+   无需开发人员干预，PHP 就可以自动处理 URL 传送会话 ID 的场景。
+   如果启用了 <code class="literal">session.use_trans_sid</code> 选项，
+   PHP 将会自动在相对 URI 中包含会话 ID。
+   </p><blockquote class="note"><p><strong class="note">注意</strong>: 
+    </p><p class="para">
+    <a href="ini.core.html#ini.arg-separator.output" class="link">arg_separator.output</a>
+    <var class="filename">php.ini</var> 配置指令允许你自定义会话 ID 参数分隔符。
+    可以设定为 &amp; 来保持和 XHTML 的一致性。
+    </p>
+   </blockquote>
+  
+  <p class="para">
+   会话开始之后，可以使用 <strong><code>SID</code></strong> 常量。
+   如果客户端未提供会话 cookie，该常量的展开形式为 <code class="literal">session_name=session_id</code>，
+   反之，该常量为空字符串。因此，可以直接在 URL 中包含此常量的展开字符串而无需考虑会话 ID 的实际传送方式。
+  </p>
+  <p class="para">
+   下例演示了如何在会话中注册变量以及如何使用 <strong><code>SID</code></strong>
+   常量正确的链接到另一页面。
+   </p><div class="example" id="example-4786">
+    <p><strong>示例 #1 某单一用户的点击数</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>session_start</span><span style="color: #007700">();<br><br>if (empty(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">])) {<br>   </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">] = </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br>} else {<br>   </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]++;<br>}<br></span><span style="color: #0000BB">?&gt;<br></span><br>&lt;p&gt;<br>Hello visitor, you have seen this page <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]; </span><span style="color: #0000BB">?&gt;</span> times.<br>&lt;/p&gt;<br><br>&lt;p&gt;<br>To continue, &lt;a href="nextpage.php?<span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">SID</span><span style="color: #007700">); </span><span style="color: #0000BB">?&gt;</span>"&gt;click<br>here&lt;/a&gt;.<br>&lt;/p&gt;</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   可以使用 <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> 来打印 <strong><code>SID</code></strong>
+   常量的展开字符串以避免 XSS 相关的攻击。
+  </p>
+  <p class="para">
+   如果使用 <a href="session.configuration.html#ini.session.use-trans-sid" class="link">
+   --enable-trans-sid</a> 参数编译的 PHP，
+   上例中打印 <strong><code>SID</code></strong> 常量部分就可以省略。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    非相对 URL 将被视为指向外部站点的链接，
+    从安全角度考虑，外站的链接 URL 中将
+    不包含 <strong><code>SID</code></strong> 常量，以避免将 <strong><code>SID</code></strong> 泄露到外部服务器的风险。
+   </p>
+  </blockquote>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9641);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

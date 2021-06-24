@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The RegexIterator class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.regexiterator"> 
+    <meta name="description" content="class.regexiterator"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="501" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.appenditerator.html" title="The AppendIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The AppendIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.arrayiterator.html" title="ArrayIterator 类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    ArrayIterator 类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.cachingiterator.html" title="The CachingIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The CachingIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.callbackfilteriterator.html" title="The CallbackFilterIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The CallbackFilterIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.directoryiterator.html" title="The DirectoryIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The DirectoryIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.emptyiterator.html" title="The EmptyIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EmptyIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.filesystemiterator.html" title="The FilesystemIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The FilesystemIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.filteriterator.html" title="The FilterIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The FilterIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.globiterator.html" title="The GlobIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The GlobIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.infiniteiterator.html" title="The InfiniteIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The InfiniteIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.iteratoriterator.html" title="The IteratorIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The IteratorIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.limititerator.html" title="The LimitIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The LimitIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.multipleiterator.html" title="The MultipleIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MultipleIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.norewinditerator.html" title="The NoRewindIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The NoRewindIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.parentiterator.html" title="The ParentIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The ParentIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivearrayiterator.html" title="The RecursiveArrayIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveArrayIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivecachingiterator.html" title="The RecursiveCachingIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveCachingIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivecallbackfilteriterator.html" title="The RecursiveCallbackFilterIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveCallbackFilterIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivedirectoryiterator.html" title="The RecursiveDirectoryIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveDirectoryIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivefilteriterator.html" title="The RecursiveFilterIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveFilterIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursiveiteratoriterator.html" title="The RecursiveIteratorIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveIteratorIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursiveregexiterator.html" title="The RecursiveRegexIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveRegexIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.recursivetreeiterator.html" title="The RecursiveTreeIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RecursiveTreeIterator class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.regexiterator.html" title="The RegexIterator class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The RegexIterator class
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="recursivetreeiterator.valid.html">« RecursiveTreeIterator::valid</a></li>
+      <li style="float: right;"><a href="regexiterator.accept.html">RegexIterator::accept »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="spl.iterators.html">迭代器</a></li>
+    <li>The RegexIterator class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.regexiterator" class="reference">
+ <h1 class="title">The RegexIterator class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="regexiterator.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    This iterator can be used to filter another iterator based on a regular expression.
+   </p>
+  </div>
+
+
+  <div class="section" id="regexiterator.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">RegexIterator</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <a href="class.filteriterator.html" class="classname">FilterIterator</a>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 常量 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.match"><var class="varname">MATCH</var></a></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.get-match"><var class="varname">GET_MATCH</var></a></var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.all-matches"><var class="varname">ALL_MATCHES</var></a></var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.split"><var class="varname">SPLIT</var></a></var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.replace"><var class="varname">REPLACE</var></a></var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.regexiterator.html#regexiterator.constants.use-key"><var class="varname">USE_KEY</var></a></var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+
+
+
+    
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.construct.html" class="methodname">__construct</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.iterator.html" class="type Iterator">Iterator</a></span> <code class="parameter">$iterator</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$regex</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = self::MATCH</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$preg_flags</code><span class="initializer"> = 0</span></span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.accept.html" class="methodname">accept</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.getflags.html" class="methodname">getFlags</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.getmode.html" class="methodname">getMode</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.getpregflags.html" class="methodname">getPregFlags</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.getregex.html" class="methodname">getRegex</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.setflags.html" class="methodname">setFlags</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.setmode.html" class="methodname">setMode</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="regexiterator.setpregflags.html" class="methodname">setPregFlags</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$preg_flags</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 继承的方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">abstract</span>
+   <span class="methodname"><a href="filteriterator.accept.html" class="methodname">FilterIterator::accept</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><a href="filteriterator.construct.html" class="methodname">FilterIterator::__construct</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.iterator.html" class="type Iterator">Iterator</a></span> <code class="parameter">$iterator</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.current.html" class="methodname">FilterIterator::current</a></span>
+    (
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.getinneriterator.html" class="methodname">FilterIterator::getInnerIterator</a></span>
+    (
+   ) : <span class="type"><a href="class.iterator.html" class="type Iterator">Iterator</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.key.html" class="methodname">FilterIterator::key</a></span>
+    (
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.next.html" class="methodname">FilterIterator::next</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.rewind.html" class="methodname">FilterIterator::rewind</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="filteriterator.valid.html" class="methodname">FilterIterator::valid</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="regexiterator.constants">
+   <h2 class="title">预定义常量</h2>
+   <div class="section" id="regexiterator.constants.operation-modes">
+    <h2 class="title">RegexIterator operation modes</h2>
+    <dl>
+
+
+     
+      <dt id="regexiterator.constants.all-matches"><strong><code>RegexIterator::ALL_MATCHES</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Return all matches for the current entry 
+        (see <span class="function"><a href="function.preg-match-all.html" class="function">preg_match_all()</a></span>).
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="regexiterator.constants.get-match"><strong><code>RegexIterator::GET_MATCH</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Return the first match for the current entry 
+        (see <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span>).
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="regexiterator.constants.match"><strong><code>RegexIterator::MATCH</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Only execute match (filter) for the current entry 
+        (see <span class="function"><a href="function.preg-match.html" class="function">preg_match()</a></span>).
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="regexiterator.constants.replace"><strong><code>RegexIterator::REPLACE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Replace the current entry 
+        (see <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span>; Not fully implemented yet)
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="regexiterator.constants.split"><strong><code>RegexIterator::SPLIT</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Returns the split values for the current entry (see <span class="function"><a href="function.preg-split.html" class="function">preg_split()</a></span>).
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </div>
+   <div class="section" id="regexiterator.constants.flags">
+    <h2 class="title">RegexIterator Flags</h2>
+    <dl>
+
+     
+      <dt id="regexiterator.constants.use-key"><strong><code>RegexIterator::USE_KEY</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Special flag: Match the entry key instead of the entry value.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="regexiterator.accept.html">RegexIterator::accept</a> — Get accept status</li><li><a href="regexiterator.construct.html">RegexIterator::__construct</a> — Create a new RegexIterator</li><li><a href="regexiterator.getflags.html">RegexIterator::getFlags</a> — Get flags</li><li><a href="regexiterator.getmode.html">RegexIterator::getMode</a> — Returns operation mode</li><li><a href="regexiterator.getpregflags.html">RegexIterator::getPregFlags</a> — Returns the regular expression flags</li><li><a href="regexiterator.getregex.html">RegexIterator::getRegex</a> — Returns current regular expression</li><li><a href="regexiterator.setflags.html">RegexIterator::setFlags</a> — Sets the flags</li><li><a href="regexiterator.setmode.html">RegexIterator::setMode</a> — Sets the operation mode</li><li><a href="regexiterator.setpregflags.html">RegexIterator::setPregFlags</a> — Sets the regular expression flags</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 1061);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

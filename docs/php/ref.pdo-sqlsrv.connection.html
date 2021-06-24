@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>PDO_SQLSRV DSN - 开发帮助文档</title> 
+    <meta name="keyword" content="ref.pdo-sqlsrv.connection"> 
+    <meta name="description" content="ref.pdo-sqlsrv.connection"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="976" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.pdo-sqlsrv.connection.html" title="PDO_SQLSRV DSN">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PDO_SQLSRV DSN
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.pdo-sqlsrv.html">« MS SQL Server (PDO)</a></li>
+      <li style="float: right;"><a href="ref.pdo-oci.html">Oracle (PDO) »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.pdo-sqlsrv.html">MS SQL Server (PDO)</a></li>
+    <li>Connecting to MS SQL Server and SQL Azure databases</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.pdo-sqlsrv.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_SQLSRV DSN</h1>
+    <p class="verinfo">(PECL pdo_sqlsrv &gt;= 2.0.1)</p><p class="refpurpose"><span class="refname">PDO_SQLSRV DSN</span> — <span class="dc-title">Connecting to MS SQL Server and SQL Azure databases</span></p>
+
+   </div>
+
+   <div class="refsect1 description" id="refsect1-ref.pdo-sqlsrv.connection-description">
+    <h3 class="title">说明</h3>
+    <p class="para">
+     The PDO_SQLSRV Data Source Name (DSN) is composed of the following elements:
+     </p><dl>
+
+      
+       <dt>
+DSN prefix</dt>
+
+       <dd>
+
+        <p class="para">
+        The DSN prefix is <strong class="userinput"><code>sqlsrv:</code></strong>.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">APP</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The application name used in tracing.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">ConnectionPooling</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies whether the connection is assigned from a connection pool 
+         (1 or <strong><code>true</code></strong>) or not (0 or <strong><code>false</code></strong>).
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">Database</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The name of the database.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">Encrypt</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies whether the communication with SQL Server is encrypted 
+         (1 or <strong><code>true</code></strong>) or unencrypted (0 or <strong><code>false</code></strong>).
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">Failover_Partner</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies the server and instance of the database's mirror (if enabled 
+         and configured) to use when the primary server is unavailable.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">LoginTimeout</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies the number of seconds to wait before failing the connection attempt.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">MultipleActiveResultSets</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Disables or explicitly enables support for multiple active Result sets (MARS).
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">QuotedId</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies whether to use SQL-92 rules for quoted identifiers (1 or <strong><code>true</code></strong>) 
+         or to use legacy Transact-SQL rules (0 or <strong><code>false</code></strong>).
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">Server</code></dt>
+
+       <dd>
+
+        <p class="para">
+         The name of the database server.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">TraceFile</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies the path for the file used for trace data.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">TraceOn</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies whether ODBC tracing is enabled (1 or <strong><code>true</code></strong>) or disabled 
+         (0 or <strong><code>false</code></strong>) for the connection being established.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">TransactionIsolation</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies the transaction isolation level. The accepted values for this 
+         option are PDO::SQLSRV_TXN_READ_UNCOMMITTED, PDO::SQLSRV_TXN_READ_COMMITTED, 
+         PDO::SQLSRV_TXN_REPEATABLE_READ, PDO::SQLSRV_TXN_SNAPSHOT, and 
+         PDO::SQLSRV_TXN_SERIALIZABLE.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">TrustServerCertificate</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies whether the client should trust (1 or <strong><code>true</code></strong>) or reject 
+         (0 or <strong><code>false</code></strong>) a self-signed server certificate.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<code class="literal">WSID</code></dt>
+
+       <dd>
+
+        <p class="para">
+         Specifies the name of the computer for tracing.
+        </p>
+       </dd>
+
+      
+     </dl>
+
+    
+   </div>
+
+
+   <div class="refsect1 examples" id="refsect1-ref.pdo-sqlsrv.connection-examples">
+    <h3 class="title">范例</h3>
+    <p class="para">
+     </p><div class="example" id="example-1031">
+      <p><strong>示例 #1 PDO_SQLSRV DSN examples</strong></p>
+      <div class="example-contents"><p>
+       The following example shows how to connecto to a specified MS SQL Server database:
+       </p><div class="example-contents">
+<div class="cdata"><pre>
+$c = new PDO("sqlsrv:Server=localhost;Database=testdb", "UserName", "Password");
+</pre></div>
+       </div>
+
+       </div>
+       <div class="example-contents"><p>
+       The following example shows how to connect to a MS SQL Server database on 
+       a specified port:
+       </p><div class="example-contents">
+<div class="cdata"><pre>
+$c = new PDO("sqlsrv:Server=localhost,1521;Database=testdb", "UserName", "Password");
+</pre></div>
+       </div>
+
+      </div>
+      <div class="example-contents"><p>
+       The following example shows how to connecto to a SQL Azure database with 
+       server ID 12345abcde. Note that when you connect to SQL Azure with PDO, 
+       your username will be UserName@12345abcde (UserName@ServerId).
+       </p><div class="example-contents">
+<div class="cdata"><pre>
+$c = new PDO("sqlsrv:Server=12345abcde.database.windows.net;Database=testdb", "UserName@12345abcde", "Password");
+</pre></div>
+       </div>
+
+      </div>
+     </div>
+    
+   </div>
+
+  </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9183);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Getting started building a mysqlnd plugin - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd.plugin.developing"> 
+    <meta name="description" content="mysqlnd.plugin.developing"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="848" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.api.html" title="The mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The mysqlnd plugin API
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.architecture.html" title="MySQL Native Driver Plugin Architecture">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQL Native Driver Plugin Architecture
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.developing.html" title="Getting started building a mysqlnd plugin">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Getting started building a mysqlnd plugin
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.mysql-proxy.html" title="A comparison of mysqlnd plugins with MySQL Proxy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    A comparison of mysqlnd plugins with MySQL Proxy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.obtaining.html" title="Obtaining the mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Obtaining the mysqlnd plugin API
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.plugin.api.html">« The mysqlnd plugin API</a></li>
+      <li style="float: right;"><a href="book.mysqlnd-ms.html">mysqlnd_ms »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+    <li>Getting started building a mysqlnd plugin</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin.developing" class="section">
+  <h2 class="title">Getting started building a mysqlnd plugin</h2>
+  <p class="para">
+   It is important to remember that a <code class="literal">mysqlnd</code> plugin
+   is itself a PHP extension.
+  </p>
+  <p class="para">
+   The following code shows the basic structure of the MINIT function
+   that will be used in the typical <code class="literal">mysqlnd</code> plugin:
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+/* my_php_mysqlnd_plugin.c */
+
+ static PHP_MINIT_FUNCTION(mysqlnd_plugin) {
+  /* globals, ini entries, resources, classes */
+
+  /* register mysqlnd plugin */
+  mysqlnd_plugin_id = mysqlnd_plugin_register();
+
+  conn_m = mysqlnd_get_conn_methods();
+  memcpy(org_conn_m, conn_m,
+    sizeof(struct st_mysqlnd_conn_methods));
+
+  conn_m-&gt;query = MYSQLND_METHOD(mysqlnd_plugin_conn, query);
+  conn_m-&gt;connect = MYSQLND_METHOD(mysqlnd_plugin_conn, connect);
+}
+</pre></div>
+</div>
+
+<div class="example-contents">
+<div class="cdata"><pre>
+/* my_mysqlnd_plugin.c */
+
+ enum_func_status MYSQLND_METHOD(mysqlnd_plugin_conn, query)(/* ... */) {
+  /* ... */
+}
+enum_func_status MYSQLND_METHOD(mysqlnd_plugin_conn, connect)(/* ... */) {
+  /* ... */
+}
+</pre></div>
+</div>
+
+  <p class="para">
+   <em class="emphasis">Task analysis: from C to userspace</em>
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+ class proxy extends mysqlnd_plugin_connection {
+  public function connect($host, ...) { .. }
+}
+mysqlnd_plugin_set_conn_proxy(new proxy());
+</pre></div>
+</div>
+
+  <p class="para">
+   Process:
+  </p>
+  <ol type="1">
+   <li class="listitem">
+    <p class="para">
+     PHP: user registers plugin callback
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     PHP: user calls any PHP MySQL API to connect to MySQL
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     C: ext/*mysql* calls mysqlnd method
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     C: mysqlnd ends up in ext/mysqlnd_plugin
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     C: ext/mysqlnd_plugin
+     </p><ol type="1">
+      <li class="listitem">
+       <p class="para">
+        Calls userspace callback
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        Or original <code class="literal">mysqlnd</code> method, if userspace
+        callback not set
+       </p>
+      </li>
+     </ol>
+    
+   </li>
+  </ol>
+  <p class="para">
+   You need to carry out the following:
+  </p>
+  <ol type="1">
+   <li class="listitem">
+    <p class="para">
+     Write a class "mysqlnd_plugin_connection" in C
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Accept and register proxy object through
+     "mysqlnd_plugin_set_conn_proxy()"
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Call userspace proxy methods from C (optimization -
+     zend_interfaces.h)
+    </p>
+   </li>
+  </ol>
+  <p class="para">
+   Userspace object methods can either be called using
+   <code class="literal">call_user_function()</code> or you can operate at a level
+   closer to the Zend Engine and use
+   <code class="literal">zend_call_method()</code>.
+  </p>
+  <p class="para">
+   <em class="emphasis"> Optimization: calling methods from C using
+   zend_call_method </em>
+  </p>
+  <p class="para">
+   The following code snippet shows the prototype for the
+   <code class="literal">zend_call_method</code> function, taken from
+   <var class="filename">zend_interfaces.h</var>.
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+ ZEND_API zval* zend_call_method(
+  zval **object_pp, zend_class_entry *obj_ce,
+  zend_function **fn_proxy, char *function_name,
+  int function_name_len, zval **retval_ptr_ptr,
+  int param_count, zval* arg1, zval* arg2 TSRMLS_DC
+);
+</pre></div>
+</div>
+
+  <p class="para">
+   Zend API supports only two arguments. You may need more, for example:
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+ enum_func_status (*func_mysqlnd_conn__connect)(
+  MYSQLND *conn, const char *host,
+  const char * user, const char * passwd,
+  unsigned int passwd_len, const char * db,
+  unsigned int db_len, unsigned int port,
+  const char * socket, unsigned int mysql_flags TSRMLS_DC
+);
+</pre></div>
+</div>
+
+  <p class="para">
+   To get around this problem you will need to make a copy of
+   <code class="literal">zend_call_method()</code> and add a facility for
+   additional parameters. You can do this by creating a set of
+   <code class="literal">MY_ZEND_CALL_METHOD_WRAPPER</code> macros.
+  </p>
+  <p class="para">
+   <em class="emphasis"> Calling PHP userspace</em>
+  </p>
+  <p class="para">
+   This code snippet shows the optimized method for calling a userspace
+   function from C:
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre> 
+/* my_mysqlnd_plugin.c */
+
+MYSQLND_METHOD(my_conn_class,connect)(
+  MYSQLND *conn, const char *host /* ... */ TSRMLS_DC) {
+  enum_func_status ret = FAIL;
+  zval * global_user_conn_proxy = fetch_userspace_proxy();
+  if (global_user_conn_proxy) {
+    /* call userspace proxy */
+    ret = MY_ZEND_CALL_METHOD_WRAPPER(global_user_conn_proxy, host, /*...*/);
+  } else {
+    /* or original mysqlnd method = do nothing, be transparent */
+    ret = org_methods.connect(conn, host, user, passwd,
+          passwd_len, db, db_len, port,
+          socket, mysql_flags TSRMLS_CC);
+  }
+  return ret;
+}
+</pre></div>
+</div>
+
+  <p class="para">
+   <em class="emphasis"> Calling userspace: simple arguments
+   </em>
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+/* my_mysqlnd_plugin.c */
+
+ MYSQLND_METHOD(my_conn_class,connect)(
+  /* ... */, const char *host, /* ...*/) {
+  /* ... */
+  if (global_user_conn_proxy) {
+    /* ... */
+    zval* zv_host;
+    MAKE_STD_ZVAL(zv_host);
+    ZVAL_STRING(zv_host, host, 1);
+    MY_ZEND_CALL_METHOD_WRAPPER(global_user_conn_proxy, zv_retval, zv_host /*, ...*/);
+    zval_ptr_dtor(&amp;zv_host);
+    /* ... */
+  }
+  /* ... */
+}
+</pre></div>
+</div>
+
+  <p class="para">
+   <em class="emphasis"> Calling userspace: structs as arguments
+   </em>
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+/* my_mysqlnd_plugin.c */
+
+MYSQLND_METHOD(my_conn_class, connect)(
+  MYSQLND *conn, /* ...*/) {
+  /* ... */
+  if (global_user_conn_proxy) {
+    /* ... */
+    zval* zv_conn;
+    ZEND_REGISTER_RESOURCE(zv_conn, (void *)conn, le_mysqlnd_plugin_conn);
+    MY_ZEND_CALL_METHOD_WRAPPER(global_user_conn_proxy, zv_retval, zv_conn, zv_host /*, ...*/);
+    zval_ptr_dtor(&amp;zv_conn);
+    /* ... */
+  }
+  /* ... */
+}
+</pre></div>
+</div>
+
+  <p class="para">
+   The first argument of many <code class="literal">mysqlnd</code> methods is a C
+   "object". For example, the first argument of the connect() method is
+   a pointer to <code class="literal">MYSQLND</code>. The struct MYSQLND
+   represents a <code class="literal">mysqlnd</code> connection object.
+  </p>
+  <p class="para">
+   The <code class="literal">mysqlnd</code> connection object pointer can be
+   compared to a standard I/O file handle. Like a standard I/O file
+   handle a <code class="literal">mysqlnd</code> connection object shall be linked
+   to the userspace using the PHP resource variable type.
+  </p>
+  <p class="para">
+   <em class="emphasis"> From C to userspace and back </em>
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+ class proxy extends mysqlnd_plugin_connection {
+  public function connect($conn, $host, ...) {
+    /* "pre" hook */
+    printf("Connecting to host = '%s'\n", $host);
+    debug_print_backtrace();
+    return parent::connect($conn);
+  }
+
+  public function query($conn, $query) {
+    /* "post" hook */
+    $ret = parent::query($conn, $query);
+    printf("Query = '%s'\n", $query);
+    return $ret;
+  }
+}
+mysqlnd_plugin_set_conn_proxy(new proxy());
+</pre></div>
+</div>
+
+  <p class="para">
+   PHP users must be able to call the parent implementation of an
+   overwritten method.
+  </p>
+  <p class="para">
+   As a result of subclassing it is possible to refine only selected
+   methods and you can choose to have "pre" or "post" hooks.
+  </p>
+  <p class="para">
+   <em class="emphasis"> Buildin class:
+   mysqlnd_plugin_connection::connect() </em>
+  </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+/*  my_mysqlnd_plugin_classes.c */
+
+ PHP_METHOD("mysqlnd_plugin_connection", connect) {
+  /* ... simplified! ... */
+  zval* mysqlnd_rsrc;
+  MYSQLND* conn;
+  char* host; int host_len;
+  if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rs",
+    &amp;mysqlnd_rsrc, &amp;host, &amp;host_len) == FAILURE) {
+    RETURN_NULL();
+  }
+  ZEND_FETCH_RESOURCE(conn, MYSQLND* conn, &amp;mysqlnd_rsrc, -1,
+    "Mysqlnd Connection", le_mysqlnd_plugin_conn);
+  if (PASS == org_methods.connect(conn, host, /* simplified! */ TSRMLS_CC))
+    RETVAL_TRUE;
+  else
+    RETVAL_FALSE;
+}
+</pre></div>
+</div>
+
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8343);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

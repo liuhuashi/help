@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Internet 领域：TCP，UDP，SSL 和 TLS - 开发帮助文档</title> 
+    <meta name="keyword" content="transports.inet"> 
+    <meta name="description" content="transports.inet"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="13" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/transports.inet.html" title="Internet 领域：TCP，UDP，SSL 和 TLS">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Internet 领域：TCP，UDP，SSL 和 TLS
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/transports.unix.html" title="Unix 领域：Unix 和 UDG">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix 领域：Unix 和 UDG
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="transports.html">« 所支持的套接字传输器（Socket Transports）列表</a></li>
+      <li style="float: right;"><a href="transports.unix.html">Unix 领域：Unix 和 UDG »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="transports.html">所支持的套接字传输器（Socket Transports）列表</a></li>
+    <li>Internet 领域：TCP，UDP，SSL 和 TLS</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="transports.inet" class="section">
+    <h2 class="title">Internet 领域：TCP，UDP，SSL 和 TLS</h2>
+    <p class="simpara">PHP 3，PHP 4，PHP 5。 
+    <code class="literal">ssl://</code>&amp; 
+    <code class="literal">tls://</code>自 PHP 4.3 起可用。</p>
+    <p class="simpara">
+    <code class="literal">sslv2://</code>&amp; 
+    <code class="literal">sslv3://</code>自 PHP 5.0.2 起可用。</p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">如果没有指定传输器，则假定为 
+      <code class="literal">tcp://</code>。</span>
+    </p></blockquote>
+    <ul class="itemizedlist">
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">127.0.0.1</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">fe80::1</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://127.0.0.1</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://fe80::1</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">udp://www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">ssl://www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">sslv2://www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">sslv3://www.example.com</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tls://www.example.com</code>
+        </span>
+      </li>
+    </ul>
+    <p class="simpara">Internet 领域套接字在目标地址中还期望有一个端口号。在 
+    <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>中在第二个参数中指定，这样就不会影响传输器的 URL。然而在 
+    <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span>和相关的函数中是用传统的 URL，端口号在传输器 URL 后面以冒号分隔而指定。</p>
+    <ul class="itemizedlist">
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://127.0.0.1:80</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://[fe80::1]:80</code>
+        </span>
+      </li>
+      <li class="listitem">
+        <span class="simpara">
+          <code class="literal">tcp://www.example.com:80</code>
+        </span>
+      </li>
+    </ul>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <strong>带端口号的 IPv6 数字地址</strong><br>
+      <span class="simpara">在上面的第二个例子中，IPv4 和主机名的例子只加了一个冒号和端口号，但 IPv6 的地址被放在方括号中：
+      <code class="literal">[fe80::1]</code>。这是为了将 IPv6 地址中的冒号和用来分隔端口号的冒号区别开来。</span>
+    </p></blockquote>
+    <p class="simpara">
+    <code class="literal">ssl://</code>和 
+    <code class="literal">tls://</code>传输器（仅在 openssl 支持已编译入 PHP 后可用）是 
+    <code class="literal">tcp://</code>传输器加入 SSL 加密后的扩展。在 PHP 4.3.0 中 OpenSSL 支持必须被静态编译入 PHP，在 PHP 5.0.0 中可以编译为模块或者静态的。</p>
+    <p class="simpara">
+    <code class="literal">ssl://</code>将根据远程服务器的兼容性和参数设置尝试与之建立 SSL V2 或 SSL V3 链接 
+    <code class="literal">sslv2://</code>和 
+    <code class="literal">sslv3://</code>将明确的选择 SSL V2 或 SSL V3 协议进行连接。</p>
+    <p class="para">
+      </p><table class="doctable table">
+        <caption><strong>
+        <code class="literal">ssl://</code>和 
+        <code class="literal">tls://</code>传输器的上下文选项（自 PHP 4.3.2 起）</strong></caption>
+        
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>用法</th>
+              <th>默认值</th>
+            </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+            <tr>
+              <td>
+                <code class="literal">verify_peer</code>
+              </td>
+              <td>&amp;true; 或 &amp;false;。用于 SSL 证书请求验证。</td>
+              <td>&amp;false;</td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">allow_self_signed</code>
+              </td>
+              <td>&amp;true; 或 &amp;false;。允许自签名的证书。</td>
+              <td>&amp;false;</td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">cafile</code>
+              </td>
+              <td>本地文件系统中证书授权机构文件的位置，应和 
+              <code class="literal">verify_peer</code>上下文选项一起使用来认证远端的身份。</td>
+              <td class="empty"> </td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">capath</code>
+              </td>
+              <td>如果没有指定 
+              <code class="literal">cafile</code>或者如果该处没找到证书，则在 
+              <code class="literal">capath</code>指定的目录中搜索相配的证书。
+              <code class="literal">capath</code>必须是一个正确的被散列化的证书目录。</td>
+              <td class="empty"> </td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">local_cert</code>
+              </td>
+              <td>文件系统中本地证书文件的路径。必须是一个用 PEM 编码并包含你的证书和私人密钥的文件。可以选择包括发行者的证书链。</td>
+              <td class="empty"> </td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">passphrase</code>
+              </td>
+              <td>你的 
+              <code class="literal">local_cert</code>文件编码的 passphrase。</td>
+              <td class="empty"> </td>
+            </tr>
+
+            <tr>
+              <td>
+                <code class="literal">CN_match</code>
+              </td>
+              <td>所期待的 Common Name。PHP 能进行有限的通配符匹配。如果 Common Name 与此不匹配，连接尝试会失败。</td>
+              <td class="empty"> </td>
+            </tr>
+
+          </tbody>
+        
+      </table>
+
+    
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+      <span class="simpara">因为 
+      <code class="literal">ssl://</code>是 
+      <a href="wrappers.http.html" class="link">
+        <code class="literal">https://</code>
+      </a>和 
+      <a href="wrappers.ftp.html" class="link">
+        <code class="literal">ftps://</code>
+      </a>封装协议的底层传输器，适用于 
+      <code class="literal">ssl://</code>的任何上下文选项也适用于 
+      <code class="literal">https://</code>和 
+      <code class="literal">ftps://</code>。</span>
+    </p></blockquote>
+  </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 10869);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

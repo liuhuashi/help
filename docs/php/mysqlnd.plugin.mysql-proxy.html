@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>A comparison of mysqlnd plugins with MySQL Proxy - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd.plugin.mysql-proxy"> 
+    <meta name="description" content="mysqlnd.plugin.mysql-proxy"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="848" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.api.html" title="The mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The mysqlnd plugin API
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.architecture.html" title="MySQL Native Driver Plugin Architecture">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQL Native Driver Plugin Architecture
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.developing.html" title="Getting started building a mysqlnd plugin">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Getting started building a mysqlnd plugin
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.mysql-proxy.html" title="A comparison of mysqlnd plugins with MySQL Proxy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    A comparison of mysqlnd plugins with MySQL Proxy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.obtaining.html" title="Obtaining the mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Obtaining the mysqlnd plugin API
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.plugin.html">« MySQL Native Driver Plugin API</a></li>
+      <li style="float: right;"><a href="mysqlnd.plugin.obtaining.html">Obtaining the mysqlnd plugin API »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+    <li>A comparison of mysqlnd plugins with MySQL Proxy</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin.mysql-proxy" class="section">
+  <h2 class="title">A comparison of mysqlnd plugins with MySQL Proxy</h2>
+  <p class="para">
+   <code class="literal">Mysqlnd</code> plugins and MySQL Proxy are different
+   technologies using different approaches. Both are valid tools for
+   solving a variety of common tasks such as load balancing, monitoring,
+   and performance enhancements. An important difference is that MySQL
+   Proxy works with all MySQL clients, whereas
+   <code class="literal">mysqlnd</code> plugins are specific to PHP applications.
+  </p>
+  <p class="para">
+   As a PHP Extension, a <code class="literal">mysqlnd</code> plugin gets
+   installed on the PHP application server, along with the rest of PHP.
+   MySQL Proxy can either be run on the PHP application server or can be
+   installed on a dedicated machine to handle multiple PHP application
+   servers.
+  </p>
+  <p class="para">
+   Deploying MySQL Proxy on the application server has two advantages:
+  </p>
+  <ol type="1">
+   <li class="listitem">
+    <p class="para">
+     No single point of failure
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Easy to scale out (horizontal scale out, scale by client)
+    </p>
+   </li>
+  </ol>
+  <p class="para">
+   MySQL Proxy (and <code class="literal">mysqlnd</code> plugins) can solve
+   problems easily which otherwise would have required changes to
+   existing applications.
+  </p>
+  <p class="para">
+   However, MySQL Proxy does have some disadvantages:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     MySQL Proxy is a new component and technology to master and deploy.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     MySQL Proxy requires knowledge of the Lua scripting language.
+    </p>
+   </li>
+  </ul>
+  <p class="para">
+   MySQL Proxy can be customized with C and Lua programming. Lua is the
+   preferred scripting language of MySQL Proxy. For most PHP experts Lua
+   is a new language to learn. A <code class="literal">mysqlnd</code> plugin can
+   be written in C. It is also possible to write plugins in PHP using
+   <a href="http://pecl.php.net/package/mysqlnd_uh" class="link external">» PECL/mysqlnd_uh</a>.
+  </p>
+  <p class="para">
+   MySQL Proxy runs as a daemon - a background process. MySQL Proxy can
+   recall earlier decisions, as all state can be retained. However, a
+   <code class="literal">mysqlnd</code> plugin is bound to the request-based
+   lifecycle of PHP. MySQL Proxy can also share one-time computed
+   results among multiple application servers. A
+   <code class="literal">mysqlnd</code> plugin would need to store data in a
+   persistent medium to be able to do this. Another daemon would need to
+   be used for this purpose, such as Memcache. This gives MySQL Proxy an
+   advantage in this case.
+  </p>
+  <p class="para">
+   MySQL Proxy works on top of the wire protocol. With MySQL Proxy you
+   have to parse and reverse engineer the MySQL Client Server Protocol.
+   Actions are limited to those that can be achieved by manipulating the
+   communication protocol. If the wire protocol changes (which happens
+   very rarely) MySQL Proxy scripts would need to be changed as well.
+  </p>
+  <p class="para">
+   <code class="literal">Mysqlnd</code> plugins work on top of the C API, which
+   mirrors the <code class="literal">libmysqlclient</code> client.
+   This C API is basically a wrapper around the MySQL Client Server
+   protocol, or wire protocol, as it is sometimes called. You can
+   intercept all C API calls. PHP makes use of the C API, therefore you
+   can hook all PHP calls, without the need to program at the level of
+   the wire protocol.
+  </p>
+  <p class="para">
+   <code class="literal">Mysqlnd</code> implements the wire protocol. Plugins can
+   therefore parse, reverse engineer, manipulate and even replace the
+   communication protocol. However, this is usually not required.
+  </p>
+  <p class="para">
+   As plugins allow you to create implementations that use two levels (C
+   API and wire protocol), they have greater flexibility than MySQL
+   Proxy. If a <code class="literal">mysqlnd</code> plugin is implemented using
+   the C API, any subsequent changes to the wire protocol do not require
+   changes to the plugin itself.
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8345);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

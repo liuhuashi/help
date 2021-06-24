@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>自定义会话管理器 - 开发帮助文档</title> 
+    <meta name="keyword" content="session.customhandler"> 
+    <meta name="description" content="session.customhandler"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="244" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.customhandler.html" title="自定义会话管理器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义会话管理器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.examples.basic.html" title="基本用法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基本用法
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.idpassing.html" title="传送会话ID">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    传送会话ID
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.idpassing.html">« 传送会话ID</a></li>
+      <li style="float: right;"><a href="session.upload-progress.html">Session 上传进度 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="session.examples.html">范例</a></li>
+    <li>自定义会话管理器</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.customhandler" class="section">
+  <h2 class="title">自定义会话管理器</h2>
+  <p class="para">
+   如果需要在数据库中或者以其他方式存储会话数据，
+   需要使用 <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> 函数来创建一系列用户级存储函数。
+   PHP 5.4.0 之后，你可以使用 <a href="class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a> 类
+   或者通过继承 <a href="class.sessionhandler.html" class="classname">SessionHandler</a> 类来扩展内置的管理器，
+   从而达到自定义会话保存机制的目的。
+  </p>
+  <p class="para">
+   函数 <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> 的参数即为在会话生命周期内要调用的一组回调函数：
+   <code class="parameter">open</code>， <code class="parameter">read</code>，
+   <code class="parameter">write</code> 以及 <code class="parameter">close</code>。
+   还有一些回调函数被用来完成垃圾清理：<code class="parameter">destroy</code> 用来删除会话，
+   <code class="parameter">gc</code> 用来进行周期性的垃圾收集。
+  </p>
+  <p class="para">
+   因此，会话保存管理器对于 PHP 而言是必需的。
+   默认情况下会使用内置的文件会话保存管理器。
+   可以通过 <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> 函数来设置自定义会话保存管理器。
+   一些 PHP 扩展也提供了内置的会话管理器，例如：<code class="parameter">sqlite</code>，
+   <code class="parameter">memcache</code> 以及 <code class="parameter">memcached</code>，
+   可以通过配置项 <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> 来使用它们。
+  </p>
+  <p class="para">
+   会话开始的时候，PHP 会调用 <code class="parameter">open</code> 管理器，然后再调用
+   <code class="parameter">read</code> 回调函数来读取内容，该回调函数返回已经经过编码的字符串。
+   然后 PHP 会将这个字符串解码，并且产生一个数组对象，然后保存至 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 
+   超级全局变量。
+  </p>
+  <p class="para">
+   当 PHP 关闭的时候（或者调用了 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 之后），
+   PHP 会对 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 中的数据进行编码，
+   然后和会话 ID 一起传送给 <code class="parameter">write</code> 回调函数。
+   <code class="parameter">write</code> 回调函数调用完毕之后，PHP 内部将调用
+   <code class="parameter">close</code> 回调函数。
+  </p>
+  <p class="para">
+   销毁会话时，PHP 会调用 <code class="parameter">destroy</code>  回调函数。
+  </p>
+ <p class="para">
+  根据会话生命周期时间的设置，PHP 会不时地调用 <code class="parameter">gc</code> 回调函数。
+  该函数会从持久化存储中删除超时的会话数据。
+  超时是指会话最后一次访问时间距离当前时间超过了 <code class="parameter">$lifetime</code> 所指定的值。
+ </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9638);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的集合 Collection - 开发帮助文档</title> 
+    <meta name="keyword" content="collections"> 
+    <meta name="description" content="collections"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的集合 Collection</h1>
+<ul>
+<li><a href="#introduction">简介</a>
+<ul>
+<li><a href="#creating-collections">创建集合</a></li>
+</ul></li>
+<li><a href="#available-methods">可用的方法</a></li>
+<li><a href="#higher-order-messages">高阶消息传递</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p><code>Illuminate\Support\Collection</code> 类提供了一个更具可读性的、更便于处理数组数据的封装。具体例子看下面的代码。我们使用了 <code>collect</code> 函数从数组中创建新的集合实例，对其中的每个元素运行 <code>strtoupper</code> 函数之后再移除所有的空元素：</p>
+<pre><code>$collection = collect(['taylor', 'abigail', null])-&gt;map(function ($name) {
+    return strtoupper($name);
+})
+-&gt;reject(function ($name) {
+    return empty($name);
+});</code></pre>
+<p>正如你看到的，<code>Collection</code> 类允许你链式调用其方法，以达到在底层数组上优雅地执行 map 和 reject 操作。一般来说，集合是不可改变的，这意味着每个 <code>Collection</code> 方法都会返回一个全新的 <code>Collection</code> 实例。</p>
+<p><a name="creating-collections"></a></p>
+<h3>创建集合</h3>
+<p>如上所述，辅助函数 <code>collect</code> 会为给定的数组返回一个新的 <code>Illuminate\Support\Collection</code> 实例。也就是说，创建一个集合就这么简单：</p>
+<pre><code>$collection = collect([1, 2, 3]);</code></pre>
+<blockquote>
+<p>{tip} 默认情况下， <a href="/docs/laravel_5.8_zh/eloquent.html">Eloquent</a> 查询的结果返回的内容都是 <code>Collection</code> 实例。</p>
+</blockquote>
+<p><a name="available-methods"></a></p>
+<h2>可用的方法</h2>
+<p>这个文档接下来的内容，我们会探讨 <code>Collection</code> 类每个可用的方法。记住，所有方法都可以以方法链的形式优雅地操纵数组。而且，几乎所有的方法都会返回新的 <code>Collection</code> 实例，允许你在必要时保存集合的原始副本。</p>
+<style>
+    #collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    #collection-method-list a {
+        display: block;
+    }
+</style>
+<div id="collection-method-list">
+<p><a href="#method-all">all</a>
+<a href="#method-average">average</a>
+<a href="#method-avg">avg</a>
+<a href="#method-chunk">chunk</a>
+<a href="#method-collapse">collapse</a>
+<a href="#method-combine">combine</a>
+<a href="#method-contains">contains</a>
+<a href="#method-containsstrict">containsStrict</a>
+<a href="#method-count">count</a>
+<a href="#method-diff">diff</a>
+<a href="#method-diffassoc">diffAssoc</a>
+<a href="#method-diffkeys">diffKeys</a>
+<a href="#method-each">each</a>
+<a href="#method-every">every</a>
+<a href="#method-except">except</a>
+<a href="#method-filter">filter</a>
+<a href="#method-first">first</a>
+<a href="#method-flatmap">flatMap</a>
+<a href="#method-flatten">flatten</a>
+<a href="#method-flip">flip</a>
+<a href="#method-forget">forget</a>
+<a href="#method-forpage">forPage</a>
+<a href="#method-get">get</a>
+<a href="#method-groupby">groupBy</a>
+<a href="#method-has">has</a>
+<a href="#method-implode">implode</a>
+<a href="#method-intersect">intersect</a>
+<a href="#method-intersectByKeys">intersectByKeys</a>
+<a href="#method-isempty">isEmpty</a>
+<a href="#method-isnotempty">isNotEmpty</a>
+<a href="#method-keyby">keyBy</a>
+<a href="#method-keys">keys</a>
+<a href="#method-last">last</a>
+<a href="#method-map">map</a>
+<a href="#method-mapwithkeys">mapWithKeys</a>
+<a href="#method-max">max</a>
+<a href="#method-median">median</a>
+<a href="#method-merge">merge</a>
+<a href="#method-min">min</a>
+<a href="#method-mode">mode</a>
+<a href="#method-nth">nth</a>
+<a href="#method-only">only</a>
+<a href="#method-partition">partition</a>
+<a href="#method-pipe">pipe</a>
+<a href="#method-pluck">pluck</a>
+<a href="#method-pop">pop</a>
+<a href="#method-prepend">prepend</a>
+<a href="#method-pull">pull</a>
+<a href="#method-push">push</a>
+<a href="#method-put">put</a>
+<a href="#method-random">random</a>
+<a href="#method-reduce">reduce</a>
+<a href="#method-reject">reject</a>
+<a href="#method-reverse">reverse</a>
+<a href="#method-search">search</a>
+<a href="#method-shift">shift</a>
+<a href="#method-shuffle">shuffle</a>
+<a href="#method-slice">slice</a>
+<a href="#method-sort">sort</a>
+<a href="#method-sortby">sortBy</a>
+<a href="#method-sortbydesc">sortByDesc</a>
+<a href="#method-splice">splice</a>
+<a href="#method-split">split</a>
+<a href="#method-sum">sum</a>
+<a href="#method-take">take</a>
+<a href="#method-tap">tap</a>
+<a href="#method-times">times</a>
+<a href="#method-toarray">toArray</a>
+<a href="#method-tojson">toJson</a>
+<a href="#method-transform">transform</a>
+<a href="#method-union">union</a>
+<a href="#method-unique">unique</a>
+<a href="#method-uniquestrict">uniqueStrict</a>
+<a href="#method-values">values</a>
+<a href="#method-when">when</a>
+<a href="#method-where">where</a>
+<a href="#method-wherestrict">whereStrict</a>
+<a href="#method-wherein">whereIn</a>
+<a href="#method-whereinstrict">whereInStrict</a>
+<a href="#method-wherenotin">whereNotIn</a>
+<a href="#method-wherenotinstrict">whereNotInStrict</a>
+<a href="#method-zip">zip</a></p>
+</div>
+<p><a name="method-listing"></a></p>
+<h2>方法列表</h2>
+<style>
+    #collection-method code {
+        font-size: 14px;
+    }
+
+    #collection-method:not(.first-collection-method) {
+        margin-top: 50px;
+    }
+</style>
+<p><a name="method-all"></a></p>
+<h4 id="collection-method" class="first-collection-method"><code>all()</code></h4>
+<p><code>all</code> 方法返回该集合表示的底层 <code>数组</code>：</p>
+<pre><code>collect([1, 2, 3])-&gt;all();
+
+// [1, 2, 3]</code></pre>
+<p><a name="method-average"></a></p>
+<h4 id="collection-method"><code>average()</code></h4>
+<p><a href="#method-avg"><code>avg</code></a> 方法的别名。</p>
+<p><a name="method-avg"></a></p>
+<h4 id="collection-method"><code>avg()</code></h4>
+<p><code>avg</code> 方法返回给定键的 <a href="https://en.wikipedia.org/wiki/Average">平均值</a>：</p>
+<pre><code>$average = collect([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;avg('foo');
+
+// 20
+
+$average = collect([1, 1, 2, 4])-&gt;avg();
+
+// 2</code></pre>
+<p><a name="method-chunk"></a></p>
+<h4 id="collection-method"><code>chunk()</code></h4>
+<p><code>chunk</code> 方法将集合拆成多个指定大小的小集合：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5, 6, 7]);
+
+$chunks = $collection-&gt;chunk(4);
+
+$chunks-&gt;toArray();
+
+// [[1, 2, 3, 4], [5, 6, 7]]</code></pre>
+<p>这个方法特别适用在使用网格系统时的 <a href="/docs/laravel_5.8_zh/views">视图</a>，如 <a href="http://getbootstrap.html.com/css/#grid">Bootstrap</a>。想像你有一个 <a href="/docs/laravel_5.8_zh/eloquent.html">Eloquent</a> 模型的集合要在网格中显示：</p>
+<pre><code class="language-HTML">@foreach ($products-&gt;chunk(3) as $chunk)
+    &lt;div class="row"&gt;
+        @foreach ($chunk as $product)
+            &lt;div class="col-xs-4"&gt;{{ $product-&gt;name }}&lt;/div&gt;
+        @endforeach
+    &lt;/div&gt;
+@endforeach</code></pre>
+<p><a name="method-collapse"></a></p>
+<h4 id="collection-method"><code>collapse()</code></h4>
+<p><code>collapse</code> 方法将多个数组的集合合并成一个数组的集合：</p>
+<pre><code>$collection = collect([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+
+$collapsed = $collection-&gt;collapse();
+
+$collapsed-&gt;all();
+
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<p><a name="method-combine"></a></p>
+<h4 id="collection-method"><code>combine()</code></h4>
+<p><code>combine</code> 方法可以将一个集合的值作为「键」，再将另一个数组或者集合的值作为「值」合并成一个集合：</p>
+<pre><code>$collection = collect(['name', 'age']);
+
+$combined = $collection-&gt;combine(['George', 29]);
+
+$combined-&gt;all();
+
+// ['name' =&gt; 'George', 'age' =&gt; 29]</code></pre>
+<p><a name="method-contains"></a></p>
+<h4 id="collection-method"><code>contains()</code></h4>
+<p><code>contains</code> 方法判断集合是否包含给定的项目：</p>
+<pre><code>$collection = collect(['name' =&gt; 'Desk', 'price' =&gt; 100]);
+
+$collection-&gt;contains('Desk');
+
+// true
+
+$collection-&gt;contains('New York');
+
+// false</code></pre>
+<p>你也可以用 <code>contains</code> 方法匹配一对键/值，即判断给定的配对是否存在于集合中：</p>
+<pre><code>$collection = collect([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+]);
+
+$collection-&gt;contains('product', 'Bookcase');
+
+// false</code></pre>
+<p>最后，你也可以传递一个回调到 <code>contains</code> 方法来执行自己的真实测试：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;contains(function ($value, $key) {
+    return $value &gt; 5;
+});
+
+// false</code></pre>
+<p><code>contains</code> 方法在检查项目值时使用「宽松」比较，意味着具有整数值的字符串将被视为等于相同值的整数。 相反 <a href="https://laravel.com/docs/5.5/collections#method-containsstrict"><code>containsStrict</code></a> 方法则是使用「严格」比较进行过滤。</p>
+<p><a name="method-containsstrict"></a></p>
+<h4 id="collection-method"><code>containsStrict()</code></h4>
+<p>此方法和 <a href="#method-contains"><code>contains</code></a> 方法类似，但是它却是使用了「严格」比较来比较所有值。</p>
+<p><a name="method-count"></a></p>
+<h4 id="collection-method"><code>count()</code></h4>
+<p><code>count</code> 方法返回该集合内的项目总数：</p>
+<pre><code>$collection = collect([1, 2, 3, 4]);
+
+$collection-&gt;count();
+
+// 4</code></pre>
+<p><a name="method-diff"></a></p>
+<h4 id="collection-method"><code>diff()</code></h4>
+<p><code>diff</code> 方法将集合与其它集合或纯 PHP 数组进行值的比较，然后返回原集合中存在而给定集合中不存在的值：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$diff = $collection-&gt;diff([2, 4, 6, 8]);
+
+$diff-&gt;all();
+
+// [1, 3, 5]</code></pre>
+<p><a name="method-diffassoc"></a></p>
+<h4 id="collection-method"><code>diffAssoc()</code></h4>
+<p><code>diffAssoc</code> 该方法与另外一个集合或基于它的键和值的 PHP 数组进行比较。这个方法会返回原集合不存在于给定集合中的键值对 ：</p>
+<pre><code>$collection = collect([
+    'color' =&gt; 'orange',
+    'type' =&gt; 'fruit',
+    'remain' =&gt; 6
+]);
+
+$diff = $collection-&gt;diffAssoc([
+    'color' =&gt; 'yellow',
+    'type' =&gt; 'fruit',
+    'remain' =&gt; 3,
+    'used' =&gt; 6
+]);
+
+$diff-&gt;all();
+
+// ['color' =&gt; 'orange', 'remain' =&gt; 6]</code></pre>
+<p><a name="method-diffkeys"></a></p>
+<h4 id="collection-method"><code>diffKeys()</code></h4>
+<p><code>diffKeys</code> 方法与另外一个集合或 PHP 数组的「键」进行比较，然后返回原集合中存在而给定的集合中不存在「键」所对应的键值对：</p>
+<pre><code>$collection = collect([
+    'one' =&gt; 10,
+    'two' =&gt; 20,
+    'three' =&gt; 30,
+    'four' =&gt; 40,
+    'five' =&gt; 50,
+]);
+
+$diff = $collection-&gt;diffKeys([
+    'two' =&gt; 2,
+    'four' =&gt; 4,
+    'six' =&gt; 6,
+    'eight' =&gt; 8,
+]);
+
+$diff-&gt;all();
+
+// ['one' =&gt; 10, 'three' =&gt; 30, 'five' =&gt; 50]</code></pre>
+<p><a name="method-each"></a></p>
+<h4 id="collection-method"><code>each()</code></h4>
+<p><code>each</code> 迭代集合中的内容并将其传递到回调函数中：</p>
+<pre><code>$collection = $collection-&gt;each(function ($item, $key) {
+    //
+});</code></pre>
+<p>如果你想要中断对内容的迭代，那就从回调中返回 <code>false</code>：</p>
+<pre><code>$collection = $collection-&gt;each(function ($item, $key) {
+    if (/* some condition */) {
+        return false;
+    }
+});</code></pre>
+<p><a name="method-every"></a></p>
+<h4 id="collection-method"><code>every()</code></h4>
+<p><code>every</code> 方法可用于验证集合中每一个元素都通过给定的真实测试：</p>
+<pre><code>collect([1, 2, 3, 4])-&gt;every(function ($value, $key) {
+    return $value &gt; 2;
+});
+
+// false</code></pre>
+<p><a name="method-except"></a></p>
+<h4 id="collection-method"><code>except()</code></h4>
+<p><code>except</code> 方法返回集合中除了指定键以外的所有项目：</p>
+<pre><code>$collection = collect(['product_id' =&gt; 1, 'price' =&gt; 100, 'discount' =&gt; false]);
+
+$filtered = $collection-&gt;except(['price', 'discount']);
+
+$filtered-&gt;all();
+
+// ['product_id' =&gt; 1]</code></pre>
+<p>与 <code>except</code> 相反的方法，请查看 <a href="#method-only">only</a>。</p>
+<p><a name="method-filter"></a></p>
+<h4 id="collection-method"><code>filter()</code></h4>
+<p><code>filter</code> 方法使用给定的回调函数过滤集合的内容，只留下那些通过给定真实测试的内容：</p>
+<pre><code>$collection = collect([1, 2, 3, 4]);
+
+$filtered = $collection-&gt;filter(function ($value, $key) {
+    return $value &gt; 2;
+});
+
+$filtered-&gt;all();
+
+// [3, 4]</code></pre>
+<p>如果没有提供回调函数，集合中所有返回 <code>false</code> 的元素都会被移除：</p>
+<pre><code>$collection = collect([1, 2, 3, null, false, '', 0, []]);
+
+$collection-&gt;filter()-&gt;all();
+
+// [1, 2, 3]</code></pre>
+<p>与 <code>filter</code> 相反的方法，可以查看 <a href="#method-reject">reject</a>。</p>
+<p><a name="method-first"></a></p>
+<h4 id="collection-method"><code>first()</code></h4>
+<p><code>first</code> 方法返回集合中通过给定真实测试的第一个元素：</p>
+<pre><code>collect([1, 2, 3, 4])-&gt;first(function ($value, $key) {
+    return $value &gt; 2;
+});
+
+// 3</code></pre>
+<p>你也可以不传入参数使用 <code>first</code> 方法以获取集合中第一个元素。如果集合是空的，则会返回 <code>null</code>：</p>
+<pre><code>collect([1, 2, 3, 4])-&gt;first();
+
+// 1</code></pre>
+<p><a name="method-flatmap"></a></p>
+<h4 id="collection-method"><code>flatMap()</code></h4>
+<p><code>flatMap</code> 方法遍历集合并将其中的每个值传递到给定的回调。可以通过回调修改每个值的内容再返回出来，从而形成一个新的被修改过内容的集合。然后你就可以用 <code>all()</code> 打印修改后的数组：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'Sally'],
+    ['school' =&gt; 'Arkansas'],
+    ['age' =&gt; 28]
+]);
+
+$flattened = $collection-&gt;flatMap(function ($values) {
+    return array_map('strtoupper', $values);
+});
+
+$flattened-&gt;all();
+
+// ['name' =&gt; 'SALLY', 'school' =&gt; 'ARKANSAS', 'age' =&gt; '28'];</code></pre>
+<p><a name="method-flatten"></a></p>
+<h4 id="collection-method"><code>flatten()</code></h4>
+<p><code>flatten</code> 方法将多维集合转为一维的：</p>
+<pre><code>$collection = collect(['name' =&gt; 'taylor', 'languages' =&gt; ['php', 'javascript']]);
+
+$flattened = $collection-&gt;flatten();
+
+$flattened-&gt;all();
+
+// ['taylor', 'php', 'javascript'];</code></pre>
+<p>你还可以选择性地传入「深度」参数：</p>
+<pre><code>$collection = collect([
+    'Apple' =&gt; [
+        ['name' =&gt; 'iPhone 6S', 'brand' =&gt; 'Apple'],
+    ],
+    'Samsung' =&gt; [
+        ['name' =&gt; 'Galaxy S7', 'brand' =&gt; 'Samsung']
+    ],
+]);
+
+$products = $collection-&gt;flatten(1);
+
+$products-&gt;values()-&gt;all();
+
+/*
+    [
+        ['name' =&gt; 'iPhone 6S', 'brand' =&gt; 'Apple'],
+        ['name' =&gt; 'Galaxy S7', 'brand' =&gt; 'Samsung'],
+    ]
+*/</code></pre>
+<p>在这个例子里，调用 <code>flatten</code> 方法时不传入深度参数的话也会将嵌套数组转成一维的，然后返回 <code>['iPhone 6S', 'Apple', 'Galaxy S7', 'Samsung']</code>。传入深度参数能让你限制设置返回数组的层数。</p>
+<p><a name="method-flip"></a></p>
+<h4 id="collection-method"><code>flip()</code></h4>
+<p><code>flip</code> 方法将集合中的键和对应的数值进行互换：</p>
+<pre><code>$collection = collect(['name' =&gt; 'taylor', 'framework' =&gt; 'laravel']);
+
+$flipped = $collection-&gt;flip();
+
+$flipped-&gt;all();
+
+// ['taylor' =&gt; 'name', 'laravel' =&gt; 'framework']</code></pre>
+<p><a name="method-forget"></a></p>
+<h4 id="collection-method"><code>forget()</code></h4>
+<p><code>forget</code> 方法通过给定的键来移除掉集合中对应的内容：</p>
+<pre><code>$collection = collect(['name' =&gt; 'taylor', 'framework' =&gt; 'laravel']);
+
+$collection-&gt;forget('name');
+
+$collection-&gt;all();
+
+// ['framework' =&gt; 'laravel']</code></pre>
+<blockquote>
+<p>{note} 与大多数集合的方法不同，<code>forget</code> 不会返回修改过后的新集合；它会直接修改原来的集合。</p>
+</blockquote>
+<p><a name="method-forpage"></a></p>
+<h4 id="collection-method"><code>forPage()</code></h4>
+<p><code>forPage</code> 方法返回给定页码上显示的项目的新集合。这个方法接受页码作为其第一个参数和每页显示的项目数作为其第二个参数。</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+$chunk = $collection-&gt;forPage(2, 3);
+
+$chunk-&gt;all();
+
+// [4, 5, 6]</code></pre>
+<p><a name="method-get"></a></p>
+<h4 id="collection-method"><code>get()</code></h4>
+<p><code>get</code> 方法返回给定键的项目。如果该键不存在，则返回 <code>null</code>：</p>
+<pre><code>$collection = collect(['name' =&gt; 'taylor', 'framework' =&gt; 'laravel']);
+
+$value = $collection-&gt;get('name');
+
+// taylor</code></pre>
+<p>你可以选择性地传递默认值作为第二个参数：</p>
+<pre><code>$collection = collect(['name' =&gt; 'taylor', 'framework' =&gt; 'laravel']);
+
+$value = $collection-&gt;get('foo', 'default-value');
+
+// default-value</code></pre>
+<p>你甚至可以将回调函数当作默认值。如果指定的键不存在，就会返回回调的结果：</p>
+<pre><code>$collection-&gt;get('email', function () {
+    return 'default-value';
+});
+
+// default-value</code></pre>
+<p><a name="method-groupby"></a></p>
+<h4 id="collection-method"><code>groupBy()</code></h4>
+<p><code>groupBy</code> 方法根据给定的键对集合内的项目进行分组：</p>
+<pre><code>$collection = collect([
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+    ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+]);
+
+$grouped = $collection-&gt;groupBy('account_id');
+
+$grouped-&gt;toArray();
+
+/*
+    [
+        'account-x10' =&gt; [
+            ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+            ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+        ],
+        'account-x11' =&gt; [
+            ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+        ],
+    ]
+*/</code></pre>
+<p>除了传入一个字符串的「键」，你还可以传入一个回调。该回调应该返回你希望用来分组的键的值。</p>
+<pre><code>$grouped = $collection-&gt;groupBy(function ($item, $key) {
+    return substr($item['account_id'], -3);
+});
+
+$grouped-&gt;toArray();
+
+/*
+    [
+        'x10' =&gt; [
+            ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+            ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+        ],
+        'x11' =&gt; [
+            ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+        ],
+    ]
+*/</code></pre>
+<p><a name="method-has"></a></p>
+<h4 id="collection-method"><code>has()</code></h4>
+<p><code>has</code> 方法判断集合中是否存在给定的键：</p>
+<pre><code>$collection = collect(['account_id' =&gt; 1, 'product' =&gt; 'Desk']);
+
+$collection-&gt;has('product');
+
+// true</code></pre>
+<p><a name="method-implode"></a></p>
+<h4 id="collection-method"><code>implode()</code></h4>
+<p><code>implode</code> 方法合并集合中的项目。其参数取决于集合中项目的类型。如果集合包含数组或对象，你应该传入你希望连接的属性的键，以及你希望放在值之间用来「拼接」的字符串：:</p>
+<pre><code>$collection = collect([
+    ['account_id' =&gt; 1, 'product' =&gt; 'Desk'],
+    ['account_id' =&gt; 2, 'product' =&gt; 'Chair'],
+]);
+
+$collection-&gt;implode('product', ', ');
+
+// Desk, Chair</code></pre>
+<p>如果集合包含简单的字符串或数值，只需要传入「拼接」用的字符串作为该方法的唯一参数即可：</p>
+<pre><code>collect([1, 2, 3, 4, 5])-&gt;implode('-');
+
+// '1-2-3-4-5'</code></pre>
+<p><a name="method-intersect"></a></p>
+<h4 id="collection-method"><code>intersect()</code></h4>
+<p><code>intersect</code> 方法从原集合中删除不在给定「数组」或集合中的任何值。最终的集合会保留原集合的键：</p>
+<pre><code>$collection = collect(['Desk', 'Sofa', 'Chair']);
+
+$intersect = $collection-&gt;intersect(['Desk', 'Chair', 'Bookcase']);
+
+$intersect-&gt;all();
+
+// [0 =&gt; 'Desk', 2 =&gt; 'Chair']</code></pre>
+<p><a name="method-intersectByKeys"></a></p>
+<h4 id="collection-method"><code>intersectByKeys()</code></h4>
+<p><code>intersectByKeys</code> 方法删除原集合中不存在于给定「数组」或集合中的任何键。</p>
+<pre><code>$collection = collect([
+    'serial' =&gt; 'UX301', 'type' =&gt; 'screen', 'year' =&gt; 2009
+]);
+
+$intersect = $collection-&gt;intersectByKeys([
+    'reference' =&gt; 'UX404', 'type' =&gt; 'tab', 'year' =&gt; 2011
+]);
+
+$intersect-&gt;all();
+
+// ['type' =&gt; 'screen', 'year' =&gt; 2009]</code></pre>
+<p><a name="method-isempty"></a></p>
+<h4 id="collection-method"><code>isEmpty()</code></h4>
+<p>如果集合是空的，<code>isEmpty</code> 方法返回 <code>true</code>，否则返回 <code>false</code>：</p>
+<pre><code>collect([])-&gt;isEmpty();
+
+// true</code></pre>
+<p><a name="method-isnotempty"></a></p>
+<h4 id="collection-method"><code>isNotEmpty()</code></h4>
+<p>如果集合不是空的，<code>isNotEmpty</code> 方法会返回 <code>true</code>：否则返回 <code>false</code>：</p>
+<pre><code>collect([])-&gt;isNotEmpty();
+
+// false</code></pre>
+<p><a name="method-keyby"></a></p>
+<h4 id="collection-method"><code>keyBy()</code></h4>
+<p><code>keyBy</code> 方法以给定的键作为集合的键。如果多个项目具有相同的键，则只有最后一个项目会显示在新集合中：</p>
+<pre><code>$collection = collect([
+    ['product_id' =&gt; 'prod-100', 'name' =&gt; 'desk'],
+    ['product_id' =&gt; 'prod-200', 'name' =&gt; 'chair'],
+]);
+
+$keyed = $collection-&gt;keyBy('product_id');
+
+$keyed-&gt;all();
+
+/*
+    [
+        'prod-100' =&gt; ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+        'prod-200' =&gt; ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+    ]
+*/</code></pre>
+<p>你也可以传入一个回调方法，回调返回的值会作为该集合的键：</p>
+<pre><code>$keyed = $collection-&gt;keyBy(function ($item) {
+    return strtoupper($item['product_id']);
+});
+
+$keyed-&gt;all();
+
+/*
+    [
+        'PROD-100' =&gt; ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+        'PROD-200' =&gt; ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+    ]
+*/</code></pre>
+<p><a name="method-keys"></a></p>
+<h4 id="collection-method"><code>keys()</code></h4>
+<p><code>keys</code> 方法返回集合的所有键：</p>
+<pre><code>$collection = collect([
+    'prod-100' =&gt; ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+    'prod-200' =&gt; ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+]);
+
+$keys = $collection-&gt;keys();
+
+$keys-&gt;all();
+
+// ['prod-100', 'prod-200']</code></pre>
+<p><a name="method-last"></a></p>
+<h4 id="collection-method"><code>last()</code></h4>
+<p><code>last</code> 方法返回集合中通过给定真实测试的最后一个元素：</p>
+<pre><code>collect([1, 2, 3, 4])-&gt;last(function ($value, $key) {
+    return $value &lt; 3;
+});
+
+// 2</code></pre>
+<p>你也可以不传入参数调用 <code>last</code> 方法来获取集合中最后一个元素。如果集合是空的，返回 <code>null</code>：</p>
+<pre><code>collect([1, 2, 3, 4])-&gt;last();
+
+// 4</code></pre>
+<p><a name="method-map"></a></p>
+<h4 id="collection-method"><code>map()</code></h4>
+<p><code>map</code> 方法遍历集合并将每一个值传入给定的回调。该回调可以任意修改项目并返回，从而形成新的被修改过项目的集合：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$multiplied = $collection-&gt;map(function ($item, $key) {
+    return $item * 2;
+});
+
+$multiplied-&gt;all();
+
+// [2, 4, 6, 8, 10]</code></pre>
+<blockquote>
+<p>{note} 像其他集合方法一样，<code>map</code> 返回一个新的集合实例；它不会修改它所调用的集合。如果你想改变原集合，得使用 <a href="#method-transform"><code>transform</code></a> 方法。</p>
+</blockquote>
+<p><a name="method-mapwithkeys"></a></p>
+<h4 id="collection-method"><code>mapWithKeys()</code></h4>
+<p><code>mapWithKeys</code> 方法遍历集合并将每个值传入给定的回调。回调应该返回包含一个键值对的关联数组：</p>
+<pre><code>$collection = collect([
+    [
+        'name' =&gt; 'John',
+        'department' =&gt; 'Sales',
+        'email' =&gt; 'john@example.com'
+    ],
+    [
+        'name' =&gt; 'Jane',
+        'department' =&gt; 'Marketing',
+        'email' =&gt; 'jane@example.com'
+    ]
+]);
+
+$keyed = $collection-&gt;mapWithKeys(function ($item) {
+    return [$item['email'] =&gt; $item['name']];
+});
+
+$keyed-&gt;all();
+
+/*
+    [
+        'john@example.com' =&gt; 'John',
+        'jane@example.com' =&gt; 'Jane',
+    ]
+*/</code></pre>
+<p><a name="method-max"></a></p>
+<h4 id="collection-method"><code>max()</code></h4>
+<p><code>max</code> 方法返回给定键的最大值：</p>
+<pre><code>$max = collect([['foo' =&gt; 10], ['foo' =&gt; 20]])-&gt;max('foo');
+
+// 20
+
+$max = collect([1, 2, 3, 4, 5])-&gt;max();
+
+// 5</code></pre>
+<p><a name="method-median"></a></p>
+<h4 id="collection-method"><code>median()</code></h4>
+<p><code>median</code> 方法返回给定键的 <a href="https://en.wikipedia.org/wiki/Median">中间值</a> ：</p>
+<pre><code>$median = collect([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;median('foo');
+
+// 15
+
+$median = collect([1, 1, 2, 4])-&gt;median();
+
+// 1.5</code></pre>
+<p><a name="method-merge"></a></p>
+<h4 id="collection-method"><code>merge()</code></h4>
+<p><code>merge</code> 方法将给定数组或集合合并到原集合。如果给定项目中的字符串键与原集合中的字符串键匹配，给定的项目的值将会覆盖原集合中的值：</p>
+<pre><code>$collection = collect(['product_id' =&gt; 1, 'price' =&gt; 100]);
+
+$merged = $collection-&gt;merge(['price' =&gt; 200, 'discount' =&gt; false]);
+
+$merged-&gt;all();
+
+// ['product_id' =&gt; 1, 'price' =&gt; 200, 'discount' =&gt; false]</code></pre>
+<p>如果给定的项目的键是数字，这些值将被追加到集合的末尾：</p>
+<pre><code>$collection = collect(['Desk', 'Chair']);
+
+$merged = $collection-&gt;merge(['Bookcase', 'Door']);
+
+$merged-&gt;all();
+
+// ['Desk', 'Chair', 'Bookcase', 'Door']</code></pre>
+<p><a name="method-min"></a></p>
+<h4 id="collection-method"><code>min()</code></h4>
+<p><code>min</code> 方法返回给定键的最小值：</p>
+<pre><code>$min = collect([['foo' =&gt; 10], ['foo' =&gt; 20]])-&gt;min('foo');
+
+// 10
+
+$min = collect([1, 2, 3, 4, 5])-&gt;min();
+
+// 1</code></pre>
+<p><a name="method-mode"></a></p>
+<h4 id="collection-method"><code>mode()</code></h4>
+<p><code>mode</code> 方法返回给定键的 <a href="https://en.wikipedia.org/wiki/Mode_(statistics)">众数值</a>：</p>
+<pre><code>$mode = collect([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;mode('foo');
+
+// [10]
+
+$mode = collect([1, 1, 2, 4])-&gt;mode();
+
+// [1]</code></pre>
+<p><a name="method-nth"></a></p>
+<h4 id="collection-method"><code>nth()</code></h4>
+<p><code>nth</code> 方法创建由每隔 n 个元素组成一个新的集合：</p>
+<pre><code>$collection = collect(['a', 'b', 'c', 'd', 'e', 'f']);
+
+$collection-&gt;nth(4);
+
+// ['a', 'e']</code></pre>
+<p>你也可以选择传入一个偏移位置作为第二个参数</p>
+<pre><code>$collection-&gt;nth(4, 1);
+
+// ['b', 'f']</code></pre>
+<p><a name="method-only"></a></p>
+<h4 id="collection-method"><code>only()</code></h4>
+<p><code>only</code> 方法返回集合中给定键的所有项目：</p>
+<pre><code>$collection = collect(['product_id' =&gt; 1, 'name' =&gt; 'Desk', 'price' =&gt; 100, 'discount' =&gt; false]);
+
+$filtered = $collection-&gt;only(['product_id', 'name']);
+
+$filtered-&gt;all();
+
+// ['product_id' =&gt; 1, 'name' =&gt; 'Desk']</code></pre>
+<p>与 <code>only</code> 相反的方法，请查看 <a href="#method-except">except</a>。</p>
+<p><a name="method-partition"></a></p>
+<h4 id="collection-method"><code>partition()</code></h4>
+<p><code>partition</code> 方法可以和PHP 中的 <code>list</code> 方法结合使用，来分开通过指定条件的元素以及那些不通过指定条件的元素：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5, 6]);
+
+list($underThree, $aboveThree) = $collection-&gt;partition(function ($i) {
+    return $i &lt; 3;
+});</code></pre>
+<p><a name="method-pipe"></a></p>
+<h4 id="collection-method"><code>pipe()</code></h4>
+<p><code>pipe</code> 方法将集合传给给定的回调并返回结果：</p>
+<pre><code>$collection = collect([1, 2, 3]);
+
+$piped = $collection-&gt;pipe(function ($collection) {
+    return $collection-&gt;sum();
+});
+
+// 6</code></pre>
+<p><a name="method-pluck"></a></p>
+<h4 id="collection-method"><code>pluck()</code></h4>
+<p><code>pluck</code> 方法获取集合中给定键对应的所有值：</p>
+<pre><code>$collection = collect([
+    ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+    ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+]);
+
+$plucked = $collection-&gt;pluck('name');
+
+$plucked-&gt;all();
+
+// ['Desk', 'Chair']</code></pre>
+<p>你也可以通过传入第二个参数来指定生成的集合的键：</p>
+<pre><code>$plucked = $collection-&gt;pluck('name', 'product_id');
+
+$plucked-&gt;all();
+
+// ['prod-100' =&gt; 'Desk', 'prod-200' =&gt; 'Chair']</code></pre>
+<p><a name="method-pop"></a></p>
+<h4 id="collection-method"><code>pop()</code></h4>
+<p><code>pop</code> 方法移除并返回集合中的最后一个项目：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;pop();
+
+// 5
+
+$collection-&gt;all();
+
+// [1, 2, 3, 4]</code></pre>
+<p><a name="method-prepend"></a></p>
+<h4 id="collection-method"><code>prepend()</code></h4>
+<p><code>prepend</code> 方法将给定的值添加到集合的开头：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;prepend(0);
+
+$collection-&gt;all();
+
+// [0, 1, 2, 3, 4, 5]</code></pre>
+<p>你也可以传递第二个参数来设置前置项的键：</p>
+<pre><code>$collection = collect(['one' =&gt; 1, 'two' =&gt; 2]);
+
+$collection-&gt;prepend(0, 'zero');
+
+$collection-&gt;all();
+
+// ['zero' =&gt; 0, 'one' =&gt; 1, 'two' =&gt; 2]</code></pre>
+<p><a name="method-pull"></a></p>
+<h4 id="collection-method"><code>pull()</code></h4>
+<p><code>pull</code> 方法把给定键对应的值从集合中移除并返回：</p>
+<pre><code>$collection = collect(['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk']);
+
+$collection-&gt;pull('name');
+
+// 'Desk'
+
+$collection-&gt;all();
+
+// ['product_id' =&gt; 'prod-100']</code></pre>
+<p><a name="method-push"></a></p>
+<h4 id="collection-method"><code>push()</code></h4>
+<p><code>push</code> 方法把给定值添加到集合的末尾：</p>
+<pre><code>$collection = collect([1, 2, 3, 4]);
+
+$collection-&gt;push(5);
+
+$collection-&gt;all();
+
+// [1, 2, 3, 4, 5]</code></pre>
+<p><a name="method-put"></a></p>
+<h4 id="collection-method"><code>put()</code></h4>
+<p><code>put</code> 方法在集合内设置给定的键值对：</p>
+<pre><code>$collection = collect(['product_id' =&gt; 1, 'name' =&gt; 'Desk']);
+
+$collection-&gt;put('price', 100);
+
+$collection-&gt;all();
+
+// ['product_id' =&gt; 1, 'name' =&gt; 'Desk', 'price' =&gt; 100]</code></pre>
+<p><a name="method-random"></a></p>
+<h4 id="collection-method"><code>random()</code></h4>
+<p><code>random</code> 方法从集合中返回一个随机项：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;random();
+
+// 4 - (retrieved randomly)</code></pre>
+<p>你可以选择性传入一个整数到 <code>random</code> 来指定要获取的随机项的数量。只要你显式传递你希望接收的数量时，则会返回项目的集合：</p>
+<pre><code>$random = $collection-&gt;random(3);
+
+$random-&gt;all();
+
+// [0 =&gt; 1, 1 =&gt; 2, 4 =&gt; 5] - (retrieved randomly)</code></pre>
+<p><a name="method-reduce"></a></p>
+<h4 id="collection-method"><code>reduce()</code></h4>
+<p><code>reduce</code> 方法将每次迭代的结果传递给下一次迭代直到集合减少为单个值：</p>
+<pre><code>$collection = collect([1, 2, 3]);
+
+$total = $collection-&gt;reduce(function ($carry, $item) {
+    return $carry + $item;
+});
+
+// 6</code></pre>
+<p>第一次迭代时 <code>$carry</code> 的数值为 <code>null</code>；你也可以通过传入第二个参数到 <code>reduce</code> 来指定它的初始值：</p>
+<pre><code>$collection-&gt;reduce(function ($carry, $item) {
+    return $carry + $item;
+}, 4);
+
+// 10</code></pre>
+<p><a name="method-reject"></a></p>
+<h4 id="collection-method"><code>reject()</code></h4>
+<p><code>reject</code> 方法使用指定的回调过滤集合。如果回调返回 <code>true</code> ，就会把对应的项目从集合中移除：</p>
+<pre><code>$collection = collect([1, 2, 3, 4]);
+
+$filtered = $collection-&gt;reject(function ($value, $key) {
+    return $value &gt; 2;
+});
+
+$filtered-&gt;all();
+
+// [1, 2]</code></pre>
+<p>与 <code>reject</code> 相反的方法，查看 <a href="#method-filter"><code>filter</code></a> 。</p>
+<p><a name="method-reverse"></a></p>
+<h4 id="collection-method"><code>reverse()</code></h4>
+<p><code>reverse</code> 方法倒转集合中项目的顺序：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$reversed = $collection-&gt;reverse();
+
+$reversed-&gt;all();
+
+// [5, 4, 3, 2, 1]</code></pre>
+<p><a name="method-search"></a></p>
+<h4 id="collection-method"><code>search()</code></h4>
+<p><code>search</code> 方法搜索给定的值并返回它的键。如果找不到，则返回 <code>false</code>：</p>
+<pre><code>$collection = collect([2, 4, 6, 8]);
+
+$collection-&gt;search(4);
+
+// 1</code></pre>
+<p>搜索使用「宽松」比较完成，这意味着具有整数值的字符串会被认为等于相同值的整数。要使用「严格」比较，就传入 <code>true</code> 作为该方法的第二个参数：</p>
+<pre><code>$collection-&gt;search('4', true);
+
+// false</code></pre>
+<p>另外，你可以通过回调来搜索第一个通过真实测试的项目：</p>
+<pre><code>$collection-&gt;search(function ($item, $key) {
+    return $item &gt; 5;
+});
+
+// 2</code></pre>
+<p><a name="method-shift"></a></p>
+<h4 id="collection-method"><code>shift()</code></h4>
+<p><code>shift</code> 方法移除并返回集合的第一个项目：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;shift();
+
+// 1
+
+$collection-&gt;all();
+
+// [2, 3, 4, 5]</code></pre>
+<p><a name="method-shuffle"></a></p>
+<h4 id="collection-method"><code>shuffle()</code></h4>
+<p><code>shuffle</code> 方法随机排序集合中的项目：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$shuffled = $collection-&gt;shuffle();
+
+$shuffled-&gt;all();
+
+// [3, 2, 5, 1, 4] - (generated randomly)</code></pre>
+<p><a name="method-slice"></a></p>
+<h4 id="collection-method"><code>slice()</code></h4>
+<p><code>slice</code> 方法返回集合中给定值后面的部分：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+$slice = $collection-&gt;slice(4);
+
+$slice-&gt;all();
+
+// [5, 6, 7, 8, 9, 10]</code></pre>
+<p>如果你想限制返回内容的大小，就将期望的大小作为第二个参数传递给方法：</p>
+<pre><code>$slice = $collection-&gt;slice(4, 2);
+
+$slice-&gt;all();
+
+// [5, 6]</code></pre>
+<p>默认情况下，返回的内容将会保留原始键。假如你不希望保留原始的键，你可以使用 <code>values</code> 方法来重新建立索引。</p>
+<p><a name="method-sort"></a></p>
+<h4 id="collection-method"><code>sort()</code></h4>
+<p><code>sort</code> 方法对集合进行排序。排序后的集合保留着原数组的键，所以在这个例子中我们使用 <a href="#method-values"><code>values</code></a> 方法来把键重置为连续编号的索引。</p>
+<pre><code>$collection = collect([5, 3, 1, 2, 4]);
+
+$sorted = $collection-&gt;sort();
+
+$sorted-&gt;values()-&gt;all();
+
+// [1, 2, 3, 4, 5]</code></pre>
+<p>如果你有更高级的排序需求，你可以传入回调来用你自己的算法进行<code>排序</code>。请参阅 PHP 文档的 <a href="http://php.net/manual/en/function.usort.php#refsect1-function.usort-parameters"><code>usort</code></a>，这是集合的 <code>sort</code> 方法在底层所调用的。</p>
+<blockquote>
+<p>{tip} 如果要对嵌套数组或对象的集合进行排序，参考 <a href="#method-sortby"><code>sortBy</code></a> 和 <a href="#method-sortbydesc"><code>sortByDesc</code></a> 方法。</p>
+</blockquote>
+<p><a name="method-sortby"></a></p>
+<h4 id="collection-method"><code>sortBy()</code></h4>
+<p><code>sortBy</code> 方法以给定的键对集合进行排序。排序后的集合保留了原数组键，所以在这个例子中，我们使用 <a href="#method-values"><code>values</code></a> 方法将键重置为连续编号的索引：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'Desk', 'price' =&gt; 200],
+    ['name' =&gt; 'Chair', 'price' =&gt; 100],
+    ['name' =&gt; 'Bookcase', 'price' =&gt; 150],
+]);
+
+$sorted = $collection-&gt;sortBy('price');
+
+$sorted-&gt;values()-&gt;all();
+
+/*
+    [
+        ['name' =&gt; 'Chair', 'price' =&gt; 100],
+        ['name' =&gt; 'Bookcase', 'price' =&gt; 150],
+        ['name' =&gt; 'Desk', 'price' =&gt; 200],
+    ]
+*/</code></pre>
+<p>你还可以传入自己的回调以决定如何对集合的值进行排序：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'Desk', 'colors' =&gt; ['Black', 'Mahogany']],
+    ['name' =&gt; 'Chair', 'colors' =&gt; ['Black']],
+    ['name' =&gt; 'Bookcase', 'colors' =&gt; ['Red', 'Beige', 'Brown']],
+]);
+
+$sorted = $collection-&gt;sortBy(function ($product, $key) {
+    return count($product['colors']);
+});
+
+$sorted-&gt;values()-&gt;all();
+
+/*
+    [
+        ['name' =&gt; 'Chair', 'colors' =&gt; ['Black']],
+        ['name' =&gt; 'Desk', 'colors' =&gt; ['Black', 'Mahogany']],
+        ['name' =&gt; 'Bookcase', 'colors' =&gt; ['Red', 'Beige', 'Brown']],
+    ]
+*/</code></pre>
+<p><a name="method-sortbydesc"></a></p>
+<h4 id="collection-method"><code>sortByDesc()</code></h4>
+<p>这个方法与 <a href="#method-sortby"><code>sortBy</code></a> 方法一样，但是会以相反的顺序来对集合进行排序：</p>
+<p><a name="method-splice"></a></p>
+<h4 id="collection-method"><code>splice()</code></h4>
+<p><code>splice</code> 方法删除并返回从给定值后的内容，原集合也会受到影响：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$chunk = $collection-&gt;splice(2);
+
+$chunk-&gt;all();
+
+// [3, 4, 5]
+
+$collection-&gt;all();
+
+// [1, 2]</code></pre>
+<p>你可以传入第二个参数以限制被删除内容的大小：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$chunk = $collection-&gt;splice(2, 1);
+
+$chunk-&gt;all();
+
+// [3]
+
+$collection-&gt;all();
+
+// [1, 2, 4, 5]</code></pre>
+<p>此外，你可以传入含有新项目的第三个参数来代替集合中删除的项目：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$chunk = $collection-&gt;splice(2, 1, [10, 11]);
+
+$chunk-&gt;all();
+
+// [3]
+
+$collection-&gt;all();
+
+// [1, 2, 10, 11, 4, 5]</code></pre>
+<p><a name="method-split"></a></p>
+<h4 id="collection-method"><code>split()</code></h4>
+<p><code>split</code> 方法将集合按给定的值拆分：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$groups = $collection-&gt;split(3);
+
+$groups-&gt;toArray();
+
+// [[1, 2], [3, 4], [5]]</code></pre>
+<p><a name="method-sum"></a></p>
+<h4 id="collection-method"><code>sum()</code></h4>
+<p><code>sum</code> 方法返回集合内所有项目的总和：</p>
+<pre><code>collect([1, 2, 3, 4, 5])-&gt;sum();
+
+// 15</code></pre>
+<p>如果集合包含嵌套数组或对象，则应该传入一个键来指定要进行求和的值：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'JavaScript: The Good Parts', 'pages' =&gt; 176],
+    ['name' =&gt; 'JavaScript: The Definitive Guide', 'pages' =&gt; 1096],
+]);
+
+$collection-&gt;sum('pages');
+
+// 1272</code></pre>
+<p>另外，你也可以传入回调来决定要用集合中的哪些值进行求和：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'Chair', 'colors' =&gt; ['Black']],
+    ['name' =&gt; 'Desk', 'colors' =&gt; ['Black', 'Mahogany']],
+    ['name' =&gt; 'Bookcase', 'colors' =&gt; ['Red', 'Beige', 'Brown']],
+]);
+
+$collection-&gt;sum(function ($product) {
+    return count($product['colors']);
+});
+
+// 6</code></pre>
+<p><a name="method-take"></a></p>
+<h4 id="collection-method"><code>take()</code></h4>
+<p><code>take</code> 方法返回给定数量项目的新集合：</p>
+<pre><code>$collection = collect([0, 1, 2, 3, 4, 5]);
+
+$chunk = $collection-&gt;take(3);
+
+$chunk-&gt;all();
+
+// [0, 1, 2]</code></pre>
+<p>你也可以传入负整数从集合末尾开始获取指定数量的项目：</p>
+<pre><code>$collection = collect([0, 1, 2, 3, 4, 5]);
+
+$chunk = $collection-&gt;take(-2);
+
+$chunk-&gt;all();
+
+// [4, 5]</code></pre>
+<p><a name="method-tap"></a></p>
+<h4 id="collection-method"><code>tap()</code></h4>
+<p><code>tap</code> 方法将集合传递给回调，在特定点「tap」集合。此举能让你对集合中的项目执行某些操作，而不影响集合本身：</p>
+<pre><code>collect([2, 4, 3, 1, 5])
+    -&gt;sort()
+    -&gt;tap(function ($collection) {
+        Log::debug('Values after sorting', $collection-&gt;values()-&gt;toArray());
+    })
+    -&gt;shift();
+
+// 1</code></pre>
+<p><a name="method-times"></a></p>
+<h4 id="collection-method"><code>times()</code></h4>
+<p>静态 <code>times</code> 方法通过回调在给定次数内创建一个新的集合：</p>
+<pre><code>$collection = Collection::times(10, function ($number) {
+    return $number * 9;
+});
+
+$collection-&gt;all();
+
+// [9, 18, 27, 36, 45, 54, 63, 72, 81, 90]</code></pre>
+<p>使用这个方法可以与工厂结合使用创建出 <a href="/docs/laravel_5.8_zh/eloquent.html">Eloquent</a> 模型：</p>
+<pre><code>$categories = Collection::times(3, function ($number) {
+    return factory(Category::class)-&gt;create(['name' =&gt; 'Category #'.$number]);
+});
+
+$categories-&gt;all();
+
+/*
+    [
+        ['id' =&gt; 1, 'name' =&gt; 'Category #1'],
+        ['id' =&gt; 2, 'name' =&gt; 'Category #2'],
+        ['id' =&gt; 3, 'name' =&gt; 'Category #3'],
+    ]
+*/</code></pre>
+<p><a name="method-toarray"></a></p>
+<h4 id="collection-method"><code>toArray()</code></h4>
+<p><code>toArray</code> 方法将集合转换成 PHP <code>数组</code>。如果集合的值是 <a href="/docs/laravel_5.8_zh/eloquent.html">Eloquent</a> 模型，那也会被转换成数组：</p>
+<pre><code>$collection = collect(['name' =&gt; 'Desk', 'price' =&gt; 200]);
+
+$collection-&gt;toArray();
+
+/*
+    [
+        ['name' =&gt; 'Desk', 'price' =&gt; 200],
+    ]
+*/</code></pre>
+<blockquote>
+<p>{note} <code>toArray</code> 也会将所有集合的嵌套对象转换为数组。如果你想获取原数组，就改用 <a href="#method-all"><code>all</code></a> 方法。</p>
+</blockquote>
+<p><a name="method-tojson"></a></p>
+<h4 id="collection-method"><code>toJson()</code></h4>
+<p><code>toJson</code> 方法将集合转换成 JSON 字符串：</p>
+<pre><code>$collection = collect(['name' =&gt; 'Desk', 'price' =&gt; 200]);
+
+$collection-&gt;toJson();
+
+// '{"name":"Desk", "price":200}'</code></pre>
+<p><a name="method-transform"></a></p>
+<h4 id="collection-method"><code>transform()</code></h4>
+<p><code>transform</code> 方法迭代集合并对集合内的每个项目调用给定的回调。而集合的内容也会被回调返回的值取代：</p>
+<pre><code>$collection = collect([1, 2, 3, 4, 5]);
+
+$collection-&gt;transform(function ($item, $key) {
+    return $item * 2;
+});
+
+$collection-&gt;all();
+
+// [2, 4, 6, 8, 10]</code></pre>
+<blockquote>
+<p>{note} 与大多数集合的方法不同，<code>transform</code> 会修改集合本身。如果你想创建新的集合，就改用 <a href="#method-map"><code>map</code></a> 方法。</p>
+</blockquote>
+<p><a name="method-union"></a></p>
+<h4 id="collection-method"><code>union()</code></h4>
+<p><code>union</code> 方法将给定的数组添加到集合中。如果给定的数组中含有与原集合一样的键，则原集合的值不会被改变：</p>
+<pre><code>$collection = collect([1 =&gt; ['a'], 2 =&gt; ['b']]);
+
+$union = $collection-&gt;union([3 =&gt; ['c'], 1 =&gt; ['b']]);
+
+$union-&gt;all();
+
+// [1 =&gt; ['a'], 2 =&gt; ['b'], 3 =&gt; ['c']]</code></pre>
+<p><a name="method-unique"></a></p>
+<h4 id="collection-method"><code>unique()</code></h4>
+<p><code>unique</code> 方法返回集合中所有唯一的项目。返回的集合保留着原数组的键，所以在这个例子中，我们使用 <a href="#method-values"><code>values</code></a> 方法来把键重置为连续编号的索引。</p>
+<pre><code>$collection = collect([1, 1, 2, 2, 3, 4, 2]);
+
+$unique = $collection-&gt;unique();
+
+$unique-&gt;values()-&gt;all();
+
+// [1, 2, 3, 4]</code></pre>
+<p>处理嵌套数组或对象时，你可以指定用来决定唯一性的键：</p>
+<pre><code>$collection = collect([
+    ['name' =&gt; 'iPhone 6', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'iPhone 5', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'Apple Watch', 'brand' =&gt; 'Apple', 'type' =&gt; 'watch'],
+    ['name' =&gt; 'Galaxy S6', 'brand' =&gt; 'Samsung', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'Galaxy Gear', 'brand' =&gt; 'Samsung', 'type' =&gt; 'watch'],
+]);
+
+$unique = $collection-&gt;unique('brand');
+
+$unique-&gt;values()-&gt;all();
+
+/*
+    [
+        ['name' =&gt; 'iPhone 6', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+        ['name' =&gt; 'Galaxy S6', 'brand' =&gt; 'Samsung', 'type' =&gt; 'phone'],
+    ]
+*/</code></pre>
+<p>你也可以传入自己的回调来确定项目的唯一性：</p>
+<pre><code>$unique = $collection-&gt;unique(function ($item) {
+    return $item['brand'].$item['type'];
+});
+
+$unique-&gt;values()-&gt;all();
+
+/*
+    [
+        ['name' =&gt; 'iPhone 6', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+        ['name' =&gt; 'Apple Watch', 'brand' =&gt; 'Apple', 'type' =&gt; 'watch'],
+        ['name' =&gt; 'Galaxy S6', 'brand' =&gt; 'Samsung', 'type' =&gt; 'phone'],
+        ['name' =&gt; 'Galaxy Gear', 'brand' =&gt; 'Samsung', 'type' =&gt; 'watch'],
+    ]
+*/</code></pre>
+<p>在检查项目值时 <code>unique</code> 方法使用的是「宽松」比较，意味着具有整数值的字符串将被视为等于相同值的整数。使用 <a href="#method-uniquestrict"><code>uniqueStrict</code></a> 可以进行「严格」比较 。</p>
+<p><a name="method-uniquestrict"></a></p>
+<h4 id="collection-method"><code>uniqueStrict()</code></h4>
+<p>这个方法的使用和 <a href="#method-unique"><code>unique</code></a> 方法类似，只是使用了「严格」比较来过滤。</p>
+<p><a name="method-values"></a></p>
+<h4 id="collection-method"><code>values()</code></h4>
+<p><code>values</code> 方法返回键被重置为连续编号的新集合：</p>
+<pre><code>$collection = collect([
+    10 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    11 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200]
+]);
+
+$values = $collection-&gt;values();
+
+$values-&gt;all();
+
+/*
+    [
+        0 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+        1 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ]
+*/</code></pre>
+<p><a name="method-when"></a></p>
+<h4 id="collection-method"><code>when()</code></h4>
+<p><code>when</code> 方法当传入的第一个参数为 <code>true</code> 的时，将执行给定的回调：</p>
+<pre><code>$collection = collect([1, 2, 3]);
+
+$collection-&gt;when(true, function ($collection) {
+    return $collection-&gt;push(4);
+});
+
+$collection-&gt;all();
+
+// [1, 2, 3, 4]</code></pre>
+<p><a name="method-where"></a></p>
+<h4 id="collection-method"><code>where()</code></h4>
+<p><code>where</code> 方法通过给定的键值过滤集合：</p>
+<pre><code>$collection = collect([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $collection-&gt;where('price', 100);
+
+$filtered-&gt;all();
+
+/*
+    [
+        ['product' =&gt; 'Chair', 'price' =&gt; 100],
+        ['product' =&gt; 'Door', 'price' =&gt; 100],
+    ]
+*/</code></pre>
+<p>比较数值的时候，<code>where</code> 方法使用「宽松」比较，意味着具有整数值的字符串将被认为等于相同值的整数。使用 <a href="#method-wherestrict"><code>whereStrict</code></a> 方法来进行「严格」比较过滤。</p>
+<p><a name="method-wherestrict"></a></p>
+<h4 id="collection-method"><code>whereStrict()</code></h4>
+<p>这个方法与 <a href="#method-where"><code>where</code></a> 方法一样；但是会以「严格」比较来匹配所有值：</p>
+<p><a name="method-wherein"></a></p>
+<h4 id="collection-method"><code>whereIn()</code></h4>
+<p><code>whereIn</code> 方法通过给定的键值数组来过滤集合：</p>
+<pre><code>$collection = collect([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $collection-&gt;whereIn('price', [150, 200]);
+
+$filtered-&gt;all();
+
+/*
+    [
+        ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+        ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ]
+*/</code></pre>
+<p><code>whereIn</code> 方法在检查项目值时使用「宽松」比较，意味着具有整数值的字符串将被视为等于相同值的整数。你可以使用 <a href="#method-whereinstrict"><code>whereInStrict</code></a> 做「严格」比较。</p>
+<p><a name="method-whereinstrict"></a></p>
+<h4 id="collection-method"><code>whereInStrict()</code></h4>
+<p>此方法的使用和 <a href="#method-wherein"><code>whereIn</code></a> 方法类似，只是使用了「严格」比较来匹配所有值。</p>
+<p><a name="method-wherenotin"></a></p>
+<h4 id="collection-method"><code>whereNotIn()</code></h4>
+<p><code>whereNotIn</code> 通过集合中不包含的给定键值对进行：</p>
+<pre><code>$collection = collect([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $collection-&gt;whereNotIn('price', [150, 200]);
+
+$filtered-&gt;all();
+
+/*
+    [
+        ['product' =&gt; 'Chair', 'price' =&gt; 100],
+        ['product' =&gt; 'Door', 'price' =&gt; 100],
+    ]
+*/</code></pre>
+<p><code>whereNotIn</code> 方法在检查项目值时使用「宽松」比较，意味着具有整数值的字符串将被视为等于相同值的整数。你可以使用 <a href="#method-wherenotinstrict"><code>whereNotInStrict</code></a> 做比较 <code>严格</code> 的匹配。</p>
+<p><a name="method-wherenotinstrict"></a></p>
+<h4 id="collection-method"><code>whereNotInStrict()</code></h4>
+<p>此方法的使用和 <a href="#method-wherenotin"><code>whereNotIn</code></a> 方法类似，只是使用了「严格」比较来匹配所有值。</p>
+<p><a name="method-zip"></a></p>
+<h4 id="collection-method"><code>zip()</code></h4>
+<p><code>zip</code> 方法将给定数组的值与相应索引处的原集合的值合并在一起：</p>
+<pre><code>$collection = collect(['Chair', 'Desk']);
+
+$zipped = $collection-&gt;zip([100, 200]);
+
+$zipped-&gt;all();
+
+// [['Chair', 100], ['Desk', 200]]</code></pre>
+<p><a name="higher-order-messages"></a></p>
+<h2>高阶消息传递</h2>
+<p>集合也提供对「高阶消息传递」的支持，即对集合执行常见操作的快捷方式。支持高阶消息传递的集合方法有：<code>average</code>， <code>avg</code>， <code>contains</code>， <code>each</code>， <code>every</code>， <code>filter</code>， <code>first</code>， <code>flatMap</code>， <code>map</code>， <code>partition</code>， <code>reject</code>， <code>sortBy</code>， <code>sortByDesc</code> 和 <code>sum</code>。</p>
+<p>每个高阶消息都能作为集合实例的动态属性来访问。例如，使用 <code>each</code> 高阶消息传递在集合中的每个对象上调用一个方法：</p>
+<pre><code>$users = User::where('votes', '&gt;', 500)-&gt;get();
+
+$users-&gt;each-&gt;markAsVip();</code></pre>
+<p>同样，我们可以使用 <code>sum</code> 高阶消息来收集集合中「投票」总数：</p>
+<pre><code>$users = User::where('group', 'Development')-&gt;get();
+
+return $users-&gt;sum-&gt;votes;</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 153);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

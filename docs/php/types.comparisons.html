@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>PHP 类型比较表 - 开发帮助文档</title> 
+    <meta name="keyword" content="types.comparisons"> 
+    <meta name="description" content="types.comparisons"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="9" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/about.html" title="关于本手册">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    关于本手册
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/aliases.html" title="函数别名列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    函数别名列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/cc.license.html" title="Creative Commons Attribution 3.0">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Creative Commons Attribution 3.0
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/configure.html" title="配置选项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    配置选项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/debugger.html" title="PHP 的调试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 的调试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/doc.changelog.html" title="更新日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    更新日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/extensions.html" title="扩展库列表／归类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    扩展库列表／归类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/filters.html" title="可用过滤器列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    可用过滤器列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/history.html" title="PHP 及其相关工程的历史">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 及其相关工程的历史
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/indexes.html" title="索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ini.html" title="php.ini 配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    php.ini 配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration56.html" title="从 PHP 5.5.x 移植到 PHP 5.6.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 5.5.x 移植到 PHP 5.6.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration70.html" title="从 PHP 5.6.x 移植到 PHP 7.0.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 5.6.x 移植到 PHP 7.0.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration71.html" title="从 PHP 7.0.x 移植到 PHP 7.1.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 7.0.x 移植到 PHP 7.1.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.html" title="从 PHP 7.1.x 移植到 PHP 7.2.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 7.1.x 移植到 PHP 7.2.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration73.html" title="从 PHP 7.2.x 移植到 PHP 7.3.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 7.2.x 移植到 PHP 7.3.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration74.html" title="从 PHP 7.3.x 移植到 PHP 7.4.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 7.3.x 移植到 PHP 7.4.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration80.html" title="从 PHP 7.4.x 移植到 PHP 8.0.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    从 PHP 7.4.x 移植到 PHP 8.0.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/reserved.html" title="保留字列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    保留字列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/resource.html" title="资源类型列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    资源类型列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tokens.html" title="解析器代号列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    解析器代号列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/transports.html" title="所支持的套接字传输器（Socket Transports）列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    所支持的套接字传输器（Socket Transports）列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/types.comparisons.html" title="PHP 类型比较表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 类型比较表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/userlandnaming.html" title="用户空间命名指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户空间命名指南
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="transports.unix.html">« Unix 领域：Unix 和 UDG</a></li>
+      <li style="float: right;"><a href="tokens.html">解析器代号列表 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="appendices.html">附录</a></li>
+    <li>PHP 类型比较表</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="types.comparisons" class="appendix">
+ <h1>PHP 类型比较表</h1>
+
+ <p class="para">
+  以下的表格显示了 PHP
+  <a href="language.types.html" class="link">类型</a> 和 <a href="language.operators.comparison.html" class="link">比较运算符</a> 在松散和严格比较时的作用。该补充材料还和 <a href="language.types.type-juggling.html" class="link">类型戏法</a> 的相关章节内容有关。同时，大量的用户注释和
+  <a href="http://www.blueshoes.org/en/developer/php_cheat_sheet/" class="link external">» BlueShoes</a> 的工作也给该材料提供了帮助。
+ </p>
+ <p class="para">
+  在使用这些表格之前，需要明白变量类型及它们的意义。例如，<code class="literal">"42"</code> 是一个<span class="type"><span class="type 字符串">字符串</span></span>而
+  <code class="literal">42</code> 是一个<span class="type"><span class="type 整数">整数</span></span>。<strong><code>false</code></strong> 是一个<span class="type"><span class="type 布尔">布尔</span></span>值而 <code class="literal">"false"</code>
+  是一个<span class="type"><span class="type 字符串">字符串</span></span>。
+ </p>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   HTML 表单并不传递整数、浮点数或者布尔值，它们只传递字符串。要想检测一个字符串是不是数字，可以使用
+   <span class="function"><a href="function.is-numeric.html" class="function">is_numeric()</a></span> 函数。
+  </p>
+ </blockquote>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   在没有定义变量 <var class="varname">$x</var> 的时候，诸如 <code class="literal">if ($x)</code> 的用法会导致一个
+   <strong><code>E_NOTICE</code></strong> 级别的错误。所以，可以考虑用 <span class="function"><a href="function.empty.html" class="function">empty()</a></span> 或者
+   <span class="function"><a href="function.isset.html" class="function">isset()</a></span> 函数来初始化变量。
+  </p>
+ </blockquote>
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   某些数值操作会导致一个特殊值，可以用常量 <strong><code>NAN</code></strong> 表示。
+   无论是松散还是严格比较，这个值和其他任意值（包括它自身，但排除 <strong><code>true</code></strong>）比较时都会产生 <strong><code>false</code></strong> 的结果，
+   例如 <code class="literal">NAN != NAN</code> 和 <code class="literal">NAN !== NAN</code>。
+   导致 <strong><code>NAN</code></strong> 的操作例子包括 <code class="literal">sqrt(-1)</code>、<code class="literal">asin(2)</code>、
+   <code class="literal">acosh(0)</code>。
+  </p>
+ </blockquote>
+ <p class="para">
+  </p><table class="doctable table">
+   <caption><strong>使用 PHP 函数对变量 <var class="varname">$x</var> 进行比较</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>表达式</th>
+      <th><span class="function"><a href="function.gettype.html" class="function">gettype()</a></span></th>
+      <th><span class="function"><a href="function.empty.html" class="function">empty()</a></span></th>
+      <th><span class="function"><a href="function.is-null.html" class="function">is_null()</a></span></th>
+      <th><span class="function"><a href="function.isset.html" class="function">isset()</a></span></th>
+      <th><span class="type">boolean</span> : <code class="literal">if($x)</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">$x = "";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = null;</code></td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">var $x;</code></td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><var class="varname">$x</var> is undefined</td>
+      <td><span class="type">NULL</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = array();</code></td>
+      <td><span class="type">array</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = array('a', 'b');</code></td>
+      <td><span class="type">array</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = false;</code></td>
+      <td><span class="type">boolean</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = true;</code></td>
+      <td><span class="type">boolean</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 1;</code></td>
+      <td><span class="type">integer</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 42;</code></td>
+      <td><span class="type">integer</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = 0;</code></td>
+      <td><span class="type">integer</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = -1;</code></td>
+      <td><span class="type">integer</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "1";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "0";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "-1";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "php";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "true";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">$x = "false";</code></td>
+      <td><span class="type">string</span></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+    </tbody>
+   
+   </table>
+
+ 
+ 
+ <p class="para">
+  </p><table id="types.comparisions-loose" class="doctable table">
+   <caption><strong>松散比较 <code class="literal">==</code></strong></caption>
+   
+    <thead>
+     <tr>
+      <th> </th>
+      <th><strong><code>true</code></strong></th>
+      <th><strong><code>false</code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">"1"</code></th>
+      <th><code class="literal">"0"</code></th>
+      <th><code class="literal">"-1"</code></th>
+      <th><strong><code>null</code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">"php"</code></th>
+      <th><code class="literal">""</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">1</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">0</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"1"</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"0"</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"-1"</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code>null</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"php"</code></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">""</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ 
+ 
+ <p class="para">
+  </p><table id="type.comparisons-strict" class="doctable table">
+   <caption><strong>严格比较 <code class="literal">===</code></strong></caption>
+   
+    <thead>
+     <tr>
+      <th> </th>
+      <th><strong><code>true</code></strong></th>
+      <th><strong><code>false</code></strong></th>
+      <th><code class="literal">1</code></th>
+      <th><code class="literal">0</code></th>
+      <th><code class="literal">-1</code></th>
+      <th><code class="literal">"1"</code></th>
+      <th><code class="literal">"0"</code></th>
+      <th><code class="literal">"-1"</code></th>
+      <th><strong><code>null</code></strong></th>
+      <th><code class="literal">array()</code></th>
+      <th><code class="literal">"php"</code></th>
+      <th><code class="literal">""</code></th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">1</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">0</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">-1</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"1"</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"0"</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"-1"</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><strong><code>null</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">array()</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">"php"</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">""</code></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>false</code></strong></td>
+      <td><strong><code>true</code></strong></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ 
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 10878);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

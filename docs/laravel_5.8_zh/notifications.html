@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的消息通知系统 - 开发帮助文档</title> 
+    <meta name="keyword" content="notifications"> 
+    <meta name="description" content="notifications"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的消息通知系统</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#creating-notifications">创建通知</a></li>
+<li><a href="#sending-notifications">发送通知</a>
+<ul>
+<li><a href="#using-the-notifiable-trait">使用 Notifiable Trait</a></li>
+<li><a href="#using-the-notification-facade">使用 Notification Facade</a></li>
+<li><a href="#specifying-delivery-channels">指定发送频道</a></li>
+<li><a href="#queueing-notifications">队列化通知</a></li>
+<li><a href="#on-demand-notifications">按需通知</a></li>
+</ul></li>
+<li><a href="#mail-notifications">邮件通知</a>
+<ul>
+<li><a href="#formatting-mail-messages">格式化邮件消息</a></li>
+<li><a href="#customizing-the-recipient">自定义接受者</a></li>
+<li><a href="#customizing-the-subject">自定义主题</a></li>
+<li><a href="#customizing-the-templates">自定义模板</a></li>
+</ul></li>
+<li><a href="#markdown-mail-notifications">Markdown 邮件通知</a>
+<ul>
+<li><a href="#generating-the-message">生成消息</a></li>
+<li><a href="#writing-the-message">写消息</a></li>
+<li><a href="#customizing-the-components">自定义组件</a></li>
+</ul></li>
+<li><a href="#database-notifications">数据库通知</a>
+<ul>
+<li><a href="#database-prerequisites">先决条件</a></li>
+<li><a href="#formatting-database-notifications">格式化数据库通知</a></li>
+<li><a href="#accessing-the-notifications">访问通知</a></li>
+<li><a href="#marking-notifications-as-read">标为已读</a></li>
+</ul></li>
+<li><a href="#broadcast-notifications">广播通知</a>
+<ul>
+<li><a href="#broadcast-prerequisites">先决条件</a></li>
+<li><a href="#formatting-broadcast-notifications">格式化广播通知</a></li>
+<li><a href="#listening-for-notifications">监听通知</a></li>
+</ul></li>
+<li><a href="#sms-notifications">短信通知</a>
+<ul>
+<li><a href="#sms-prerequisites">先决条件</a></li>
+<li><a href="#formatting-sms-notifications">格式化短信通知</a></li>
+<li><a href="#customizing-the-from-number">自定义 <code>From</code> 号码</a></li>
+<li><a href="#routing-sms-notifications">路由短信通知</a></li>
+</ul></li>
+<li><a href="#slack-notifications">Slack 通知</a>
+<ul>
+<li><a href="#slack-prerequisites">先决条件</a></li>
+<li><a href="#formatting-slack-notifications">格式化 Slack 通知</a></li>
+<li><a href="#slack-attachments">Slack Attachments</a></li>
+<li><a href="#routing-slack-notifications">路由 Slack 通知</a></li>
+</ul></li>
+<li><a href="#notification-events">通知事件</a></li>
+<li><a href="#custom-channels">自定义发送频道</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>除了 <a href="/docs/laravel_5.8_zh/mail">发送邮件</a>，Laravel 还支持通过多种频道发送通知，包括邮件、短信（通过 <a href="https://www.html.nexmo.com/">Nexmo</a>）以及 <a href="https://slack.com">Slack</a> 。通知还能存到数据库，这样就能在网页界面上显示了。</p>
+<p>通常情况下，通知应该是简短、有信息量的消息来通知用户你的应用发生了什么。举例来说，如果你在编写一个在线交易应用，你应该会通过邮件和短信频道来给用户发送一条 「账单已付」 的通知。</p>
+<p><a name="creating-notifications"></a></p>
+<h2>创建通知</h2>
+<p>Laravel 中一条通知就是一个类（通常存在 <code>app/Notifications</code> 文件夹里）。看不到的话不要担心，运行一下 <code>make:notification</code> 命令就能创建了：</p>
+<pre><code>php artisan make:notification InvoicePaid</code></pre>
+<p>这个命令会在 <code>app/Notifications</code> 目录下生成一个新的通知类。这个类包含 <code>via</code> 方法和几个消息构建方法（比如 <code>toMail</code> 或 <code>toDatabase</code>），它们会针对指定的渠道把通知转换过为对应的消息。</p>
+<p><a name="sending-notifications"></a></p>
+<h2>发送通知</h2>
+<p><a name="using-the-notifiable-trait"></a></p>
+<h3>使用 Notifiable Trait</h3>
+<p>通知可以通过两种方法发送： <code>Notifiable</code> trait 的 <code>notify</code> 方法或 <code>Notification</code> <a href="/docs/laravel_5.8_zh/facades.html">facade</a> 。首先，让我们探索使用 trait ：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+}</code></pre>
+<p>默认的 <code>App\User</code> 模型中使用了这个 trait，它包含着一个可以用来发通知的方法：<code>notify</code> 。 <code>notify</code> 方法需要一个通知实例做参数：</p>
+<pre><code>use App\Notifications\InvoicePaid;
+
+$user-&gt;notify(new InvoicePaid($invoice));</code></pre>
+<blockquote>
+<p>{tip} 记住，你可以在任意模型中使用 <code>Illuminate\Notifications\Notifiable</code> trait，而不仅仅是在 <code>User</code> 模型中。</p>
+</blockquote>
+<p><a name="using-the-notification-facade"></a></p>
+<h3>使用 Notification Facade</h3>
+<p>另外，你可以通过 <code>Notification</code> <a href="/docs/laravel_5.8_zh/facades.html">facade</a> 来发送通知。它主要用在当你给多个可接收通知的实体发送通知的时候，比如给用户集合发通知。要用 facade 发送通知的话，要把可接收通知的实体和通知的实例传递给 <code>send</code> 方法：</p>
+<pre><code>Notification::send($users, new InvoicePaid($invoice));</code></pre>
+<p><a name="specifying-delivery-channels"></a></p>
+<h3>指定发送频道</h3>
+<p>每个通知类都有个 <code>via</code> 方法，它决定了通知在哪个频道上发送。开箱即用的通知频道有 <code>mail</code>, <code>database</code>, <code>broadcast</code>, <code>nexmo</code>, 和 <code>slack</code> 。</p>
+<blockquote>
+<p>{tip} 如果你想用其他的频道比如 Telegram 或者 Pusher ，可以去看下社区驱动的 <a href="http://laravel-notification-channels.com">Laravel 通知频道网站</a> 。</p>
+</blockquote>
+<p><code>via</code> 方法受到一个 <code>$notifiable</code> 实例，它是接收通知的类实例。你可以用 <code>$notifiable</code> 来决定通知用哪个频道来发送：</p>
+<pre><code>/**
+ * 获取通知发送频道
+ *
+ * @param  mixed  $notifiable
+ * @return array
+ */
+public function via($notifiable)
+{
+    return $notifiable-&gt;prefers_sms ? ['nexmo'] : ['mail', 'database'];
+}</code></pre>
+<p><a name="queueing-notifications"></a></p>
+<h3>队列化通知</h3>
+<blockquote>
+<p>{note} 在队列化通知前你需要配置队列，并 <a href="/docs/laravel_5.8_zh/queues.html">运行队列处理器</a>。</p>
+</blockquote>
+<p>发送通知可能会花很长时间，尤其是发送频道需要调用外部 API 的时候。要加速应用响应的话，可以通过添加 <code>ShouldQueue</code> 接口和 <code>Queueable</code> trait 把通知加入队列。它们两个在使用 <code>make:notification</code> 命令来生成通知文件的时候就已经被导入了，所以你只需要添加到你的通知类就行了：</p>
+<pre><code>&lt;?php
+
+namespace App\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class InvoicePaid extends Notification implements ShouldQueue
+{
+    use Queueable;
+
+    // ...
+}</code></pre>
+<p>一旦加入 <code>ShouldQueue</code> 接口，你就能像平常那样发送通知了。Laravel 会检测 <code>ShouldQueue</code> 接口并自动将通知的发送放入队列中。</p>
+<pre><code>$user-&gt;notify(new InvoicePaid($invoice));</code></pre>
+<p>如果你想延迟发送，你可以通过 <code>delay</code> 方法来链式操作你的通知实例：</p>
+<pre><code>$when = Carbon::now()-&gt;addMinutes(10);
+
+$user-&gt;notify((new InvoicePaid($invoice))-&gt;delay($when));</code></pre>
+<p><a name="on-demand-notifications"></a></p>
+<h3>按需通知</h3>
+<p>有时候你可能需要将通知发送给某个不是以”用户”身份存储在你的应用中的人。使用<code>Notification::route</code> 方法，你可以在发送通知之前指定 ad-hoc 通知路由信息：</p>
+<pre><code>Notification::route('mail', 'taylor@laravel.com')
+            -&gt;route('nexmo', '5555555555')
+            -&gt;notify(new InvoicePaid($invoice));</code></pre>
+<p><a name="mail-notifications"></a></p>
+<h2>邮件通知</h2>
+<p><a name="formatting-mail-messages"></a></p>
+<h3>格式化邮件消息</h3>
+<p>如果一条通知支持以邮件发送，你应该在通知类里定义一个 <code>toMail</code> 方法。这个方法将收到一个 <code>$notifiable</code> 实体并返回一个 <code>Illuminate\Notifications\Messages\MailMessage</code> 实例。邮件消息可以包含多行文本也可以是引导链接。我们来看一个 <code>toMail</code> 方法的例子：</p>
+<pre><code>/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\MailMessage
+ */
+public function toMail($notifiable)
+{
+    $url = url('/invoice/'.$this-&gt;invoice-&gt;id);
+
+    return (new MailMessage)
+                -&gt;line('One of your invoices has been paid!')
+                -&gt;action('View Invoice', $url)
+                -&gt;line('Thank you for using our application!');
+}</code></pre>
+<blockquote>
+<p>{tip} 注意我们在方法中用了 <code>$this-&gt;invoice-&gt;id</code> ，其实你可以传递应用所需要的任何数据来传递给通知的构造器。</p>
+</blockquote>
+<p>在这个例子中，我们注册了一行文本，引导链接 ，然后又是一行文本。 <code>MailMessage</code> 提供的这些方法简化了对小的事务性的邮件进行格式化操作。邮件频道将会把这些消息组件转换成漂亮的响应式的 HTML 邮件模板并附上文本。下面是个 <code>mail</code> 频道生成的邮件示例：</p>
+<p><img src="img/notification-example.png" alt="" /></p>
+<blockquote>
+<p>{tip} 发送邮件通知前，请在 <code>config/app.php</code> 中设置 <code>name</code> 值。 这将会在邮件通知消息的头部和尾部中被使用。</p>
+</blockquote>
+<h4>其他通知格式选项</h4>
+<p>你可以使用 <code>view</code> 方法来指定一个应用于渲染通知电子邮件的自定义模板，而不是在通知类中定义文本的「模板」：</p>
+<pre><code>/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\MailMessage
+ */
+public function toMail($notifiable)
+{
+    return (new MailMessage)-&gt;view(
+        'emails.name', ['invoice' =&gt; $this-&gt;invoice]
+    );
+}</code></pre>
+<p>另外，你可以从 <code>toMail</code> 方法中返回一个 <a href="/docs/laravel_5.8_zh/mail.html">mailable 对象</a> ：</p>
+<pre><code>use App\Mail\InvoicePaid as Mailable;
+
+/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return Mailable
+ */
+public function toMail($notifiable)
+{
+    return (new Mailable($this-&gt;invoice))-&gt;to($this-&gt;user-&gt;email);
+}</code></pre>
+<p><a name="error-messages"></a></p>
+<h4>错误消息</h4>
+<p>有些通知是给用户提示错误，比如账单支付失败的提示。你可以通过调用 <code>error</code> 方法来指定这条邮件消息被当做一个错误提示。当邮件消息使用了 <code>error</code> 方法后，引导链接按钮会变成红色而非蓝色：</p>
+<pre><code>/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\MailMessage
+ */
+public function toMail($notifiable)
+{
+   return (new MailMessage)
+                -&gt;error()
+                -&gt;subject('Notification Subject')
+                -&gt;line('...');
+}</code></pre>
+<p><a name="customizing-the-recipient"></a></p>
+<h3>自定义接收者</h3>
+<p>当通过 <code>mail</code> 频道来发送通知的时候，通知系统将会自动寻找你的 notifiable 实体中的 <code>email</code> 属性。你可以通过在实体中定义 <code>routeNotificationForMail</code> 方法来自定义邮件地址。</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * 邮件频道的路由
+     *
+     * @return string
+     */
+    public function routeNotificationForMail()
+    {
+        return $this-&gt;email_address;
+    }
+}</code></pre>
+<p><a name="customizing-the-subject"></a></p>
+<h3>自定义主题</h3>
+<p>默认情况下，邮件主题是格式化成了标题格式的通知类的类名。所以如果你对通知类名为 <code>InvoicePaid</code> ，邮件主题将会是 <code>Invoice Paid</code> 。如果你想显式指定消息的主题，你可以在构建消息时调用 <code>subject</code> 方法：</p>
+<pre><code>/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\MailMessage
+ */
+public function toMail($notifiable)
+{
+    return (new MailMessage)
+                -&gt;subject('Notification Subject')
+                -&gt;line('...');
+}</code></pre>
+<p><a name="customizing-the-templates"></a></p>
+<h3>自定义模板</h3>
+<p>你可以通过发布通知包的资源来修改 HTML 模板和纯文本模板。运行这个命令后，邮件通知模板就被放在了 <code>resources/views/vendor/notifications</code> 文件夹下：</p>
+<pre><code>php artisan vendor:publish --tag=laravel-notifications</code></pre>
+<p><a name="markdown-mail-notifications"></a></p>
+<h2>Markdown 邮件通知</h2>
+<p>Markdown 邮件通知可让您利用邮件通知的预先构建的模板，同时给予您更多自由地撰写更长的自定义邮件。 由于消息是用 Markdown 编写的， Laravel 能够为消息呈现漂亮，响应的 HTML 模板，同时还自动生成纯文本对应。</p>
+<p><a name="generating-the-message"></a></p>
+<h3>生成消息</h3>
+<p>要使用相应的 Markdown 模板生成通知，您可以使用 <code>make：notification</code> Artisan命令的 <code>--markdown</code> 选项：</p>
+<pre><code>php artisan make:notification InvoicePaid --markdown=mail.invoice.paid</code></pre>
+<p>与所有其他邮件通知一样，使用 Markdown 模板的通知应在其通知类上定义一个 <code>toMail</code> 方法。 但是，不使用 <code>line</code> 和 <code>action</code> 方法来构造通知，而是使用 <code>markdown</code> 方法来指定应该使用的 Markdown 模板的名称：</p>
+<pre><code>/**
+ * 获取通知的邮件展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return \Illuminate\Notifications\Messages\MailMessage
+ */
+public function toMail($notifiable)
+{
+    $url = url('/invoice/'.$this-&gt;invoice-&gt;id);
+
+    return (new MailMessage)
+                -&gt;subject('Invoice Paid')
+                -&gt;markdown('mail.invoice.paid', ['url' =&gt; $url]);
+}</code></pre>
+<p><a name="writing-the-message"></a></p>
+<h3>写消息</h3>
+<p>Markdown 邮件通知使用 Blade 组件和Markdown语法的组合，允许您轻松构建通知，同时利用Laravel的预制通知组件：</p>
+<pre><code>@component('mail::message')
+# Invoice Paid
+
+Your invoice has been paid!
+
+@component('mail::button', ['url' =&gt; $url])
+View Invoice
+@endcomponent
+
+Thanks,&lt;br&gt;
+{{ config('app.name') }}
+@endcomponent</code></pre>
+<h4>按钮组件</h4>
+<p>按钮组件渲染了一个居中的链接按钮。组件有两个参数， <code>url</code> 和一个可选的参数 <code>color</code> 。支持的颜色有 <code>blue</code> ， <code>green</code> ， 和 <code>red</code> 。你可以根据你的需要向通知中添加任意数量的按钮组件：</p>
+<pre><code>@component('mail::button', ['url' =&gt; $url, 'color' =&gt; 'green'])
+View Invoice
+@endcomponent</code></pre>
+<h4>面板组件</h4>
+<p>面板部件在面板中呈现给定文本块，该面板具有与通知的其余部分稍微不同的背景颜色。 这将会允许你将给定的文本块引起注意：</p>
+<pre><code>@component('mail::panel')
+This is the panel content.
+@endcomponent</code></pre>
+<h4>表格组件</h4>
+<p>表格组件允许你将一个 Markdown 表格转化成一个 HTML 表格。表格组件接受 Markdown 表格作为内容。支持使用默认的 Markdown 表格对齐语法使表列对齐：</p>
+<pre><code>@component('mail::table')
+| Laravel       | Table         | Example  |
+| ------------- |:-------------:| --------:|
+| Col 2 is      | Centered      | $10      |
+| Col 3 is      | Right-Aligned | $20      |
+@endcomponent</code></pre>
+<p><a name="customizing-the-components"></a></p>
+<h3>自定义组件</h3>
+<p>您可以将所有 Markdown 通知组件导出到您自己的应用程序中进行自定义。 要导出组件，请使用 <code>vendor：publish</code> Artisan命令来发布 <code>laravel-mail</code> 标签：</p>
+<pre><code>php artisan vendor:publish --tag=laravel-mail</code></pre>
+<p>此命令将 Markdown 邮件组件发布到 <code>resources/views/vendor/mail</code> 目录。 <code>mail</code> 目录将包含一个 <code>html</code> 和一个 <code>markdown</code> 目录，每个目录包含它们各自可用组件的展示方式。 您可以随意自定义这些组件。</p>
+<h4>自定义CSS</h4>
+<p>导出组件后， <code>resources/views/vendor/mail/html/themes</code> 目录将包含一个 <code>default.css</code> 文件。 您可以在此文件中自定义 CSS ，并且您的样式将自动内嵌在 Markdown 通知的HTML展示中。</p>
+<blockquote>
+<p>{tip} 如果您想为 Markdown 组件构建一个全新的主题，只需在 <code>html/themes</code> 目录中写一个新的 CSS 文件，并更改 <code>mail</code> 配置文件中的 <code>theme</code> 选项。</p>
+</blockquote>
+<p><a name="database-notifications"></a></p>
+<h2>数据库通知</h2>
+<p><a name="database-prerequisites"></a></p>
+<h3>先决条件</h3>
+<p><code>database</code> 通知频道在一张数据表里存储通知信息。这张表包含了比如通知类型、JSON 格式数据等描述通知的信息。</p>
+<p>你可以查询这张表的内容在应用界面上展示通知。但是在这之前，你需要先创建一个数据表来保存通知。你可以用 <code>notifications:table</code> 命令来生成迁移表：</p>
+<pre><code>php artisan notifications:table
+
+php artisan migrate</code></pre>
+<p><a name="formatting-database-notifications"></a></p>
+<h3>格式化数据库通知</h3>
+<p>如果通知支持被存储到数据表中，你应该在通知类中定义一个 <code>toDatabase</code> 或 <code>toArray</code> 方法。这个方法接收 <code>$notifiable</code> 实体参数并返回一个普通的 PHP 数组。这个返回的数组将被转成 JSON 格式并存储到通知数据表的 <code>data</code> 列。我们来看一个 <code>toArray</code> 的例子：</p>
+<pre><code>/**
+ * 获取通知的数组展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return array
+ */
+public function toArray($notifiable)
+{
+    return [
+        'invoice_id' =&gt; $this-&gt;invoice-&gt;id,
+        'amount' =&gt; $this-&gt;invoice-&gt;amount,
+    ];
+}</code></pre>
+<h4><code>toDatabase</code> Vs <code>toArray</code></h4>
+<p><code>toArray</code> 方法在 <code>broadcast</code> 频道也用到了，它用来决定广播给 JavaScript 客户端的数据。如果你想在 <code>database</code> 和 <code>broadcast</code> 频道中采用两种不同的数组展示方式，你应该定义 <code>toDatabase</code> 方法而非 <code>toArray</code> 方法。</p>
+<p><a name="accessing-the-notifications"></a></p>
+<h3>访问通知</h3>
+<p>一旦通知被存到数据库中，你需要一种方便的方式来从通知实体中访问它们。 <code>Illuminate\Notifications\Notifiable</code> trait 包含一个可以返回这个实体所有通知的 <code>notifications</code> Eloquent 关联。要获取这些通知，你可以像用其他 Eloquent 关联一样来使用这个方法。默认情况下，通知将会以 <code>created_at</code> 时间戳来排序：</p>
+<pre><code>$user = App\User::find(1);
+
+foreach ($user-&gt;notifications as $notification) {
+    echo $notification-&gt;type;
+}</code></pre>
+<p>如果你只想检索未读通知，你可以使用 <code>unreadNotifications</code> 关联。检索出来的通知也是以 <code>created_at</code> 时间戳来排序的：</p>
+<pre><code>$user = App\User::find(1);
+
+foreach ($user-&gt;unreadNotifications as $notification) {
+    echo $notification-&gt;type;
+}</code></pre>
+<blockquote>
+<p>{tip} 要从 JavaScript 客户端来访问通知的话，你应该定义一个通知控制器来给可通知的实体返回通知，比如给当前用户返回通知。然后你就可以在 JavaScript 客户端来发起对应 URI 的 HTTP 请求了。</p>
+</blockquote>
+<p><a name="marking-notifications-as-read"></a></p>
+<h3>标为已读</h3>
+<p>通常情况下，当用户查看了通知时，你就希望把通知标为已读。<code>Illuminate\Notifications\Notifiable</code> trait 提供了一个 <code>markAsRead</code> 方法，它能在对应的数据库记录里更新 <code>read_at</code> 列：</p>
+<pre><code>$user = App\User::find(1);
+
+foreach ($user-&gt;unreadNotifications as $notification) {
+    $notification-&gt;markAsRead();
+}</code></pre>
+<p>你可以使用 <code>markAsRead</code> 方法直接操作一个通知集合，而不是一条条遍历每个通知：</p>
+<pre><code>$user-&gt;unreadNotifications-&gt;markAsRead();</code></pre>
+<p>你可以用批量更新的方式来把所有通知标为已读，而不用在数据库里检索：</p>
+<pre><code>$user = App\User::find(1);
+
+$user-&gt;unreadNotifications()-&gt;update(['read_at' =&gt; Carbon::now()]);</code></pre>
+<p>当然，你可以通过 <code>delete</code> 通知来把它们从数据库删除：</p>
+<pre><code>$user-&gt;notifications()-&gt;delete();</code></pre>
+<p><a name="broadcast-notifications"></a></p>
+<h2>广播通知</h2>
+<p><a name="broadcast-prerequisites"></a></p>
+<h3>先决条件</h3>
+<p>在广播通知前，你应该配置并熟悉 Laravel <a href="/docs/laravel_5.8_zh/broadcasting.html">事件广播</a> 服务。事件广播提供了一种 JavaScript 客户端响应服务端 Laravel 事件的机制。</p>
+<p><a name="formatting-broadcast-notifications"></a></p>
+<h3>格式化广播通知</h3>
+<p><code>broadcast</code> 频道使用 Laravel  <a href="/docs/laravel_5.8_zh/broadcasting.html">事件广播</a> 服务来广播通知，它使得 JavaScript 客户端可以实时捕捉通知。如果一条通知支持广播，你应该在通知类里定义一个 <code>toBroadcast</code> 或 <code>toArray</code> 方法。这个方法将收到一个 <code>$notifiable</code> 实体并返回一个普通的 PHP 数组。返回的数组会被编码成 JSON 格式并广播给你的 JavaScript 客户端。我们来看个 <code>toArray</code> 方法的例子：</p>
+<pre><code>use Illuminate\Notifications\Messages\BroadcastMessage;
+
+/**
+ * 获取通知的数组展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return BroadcastMessage
+ */
+public function toBroadcast($notifiable)
+{
+    return new BroadcastMessage([
+        'invoice_id' =&gt; $this-&gt;invoice-&gt;id,
+        'amount' =&gt; $this-&gt;invoice-&gt;amount,
+    ]);
+}</code></pre>
+<h4>广播队列配置</h4>
+<p>所有广播通知都排队等待广播。 如果要配置用于广播队列操作的队列连接或队列名称，你可以使用 <code>BroadcastMessage</code> 的 <code>onConnection</code> 和 <code>onQueue</code> 方法：</p>
+<pre><code>return new BroadcastMessage($data)
+                -&gt;onConnection('sqs')
+                -&gt;onQueue('broadcasts');</code></pre>
+<blockquote>
+<p>{tip} 除了你指定的数据外，广播通知也包含一个 <code>type</code> 字段，这个字段包含了通知类的类名。</p>
+</blockquote>
+<p><a name="listening-for-notifications"></a></p>
+<h3>监听通知</h3>
+<p>通知将会在一个私有频道里进行广播，频道格式为 <code>{notifiable}.{id}</code>。所以，如果你给 ID 为 <code>1</code> 的 <code>App\User</code> 实例发送通知，这个通知就在 <code>App.User.1</code> 私有频道里被发送。当你使用 <a href="/docs/laravel_5.8_zh/broadcasting.html">Laravel Echo</a> 的时候，你可以很简单地使用 <code>notification</code> 辅助函数来监听一个频道的通知：</p>
+<pre><code>Echo.private('App.User.' + userId)
+    .notification((notification) =&gt; {
+        console.log(notification.type);
+    });</code></pre>
+<h4>自定义通知通道</h4>
+<p>如果您想自定义应通知实体接收其广播通知的渠道，您可以定义一个 <code>receiveBroadcastNotificationsOn</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * 用户接收的通知广播
+     *
+     * @return array
+     */
+    public function receivesBroadcastNotificationsOn()
+    {
+        return [
+            new PrivateChannel('users.'.$this-&gt;id),
+        ];
+    }
+}</code></pre>
+<p><a name="sms-notifications"></a></p>
+<h2>短信通知</h2>
+<p><a name="sms-prerequisites"></a></p>
+<h3>先决条件</h3>
+<p>在 Laravel 中发送短信通知是基于 <a href="https://www.nexmo.com/">Nexmo</a> 服务的。在通过 Nexmo 发送短信通知前，你需要安装 <code>nexmo/client</code> Composer 包并在 <code>config/services.php</code> 配置文件中添加几个配置选项。你可以复制下面的配置示例来开始使用：</p>
+<pre><code>'nexmo' =&gt; [
+    'key' =&gt; env('NEXMO_KEY'),
+    'secret' =&gt; env('NEXMO_SECRET'),
+    'sms_from' =&gt; '15556666666',
+],</code></pre>
+<p><code>sms_from</code> 选项是短信消息发送者的手机号码。你可以在 Nexmo 控制面板中生成一个手机号码。</p>
+<p><a name="formatting-sms-notifications"></a></p>
+<h3>格式化短信通知</h3>
+<p>如果通知支持以短信方式发送，你应该在通知类里定义一个 <code>toNexmo</code> 方法。这个方法将会收到一个  <code>$notifiable</code> 实体并返回一个 <code>Illuminate\Notifications\Messages\NexmoMessage</code> 实例：</p>
+<pre><code>/**
+ * 获取通知的 Nexmo / 短信展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return NexmoMessage
+ */
+public function toNexmo($notifiable)
+{
+    return (new NexmoMessage)
+                -&gt;content('Your SMS message content');
+}</code></pre>
+<h4>Unicode 内容</h4>
+<p>如果您的 SMS 消息包含 unicode 字符，您应该在构建 <code>NexmoMessage</code> 实例时调用 <code>unicode</code> 方法：</p>
+<pre><code>/**
+ * 获取通知的 Nexmo / 短信展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return NexmoMessage
+ */
+public function toNexmo($notifiable)
+{
+    return (new NexmoMessage)
+                -&gt;content('Your unicode message')
+                -&gt;unicode();
+}</code></pre>
+<p><a name="customizing-the-from-number"></a></p>
+<h3>自定义 <code>From</code> 号码</h3>
+<p>如果你想通过一个手机号来发送某些通知，而这个手机号不同于你的 <code>config/services.php</code> 配置文件中指定的话，你可以在 <code>NexmoMessage</code> 实例中使用 <code>from</code>：</p>
+<pre><code>/**
+ * 获取通知的 Nexmo / 短信展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return NexmoMessage
+ */
+public function toNexmo($notifiable)
+{
+    return (new NexmoMessage)
+                -&gt;content('Your SMS message content')
+                -&gt;from('15554443333');
+}</code></pre>
+<p><a name="routing-sms-notifications"></a></p>
+<h3>路由短信通知</h3>
+<p>当通过 <code>nexmo</code> 频道来发送通知的时候，通知系统会自动寻找通知实体的 <code>phone_number</code> 属性。如果你想自定义通知被发送的手机号码，你要在通知实体里定义一个 <code>routeNotificationForNexmo</code> 方法。</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * Nexmo 频道的路由通知
+     *
+     * @return string
+     */
+    public function routeNotificationForNexmo()
+    {
+        return $this-&gt;phone;
+    }
+}</code></pre>
+<p><a name="slack-notifications"></a></p>
+<h2>Slack 通知</h2>
+<p><a name="slack-prerequisites"></a></p>
+<h3>先决条件</h3>
+<p>通过 Slack 发送通知前，你必须通过 Composer 安装 Guzzle HTTP 库：</p>
+<pre><code>composer require guzzlehttp/guzzle</code></pre>
+<p>你还需要给 Slack 组配置 「Incoming Webhook」 。它将提供你使用 <a href="#routing-slack-notifications">路由 Slack 通知</a> 时用到的 URL。</p>
+<p><a name="formatting-slack-notifications"></a></p>
+<h3>格式化 Slack 通知</h3>
+<p>如果通知支持被当做 Slack 消息发送，你应该在通知类里定义一个 <code>toSlack</code> 方法。这个方法将收到一个 <code>$notifiable</code> 实体并且返回一个 <code>Illuminate\Notifications\Messages\SlackMessage</code> 实例。Slack 消息可以包含文本内容以及一个 「attachment」 用来格式化额外文本或者字段数组。我们来看个基本的 <code>toSlack</code> 例子：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    return (new SlackMessage)
+                -&gt;content('One of your invoices has been paid!');
+}</code></pre>
+<p>这个例子中，我们只发送了一行文本给 Slack，这会创建类似下面的一条消息：</p>
+<p><img src="img/basic-slack-notification.png" alt="" /></p>
+<h4>自定义发件人和收件人</h4>
+<p>您可以使用 <code>from</code> 和 <code>to</code> 方法来自定义发件人和收件人。 <code>from</code> 方法接受用户名和表情符号标识符，而 <code>to</code> 方法接受一个频道或用户名：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    return (new SlackMessage)
+                -&gt;from('Ghost', ':ghost:')
+                -&gt;to('#other')
+                -&gt;content('This will be sent to #other');
+}</code></pre>
+<p>你也可以不使用表情符号，改为使用图片作为你的 logo：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    return (new SlackMessage)
+                -&gt;from('Laravel')
+                -&gt;image('https://laravel.com/favicon.png')
+                -&gt;content('This will display the Laravel logo next to the message');
+}</code></pre>
+<p><a name="slack-attachments"></a></p>
+<h3>Slack 附加项 (Attachments)</h3>
+<p>你可以给 Slack 消息添加 &quot;附加项&quot;。附加项提供了比简单文本消息更丰富的格式化选项。在这个例子中，我们将发送一条有关应用中异常的错误通知，它里面有个可以查看这个异常更多详情的链接：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式。
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    $url = url('/exceptions/'.$this-&gt;exception-&gt;id);
+
+    return (new SlackMessage)
+                -&gt;error()
+                -&gt;content('Whoops! Something went wrong.')
+                -&gt;attachment(function ($attachment) use ($url) {
+                    $attachment-&gt;title('Exception: File Not Found', $url)
+                               -&gt;content('File [background.jpg] was not found.');
+                });
+}</code></pre>
+<p>上面这个例子将会生成一条类似下面的 Slack 消息：</p>
+<p><img src="img/basic-slack-attachment.png" alt="" /></p>
+<p>附加项也允许你指定一个应该被展示给用户的数据的数组。给定的数据将会以表格样式展示出来，这能方便阅读：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    $url = url('/invoices/'.$this-&gt;invoice-&gt;id);
+
+    return (new SlackMessage)
+                -&gt;success()
+                -&gt;content('One of your invoices has been paid!')
+                -&gt;attachment(function ($attachment) use ($url) {
+                    $attachment-&gt;title('Invoice 1322', $url)
+                               -&gt;fields([
+                                    'Title' =&gt; 'Server Expenses',
+                                    'Amount' =&gt; '$1,234',
+                                    'Via' =&gt; 'American Express',
+                                    'Was Overdue' =&gt; ':-1:',
+                                ]);
+                });
+}</code></pre>
+<p>上面的例子将会生成一条类似下面的 Slack 消息：</p>
+<p><img src="img/slack-fields-attachment.png" alt="" /></p>
+<h4>Markdown 附件内容</h4>
+<p>如果一些附件字段包含 Markdown ，您可以使用 <code>markdown</code> 方法指示 Slack 解析并将给定的附件字段显示为 Markdown 格式的文本：</p>
+<pre><code>/**
+ * 获取通知的 Slack 展示方式
+ *
+ * @param  mixed  $notifiable
+ * @return SlackMessage
+ */
+public function toSlack($notifiable)
+{
+    $url = url('/exceptions/'.$this-&gt;exception-&gt;id);
+
+    return (new SlackMessage)
+                -&gt;error()
+                -&gt;content('Whoops! Something went wrong.')
+                -&gt;attachment(function ($attachment) use ($url) {
+                    $attachment-&gt;title('Exception: File Not Found', $url)
+                               -&gt;content('File [background.jpg] was **not found**.')
+                               -&gt;markdown(['title', 'text']);
+                });
+}</code></pre>
+<p><a name="routing-slack-notifications"></a></p>
+<h3>路由 Slack 通知</h3>
+<p>要把 Slack 通知路由到正确的位置，你要在通知实体中定义 <code>routeNotificationForSlack</code> 方法。它返回通知要被发往的 URL 回调地址。URL 可以通过在 Slack 组里面添加 &quot;Incoming Webhook&quot; 服务来生成。</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * Slack 频道的通知路由
+     *
+     * @return string
+     */
+    public function routeNotificationForSlack()
+    {
+        return $this-&gt;slack_webhook_url;
+    }
+}</code></pre>
+<p><a name="notification-events"></a></p>
+<h2>通知事件</h2>
+<p>当通知发送后，通知系统就会触发 <code>Illuminate\Notifications\Events\NotificationSent</code> 事件。它包含了 「notifiable」 实体和通知实例本身。你应该在 <code>EventServiceProvider</code> 中注册监听器：</p>
+<pre><code>/**
+ * 应用中的事件监听映射
+ *
+ * @var array
+ */
+protected $listen = [
+    'Illuminate\Notifications\Events\NotificationSent' =&gt; [
+        'App\Listeners\LogNotification',
+    ],
+];</code></pre>
+<blockquote>
+<p>{tip} 注册完监听器后，使用 <code>event:generate</code> Artisan 命令来快速生成监听器类。</p>
+</blockquote>
+<p>在事件监听器中，你可以访问事件中的 <code>notifiable</code>, <code>notification</code>, 和 <code>channel</code> 属性，来了解通知接收者和通知本身：</p>
+<pre><code>/**
+ * 处理事件
+ *
+ * @param  NotificationSent  $event
+ * @return void
+ */
+public function handle(NotificationSent $event)
+{
+    // $event-&gt;channel
+    // $event-&gt;notifiable
+    // $event-&gt;notification
+}</code></pre>
+<p><a name="custom-channels"></a></p>
+<h2>自定义频道</h2>
+<p>Laravel 提供了开箱即用的通知频道，但是你可能会想编写自己的驱动来通过其他频道发送通知。Laravel 很容易实现。首先，定义一个包含 <code>send</code> 方法的类。这个方法应该收到两个参数：<code>$notifiable</code> 和 <code>$notification</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Channels;
+
+use Illuminate\Notifications\Notification;
+
+class VoiceChannel
+{
+    /**
+     * 发送给定通知
+     *
+     * @param  mixed  $notifiable
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return void
+     */
+    public function send($notifiable, Notification $notification)
+    {
+        $message = $notification-&gt;toVoice($notifiable);
+
+        // 将通知发送给 $notifiable 实例
+    }
+}</code></pre>
+<p>一旦定义了通知频道类，你应该在所有通知里通过 <code>via</code> 方法来简单地返回这个频道的类名。</p>
+<pre><code>&lt;?php
+
+namespace App\Notifications;
+
+use Illuminate\Bus\Queueable;
+use App\Channels\VoiceChannel;
+use App\Channels\Messages\VoiceMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class InvoicePaid extends Notification
+{
+    use Queueable;
+
+    /**
+     * 获取通知频道
+     *
+     * @param  mixed  $notifiable
+     * @return array|string
+     */
+    public function via($notifiable)
+    {
+        return [VoiceChannel::class];
+    }
+
+    /**
+     * 获取通知的声音展示方式
+     *
+     * @param  mixed  $notifiable
+     * @return VoiceMessage
+     */
+    public function toVoice($notifiable)
+    {
+        // ...
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 194);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

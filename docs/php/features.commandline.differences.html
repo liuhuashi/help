@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>和其它 SAPI 模块的区别 - 开发帮助文档</title> 
+    <meta name="keyword" content="features.commandline.differences"> 
+    <meta name="description" content="features.commandline.differences"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1109" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.differences.html" title="和其它 SAPI 模块的区别">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    和其它 SAPI 模块的区别
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.ini.html" title="INI 配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    INI 配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.interactive.html" title="Interactive shell">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Interactive shell
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.introduction.html" title="features.commandline.introduction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    features.commandline.introduction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.io-streams.html" title="Input/output streams">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Input/output streams
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.options.html" title="命令行模式的选项参数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    命令行模式的选项参数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.usage.html" title="Executing PHP files">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Executing PHP files
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.webserver.html" title="内置Web Server">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    内置Web Server
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.introduction.html">« 如何得知自己使用的是哪个 SAPI？</a></li>
+      <li style="float: right;"><a href="features.commandline.options.html">Options »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">PHP 的命令行模式</a></li>
+    <li>和其它 SAPI 模块的区别</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.differences" class="section">
+<h2 class="title">和其它 <acronym title="Server Application Programming Interface">SAPI</acronym> 模块的区别</h2>
+
+ <p class="para">
+  以下为 <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 和其它 <acronym title="Server Application Programming Interface">SAPI</acronym> 模块相比的显著区别：
+  </p><ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     与 <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 不同，其输出没有任何头信息。
+    </p>
+    <p class="para">
+     尽管 <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 提供了取消 HTTP 头信息的方法，但在
+     <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 中并不存在类似的方法以开启 HTTP 头信息的输出。
+    </p>
+    <p class="para">
+     <acronym title="Command Line Interpreter/Interface">CLI</acronym> 默认以安静模式开始，但为了保证兼容性，<strong class="option unknown">-q</strong> 和
+     <strong class="option unknown">--no-header</strong> 参数为了向后兼容仍然保留，使得可以使用旧的 <acronym title="Common Gateway Interface">CGI</acronym> 脚本。
+    </p>
+    <p class="para">
+     在运行时，不会把工作目录改为脚本的当前目录（可以使用
+     <strong class="option unknown">-C</strong> 和 <strong class="option unknown">--no-chdir</strong> 参数来兼容 CGI 模式）。
+    </p>
+    <p class="para">
+     出错时输出纯文本的错误信息（非 <acronym title="Hyper Text Markup Language">HTML</acronym> 格式）。
+    </p>
+   </li>
+
+   <li class="listitem">
+    <p class="para">
+     <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 强制覆盖了 <var class="filename">php.ini</var>
+     中的某些设置，因为这些设置在外壳环境下是没有意义的。
+    </p>
+    <p class="para">
+     </p><table class="doctable table">
+      <caption><strong>覆盖 <var class="filename">php.ini</var> 设置选项</strong></caption>
+      
+       <thead>
+        <tr>
+         <th>设置选项</th>
+         <th><acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 默认值</th>
+         <th>备注</th>
+        </tr>
+
+       </thead>
+
+       <tbody class="tbody">
+        <tr>
+         <td><a href="errorfunc.configuration.html#ini.html-errors" class="link">html_errors</a></td>
+         <td><strong><code>false</code></strong></td>
+         <td>
+          无意义的 <acronym title="Hyper Text Markup Language">HTML</acronym>
+          标记符会使得出错信息很凌乱，所以在外壳下阅读报错信息是十分困难的。因此将该选项的默认值改为 <strong><code>false</code></strong>。
+         </td>
+        </tr>
+
+        <tr>
+         <td><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
+         <td><strong><code>true</code></strong></td>
+         <td>
+          在命令行模式下，所有来自 <a href="function.print.html" class="link"><code class="literal">print</code></a> 和
+          <a href="function.echo.html" class="link"><code class="literal">echo</code></a> 的输出将被立即写到输出端，而不作任何地缓冲操作。如果希望延缓或控制标准输出，仍然可以使用
+          <a href="ref.outcontrol.html" class="link">output buffering</a> 设置项。
+         </td>
+        </tr>
+
+        <tr>
+         <td><a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a></td>
+         <td>0（无限值）</td>
+         <td>
+          鉴于在外壳环境下使用 PHP 的无穷的可能性，最大运行时间被设置为了无限值。为
+          web 开发的应用程序可能只需运行几秒钟时间，而外壳应用程序的运行时间可能会长的多。
+         </td>
+        </tr>
+
+        <tr>
+         <td><a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a></td>
+         <td><strong><code>true</code></strong></td>
+         <td>
+         <p class="para">
+         由于该设置为 <strong><code>true</code></strong>，将总是可以在 <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>
+         中访问到 <em class="emphasis">argc</em>（传送给应用程序参数的个数）和
+         <em class="emphasis">argv</em>（包含有实际参数的数组）。
+         </p>
+         <p class="para">
+          在使用 <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 时，PHP 变量
+          <code class="literal">$argc</code> 和 <code class="literal">$argv</code>
+          已被注册并且设定了对应的值。随时可以通过
+          <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var> 数组
+          来访问它们，例如：<var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER['argv']</a></var>
+         </p>
+         </td>
+        </tr>
+
+        <tr>
+         <td><a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a></td>
+         <td><strong><code>false</code></strong></td>
+         <td>
+          <p class="para">
+           虽然 <var class="filename">php.ini</var> 设置已经硬编码为 <strong><code>false</code></strong>，
+           <a href="book.outcontrol.html" class="link">输出缓冲控制</a>函数仍然有效。
+          </p>
+         </td>
+        </tr>
+
+        <tr>
+         <td><a href="info.configuration.html#ini.max-input-time" class="link">max_input_time</a></td>
+         <td><strong><code>false</code></strong></td>
+         <td>
+          <p class="para">
+           PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym> 不支持 GET、POST、文件上传。
+          </p>
+         </td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      这些设置无法在设置文件 <var class="filename">php.ini</var>
+      或任何指定的其它文件中被初始化为其它值。这些默认值被限制在所有其它的设置文件被解析后改变。
+      不过，它们的值可以在程序运行的过程中被改变
+      （尽管对于该运行过程来说，这些设置项是没有意义的，例如 <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a>）。
+     </p>
+    </blockquote>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      推荐命令行脚本设置
+      <a href="misc.configuration.html#ini.ignore-user-abort" class="link">ignore_user_abort</a>。
+      更多信息参见 <span class="function"><a href="function.ignore-user-abort.html" class="function">ignore_user_abort()</a></span>。
+     </p>
+    </blockquote>
+   </li>
+
+   <li class="listitem">
+    <p class="para">
+     为了减轻外壳环境下的工作，我们为 <a href="features.commandline.io-streams.html" class="link">I/O 流
+    </a>定义了一系列常量。
+    </p>
+   </li>
+
+   <li class="listitem">
+    <p class="para">
+     <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>
+     <em class="emphasis">不会</em>将当前目录改为已运行的脚本所在的目录。
+    </p>
+    <p class="para">
+     以下范例显示了本模块与 <acronym title="Common Gateway Interface">CGI</acronym>
+     <acronym title="Server Application Programming Interface">SAPI</acronym> 模块之间的不同：
+     </p><div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// 名为 test.php 的简单测试程序<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">getcwd</span><span style="color: #007700">(), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    
+    <p class="para">
+     在使用 <code class="literal">CGI</code> 版本时，其输出为
+     </p><div class="example-contents screen">
+<div class="cdata"><pre>
+$ pwd
+/tmp
+
+$ php-cgi -f another_directory/test.php
+/tmp/another_directory
+</pre></div>
+     </div>
+    
+    <p class="para">
+     明显可以看到 PHP 将当前目录改成了刚刚运行过的脚本所在的目录。
+    </p>
+    <p class="para">
+     使用 <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 模式，得到：
+     </p><div class="example-contents screen">
+<div class="cdata"><pre>
+$ pwd
+/tmp
+
+$ php -q another_directory/test.php
+/tmp
+</pre></div>
+     </div>
+     这使得在利用 PHP 编写外壳工具时获得了很大的便利。
+    
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      可以在命令行运行时给该 <acronym title="Common Gateway Interface">CGI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 加上
+      <strong class="option unknown">-C</strong> 参数，使其支持 <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 的功能。
+     </p>
+    </blockquote>
+   </li>
+  </ul>
+ 
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2296);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

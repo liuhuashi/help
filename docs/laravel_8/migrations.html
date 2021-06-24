@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Database: Migrations - 开发帮助文档</title> 
+    <meta name="keyword" content="migrations"> 
+    <meta name="description" content="migrations"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="6" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/artisan.html" title="Artisan Console">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan Console
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authentication.html" title="Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authorization.html" title="Authorization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authorization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/billing.html" title="Laravel Cashier (Stripe)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Stripe)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/blade.html" title="Blade Templates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade Templates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/broadcasting.html" title="Broadcasting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Broadcasting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cache.html" title="Cache">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cashier-paddle.html" title="Laravel Cashier (Paddle)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Paddle)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/collections.html" title="Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/container.html" title="Service Container">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Container
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contracts.html" title="Contracts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contracts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contributions.html" title="Contribution Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contribution Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/csrf.html" title="CSRF Protection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF Protection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database-testing.html" title="Database Testing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database Testing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database.html" title="Database: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/deployment.html" title="Deployment">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deployment
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/documentation.html" title="Prologue">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Prologue
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-collections.html" title="Eloquent: Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-mutators.html" title="Eloquent: Mutators &amp; Casting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Mutators &amp; Casting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-relationships.html" title="Eloquent: Relationships">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Relationships
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-resources.html" title="Eloquent: API Resources">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API Resources
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-serialization.html" title="Eloquent: Serialization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Serialization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent.html" title="Eloquent: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/encryption.html" title="Encryption">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Encryption
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/errors.html" title="Error Handling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error Handling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/events.html" title="Events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/fortify.html" title="Laravel Fortify">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Fortify
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/hashing.html" title="Hashing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Hashing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/helpers.html" title="Helpers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Helpers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-client.html" title="HTTP Client">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Client
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/installation.html" title="Installation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/lifecycle.html" title="Request Lifecycle">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Lifecycle
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/localization.html" title="Localization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Localization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mail.html" title="Mail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/middleware.html" title="Middleware">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Middleware
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/migrations.html" title="Database: Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mix.html" title="Compiling Assets (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Compiling Assets (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/notifications.html" title="Notifications">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notifications
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/pagination.html" title="Database: Pagination">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Pagination
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passwords.html" title="Resetting Passwords">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resetting Passwords
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/providers.html" title="Service Providers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Providers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queries.html" title="Database: Query Builder">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Query Builder
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queues.html" title="Queues">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Queues
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redirects.html" title="HTTP Redirects">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Redirects
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/releases.html" title="Release Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Release Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/requests.html" title="HTTP Requests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Requests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/routing.html" title="Routing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Routing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scheduling.html" title="Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/seeding.html" title="Database: Seeding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Seeding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/session.html" title="HTTP Session">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Session
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/socialite.html" title="Laravel Socialite">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Socialite
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/starter-kits.html" title="Starter Kits">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Starter Kits
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/structure.html" title="Directory Structure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Directory Structure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/testing.html" title="Testing: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Testing: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/upgrade.html" title="Upgrade Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Upgrade Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/urls.html" title="URL Generation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    URL Generation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/validation.html" title="Validation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Validation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/views.html" title="Views">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Views
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Database: Migrations</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-migrations">Generating Migrations</a>
+<ul>
+<li><a href="#squashing-migrations">Squashing Migrations</a></li>
+</ul></li>
+<li><a href="#migration-structure">Migration Structure</a></li>
+<li><a href="#running-migrations">Running Migrations</a>
+<ul>
+<li><a href="#rolling-back-migrations">Rolling Back Migrations</a></li>
+</ul></li>
+<li><a href="#tables">Tables</a>
+<ul>
+<li><a href="#creating-tables">Creating Tables</a></li>
+<li><a href="#updating-tables">Updating Tables</a></li>
+<li><a href="#renaming-and-dropping-tables">Renaming / Dropping Tables</a></li>
+</ul></li>
+<li><a href="#columns">Columns</a>
+<ul>
+<li><a href="#creating-columns">Creating Columns</a></li>
+<li><a href="#available-column-types">Available Column Types</a></li>
+<li><a href="#column-modifiers">Column Modifiers</a></li>
+<li><a href="#modifying-columns">Modifying Columns</a></li>
+<li><a href="#dropping-columns">Dropping Columns</a></li>
+</ul></li>
+<li><a href="#indexes">Indexes</a>
+<ul>
+<li><a href="#creating-indexes">Creating Indexes</a></li>
+<li><a href="#renaming-indexes">Renaming Indexes</a></li>
+<li><a href="#dropping-indexes">Dropping Indexes</a></li>
+<li><a href="#foreign-key-constraints">Foreign Key Constraints</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>Introduction</h2>
+<p>Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.</p>
+<p>The Laravel <code>Schema</code> <a href="/docs/laravel_8/facades.html">facade</a> provides database agnostic support for creating and manipulating tables across all of Laravel's supported database systems. Typically, migrations will use this facade to create and modify database tables and columns.</p>
+<p><a name="generating-migrations"></a></p>
+<h2>Generating Migrations</h2>
+<p>You may use the <code>make:migration</code> <a href="/docs/laravel_8/artisan.html">Artisan command</a> to generate a database migration. The new migration will be placed in your <code>database/migrations</code> directory. Each migration filename contains a timestamp that allows Laravel to determine the order of the migrations:</p>
+<pre><code>php artisan make:migration create_flights_table</code></pre>
+<p>The <code>--table</code> and <code>--create</code> options may be used to indicate the name of the table and whether or not the migration will be creating a new table. These options pre-fill the generated migration file with the specified table:</p>
+<pre><code>php artisan make:migration create_flights_table --create=flights
+
+php artisan make:migration add_destination_to_flights_table --table=flights</code></pre>
+<p>If you would like to specify a custom path for the generated migration, you may use the <code>--path</code> option when executing the <code>make:migration</code> command. The given path should be relative to your application's base path.</p>
+<blockquote>
+<p>{tip} Migration stubs may be customized using <a href="/docs/laravel_8/artisan.html#stub-customization">stub publishing</a></p>
+</blockquote>
+<p><a name="squashing-migrations"></a></p>
+<h3>Squashing Migrations</h3>
+<p>As you build your application, you may accumulate more and more migrations over time. This can lead to your <code>database/migrations</code> directory becoming bloated with potentially hundreds of migrations. If you would like, you may &quot;squash&quot; your migrations into a single SQL file. To get started, execute the <code>schema:dump</code> command:</p>
+<pre><code>php artisan schema:dump
+
+// Dump the current database schema and prune all existing migrations...
+php artisan schema:dump --prune</code></pre>
+<p>When you execute this command, Laravel will write a &quot;schema&quot; file to your application's <code>database/schema</code> directory. Now, when you attempt to migrate your database and no other migrations have been executed, Laravel will execute the schema file's SQL statements first. After executing the schema file's statements, Laravel will execute any remaining migrations that were not part of the schema dump.</p>
+<p>You should commit your database schema file to source control so that other new developers on your team may quickly create your application's initial database structure.</p>
+<blockquote>
+<p>{note} Migration squashing is only available for the MySQL, PostgreSQL, and SQLite databases and utilizes the database's command-line client. Schema dumps may not be restored to in-memory SQLite databases.</p>
+</blockquote>
+<p><a name="migration-structure"></a></p>
+<h2>Migration Structure</h2>
+<p>A migration class contains two methods: <code>up</code> and <code>down</code>. The <code>up</code> method is used to add new tables, columns, or indexes to your database, while the <code>down</code> method should reverse the operations performed by the <code>up</code> method.</p>
+<p>Within both of these methods you may use the Laravel schema builder to expressively create and modify tables. To learn about all of the methods available on the <code>Schema</code> builder, <a href="#creating-tables">check out its documentation</a>. For example, the following migration creates a <code>flights</code> table:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;string('name');
+            $table-&gt;string('airline');
+            $table-&gt;timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('flights');
+    }
+}</code></pre>
+<p><a name="running-migrations"></a></p>
+<h2>Running Migrations</h2>
+<p>To run all of your outstanding migrations, execute the <code>migrate</code> Artisan command:</p>
+<pre><code>php artisan migrate</code></pre>
+<p><a name="forcing-migrations-to-run-in-production"></a></p>
+<h4>Forcing Migrations To Run In Production</h4>
+<p>Some migration operations are destructive, which means they may cause you to lose data. In order to protect you from running these commands against your production database, you will be prompted for confirmation before the commands are executed. To force the commands to run without a prompt, use the <code>--force</code> flag:</p>
+<pre><code>php artisan migrate --force</code></pre>
+<p><a name="rolling-back-migrations"></a></p>
+<h3>Rolling Back Migrations</h3>
+<p>To roll back the latest migration operation, you may use the <code>rollback</code> Artisan command. This command rolls back the last &quot;batch&quot; of migrations, which may include multiple migration files:</p>
+<pre><code>php artisan migrate:rollback</code></pre>
+<p>You may roll back a limited number of migrations by providing the <code>step</code> option to the <code>rollback</code> command. For example, the following command will roll back the last five migrations:</p>
+<pre><code>php artisan migrate:rollback --step=5</code></pre>
+<p>The <code>migrate:reset</code> command will roll back all of your application's migrations:</p>
+<pre><code>php artisan migrate:reset</code></pre>
+<p><a name="roll-back-migrate-using-a-single-command"></a></p>
+<h4>Roll Back &amp; Migrate Using A Single Command</h4>
+<p>The <code>migrate:refresh</code> command will roll back all of your migrations and then execute the <code>migrate</code> command. This command effectively re-creates your entire database:</p>
+<pre><code>php artisan migrate:refresh
+
+// Refresh the database and run all database seeds...
+php artisan migrate:refresh --seed</code></pre>
+<p>You may roll back and re-migrate a limited number of migrations by providing the <code>step</code> option to the <code>refresh</code> command. For example, the following command will roll back and re-migrate the last five migrations:</p>
+<pre><code>php artisan migrate:refresh --step=5</code></pre>
+<p><a name="drop-all-tables-migrate"></a></p>
+<h4>Drop All Tables &amp; Migrate</h4>
+<p>The <code>migrate:fresh</code> command will drop all tables from the database and then execute the <code>migrate</code> command:</p>
+<pre><code>php artisan migrate:fresh
+
+php artisan migrate:fresh --seed</code></pre>
+<blockquote>
+<p>{note} The <code>migrate:fresh</code> command will drop all database tables regardless of their prefix. This command should be used with caution when developing on a database that is shared with other applications.</p>
+</blockquote>
+<p><a name="tables"></a></p>
+<h2>Tables</h2>
+<p><a name="creating-tables"></a></p>
+<h3>Creating Tables</h3>
+<p>To create a new database table, use the <code>create</code> method on the <code>Schema</code> facade. The <code>create</code> method accepts two arguments: the first is the name of the table, while the second is a closure which receives a <code>Blueprint</code> object that may be used to define the new table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::create('users', function (Blueprint $table) {
+    $table-&gt;id();
+    $table-&gt;string('name');
+    $table-&gt;string('email');
+    $table-&gt;timestamps();
+});</code></pre>
+<p>When creating the table, you may use any of the schema builder's <a href="#creating-columns">column methods</a> to define the table's columns.</p>
+<p><a name="checking-for-table-column-existence"></a></p>
+<h4>Checking For Table / Column Existence</h4>
+<p>You may check for the existence of a table or column using the <code>hasTable</code> and <code>hasColumn</code> methods:</p>
+<pre><code>if (Schema::hasTable('users')) {
+    // The "users" table exists...
+}
+
+if (Schema::hasColumn('users', 'email')) {
+    // The "users" table exists and has an "email" column...
+}</code></pre>
+<p><a name="database-connection-table-options"></a></p>
+<h4>Database Connection &amp; Table Options</h4>
+<p>If you want to perform a schema operation on a database connection that is not your application's default connection, use the <code>connection</code> method:</p>
+<pre><code>Schema::connection('sqlite')-&gt;create('users', function (Blueprint $table) {
+    $table-&gt;id();
+});</code></pre>
+<p>In addition, a few other properties and methods may be used to define other aspects of the table's creation. The <code>engine</code> property may be used to specify the table's storage engine when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;engine = 'InnoDB';
+
+    // ...
+});</code></pre>
+<p>The <code>charset</code> and <code>collation</code> properties may be used to specify the character set and collation for the created table when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;charset = 'utf8mb4';
+    $table-&gt;collation = 'utf8mb4_unicode_ci';
+
+    // ...
+});</code></pre>
+<p>The <code>temporary</code> method may be used to indicate that the table should be &quot;temporary&quot;. Temporary tables are only visible to the current connection's database session and are dropped automatically when the connection is closed:</p>
+<pre><code>Schema::create('calculations', function (Blueprint $table) {
+    $table-&gt;temporary();
+
+    // ...
+});</code></pre>
+<p><a name="updating-tables"></a></p>
+<h3>Updating Tables</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives a <code>Blueprint</code> instance you may use to add columns or indexes to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});</code></pre>
+<p><a name="renaming-and-dropping-tables"></a></p>
+<h3>Renaming / Dropping Tables</h3>
+<p>To rename an existing database table, use the <code>rename</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+Schema::rename($from, $to);</code></pre>
+<p>To drop an existing table, you may use the <code>drop</code> or <code>dropIfExists</code> methods:</p>
+<pre><code>Schema::drop('users');
+
+Schema::dropIfExists('users');</code></pre>
+<p><a name="renaming-tables-with-foreign-keys"></a></p>
+<h4>Renaming Tables With Foreign Keys</h4>
+<p>Before renaming a table, you should verify that any foreign key constraints on the table have an explicit name in your migration files instead of letting Laravel assign a convention based name. Otherwise, the foreign key constraint name will refer to the old table name.</p>
+<p><a name="columns"></a></p>
+<h2>Columns</h2>
+<p><a name="creating-columns"></a></p>
+<h3>Creating Columns</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives an <code>Illuminate\Database\Schema\Blueprint</code> instance you may use to add columns to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});</code></pre>
+<p><a name="available-column-types"></a></p>
+<h3>Available Column Types</h3>
+<p>The schema builder blueprint offers a variety of methods that correspond to the different types of columns you can add to your database tables. Each of the available methods are listed in the table below:</p>
+<style>
+    #collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    #collection-method-list a {
+        display: block;
+    }
+</style>
+<div id="collection-method-list">
+<p><a href="#column-method-bigIncrements">bigIncrements</a>
+<a href="#column-method-bigInteger">bigInteger</a>
+<a href="#column-method-binary">binary</a>
+<a href="#column-method-boolean">boolean</a>
+<a href="#column-method-char">char</a>
+<a href="#column-method-dateTimeTz">dateTimeTz</a>
+<a href="#column-method-dateTime">dateTime</a>
+<a href="#column-method-date">date</a>
+<a href="#column-method-decimal">decimal</a>
+<a href="#column-method-double">double</a>
+<a href="#column-method-enum">enum</a>
+<a href="#column-method-float">float</a>
+<a href="#column-method-foreignId">foreignId</a>
+<a href="#column-method-geometryCollection">geometryCollection</a>
+<a href="#column-method-geometry">geometry</a>
+<a href="#column-method-id">id</a>
+<a href="#column-method-increments">increments</a>
+<a href="#column-method-integer">integer</a>
+<a href="#column-method-ipAddress">ipAddress</a>
+<a href="#column-method-json">json</a>
+<a href="#column-method-jsonb">jsonb</a>
+<a href="#column-method-lineString">lineString</a>
+<a href="#column-method-longText">longText</a>
+<a href="#column-method-macAddress">macAddress</a>
+<a href="#column-method-mediumIncrements">mediumIncrements</a>
+<a href="#column-method-mediumInteger">mediumInteger</a>
+<a href="#column-method-mediumText">mediumText</a>
+<a href="#column-method-morphs">morphs</a>
+<a href="#column-method-multiLineString">multiLineString</a>
+<a href="#column-method-multiPoint">multiPoint</a>
+<a href="#column-method-multiPolygon">multiPolygon</a>
+<a href="#column-method-nullableMorphs">nullableMorphs</a>
+<a href="#column-method-nullableTimestamps">nullableTimestamps</a>
+<a href="#column-method-nullableUuidMorphs">nullableUuidMorphs</a>
+<a href="#column-method-point">point</a>
+<a href="#column-method-polygon">polygon</a>
+<a href="#column-method-rememberToken">rememberToken</a>
+<a href="#column-method-set">set</a>
+<a href="#column-method-smallIncrements">smallIncrements</a>
+<a href="#column-method-smallInteger">smallInteger</a>
+<a href="#column-method-softDeletesTz">softDeletesTz</a>
+<a href="#column-method-softDeletes">softDeletes</a>
+<a href="#column-method-string">string</a>
+<a href="#column-method-text">text</a>
+<a href="#column-method-timeTz">timeTz</a>
+<a href="#column-method-time">time</a>
+<a href="#column-method-timestampTz">timestampTz</a>
+<a href="#column-method-timestamp">timestamp</a>
+<a href="#column-method-timestampsTz">timestampsTz</a>
+<a href="#column-method-timestamps">timestamps</a>
+<a href="#column-method-tinyIncrements">tinyIncrements</a>
+<a href="#column-method-tinyInteger">tinyInteger</a>
+<a href="#column-method-unsignedBigInteger">unsignedBigInteger</a>
+<a href="#column-method-unsignedDecimal">unsignedDecimal</a>
+<a href="#column-method-unsignedInteger">unsignedInteger</a>
+<a href="#column-method-unsignedMediumInteger">unsignedMediumInteger</a>
+<a href="#column-method-unsignedSmallInteger">unsignedSmallInteger</a>
+<a href="#column-method-unsignedTinyInteger">unsignedTinyInteger</a>
+<a href="#column-method-uuidMorphs">uuidMorphs</a>
+<a href="#column-method-uuid">uuid</a>
+<a href="#column-method-year">year</a></p>
+</div>
+<p><a name="column-method-bigIncrements"></a></p>
+<h4 id="collection-method" class="first-collection-method"><code>bigIncrements()</code></h4>
+<p>The <code>bigIncrements</code> method creates an auto-incrementing <code>UNSIGNED BIGINT</code> (primary key) equivalent column:</p>
+<pre><code>$table-&gt;bigIncrements('id');</code></pre>
+<p><a name="column-method-bigInteger"></a></p>
+<h4 id="collection-method"><code>bigInteger()</code></h4>
+<p>The <code>bigInteger</code> method creates a <code>BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;bigInteger('votes');</code></pre>
+<p><a name="column-method-binary"></a></p>
+<h4 id="collection-method"><code>binary()</code></h4>
+<p>The <code>binary</code> method creates a <code>BLOB</code> equivalent column:</p>
+<pre><code>$table-&gt;binary('photo');</code></pre>
+<p><a name="column-method-boolean"></a></p>
+<h4 id="collection-method"><code>boolean()</code></h4>
+<p>The <code>boolean</code> method creates a <code>BOOLEAN</code> equivalent column:</p>
+<pre><code>$table-&gt;boolean('confirmed');</code></pre>
+<p><a name="column-method-char"></a></p>
+<h4 id="collection-method"><code>char()</code></h4>
+<p>The <code>char</code> method creates a <code>CHAR</code> equivalent column with of a given length:</p>
+<pre><code>$table-&gt;char('name', 100);</code></pre>
+<p><a name="column-method-dateTimeTz"></a></p>
+<h4 id="collection-method"><code>dateTimeTz()</code></h4>
+<p>The <code>dateTimeTz</code> method creates a <code>DATETIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTimeTz('created_at', $precision = 0);</code></pre>
+<p><a name="column-method-dateTime"></a></p>
+<h4 id="collection-method"><code>dateTime()</code></h4>
+<p>The <code>dateTime</code> method creates a <code>DATETIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTime('created_at', $precision = 0);</code></pre>
+<p><a name="column-method-date"></a></p>
+<h4 id="collection-method"><code>date()</code></h4>
+<p>The <code>date</code> method creates a <code>DATE</code> equivalent column:</p>
+<pre><code>$table-&gt;date('created_at');</code></pre>
+<p><a name="column-method-decimal"></a></p>
+<h4 id="collection-method"><code>decimal()</code></h4>
+<p>The <code>decimal</code> method creates a <code>DECIMAL</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;decimal('amount', $precision = 8, $scale = 2);</code></pre>
+<p><a name="column-method-double"></a></p>
+<h4 id="collection-method"><code>double()</code></h4>
+<p>The <code>double</code> method creates a <code>DOUBLE</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;double('amount', 8, 2);</code></pre>
+<p><a name="column-method-enum"></a></p>
+<h4 id="collection-method"><code>enum()</code></h4>
+<p>The <code>enum</code> method creates a <code>ENUM</code> equivalent column with the given valid values:</p>
+<pre><code>$table-&gt;enum('difficulty', ['easy', 'hard']);</code></pre>
+<p><a name="column-method-float"></a></p>
+<h4 id="collection-method"><code>float()</code></h4>
+<p>The <code>float</code> method creates a <code>FLOAT</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;float('amount', 8, 2);</code></pre>
+<p><a name="column-method-foreignId"></a></p>
+<h4 id="collection-method"><code>foreignId()</code></h4>
+<p>The <code>foreignId</code> method is an alias of the <code>unsignedBigInteger</code> method:</p>
+<pre><code>$table-&gt;foreignId('user_id');</code></pre>
+<p><a name="column-method-geometryCollection"></a></p>
+<h4 id="collection-method"><code>geometryCollection()</code></h4>
+<p>The <code>geometryCollection</code> method creates a <code>GEOMETRYCOLLECTION</code> equivalent column:</p>
+<pre><code>$table-&gt;geometryCollection('positions');</code></pre>
+<p><a name="column-method-geometry"></a></p>
+<h4 id="collection-method"><code>geometry()</code></h4>
+<p>The <code>geometry</code> method creates a <code>GEOMETRY</code> equivalent column:</p>
+<pre><code>$table-&gt;geometry('positions');</code></pre>
+<p><a name="column-method-id"></a></p>
+<h4 id="collection-method"><code>id()</code></h4>
+<p>The <code>id</code> method is an alias of the <code>bigIncrements</code> method. By default, the method will create an <code>id</code> column; however, you may pass a column name if you would like to assign a different name to the column:</p>
+<pre><code>$table-&gt;id();</code></pre>
+<p><a name="column-method-increments"></a></p>
+<h4 id="collection-method"><code>increments()</code></h4>
+<p>The <code>increments</code> method creates an auto-incrementing <code>UNSIGNED INTEGER</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;increments('id');</code></pre>
+<p><a name="column-method-integer"></a></p>
+<h4 id="collection-method"><code>integer()</code></h4>
+<p>The <code>integer</code> method creates an <code>INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;integer('votes');</code></pre>
+<p><a name="column-method-ipAddress"></a></p>
+<h4 id="collection-method"><code>ipAddress()</code></h4>
+<p>The <code>ipAddress</code> method creates an <code>INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;ipAddress('visitor');</code></pre>
+<p><a name="column-method-json"></a></p>
+<h4 id="collection-method"><code>json()</code></h4>
+<p>The <code>json</code> method creates an <code>JSON</code> equivalent column:</p>
+<pre><code>$table-&gt;json('options');</code></pre>
+<p><a name="column-method-jsonb"></a></p>
+<h4 id="collection-method"><code>jsonb()</code></h4>
+<p>The <code>jsonb</code> method creates an <code>JSONB</code> equivalent column:</p>
+<pre><code>$table-&gt;jsonb('options');</code></pre>
+<p><a name="column-method-lineString"></a></p>
+<h4 id="collection-method"><code>lineString()</code></h4>
+<p>The <code>lineString</code> method creates an <code>LINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;lineString('positions');</code></pre>
+<p><a name="column-method-longText"></a></p>
+<h4 id="collection-method"><code>longText()</code></h4>
+<p>The <code>longText</code> method creates an <code>LONGTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;longText('description');</code></pre>
+<p><a name="column-method-macAddress"></a></p>
+<h4 id="collection-method"><code>macAddress()</code></h4>
+<p>The <code>macAddress</code> method creates a column that is intended to hold a MAC address. Some database systems, such as PostgreSQL, have a dedicated column type for this type of data. Other database systems will use a string equivalent column:</p>
+<pre><code>$table-&gt;macAddress('device');</code></pre>
+<p><a name="column-method-mediumIncrements"></a></p>
+<h4 id="collection-method"><code>mediumIncrements()</code></h4>
+<p>The <code>mediumIncrements</code> method creates an auto-incrementing <code>UNSIGNED MEDIUMINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;mediumIncrements('id');</code></pre>
+<p><a name="column-method-mediumInteger"></a></p>
+<h4 id="collection-method"><code>mediumInteger()</code></h4>
+<p>The <code>mediumInteger</code> method creates an <code>MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumInteger('votes');</code></pre>
+<p><a name="column-method-mediumText"></a></p>
+<h4 id="collection-method"><code>mediumText()</code></h4>
+<p>The <code>mediumText</code> method creates an <code>MEDIUMTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumText('description');</code></pre>
+<p><a name="column-method-morphs"></a></p>
+<h4 id="collection-method"><code>morphs()</code></h4>
+<p>The <code>morphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>UNSIGNED BIGINT</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="/docs/laravel_8/eloquent-relationships.html">Eloquent relationship</a>. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;morphs('taggable');</code></pre>
+<p><a name="column-method-multiLineString"></a></p>
+<h4 id="collection-method"><code>multiLineString()</code></h4>
+<p>The <code>multiLineString</code> method creates an <code>MULTILINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;multiLineString('positions');</code></pre>
+<p><a name="column-method-multiPoint"></a></p>
+<h4 id="collection-method"><code>multiPoint()</code></h4>
+<p>The <code>multiPoint</code> method creates an <code>MULTIPOINT</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPoint('positions');</code></pre>
+<p><a name="column-method-multiPolygon"></a></p>
+<h4 id="collection-method"><code>multiPolygon()</code></h4>
+<p>The <code>multiPolygon</code> method creates an <code>MULTIPOLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPolygon('positions');</code></pre>
+<p><a name="column-method-nullableTimestamps"></a></p>
+<h4 id="collection-method"><code>nullableTimestamps()</code></h4>
+<p>The method is similar to the <a href="#column-method-timestamps">timestamps</a> method; however, the column that is created will be &quot;nullable&quot;:</p>
+<pre><code>$table-&gt;nullableTimestamps(0);</code></pre>
+<p><a name="column-method-nullableMorphs"></a></p>
+<h4 id="collection-method"><code>nullableMorphs()</code></h4>
+<p>The method is similar to the <a href="#column-method-morphs">morphs</a> method; however, the columns that are created will be &quot;nullable&quot;:</p>
+<pre><code>$table-&gt;nullableMorphs('taggable');</code></pre>
+<p><a name="column-method-nullableUuidMorphs"></a></p>
+<h4 id="collection-method"><code>nullableUuidMorphs()</code></h4>
+<p>The method is similar to the <a href="#column-method-uuidMorphs">uuidMorphs</a> method; however, the columns that are created will be &quot;nullable&quot;:</p>
+<pre><code>$table-&gt;nullableUuidMorphs('taggable');</code></pre>
+<p><a name="column-method-point"></a></p>
+<h4 id="collection-method"><code>point()</code></h4>
+<p>The <code>point</code> method creates an <code>POINT</code> equivalent column:</p>
+<pre><code>$table-&gt;point('position');</code></pre>
+<p><a name="column-method-polygon"></a></p>
+<h4 id="collection-method"><code>polygon()</code></h4>
+<p>The <code>polygon</code> method creates an <code>POLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;polygon('position');</code></pre>
+<p><a name="column-method-rememberToken"></a></p>
+<h4 id="collection-method"><code>rememberToken()</code></h4>
+<p>The <code>rememberToken</code> method creates a nullable, <code>VARCHAR(100)</code> equivalent column that is intended to store the current &quot;remember me&quot; <a href="/docs/laravel_8/authentication.html#remembering-users">authentication token</a>:</p>
+<pre><code>$table-&gt;rememberToken();</code></pre>
+<p><a name="column-method-set"></a></p>
+<h4 id="collection-method"><code>set()</code></h4>
+<p>The <code>set</code> method creates an <code>SET</code> equivalent column with the given list of valid values:</p>
+<pre><code>$table-&gt;set('flavors', ['strawberry', 'vanilla']);</code></pre>
+<p><a name="column-method-smallIncrements"></a></p>
+<h4 id="collection-method"><code>smallIncrements()</code></h4>
+<p>The <code>smallIncrements</code> method creates an auto-incrementing <code>UNSIGNED SMALLINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;smallIncrements('id');</code></pre>
+<p><a name="column-method-smallInteger"></a></p>
+<h4 id="collection-method"><code>smallInteger()</code></h4>
+<p>The <code>smallInteger</code> method creates an <code>SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;smallInteger('votes');</code></pre>
+<p><a name="column-method-softDeletesTz"></a></p>
+<h4 id="collection-method"><code>softDeletesTz()</code></h4>
+<p>The <code>softDeletesTz</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's &quot;soft delete&quot; functionality:</p>
+<pre><code>$table-&gt;softDeletesTz($column = 'deleted_at', $precision = 0);</code></pre>
+<p><a name="column-method-softDeletes"></a></p>
+<h4 id="collection-method"><code>softDeletes()</code></h4>
+<p>The <code>softDeletes</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's &quot;soft delete&quot; functionality:</p>
+<pre><code>$table-&gt;softDeletes($column = 'deleted_at', $precision = 0);</code></pre>
+<p><a name="column-method-string"></a></p>
+<h4 id="collection-method"><code>string()</code></h4>
+<p>The <code>string</code> method creates an <code>VARCHAR</code> equivalent column of the given length:</p>
+<pre><code>$table-&gt;string('name', 100);</code></pre>
+<p><a name="column-method-text"></a></p>
+<h4 id="collection-method"><code>text()</code></h4>
+<p>The <code>text</code> method creates an <code>TEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;text('description');</code></pre>
+<p><a name="column-method-timeTz"></a></p>
+<h4 id="collection-method"><code>timeTz()</code></h4>
+<p>The <code>timeTz</code> method creates an <code>TIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timeTz('sunrise', $precision = 0);</code></pre>
+<p><a name="column-method-time"></a></p>
+<h4 id="collection-method"><code>time()</code></h4>
+<p>The <code>time</code> method creates an <code>TIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;time('sunrise', $precision = 0);</code></pre>
+<p><a name="column-method-timestampTz"></a></p>
+<h4 id="collection-method"><code>timestampTz()</code></h4>
+<p>The <code>timestampTz</code> method creates an <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampTz('added_at', $precision = 0);</code></pre>
+<p><a name="column-method-timestamp"></a></p>
+<h4 id="collection-method"><code>timestamp()</code></h4>
+<p>The <code>timestamp</code> method creates an <code>TIMESTAMP</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamp('added_at', $precision = 0);</code></pre>
+<p><a name="column-method-timestampsTz"></a></p>
+<h4 id="collection-method"><code>timestampsTz()</code></h4>
+<p>The <code>timestampsTz</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> (with timezone) equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampsTz($precision = 0);</code></pre>
+<p><a name="column-method-timestamps"></a></p>
+<h4 id="collection-method"><code>timestamps()</code></h4>
+<p>The <code>timestamps</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamps($precision = 0);</code></pre>
+<p><a name="column-method-tinyIncrements"></a></p>
+<h4 id="collection-method"><code>tinyIncrements()</code></h4>
+<p>The <code>tinyIncrements</code> method creates an auto-incrementing <code>UNSIGNED TINYINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;tinyIncrements('id');</code></pre>
+<p><a name="column-method-tinyInteger"></a></p>
+<h4 id="collection-method"><code>tinyInteger()</code></h4>
+<p>The <code>tinyInteger</code> method creates an <code>TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;tinyInteger('votes');</code></pre>
+<p><a name="column-method-unsignedBigInteger"></a></p>
+<h4 id="collection-method"><code>unsignedBigInteger()</code></h4>
+<p>The <code>unsignedBigInteger</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedBigInteger('votes');</code></pre>
+<p><a name="column-method-unsignedDecimal"></a></p>
+<h4 id="collection-method"><code>unsignedDecimal()</code></h4>
+<p>The <code>unsignedDecimal</code> method creates an <code>UNSIGNED DECIMAL</code> equivalent column with an optinoal precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;unsignedDecimal('amount', $precision = 8, $scale = 2);</code></pre>
+<p><a name="column-method-unsignedInteger"></a></p>
+<h4 id="collection-method"><code>unsignedInteger()</code></h4>
+<p>The <code>unsignedInteger</code> method creates an <code>UNSIGNED INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedInteger('votes');</code></pre>
+<p><a name="column-method-unsignedMediumInteger"></a></p>
+<h4 id="collection-method"><code>unsignedMediumInteger()</code></h4>
+<p>The <code>unsignedMediumInteger</code> method creates an <code>UNSIGNED MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedMediumInteger('votes');</code></pre>
+<p><a name="column-method-unsignedSmallInteger"></a></p>
+<h4 id="collection-method"><code>unsignedSmallInteger()</code></h4>
+<p>The <code>unsignedSmallInteger</code> method creates an <code>UNSIGNED SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedSmallInteger('votes');</code></pre>
+<p><a name="column-method-unsignedTinyInteger"></a></p>
+<h4 id="collection-method"><code>unsignedTinyInteger()</code></h4>
+<p>The <code>unsignedTinyInteger</code> method creates an <code>UNSIGNED TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedTinyInteger('votes');</code></pre>
+<p><a name="column-method-uuidMorphs"></a></p>
+<h4 id="collection-method"><code>uuidMorphs()</code></h4>
+<p>The <code>uuidMorphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>CHAR(36)</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="/docs/laravel_8/eloquent-relationships.html">Eloquent relationship</a> that use UUID identifiers. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;uuidMorphs('taggable');</code></pre>
+<p><a name="column-method-uuid"></a></p>
+<h4 id="collection-method"><code>uuid()</code></h4>
+<p>The <code>uuid</code> method creates an <code>UUID</code> equivalent column:</p>
+<pre><code>$table-&gt;uuid('id');</code></pre>
+<p><a name="column-method-year"></a></p>
+<h4 id="collection-method"><code>year()</code></h4>
+<p>The <code>year</code> method creates an <code>YEAR</code> equivalent column:</p>
+<pre><code>$table-&gt;year('birth_year');</code></pre>
+<p><a name="column-modifiers"></a></p>
+<h3>Column Modifiers</h3>
+<p>In addition to the column types listed above, there are several column &quot;modifiers&quot; you may use when adding a column to a database table. For example, to make the column &quot;nullable&quot;, you may use the <code>nullable</code> method:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;nullable();
+});</code></pre>
+<p>The following table contains all of the available column modifiers. This list does not include <a href="#creating-indexes">index modifiers</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-&gt;after('column')</code></td>
+<td>Place the column &quot;after&quot; another column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;autoIncrement()</code></td>
+<td>Set INTEGER columns as auto-incrementing (primary key).</td>
+</tr>
+<tr>
+<td><code>-&gt;charset('utf8mb4')</code></td>
+<td>Specify a character set for the column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;collation('utf8mb4_unicode_ci')</code></td>
+<td>Specify a collation for the column (MySQL/PostgreSQL/SQL Server).</td>
+</tr>
+<tr>
+<td><code>-&gt;comment('my comment')</code></td>
+<td>Add a comment to a column (MySQL/PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;default($value)</code></td>
+<td>Specify a &quot;default&quot; value for the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;first()</code></td>
+<td>Place the column &quot;first&quot; in the table (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;from($integer)</code></td>
+<td>Set the starting value of an auto-incrementing field (MySQL / PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;nullable($value = true)</code></td>
+<td>Allow NULL values to be inserted into the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;storedAs($expression)</code></td>
+<td>Create a stored generated column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;unsigned()</code></td>
+<td>Set INTEGER columns as UNSIGNED (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrent()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP as default value.</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrentOnUpdate()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP when a record is updated.</td>
+</tr>
+<tr>
+<td><code>-&gt;virtualAs($expression)</code></td>
+<td>Create a virtual generated column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;generatedAs($expression)</code></td>
+<td>Create an identity column with specified sequence options (PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;always()</code></td>
+<td>Defines the precedence of sequence values over input for an identity column (PostgreSQL).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="default-expressions"></a></p>
+<h4>Default Expressions</h4>
+<p>The <code>default</code> modifier accepts a value or an <code>Illuminate\Database\Query\Expression</code> instance. Using an <code>Expression</code> instance will prevent Laravel from wrapping the value in quotes and allow you to use database specific functions. One situation where this is particularly useful is when you need to assign default values to JSON columns:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;json('movies')-&gt;default(new Expression('(JSON_ARRAY())'));
+            $table-&gt;timestamps();
+        });
+    }
+}</code></pre>
+<blockquote>
+<p>{note} Support for default expressions depends on your database driver, database version, and the field type. Please refer to your database's documentation.</p>
+</blockquote>
+<p><a name="modifying-columns"></a></p>
+<h3>Modifying Columns</h3>
+<p><a name="prerequisites"></a></p>
+<h4>Prerequisites</h4>
+<p>Before modifying a column, you must install the <code>doctrine/dbal</code> package using the Composer package manager. The Doctrine DBAL library is used to determine the current state of the column and to create the SQL queries needed to make the requested changes to your column:</p>
+<pre><code>composer require doctrine/dbal</code></pre>
+<p>If you plan to modify columns created using the <code>timestamp</code> method, you must also add the following configuration to your application's <code>config/database.php</code> configuration file:</p>
+<pre><code class="language-php">use Illuminate\Database\DBAL\TimestampType;
+
+'dbal' =&gt; [
+    'types' =&gt; [
+        'timestamp' =&gt; TimestampType::class,
+    ],
+],</code></pre>
+<p><a name="updating-column-attributes"></a></p>
+<h4>Updating Column Attributes</h4>
+<p>The <code>change</code> method allows you to modify the type and attributes of existing columns. For example, you may wish to increase the size of a <code>string</code> column. To see the <code>change</code> method in action, let's increase the size of the <code>name</code> column from 25 to 50. To accomplish this, we simply define the new state of the column and then call the <code>change</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;change();
+});</code></pre>
+<p>We could also modify a column to be nullable:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;nullable()-&gt;change();
+});</code></pre>
+<blockquote>
+<p>{note} The following column types can be modified: <code>bigInteger</code>, <code>binary</code>, <code>boolean</code>, <code>date</code>, <code>dateTime</code>, <code>dateTimeTz</code>, <code>decimal</code>, <code>integer</code>, <code>json</code>, <code>longText</code>, <code>mediumText</code>, <code>smallInteger</code>, <code>string</code>, <code>text</code>, <code>time</code>, <code>unsignedBigInteger</code>, <code>unsignedInteger</code>, <code>unsignedSmallInteger</code>, and <code>uuid</code>.  To modify a <code>timestamp</code> column type a <a href="#prerequisites">Doctrine type must be registered</a>.</p>
+</blockquote>
+<p><a name="renaming-columns"></a></p>
+<h4>Renaming Columns</h4>
+<p>To rename a column, you may use the <code>renameColumn</code> method provided by the schema builder blueprint. Before renaming a column, ensure that you have installed the <code>doctrine/dbal</code> library via the Composer package manager:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;renameColumn('from', 'to');
+});</code></pre>
+<blockquote>
+<p>{note} Renaming an <code>enum</code> column is not currently supported.</p>
+</blockquote>
+<p><a name="dropping-columns"></a></p>
+<h3>Dropping Columns</h3>
+<p>To drop a column, you may use the <code>dropColumn</code> method on the schema builder blueprint. If your application is utilizing an SQLite database, you must install the <code>doctrine/dbal</code> package via the Composer package manager before the <code>dropColumn</code> method may be used:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn('votes');
+});</code></pre>
+<p>You may drop multiple columns from a table by passing an array of column names to the <code>dropColumn</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn(['votes', 'avatar', 'location']);
+});</code></pre>
+<blockquote>
+<p>{note} Dropping or modifying multiple columns within a single migration while using a SQLite database is not supported.</p>
+</blockquote>
+<p><a name="available-command-aliases"></a></p>
+<h4>Available Command Aliases</h4>
+<p>Laravel provides several convenient methods related to dropping common types of columns. Each of these methods is described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropMorphs('morphable');</code></td>
+<td>Drop the <code>morphable_id</code> and <code>morphable_type</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropRememberToken();</code></td>
+<td>Drop the <code>remember_token</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletes();</code></td>
+<td>Drop the <code>deleted_at</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletesTz();</code></td>
+<td>Alias of <code>dropSoftDeletes()</code> method.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestamps();</code></td>
+<td>Drop the <code>created_at</code> and <code>updated_at</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestampsTz();</code></td>
+<td>Alias of <code>dropTimestamps()</code> method.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="indexes"></a></p>
+<h2>Indexes</h2>
+<p><a name="creating-indexes"></a></p>
+<h3>Creating Indexes</h3>
+<p>The Laravel schema builder supports several types of indexes. The following example creates a new <code>email</code> column and specifies that its values should be unique. To create the index, we can chain the <code>unique</code> method onto the column definition:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;unique();
+});</code></pre>
+<p>Alternatively, you may create the index after defining the column. To do so, you should call the <code>unique</code> method on the schema builder blueprint. This methods accepts the name of the column that should receive a unique index:</p>
+<pre><code>$table-&gt;unique('email');</code></pre>
+<p>You may even pass an array of columns to an index method to create a compound (or composite) index:</p>
+<pre><code>$table-&gt;index(['account_id', 'created_at']);</code></pre>
+<p>When creating an index, Laravel will automatically generate an index name based on the table, column names, and the index type, but you may pass a second argument to the method to specify the index name yourself:</p>
+<pre><code>$table-&gt;unique('email', 'unique_email');</code></pre>
+<p><a name="available-index-types"></a></p>
+<h4>Available Index Types</h4>
+<p>Laravel's schema builder blueprint class provides methods for creating each type of index supported by Laravel. Each index method accepts an optional second argument to specify the name of the index. If omitted, the name will be derived from the names of the table and column(s) used for the index, as well as the index type. Each of the available index methods are described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;primary('id');</code></td>
+<td>Adds a primary key.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;primary(['id', 'parent_id']);</code></td>
+<td>Adds composite keys.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unique('email');</code></td>
+<td>Adds a unique index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;index('state');</code></td>
+<td>Adds an index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;spatialIndex('location');</code></td>
+<td>Adds a spatial index (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="index-lengths-mysql-mariadb"></a></p>
+<h4>Index Lengths &amp; MySQL / MariaDB</h4>
+<p>By default, Laravel uses the <code>utf8mb4</code> character set. If you are running a version of MySQL older than the 5.7.7 release or MariaDB older than the 10.2.2 release, you may need to manually configure the default string length generated by migrations in order for MySQL to create indexes for them. You may configure the default string length by calling the <code>Schema::defaultStringLength</code> method within the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}</code></pre>
+<p>Alternatively, you may enable the <code>innodb_large_prefix</code> option for your database. Refer to your database's documentation for instructions on how to properly enable this option.</p>
+<p><a name="renaming-indexes"></a></p>
+<h3>Renaming Indexes</h3>
+<p>To rename an index, you may use the <code>renameIndex</code> method provided by the schema builder blueprint. This method accepts the current index name as its first argument and the desired name as its second argument:</p>
+<pre><code>$table-&gt;renameIndex('from', 'to')</code></pre>
+<p><a name="dropping-indexes"></a></p>
+<h3>Dropping Indexes</h3>
+<p>To drop an index, you must specify the index's name. By default, Laravel automatically assigns an index name based on the table name, the name of the indexed column, and the index type. Here are some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropPrimary('users_id_primary');</code></td>
+<td>Drop a primary key from the &quot;users&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropUnique('users_email_unique');</code></td>
+<td>Drop a unique index from the &quot;users&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropIndex('geo_state_index');</code></td>
+<td>Drop a basic index from the &quot;geo&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSpatialIndex('geo_location_spatialindex');</code></td>
+<td>Drop a spatial index from the &quot;geo&quot; table  (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p>If you pass an array of columns into a method that drops indexes, the conventional index name will be generated based on the table name, columns, and index type:</p>
+<pre><code>Schema::table('geo', function (Blueprint $table) {
+    $table-&gt;dropIndex(['state']); // Drops index 'geo_state_index'
+});</code></pre>
+<p><a name="foreign-key-constraints"></a></p>
+<h3>Foreign Key Constraints</h3>
+<p>Laravel also provides support for creating foreign key constraints, which are used to force referential integrity at the database level. For example, let's define a <code>user_id</code> column on the <code>posts</code> table that references the <code>id</code> column on a <code>users</code> table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;unsignedBigInteger('user_id');
+
+    $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users');
+});</code></pre>
+<p>Since this syntax is rather verbose, Laravel provides additional, terser methods that use conventions to provide a better developer experience. The example above can be rewritten like so:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained();
+});</code></pre>
+<p>The <code>foreignId</code> method is an alias for <code>unsignedBigInteger</code> while the <code>constrained</code> method will use conventions to determine the table and column name being referenced. If your table name does not match Laravel's conventions, you may specify the table name by passing it as an argument to the <code>constrained</code> method:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained('users');
+});</code></pre>
+<p>You may also specify the desired action for the &quot;on delete&quot; and &quot;on update&quot; properties of the constraint:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;constrained()
+      -&gt;onUpdate('cascade')
+      -&gt;onDelete('cascade');</code></pre>
+<p>Any additional <a href="#column-modifiers">column modifiers</a> must be called before the <code>constrained</code> method:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;nullable()
+      -&gt;constrained();</code></pre>
+<p><a name="dropping-foreign-keys"></a></p>
+<h4>Dropping Foreign Keys</h4>
+<p>To drop a foreign key, you may use the <code>dropForeign</code> method, passing the name of the foreign key constraint to be deleted as an argument. Foreign key constraints use the same naming convention as indexes. In other words, the foreign key constraint name is based on the name of the table and the columns in the constraint, followed by a &quot;_foreign&quot; suffix:</p>
+<pre><code>$table-&gt;dropForeign('posts_user_id_foreign');</code></pre>
+<p>Alternatively, you may pass an array containing the column name that holds the foreign key to the <code>dropForeign</code> method. The array will be converted to a foreign key constraint name using Laravel's constraint naming conventions:</p>
+<pre><code>$table-&gt;dropForeign(['user_id']);</code></pre>
+<p><a name="toggling-foreign-key-constraints"></a></p>
+<h4>Toggling Foreign Key Constraints</h4>
+<p>You may enable or disable foreign key constraints within your migrations by using the following methods:</p>
+<pre><code>Schema::enableForeignKeyConstraints();
+
+Schema::disableForeignKeyConstraints();</code></pre>
+<blockquote>
+<p>{note} SQLite disables foreign key constraints by default. When using SQLite, make sure to <a href="/docs/laravel_8/database.html#configuration">enable foreign key support</a> in your database configuration before attempting to create them in your migrations. In addition, SQLite only supports foreign keys upon creation of the table and <a href="https://www.sqlite.org/omitted.html">not when tables are altered</a>.</p>
+</blockquote>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 270);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

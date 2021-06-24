@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>mysqli 扩展和持久化连接 - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqli.persistconns"> 
+    <meta name="description" content="mysqli.persistconns"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="887" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-driver.html" title="MySQLi_Driver类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_Driver类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-result.html" title="mysqli_result类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli_result类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-sql-exception.html" title="mysqli异常类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli异常类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-stmt.html" title="MySQLi_STMT类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_STMT类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli-warning.html" title="MySQLi_Warning类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi_Warning类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mysqli.html" title="MySQLi类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.mysqli.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.notes.html" title="Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.overview.html" title="Overview">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Overview
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.persistconns.html" title="mysqli 扩展和持久化连接">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    mysqli 扩展和持久化连接
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.quickstart.html" title="Quick start guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Quick start guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqli.summary.html" title="MySQLi 扩展的功能概述">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQLi 扩展的功能概述
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.mysqli.html" title="别名和过时的 Mysqli 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    别名和过时的 Mysqli 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqli.resources.html">« 资源类型</a></li>
+      <li style="float: right;"><a href="mysqli.constants.html">预定义常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.mysqli.html">Mysqli</a></li>
+    <li>mysqli 扩展和持久化连接</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqli.persistconns" class="chapter">
+
+ <h1>mysqli 扩展和持久化连接</h1>
+
+ <p class="para">
+  从 PHP 5.3 <code class="literal">mysqli</code> 
+  扩展开始支持持久化连接。
+  持久化连接已经在 PDO MYSQL 和 ext/mysql 中提供支持。
+  持久化连接的目的在于重用客户端到服务器之间的连接，
+  而不是每次在需要的时候都重新建立一个连接。
+  由于持久化连接可以将已经建立的连接缓存起来，以备后续的使用，
+  所以省去了建立新的连接的开销，
+  因此可以带来性能上的提升。
+ </p>
+ 
+ <p class="para">
+  不像 mysql 扩展，mysqli 没有提供一个特殊的方法用于打开持久化连接。
+  需要打开一个持久化连接时，你必须在
+  连接时在主机名前增加<code class="literal">p:</code>。
+ </p>
+
+ <p class="para">
+  使用持久化连接也会存在一些风险，
+  因为在缓存中的连接可能处于一种不可预测的状态。
+  例如，如果客户端未能正常关闭连接，
+  可能在这个连接上残留了对库表的锁，
+  那么当这个连接被其他请求重用的时候，这个连接还是处于 <q class="quote">有锁的状态</q>。
+  所以，如果要很好的使用持久化连接，那么要求代码在和数据库进行交互的时候，
+  确保做好清理工作，保证被缓存的连接是一个干净的，没有残留的状态。
+ </p>
+
+ <p class="para">
+    <code class="literal">mysqli</code> 扩展的持久化连接提供了内建的清理处理代码。
+    <code class="literal">mysqli</code>
+    所做的清理工作包括：
+ </p>
+
+ <ul class="itemizedlist">
+
+  <li class="listitem">
+   <p class="para">
+   回滚处于活动状态的事务
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+   关闭并且删除临时表
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+   对表解锁
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+   重置会话变量
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+   关闭预编译 SQL 语句（在PHP中经常发生）
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    关闭处理程序
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+   释放通过 <span class="function"><strong>GET_LOCK()</strong></span> 获得的锁
+   </p>
+  </li>
+
+ </ul>
+
+ <p class="para">
+    这确保了将连接返回到连接池的时候，
+    它处于一种“干净”的状态，可以被其他客户端进程所使用。
+ </p>
+
+ <p class="para">
+   <code class="literal">mysqli</code> 扩展
+   通过自动调用 C-API 函数
+   <code class="literal">mysql_change_user()</code> 来完成这个清理工作。
+ </p>
+
+ <p class="para">
+   自动清理的特性有优点也有缺点。
+   优点是程序员不再需要担心附加的清理代码，
+   因为它们会自动调用。
+   然而缺点就是
+   性能 <em class="emphasis">可能会</em> 慢一点，
+   因为每次从连接池返回一个连接都需要执行这些清理代码。
+ </p>
+
+ <p class="para">
+    这个自动清理的代码可以通过在编译 php 时定义
+  
+    <strong><code>MYSQLI_NO_CHANGE_USER_ON_PCONNECT</code></strong>
+  
+  
+    来关闭。
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+  <code class="literal">mysqli</code> 扩展在使用 
+   MySQL Native Driver 或 
+   Mysql Client Library（libmysql）时都支持持久化连接。
+  </p>
+ </blockquote>
+
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8196);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

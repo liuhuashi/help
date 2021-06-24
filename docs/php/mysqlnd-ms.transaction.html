@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>事务控制 - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-ms.transaction"> 
+    <meta name="description" content="mysqlnd-ms.transaction"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="845" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.architecture.html" title="Architecture">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Architecture
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.concept_cache.html" title="Cache integration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache integration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.concept_xa_trx.html" title="XA/Distributed transactions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    XA/Distributed transactions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.errorhandling.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.failover.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.filter.html" title="Filter">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Filter
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.gtid.html" title="Global transaction IDs">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Global transaction IDs
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.loadbalancing.html" title="负载均衡">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    负载均衡
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.pooling.html" title="连接状态">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    连接状态
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.qos-consistency.html" title="Service level and consistency">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service level and consistency
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.rwsplit.html" title="Read-write splitting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Read-write splitting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.supportedclusters.html" title="Supported clusters">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Supported clusters
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.transaction.html" title="事务控制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事务控制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.transient_errors.html" title="短错误">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    短错误
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-ms.pooling.html">« 连接池与切换</a></li>
+      <li style="float: right;"><a href="mysqlnd-ms.errorhandling.html">错误处理 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-ms.concepts.html">概念</a></li>
+    <li>事务控制</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-ms.transaction" class="section">
+  <h2 class="title">事务控制</h2>
+  <p class="para">
+   事务控制已经从根本上被改变了，一个 SQL 事务是运行在一个数据库服务器中的
+   一个或者一组 SQL 语句。
+  </p>
+  <p class="para">
+   默认情况下，插件并不关心 SQL 事务处理，插件会在每个 SQL 执行时进行负载均衡，
+   这就可能在事务执行的中间更换了连接。这对事务执行来说是不可以的，所以默认
+   配置的插件并不是事务安全的。
+  </p>
+  <p class="para">
+   MySQL 负载均衡需要从事务开始到终止时，处于连续的状态。这种连续控制，可以使用
+   监控 API 调用，或者使用 SQL hints。具体插件可以支持哪种方式，基于您使用的
+   PHP 版本。API 调用监控，需要 PHP 5.4.0 以上版本。就像其他的 MySQL 负载均衡控制
+   一样，本插件无法自动识别事务的起始和终止边界。采用 API 监控方式是对现有应用
+   改变最小的方式。
+  </p>
+  <p class="para">
+   可以在 <a href="mysqlnd-ms.quickstart.html" class="link">examples section</a>
+   找到使用 SQL hints 和 API 监控的范例。在 API 监控作用下，插件会关注事务的执行。
+  </p>
+  <p class="para">
+   从 PHP 5.4.0 版本开始，<a href="book.mysqlnd.html" class="link">mysqlnd</a> 库允许调用
+   <code class="literal">set_autocommit()</code> 他用于检测 <code class="literal">autocommit</code>
+   设定。
+  </p>
+  <p class="para">
+   PHP MySQL 扩展调用查询语句 (例如 <code class="literal">SET AUTOCOMMIT=0|1</code>)
+   或者 <code class="literal">set_autocommit()</code> 来控制 <code class="literal">autocommit</code> 设置。
+   如果通过 <code class="literal">set_autocommit()</code> 来设置，那么插件能够识别事务。
+   插件无法知道通过查询语句设定的 <code class="literal">autocommit</code> 状态。
+   <code class="literal">set_autocommit()</code> 会被 <span class="function"><a href="mysqli.autocommit.html" class="function">mysqli_autocommit()</a></span>
+   和 <code class="literal">PDO::setAttribute(PDO::ATTR_AUTOCOMMIT)</code> 调用。
+  </p>
+  <p class="para">
+   插件的配置 <a href="mysqlnd-ms.plugin-ini-json.html#ini.mysqlnd-ms-plugin-config-v2.trx-stickiness" class="link">trx_stickiness=master</a>
+   可以用来让插件识别事务处理。在这种情况下，如果 autocommit 被禁用，那么插件将终止负载均衡，
+   所有的语句都将交给 master执行，直到 autocommit 被启用。
+  </p>
+  <p class="para">
+   应用程序若不想针对事务执行设置 SQL hints，那么就需要使用 API 监控来完成对
+   事务处理的支持，那么请注意一定要使用上面列出的，可以识别 autocommit 状态变化
+   的 API 调用。
+  </p>
+  <p class="para">
+   基于 API 的事务处理边界识别，是从 PHP 5.5.0 和 本插件 1.5.0 版本开始的，并且
+   不仅仅识别 <span class="function"><a href="mysqli.autocommit.html" class="function">mysqli_autocommit()</a></span> 也可以识别
+   <span class="function"><strong>mysqli_begin()</strong></span>,<span class="function"><a href="mysqli.commit.html" class="function">mysqli_commit()</a></span> 和
+   <span class="function"><a href="mysqli.rollback.html" class="function">mysqli_rollback()</a></span>。
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8289);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

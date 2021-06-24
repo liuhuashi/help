@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>HTTP Requests - 开发帮助文档</title> 
+    <meta name="keyword" content="requests"> 
+    <meta name="description" content="requests"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="6" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/artisan.html" title="Artisan Console">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan Console
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authentication.html" title="Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authorization.html" title="Authorization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authorization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/billing.html" title="Laravel Cashier (Stripe)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Stripe)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/blade.html" title="Blade Templates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade Templates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/broadcasting.html" title="Broadcasting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Broadcasting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cache.html" title="Cache">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cashier-paddle.html" title="Laravel Cashier (Paddle)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Paddle)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/collections.html" title="Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/container.html" title="Service Container">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Container
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contracts.html" title="Contracts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contracts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contributions.html" title="Contribution Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contribution Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/csrf.html" title="CSRF Protection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF Protection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database-testing.html" title="Database Testing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database Testing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database.html" title="Database: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/deployment.html" title="Deployment">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deployment
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/documentation.html" title="Prologue">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Prologue
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-collections.html" title="Eloquent: Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-mutators.html" title="Eloquent: Mutators &amp; Casting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Mutators &amp; Casting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-relationships.html" title="Eloquent: Relationships">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Relationships
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-resources.html" title="Eloquent: API Resources">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API Resources
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-serialization.html" title="Eloquent: Serialization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Serialization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent.html" title="Eloquent: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/encryption.html" title="Encryption">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Encryption
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/errors.html" title="Error Handling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error Handling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/events.html" title="Events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/fortify.html" title="Laravel Fortify">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Fortify
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/hashing.html" title="Hashing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Hashing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/helpers.html" title="Helpers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Helpers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-client.html" title="HTTP Client">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Client
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/installation.html" title="Installation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/lifecycle.html" title="Request Lifecycle">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Lifecycle
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/localization.html" title="Localization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Localization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mail.html" title="Mail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/middleware.html" title="Middleware">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Middleware
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/migrations.html" title="Database: Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mix.html" title="Compiling Assets (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Compiling Assets (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/notifications.html" title="Notifications">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notifications
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/pagination.html" title="Database: Pagination">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Pagination
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passwords.html" title="Resetting Passwords">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resetting Passwords
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/providers.html" title="Service Providers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Providers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queries.html" title="Database: Query Builder">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Query Builder
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queues.html" title="Queues">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Queues
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redirects.html" title="HTTP Redirects">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Redirects
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/releases.html" title="Release Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Release Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/requests.html" title="HTTP Requests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Requests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/routing.html" title="Routing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Routing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scheduling.html" title="Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/seeding.html" title="Database: Seeding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Seeding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/session.html" title="HTTP Session">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Session
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/socialite.html" title="Laravel Socialite">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Socialite
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/starter-kits.html" title="Starter Kits">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Starter Kits
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/structure.html" title="Directory Structure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Directory Structure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/testing.html" title="Testing: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Testing: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/upgrade.html" title="Upgrade Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Upgrade Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/urls.html" title="URL Generation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    URL Generation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/validation.html" title="Validation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Validation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/views.html" title="Views">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Views
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>HTTP Requests</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#interacting-with-the-request">Interacting With The Request</a>
+<ul>
+<li><a href="#accessing-the-request">Accessing The Request</a></li>
+<li><a href="#request-path-and-method">Request Path &amp; Method</a></li>
+<li><a href="#request-headers">Request Headers</a></li>
+<li><a href="#request-ip-address">Request IP Address</a></li>
+<li><a href="#content-negotiation">Content Negotiation</a></li>
+<li><a href="#psr7-requests">PSR-7 Requests</a></li>
+</ul></li>
+<li><a href="#input">Input</a>
+<ul>
+<li><a href="#retrieving-input">Retrieving Input</a></li>
+<li><a href="#determining-if-input-is-present">Determining If Input Is Present</a></li>
+<li><a href="#old-input">Old Input</a></li>
+<li><a href="#cookies">Cookies</a></li>
+<li><a href="#input-trimming-and-normalization">Input Trimming &amp; Normalization</a></li>
+</ul></li>
+<li><a href="#files">Files</a>
+<ul>
+<li><a href="#retrieving-uploaded-files">Retrieving Uploaded Files</a></li>
+<li><a href="#storing-uploaded-files">Storing Uploaded Files</a></li>
+</ul></li>
+<li><a href="#configuring-trusted-proxies">Configuring Trusted Proxies</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>Introduction</h2>
+<p>Laravel's <code>Illuminate\Http\Request</code> class provides an object-oriented way to interact with the current HTTP request being handled by your application as well retrieve the input, cookies, and files that were submitted with the request.</p>
+<p><a name="interacting-with-the-request"></a></p>
+<h2>Interacting With The Request</h2>
+<p><a name="accessing-the-request"></a></p>
+<h3>Accessing The Request</h3>
+<p>To obtain an instance of the current HTTP request via dependency injection, you should type-hint the <code>Illuminate\Http\Request</code> class on your route closure or controller method. The incoming request instance will automatically be injected by the Laravel <a href="/docs/laravel_8/container.html">service container</a>:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $name = $request-&gt;input('name');
+
+        //
+    }
+}</code></pre>
+<p>As mentioned, you may also type-hint the <code>Illuminate\Http\Request</code> class on a route closure. The service container will automatically inject the incoming request into the closure when it is executed:</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/', function (Request $request) {
+    //
+});</code></pre>
+<p><a name="dependency-injection-route-parameters"></a></p>
+<h4>Dependency Injection &amp; Route Parameters</h4>
+<p>If your controller method is also expecting input from a route parameter you should list your route parameters after your other dependencies. For example, if your route is defined like so:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::put('/user/{id}', [UserController::class, 'update']);</code></pre>
+<p>You may still type-hint the <code>Illuminate\Http\Request</code> and access your <code>id</code> route parameter by defining your controller method as follows:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Update the specified user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+}</code></pre>
+<p><a name="request-path-and-method"></a></p>
+<h3>Request Path &amp; Method</h3>
+<p>The <code>Illuminate\Http\Request</code> instance provides a variety of methods for examining the incoming HTTP request and extends the <code>Symfony\Component\HttpFoundation\Request</code> class. We will discuss a few of the most important methods below.</p>
+<p><a name="retrieving-the-request-path"></a></p>
+<h4>Retrieving The Request Path</h4>
+<p>The <code>path</code> method returns the request's path information. So, if the incoming request is targeted at <code>http://example.com/foo/bar</code>, the <code>path</code> method will return <code>foo/bar</code>:</p>
+<pre><code>$uri = $request-&gt;path();</code></pre>
+<p><a name="inspecting-the-request-path"></a></p>
+<h4>Inspecting The Request Path / Route</h4>
+<p>The <code>is</code> method allows you to verify that the incoming request path matches a given pattern. You may use the <code>*</code> character as a wildcard when utilizing this method:</p>
+<pre><code>if ($request-&gt;is('admin/*')) {
+    //
+}</code></pre>
+<p>Using the <code>routeIs</code> method, you may determine if the incoming request has matched a <a href="/docs/laravel_8/routing.html#named-routes">named route</a>:</p>
+<pre><code>if ($request-&gt;routeIs('admin.*')) {
+    //
+}</code></pre>
+<p><a name="retrieving-the-request-url"></a></p>
+<h4>Retrieving The Request URL</h4>
+<p>To retrieve the full URL for the incoming request you may use the <code>url</code> or <code>fullUrl</code> methods. The <code>url</code> method will return the URL without the query string, while the <code>fullUrl</code> method includes the query string:</p>
+<pre><code>$url = $request-&gt;url();
+
+$urlWithQueryString = $request-&gt;fullUrl();</code></pre>
+<p><a name="retrieving-the-request-method"></a></p>
+<h4>Retrieving The Request Method</h4>
+<p>The <code>method</code> method will return the HTTP verb for the request. You may use the <code>isMethod</code> method to verify that the HTTP verb matches a given string:</p>
+<pre><code>$method = $request-&gt;method();
+
+if ($request-&gt;isMethod('post')) {
+    //
+}</code></pre>
+<p><a name="request-headers"></a></p>
+<h3>Request Headers</h3>
+<p>You may retrieve a request header from the <code>Illuminate\Http\Request</code> instance using the <code>header</code> method. If the header is not present on the request, <code>null</code> will be returned. However, the <code>header</code> method accepts an optional second argument that will be returned if the header is not present on the request:</p>
+<pre><code>$value = $request-&gt;header('X-Header-Name');
+
+$value = $request-&gt;header('X-Header-Name', 'default');</code></pre>
+<p>The <code>hasHeader</code> method may be used to determine if the request contains a given header:</p>
+<pre><code>if ($request-&gt;hasHeader('X-Header-Name')) {
+    //
+}</code></pre>
+<p>For convenience, the <code>bearerToken</code> may be used to a bearer token from the <code>Authorization</code> header. If no such header is present, an empty string will be returned:</p>
+<pre><code>$token = $request-&gt;bearerToken();</code></pre>
+<p><a name="request-ip-address"></a></p>
+<h3>Request IP Address</h3>
+<p>The <code>ip</code> method may be used to retrieve the IP address of the client that made the request to your application:</p>
+<pre><code>$ipAddress = $request-&gt;ip();</code></pre>
+<p><a name="content-negotiation"></a></p>
+<h3>Content Negotiation</h3>
+<p>Laravel provides several methods for inspecting the incoming request's requested content types via the <code>Accept</code> header. First, the <code>getAcceptableContentTypes</code> method will return an array containing all of the content types accepted by the request:</p>
+<pre><code>$contentTypes = $request-&gt;getAcceptableContentTypes();</code></pre>
+<p>The <code>accepts</code> method accepts an array of content types and returns <code>true</code> if any of the content types are accepted by the request. Otherwise, <code>false</code> will be returned:</p>
+<pre><code>if ($request-&gt;accepts(['text/html', 'application/json'])) {
+    // ...
+}</code></pre>
+<p>You may use the <code>prefers</code> method to determine which content type out of a given array of content types is most preferred by the request. If none of the provided content types are accepted by the request, <code>null</code> will be returned:</p>
+<pre><code>$preferred = $request-&gt;prefers(['text/html', 'application/json']);</code></pre>
+<p>Since many applications only serve HTML or JSON, you may use the <code>expectsJson</code> method to quickly determine if the incoming request expects a JSON response:</p>
+<pre><code>if ($request-&gt;expectsJson()) {
+    // ...
+}</code></pre>
+<p><a name="psr7-requests"></a></p>
+<h3>PSR-7 Requests</h3>
+<p>The <a href="https://www.php-fig.org/psr/psr-7/">PSR-7 standard</a> specifies interfaces for HTTP messages, including requests and responses. If you would like to obtain an instance of a PSR-7 request instead of a Laravel request, you will first need to install a few libraries. Laravel uses the <em>Symfony HTTP Message Bridge</em> component to convert typical Laravel requests and responses into PSR-7 compatible implementations:</p>
+<pre><code>composer require symfony/psr-http-message-bridge
+composer require nyholm/psr7</code></pre>
+<p>Once you have installed these libraries, you may obtain a PSR-7 request by type-hinting the request interface on your route closure or controller method:</p>
+<pre><code>use Psr\Http\Message\ServerRequestInterface;
+
+Route::get('/', function (ServerRequestInterface $request) {
+    //
+});</code></pre>
+<blockquote>
+<p>{tip} If you return a PSR-7 response instance from a route or controller, it will automatically be converted back to a Laravel response instance and be displayed by the framework.</p>
+</blockquote>
+<p><a name="input"></a></p>
+<h2>Input</h2>
+<p><a name="retrieving-input"></a></p>
+<h3>Retrieving Input</h3>
+<p><a name="retrieving-all-input-data"></a></p>
+<h4>Retrieving All Input Data</h4>
+<p>You may retrieve all of the incoming request's input data as an <code>array</code> using the <code>all</code> method. This method may be used regardless of whether the incoming request is from an HTML form or is an XHR request:</p>
+<pre><code>$input = $request-&gt;all();</code></pre>
+<p><a name="retrieving-an-input-value"></a></p>
+<h4>Retrieving An Input Value</h4>
+<p>Using a few simple methods, you may access all of the user input from your <code>Illuminate\Http\Request</code> instance without worrying about which HTTP verb was used for the request. Regardless of the HTTP verb, the <code>input</code> method may be used to retrieve user input:</p>
+<pre><code>$name = $request-&gt;input('name');</code></pre>
+<p>You may pass a default value as the second argument to the <code>input</code> method. This value will be returned if the requested input value is not present on the request:</p>
+<pre><code>$name = $request-&gt;input('name', 'Sally');</code></pre>
+<p>When working with forms that contain array inputs, use &quot;dot&quot; notation to access the arrays:</p>
+<pre><code>$name = $request-&gt;input('products.0.name');
+
+$names = $request-&gt;input('products.*.name');</code></pre>
+<p>You may call the <code>input</code> method without any arguments in order to retrieve all of the input values as an associative array:</p>
+<pre><code>$input = $request-&gt;input();</code></pre>
+<p><a name="retrieving-input-from-the-query-string"></a></p>
+<h4>Retrieving Input From The Query String</h4>
+<p>While the <code>input</code> method retrieves values from the entire request payload (including the query string), the <code>query</code> method will only retrieve values from the query string:</p>
+<pre><code>$name = $request-&gt;query('name');</code></pre>
+<p>If the requested query string value data is not present, the second argument to this method will be returned:</p>
+<pre><code>$name = $request-&gt;query('name', 'Helen');</code></pre>
+<p>You may call the <code>query</code> method without any arguments in order to retrieve all of the query string values as an associative array:</p>
+<pre><code>$query = $request-&gt;query();</code></pre>
+<p><a name="retrieving-json-input-values"></a></p>
+<h4>Retrieving JSON Input Values</h4>
+<p>When sending JSON requests to your application, you may access the JSON data via the <code>input</code> method as long as the <code>Content-Type</code> header of the request is properly set to <code>application/json</code>. You may even use &quot;dot&quot; syntax to retrieve values that are nested within JSON arrays:</p>
+<pre><code>$name = $request-&gt;input('user.name');</code></pre>
+<p><a name="retrieving-boolean-input-values"></a></p>
+<h4>Retrieving Boolean Input Values</h4>
+<p>When dealing with HTML elements like checkboxes, your application may receive &quot;truthy&quot; values that are actually strings. For example, &quot;true&quot; or &quot;on&quot;. For convenience, you may use the <code>boolean</code> method to retrieve these values as booleans. The <code>boolean</code> method returns <code>true</code> for 1, &quot;1&quot;, true, &quot;true&quot;, &quot;on&quot;, and &quot;yes&quot;. All other values will return <code>false</code>:</p>
+<pre><code>$archived = $request-&gt;boolean('archived');</code></pre>
+<p><a name="retrieving-input-via-dynamic-properties"></a></p>
+<h4>Retrieving Input Via Dynamic Properties</h4>
+<p>You may also access user input using dynamic properties on the <code>Illuminate\Http\Request</code> instance. For example, if one of your application's forms contains a <code>name</code> field, you may access the value of the field like so:</p>
+<pre><code>$name = $request-&gt;name;</code></pre>
+<p>When using dynamic properties, Laravel will first look for the parameter's value in the request payload. If it is not present, Laravel will search for the field in the matched route's parameters.</p>
+<p><a name="retrieving-a-portion-of-the-input-data"></a></p>
+<h4>Retrieving A Portion Of The Input Data</h4>
+<p>If you need to retrieve a subset of the input data, you may use the <code>only</code> and <code>except</code> methods. Both of these methods accept a single <code>array</code> or a dynamic list of arguments:</p>
+<pre><code>$input = $request-&gt;only(['username', 'password']);
+
+$input = $request-&gt;only('username', 'password');
+
+$input = $request-&gt;except(['credit_card']);
+
+$input = $request-&gt;except('credit_card');</code></pre>
+<blockquote>
+<p>{note} The <code>only</code> method returns all of the key / value pairs that you request; however, it will not return key / value pairs that are not present on the request.</p>
+</blockquote>
+<p><a name="determining-if-input-is-present"></a></p>
+<h3>Determining If Input Is Present</h3>
+<p>You may use the <code>has</code> method to determine if a value is present on the request. The <code>has</code> method returns <code>true</code> if the value is present on the request:</p>
+<pre><code>if ($request-&gt;has('name')) {
+    //
+}</code></pre>
+<p>When given an array, the <code>has</code> method will determine if all of the specified values are present:</p>
+<pre><code>if ($request-&gt;has(['name', 'email'])) {
+    //
+}</code></pre>
+<p>The <code>whenHas</code> method will execute the given closure if a value is present on the request:</p>
+<pre><code>$request-&gt;whenHas('name', function ($input) {
+    //
+});</code></pre>
+<p>The <code>hasAny</code> method returns <code>true</code> if any of the specified values are present:</p>
+<pre><code>if ($request-&gt;hasAny(['name', 'email'])) {
+    //
+}</code></pre>
+<p>If you would like to determine if a value is present on the request and is not empty, you may use the <code>filled</code> method:</p>
+<pre><code>if ($request-&gt;filled('name')) {
+    //
+}</code></pre>
+<p>The <code>whenFilled</code> method will execute the given closure if a value is present on the request and is not empty:</p>
+<pre><code>$request-&gt;whenFilled('name', function ($input) {
+    //
+});</code></pre>
+<p>To determine if a given key is absent from the request, you may use the <code>missing</code> method:</p>
+<pre><code>if ($request-&gt;missing('name')) {
+    //
+}</code></pre>
+<p><a name="old-input"></a></p>
+<h3>Old Input</h3>
+<p>Laravel allows you to keep input from one request during the next request. This feature is particularly useful for re-populating forms after detecting validation errors. However, if you are using Laravel's included <a href="/docs/laravel_8/validation.html">validation features</a>, it is possible that you will not need to manually use these session input flashing methods directly, as some of Laravel's built-in validation facilities will call them automatically.</p>
+<p><a name="flashing-input-to-the-session"></a></p>
+<h4>Flashing Input To The Session</h4>
+<p>The <code>flash</code> method on the <code>Illuminate\Http\Request</code> class will flash the current input to the <a href="/docs/laravel_8/session.html">session</a> so that it is available during the user's next request to the application:</p>
+<pre><code>$request-&gt;flash();</code></pre>
+<p>You may also use the <code>flashOnly</code> and <code>flashExcept</code> methods to flash a subset of the request data to the session. These methods are useful for keeping sensitive information such as passwords out of the session:</p>
+<pre><code>$request-&gt;flashOnly(['username', 'email']);
+
+$request-&gt;flashExcept('password');</code></pre>
+<p><a name="flashing-input-then-redirecting"></a></p>
+<h4>Flashing Input Then Redirecting</h4>
+<p>Since you often will want to flash input to the session and then redirect to the previous page, you may easily chain input flashing onto a redirect using the <code>withInput</code> method:</p>
+<pre><code>return redirect('form')-&gt;withInput();
+
+return redirect()-&gt;route('user.create')-&gt;withInput();
+
+return redirect('form')-&gt;withInput(
+    $request-&gt;except('password')
+);</code></pre>
+<p><a name="retrieving-old-input"></a></p>
+<h4>Retrieving Old Input</h4>
+<p>To retrieve flashed input from the previous request, invoke the <code>old</code> method on an instance of <code>Illuminate\Http\Request</code>. The <code>old</code> method will pull the previously flashed input data from the <a href="/docs/laravel_8/session.html">session</a>:</p>
+<pre><code>$username = $request-&gt;old('username');</code></pre>
+<p>Laravel also provides a global <code>old</code> helper. If you are displaying old input within a <a href="/docs/laravel_8/blade.html">Blade template</a>, it is more convenient to use the <code>old</code> helper to repopulate the form. If no old input exists for the given field, <code>null</code> will be returned:</p>
+<pre><code>&lt;input type="text" name="username" value="{{ old('username') }}"&gt;</code></pre>
+<p><a name="cookies"></a></p>
+<h3>Cookies</h3>
+<p><a name="retrieving-cookies-from-requests"></a></p>
+<h4>Retrieving Cookies From Requests</h4>
+<p>All cookies created by the Laravel framework are encrypted and signed with an authentication code, meaning they will be considered invalid if they have been changed by the client. To retrieve a cookie value from the request, use the <code>cookie</code> method on an <code>Illuminate\Http\Request</code> instance:</p>
+<pre><code>$value = $request-&gt;cookie('name');</code></pre>
+<p><a name="input-trimming-and-normalization"></a></p>
+<h2>Input Trimming &amp; Normalization</h2>
+<p>By default, Laravel includes the <code>App\Http\Middleware\TrimStrings</code> and <code>App\Http\Middleware\ConvertEmptyStringsToNull</code> middleware in your application's global middleware stack. These middleware are listed in the global middleware stack by the <code>App\Http\Kernel</code> class. These middleware will automatically trim all incoming string fields on the request, as well as convert any empty string fields to <code>null</code>. This allows you to not have to worry about these normalization concerns in your routes and controllers.</p>
+<p>If you would like to disable this behavior, you may remove the two middleware from your application's middleware stack by removing them from the <code>$middleware</code> property of your <code>App\Http\Kernel</code> class.</p>
+<p><a name="files"></a></p>
+<h2>Files</h2>
+<p><a name="retrieving-uploaded-files"></a></p>
+<h3>Retrieving Uploaded Files</h3>
+<p>You may retrieve uploaded files from an <code>Illuminate\Http\Request</code> instance using the <code>file</code> method or using dynamic properties. The <code>file</code> method returns an instance of the <code>Illuminate\Http\UploadedFile</code> class, which extends the PHP <code>SplFileInfo</code> class and provides a variety of methods for interacting with the file:</p>
+<pre><code>$file = $request-&gt;file('photo');
+
+$file = $request-&gt;photo;</code></pre>
+<p>You may determine if a file is present on the request using the <code>hasFile</code> method:</p>
+<pre><code>if ($request-&gt;hasFile('photo')) {
+    //
+}</code></pre>
+<p><a name="validating-successful-uploads"></a></p>
+<h4>Validating Successful Uploads</h4>
+<p>In addition to checking if the file is present, you may verify that there were no problems uploading the file via the <code>isValid</code> method:</p>
+<pre><code>if ($request-&gt;file('photo')-&gt;isValid()) {
+    //
+}</code></pre>
+<p><a name="file-paths-extensions"></a></p>
+<h4>File Paths &amp; Extensions</h4>
+<p>The <code>UploadedFile</code> class also contains methods for accessing the file's fully-qualified path and its extension. The <code>extension</code> method will attempt to guess the file's extension based on its contents. This extension may be different from the extension that was supplied by the client:</p>
+<pre><code>$path = $request-&gt;photo-&gt;path();
+
+$extension = $request-&gt;photo-&gt;extension();</code></pre>
+<p><a name="other-file-methods"></a></p>
+<h4>Other File Methods</h4>
+<p>There are a variety of other methods available on <code>UploadedFile</code> instances. Check out the <a href="https://api.symfony.com/master/Symfony/Component/HttpFoundation/File/UploadedFile.html">API documentation for the class</a> for more information regarding these methods.</p>
+<p><a name="storing-uploaded-files"></a></p>
+<h3>Storing Uploaded Files</h3>
+<p>To store an uploaded file, you will typically use one of your configured <a href="/docs/laravel_8/filesystem.html">filesystems</a>. The <code>UploadedFile</code> class has a <code>store</code> method that will move an uploaded file to one of your disks, which may be a location on your local filesystem or a cloud storage location like Amazon S3.</p>
+<p>The <code>store</code> method accepts the path where the file should be stored relative to the filesystem's configured root directory. This path should not contain a filename, since a unique ID will automatically be generated to serve as the filename.</p>
+<p>The <code>store</code> method also accepts an optional second argument for the name of the disk that should be used to store the file. The method will return the path of the file relative to the disk's root:</p>
+<pre><code>$path = $request-&gt;photo-&gt;store('images');
+
+$path = $request-&gt;photo-&gt;store('images', 's3');</code></pre>
+<p>If you do not want a filename to be automatically generated, you may use the <code>storeAs</code> method, which accepts the path, filename, and disk name as its arguments:</p>
+<pre><code>$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg');
+
+$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg', 's3');</code></pre>
+<blockquote>
+<p>{tip} For more information about file storage in Laravel, check out the complete <a href="/docs/laravel_8/filesystem.html">file storage documentation</a>.</p>
+</blockquote>
+<p><a name="configuring-trusted-proxies"></a></p>
+<h2>Configuring Trusted Proxies</h2>
+<p>When running your applications behind a load balancer that terminates TLS / SSL certificates, you may notice your application sometimes does not generate HTTPS links when using the <code>url</code> helper. Typically this is because your application is being forwarded traffic from your load balancer on port 80 and does not know it should generate secure links.</p>
+<p>To solve this, you may use the <code>App\Http\Middleware\TrustProxies</code> middleware that is included in your Laravel application, which allows you to quickly customize the load balancers or proxies that should be trusted by your application. Your trusted proxies should be listed as an array on the <code>$proxies</code> property of this middleware. In addition to configuring the trusted proxies, you may configure the proxy <code>$headers</code> that should be trusted:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Fideloper\Proxy\TrustProxies as Middleware;
+use Illuminate\Http\Request;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * The trusted proxies for this application.
+     *
+     * @var string|array
+     */
+    protected $proxies = [
+        '192.168.1.1',
+        '192.168.1.2',
+    ];
+
+    /**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+}</code></pre>
+<blockquote>
+<p>{tip} If you are using AWS Elastic Load Balancing, your <code>$headers</code> value should be <code>Request::HEADER_X_FORWARDED_AWS_ELB</code>. For more information on the constants that may be used in the <code>$headers</code> property, check out Symfony's documentation on <a href="https://symfony.com/doc/current/deployment/proxies.html">trusting proxies</a>.</p>
+</blockquote>
+<p><a name="trusting-all-proxies"></a></p>
+<h4>Trusting All Proxies</h4>
+<p>If you are using Amazon AWS or another &quot;cloud&quot; load balancer provider, you may not know the IP addresses of your actual balancers. In this case, you may use <code>*</code> to trust all proxies:</p>
+<pre><code>/**
+ * The trusted proxies for this application.
+ *
+ * @var string|array
+ */
+protected $proxies = '*';</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 285);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

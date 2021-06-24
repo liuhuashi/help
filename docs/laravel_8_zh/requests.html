@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>HTTP 请求 - 开发帮助文档</title> 
+    <meta name="keyword" content="requests"> 
+    <meta name="description" content="requests"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="7" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/artisan.html" title="Artisan 命令行">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan 命令行
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authentication.html" title="用户认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authorization.html" title="用户授权">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户授权
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/blade.html" title="Blade 模板">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade 模板
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/broadcasting.html" title="广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/cache.html" title="缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/collections.html" title="集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/console-tests.html" title="控制台测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    控制台测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/container.html" title="服务容器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务容器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contracts.html" title="契约">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    契约
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contributions.html" title="贡献导引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    贡献导引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/csrf.html" title="CSRF 保护">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF 保护
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database-testing.html" title="数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database.html" title="数据库: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/deployment.html" title="部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/documentation.html" title="前言">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    前言
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-collections.html" title="Eloquent: 集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-mutators.html" title="Eloquent: 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-relationships.html" title="Eloquent: 关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/encryption.html" title="加密解密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    加密解密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/errors.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/events.html" title="事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/frontend.html" title="JavaScript &amp; CSS 脚手架">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    JavaScript &amp; CSS 脚手架
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/hashing.html" title="哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/helpers.html" title="辅助函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    辅助函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-client.html" title="HTTP 客户端">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 客户端
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/lifecycle.html" title="请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/localization.html" title="本地化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    本地化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/logging.html" title="日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mail.html" title="邮件发送">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    邮件发送
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/middleware.html" title="中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/migrations.html" title="数据库：迁移">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：迁移
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mix.html" title="编辑资源 (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    编辑资源 (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/notifications.html" title="消息通知">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    消息通知
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/pagination.html" title="数据库: 分页">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 分页
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passwords.html" title="重置密码">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重置密码
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/providers.html" title="服务提供者">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务提供者
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queries.html" title="数据库：查询构造器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：查询构造器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queues.html" title="队列">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    队列
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/requests.html" title="HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/routing.html" title="路由">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    路由
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scheduling.html" title="任务调度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    任务调度
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/seeding.html" title="数据库：填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/session.html" title="HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/socialite.html" title="Laravel 社会化登录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 社会化登录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/structure.html" title="目录结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    目录结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/testing.html" title="测试：入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    测试：入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/upgrade.html" title="升级指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    升级指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/urls.html" title="生成 URL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    生成 URL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/validation.html" title="表单验证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单验证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/verification.html" title="Email 认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email 认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/views.html" title="视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>HTTP 请求</h1>
+<ul>
+<li><a href="#accessing-the-request">接收请求</a>
+<ul>
+<li><a href="#request-path-and-method">请求路径 &amp; 方法</a></li>
+<li><a href="#psr7-requests">PSR-7 请求</a></li>
+</ul></li>
+<li><a href="#input-trimming-and-normalization">输入预处理 &amp; 规范化</a></li>
+<li><a href="#retrieving-input">接收数据</a>
+<ul>
+<li><a href="#old-input">旧数据</a></li>
+<li><a href="#cookies">Cookies</a></li>
+</ul></li>
+<li><a href="#files">文件</a>
+<ul>
+<li><a href="#retrieving-uploaded-files">接收上传文件</a></li>
+<li><a href="#storing-uploaded-files">存储上传文件</a></li>
+</ul></li>
+<li><a href="#configuring-trusted-proxies">配置信任代理</a></li>
+</ul>
+<p><a name="accessing-the-request"></a></p>
+<h2>接收请求</h2>
+<p>要通过依赖注入获取当前 HTTP 请求实例，你应该在控制器上引入<code>Illuminate\Http\Request</code> 类。传入的请求实例将会由 <a href="/docs/laravel_8_zh/container.html">服务容器</a> 自动注入：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * 存储一个新用户
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $name = $request-&gt;input('name');
+
+        //
+    }
+}</code></pre>
+<h4>依赖注入 &amp; 路由参数</h4>
+<p>如果你的控制器需要从路由参数中获取数据，你应该在其他依赖项之后列入参数。举个例子，你的路由是这样定义的：</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::put('user/{id}', [UserController::class, 'update']);</code></pre>
+<p>你可以通过下面的方法来定义控制器，使用 <code>Illuminate\Http\Request</code> 类来获取你的路由参数 <code>id</code>：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * 更新指定的用户
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+}</code></pre>
+<h4>通过闭包路由获取参数</h4>
+<p>你也可以在路由闭包中使用 <code>Illuminate\Http\Request</code> 类， 服务容器会自动的将请求参数注入到路由闭包中：</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/', function (Request $request) {
+    //
+});</code></pre>
+<p><a name="request-path-and-method"></a></p>
+<h3>请求路径 &amp; 方法</h3>
+<p><code>Illuminate\Http\Request</code> 提供了各种方法来检查应用程序的 http 请求，并扩展了 <code>Symfony\Component\HttpFoundation\Request</code> 类。 我们将在下面讨论一些最重要的方法。</p>
+<h4>获取请求路径</h4>
+<p><code>path</code> 方法返回请求的路径信息。因此，如果接收到的请求目标是 <code>http://domain.com/foo/bar</code>，则 <code>path</code> 方法会返回 <code>foo/bar</code>：</p>
+<pre><code>$uri = $request-&gt;path();</code></pre>
+<p><code>is</code> 方法验证请求的路径是否与给定的模式匹配。使用此方法时，可以将 <code>*</code> 字符作为通配符：</p>
+<pre><code>if ($request-&gt;is('admin/*')) {
+    //
+}</code></pre>
+<h4>获取请求 URL</h4>
+<p>要获取完整的请求 URL，你可以使用 <code>url</code> 或 <code>fullUrl</code> 方法。 <code>url</code> 方法返回不带查询条件的 URL，而 <code>fullUrl</code> 方法的返回包含查询条件字符串。</p>
+<pre><code>// 没有包含查询条件字符串
+$url = $request-&gt;url();
+
+// 包含查询条件字符串
+$url = $request-&gt;fullUrl();</code></pre>
+<h4>获取请求方法</h4>
+<p><code>method</code> 方法将会返回请求的 HTTP 动词。 你也可以使用 <code>isMethod</code> 方法去验证 HTTP 动词与所给定的字符串是否匹配：</p>
+<pre><code>$method = $request-&gt;method();
+
+if ($request-&gt;isMethod('post')) {
+    //
+}</code></pre>
+<p><a name="psr7-requests"></a></p>
+<h3>PSR-7 请求</h3>
+<p><a href="https://www.php-fig.org/psr/psr-7/">PSR-7 标准</a> 指定了包括请求与响应在内的 HTTP 的消息接口。如果你想要获取 PSR-7 请求实例而不是 Laravel 请求， 那么你首先需要安装几个库。Laravel 使用 <em>Symfony HTTP Message Bridge</em> 组件将典型的 Laravel 请求和响应转换为 PSR-7 的兼容实现：</p>
+<pre><code>composer require symfony/psr-http-message-bridge
+composer require nyholm/psr7</code></pre>
+<p>安装这些库后，可以通过路由闭包和控制器方法的请求接口类型提示来获取 PSR-7 请求：</p>
+<pre><code>use Psr\Http\Message\ServerRequestInterface;
+
+Route::get('/', function (ServerRequestInterface $request) {
+    //
+});</code></pre>
+<blockquote>
+<p>技巧：如果从路由或控制器返回 PSR-7 响应实例，框架将会自动将其转换为 Laravel 的响应实例并显示。</p>
+</blockquote>
+<p><a name="input-trimming-and-normalization"></a></p>
+<h2>输入过滤 &amp; 规范化</h2>
+<p>默认情况下，Laravel 应用程序的全局中间件堆栈中包含了 <code>TrimStrings</code> 和 <code>ConvertEmptyStringsToNull</code> 中间件。 它们被放在 <code>App\Http\Kernel</code> 类的栈列表中。这些中间件将自动过滤掉请求中的字符串字段，并将空字符串字段转换为 <code>null</code>。 这样一来，你将不用担心路由和控制器的约束规范问题。</p>
+<p>如果你想禁用这些行为， 你可以在应用程序中 <code>App\Http\Kernel</code> 类的 <code>$middleware</code> 属性中移除这两个中间件。</p>
+<p><a name="retrieving-input"></a></p>
+<h2>获取输入</h2>
+<h4>获取所有输入数据</h4>
+<p>你可以使用 <code>all</code> 方法来获取 <code>array</code> 类型的全部输入数据：</p>
+<pre><code>$input = $request-&gt;all();</code></pre>
+<h4>获取其中一个输入数据</h4>
+<p>使用一些简单的方法，你可以从 <code>Illuminate\Http\Request</code> 获取所有的用户输入数据，而不用在意用户使用的是哪种 HTTP 动词。不管是什么 HTTP 动词， <code>input</code> 方法都可以用来获取用户的输入数据：</p>
+<pre><code>$name = $request-&gt;input('name');</code></pre>
+<p>你可以在 <code>input</code> 方法第二个参数传入一个默认值。这个值将会在当前请求不包含所需要的字段时返回：</p>
+<pre><code>$name = $request-&gt;input('name', 'Sally');</code></pre>
+<p>当处理包含数组的表单时，可以使用 「.」 运算符来访问数组的数据：</p>
+<pre><code>$name = $request-&gt;input('products.0.name');
+
+$names = $request-&gt;input('products.*.name');</code></pre>
+<h4>从查询字符串获取输入</h4>
+<p><code>input</code> 方法可以从整个请求体中获取数据（包括查询字符串）, 而 <code>query</code> 方法仅仅从查询字符串中获取输入值：</p>
+<pre><code>$name = $request-&gt;query('name');</code></pre>
+<p>如果请求中所需要的查询字符串字段不存在，第二个参数将会被返回：</p>
+<pre><code>$name = $request-&gt;query('name', 'Helen');</code></pre>
+<p>你也可以使用无参数的 <code>query</code> 方法来获取全部查询条件的关联数组：</p>
+<pre><code>$query = $request-&gt;query();</code></pre>
+<h4>通过动态属性获取输入</h4>
+<p>你也可以通过 <code>Illuminate\Http\Request</code> 接口实例的动态属性访问用户的输入。例如你的一个表单中包含 <code>name</code> 字段，则可以通过下面这种方式获取：</p>
+<pre><code>$name = $request-&gt;name;</code></pre>
+<h4>获取 JSON 输入</h4>
+<p>当向应用传递 JSON 请求时，只要将请求头中的 <code>Content-Type</code> 设置为 <code>application/json</code> 后你便可以使用 <code>input</code> 方法来获取 JSON 数据。你也可以使用「.」语法获取 JSON 数组内容：</p>
+<pre><code>$name = $request-&gt;input('user.name');</code></pre>
+<h4>获取输入的布尔值</h4>
+<p>当处理诸如 checkbox 类的 HTML 元素时，你的应用可能获取到以字符串形式传递的 “真假值”，例如 “true” 或者 “on”。为了方便，你可以使用 bool 方法来将这些值转换布尔类型。<code>boolean</code> 方法将会把 <code>1</code>、<code>"1"</code>、<code>true</code>、<code>"true"</code>、<code>"on"</code> 和 <code>"yes"</code> 返回为 <code>true</code>。而其他值将会返回 <code>false</code>：</p>
+<pre><code>$archived = $request-&gt;boolean('archived');</code></pre>
+<h4>获取部分输入数据</h4>
+<p>如果需要获取输入数据的子集，你可以使用 <code>only</code> 或 <code>except</code> 方法。它们接受单个 <code>array</code> 或者动态参数列表：</p>
+<pre><code>$input = $request-&gt;only(['username', 'password']);
+
+$input = $request-&gt;only('username', 'password');
+
+$input = $request-&gt;except(['credit_card']);
+
+$input = $request-&gt;except('credit_card');</code></pre>
+<blockquote>
+<p>技巧：<code>only</code> 方法返回请求中的全部键值对；但是它不返回请求中不存在的键值对。</p>
+</blockquote>
+<h4>判断输入值是否存在</h4>
+<p>你可以使用 <code>has</code> 来判断当前请求中是否含有指定的值。如果请求中存在该值则 <code>has</code> 方法将会返回 <code>true</code>：</p>
+<pre><code>if ($request-&gt;has('name')) {
+    //
+}</code></pre>
+<p>当给定一个数组时，<code>has</code> 将会判断指定的值是否全部存在：</p>
+<pre><code>if ($request-&gt;has(['name', 'email'])) {
+    //
+}</code></pre>
+<p><code>hasAny</code> 方法将会在指定的值有一个存在的情况下返回 <code>true</code>：</p>
+<pre><code>if ($request-&gt;hasAny(['name', 'email'])) {
+    //
+}</code></pre>
+<p>如果你想要判断一个值在请求中是否存在，并且不为空，可以使用 <code>filled</code> 方法：</p>
+<pre><code>if ($request-&gt;filled('name')) {
+    //
+}</code></pre>
+<p>如果你想要判断一个值在请求中是否缺失，可以使用 <code>missing</code> 方法：</p>
+<pre><code>if ($request-&gt;missing('name')) {
+    //
+}</code></pre>
+<p><a name="old-input"></a></p>
+<h3>旧数据</h3>
+<p>Laravel 允许你在两次请求之间保持数据。这个特性在有效性校验出错后重新填充表单时非常有用。不过，如果你使用 Laravel 自带的 <a href="/docs/laravel_8_zh/validation.html">特性验证</a>, 不需要自己手动调用这些方法，因为一些 Laravel 内置的验证功能会自动调用它们。</p>
+<h4>将输入数据闪存到 Session</h4>
+<p><code>Illuminate\Http\Request</code> 类的 <code>flash</code> 方法可以把当前的输入闪存到 <a href="/docs/laravel_8_zh/session.html">session</a>，因此在用户向应用发起的下一次请求时它们仍然可用：</p>
+<pre><code>$request-&gt;flash();</code></pre>
+<p>你也可以使用 <code>flashOnly</code> 方法和 <code>flashExcept</code> 方法将请求数据的子集传送给 session。这些方法在将密码之类的敏感数据排除在 session 外的情况下挺实用的：</p>
+<pre><code>$request-&gt;flashOnly(['username', 'email']);
+
+$request-&gt;flashExcept('password');</code></pre>
+<h4>闪存数据并跳转</h4>
+<p>如果你需要经常保存输入到 session 然后重定向到之前的页面，可以通过在跳转函数后链式调用 <code>withInput</code> 方法轻易地实现：</p>
+<pre><code>return redirect('form')-&gt;withInput();
+
+return redirect('form')-&gt;withInput(
+    $request-&gt;except('password')
+);</code></pre>
+<h4>获取旧数据</h4>
+<p>若要获取上一次请求所保存的旧数据，可以在 <code>Request</code> 的实例上使用 <code>old</code> 方法。<code>old</code> 方法会从 <a href="/docs/laravel_8_zh/session.html">session</a> 取出之前被闪存的输入数据：</p>
+<pre><code>$username = $request-&gt;old('username');</code></pre>
+<p>Laravel 也提供了全局辅助函数 <code>old</code>。如果你要在 <a href="/docs/laravel_8_zh/blade.html">Blade 模板</a> 中显示旧的输入，使用 <code>old</code> 辅助函数将会更加方便。如果给定字段没有旧的输入，则会返回 <code>null</code>：</p>
+<pre><code>&lt;input type="text" name="username" value="{{ old('username') }}"&gt;</code></pre>
+<p><a name="cookies"></a></p>
+<h3>Cookies</h3>
+<h4>从请求中获取 Requests</h4>
+<p>所有从 Laravel 框架创建的 cookies 都是加密的，并且使用授权码进行签名，这意味着如果它们被客户端改变就会失效。若要从请求汇总获取 cookie，在 <code>Illuminate\Http\Request</code> 实例使用 <code>cookie</code> 方法即可：</p>
+<pre><code>$value = $request-&gt;cookie('name');</code></pre>
+<p>或者，你也可以使用 <code>Cookie</code> 门面来访问 cookie 值:</p>
+<pre><code>use Illuminate\Support\Facades\Cookie;
+
+$value = Cookie::get('name');</code></pre>
+<h4>将 Cookie 附加到响应中</h4>
+<p>你可以将一个 cookie 通过 cookie 方法附加到传出的 <code>Illuminate\Http\Response</code> 实例。你需要传入名称、值、<code>cookie</code> 的过期时间（以分钟为单位）给该方法：</p>
+<pre><code>return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes
+);</code></pre>
+<p><code>cookie</code> 同样也接受一些不太频繁使用的参数。通常而言，这些参数和 PHP 内置的 <a href="https://secure.php.net/manual/en/function.setcookie.php">setcookie</a> 方法有着相同的作用和意义：</p>
+<pre><code>return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes, $path, $domain, $secure, $httpOnly
+);</code></pre>
+<p>或者，你可以使用 <code>Cookie</code> 门面来 “排列” 用于从应用中附加到传出响应的 cookies。<code>queue</code> 方法接受一个 <code>Cookie</code> 实例或者用于创建 <code>Cookie</code> 实例的参数。这些 cookies 将会在发送到浏览器之前被附加到传出响应：</p>
+<pre><code>Cookie::queue(Cookie::make('name', 'value', $minutes));
+
+Cookie::queue('name', 'value', $minutes);</code></pre>
+<h4>生成 Cookie 实例</h4>
+<p>如果你想要在生成一个将会被附加到响应实例的 <code>Symfony\Component\HttpFoundation\Cookie</code> 实例，你可以使用全局辅助函数 <code>cookie</code>。 除非这个 cookie 被附加到响应实例，否则不会发送回客户：</p>
+<pre><code>$cookie = cookie('name', 'value', $minutes);
+
+return response('Hello World')-&gt;cookie($cookie);</code></pre>
+<h4>提前终止 Cookies</h4>
+<p>你可以通过 <code>Cookie</code> 门面的 <code>forget</code>函数来使一个 cookie 过期而删除它：</p>
+<pre><code>Cookie::queue(Cookie::forget('name'));</code></pre>
+<p>或者，你可以把过期的 cookie 附加到一个响应实例上：</p>
+<pre><code>$cookie = Cookie::forget('name');
+
+return response('Hello World')-&gt;withCookie($cookie);</code></pre>
+<p><a name="files"></a></p>
+<h2>文件</h2>
+<p><a name="retrieving-uploaded-files"></a></p>
+<h3>获取上传的文件</h3>
+<p>你可以使用 <code>file</code> 方法或使用动态属性从 <code>Illuminate\Http\Request</code> 实例中访问上传的文件。 该 <code>file</code> 方法返回 <code>Illuminate\Http\UploadedFile</code> 类的实例，该类继承了 PHP 的 <code>SplFileInfo</code> 类的同时也提供了各种与文件交互的方法：</p>
+<pre><code>$file = $request-&gt;file('photo');
+
+$file = $request-&gt;photo;</code></pre>
+<p>当然你也可以使用 <code>hasFile</code> 方法判断请求中是否存在指定文件：</p>
+<pre><code>if ($request-&gt;hasFile('photo')) {
+    //
+}</code></pre>
+<h4>验证成功上传</h4>
+<p>除了检查上传的文件是否存在外，你也可以通过 <code>isValid</code> 方法验证上传的文件是否有效：</p>
+<pre><code>if ($request-&gt;file('photo')-&gt;isValid()) {
+    //
+}</code></pre>
+<h4>文件路径 &amp; 扩展名</h4>
+<p><code>UploadedFile</code> 类还包含访问文件的全路径和扩展名的方法。 <code>extension</code> 方法会根据文件内容判断文件的扩展名。该扩展名可能会和客户端提供的扩展名不同：</p>
+<pre><code>$path = $request-&gt;photo-&gt;path();
+
+$extension = $request-&gt;photo-&gt;extension();</code></pre>
+<h4>其它的文件方法</h4>
+<p><code>UploadedFile</code> 实例上还有许多可用的方法。可以查看该类的 <a href="https://api.symfony.com/master/Symfony/Component/HttpFoundation/File/UploadedFile.html">API 文档</a> 了解这些方法的详细信息。</p>
+<p><a name="storing-uploaded-files"></a></p>
+<h3>存储上传文件</h3>
+<p>要存储上传的文件，先配置好 <a href="/docs/laravel_8_zh/filesystem.html">文件系统</a>。你可以使用 <code>UploadedFile</code> 的 <code>store</code> 方法把上传文件移动到你的某个磁盘上，该文件可能是本地文件系统中的一个位置，甚至像 Amazon S3 这样的云存储位置。
+<code>store</code> 方法接受相对于文件系统配置的存储文件根目录的路径。这个路径不能包含文件名，因为系统会自动生成唯一的 ID 作为文件名。
+<code>store</code> 方法还接受可选的第二个参数，用于存储文件的磁盘名称。这个方法会返回相对于磁盘根目录的文件路径：</p>
+<pre><code>$path = $request-&gt;photo-&gt;store('images');
+
+$path = $request-&gt;photo-&gt;store('images', 's3');</code></pre>
+<p>如果你不想自动生成文件名，那么可以使用 <code>storeAs</code> 方法，它接受路径、文件名和磁盘名作为其参数：</p>
+<pre><code>$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg');
+
+$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg', 's3');</code></pre>
+<p><a name="configuring-trusted-proxies"></a></p>
+<h2>配置可信代理</h2>
+<p>如果你的应用程序运行在失效的 TLS / SSL 证书的负载均衡器后，你可能会注意到你的应用程序有时不能生成 HTTPS 链接。通常这是因为你的应用程序正在从端口 80 上的负载均衡器转发流量，却不知道是否应该生成安全链接。</p>
+<p>解决这个问题需要在 Laravel 应用程序中包含 <code>App\Http\Middleware\TrustProxies</code> 中间件，这使得你可以快速自定义应用程序信任的负载均衡器或代理。你的可信代理应该作为这个中间件的 <code>$proxies</code> 属性的数组列出。除了配置受信任的代理之外，还可以配置应该信任的代理 <code>$header</code>：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Fideloper\Proxy\TrustProxies as Middleware;
+use Illuminate\Http\Request;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * 此应用的信任代理
+     *
+     * @var string|array
+     */
+    protected $proxies = [
+        '192.168.1.1',
+        '192.168.1.2',
+    ];
+
+    /**
+     * 应被用于侦测代理的headers配置
+     *
+     * @var int
+     */
+    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+}</code></pre>
+<blockquote>
+<p>技巧：如果你使用 AWS 弹性负载平衡，你的 <code>$header</code> 值应该是 <code>Request::HEADER_X_FORWARDED_AWS_ELB</code>。如果您想查看更多可用于 $headers 的属性信息，请查阅 Symfony 的文档 <a href="https://symfony.com/doc/current/deployment/proxies.html">信任代理</a>。</p>
+</blockquote>
+<h4>信任所有代理</h4>
+<p>如果你使用 Amazon AWS 或其他的「云」的负载均衡服务，你可能不知道负载均衡器的实际 IP 地址。在这种情况下，你可以使用 <code>*</code> 来信任所有代理：</p>
+<pre><code>/**
+ * 此应用的信任代理
+ *
+ * @var string|array
+ */
+protected $proxies = '*';</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 362);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

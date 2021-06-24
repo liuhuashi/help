@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>类型转换的判别 - 开发帮助文档</title> 
+    <meta name="keyword" content="language.types.type-juggling"> 
+    <meta name="description" content="language.types.type-juggling"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1145" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.array.html" title="Array 数组">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Array 数组
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.boolean.html" title="Boolean 布尔类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Boolean 布尔类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.callable.html" title="Callback / Callable 类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Callback / Callable 类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.declarations.html" title="类型声明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类型声明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.float.html" title="浮点数的精度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    浮点数的精度
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.integer.html" title="Integer 整型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Integer 整型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.intro.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.iterable.html" title="Iterable 可迭代对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Iterable 可迭代对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.null.html" title="NULL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    NULL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.numeric-strings.html" title="Numeric strings">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Numeric strings
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.object.html" title="Object 对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Object 对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.resource.html" title="Resource 资源类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resource 资源类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.string.html" title="String 字符串">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    String 字符串
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.type-juggling.html" title="类型转换的判别">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类型转换的判别
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.declarations.html">« 类型声明</a></li>
+      <li style="float: right;"><a href="language.variables.html">变量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.types.html">类型</a></li>
+    <li>类型转换的判别</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.type-juggling" class="sect1">
+ <h2 class="title">类型转换的判别</h2>
+
+ <p class="simpara">
+  PHP 在变量定义中不需要（或不支持）明确的类型定义；变量类型是根据使用该变量的上下文所决定的。也就是说，如果把一个 <span class="type">string</span> 值赋给变量
+<var class="varname">$var</var>，<var class="varname">$var</var>
+  就成了一个 <span class="type">string</span>。如果又把一个<span class="type">int</span> 赋给
+  <var class="varname">$var</var>，那它就成了一个<span class="type">int</span>。
+ </p>
+
+ <p class="para">
+  PHP 的自动类型转换的一个例子是乘法运算符“*”。如果任何一个操作数是<span class="type">float</span>，
+  则所有的操作数都被当成<span class="type">float</span>，结果也是<span class="type">float</span>。
+  否则操作数会被解释为<span class="type">int</span>，结果也是<span class="type">int</span>。
+  注意这并<em class="emphasis">没有</em>改变这些操作数本身的类型；
+  改变的仅是这些操作数如何被求值以及表达式本身的类型。
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$foo </span><span style="color: #007700">= </span><span style="color: #DD0000">"1"</span><span style="color: #007700">;  </span><span style="color: #FF8000">// $foo 是字符串 (ASCII 49)<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">*= </span><span style="color: #0000BB">2</span><span style="color: #007700">;   </span><span style="color: #FF8000">// $foo 现在是一个整数 (2)<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">$foo </span><span style="color: #007700">* </span><span style="color: #0000BB">1.3</span><span style="color: #007700">;  </span><span style="color: #FF8000">// $foo 现在是一个浮点数 (2.6)<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">5 </span><span style="color: #007700">* </span><span style="color: #DD0000">"10 Little Piggies"</span><span style="color: #007700">; </span><span style="color: #FF8000">// $foo 是整数 (50)<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">5 </span><span style="color: #007700">* </span><span style="color: #DD0000">"10 Small Pigs"</span><span style="color: #007700">;     </span><span style="color: #FF8000">// $foo 是整数 (50)<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+  </div>
+
+ </div>
+
+ <p class="simpara">
+  如果上面两个例子看上去古怪的话，参见如何将
+  <a href="language.types.numeric-strings.html" class="link">数字字符串</a>转换为数值。
+ </p>
+
+ <p class="simpara">
+  如果要强制将一个变量当作某种类型来求值，参见<a href="language.types.type-juggling.html#language.types.typecasting" class="link">类型强制转换</a>一节。如果要改变一个变量的类型，参见 <span class="function"><a href="function.settype.html" class="function">settype()</a></span>。
+ </p>
+
+ <p class="para">
+  如果想要测试本节中任何例子的话，可以用 <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span> 函数。
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   自动转换为 <span class="type"><span class="type 数组">数组</span></span> 的行为目前没有定义。
+  </p>
+
+  <p class="para">
+   此外，由于 PHP 支持使用和数组下标同样的语法访问字符串下标，以下例子在所有 PHP 版本中都有效：
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$a    </span><span style="color: #007700">= </span><span style="color: #DD0000">'car'</span><span style="color: #007700">; </span><span style="color: #FF8000">// $a is a string<br></span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #DD0000">'b'</span><span style="color: #007700">;   </span><span style="color: #FF8000">// $a is still a string<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">$a</span><span style="color: #007700">;       </span><span style="color: #FF8000">// bar<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   请参阅<a href="language.types.string.html#language.types.string.substr" class="link">存取和修改字符串中的字符</a>一节以获取更多信息。
+  </p>
+ </blockquote>
+
+ <div class="sect2" id="language.types.typecasting">
+  <h3 class="title">类型强制转换</h3>
+
+  <p class="para">
+   PHP 中的类型强制转换和 C 中的非常像：在要转换的变量之前加上用括号括起来的目标类型。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">10</span><span style="color: #007700">;   </span><span style="color: #FF8000">// $foo is an integer<br></span><span style="color: #0000BB">$bar </span><span style="color: #007700">= (boolean) </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;   </span><span style="color: #FF8000">// $bar is a boolean<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   允许的强制转换有：
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">(int), (integer) - 转换为整形 <span class="type">int</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(bool), (boolean) - 转换为布尔类型 <span class="type">bool</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(float), (double), (real) - 转换为浮点型 <span class="type">float</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(string) - 转换为字符串 <span class="type">string</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(array) - 转换为数组 <span class="type">array</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(object) - 转换为对象 <span class="type">object</span></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">(unset) - 转换为 <span class="type">NULL</span></span>
+   </li>
+  </ul>
+
+  <p class="para">
+   向前兼容 (binary) 转换和 b 前缀转换。注意 (binary)
+   转换和 (string)
+   基本相同，但是不应该依赖它。
+  </p>
+
+  <p class="para">
+   (unset) 转换在 PHP 7.2.0 中已被废弃。请注意 (unset)
+   转换等于将值赋予 <span class="type">NULL</span>。(unset)
+   转换已经在 PHP 8.0.0 中被移除。
+  </p>
+
+  <p class="para">
+   注意在括号内允许有空格和制表符，所以下面两个例子功能相同：
+  </p>
+   
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$foo </span><span style="color: #007700">= (int) </span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$foo </span><span style="color: #007700">= ( int ) </span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+
+   <p class="para">
+    将字符串文字和变量转换为二进制字符串：
+   </p>
+
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$binary </span><span style="color: #007700">= (binary)</span><span style="color: #0000BB">$string</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$binary </span><span style="color: #007700">= </span><span style="color: #DD0000">b"binary string"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    可以将变量放置在双引号中的方式来代替将变量转换成字符串：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">10</span><span style="color: #007700">;            </span><span style="color: #FF8000">// $foo 是一个整数<br></span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$foo</span><span style="color: #DD0000">"</span><span style="color: #007700">;        </span><span style="color: #FF8000">// $str 是一个字符串<br></span><span style="color: #0000BB">$fst </span><span style="color: #007700">= (string) </span><span style="color: #0000BB">$foo</span><span style="color: #007700">; </span><span style="color: #FF8000">// $fst 也是一个字符串<br><br>// 输出 "they are the same"<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$fst </span><span style="color: #007700">=== </span><span style="color: #0000BB">$str</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"they are the same"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </blockquote>
+   
+  <p class="para">
+   有时在类型之间强制转换时确切地会发生什么可能不是很明显。更多信息见如下小节：
+  </p>
+  
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.boolean.html#language.types.boolean.casting" class="link">转换为布尔型</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.integer.html#language.types.integer.casting" class="link">转换为整型</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.float.html#language.types.float.casting" class="link">转换为浮点型</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.string.html#language.types.string.casting" class="link">转换为字符串</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.array.html#language.types.array.casting" class="link">转换为数组</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.object.html#language.types.object.casting" class="link">转换为对象</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.resource.html#language.types.resource.casting" class="link">转换为资源</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.null.html#language.types.null.casting" class="link">转换为 NULL</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="types.comparisons.html" class="link">类型比较表</a>
+    </span>
+   </li>
+  </ul>
+
+ </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7348);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

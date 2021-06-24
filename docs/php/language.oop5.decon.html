@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>构造函数和析构函数 - 开发帮助文档</title> 
+    <meta name="keyword" content="language.oop5.decon"> 
+    <meta name="description" content="language.oop5.decon"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1139" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.abstract.html" title="抽象类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    抽象类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.anonymous.html" title="匿名类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    匿名类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.autoload.html" title="类的自动加载">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类的自动加载
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.basic.html" title="基本概念">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基本概念
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.changelog.html" title="OOP 变更日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OOP 变更日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.cloning.html" title="对象复制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象复制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.constants.html" title="类常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.decon.html" title="构造函数和析构函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    构造函数和析构函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.final.html" title="Final 关键字">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Final 关键字
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.inheritance.html" title="对象继承">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象继承
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.interfaces.html" title="对象接口">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象接口
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.iterations.html" title="遍历对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    遍历对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.late-static-bindings.html" title="后期静态绑定">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    后期静态绑定
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.magic.html" title="魔术方法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    魔术方法
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.object-comparison.html" title="对象比较">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象比较
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.overloading.html" title="重载">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重载
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.paamayim-nekudotayim.html" title="范围解析操作符 （::）">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范围解析操作符 （::）
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.properties.html" title="属性">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    属性
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.references.html" title="对象和引用">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象和引用
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.serialization.html" title="对象序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.static.html" title="静态（static）关键字">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    静态（static）关键字
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.traits.html" title="Trait">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Trait
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.variance.html" title="协变与逆变">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    协变与逆变
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.visibility.html" title="访问控制（可见性）">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    访问控制（可见性）
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oop5.intro.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.autoload.html">« 类的自动加载</a></li>
+      <li style="float: right;"><a href="language.oop5.visibility.html">访问控制（可见性） »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">类与对象</a></li>
+    <li>构造函数和析构函数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.decon" class="sect1">
+ <h2 class="title">构造函数和析构函数</h2>
+
+ <div class="sect2" id="language.oop5.decon.constructor">
+  <h3 class="title">构造函数</h3>
+   <div class="methodsynopsis dc-description" id="object.construct">
+    <span class="methodname"><strong>__construct</strong></span>
+     ( <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">...$values</code><span class="initializer"> = ""</span></span>
+    ) : <span class="type"><span class="type void">void</span></span></div>
+
+  <p class="para">
+   PHP 允许开发者在一个类中定义一个方法作为构造函数。具有构造函数的类会在每次创建新对象时先调用此方法，所以非常适合在使用对象之前做一些初始化工作。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    如果子类中定义了构造函数则不会隐式调用其父类的构造函数。要执行父类的构造函数，需要在子类的构造函数中调用
+    <span class="function"><strong>parent::__construct()</strong></span>。如果子类没有定义构造函数则会如同一个普通的类方法一样从父类继承（假如没有被定义为
+    private 的话）。
+   </span>
+  </p></blockquote>
+  <div class="example" id="example-214">
+   <p><strong>示例 #1 继承中的构造函数</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">BaseClass </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br>        print </span><span style="color: #DD0000">"In BaseClass constructor\n"</span><span style="color: #007700">;<br>    }<br>}<br><br>class </span><span style="color: #0000BB">SubClass </span><span style="color: #007700">extends </span><span style="color: #0000BB">BaseClass </span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br>        </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">();<br>        print </span><span style="color: #DD0000">"In SubClass constructor\n"</span><span style="color: #007700">;<br>    }<br>}<br><br>class </span><span style="color: #0000BB">OtherSubClass </span><span style="color: #007700">extends </span><span style="color: #0000BB">BaseClass </span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// 继承 BaseClass 的构造函数<br></span><span style="color: #007700">}<br><br></span><span style="color: #FF8000">// In BaseClass constructor<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">BaseClass</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// In BaseClass constructor<br>// In SubClass constructor<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">SubClass</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// In BaseClass constructor<br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">OtherSubClass</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   与其它方法不同，当 <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a>
+   被与父类 <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a>
+   具有不同参数的方法覆盖时，PHP 不会产生一个 <strong><code>E_STRICT</code></strong> 错误信息。
+  </p>
+  <p class="para">
+   自 PHP 5.3.3 起，在命名空间中，与类名同名的方法不再作为构造函数。不使用命名空间中的类则不受影响。
+    构造函数是一个普通的方法，在对应对象实例化时自动被调用。
+    因此可以定义任何数量的参数，可以是必选、可以有类型、可以有默认值。
+    构造器的参数放在类名后的括号里调用。
+  </p>
+  <div class="example" id="example-215">
+   <p><strong>示例 #2 使用构造器参数</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Point </span><span style="color: #007700">{<br>    protected </span><span style="color: #0000BB">int $x</span><span style="color: #007700">;<br>    protected </span><span style="color: #0000BB">int $y</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">int $x</span><span style="color: #007700">, </span><span style="color: #0000BB">int $y </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">x </span><span style="color: #007700">= </span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">y </span><span style="color: #007700">= </span><span style="color: #0000BB">$y</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #FF8000">// 两个参数都传入<br></span><span style="color: #0000BB">$p1 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Point</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">, </span><span style="color: #0000BB">5</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// 仅传入必填的参数。 $y 会默认取值 0。<br></span><span style="color: #0000BB">$p2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Point</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #FF8000">// 使用命名参数（PHP 8.0 起）:<br></span><span style="color: #0000BB">$p3 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Point</span><span style="color: #007700">(</span><span style="color: #0000BB">y</span><span style="color: #007700">: </span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #0000BB">x</span><span style="color: #007700">: </span><span style="color: #0000BB">4</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+   <p class="para">
+   如果一个类没有构造函数，以及构造函数的参数不是必填项时，括号就可以省略。
+   </p>
+   <div class="sect3">
+    <h4 class="title">旧式风格的构造器</h4>
+    <p class="para">
+     PHP 8.0.0 之前，全局命名空间内的类如果有一个同名的方法，则会解析为旧式风格的构造器。
+     虽然函数能被当作构造器，但该语法已被废弃，并会导致 <strong><code>E_DEPRECATED</code></strong> 错误。
+     如果 <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a> 和同名方法同时存在时，
+     会调用 <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a>。
+    </p>
+    <p class="para">
+     以下两种情况时，与类同名的方法不再有特殊意义：命名空间中的类、PHP 8.0.0 起的任何类。
+    </p>
+    <p class="para">新代码中要使用 <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a>。
+    </p>
+   </div>
+   <div class="sect3" id="language.oop5.decon.constructor.promotion">
+    <h4 class="title">构造器属性提升</h4>
+    <p class="para">
+     PHP 8.0.0 起，构造器的参数也可以相应提升为类的属性。
+     构造器的参数赋值给类属性的行为很普遍，否则无法操作。
+     而构造器提升的功能则为这种场景提供了便利。
+     因此上面的例子可以用以下方式重写：
+    </p>
+    <div class="example" id="example-216">
+     <p><strong>示例 #3 使用构造器属性提升</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Point </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(protected </span><span style="color: #0000BB">int $x</span><span style="color: #007700">, protected </span><span style="color: #0000BB">int $y </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>    }<br>}</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     当构造器参数带访问控制（visibility modifier）时，PHP 会同时把它当作对象属性和构造器参数，
+     并赋值到属性。
+     构造器可以是空的，或者包含其他语句。
+     参数值赋值到相应属性后执行正文中额外的代码语句。
+    </p>
+    <p class="para">
+     并非所有参数都需要提升。可以混合提升或不提升参数作为属性，也不需要按顺序。
+     提升后的参数不影响构造器内代码调用。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+     对象属性的类型不能为 <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> 以避免为引擎带来混淆。
+     因此提升的参数也不能是 <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>。
+     其他任意 <a href="language.types.declarations.html" class="link">类型声明</a> 是允许的。
+     </p>
+    </blockquote>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      
+      放在构造器提升参数里的属性会同时复制为属性和参数。
+     </p>
+    </blockquote>
+   </div>
+   <div class="sect3" id="language.oop5.decon.constructor.static">
+    <h4 class="title">Static 创造方法</h4>
+    <p class="para">
+     在 PHP 中每个 class 只能有一个构造器。
+     然而有些情况下，需要用不同的输入实现不同的方式构造对象。
+     这种情况下推荐使用 static 方法包装构造。
+    </p>
+    <div class="example" id="language.oop5.basic.class.class.name">
+     <p><strong>示例 #4 使用 static 创造方法</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Product </span><span style="color: #007700">{<br><br>    private ?</span><span style="color: #0000BB">int $id</span><span style="color: #007700">;<br>    private ?</span><span style="color: #0000BB">string $name</span><span style="color: #007700">;<br><br>    private function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(?</span><span style="color: #0000BB">int $id </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">, ?</span><span style="color: #0000BB">string $name </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id </span><span style="color: #007700">= </span><span style="color: #0000BB">$id</span><span style="color: #007700">;<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name </span><span style="color: #007700">= </span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br>    }<br><br>    public static function </span><span style="color: #0000BB">fromBasicData</span><span style="color: #007700">(</span><span style="color: #0000BB">int $id</span><span style="color: #007700">, </span><span style="color: #0000BB">string $name</span><span style="color: #007700">): static {<br>        </span><span style="color: #0000BB">$new </span><span style="color: #007700">= new static(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br>        return </span><span style="color: #0000BB">$new</span><span style="color: #007700">;<br>    }<br><br>    public static function </span><span style="color: #0000BB">fromJson</span><span style="color: #007700">(</span><span style="color: #0000BB">string $json</span><span style="color: #007700">): static {<br>        </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">json_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$json</span><span style="color: #007700">);<br>        return new static(</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">], </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]);<br>    }<br><br>    public static function </span><span style="color: #0000BB">fromXml</span><span style="color: #007700">(</span><span style="color: #0000BB">string $xml</span><span style="color: #007700">): static {<br>        </span><span style="color: #FF8000">// 此处放置自己的代码逻辑<br>        </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">convert_xml_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">);<br>        </span><span style="color: #0000BB">$new </span><span style="color: #007700">= new static();<br>        </span><span style="color: #0000BB">$new</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id </span><span style="color: #007700">= </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">];<br>        </span><span style="color: #0000BB">$new</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name </span><span style="color: #007700">= </span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">];<br>        return </span><span style="color: #0000BB">$new</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$p1 </span><span style="color: #007700">= </span><span style="color: #0000BB">Product</span><span style="color: #007700">::</span><span style="color: #0000BB">fromBasicData</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">, </span><span style="color: #DD0000">'Widget'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$p2 </span><span style="color: #007700">= </span><span style="color: #0000BB">Product</span><span style="color: #007700">::</span><span style="color: #0000BB">fromJson</span><span style="color: #007700">(</span><span style="color: #0000BB">$some_json_string</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$p3 </span><span style="color: #007700">= </span><span style="color: #0000BB">Product</span><span style="color: #007700">::</span><span style="color: #0000BB">fromXml</span><span style="color: #007700">(</span><span style="color: #0000BB">$some_xml_string</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <p class="para">
+     可以设置构造器为 private 或 protected，防止自行额外调用。
+     这时只有 static 方法可以实例化一个类。
+     由于它们位于同一个定义的 class 因此可以访问私有方法，也不需要在同一个对象实例中。
+     当然构造器不一定要设置为 private，是否合理取决于实际情况。
+    </p>
+    <p class="para">
+     三个 static 方法展示了对象以不同方式的实例化方式。
+    </p>
+    <ul class="simplelist">
+     <li class="member"><code class="code">fromBasicData()</code> 把所需的全部参数传入构造器，创建对象并返回结果。</li>
+     <li class="member"><code class="code">fromJson()</code> 接受 JSON 字符串，，预处理成构造器所需的格式，然后返回新的对象。</li>
+     <li class="member"><code class="code">fromXml()</code> 接受 XML 字符串并解析，然后创建一个单纯的对象。
+     由于参数都是可选的，使得可以忽略所有参数去调用构造器。然后为对象的属性赋值后返回结果。</li>
+    </ul>
+    <p class="para">
+    在以上三个例子中，<code class="code">static</code> 关键词会被翻译成代码所在类的类名。
+     这个例子中是 <code class="code">Product</code>。
+    </p>
+   </div>
+ </div>
+
+ <div class="sect2" id="language.oop5.decon.destructor">
+  <h3 class="title">析构函数</h3>
+   <div class="methodsynopsis dc-description" id="object.destruct">
+    <span class="methodname"><strong>__destruct</strong></span>
+     (
+    ) : <span class="type"><span class="type void">void</span></span></div>
+
+  <p class="para">
+   PHP 5 引入了析构函数的概念，这类似于其它面向对象的语言，如
+   C++。析构函数会在到某个对象的所有引用都被删除或者当对象被显式销毁时执行。
+  </p>
+  <div class="example" id="language.oop5.basic.class.class.fail">
+   <p><strong>示例 #5 析构函数示例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyDestructableClass <br></span><span style="color: #007700">{<br>    function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() {<br>        print </span><span style="color: #DD0000">"In constructor\n"</span><span style="color: #007700">;<br>    }<br><br>    function </span><span style="color: #0000BB">__destruct</span><span style="color: #007700">() {<br>        print </span><span style="color: #DD0000">"Destroying " </span><span style="color: #007700">. </span><span style="color: #0000BB">__CLASS__ </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyDestructableClass</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+  <p class="para">
+   和构造函数一样，父类的析构函数不会被引擎暗中调用。要执行父类的析构函数，必须在子类的析构函数体中显式调用
+   <span class="function"><strong>parent::__destruct()</strong></span>。此外也和构造函数一样，子类如果自己没有定义析构函数则会继承父类的。
+  </p>
+  <p class="para">
+   析构函数即使在使用 <span class="function"><a href="function.exit.html" class="function">exit()</a></span>
+   终止脚本运行时也会被调用。在析构函数中调用
+   <span class="function"><a href="function.exit.html" class="function">exit()</a></span> 将会中止其余关闭操作的运行。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    析构函数在脚本关闭时调用，此时所有的 HTTP
+    头信息已经发出。脚本关闭时的工作目录有可能和在 SAPI（如 apache）中时不同。
+   </p>
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    试图在析构函数（在脚本终止时被调用）中抛出一个异常会导致致命错误。
+   </p>
+  </blockquote>
+ </div>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7295);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

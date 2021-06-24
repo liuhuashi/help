@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Error handling with libxml error handling functions - 开发帮助文档</title> 
+    <meta name="keyword" content="xsl.examples-errors"> 
+    <meta name="description" content="xsl.examples-errors"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="76" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/xsl.examples-collection.html" title="Example collection.xml and collection.xsl files">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Example collection.xml and collection.xsl files
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/xsl.examples-errors.html" title="Error handling with libxml error handling functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error handling with libxml error handling functions
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="xsl.examples-collection.html">« Example collection.xml and collection.xsl files</a></li>
+      <li style="float: right;"><a href="class.xsltprocessor.html">XSLTProcessor »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="xsl.examples.html">范例</a></li>
+    <li>Error handling with libxml error handling functions</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="xsl.examples-errors" class="section">
+  <h2 class="title">Error handling with libxml error handling functions</h2>
+  <p class="para">
+   libxml offers a number of functions for handling errors, which can be
+   employed to capture and deal with errors in XSLT processing.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-5468">
+    <p><strong>示例 #1 fruits.xml</strong></p>
+    <div class="example-contents"><p>A valid XML file.</p></div>
+    <div class="example-contents">
+<div class="xmlcode"><pre class="xmlcode">&lt;fruits&gt;
+ &lt;fruit&gt;Apple&lt;/fruit&gt;
+ &lt;fruit&gt;Banana&lt;/fruit&gt;
+ &lt;fruit&gt;Cherry&lt;/fruit&gt;
+&lt;/fruits&gt;</pre>
+</div>
+    </div>
+
+   </div>
+   <div class="example" id="example-5469">
+    <p><strong>示例 #2 fruits.xsl</strong></p>
+    <div class="example-contents"><p>Contains an invalid select expression.</p></div>
+    <div class="example-contents">
+<div class="xmlcode"><pre class="xmlcode">&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+ &lt;xsl:output method="html" encoding="utf-8" indent="no"/&gt;
+ &lt;xsl:template match="fruits"&gt;
+  &lt;ul&gt;
+   &lt;xsl:apply-templates/&gt;
+  &lt;/ul&gt;
+ &lt;/xsl:template&gt;
+ &lt;xsl:template match="fruit"&gt;
+  &lt;li&gt;&lt;xsl:value-of select="THIS IS A DELIBERATE ERROR!"/&gt;&lt;/li&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+</div>
+    </div>
+
+   </div>
+   <div class="example" id="example-5470">
+    <p><strong>示例 #3 Collating and printing errors</strong></p>
+    <div class="example-contents"><p>
+     The example below captures and displays libxml errors raised when calling
+     <span class="methodname"><a href="xsltprocessor.importstylesheet.html" class="methodname">XSLTProcessor::importStyleSheet()</a></span> with a
+     stylesheet containing an error.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$xmldoc </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$xsldoc </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$xsl </span><span style="color: #007700">= new </span><span style="color: #0000BB">XSLTProcessor</span><span style="color: #007700">();<br><br></span><span style="color: #0000BB">$xmldoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'fruits.xml'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$xsldoc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'fruits.xsl'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">libxml_use_internal_errors</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$xsl</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">importStyleSheet</span><span style="color: #007700">(</span><span style="color: #0000BB">$xsldoc</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br>    foreach (</span><span style="color: #0000BB">libxml_get_errors</span><span style="color: #007700">() as </span><span style="color: #0000BB">$error</span><span style="color: #007700">) {<br>        echo </span><span style="color: #DD0000">"Libxml error: </span><span style="color: #007700">{</span><span style="color: #0000BB">$error</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">message</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br>    }<br>}<br></span><span style="color: #0000BB">libxml_use_internal_errors</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br><br>if (</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {<br>    echo </span><span style="color: #0000BB">$xsl</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">transformToXML</span><span style="color: #007700">(</span><span style="color: #0000BB">$xmldoc</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Libxml error: Invalid expression
+
+Libxml error: compilation error: file fruits.xsl line 9 element value-of
+Libxml error: xsl:value-of : could not compile select expression 'THIS IS A DELIBERATE ERROR!'
+</pre></div>
+    </div>
+   </div>
+  
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 11409);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

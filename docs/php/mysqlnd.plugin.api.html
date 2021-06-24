@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The mysqlnd plugin API - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd.plugin.api"> 
+    <meta name="description" content="mysqlnd.plugin.api"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="848" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.api.html" title="The mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The mysqlnd plugin API
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.architecture.html" title="MySQL Native Driver Plugin Architecture">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MySQL Native Driver Plugin Architecture
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.developing.html" title="Getting started building a mysqlnd plugin">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Getting started building a mysqlnd plugin
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.mysql-proxy.html" title="A comparison of mysqlnd plugins with MySQL Proxy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    A comparison of mysqlnd plugins with MySQL Proxy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd.plugin.obtaining.html" title="Obtaining the mysqlnd plugin API">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Obtaining the mysqlnd plugin API
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd.plugin.architecture.html">« MySQL Native Driver Plugin Architecture</a></li>
+      <li style="float: right;"><a href="mysqlnd.plugin.developing.html">Getting started building a mysqlnd plugin »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+    <li>The mysqlnd plugin API</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd.plugin.api" class="section">
+  <h2 class="title">The mysqlnd plugin API</h2>
+  <p class="para">
+   The following is a list of functions provided in the
+   <code class="literal">mysqlnd</code> plugin API:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_register()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_count()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_get_plugin_connection_data()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_get_plugin_result_data()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_get_plugin_stmt_data()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_get_plugin_net_data()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_plugin_get_plugin_protocol_data()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_conn_get_methods()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_result_get_methods()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_result_meta_get_methods()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_stmt_get_methods()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_net_get_methods()
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     mysqlnd_protocol_get_methods()
+    </p>
+   </li>
+  </ul>
+  <p class="para">
+   There is no formal definition of what a plugin is and how a plugin
+   mechanism works.
+  </p>
+  <p class="para">
+   Components often found in plugins mechanisms are:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     A plugin manager
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     A plugin API
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Application services (or modules)
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Application service APIs (or module APIs)
+    </p>
+   </li>
+  </ul>
+  <p class="para">
+   The <code class="literal">mysqlnd</code> plugin concept employs these features,
+   and additionally enjoys an open architecture.
+  </p>
+  <p class="para">
+   <em class="emphasis"> No Restrictions </em>
+  </p>
+  <p class="para">
+   A plugin has full access to the inner workings of
+   <code class="literal">mysqlnd</code>. There are no security limits or
+   restrictions. Everything can be overwritten to implement friendly or
+   hostile algorithms. It is recommended you only deploy plugins from a
+   trusted source.
+  </p>
+  <p class="para">
+   As discussed previously, plugins can use pointers freely. These
+   pointers are not restricted in any way, and can point into another
+   plugin's data. Simple offset arithmetic can be used to read another
+   plugin's data.
+  </p>
+  <p class="para">
+   It is recommended that you write cooperative plugins, and that you
+   always call the parent method. The plugins should always cooperate
+   with <code class="literal">mysqlnd</code> itself.
+  </p>
+  <table id="mysqlnd.plugin.chaining" class="doctable table">
+   <caption><strong>Issues: an example of chaining and cooperation</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Extension</th>
+      <th>mysqlnd.query() pointer</th>
+      <th>call stack if calling parent</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>ext/mysqlnd</td>
+      <td>mysqlnd.query()</td>
+      <td>mysqlnd.query</td>
+     </tr>
+
+     <tr>
+      <td>ext/mysqlnd_cache</td>
+      <td>mysqlnd_cache.query()</td>
+      <td><ol type="1">
+        <li class="listitem">
+         <p class="para">
+          mysqlnd_cache.query()
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          mysqlnd.query
+         </p>
+        </li>
+       </ol></td>
+     </tr>
+
+     <tr>
+      <td>ext/mysqlnd_monitor</td>
+      <td>mysqlnd_monitor.query()</td>
+      <td><ol type="1">
+        <li class="listitem">
+         <p class="para">
+          mysqlnd_monitor.query()
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          mysqlnd_cache.query()
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          mysqlnd.query
+         </p>
+        </li>
+       </ol></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <p class="para">
+   In this scenario, a cache (<code class="literal">ext/mysqlnd_cache</code>) and
+   a monitor (<code class="literal">ext/mysqlnd_monitor</code>) plugin are loaded.
+   Both subclass <code class="literal">Connection::query()</code>. Plugin
+   registration happens at <code class="literal">MINIT</code> using the logic
+   shown previously. PHP calls extensions in alphabetical order by
+   default. Plugins are not aware of each other and do not set extension
+   dependencies.
+  </p>
+  <p class="para">
+   By default the plugins call the parent implementation of the query
+   method in their derived version of the method.
+  </p>
+  <p class="para">
+   <em class="emphasis"> PHP Extension Recap </em>
+  </p>
+  <p class="para">
+   This is a recap of what happens when using an example plugin,
+   <code class="literal">ext/mysqlnd_plugin</code>, which exposes the
+   <code class="literal">mysqlnd</code> C plugin API to PHP:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     Any PHP MySQL application tries to establish a connection to
+     192.168.2.29
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The PHP application will either use <code class="literal">ext/mysql</code>,
+     <code class="literal">ext/mysqli</code> or <code class="literal">PDO_MYSQL</code>. All
+     three PHP MySQL extensions use <code class="literal">mysqlnd</code> to
+     establish the connection to 192.168.2.29.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <code class="literal">Mysqlnd</code> calls its connect method, which has been
+     subclassed by <code class="literal">ext/mysqlnd_plugin</code>.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <code class="literal">ext/mysqlnd_plugin</code> calls the userspace hook
+     <code class="literal">proxy::connect()</code> registered by the user.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     The userspace hook changes the connection host IP from 192.168.2.29
+     to 127.0.0.1 and returns the connection established by
+     <code class="literal">parent::connect()</code>.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <code class="literal">ext/mysqlnd_plugin</code> performs the equivalent of
+     <code class="literal">parent::connect(127.0.0.1)</code> by calling the
+     original <code class="literal">mysqlnd</code> method for establishing a
+     connection.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <code class="literal">ext/mysqlnd</code> establishes a connection and returns
+     to <code class="literal">ext/mysqlnd_plugin</code>.
+     <code class="literal">ext/mysqlnd_plugin</code> returns as well.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Whatever PHP MySQL extension had been used by the application, it
+     receives a connection to 127.0.0.1. The PHP MySQL extension itself
+     returns to the PHP application. The circle is closed.
+    </p>
+   </li>
+  </ul>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8341);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

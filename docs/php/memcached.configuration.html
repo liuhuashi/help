@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>运行时配置 - 开发帮助文档</title> 
+    <meta name="keyword" content="memcached.configuration"> 
+    <meta name="description" content="memcached.configuration"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="344" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcached.configuration.html" title="运行时配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    运行时配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcached.installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcached.requirements.html" title="需求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    需求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcached.resources.html" title="资源类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    资源类型
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcached.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="memcached.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="memcached.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcached.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  </p><table class="doctable table">
+   <caption><strong>Memcached配置选项</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-locking" class="link">memcached.sess_locking</a></td>
+      <td>1</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-consistent-hash" class="link">memcached.sess_consistent_hash</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-binary" class="link">memcached.sess_binary</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-lock-wait" class="link">memcached.sess_lock_wait</a></td>
+      <td>150000</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-prefix" class="link">memcached.sess_prefix</a></td>
+      <td>memc.sess.key.</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-number-of-replicas" class="link">memcached.sess_number_of_replicas</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-randomize-replica-read" class="link">memcached.sess_randomize_replica_read</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.sess-remove-failed" class="link">memcached.sess_remove_failed</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.compression-type" class="link">memcached.compression_type</a></td>
+      <td>fastlz</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.compression-factor" class="link">memcached.compression_factor</a></td>
+      <td>1.3</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.compression-threshold" class="link">memcached.compression_threshold</a></td>
+      <td>2000</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.serializer" class="link">memcached.serializer</a></td>
+      <td>php</td>
+      <td>PHP_INI_ALL</td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="memcached.configuration.html#ini.memcached.use-sasl" class="link">memcached.use_sasl</a></td>
+      <td>0</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ 
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+  </p><dl>
+
+
+   
+     <dt id="ini.memcached.sess-locking">
+      <code class="parameter">memcached.sess_locking</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       开启session支持。有效值: On, Off, 默认值 On.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-consistent-hash">
+      <code class="parameter">memcached.sess_consistent_hash</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Memcached 是否使用一致性哈希保存session。如果为On，session数据保存则使用一致性哈希模式。
+       使用一致性哈希，可以保证你在增加或删除memcached服务器节点的时候不会导致session大规模的失效。
+       默认此项是关闭的。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-binary">
+      <code class="parameter">memcached.sess_binary</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Memcached session是否使用二进制模式。如果Libmemcached 开启二进制模式。默认值是 Off.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-lock-wait">
+      <code class="parameter">memcached.sess_lock_wait</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Session 自旋锁等待时间（微秒）。请小心设置此值。值的类型是整数，当此值被设置为0的时候，lock wait的时间将会使用系统默认值，Memcached扩展中默认值是150000。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-prefix">
+      <code class="parameter">memcached.sess_prefix</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置memcached session key的前缀。session前缀最长为219字节长的字符串。默认值是“memc.sess.key.”。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-number-of-replicas">
+      <code class="parameter">memcached.sess_number_of_replicas</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       使用memcached写session多少个副本。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-randomize-replica-read">
+      <code class="parameter">memcached.sess_randomize_replica_read</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Memcached session 是否随机复制读。默认值0
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.sess-remove-failed">
+      <code class="parameter">memcached.sess_remove_failed</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       是否允许自动剔除出故障的memcached服务器。默认值0
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.compression-type">
+      <code class="parameter">memcached.compression_type</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置memcached的压缩类型，允许的值为fastlz, zlib。默认值是fastlz（快速无损压缩，性能不错）。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.compression-factor">
+      <code class="parameter">memcached.compression_factor</code>
+      <span class="type">float</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       压缩因子. 保存时压缩因子超过设置的极限才会将数据压缩存储。存储压缩条件： plain_len &gt; comp_len * factor。默认是1.3 （节省23%的空间）。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.compression-threshold">
+      <code class="parameter">memcached.compression_threshold</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       压缩阈值。不压缩的序列化值低于此阈值。默认值是2000字节。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.serializer">
+      <code class="parameter">memcached.serializer</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       设置缓存对象的默认序列化程序。有效值： php, igbinary, json, json_array.
+      </p>
+      <dl>
+
+       
+        <dt>
+json</dt>
+
+        <dd>
+
+         <p class="para">
+          标准的PHP JSON编码。此序列化程序快速而且是压缩后的数据，但是处理UTF-8编码数据时会不完全实现序列化。请查看JSON扩展。
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+json_array</dt>
+
+        <dd>
+
+         <p class="para">
+          json序列化，但是反序列化的时候返回数组。
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+php</dt>
+
+        <dd>
+
+         <p class="para">
+          PHP标准序列化
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+igbinary</dt>
+
+        <dd>
+
+         <p class="para">
+          二进制序列化
+         </p>
+        </dd>
+
+       
+      </dl>
+
+      <p class="para">
+       如果二进制序列化可用，则优先使用二进制序列化，否则使用php标准序列化。
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="ini.memcached.use-sasl">
+      <code class="parameter">memcached.use_sasl</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       链接memcached服务器时启用SASL认证。有效值On, Off。默认值是Off。
+      </p>
+     </dd>
+
+    
+
+  </dl>
+
+ 
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7521);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

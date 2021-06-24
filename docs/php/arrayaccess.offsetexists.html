@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>ArrayAccess::offsetExists - 开发帮助文档</title> 
+    <meta name="keyword" content="arrayaccess.offsetexists"> 
+    <meta name="description" content="arrayaccess.offsetexists"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1124" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/arrayaccess.offsetexists.html" title="ArrayAccess::offsetExists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    ArrayAccess::offsetExists
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/arrayaccess.offsetget.html" title="ArrayAccess::offsetGet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    ArrayAccess::offsetGet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/arrayaccess.offsetset.html" title="ArrayAccess::offsetSet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    ArrayAccess::offsetSet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/arrayaccess.offsetunset.html" title="ArrayAccess::offsetUnset">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    ArrayAccess::offsetUnset
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.arrayaccess.html">« 数组式访问</a></li>
+      <li style="float: right;"><a href="arrayaccess.offsetget.html">ArrayAccess::offsetGet »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="class.arrayaccess.html">数组式访问</a></li>
+    <li>检查一个偏移位置是否存在</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="arrayaccess.offsetexists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayAccess::offsetExists</h1>
+  <p class="verinfo">(PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">ArrayAccess::offsetExists</span> — <span class="dc-title">检查一个偏移位置是否存在</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-arrayaccess.offsetexists-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="methodname"><strong>ArrayAccess::offsetExists</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$offset</code></span>
+   ) : <span class="type">boolean</span></div>
+
+  <p class="para rdfs-comment">
+   检查一个偏移位置是否存在。
+  </p>
+  <p class="para">
+   对一个实现了 <strong class="classname">ArrayAccess</strong> 接口的对象使用 <span class="function"><a href="function.isset.html" class="function">isset()</a></span> 或 <span class="function"><a href="function.empty.html" class="function">empty()</a></span> 时，此方法将执行。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+   当使用 <span class="function"><a href="function.empty.html" class="function">empty()</a></span> 并且仅当 <span class="function"><strong>ArrayAccess::offsetExists()</strong></span> 返回 <strong><code>true</code></strong> 时，<span class="function"><a href="arrayaccess.offsetget.html" class="function">ArrayAccess::offsetGet()</a></span> 将被调用以检查是为否空。
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayaccess.offsetexists-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       需要检查的偏移位置。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayaccess.offsetexists-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    如果一个非布尔型返回值被返回，将被转换为<span class="type"><span class="type 布尔型">布尔型</span></span>。
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-arrayaccess.offsetexists-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-364">
+    <p><strong>示例 #1 <span class="function"><strong>ArrayAccess::offsetExists()</strong></span> 范例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">obj </span><span style="color: #007700">implements </span><span style="color: #0000BB">arrayaccess </span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">offsetSet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">, </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br>    }<br>    public function </span><span style="color: #0000BB">offsetExists</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br>        if (</span><span style="color: #0000BB">$var </span><span style="color: #007700">== </span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">) {<br>            return </span><span style="color: #0000BB">true</span><span style="color: #007700">;<br>        }<br>        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>    }<br>    public function </span><span style="color: #0000BB">offsetUnset</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br>    }<br>    public function </span><span style="color: #0000BB">offsetGet</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">) {<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br>        return </span><span style="color: #DD0000">"value"</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br><br>echo </span><span style="color: #DD0000">"Runs obj::offsetExists()\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br><br>echo </span><span style="color: #DD0000">"\nRuns obj::offsetExists() and obj::offsetGet()\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br><br>echo </span><span style="color: #DD0000">"\nRuns obj::offsetExists(), *not* obj:offsetGet() as there is nothing to get\n"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobaz"</span><span style="color: #007700">]));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Runs obj::offsetExists()
+string(17) "obj::offsetExists"
+bool(true)
+
+Runs obj::offsetExists() and obj::offsetGet()
+string(17) "obj::offsetExists"
+string(14) "obj::offsetGet"
+bool(false)
+
+Runs obj::offsetExists(), *not* obj:offsetGet() as there is nothing to get
+string(17) "obj::offsetExists"
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+
+
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 430);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

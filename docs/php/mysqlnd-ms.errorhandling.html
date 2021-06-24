@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>错误处理 - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-ms.errorhandling"> 
+    <meta name="description" content="mysqlnd-ms.errorhandling"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="845" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.architecture.html" title="Architecture">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Architecture
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.concept_cache.html" title="Cache integration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache integration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.concept_xa_trx.html" title="XA/Distributed transactions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    XA/Distributed transactions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.errorhandling.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.failover.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.filter.html" title="Filter">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Filter
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.gtid.html" title="Global transaction IDs">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Global transaction IDs
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.loadbalancing.html" title="负载均衡">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    负载均衡
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.pooling.html" title="连接状态">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    连接状态
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.qos-consistency.html" title="Service level and consistency">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service level and consistency
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.rwsplit.html" title="Read-write splitting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Read-write splitting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.supportedclusters.html" title="Supported clusters">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Supported clusters
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.transaction.html" title="事务控制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事务控制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-ms.transient_errors.html" title="短错误">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    短错误
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-ms.transaction.html">« 事务控制</a></li>
+      <li style="float: right;"><a href="mysqlnd-ms.transient_errors.html">短错误 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-ms.concepts.html">概念</a></li>
+    <li>错误处理</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-ms.errorhandling" class="section">
+  <h2 class="title">错误处理</h2>
+  <p class="para">
+   应用程序使用本插件，应该针对用户的 API 调用实现一些错误处理。并且由于插件
+   改变了连接控制，API 调用可能返回不可预期的错误。如果插件被用于连接控制中，
+   那么连接将不在代表一个独立的网络链接，他是一个连接池。那么一个错误编号和
+   错误消息将被设置在连接控制中，那么他可能被设置在任何一个实际的连接中。
+  </p>
+  <p class="para">
+   如果使用默认的被动连接，那么连接再实际查询执行以前是不建立实际连接的。
+   这样一个执行语句的 API 调用会产生一个连接错误。下面的范例中，当尝试在
+   slave 中执行一个语句的时候将产生一个错误。连接错误的产生是因为在配置文件中
+   没有设定一个有效的 slave。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1779">
+    <p><strong>示例 #1 Provoking a connection error</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost",
+                "socket": "\/tmp\/mysql.sock"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "invalid_host_name",
+            }
+        },
+        "lazy_connections": 1
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   明确的指定被动连接设定只是为了范例目的使用。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1780">
+    <p><strong>示例 #2 在查询执行时产生连接错误</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"username"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if (</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())<br>  </span><span style="color: #FF8000">/* Of course, your error handling is nicer... */<br>  </span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(), </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br><br></span><span style="color: #FF8000">/* 连接 1：在连接中绑定 SQL 用户定义变量，没有 SELECT 所以在 master 上运行 */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SET @myrole='master'"</span><span style="color: #007700">)) {<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #FF8000">/* 连接 2：运行 SELECT 在 slave，产生一个连接错误 */<br></span><span style="color: #007700">if (!(</span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT @myrole AS _role"</span><span style="color: #007700">))) {<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br>} else {<br> </span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">();<br> </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"@myrole = '%s'\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_role'</span><span style="color: #007700">]);<br>}<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+<div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP Warning:  mysqli::query(): php_network_getaddresses: getaddrinfo failed: Name or service not known in %s on line %d
+PHP Warning:  mysqli::query(): [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known (trying to connect via tcp://invalid_host_name:3306) in %s on line %d
+[2002] php_network_getaddresses: getaddrinfo failed: Name or service not known
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   应用程序希望通过有效的错误处理控制这种连接错误。
+  </p>
+  <p class="para">
+   处于使用的目的，应用程序应该希望控制这些错误，典型的错误内容 
+   <code class="literal">2002 (CR_CONNECTION_ERROR) - Can't connect to local MySQL server through socket '%s' (%d)</code>,
+   <code class="literal">2003 (CR_CONN_HOST_ERROR) - Can't connect to MySQL server on '%s' (%d)</code> 和
+   <code class="literal">2005 (CR_UNKNOWN_HOST) - Unknown MySQL server host '%s' (%d)</code>。
+   例如，应用程序可以判断这些错误编号，进而手动的执行某些错误处理。插件并不会自动的进行
+   这些错误处理，包括 master 错误处理，因为这些并不是透明的操作。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1781">
+    <p><strong>示例 #3 产生一个连接错误</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    "myapp": {
+        "master": {
+            "master_0": {
+                "host": "localhost"
+            }
+        },
+        "slave": {
+            "slave_0": {
+                "host": "invalid_host_name"
+            },
+            "slave_1": {
+                "host": "192.168.78.136"
+            }
+        },
+        "lazy_connections": 1,
+        "filters": {
+            "roundrobin": [
+
+            ]
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   明确的指定被动连接只为了进行范例使用，包括使用默认的负载均衡策略
+   <code class="literal">random once</code>。
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1782">
+    <p><strong>示例 #4 非常基础的错误处理</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">, </span><span style="color: #DD0000">"username"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if (</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">())<br>  </span><span style="color: #FF8000">/* Of course, your error handling is nicer... */<br>  </span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(), </span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br><br></span><span style="color: #FF8000">/* Connection 1, connection bound SQL user variable, no SELECT thus run on master */<br></span><span style="color: #007700">if (!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SET @myrole='master'"</span><span style="color: #007700">)) {<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d] %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br>}<br><br></span><span style="color: #FF8000">/* 连接 2：第一个 Slave 执行 */<br></span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT VERSION() AS _version"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* 强硬的进行错误处理 */<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">2002 </span><span style="color: #007700">== </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">|| </span><span style="color: #0000BB">2003 </span><span style="color: #007700">== </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno </span><span style="color: #007700">|| </span><span style="color: #0000BB">2004 </span><span style="color: #007700">== </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">) {<br>  </span><span style="color: #FF8000">/* 连接 3：第一个 slave 连接失败，尝试下一个 slave 连接 */<br>  </span><span style="color: #0000BB">$res </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT VERSION() AS _version"</span><span style="color: #007700">);<br>}<br><br>if (!</span><span style="color: #0000BB">$res</span><span style="color: #007700">) {<br>  </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"ERROR, [%d] '%s'\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br>} else {<br> </span><span style="color: #FF8000">/* 从连接 3 中获取错误信息，他并没有错误 */<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"SUCCESS, [%d] '%s'\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">);<br> </span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">();<br> </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br> </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"version = %s\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_version'</span><span style="color: #007700">]);<br>}<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+<div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+[1045] Access denied for user 'username'@'localhost' (using password: YES)
+PHP Warning:  mysqli::query(): php_network_getaddresses: getaddrinfo failed: Name or service not known in %s on line %d
+PHP Warning:  mysqli::query(): [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known (trying to connect via tcp://invalid_host_name:3306) in %s on line %d
+SUCCESS, [0] ''
+version = 5.6.2-m5-log
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   由于一些原因，连接控制并不可能很容易在所有网络连接中检查所有的错误。
+   例如，我们假设在连接池中有 3 个网络链接，一个连接是 master 连接，2个是 slave 链接。
+   应用程序通过 <span class="function"><a href="mysqli.select-db.html" class="function">mysqli_select_db()</a></span> API 调用改变当前操作数据库，
+   插件监控到这个函数，并且尝试更改当前的所有连接来统一他们的链接状态。如果 master
+   已经成功的更改了数据库，两个 slave 连接更改失败，那么在使用第一个 slave 连接的时候，
+   其中会包含一个连接错误。对于第二个 slave 链接也是一样的，那么在第一个 slave 上的
+   错误信息将被丢失。
+  </p>
+  <p class="para">
+   这种情况下，可以通过检查 <code class="literal">E_WARNING</code> 类型的错误，或者检查
+   <a href="mysqlnd-ms.plugin-ini-json.html#mysqlnd-ms.debugging" class="link">mysqlnd_ms debug and trace log</a>。
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8263);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

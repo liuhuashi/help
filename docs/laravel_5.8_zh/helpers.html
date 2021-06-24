@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的辅助函数列表 - 开发帮助文档</title> 
+    <meta name="keyword" content="helpers"> 
+    <meta name="description" content="helpers"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的辅助函数列表</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#available-methods">可用方法</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>Laravel 包含各种各样的全局「辅助」PHP 函数，框架本身也大量地使用了这些功能；如果你觉得方便，你可以在你的应用中自由的使用它们。</p>
+<p><a name="available-methods"></a></p>
+<h2>可用方法</h2>
+<style>
+    .collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    .collection-method-list a {
+        display: block;
+    }
+</style>
+<h3>数组 &amp; 对象</h3>
+<div class="collection-method-list">
+<p><a href="#method-array-add">array_add</a>
+<a href="#method-array-collapse">array_collapse</a>
+<a href="#method-array-divide">array_divide</a>
+<a href="#method-array-dot">array_dot</a>
+<a href="#method-array-except">array_except</a>
+<a href="#method-array-first">array_first</a>
+<a href="#method-array-flatten">array_flatten</a>
+<a href="#method-array-forget">array_forget</a>
+<a href="#method-array-get">array_get</a>
+<a href="#method-array-has">array_has</a>
+<a href="#method-array-last">array_last</a>
+<a href="#method-array-only">array_only</a>
+<a href="#method-array-pluck">array_pluck</a>
+<a href="#method-array-prepend">array_prepend</a>
+<a href="#method-array-pull">array_pull</a>
+<a href="#method-array-random">array_random</a>
+<a href="#method-array-set">array_set</a>
+<a href="#method-array-sort">array_sort</a>
+<a href="#method-array-sort-recursive">array_sort_recursive</a>
+<a href="#method-array-where">array_where</a>
+<a href="#method-array-wrap">array_wrap</a>
+<a href="#method-data-fill">data_fill</a>
+<a href="#method-data-get">data_get</a>
+<a href="#method-data-set">data_set</a>
+<a href="#method-head">head</a>
+<a href="#method-last">last</a></p>
+</div>
+<h3>路径</h3>
+<div class="collection-method-list">
+<p><a href="#method-app-path">app_path</a>
+<a href="#method-base-path">base_path</a>
+<a href="#method-config-path">config_path</a>
+<a href="#method-database-path">database_path</a>
+<a href="#method-mix">mix</a>
+<a href="#method-public-path">public_path</a>
+<a href="#method-resource-path">resource_path</a>
+<a href="#method-storage-path">storage_path</a></p>
+</div>
+<h3>字符串</h3>
+<div class="collection-method-list">
+<p><a href="#method-__">__</a>
+<a href="#method-camel-case">camel_case</a>
+<a href="#method-class-basename">class_basename</a>
+<a href="#method-e">e</a>
+<a href="#method-ends-with">ends_with</a>
+<a href="#method-kebab-case">kebab_case</a>
+<a href="#method-preg-replace-array">preg_replace_array</a>
+<a href="#method-snake-case">snake_case</a>
+<a href="#method-starts-with">starts_with</a>
+<a href="#method-str-after">str_after</a>
+<a href="#method-str-before">str_before</a>
+<a href="#method-str-contains">str_contains</a>
+<a href="#method-str-finish">str_finish</a>
+<a href="#method-str-is">str_is</a>
+<a href="#method-str-limit">str_limit</a>
+<a href="#method-str-plural">str_plural</a>
+<a href="#method-str-random">str_random</a>
+<a href="#method-str-replace-array">str_replace_array</a>
+<a href="#method-str-replace-first">str_replace_first</a>
+<a href="#method-str-replace-last">str_replace_last</a>
+<a href="#method-str-singular">str_singular</a>
+<a href="#method-str-slug">str_slug</a>
+<a href="#method-str-start">str_start</a>
+<a href="#method-studly-case">studly_case</a>
+<a href="#method-title-case">title_case</a>
+<a href="#method-trans">trans</a>
+<a href="#method-trans-choice">trans_choice</a></p>
+</div>
+<h3>URLs</h3>
+<div class="collection-method-list">
+<p><a href="#method-action">action</a>
+<a href="#method-asset">asset</a>
+<a href="#method-secure-asset">secure_asset</a>
+<a href="#method-route">route</a>
+<a href="#method-secure-url">secure_url</a>
+<a href="#method-url">url</a></p>
+</div>
+<h3>其他</h3>
+<div class="collection-method-list">
+<p><a href="#method-abort">abort</a>
+<a href="#method-abort-if">abort_if</a>
+<a href="#method-abort-unless">abort_unless</a>
+<a href="#method-app">app</a>
+<a href="#method-auth">auth</a>
+<a href="#method-back">back</a>
+<a href="#method-bcrypt">bcrypt</a>
+<a href="#method-blank">blank</a>
+<a href="#method-broadcast">broadcast</a>
+<a href="#method-cache">cache</a>
+<a href="#method-class-uses-recursive">class_uses_recursive</a>
+<a href="#method-collect">collect</a>
+<a href="#method-config">config</a>
+<a href="#method-cookie">cookie</a>
+<a href="#method-csrf-field">csrf_field</a>
+<a href="#method-csrf-token">csrf_token</a>
+<a href="#method-dd">dd</a>
+<a href="#method-decrypt">decrypt</a>
+<a href="#method-dispatch">dispatch</a>
+<a href="#method-dispatch-now">dispatch_now</a>
+<a href="#method-dump">dump</a>
+<a href="#method-encrypt">encrypt</a>
+<a href="#method-env">env</a>
+<a href="#method-event">event</a>
+<a href="#method-factory">factory</a>
+<a href="#method-filled">filled</a>
+<a href="#method-info">info</a>
+<a href="#method-logger">logger</a>
+<a href="#method-method-field">method_field</a>
+<a href="#method-now">now</a>
+<a href="#method-old">old</a>
+<a href="#method-optional">optional</a>
+<a href="#method-policy">policy</a>
+<a href="#method-redirect">redirect</a>
+<a href="#method-report">report</a>
+<a href="#method-request">request</a>
+<a href="#method-rescue">rescue</a>
+<a href="#method-resolve">resolve</a>
+<a href="#method-response">response</a>
+<a href="#method-retry">retry</a>
+<a href="#method-session">session</a>
+<a href="#method-tap">tap</a>
+<a href="#method-today">today</a>
+<a href="#method-throw-if">throw_if</a>
+<a href="#method-throw-unless">throw_unless</a>
+<a href="#method-trait-uses-recursive">trait_uses_recursive</a>
+<a href="#method-transform">transform</a>
+<a href="#method-validator">validator</a>
+<a href="#method-value">value</a>
+<a href="#method-view">view</a>
+<a href="#method-with">with</a></p>
+</div>
+<p><a name="method-listing"></a></p>
+<h2>方法列表</h2>
+<style>
+    #collection-method code {
+        font-size: 14px;
+    }
+
+    #collection-method:not(.first-collection-method) {
+        margin-top: 50px;
+    }
+</style>
+<p><a name="arrays"></a></p>
+<h2>数组</h2>
+<p><a name="method-array-add"></a></p>
+<h4 id="collection-method" class="first-collection-method"><code>array_add()</code></h4>
+<p>如果给定的健不在数组中，那么 <code>array_add</code> 函数将会把给定的键/值对添加到数组中：</p>
+<pre><code>$array = array_add(['name' =&gt; 'Desk'], 'price', 100);
+
+// ['name' =&gt; 'Desk', 'price' =&gt; 100]</code></pre>
+<p><a name="method-array-collapse"></a></p>
+<h4 id="collection-method"><code>array_collapse()</code></h4>
+<p><code>array_collapse</code> 函数将多个单数组合并成一个数组：</p>
+<pre><code>$array = array_collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<p><a name="method-array-divide"></a></p>
+<h4 id="collection-method"><code>array_divide()</code></h4>
+<p><code>array_divide</code> 函数返回两个数组，一个包含原始数组的健，另一个包含原始数组的值：</p>
+<pre><code>list($keys, $values) = array_divide(['name' =&gt; 'Desk']);
+
+// $keys: ['name']
+
+// $values: ['Desk']</code></pre>
+<p><a name="method-array-dot"></a></p>
+<h4 id="collection-method"><code>array_dot()</code></h4>
+<p><code>array_dot</code> 函数将多维数组平铺到一维数组中，该数组使用「点」符号表示深度：</p>
+<pre><code>$array = array_dot(['foo' =&gt; ['bar' =&gt; 'baz']]);
+
+// ['foo.bar' =&gt; 'baz'];</code></pre>
+<p><a name="method-array-except"></a></p>
+<h4 id="collection-method"><code>array_except()</code></h4>
+<p><code>array_except</code> 函数从数组中删除给定的键/值对：</p>
+<pre><code>$array = ['name' =&gt; 'Desk', 'price' =&gt; 100];
+
+$array = array_except($array, ['price']);
+
+// ['name' =&gt; 'Desk']</code></pre>
+<p><a name="method-array-first"></a></p>
+<h4 id="collection-method"><code>array_first()</code></h4>
+<p><code>array_first</code> 函数返回数组中第一个通过指定测试的元素：</p>
+<pre><code>$array = [100, 200, 300];
+
+$value = array_first($array, function ($value, $key) {
+    return $value &gt;= 150;
+});
+
+// 200</code></pre>
+<p>将默认值作为第三个参数传递给该方法。如果没有值通过测试，则返回该值：</p>
+<pre><code>$value = array_first($array, $callback, $default);</code></pre>
+<p><a name="method-array-flatten"></a></p>
+<h4 id="collection-method"><code>array_flatten()</code></h4>
+<p><code>array_flatten</code> 函数将多维数组平铺为一维数组。</p>
+<pre><code>$array = ['name' =&gt; 'Joe', 'languages' =&gt; ['PHP', 'Ruby']];
+
+$array = array_flatten($array);
+
+// ['Joe', 'PHP', 'Ruby'];</code></pre>
+<p><a name="method-array-forget"></a></p>
+<h4 id="collection-method"><code>array_forget()</code></h4>
+<p><code>array_forget</code> 函数使用「点」符号从深度嵌套数组中移除给定的键/值对：</p>
+<pre><code>$array = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+array_forget($array, 'products.desk');
+
+// ['products' =&gt; []]</code></pre>
+<p><a name="method-array-get"></a></p>
+<h4 id="collection-method"><code>array_get()</code></h4>
+<p><code>array_get</code> 函数使用「点」符号从深度嵌套的数组中检索值：</p>
+<pre><code>$array = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+$value = array_get($array, 'products.desk');
+
+// ['price' =&gt; 100]</code></pre>
+<p><code>array_get</code> 函数也接受一个默认值，如果没有找到指定的健，则返回该值：</p>
+<pre><code>$value = array_get($array, 'names.john', 'default');</code></pre>
+<p><a name="method-array-has"></a></p>
+<h4 id="collection-method"><code>array_has()</code></h4>
+<p><code>array_has</code> 函数使用「点」符号检查数组中是否存在给定的项目或项目组：</p>
+<pre><code>$array = ['product' =&gt; ['name' =&gt; 'desk', 'price' =&gt; 100]];
+
+$hasItem = array_has($array, 'product.name');
+
+// true
+
+$hasItems = array_has($array, ['product.price', 'product.discount']);
+
+// false</code></pre>
+<p><a name="method-array-last"></a></p>
+<h4 id="collection-method"><code>array_last()</code></h4>
+<p><code>array_last</code> 函数返回数组中最后一个通过指定测试的元素：</p>
+<pre><code>$array = [100, 200, 300, 110];
+
+$value = array_last($array, function ($value, $key) {
+    return $value &gt;= 150;
+});
+
+// 300</code></pre>
+<p>将默认值作为第三个参数传递给该方法。如果没有值通过测试，则返回该值：</p>
+<pre><code>$last = array_last($array, $callback, $default);</code></pre>
+<p><a name="method-array-only"></a></p>
+<h4 id="collection-method"><code>array_only()</code></h4>
+<p><code>array_only</code> 函数仅返回给定数组中指定的键/值对：</p>
+<pre><code>$array = ['name' =&gt; 'Desk', 'price' =&gt; 100, 'orders' =&gt; 10];
+
+$array = array_only($array, ['name', 'price']);
+
+// ['name' =&gt; 'Desk', 'price' =&gt; 100]</code></pre>
+<p><a name="method-array-pluck"></a></p>
+<h4 id="collection-method"><code>array_pluck()</code></h4>
+<p><code>array_pluck</code> 函数从数组中检索给定键的所有值：</p>
+<pre><code>$array = [
+    ['developer' =&gt; ['id' =&gt; 1, 'name' =&gt; 'Taylor']],
+    ['developer' =&gt; ['id' =&gt; 2, 'name' =&gt; 'Abigail']],
+];
+
+$array = array_pluck($array, 'developer.name');
+
+// ['Taylor', 'Abigail'];</code></pre>
+<p>你也可以指定生成的列表的键：</p>
+<pre><code>$array = array_pluck($array, 'developer.name', 'developer.id');
+
+// [1 =&gt; 'Taylor', 2 =&gt; 'Abigail'];</code></pre>
+<p><a name="method-array-prepend"></a></p>
+<h4 id="collection-method"><code>array_prepend()</code></h4>
+<p><code>array_prepend</code> 函数将一个项目推到数组的开头：</p>
+<pre><code>$array = ['one', 'two', 'three', 'four'];
+
+$array = array_prepend($array, 'zero');
+
+// $array: ['zero', 'one', 'two', 'three', 'four']</code></pre>
+<p>你可以指定用于该值的键：</p>
+<pre><code>$array = ['price' =&gt; 100];
+
+$array = array_prepend($array, 'Desk', 'name');
+
+// ['name' =&gt; 'Desk', 'price' =&gt; 100]</code></pre>
+<p><a name="method-array-pull"></a></p>
+<h4 id="collection-method"><code>array_pull()</code></h4>
+<p><code>array_pull</code> 函数返回并从数组中删除键/值对：</p>
+<pre><code>$array = ['name' =&gt; 'Desk', 'price' =&gt; 100];
+
+$name = array_pull($array, 'name');
+
+// $name: Desk
+
+// $array: ['price' =&gt; 100]</code></pre>
+<p>将默认值作为第三个参数传递给该方法。如果键不存在，则返回该值：</p>
+<pre><code>$value = array_pull($array, $key, $default);</code></pre>
+<p><a name="method-array-random"></a></p>
+<h4 id="collection-method"><code>array_random()</code></h4>
+<p><code>array_random</code> 函数从数组中返回一个随机值：</p>
+<pre><code>$array = [1, 2, 3, 4, 5];
+
+$random = array_random($array);
+
+// 4 - (随机获取)</code></pre>
+<p>你也可以指定要返回的随机数的数量作为第二个可选参数。一旦你指定了第二个参数，即使数量为 1，这个函数也会返回一个数组：</p>
+<pre><code>$items = array_random($array, 2);
+
+// [2, 5] - (随机获取)</code></pre>
+<p><a name="method-array-set"></a></p>
+<h4 id="collection-method"><code>array_set()</code></h4>
+<p><code>array_set</code> 函数使用「点」符号在深度嵌套的数组中设置一个值：</p>
+<pre><code>$array = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+array_set($array, 'products.desk.price', 200);
+
+// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 200]]]</code></pre>
+<p><a name="method-array-sort"></a></p>
+<h4 id="collection-method"><code>array_sort()</code></h4>
+<p><code>array_sort</code> 函数按照其值排序数组：</p>
+<pre><code>$array = ['Desk', 'Table', 'Chair'];
+
+$sorted = array_sort($array);
+
+// ['Chair', 'Desk', 'Table']</code></pre>
+<p>你也可以按给定的闭包返回的结果对数组进行排序：</p>
+<pre><code>$array = [
+    ['name' =&gt; 'Desk'],
+    ['name' =&gt; 'Table'],
+    ['name' =&gt; 'Chair'],
+];
+
+$sorted = array_values(array_sort($array, function ($value) {
+    return $value['name'];
+}));
+
+/*
+    [
+        ['name' =&gt; 'Chair'],
+        ['name' =&gt; 'Desk'],
+        ['name' =&gt; 'Table'],
+    ]
+*/</code></pre>
+<p><a name="method-array-sort-recursive"></a></p>
+<h4 id="collection-method"><code>array_sort_recursive()</code></h4>
+<p><code>array_sort_recursive</code> 函数使用 <code>sort</code> 函数递归排序数组：</p>
+<pre><code>$array = [
+    ['Roman', 'Taylor', 'Li'],
+    ['PHP', 'Ruby', 'JavaScript'],
+];
+
+$sorted = array_sort_recursive($array);
+
+/*
+    [
+        ['Li', 'Roman', 'Taylor'],
+        ['JavaScript', 'PHP', 'Ruby'],
+    ]
+*/</code></pre>
+<p><a name="method-array-where"></a></p>
+<h4 id="collection-method"><code>array_where()</code></h4>
+<p><code>array_where</code> 函数使用给定的闭包来过滤数组：</p>
+<pre><code>$array = [100, '200', 300, '400', 500];
+
+$array = array_where($array, function ($value, $key) {
+    return is_string($value);
+});
+
+// [1 =&gt; 200, 3 =&gt; 400]</code></pre>
+<p><a name="method-array-wrap"></a></p>
+<h4 id="collection-method"><code>array_wrap()</code></h4>
+<p><code>array_wrap</code> 函数将给定的值包装成一个数组。如果给定的值已经是一个数组，则不会被改变：</p>
+<pre><code>$string = 'Laravel';
+
+$array = array_wrap($string);
+
+// [0 =&gt; 'Laravel']</code></pre>
+<p><a name="method-data-fill"></a></p>
+<h4 id="collection-method"><code>data_fill()</code></h4>
+<p><code>data_fill</code> 函数使用「点」符号在嵌套数组或对象内设置缺少的值：</p>
+<pre><code>$data = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+data_fill($data, 'products.desk.price', 200);
+
+// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]]
+
+data_fill($data, 'products.desk.discount', 10);
+
+// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100, 'discount' =&gt; 10]]]</code></pre>
+<p>该函数也接受星号「*」作为通配符，并相应地填写目标：</p>
+<pre><code>$data = [
+    'products' =&gt; [
+        ['name' =&gt; 'Desk 1', 'price' =&gt; 100],
+        ['name' =&gt; 'Desk 2'],
+    ],
+];
+
+data_fill($data, 'products.*.price', 200);
+
+/*
+    [
+        'products' =&gt; [
+            ['name' =&gt; 'Desk 1', 'price' =&gt; 100],
+            ['name' =&gt; 'Desk 2', 'price' =&gt; 200],
+        ],
+    ]
+*/</code></pre>
+<p><a name="method-data-get"></a></p>
+<h4 id="collection-method"><code>data_get()</code></h4>
+<p><code>data_get</code> 函数使用「点」符号从嵌套数组或对象中检索值：</p>
+<pre><code>$data = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+$price = data_get($data, 'products.desk.price');
+
+// 100</code></pre>
+<p><code>data_get</code> 函数还接受默认值作为第三个参数，如果找不到指定的键，将返回该值：</p>
+<pre><code>$discount = data_get($data, 'products.desk.discount', 0);
+
+// 0</code></pre>
+<p><a name="method-data-set"></a></p>
+<h4 id="collection-method"><code>data_set()</code></h4>
+<p><code>data_set</code> 函数使用「点」符号在嵌套数组或对象内设置一个值：</p>
+<pre><code>$data = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+data_set($data, 'products.desk.price', 200);
+
+// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 200]]]</code></pre>
+<p>这个函数也接受通配符「*」，并相应地在目标上设置值：</p>
+<pre><code>    $data = [
+        'products' =&gt; [
+            ['name' =&gt; 'Desk 1', 'price' =&gt; 100],
+            ['name' =&gt; 'Desk 2', 'price' =&gt; 150],
+        ],
+    ];
+
+    data_set($data, 'products.*.price', 200);
+
+    /*
+        [
+            'products' =&gt; [
+                ['name' =&gt; 'Desk 1', 'price' =&gt; 200],
+                ['name' =&gt; 'Desk 2', 'price' =&gt; 200],
+            ],
+        ]
+    */</code></pre>
+<p>默认情况下，所有现有的值都会被覆盖。如果你只想设置一个不存在值，你可以传递 <code>false</code> 作为第三个参数：</p>
+<pre><code>$data = ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]];
+
+data_set($data, 'products.desk.price', 200, false);
+
+// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 100]]]</code></pre>
+<p><a name="method-head"></a></p>
+<h4 id="collection-method"><code>head()</code></h4>
+<p><code>head</code> 函数返回给定数组中的第一个元素：</p>
+<pre><code>$array = [100, 200, 300];
+
+$first = head($array);
+
+// 100</code></pre>
+<p><a name="method-last"></a></p>
+<h4 id="collection-method"><code>last()</code></h4>
+<p><code>last</code> 函数返回给定数组中的最后一个元素：</p>
+<pre><code>$array = [100, 200, 300];
+
+$last = last($array);
+
+// 300</code></pre>
+<p><a name="paths"></a></p>
+<h2>路径</h2>
+<p><a name="method-app-path"></a></p>
+<h4 id="collection-method"><code>app_path()</code></h4>
+<p><code>app_path</code> 返回 <code>app</code> 目录的完整路径。你还可以使用 <code>app_path</code> 函数来生成相对于 <code>app</code> 目录的文件完整路径：</p>
+<pre><code>$path = app_path();
+
+$path = app_path('Http/Controllers/Controller.php');</code></pre>
+<p><a name="method-base-path"></a></p>
+<h4 id="collection-method"><code>base_path()</code></h4>
+<p><code>base_path</code> 函数返回项目根目录的完整路径。你还可以使用 <code>base_path</code> 函数生成指定文件相对于项目根目录的完整路径：</p>
+<pre><code>$path = base_path();
+
+$path = base_path('vendor/bin');</code></pre>
+<p><a name="method-config-path"></a></p>
+<h4 id="collection-method"><code>config_path()</code></h4>
+<p><code>config_path</code> 函数返回应用程序配置目录的完整路径。你也可以使用 <code>config_path</code> 函数来生成应用程序配置目录中给定文件的完整路径：</p>
+<pre><code>$path = config_path();</code></pre>
+<p><a name="method-database-path"></a></p>
+<h4 id="collection-method"><code>database_path()</code></h4>
+<p><code>database_path</code> 函数返回应用程序数据库目录的完整路径。你也可以使用 <code>database_path</code> 函数来生成数据库目录中给定文件的完整路径：</p>
+<pre><code>$path = database_path();</code></pre>
+<p><a name="method-mix"></a></p>
+<h4 id="collection-method"><code>mix()</code></h4>
+<p><code>mix</code> 函数获取 <a href="/docs/laravel_5.8_zh/mix.html">版本化 Mix 文件</a> 的路径：</p>
+<pre><code>mix($file);</code></pre>
+<p><a name="method-public-path"></a></p>
+<h4 id="collection-method"><code>public_path()</code></h4>
+<p><code>public_path</code> 函数返回 <code>public</code> 目录的完整路径。你也可以使用 <code>public_path</code> 函数来生成 <code>public</code> 目录中给定文件的完整路径：</p>
+<pre><code>$path = public_path();</code></pre>
+<p><a name="method-resource-path"></a></p>
+<h4 id="collection-method"><code>resource_path()</code></h4>
+<p><code>resource_path</code> 函数返回 <code>resources</code> 目录的完整路径。你也可以使用 <code>resource_path</code> 函数来生成相对于资源目录的指定文件的完整路径：</p>
+<pre><code>$path = resource_path();
+
+$path = resource_path('assets/sass/app.scss');</code></pre>
+<p><a name="method-storage-path"></a></p>
+<h4 id="collection-method"><code>storage_path()</code></h4>
+<p><code>storage_path</code> 函数返回 <code>storage</code> 目录的完整路径。你也可以使用 <code>storage_path</code> 来生成相对于储存目录的指定文件的完整路径：</p>
+<pre><code>$path = storage_path();
+
+$path = storage_path('app/file.txt');</code></pre>
+<p><a name="strings"></a></p>
+<h2>字符串</h2>
+<p><a name="method-__"></a></p>
+<h4 id="collection-method"><code>__()</code></h4>
+<p><code>__</code> 函数使用你的 <a href="/docs/laravel_5.8_zh/localization.html">本地化文件</a> 来翻译给定的翻译字符串或翻译键：</p>
+<pre><code>echo __('Welcome to our application');
+
+echo __('messages.welcome');</code></pre>
+<p>如果指定的翻译字符串或键不存在，则 <code>__</code> 函数会简单地返回给定的值。所以，按照上面的例子，如果翻译键 <code>messages.welcome</code> 不存在，<code>__</code> 方法会将其直接返回。</p>
+<p><a name="method-camel-case"></a></p>
+<h4 id="collection-method"><code>camel_case()</code></h4>
+<p><code>camel_case</code> 函数将给定的值符传转换为「驼峰命名」：</p>
+<pre><code>$camel = camel_case('foo_bar');
+
+// fooBar</code></pre>
+<p><a name="method-class-basename"></a></p>
+<h4 id="collection-method"><code>class_basename()</code></h4>
+<p><code>class_basename</code> 返回给定类删除命名空间的类名：</p>
+<pre><code>$class = class_basename('Foo\Bar\Baz');
+
+// Baz</code></pre>
+<p><a name="method-e"></a></p>
+<h4 id="collection-method"><code>e()</code></h4>
+<p><code>e</code> 函数将 <code>double_encode</code> 选项设置为 <code>false</code> 来运行 PHP 的 <code>htmlspecialchars</code> 函数：</p>
+<pre><code>echo e('&lt;html&gt;foo&lt;/html&gt;');
+
+// &amp;lt;html&amp;gt;foo&amp;lt;/html&amp;gt;</code></pre>
+<p><a name="method-ends-with"></a></p>
+<h4 id="collection-method"><code>ends_with()</code></h4>
+<p><code>ends_with</code> 函数判断给定的字符串是否以给定的值结尾：</p>
+<pre><code>$value = ends_with('This is my name', 'name');
+
+// true</code></pre>
+<p><a name="method-kebab-case"></a></p>
+<h4 id="collection-method"><code>kebab_case()</code></h4>
+<p><code>kebab_case</code> 函数将给定的字符串转换为「短横线命名」：</p>
+<pre><code>$value = kebab_case('fooBar');
+
+// foo-bar</code></pre>
+<p><a name="method-preg-replace-array"></a></p>
+<h4><code>preg_replace_array()</code></h4>
+<p><code>preg_replace_array</code> 函数使用数组顺序替换字符串中的给定模式：</p>
+<pre><code>$string = '活动将在 :start 和 :end 之间进行';
+
+$replaced = preg_replace_array('/:[a-z_]+/', ['8:30', '9:00'], $string);
+
+// 活动将在 8:30 至 9:00 之间进行</code></pre>
+<p><a name="method-snake-case"></a></p>
+<h4 id="collection-method"><code>snake_case()</code></h4>
+<p><code>snake_case</code> 函数将给定的字符串转换为「蛇形命名」：</p>
+<pre><code>$snake = snake_case('fooBar');
+
+// foo_bar</code></pre>
+<p><a name="method-starts-with"></a></p>
+<h4 id="collection-method"><code>starts_with()</code></h4>
+<p><code>starts_with</code> 函数判断给定的字符串的开头是否是指定值：</p>
+<pre><code>$value = starts_with('This is my name', 'This');
+
+// true
+</code></pre>
+<p><a name="method-str-after"></a></p>
+<h4 id="collection-method"><code>str_after()</code></h4>
+<p><code>str_after</code> 函数返回字符串中指定值之后的所有内容：</p>
+<pre><code>$slice = str_after('This is my name', 'This is');
+
+// ' my name'</code></pre>
+<p><a name="method-str-before"></a></p>
+<h4 id="collection-method"><code>str_before()</code></h4>
+<p><code>str_before</code> 函数返回字符串中给定值之前的所有内容：</p>
+<pre><code>$slice = str_before('This is my name', 'my name');
+
+// 'This is '</code></pre>
+<p><a name="method-str-contains"></a></p>
+<h4 id="collection-method"><code>str_contains()</code></h4>
+<p><code>str_contains</code> 函数判断给定的字符串是否包含给定的值：</p>
+<pre><code>$value = str_contains('This is my name', 'my');
+
+// true</code></pre>
+<p>你也可以传递一个值的数组来判断给定的字符串是否包含任何值：</p>
+<pre><code>$value = str_contains('This is my name', ['my', 'foo']);
+
+// true</code></pre>
+<p><a name="method-str-finish"></a></p>
+<h4 id="collection-method"><code>str_finish()</code></h4>
+<p><code>str_finish</code> 函数将给定字符串以给定值结尾返回（如果它尚未以给定值结尾）：</p>
+<pre><code>$string = str_finish('this/string', '/');
+
+// this/string/
+
+$string2 = str_finish('this/string/', '/');
+
+// this/string/</code></pre>
+<p><a name="method-str-is"></a></p>
+<h4 id="collection-method"><code>str_is()</code></h4>
+<p><code>str_is</code> 函数判断给定的字符串是否匹配给定的模式。星号可以用来表示通配符：</p>
+<pre><code>$value = str_is('foo*', 'foobar');
+
+// true
+
+$value = str_is('baz*', 'foobar');
+
+// false</code></pre>
+<p><a name="method-str-limit"></a></p>
+<h4 id="collection-method"><code>str_limit()</code></h4>
+<p><code>str_limit</code> 函数按给定的长度截断给定的字符串：</p>
+<pre><code>$truncated = str_limit('The quick brown fox jumps over the lazy dog', 20);
+
+// The quick brown fox...</code></pre>
+<p>你也可以传递第三个参数来改变将被追加到最后的字符串：</p>
+<pre><code>$truncated = str_limit('The quick brown fox jumps over the lazy dog', 20, ' (...)');
+
+// The quick brown fox (...)</code></pre>
+<p><a name="method-str-plural"></a></p>
+<h4 id="collection-method"><code>str_plural()</code></h4>
+<p><code>str_plural</code> 函数将字符串转换为复数形式。这个函数目前仅支持英文：</p>
+<pre><code>$plural = str_plural('car');
+
+// cars
+
+$plural = str_plural('child');
+
+// children</code></pre>
+<p>你可以提供一个整数作为函数的第二个参数来检索字符串的单数或复数形式：</p>
+<pre><code>$plural = str_plural('child', 2);
+
+// children
+
+$plural = str_plural('child', 1);
+
+// child</code></pre>
+<p><a name="method-str-random"></a></p>
+<h4 id="collection-method"><code>str_random()</code></h4>
+<p><code>str_random</code> 函数生成一个指定长度的随机字符串。这个函数数用 PHP 的 <code>random_bytes</code> 函数：</p>
+<pre><code>$string = str_random(40);</code></pre>
+<h4 id="collection-method"><code>str_replace_array()</code></h4>
+<p><code>str_replace_array</code> 函数使用数组顺序替换字符串中的给定值：</p>
+<pre><code>$string = 'The event will take place between ? and ?';
+
+$replaced = str_replace_array('?', ['8:30', '9:00'], $string);
+
+// The event will take place between 8:30 and 9:00</code></pre>
+<p><a name="method-str-replace-first"></a></p>
+<h4 id="collection-method"><code>str_replace_first()</code></h4>
+<p><code>str_replace_first</code> 函数替换字符串中给定值的第一个匹配项：</p>
+<pre><code>$replaced = str_replace_first('the', 'a', 'the quick brown fox jumps over the lazy dog');
+
+// a quick brown fox jumps over the lazy dog</code></pre>
+<p><a name="method-str-replace-last"></a></p>
+<h4 id="collection-method"><code>str_replace_last()</code></h4>
+<p><code>str_replace_last</code> 函数替换字符串中最后一次出现的给定值：</p>
+<pre><code>$replaced = str_replace_last('the', 'a', 'the quick brown fox jumps over the lazy dog');
+
+// the quick brown fox jumps over a lazy dog</code></pre>
+<p><a name="method-str-singular"></a></p>
+<h4 id="collection-method"><code>str_singular()</code></h4>
+<p><code>str_singular</code> 函数将字符串转换为单数形式。这个函数目前仅支持英文：</p>
+<pre><code>$singular = str_singular('cars');
+
+// car</code></pre>
+<p><a name="method-str-slug"></a></p>
+<h4 id="collection-method"><code>str_slug()</code></h4>
+<p><code>str_slug</code> 函数根据给定的字符串生成一个 URL 友好的「slug」：</p>
+<pre><code>$title = str_slug('Laravel 5 Framework', '-');
+
+// laravel-5-framework</code></pre>
+<p><a name="method-str-start"></a></p>
+<h4 id="collection-method"><code>str_start()</code></h4>
+<p><code>str_start</code> 函数将给定值的单个实例添加到字符串（如果它尚未以值开始）：</p>
+<pre><code>$adjusted = str_start('this/string', '/');
+
+// /this/string
+
+$adjusted = str_start('/this/string/', '/');
+
+// /this/string</code></pre>
+<p><a name="method-studly-case"></a></p>
+<h4 id="collection-method"><code>studly_case()</code></h4>
+<p><code>studly_case</code> 函数将给定的字符串转换为「变种驼峰命名」：</p>
+<pre><code>$value = studly_case('foo_bar');
+
+// FooBar</code></pre>
+<p><a name="method-title-case"></a></p>
+<h4 id="collection-method"><code>title_case()</code></h4>
+<p><code>title_case</code> 函数将给定的字符串转换为「首字母大写」：</p>
+<pre><code>$title = title_case('a nice title uses the correct case');
+
+// A Nice Title Uses The Correct Case</code></pre>
+<p><a name="method-trans"></a></p>
+<h4 id="collection-method"><code>trans()</code></h4>
+<p><code>trans</code> 函数使用你的 <a href="/docs/laravel_5.8_zh/localization.html">本地化文件</a> 来翻译给定的翻译字符串或翻译键：</p>
+<pre><code>echo trans('messages.welcome');</code></pre>
+<p>如果指定的翻译键不存在，则 <code>trans</code> 方法会简单地返回给定的键。所以，就上面的例子而言，如果翻译键不存在， <code>trans</code> 方法会返回 <code>messages.welcome</code>。</p>
+<p><a name="method-trans-choice"></a></p>
+<h4 id="collection-method"><code>trans_choice()</code></h4>
+<p><code>trans_choice</code> 函数根据词形变化来翻译给定的翻译键：</p>
+<pre><code>echo trans_choice('messages.notifications', $unreadCount);</code></pre>
+<p>如果指定的翻译键不存在，<code>trans_choice</code> 方法会简单地返回给定的键。所以，按照上面的例子，如果翻译键不存在，<code>trans_choice</code> 方法会返回 <code>messages.notifications</code>。</p>
+<p><a name="urls"></a></p>
+<h2>URLs</h2>
+<p><a name="method-action"></a></p>
+<h4 id="collection-method"><code>action()</code></h4>
+<p><code>action</code> 函数为指定的控制器动作生成一个 URL。你不需要传递完整的控制器命名空间。只需要传递相对于 <code>App\Http\Controllers</code> 的命名空间的控制器类名称：</p>
+<pre><code>$url = action('HomeController@getIndex');</code></pre>
+<p>如果该方法接受路由参数，则可以将它们作为方法的第二个参数传递：</p>
+<pre><code>$url = action('UserController@profile', ['id' =&gt; 1]);</code></pre>
+<p><a name="method-asset"></a></p>
+<h4 id="collection-method"><code>asset()</code></h4>
+<p><code>asset</code> 函数使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成 URL：</p>
+<pre><code>$url = asset('img/photo.jpg');</code></pre>
+<p><a name="method-secure-asset"></a></p>
+<h4 id="collection-method"><code>secure_asset()</code></h4>
+<p><code>secure_asset</code> 函数使用 HTTPS 协议为资源文件生成 URL:</p>
+<pre><code>echo secure_asset('foo/bar.zip');</code></pre>
+<p><a name="method-route"></a></p>
+<h4 id="collection-method"><code>route()</code></h4>
+<p><code>route</code> 函数为给定的命名路由生成一个 URL：</p>
+<pre><code>$url = route('routeName');</code></pre>
+<p>如果路由接受参数，则可以将它们作为方法的第二个参数传递：</p>
+<pre><code>$url = route('routeName', ['id' =&gt; 1]);</code></pre>
+<p>默认情况下，<code>route</code> 函数生成的是绝对 URL。如果你想生成一个相对 URL，你可以传递 <code>false</code> 作为第三个参数：</p>
+<pre><code>$url = route('routeName', ['id' =&gt; 1], false);</code></pre>
+<p><a name="method-secure-url"></a></p>
+<h4 id="collection-method"><code>secure_url()</code></h4>
+<p><code>secure_url</code> 函数为给定的路径生成一个标准的 HTTPS URL：</p>
+<pre><code>echo secure_url('user/profile');
+
+echo secure_url('user/profile', [1]);</code></pre>
+<p><a name="method-url"></a></p>
+<h4 id="collection-method"><code>url()</code></h4>
+<p><code>url</code> 函数生成给定路径的标准 URL：</p>
+<pre><code>echo url('user/profile');
+
+echo url('user/profile', [1]);</code></pre>
+<p>如果没有提供路径，则返回 <code>Illuminate\Routing\UrlGenerator</code> 实例：</p>
+<pre><code>echo url()-&gt;current();
+echo url()-&gt;full();
+echo url()-&gt;previous();</code></pre>
+<p><a name="miscellaneous"></a></p>
+<h2>其他</h2>
+<p><a name="method-abort"></a></p>
+<h4 id="collection-method"><code>abort()</code></h4>
+<p><code>abort</code> 函数抛出 <a href="/docs/laravel_5.8_zh/errors.html#the-exception-handler">异常处理</a> 程序呈现的 <a href="/docs/laravel_5.8_zh/errors.html#http-exceptions">HTTP 异常</a>：</p>
+<pre><code>abort(401);</code></pre>
+<p>你也可以提供额外的响应文本和自定义响应标头：</p>
+<pre><code>abort(403, 'Unauthorized.', $headers);</code></pre>
+<p><a name="method-abort-if"></a></p>
+<h4 id="collection-method"><code>abort_if()</code></h4>
+<p>如果给定的布尔表达式计算结果为 <code>true</code>， <code>abort_if</code> 函数将抛出一个 HTTP 异常：</p>
+<pre><code>abort_if(! Auth::user()-&gt;isAdmin(), 403);</code></pre>
+<p>和 <code>abort</code> 方法一样，你也可以提供异常的响应文本作为第三个参数，并提供一个自定义响应头数组作为第四个参数。</p>
+<p><a name="method-abort-unless"></a></p>
+<h4 id="collection-method"><code>abort_unless()</code></h4>
+<p>如果给定的布尔表达式计算结果为 <code>false</code>，<code>abort_unless</code> 函数将抛出一个 HTTP 异常：</p>
+<pre><code>abort_unless(Auth::user()-&gt;isAdmin(), 403);</code></pre>
+<p>和 <code>abort</code> 方法一样，你也可以提供异常的响应文本作为第三个参数，并提供一个自定义响应头数组作为第四个参数。</p>
+<p><a name="method-app"></a></p>
+<h4 id="collection-method"><code>app()</code></h4>
+<p><code>app</code> 函数返回 <a href="/docs/laravel_5.8_zh/container.html">服务容器</a> 实例</p>
+<pre><code>$container = app();</code></pre>
+<p>你可以传递一个类或接口名称来从容器中解析它：</p>
+<pre><code>$api = app('HelpSpot\API');</code></pre>
+<p><a name="method-auth"></a></p>
+<h4 id="collection-method"><code>auth()</code></h4>
+<p><code>auth</code> 函数返回一个 <a href="/docs/laravel_5.8_zh/authentication.html">认证</a> 实例。为了方便起见，你可以使用它来替代 <code>Auth</code> facade：</p>
+<pre><code>$user = auth()-&gt;user();</code></pre>
+<p>如果需要，你可以指定你想要访问的认证实例：</p>
+<pre><code>$user = auth('admin')-&gt;user();</code></pre>
+<p><a name="method-back"></a></p>
+<h4 id="collection-method"><code>back()</code></h4>
+<p><code>back()</code> 函数生成一个 <a href="/docs/laravel_5.8_zh/responses.html#redirects">重定向 HTTP 响应</a> 到用户之前的位置：</p>
+<pre><code>return back($status = 302, $headers = [], $fallback = false);
+
+return back();</code></pre>
+<p><a name="method-bcrypt"></a></p>
+<h4 id="collection-method"><code>bcrypt()</code></h4>
+<p><code>bcrypt</code> 使用 Bcrypt 对给定的值进行散列。你可以使用它替代 <code>Hash</code> facade：</p>
+<pre><code>$password = bcrypt('my-secret-password');</code></pre>
+<p><a name="method-broadcast"></a></p>
+<h4 id="collection-method"><code>broadcast()</code></h4>
+<p><code>broadcast</code> 函数将 <a href="/docs/laravel_5.8_zh/broadcasting">广播</a> 给定的 <a href="/docs/laravel_5.html.8_zh/events">事件</a> 到它的监听器：</p>
+<pre><code>broadcast(new UserRegistered($user));</code></pre>
+<p><a name="method-blank"></a></p>
+<h4 id="collection-method"><code>blank()</code></h4>
+<p><code>blank</code> 函数判断给定的值是否为「空」：</p>
+<pre><code>blank('');
+blank('   ');
+blank(null);
+blank(collect());
+
+// true
+
+blank(0);
+blank(true);
+blank(false);
+
+// false</code></pre>
+<p>要使用与 <code>blank</code> 相反的功能，请看 <a href="/docs/laravel_5.8_zh/helpers.html#method-filled">filled</a> 方法。</p>
+<p><a name="method-cache"></a></p>
+<h4 id="collection-method"><code>cache()</code></h4>
+<p><code>cache</code> 函数可以用来从缓存中获取值。如果缓存中不存在给定的健，则返回一个可选的默认值：</p>
+<pre><code>$value = cache('key');
+
+$value = cache('key', 'default');</code></pre>
+<p>你可以通过将一组键/值对传递给函数来将其添加到缓存中。与此同时，你还应该传递有效的分钟数或持续时间作为缓存过期时间：</p>
+<pre><code>cache(['key' =&gt; 'value'], 5);
+
+cache(['key' =&gt; 'value'], Carbon::now()-&gt;addSeconds(10));</code></pre>
+<p><a name="method-class-uses-recursive"></a></p>
+<h4 id="collection-method"><code>class_uses_recursive()</code></h4>
+<p><code>class_uses_recursive</code> 函数返回一个类使用的所有 traits，包括任何子类使用的 traits：</p>
+<pre><code>$traits = class_uses_recursive(App\User::class);</code></pre>
+<p><a name="method-collect"></a></p>
+<h4 id="collection-method"><code>collect()</code></h4>
+<p><code>collect</code> 函数根据给定的数组创建一个 <a href="/docs/laravel_5.8_zh/collections.html">集合</a> 实例：</p>
+<pre><code>$collection = collect(['taylor', 'abigail']);</code></pre>
+<p><a name="method-config"></a></p>
+<h4 id="collection-method"><code>config()</code></h4>
+<p><code>config</code> 函数获取 <a href="/docs/laravel_5.8_zh/configuration.html">配置</a> 变量的值。可以使用「点」语法访问配置值，其中包括文件的名称和希望访问的选项。如果配置选项不存在，则可以指定一个默认值并返回：</p>
+<pre><code>$value = config('app.timezone');
+
+$value = config('app.timezone', $default);</code></pre>
+<p>可以在运行时通过传递一组键/值对来设置配置变量：</p>
+<pre><code>config(['app.debug' =&gt; true]);</code></pre>
+<p><a name="method-cookie"></a></p>
+<h4 id="collection-method"><code>cookie()</code></h4>
+<p><code>cookie</code> 函数创建一个新的 <a href="/docs/laravel_5.8_zh/requests.html#cookies">cookie</a> 实例：</p>
+<pre><code>$cookie = cookie('name', 'value', $minutes);</code></pre>
+<p><a name="method-csrf-field"></a></p>
+<h4 id="collection-method"><code>csrf_field()</code></h4>
+<p><code>csrf_field</code> 函数生成包含 CSRF 令牌值的 HTML <code>hidden</code> 表单字段。例如，使用 <a href="/docs/laravel_5.8_zh/blade.html">Blade 语法</a>：</p>
+<pre><code>{{ csrf_field() }}</code></pre>
+<p><a name="method-csrf-token"></a></p>
+<h4 id="collection-method"><code>csrf_token()</code></h4>
+<p><code>csrf_token</code> 函数获取当前 CSRF 令牌的值：</p>
+<pre><code>$token = csrf_token();</code></pre>
+<p><a name="method-dd"></a></p>
+<h4 id="collection-method"><code>dd()</code></h4>
+<p><code>dd</code> 函数输出给定的值并结束脚本运行：</p>
+<pre><code>dd($value);
+
+dd($value1, $value2, $value3, ...);</code></pre>
+<p>如果你不想终止脚本运行，请改用 <code>dump</code> 函数。</p>
+<p><a name="method-decrypt"></a></p>
+<h4 id="collection-method"><code>decrypt()</code></h4>
+<p><code>decrypt</code> 函数使用 Laravel 的 <a href="/docs/laravel_5.8_zh/encryption.html">加密器</a> 来解密给定的值：</p>
+<pre><code>$decrypted = decrypt($encrypted_value);</code></pre>
+<p><a name="method-dispatch"></a></p>
+<h4 id="collection-method"><code>dispatch()</code></h4>
+<p><code>dispatch</code> 函数将给定的 <a href="/docs/laravel_5.8_zh/queues.html#creating-jobs">任务</a> 推送到 Laravel <a href="/docs/laravel_5.8_zh/queues.html">任务列队</a> 中：</p>
+<pre><code>dispatch(new App\Jobs\SendEmails);</code></pre>
+<p><a name="method-dispatch-now"></a></p>
+<h4 id="collection-method"><code>dispatch_now()</code></h4>
+<p><code>dispatch_now</code> 函数立即运行给定的 <a href="/docs/laravel_5.8_zh/queues.html#creating-jobs">任务</a>，并从其 <code>handle</code> 方法返回值：</p>
+<pre><code>$result = dispatch_now(new App\Jobs\SendEmails);</code></pre>
+<p><a name="method-dump"></a></p>
+<h4 id="collection-method"><code>dump()</code></h4>
+<p><code>dump</code> 函数打印给定的变量：</p>
+<pre><code>dump($value);
+
+dump($value1, $value2, $value3, ...);</code></pre>
+<p>如果要在打印变量后停止执行脚本，请改用 <a href="#method-dd"><code>dd</code></a> 函数。</p>
+<p><a name="method-encrypt"></a></p>
+<h4 id="collection-method"><code>encrypt()</code></h4>
+<p><code>encrypt</code> 函数使用 Laravel 的 <a href="/docs/laravel_5.8_zh/encryption.html">加密器</a> 对给定的值进行加密：</p>
+<pre><code>$encrypted = encrypt($unencrypted_value);</code></pre>
+<p><a name="method-env"></a></p>
+<h4 id="collection-method"><code>env()</code></h4>
+<p><code>env</code> 函数获取 <a href="/docs/laravel_5.8_zh/configuration.html#environment-configuration">环境变量</a> 的值或者返回默认值：</p>
+<pre><code>$env = env('APP_ENV');
+
+// 如果环境变量不存在则返回默认值...
+$env = env('APP_ENV', 'production');</code></pre>
+<p><a name="method-event"></a></p>
+<h4 id="collection-method"><code>event()</code></h4>
+<p><code>event</code> 函数将给定的 <a href="/docs/laravel_5.8_zh/events.html">事件</a> 分派给它的监听器：</p>
+<pre><code>event(new UserRegistered($user));</code></pre>
+<p><a name="method-factory"></a></p>
+<h4 id="collection-method"><code>factory()</code></h4>
+<p><code>factory</code> 函数根据给定的类、名称和数量创建一个模型工厂构建器。可以在 <a href="/docs/laravel_5.8_zh/database-testing.html#writing-factories">测试</a> or <a href="/docs/laravel_5.8_zh/seeding.html#using-model-factories">数据填充</a> 中使用：</p>
+<pre><code>$user = factory(App\User::class)-&gt;make();</code></pre>
+<p><a name="method-filled"></a></p>
+<h4 id="collection-method"><code>filled()</code></h4>
+<p><code>filled</code> 函数判断给定的值是否不为「空」：</p>
+<pre><code>filled(0);
+filled(true);
+filled(false);
+
+// true
+
+filled('');
+filled('   ');
+filled(null);
+filled(collect());
+
+// false</code></pre>
+<p>要使用与 <code>filled</code> 相反的功能，请看 <a href="/docs/laravel_5.8_zh/helpers.html#method-blank">blank</a> 方法。</p>
+<p><a name="method-info"></a></p>
+<h4 id="collection-method"><code>info()</code></h4>
+<p><code>info</code> 函数将信息写入日志：</p>
+<pre><code>info('Some helpful information!');</code></pre>
+<p>有前后关系的数组也可以传递给函数：</p>
+<pre><code>info('User login attempt failed.', ['id' =&gt; $user-&gt;id]);</code></pre>
+<p><a name="method-logger"></a></p>
+<h4 id="collection-method"><code>logger()</code></h4>
+<p><code>logger</code> 函数可以将一个 <code>debug</code> 级别的消息写入到 <a href="/docs/laravel_5.8_zh/errors.html#logging">日志</a> 中：</p>
+<pre><code>logger('Debug message');</code></pre>
+<p>有前后关系的数组也可以传递给函数：</p>
+<pre><code>logger('User has logged in.', ['id' =&gt; $user-&gt;id]);</code></pre>
+<p>如果没有传值给函数则返回 <a href="/docs/laravel_5.8_zh/errors.html#logging">日志</a> 的实例：</p>
+<pre><code>logger()-&gt;error('You are not allowed here.');</code></pre>
+<p><a name="method-method-field"></a></p>
+<h4 id="collection-method"><code>method_field()</code></h4>
+<p><code>method_field</code> 函数生成一个 HTML <code>hidden</code> 表单字段，其中包含表单的 HTTP 动作的欺骗值。例如，使用 <a href="/docs/laravel_5.8_zh/blade.html">Blade 语法</a>：</p>
+<pre><code>&lt;form method="POST"&gt;
+    {{ method_field('DELETE') }}
+&lt;/form&gt;</code></pre>
+<p><a name="method-now"></a></p>
+<h4 id="collection-method"><code>now()</code></h4>
+<p><code>now</code> 函数为当前时间创建一个新的 <code>Illuminate\Support\Carbon</code> 实例:</p>
+<pre><code>$now = now();</code></pre>
+<p><a name="method-old"></a></p>
+<h4 id="collection-method"><code>old()</code></h4>
+<p><code>old</code> 函数 <a href="/docs/laravel_5.8_zh/requests.html#retrieving-input">获取</a> 会话中闪存的 <a href="/docs/laravel_5.8_zh/requests.html#old-input">旧输入</a> 值：</p>
+<pre><code>$value = old('value');
+
+$value = old('value', 'default');</code></pre>
+<p><a name="method-optional"></a></p>
+<h4 id="collection-method"><code>optional()</code></h4>
+<p><code>optional</code> 函数可以接受任何参数，并且允许你访问该对象的属性或者调用方法。如果给定的对象是 <code>null</code> ， 那么属性和方法会简单地返回 <code>null</code> 而不是产生一个错误：</p>
+<pre><code>return optional($user-&gt;address)-&gt;street;
+
+{!! old('name', optional($user)-&gt;name) !!}</code></pre>
+<p><a name="method-policy"></a></p>
+<h4 id="collection-method"><code>policy()</code></h4>
+<p><code>policy</code> 方法为给定的类获取一个 <a href="/docs/laravel_5.8_zh/authorization.html#creating-policies">策略</a> 实例：</p>
+<pre><code>$policy = policy(App\User::class);</code></pre>
+<p><a name="method-redirect"></a></p>
+<h4 id="collection-method"><code>redirect()</code></h4>
+<p><code>redirect</code> 函数返回一个 <a href="/docs/laravel_5.8_zh/responses.html#redirects">重定向 HTTP 响应</a>，如果没有没有传入参数，则返回重定向实例：</p>
+<pre><code>return redirect('/home');
+
+return redirect()-&gt;route('route.name');</code></pre>
+<p><a name="method-report"></a></p>
+<h4 id="collection-method"><code>report()</code></h4>
+<p><code>report</code> 函数将使用 <a href="/docs/laravel_5.8_zh/errors.html#the-exception-handler">异常处理程序</a> 的 <code>report</code> 方法抛出异常：</p>
+<pre><code>report($e);</code></pre>
+<p><a name="method-request"></a></p>
+<h4 id="collection-method"><code>request()</code></h4>
+<p><code>request</code> 函数返回当前 <a href="/docs/laravel_5.8_zh/requests.html">请求</a> 实例或者获取输入项：</p>
+<pre><code>$request = request();
+
+$value = request('key', $default = null)</code></pre>
+<p><a name="method-rescue"></a></p>
+<h4 id="collection-method"><code>rescue()</code></h4>
+<p><code>rescue</code> 函数执行给定的闭包并捕获执行期间发生的任何异常。所有被捕获的异常将被发送到你的 <a href="/docs/laravel_5.8_zh/errors.html#the-exception-handler">异常处理程序</a> 的 <code>report</code> 方法。要注意的是，该请求将继续处理：</p>
+<pre><code>return rescue(function () {
+    return $this-&gt;method();
+});</code></pre>
+<p>你也可以将第二个参数传递给 <code>rescue</code> 方法。如果在执行闭包时发生异常，这个参数将是应该返回的默认值：</p>
+<pre><code>return rescue(function () {
+    return $this-&gt;method();
+}, false);
+
+return rescue(function () {
+    return $this-&gt;method();
+}, function () {
+    return $this-&gt;failure();
+});</code></pre>
+<p><a name="method-resolve"></a></p>
+<h4 id="collection-method"><code>resolve()</code></h4>
+<p><code>resolve</code> 函数使用 <a href="/docs/laravel_5.8_zh/container.html">服务容器</a> 将给定的类或接口名称解析为其实例：</p>
+<pre><code>$api = resolve('HelpSpot\API');</code></pre>
+<p><a name="method-response"></a></p>
+<h4 id="collection-method"><code>response()</code></h4>
+<p><code>response</code> 函数创建 <a href="/docs/laravel_5.8_zh/responses.html">响应</a> 实例或者获取响应工厂实例：</p>
+<pre><code>return response('Hello World', 200, $headers);
+
+return response()-&gt;json(['foo' =&gt; 'bar'], 200, $headers);</code></pre>
+<p><a name="method-retry"></a></p>
+<h4 id="collection-method"><code>retry()</code></h4>
+<p><code>retry</code> 函数尝试执行给定的回调，直到到达给定的最大尝试次数。如果回调没有抛出异常，则返回值将被返回。如果回调抛出异常，它将自动重试。如果超过最大尝试次数，则会抛出异常：</p>
+<pre><code>return retry(5, function () {
+    // 在 100ms 左右尝试 5 次...
+}, 100);</code></pre>
+<p><a name="method-session"></a></p>
+<h4 id="collection-method"><code>session()</code></h4>
+<p><code>session</code> 函数可以用来获取或者设置 <a href="/docs/laravel_5.8_zh/session.html">Session</a> 值：</p>
+<pre><code>$value = session('key');</code></pre>
+<p>你可以通过将一组键/值对传递给该函数来设置值：</p>
+<pre><code>session(['chairs' =&gt; 7, 'instruments' =&gt; 3]);</code></pre>
+<p>如果没有传递值给函数，则返回 Session 实例：</p>
+<pre><code>$value = session()-&gt;get('key');
+
+session()-&gt;put('key', $value);</code></pre>
+<p><a name="method-tap"></a></p>
+<h4 id="collection-method"><code>tap()</code></h4>
+<p><code>tap</code> 函数接受两个参数：一个任意的 <code>$value</code> 和一个闭包。<code>$value</code> 将被传递给闭包，然后由 <code>tap</code> 函数返回。不需要在闭包中使用 <code>return</code> 返回值。</p>
+<pre><code>$user = tap(User::first(), function ($user) {
+    $user-&gt;name = 'taylor';
+
+    $user-&gt;save();
+});</code></pre>
+<p>如果没有闭包被传递给 <code>tap</code> 函数，你可以调用给定 <code>$value</code> 的任何方法。而你调用的方法的返回值始终为 <code>$value</code> ，无论方法在其定义中实际返回的是什么。例如，Eloquent 的 <code>update</code> 方法通常会返回一个整数。但是，我们可以强制通过 <code>tap</code> 函数链式调用 <code>update</code> 方法来返回模型本身：</p>
+<pre><code>$user = tap($user)-&gt;update([
+    'name' =&gt; $name,
+    'email' =&gt; $email,
+]);</code></pre>
+<p><a name="method-today"></a></p>
+<h4 id="collection-method"><code>today()</code></h4>
+<p><code>today</code> 函数为当前日期创建一个新的 <code>Illuminate\Support\Carbon</code> 实例:</p>
+<pre><code>$today = today();</code></pre>
+<p><a name="method-throw-if"></a></p>
+<h4 id="collection-method"><code>throw_if()</code></h4>
+<p>如果给定的布尔表达式计算结果为 <code>true</code>，<code>throw_if</code> 函数抛出给定的异常：</p>
+<pre><code>throw_if(! Auth::user()-&gt;isAdmin(), AuthorizationException::class);
+
+throw_if(
+    ! Auth::user()-&gt;isAdmin(),
+    AuthorizationException::class,
+    'You are not allowed to access this page'
+);</code></pre>
+<p><a name="method-throw-unless"></a></p>
+<h4 id="collection-method"><code>throw_unless()</code></h4>
+<p>如果给定的布尔表达式计算结果为<code>false</code>，则 <code>throw_unless</code>函数会抛出给定的异常：</p>
+<pre><code>throw_unless(Auth::user()-&gt;isAdmin(), AuthorizationException::class);
+
+throw_unless(
+    Auth::user()-&gt;isAdmin(),
+    AuthorizationException::class,
+    'You are not allowed to access this page'
+);</code></pre>
+<p><a name="method-trait-uses-recursive"></a></p>
+<h4 id="collection-method"><code>trait_uses_recursive()</code></h4>
+<p><code>trait_uses_recursive</code> 函数返回一个类使用的所有 trait：</p>
+<pre><code>$traits = trait_uses_recursive(\Illuminate\Notifications\Notifiable::class);</code></pre>
+<p><a name="method-transform"></a></p>
+<h4 id="collection-method"><code>transform()</code></h4>
+<p>如果给定的值不为空，那么 <code>transform</code> 函数对给定的值执行闭包并返回其结果：</p>
+<pre><code>$callback = function ($value) {
+    return $value * 2;
+};
+
+$result = transform(5, $callback);
+
+// 10</code></pre>
+<p>默认值或闭包也可以作为方法的第三个参数传递。如果给定值为空白，则返回该值：</p>
+<pre><code>$result = transform(null, $callback, 'The value is blank');
+
+// The value is blank</code></pre>
+<p><a name="method-validator"></a></p>
+<h4 id="collection-method"><code>validator()</code></h4>
+<p><code>validator</code> 函数用给定的参数创建一个新的 <a href="/docs/laravel_5.8_zh/validation.html">验证器</a> 实例。为方便起见，你可以使用它来代替 <code>Validator</code> facade ：</p>
+<pre><code>$validator = validator($data, $rules, $messages);</code></pre>
+<p><a name="method-value"></a></p>
+<h4 id="collection-method"><code>value()</code></h4>
+<p><code>value</code> 函数返回给定的值。但是，如果将一个闭包传递给该函数，则将执行该闭包并返回其结果：</p>
+<pre><code>$result = value(true);
+
+// true
+
+$result = value(function () {
+    return false;
+});
+
+// false</code></pre>
+<p><a name="method-view"></a></p>
+<h4 id="collection-method"><code>view()</code></h4>
+<p><code>view</code> 函数获取一个 <a href="/docs/laravel_5.8_zh/views.html">视图</a> 实例：</p>
+<pre><code>return view('auth.login');</code></pre>
+<p><a name="method-with"></a></p>
+<h4 id="collection-method"><code>with()</code></h4>
+<p><code>with</code> 函数会返回给定的值。如果传入一个闭包作为该函数的第二个参数，会返回闭包执行的结果：</p>
+<pre><code>$callback = function ($value) {
+    return (is_numeric($value)) ? $value * 2 : 0;
+};
+
+$result = with(5, $callback);
+
+// 10
+
+$result = with(null, $callback);
+
+// 0
+
+$result = with(5, null);
+
+// 5</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 180);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Memcache类 - 开发帮助文档</title> 
+    <meta name="keyword" content="class.memcache"> 
+    <meta name="description" content="class.memcache"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="345" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.memcache.html" title="Memcache类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Memcache类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.memcache.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.memcache.html" title="Memcache 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Memcache 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcache.examples-overview.html">« </a></li>
+      <li style="float: right;"><a href="memcache.add.html">Memcache::add »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.memcache.html">Memcache</a></li>
+    <li>Memcache类</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.memcache" class="reference">
+
+ <h1 class="title">Memcache类</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL memcache &gt;= 0.2.0)</p>
+
+
+  <div class="section" id="memcache.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    表示连接到一个服务器组的连接。
+   </p>
+  </div>
+
+
+  <div class="section" id="memcache.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">Memcache</strong>
+     </span>
+     {</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.add.html" class="methodname">add</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.addserver.html" class="methodname">addServer</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$persistent</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$weight</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$retry_interval</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$status</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type"><span class="type callback">callback</span></span> <code class="parameter">$failure_callback</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeoutms</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.close.html" class="methodname">close</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.connect.html" class="methodname">connect</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.decrement.html" class="methodname">decrement</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code><span class="initializer"> = 1</span></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.delete.html" class="methodname">delete</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = 0</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.flush.html" class="methodname">flush</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.get.html" class="methodname">get</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&amp;$flags</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.getextendedstats.html" class="methodname">getExtendedStats</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$slabid</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = 100</span></span>
+   ) : <span class="type">array</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.getserverstatus.html" class="methodname">getServerStatus</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.getstats.html" class="methodname">getStats</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$slabid</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = 100</span></span>
+   ) : <span class="type">array</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.getversion.html" class="methodname">getVersion</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.increment.html" class="methodname">increment</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code><span class="initializer"> = 1</span></span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.pconnect.html" class="methodname">pconnect</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.replace.html" class="methodname">replace</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.set.html" class="methodname">set</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.setcompressthreshold.html" class="methodname">setCompressThreshold</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$threshold</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$min_savings</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="methodname"><a href="memcache.setserverparams.html" class="methodname">setServerParams</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$retry_interval</code><span class="initializer"> = false</span></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$status</code><span class="initializer"> = ?</span></span>
+   , <span class="methodparam"><span class="type"><span class="type callback">callback</span></span> <code class="parameter">$failure_callback</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type">bool</span></div>
+
+   }</div>
+
+
+  </div>
+  
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="memcache.add.html">Memcache::add</a> — 增加一个条目到缓存服务器</li><li><a href="memcache.addserver.html">Memcache::addServer</a> — 向连接池中添加一个memcache服务器</li><li><a href="memcache.close.html">Memcache::close</a> — 关闭memcache连接</li><li><a href="memcache.connect.html">Memcache::connect</a> — 打开一个memcached服务端连接</li><li><a href="memcache.decrement.html">Memcache::decrement</a> — 减小元素的值</li><li><a href="memcache.delete.html">Memcache::delete</a> — 从服务端删除一个元素</li><li><a href="memcache.flush.html">Memcache::flush</a> — 清洗（删除）已经存储的所有的元素</li><li><a href="memcache.get.html">Memcache::get</a> — 从服务端检回一个元素</li><li><a href="memcache.getextendedstats.html">Memcache::getExtendedStats</a> — 缓存服务器池中所有服务器统计信息</li><li><a href="memcache.getserverstatus.html">Memcache::getServerStatus</a> — 用于获取一个服务器的在线/离线状态</li><li><a href="memcache.getstats.html">Memcache::getStats</a> — 获取服务器统计信息</li><li><a href="memcache.getversion.html">Memcache::getVersion</a> — 返回服务器版本信息</li><li><a href="memcache.increment.html">Memcache::increment</a> — 增加一个元素的值</li><li><a href="memcache.pconnect.html">Memcache::pconnect</a> — 打开一个到服务器的持久化连接</li><li><a href="memcache.replace.html">Memcache::replace</a> — 替换已经存在的元素的值</li><li><a href="memcache.set.html">Memcache::set</a> — Store data at the server</li><li><a href="memcache.setcompressthreshold.html">Memcache::setCompressThreshold</a> — 开启大值自动压缩</li><li><a href="memcache.setserverparams.html">Memcache::setServerParams</a> — 运行时修改服务器参数和状态</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 884);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

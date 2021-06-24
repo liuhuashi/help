@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>基本用法 - 开发帮助文档</title> 
+    <meta name="keyword" content="session.examples.basic"> 
+    <meta name="description" content="session.examples.basic"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="244" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.customhandler.html" title="自定义会话管理器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义会话管理器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.examples.basic.html" title="基本用法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基本用法
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.idpassing.html" title="传送会话ID">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    传送会话ID
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.examples.html">« 范例</a></li>
+      <li style="float: right;"><a href="session.idpassing.html">传送会话ID »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="session.examples.html">范例</a></li>
+    <li>基本用法</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.examples.basic" class="section">
+  <h2 class="title">基本用法</h2>
+   <p class="para">
+    通过为每个独立用户分配唯一的会话 ID，可以实现针对不同用户分别存储数据的功能。
+    会话通常被用来在多个页面请求之间保存及共享信息。
+    一般来说，会话 ID 通过 cookie 的方式发送到浏览器，并且在服务器端也是通过会话 ID 来取回会话中的数据。
+    如果请求中不包含会话 ID 信息，那么 PHP 就会创建一个新的会话，并为新创建的会话分配新的 ID。
+   </p>
+   <p class="para">
+    会话的工作流程很简单。当开始一个会话时，PHP 会尝试从请求中查找会话 ID （通常通过会话 cookie），
+    如果请求中不包含会话 ID 信息，PHP 就会创建一个新的会话。
+    会话开始之后，PHP 就会将会话中的数据设置到 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 变量中。
+    当 PHP 停止的时候，它会自动读取 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 中的内容，并将其进行序列化，
+    然后发送给会话保存管理器来进行保存。
+   </p>
+   <p class="para">
+    默认情况下，PHP 使用内置的文件会话保存管理器（<code class="parameter">files</code>）来完成会话的保存。
+    也可以通过配置项 <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> 来修改所要采用的会话保存管理器。
+    对于文件会话保存管理器，会将会话数据保存到配置项
+    <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a> 所指定的位置。
+   </p>
+   <p class="para">
+    可以通过调用函数 <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> 来手动开始一个会话。
+    如果配置项 <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a> 设置为<code class="parameter">1</code>，
+    那么请求开始的时候，会话会自动开始。
+   </p>
+   <p class="para">
+    PHP 脚本执行完毕之后，会话会自动关闭。
+    同时，也可以通过调用函数 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 来手动关闭会话。
+   </p>
+  <p class="para">
+   </p><div class="example" id="example-4784">
+    <p><strong>示例 #1 
+     在 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 中注册变量。
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>session_start</span><span style="color: #007700">();<br>if (!isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">])) {<br>  </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">] = </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>} else {<br>  </span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]++;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-4785">
+    <p><strong>示例 #2 
+     从 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 中反注册变量。
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>session_start</span><span style="color: #007700">();<br>unset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="caution"><strong class="caution">警告</strong>
+    <p class="para">
+     千万不要使用 <code class="literal">unset($_SESSION)</code> 来复位超级变量 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>，
+     因为这样会导致无法继续在 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var> 
+     中注册会话变量。
+    </p>
+   </div>
+  
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    由于无法将一个引用恢复到另外一个变量，
+    所以不可以将引用保存到会话变量中。
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    无论是通过调用函数 <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> 手动开启会话，
+    还是使用配置项 <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a> 自动开启会话，
+    对于基于文件的会话数据保存（PHP 的默认行为）而言，
+    在会话开始的时候都会给会话数据文件加锁，
+    直到 PHP 脚本执行完毕或者显式调用 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 来保存会话数据。
+    在此期间，其他脚本不可以访问同一个会话数据文件。
+   </p>
+   <p class="para">
+    对于大量使用 Ajax 或者并发请求的网站而言，这可能是一个严重的问题。
+    解决这个问题最简单的做法是如果修改了会话中的变量，
+    那么应该尽快调用 <span class="function"><a href="function.session-write-close.html" class="function">session_write_close()</a></span> 来保存会话数据并释放文件锁。
+    还有一种选择就是使用支持并发操作的会话保存管理器来替代文件会话保存管理器。
+   </p>
+  </blockquote>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9639);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

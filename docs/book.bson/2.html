@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>BSON type classes and serialization functions - 第2页 - 开发帮助文档</title> 
+    <meta name="keyword" content="book.bson"> 
+    <meta name="description" content="记录技术开发日志，提供php,go,python,c++,nsis,前端,服务器等技术教程"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section>
+    <div class="container main-h4-1">
+        <div class="row">
+            <div class="col-12 col-md-3 order-md-1">
+    <h4 class="text-secondary justify-content-between">分类展示
+        <div class="d-inline-flex align-items-center">
+            <span></span><span></span><span></span>
+        </div>
+    </h4>
+    <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/php/index.html">php</a>
+                    <span class="badge badge-primary badge-pill">11</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/funcref/index.html">函数参考</a>
+                    <span class="badge badge-primary badge-pill">26</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/refs.database/index.html">数据库扩展</a>
+                    <span class="badge badge-primary badge-pill">2</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/refs.database.vendors/index.html">针对各数据库系统对应的扩展</a>
+                    <span class="badge badge-primary badge-pill">11</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/set.mongodb/index.html">MongoDB driver</a>
+                    <span class="badge badge-primary badge-pill">8</span>
+                </li>
+                                                <li class="bg-warning list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/book.bson/index.html">BSON type classes and serialization functions</a>
+                    <span class="badge badge-primary badge-pill">27</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-undefined/index.html">The MongoDB\BSON\Undefined class (deprecated)</a>
+                    <span class="badge badge-primary badge-pill">5</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-symbol/index.html">The MongoDB\BSON\Symbol class (deprecated)</a>
+                    <span class="badge badge-primary badge-pill">5</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-int64/index.html">The MongoDB\BSON\Int64 class</a>
+                    <span class="badge badge-primary badge-pill">5</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-dbpointer/index.html">The MongoDB\BSON\DBPointer class (deprecated)</a>
+                    <span class="badge badge-primary badge-pill">5</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-utcdatetimeinterface/index.html">The MongoDB\BSON\UTCDateTimeInterface interface</a>
+                    <span class="badge badge-primary badge-pill">2</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-timestampinterface/index.html">The MongoDB\BSON\TimestampInterface interface</a>
+                    <span class="badge badge-primary badge-pill">3</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-regexinterface/index.html">The MongoDB\BSON\RegexInterface interface</a>
+                    <span class="badge badge-primary badge-pill">3</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-objectidinterface/index.html">The MongoDB\BSON\ObjectIdInterface interface</a>
+                    <span class="badge badge-primary badge-pill">2</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-javascriptinterface/index.html">The MongoDB\BSON\JavascriptInterface interface</a>
+                    <span class="badge badge-primary badge-pill">3</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-decimal128interface/index.html">The MongoDB\BSON\Decimal128Interface interface</a>
+                    <span class="badge badge-primary badge-pill">1</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-binaryinterface/index.html">The MongoDB\BSON\BinaryInterface interface</a>
+                    <span class="badge badge-primary badge-pill">3</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-unserializable/index.html">The MongoDB\BSON\Unserializable interface</a>
+                    <span class="badge badge-primary badge-pill">1</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-serializable/index.html">The MongoDB\BSON\Serializable interface</a>
+                    <span class="badge badge-primary badge-pill">1</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-utcdatetime/index.html">The MongoDB\BSON\UTCDateTime class</a>
+                    <span class="badge badge-primary badge-pill">6</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-timestamp/index.html">The MongoDB\BSON\Timestamp class</a>
+                    <span class="badge badge-primary badge-pill">7</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-regex/index.html">The MongoDB\BSON\Regex class</a>
+                    <span class="badge badge-primary badge-pill">7</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-objectid/index.html">The MongoDB\BSON\ObjectId class</a>
+                    <span class="badge badge-primary badge-pill">6</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-minkey/index.html">The MongoDB\BSON\MinKey class</a>
+                    <span class="badge badge-primary badge-pill">4</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-maxkey/index.html">The MongoDB\BSON\MaxKey class</a>
+                    <span class="badge badge-primary badge-pill">4</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-javascript/index.html">The MongoDB\BSON\Javascript class</a>
+                    <span class="badge badge-primary badge-pill">7</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-decimal128/index.html">The MongoDB\BSON\Decimal128 class</a>
+                    <span class="badge badge-primary badge-pill">5</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/class.mongodb-bson-binary/index.html">The MongoDB\BSON\Binary class</a>
+                    <span class="badge badge-primary badge-pill">7</span>
+                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/docs/ref.bson.functions/index.html">函数</a>
+                    <span class="badge badge-primary badge-pill">6</span>
+                </li>
+                        </ul>
+</div>            <div class="col-12 col-md-9">
+    <h4 class="text-secondary justify-content-between">文章列表
+        <div class="d-inline-flex align-items-center">
+            <span></span><span></span><span></span>
+        </div>
+    </h4>
+    <div class="card-columns">
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.construct.html" title="MongoDB\BSON\Javascript::__construct">MongoDB\BSON\Javascript::__construct</a></h5>
+                        <p>mongodb-bson-javascript.construct</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.getcode.html" title="MongoDB\BSON\Javascript::getCode">MongoDB\BSON\Javascript::getCode</a></h5>
+                        <p>mongodb-bson-javascript.getcode</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.getscope.html" title="MongoDB\BSON\Javascript::getScope">MongoDB\BSON\Javascript::getScope</a></h5>
+                        <p>mongodb-bson-javascript.getscope</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.jsonserialize.html" title="MongoDB\BSON\Javascript::jsonSerialize">MongoDB\BSON\Javascript::jsonSerialize</a></h5>
+                        <p>mongodb-bson-javascript.jsonserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.serialize.html" title="MongoDB\BSON\Javascript::serialize">MongoDB\BSON\Javascript::serialize</a></h5>
+                        <p>mongodb-bson-javascript.serialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.tostring.html" title="MongoDB\BSON\Javascript::__toString">MongoDB\BSON\Javascript::__toString</a></h5>
+                        <p>mongodb-bson-javascript.tostring</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-javascript.unserialize.html" title="MongoDB\BSON\Javascript::unserialize">MongoDB\BSON\Javascript::unserialize</a></h5>
+                        <p>mongodb-bson-javascript.unserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-javascript/index.html" title="The MongoDB\BSON\Javascript class">The MongoDB\BSON\Javascript class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-decimal128.construct.html" title="MongoDB\BSON\Decimal128::__construct">MongoDB\BSON\Decimal128::__construct</a></h5>
+                        <p>mongodb-bson-decimal128.construct</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-decimal128/index.html" title="The MongoDB\BSON\Decimal128 class">The MongoDB\BSON\Decimal128 class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-decimal128.jsonserialize.html" title="MongoDB\BSON\Decimal128::jsonSerialize">MongoDB\BSON\Decimal128::jsonSerialize</a></h5>
+                        <p>mongodb-bson-decimal128.jsonserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-decimal128/index.html" title="The MongoDB\BSON\Decimal128 class">The MongoDB\BSON\Decimal128 class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-decimal128.serialize.html" title="MongoDB\BSON\Decimal128::serialize">MongoDB\BSON\Decimal128::serialize</a></h5>
+                        <p>mongodb-bson-decimal128.serialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-decimal128/index.html" title="The MongoDB\BSON\Decimal128 class">The MongoDB\BSON\Decimal128 class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-decimal128.tostring.html" title="MongoDB\BSON\Decimal128::__toString">MongoDB\BSON\Decimal128::__toString</a></h5>
+                        <p>mongodb-bson-decimal128.tostring</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-decimal128/index.html" title="The MongoDB\BSON\Decimal128 class">The MongoDB\BSON\Decimal128 class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-decimal128.unserialize.html" title="MongoDB\BSON\Decimal128::unserialize">MongoDB\BSON\Decimal128::unserialize</a></h5>
+                        <p>mongodb-bson-decimal128.unserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-decimal128/index.html" title="The MongoDB\BSON\Decimal128 class">The MongoDB\BSON\Decimal128 class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.construct.html" title="MongoDB\BSON\Binary::__construct">MongoDB\BSON\Binary::__construct</a></h5>
+                        <p>mongodb-bson-binary.construct</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.getdata.html" title="MongoDB\BSON\Binary::getData">MongoDB\BSON\Binary::getData</a></h5>
+                        <p>mongodb-bson-binary.getdata</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.gettype.html" title="MongoDB\BSON\Binary::getType">MongoDB\BSON\Binary::getType</a></h5>
+                        <p>mongodb-bson-binary.gettype</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.jsonserialize.html" title="MongoDB\BSON\Binary::jsonSerialize">MongoDB\BSON\Binary::jsonSerialize</a></h5>
+                        <p>mongodb-bson-binary.jsonserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.serialize.html" title="MongoDB\BSON\Binary::serialize">MongoDB\BSON\Binary::serialize</a></h5>
+                        <p>mongodb-bson-binary.serialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.tostring.html" title="MongoDB\BSON\Binary::__toString">MongoDB\BSON\Binary::__toString</a></h5>
+                        <p>mongodb-bson-binary.tostring</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/mongodb-bson-binary.unserialize.html" title="MongoDB\BSON\Binary::unserialize">MongoDB\BSON\Binary::unserialize</a></h5>
+                        <p>mongodb-bson-binary.unserialize</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/class.mongodb-bson-binary/index.html" title="The MongoDB\BSON\Binary class">The MongoDB\BSON\Binary class</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-fromjson.html" title="MongoDB\BSON\fromJSON">MongoDB\BSON\fromJSON</a></h5>
+                        <p>function.mongodb.bson-fromjson</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-fromphp.html" title="MongoDB\BSON\fromPHP">MongoDB\BSON\fromPHP</a></h5>
+                        <p>function.mongodb.bson-fromphp</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-tocanonicalextendedjson.html" title="MongoDB\BSON\toCanonicalExtendedJSON">MongoDB\BSON\toCanonicalExtendedJSON</a></h5>
+                        <p>function.mongodb.bson-tocanonicalextendedjson</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-tojson.html" title="MongoDB\BSON\toJSON">MongoDB\BSON\toJSON</a></h5>
+                        <p>function.mongodb.bson-tojson</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-tophp.html" title="MongoDB\BSON\toPHP">MongoDB\BSON\toPHP</a></h5>
+                        <p>function.mongodb.bson-tophp</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+                    <div class="card">
+                <div class="card-body">
+                                            <h5 class="card-title"><a href="/docs/php/function.mongodb.bson-torelaxedextendedjson.html" title="MongoDB\BSON\toRelaxedExtendedJSON">MongoDB\BSON\toRelaxedExtendedJSON</a></h5>
+                        <p>function.mongodb.bson-torelaxedextendedjson</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <span class="badge badge-primary badge-pill">0</span>
+                                2021/06/08
+                                【<a class="text-primary" href="/docs/ref.bson.functions/index.html" title="函数">函数</a>】
+                            </small>
+                        </p>
+                                    </div>
+            </div>
+            </div>
+</div>        </div>
+    </div>
+</section><section class="flip">
+        <div class="container">
+            <div class="row">
+                <div class="p-3 col-12 col-md-8 d-flex justify-content-center">
+                                                                        <a href="https://help.pythonschool.com/docs/book.bson/1.html">
+                                <svg width="12" height="12" fill="currentColor">
+                                    <use xlink:href="/css/bootstrap-icons.svg#chevron-double-left"/>
+                                </svg>
+                            </a>
+                                            
+                                                                                                                                                                    <a href="https://help.pythonschool.com/docs/book.bson/1.html">1</a>
+                                                                                                                                <a href="https://help.pythonschool.com/docs/book.bson/2.html" class="active">2</a>
+                                                                                                        
+                                            <span>
+                            <svg width="12" height="12" fill="currentColor">
+                                <use xlink:href="/css/bootstrap-icons.svg#chevron-double-right"/>
+                            </svg>
+                        </span>
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+
+<footer class="main-h4-1">
+    <div class="copyright-text text-center text-secondary">
+        <p>© 2021, Moments. All rights <a href="https://help.pythonschool.com">开发帮助文档</a></p>
+            </div>
+</footer>
+
+<span id="back-top">
+    <svg width="20" height="20" fill="currentColor">
+        <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+    </svg>
+</span> 
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

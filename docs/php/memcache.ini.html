@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>运行时配置 - 开发帮助文档</title> 
+    <meta name="keyword" content="memcache.ini"> 
+    <meta name="description" content="memcache.ini"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="349" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.ini.html" title="运行时配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    运行时配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.requirements.html" title="需求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    需求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/memcache.resources.html" title="资源类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    资源类型
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="memcache.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="memcache.resources.html">资源类型 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="memcache.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="memcache.ini" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  </p><table class="doctable table">
+   <caption><strong>Memcache配置选项</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.allow-failover" class="link">memcache.allow_failover</a></td>
+      <td>"1"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.0.2.</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.max-failover-attempts" class="link">memcache.max_failover_attempts</a></td>
+      <td>"20"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.1.0.</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.chunk-size" class="link">memcache.chunk_size</a></td>
+      <td>"8192"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.0.2.</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.default-port" class="link">memcache.default_port</a></td>
+      <td>"11211"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.0.2.</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.hash-strategy" class="link">memcache.hash_strategy</a></td>
+      <td>"standard"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.2.0.</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.hash-function" class="link">memcache.hash_function</a></td>
+      <td>"crc32"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Available since memcache 2.2.0.</td>
+     </tr>
+
+     <tr>
+      <td><a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a></td>
+      <td>"files"</td>
+      <td>PHP_INI_ALL</td>
+      <td>Supported since memcache 2.1.2</td>
+     </tr>
+
+     <tr>
+      <td><a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a></td>
+      <td>""</td>
+      <td>PHP_INI_ALL</td>
+      <td>Supported since memcache 2.1.2</td>
+     </tr>
+
+      <tr>
+      <td><a href="memcache.ini.html#ini.memcache.protocol" class="link">memcache.protocol</a></td>
+      <td>ascii</td>
+      <td>&gt;PHP_INI_ALL</td>
+      <td>Supported since memcache 3.0.0</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.redundancy" class="link">memcache.redundancy</a></td>
+      <td>1</td>
+      <td>&gt;PHP_INI_ALL</td>
+      <td>Supported since memcache 3.0.0</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.session-redundancy" class="link">memcache.session_redundancy</a></td>
+      <td>2</td>
+      <td>&gt;PHP_INI_ALL</td>
+      <td>Supported since memcache 3.0.0</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.compress-threshold" class="link">memcache.compress_threshold</a></td>
+      <td>20000</td>
+      <td>&gt;PHP_INI_ALL</td>
+      <td>Supported since memcache 3.0.3</td>
+     </tr>
+
+     <tr>
+      <td><a href="memcache.ini.html#ini.memcache.lock-timeout" class="link">memcache.lock_timeout</a></td>
+      <td>15</td>
+      <td>&gt;PHP_INI_ALL</td>
+      <td>Supported since memcache 3.0.4</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  有关 PHP_INI_* 样式的更多详情与定义，见 <a href="configuration.changes.modes.html" class="xref">配置可被设定范围</a>。
+ 
+
+<p class="para">这是配置指令的简短说明。</p>
+
+<p class="para">
+ </p><dl>
+
+  
+  
+   <dt id="ini.memcache.allow-failover">
+    <code class="parameter">memcache.allow_failover</code>
+    <span class="type">bool</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     是否在发生错误时（对用户）透明的转移到其他服务器。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.memcache.max-failover-attempts">
+    <code class="parameter">memcache.max_failover_attempts</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    定义在写入和获取数据时最多尝试的服务器次数（即：故障转移最大尝试数），仅和
+    memcache.allow_failover结合使用。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.memcache.chunk-size">
+    <code class="parameter">memcache.chunk_size</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    数据传输块大小，这个值越小网络I/O次数越多，如果发现莫名的速度降低， 可以尝试将此值调至32768。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.memcache.default-port">
+    <code class="parameter">memcache.default_port</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    在尝试连接memcache的时候如果没有单独指定端口默认使用的TCP端口号。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.hash-strategy">
+    <code class="parameter">memcache.hash_strategy</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    控制key到服务器的映射（分布式）策略。值 
+     <code class="literal">consistent</code>允许服务器增减而不会（大量）导致健的重新映射
+     （译注：参见http://tech.idv2.com/2008/07/24/memcached-004/），设置为
+     <code class="literal">standard</code>则使用余数方式进行key的映射。
+    </p>
+   </dd>
+
+  
+  
+  
+   <dt id="ini.memcache.hash-function">
+    <code class="parameter">memcache.hash_function</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    控制在key-server映射时使用哪个hash函数<code class="literal">crc32</code> 
+    标明使用标准CRC32进行hash，<code class="literal">fnv</code>则说明使用FNV-1a。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.session-handler">
+    <code class="parameter">session.save_handler</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    当值为<code class="literal">memcache</code>时标记使用memcache作为session处理器。
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.save-path">
+    <code class="parameter">session.save_path</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+    定义一个逗号分割的用于session存储的服务器url列表，例如：
+     <code class="literal">"tcp://host1:11211, tcp://host2:11211"</code>.
+    </p>
+    <p class="para">
+    每个url可以包含参数，这些参数于方法<span class="function"><a href="memcache.addserver.html" class="function">Memcache::addServer()</a></span>的参数相同。比如： 
+     <code class="literal">"tcp://host1:11211?persistent=1&amp;weight=1&amp;timeout=1&amp;retry_interval=15"</code>
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.protocol">
+    <code class="parameter">memcache.protocol</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.redundancy">
+    <code class="parameter">memcache.redundancy</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.session-redundancy">
+    <code class="parameter">memcache.session_redundancy</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.compress-threshold">
+    <code class="parameter">memcache.compress_threshold</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.memcache.lock-timeout">
+    <code class="parameter">memcache.lock_timeout</code>
+    <span class="type">int</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     
+    </p>
+   </dd>
+
+  
+ </dl>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7500);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

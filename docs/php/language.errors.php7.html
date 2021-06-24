@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>PHP 7 错误处理 - 开发帮助文档</title> 
+    <meta name="keyword" content="language.errors.php7"> 
+    <meta name="description" content="language.errors.php7"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1137" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.errors.basics.html" title="基础概要">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基础概要
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.errors.php7.html" title="PHP 7 错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 7 错误处理
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.errors.basics.html">« 基础概要</a></li>
+      <li style="float: right;"><a href="language.exceptions.html">异常 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.errors.html">错误</a></li>
+    <li>PHP 7 错误处理</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.errors.php7" class="sect1">
+ <h2 class="title">PHP 7 错误处理</h2>
+
+ <p class="para">
+  PHP 7 改变了大多数错误的报告方式。不同于传统（PHP 5）的错误报告机制，现在大多数错误被作为
+  <a href="class.error.html" class="classname">Error</a> 异常抛出。
+ </p>
+
+ <p class="para">
+  这种 <a href="class.error.html" class="classname">Error</a> 异常可以像 <a href="class.exception.html" class="classname">Exception</a>
+  异常一样被第一个匹配的 <code class="literal">try</code> / <code class="literal">catch</code>
+  块所捕获。如果没有匹配的
+  <a href="language.exceptions.html#language.exceptions.catch" class="link"><code class="literal">catch</code></a>
+  块，则调用异常处理函数（事先通过 <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> 注册）进行处理。
+  如果尚未注册异常处理函数，则按照传统方式处理：被报告为一个致命错误（Fatal Error）。
+ </p>
+
+ <p class="para">
+  <a href="class.error.html" class="classname">Error</a> 类并非继承自 <a href="class.exception.html" class="classname">Exception</a>
+  类，所以不能用 <code class="code">catch (Exception $e) { ... }</code> 来捕获
+  <a href="class.error.html" class="classname">Error</a>。你可以用
+  <code class="code">catch (Error $e) { ... }</code>，或者通过注册异常处理函数（
+  <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span>）来捕获 <a href="class.error.html" class="classname">Error</a>。
+ </p>
+
+ <div class="sect2" id="language.errors.php7.hierarchy">
+  <h3 class="title"><a href="class.error.html" class="classname">Error</a> 层次结构</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara"><a href="class.throwable.html" class="classname">Throwable</a></span>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara"><a href="class.error.html" class="classname">Error</a></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara"><a href="class.arithmeticerror.html" class="classname">ArithmeticError</a></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a></span>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.assertionerror.html" class="classname">AssertionError</a></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.compileerror.html" class="classname">CompileError</a></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><a href="class.parseerror.html" class="classname">ParseError</a></span>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.typeerror.html" class="classname">TypeError</a></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><a href="class.argumentcounterror.html" class="classname">ArgumentCountError</a></span>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><a href="class.exception.html" class="classname">Exception</a></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">...</span>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7266);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

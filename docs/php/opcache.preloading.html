@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Preloading - 开发帮助文档</title> 
+    <meta name="keyword" content="opcache.preloading"> 
+    <meta name="description" content="opcache.preloading"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1084" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.opcache.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/opcache.preloading.html" title="Preloading">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Preloading
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/opcache.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.opcache.html" title="OPcache 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OPcache 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="opcache.resources.html">« 资源类型</a></li>
+      <li style="float: right;"><a href="ref.opcache.html">OPcache 函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.opcache.html">OPcache</a></li>
+    <li>Preloading</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="opcache.preloading" class="chapter">
+ <h1>Preloading</h1>
+
+
+ <p class="para">
+  As of PHP 7.4.0, PHP can be configured to preload scripts into the opcache when the engine
+  starts.  Any symbols (functions, classes, etc.) in those files will then become
+  globally available for all requests without needing to be explicitly included.  That trades
+  convenience and performance (because the code is always available) for baseline memory usage.  It also
+  requires restarting the PHP process to clear pre-loaded scripts, meaning this feature is
+  only practical to use in production, not in a development environment.
+ </p>
+
+ <p class="para">
+  Note that the optimal tradeoff between performance and memory may vary with the application.
+  "Preload everything" may be the easiest strategy, but not necessarily the best strategy.  Additionally,
+  preloading is only useful when there is a persistent process from one request to another.  That means
+  while it can work in a CLI script if the opcache is enabled, it's generally pointless.  The exception
+  is when using preloading on <a href="ffi.examples-complete.html" class="link">FFI libraries</a>.
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   Preloading is not supported on Windows.
+  </p>
+ </blockquote>
+
+ <p class="para">
+  Configuring preloading involves two steps, and requires that the opcache be enabled.
+  First, set the <a href="opcache.configuration.html#ini.opcache.preload" class="link">opcache.preload</a>
+  value in <var class="filename">php.ini</var>:
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="inicode"><pre class="inicode">opcache.preload=preload.php</pre>
+</div>
+  </div>
+
+ </div>
+
+ <p class="para">
+  <var class="filename">preload.php</var> is an arbitrary file that will run once at server startup
+  (PHP-FPM, mod_php, etc.) and load code into persistent memory.  If PHP will be run as
+  root (not recommended), the <a href="opcache.configuration.html#ini.opcache.preload-user" class="link">opcache.preload_user</a>
+  value can specify an alternate system user to run the preloading.  Running preloading as
+  root is not allowed.
+ </p>
+
+ <p class="para">
+  In the <var class="filename">preload.php</var> script, any file referenced by <span class="function"><a href="function.include.html" class="function">include</a></span>,
+  <span class="function"><a href="function.include-once.html" class="function">include_once</a></span>, <span class="function"><a href="function.require.html" class="function">require</a></span>, <span class="function"><a href="function.require-once.html" class="function">require_once</a></span>, or
+  <span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> will be parsed into persistent memory.  In the following example,
+  all <var class="filename">.php</var> files in the <var class="filename">src</var> directory will be preloaded, unless they
+  are a <code class="literal">Test</code> file.
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$directory </span><span style="color: #007700">= new </span><span style="color: #0000BB">RecursiveDirectoryIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">__DIR__ </span><span style="color: #007700">. </span><span style="color: #DD0000">'/src'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$fullTree </span><span style="color: #007700">= new </span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$directory</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$phpFiles </span><span style="color: #007700">= new </span><span style="color: #0000BB">RegexIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$fullTree</span><span style="color: #007700">, </span><span style="color: #DD0000">'/.+((?&lt;!Test)+\.php$)/i'</span><span style="color: #007700">, </span><span style="color: #0000BB">RecursiveRegexIterator</span><span style="color: #007700">::</span><span style="color: #0000BB">GET_MATCH</span><span style="color: #007700">);<br><br>foreach (</span><span style="color: #0000BB">$phpFiles </span><span style="color: #007700">as </span><span style="color: #0000BB">$key </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$file</span><span style="color: #007700">) {<br>    require_once(</span><span style="color: #0000BB">$file</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ </div>
+
+ <p class="para">
+  Both <span class="function"><a href="function.include.html" class="function">include</a></span> and <span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> will work, but have different
+  implications for how code gets handled.
+
+  </p><ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><span class="function"><a href="function.include.html" class="function">include</a></span> will execute code in the file,
+    while <span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> will not.  That means only the former supports
+    conditional declaration (functions declared inside an if-block).</span></li>
+   <li class="listitem"><span class="simpara">Because <span class="function"><a href="function.include.html" class="function">include</a></span> will execute code, nested <span class="function"><a href="function.include.html" class="function">include</a></span>d
+    files will also be parsed and their declarations preloaded.</span></li>
+   <li class="listitem"><span class="simpara"><span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> can load files in any order.  That is, if
+    <var class="filename">a.php</var> defines  class <code class="literal">A</code> and <var class="filename">b.php</var> defines class
+    <code class="literal">B</code> that extends <code class="literal">A</code>, then <span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> can
+    load those two files in any order.  When using <span class="function"><a href="function.include.html" class="function">include</a></span>, however, <var class="filename">a.php</var>
+    <em class="emphasis">must</em> be included first.</span></li>
+   <li class="listitem"><span class="simpara">In either case, if a later script includes a file that has already been preloaded then
+    its contents will still execute, but any symbols it defines will not be re-defined.  Using
+    <span class="function"><a href="function.include-once.html" class="function">include_once</a></span> will not prevent the file from being included a second time.</span></li>
+  </ul>
+
+  Which approach is better therefore depends on the desired behavior.  With code that would otherwise use an
+  autoloader, <span class="function"><a href="function.opcache-compile-file.html" class="function">opcache_compile_file()</a></span> allows for greater flexibility.  With code that would
+  otherwise be loaded manually, <span class="function"><a href="function.include.html" class="function">include</a></span> will be more robust.
+ 
+
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8533);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

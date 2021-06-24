@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>stream_select - 开发帮助文档</title> 
+    <meta name="keyword" content="function.stream-select"> 
+    <meta name="description" content="function.stream-select"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="480" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-bucket-append.html" title="stream_bucket_append">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_bucket_append
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-bucket-make-writeable.html" title="stream_bucket_make_writeable">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_bucket_make_writeable
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-bucket-new.html" title="stream_bucket_new">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_bucket_new
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-bucket-prepend.html" title="stream_bucket_prepend">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_bucket_prepend
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-create.html" title="stream_context_create">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_create
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-get-default.html" title="stream_context_get_default">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_get_default
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-get-options.html" title="stream_context_get_options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_get_options
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-get-params.html" title="stream_context_get_params">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_get_params
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-set-default.html" title="stream_context_set_default">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_set_default
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-set-option.html" title="stream_context_set_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_set_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-context-set-params.html" title="stream_context_set_params">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_context_set_params
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-copy-to-stream.html" title="stream_copy_to_stream">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_copy_to_stream
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-filter-append.html" title="stream_filter_append">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_filter_append
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-filter-prepend.html" title="stream_filter_prepend">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_filter_prepend
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-filter-register.html" title="stream_filter_register">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_filter_register
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-filter-remove.html" title="stream_filter_remove">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_filter_remove
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-contents.html" title="stream_get_contents">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_contents
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-filters.html" title="stream_get_filters">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_filters
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-line.html" title="stream_get_line">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_line
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-meta-data.html" title="stream_get_meta_data">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_meta_data
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-transports.html" title="stream_get_transports">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_transports
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-get-wrappers.html" title="stream_get_wrappers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_get_wrappers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-is-local.html" title="stream_is_local">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_is_local
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-isatty.html" title="stream_isatty">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_isatty
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-notification-callback.html" title="stream_notification_callback">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_notification_callback
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-register-wrapper.html" title="stream_register_wrapper">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_register_wrapper
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-resolve-include-path.html" title="stream_resolve_include_path">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_resolve_include_path
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-select.html" title="stream_select">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_select
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-set-blocking.html" title="stream_set_blocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_set_blocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-set-chunk-size.html" title="stream_set_chunk_size">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_set_chunk_size
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-set-read-buffer.html" title="stream_set_read_buffer">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_set_read_buffer
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-set-timeout.html" title="stream_set_timeout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_set_timeout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-set-write-buffer.html" title="stream_set_write_buffer">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_set_write_buffer
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-accept.html" title="stream_socket_accept">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_accept
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-client.html" title="stream_socket_client">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_client
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-enable-crypto.html" title="stream_socket_enable_crypto">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_enable_crypto
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-get-name.html" title="stream_socket_get_name">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_get_name
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-pair.html" title="stream_socket_pair">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_pair
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-recvfrom.html" title="stream_socket_recvfrom">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_recvfrom
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-sendto.html" title="stream_socket_sendto">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_sendto
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-server.html" title="stream_socket_server">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_server
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-socket-shutdown.html" title="stream_socket_shutdown">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_socket_shutdown
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-supports-lock.html" title="stream_supports_lock">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_supports_lock
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-wrapper-register.html" title="stream_wrapper_register">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_wrapper_register
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-wrapper-restore.html" title="stream_wrapper_restore">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_wrapper_restore
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.stream-wrapper-unregister.html" title="stream_wrapper_unregister">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    stream_wrapper_unregister
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.stream-resolve-include-path.html">« stream_resolve_include_path</a></li>
+      <li style="float: right;"><a href="function.stream-set-blocking.html">stream_set_blocking »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.stream.html">Stream 函数</a></li>
+    <li>Runs the equivalent of the select() system call on the given
+   arrays of streams with a timeout specified by tv_sec and tv_usec</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.stream-select" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_select</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">stream_select</span> — <span class="dc-title">Runs the equivalent of the select() system call on the given
+   arrays of streams with a timeout specified by tv_sec and tv_usec </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-select-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>stream_select</strong></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&amp;$read</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&amp;$write</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&amp;$except</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$tv_sec</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$tv_usec</code><span class="initializer"> = 0</span></span>
+   ) : <span class="type">int</span></div>
+
+  <p class="para rdfs-comment">
+   The <span class="function"><strong>stream_select()</strong></span> function accepts arrays of streams and
+   waits for them to change status. Its operation is equivalent to that of
+   the <span class="function"><a href="function.socket-select.html" class="function">socket_select()</a></span> function except in that it acts on streams.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-select-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">read</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The streams listed in the <code class="parameter">read</code> array will be watched to
+       see if characters become available for reading (more precisely, to see if
+       a read will not block - in particular, a stream resource is also ready on
+       end-of-file, in which case an <span class="function"><a href="function.fread.html" class="function">fread()</a></span> will return
+       a zero length string).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">write</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The streams listed in the <code class="parameter">write</code> array will be
+       watched to see if a write will not block.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">except</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The streams listed in the <code class="parameter">except</code> array will be
+       watched for high priority exceptional ("out-of-band") data arriving.
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       </p><p class="para">
+        When <span class="function"><strong>stream_select()</strong></span> returns, the arrays
+        <code class="parameter">read</code>, <code class="parameter">write</code> and
+        <code class="parameter">except</code> are modified to indicate which stream
+        resource(s) actually changed status.
+        The original keys of the <span class="type">array</span>s are preserved.
+       </p>
+      </blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">tv_sec</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">tv_sec</code> and <code class="parameter">tv_usec</code>
+       together form the <em class="emphasis">timeout</em> parameter,
+       <code class="parameter">tv_sec</code> specifies the number of seconds while
+       <code class="parameter">tv_usec</code> the number of microseconds.
+       The <code class="parameter">timeout</code> is an upper bound on the amount of time
+       that <span class="function"><strong>stream_select()</strong></span> will wait before it returns.
+       If <code class="parameter">tv_sec</code> and <code class="parameter">tv_usec</code> are
+       both set to <code class="literal">0</code>, <span class="function"><strong>stream_select()</strong></span> will
+       not wait for data - instead it will return immediately, indicating the
+       current status of the streams.
+      </p>
+      <p class="para">
+       If <code class="parameter">tv_sec</code> is <strong><code>null</code></strong> <span class="function"><strong>stream_select()</strong></span>
+       can block indefinitely, returning only when an event on one of the
+       watched streams occurs (or if a signal interrupts the system call).
+      </p>
+      <div class="warning"><strong class="warning">警告</strong>
+       <p class="para">
+        Using a timeout value of <code class="literal">0</code> allows you to
+        instantaneously poll the status of the streams, however, it is NOT a
+        good idea to use a <code class="literal">0</code> timeout value in a loop as it
+        will cause your script to consume too much CPU time.
+       </p>
+       <p class="para">
+        It is much better to specify a timeout value of a few seconds, although
+        if you need to be checking and running other code concurrently, using a
+        timeout value of at least <code class="literal">200000</code> microseconds will
+        help reduce the CPU usage of your script.
+       </p>
+       <p class="para">
+        Remember that the timeout value is the maximum time that will elapse;
+        <span class="function"><strong>stream_select()</strong></span> will return as soon as the
+        requested streams are ready for use.
+       </p>
+      </div>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">tv_usec</code></dt>
+
+     <dd>
+
+      <p class="para">
+       See <code class="parameter">tv_sec</code> description.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-select-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   On success <span class="function"><strong>stream_select()</strong></span> returns the number of
+   stream resources contained in the modified arrays, which may be zero if
+   the timeout expires before anything interesting happens. On error <strong><code>false</code></strong>
+   is returned and a warning raised (this can happen if the system call is
+   interrupted by an incoming signal).
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stream-select-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-3875">
+    <p><strong>示例 #1 <span class="function"><strong>stream_select()</strong></span> Example</strong></p>
+    <div class="example-contents"><p>
+     This example checks to see if data has arrived for reading on either
+     <code class="parameter">$stream1</code> or <code class="parameter">$stream2</code>.
+     Since the timeout value is <code class="literal">0</code> it will return
+     immediately:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* Prepare the read array */<br></span><span style="color: #0000BB">$read   </span><span style="color: #007700">= array(</span><span style="color: #0000BB">$stream1</span><span style="color: #007700">, </span><span style="color: #0000BB">$stream2</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$write  </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$except </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br>if (</span><span style="color: #0000BB">false </span><span style="color: #007700">=== (</span><span style="color: #0000BB">$num_changed_streams </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$read</span><span style="color: #007700">, </span><span style="color: #0000BB">$write</span><span style="color: #007700">, </span><span style="color: #0000BB">$except</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">))) {<br>    </span><span style="color: #FF8000">/* Error handling */<br></span><span style="color: #007700">} elseif (</span><span style="color: #0000BB">$num_changed_streams </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">/* At least on one of the streams something interesting happened */<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-select-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    Due to a limitation in the current Zend Engine it is not possible to pass a
+    constant modifier like <strong><code>null</code></strong> directly as a parameter to a function
+    which expects this parameter to be passed by reference. Instead use a
+    temporary variable or an expression with the leftmost member being a
+    temporary variable:
+    </p><div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$e </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br></span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">, </span><span style="color: #0000BB">$w</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+   Be sure to use the <code class="literal">===</code> operator when checking for an
+   error. Since the <span class="function"><strong>stream_select()</strong></span> may return 0 the
+   comparison with <code class="literal">==</code> would evaluate to <strong><code>true</code></strong>:
+   </p><div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$e </span><span style="color: #007700">= </span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br>if (</span><span style="color: #0000BB">false </span><span style="color: #007700">=== </span><span style="color: #0000BB">stream_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">, </span><span style="color: #0000BB">$w</span><span style="color: #007700">, </span><span style="color: #0000BB">$e</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">)) {<br>    echo </span><span style="color: #DD0000">"stream_select() failed\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    If you read/write to a stream returned in the arrays be aware that
+    they do not necessarily read/write the full amount of data you have
+    requested. Be prepared to even only be able to read/write a single
+    byte.
+   </p>
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    Some streams (like <code class="literal">zlib</code>) cannot be selected by this
+    function.
+   </p>
+  </blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>Windows compatibility</strong><br>
+   </p><p class="para">
+    Use of <span class="function"><strong>stream_select()</strong></span> on
+    file descriptors returned by <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> will fail
+    and return <strong><code>false</code></strong> under Windows.
+   </p>
+   <p class="para">
+    <strong><code>STDIN</code></strong> from a console changes status as soon as <em class="emphasis">any</em>
+    input events are available, but reading from the stream may still block.
+   </p>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-select-seealso">
+  <h3 class="title">参见</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.stream-set-blocking.html" class="function" rel="rdfs-seeAlso">stream_set_blocking()</a> - 为资源流设置阻塞或者阻塞模式</span></li>
+  </ul>
+ </div>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 5301);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

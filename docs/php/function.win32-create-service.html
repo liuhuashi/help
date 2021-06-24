@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>win32_create_service - 开发帮助文档</title> 
+    <meta name="keyword" content="function.win32-create-service"> 
+    <meta name="description" content="function.win32-create-service"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="128" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-continue-service.html" title="win32_continue_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_continue_service
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-create-service.html" title="win32_create_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_create_service
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-delete-service.html" title="win32_delete_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_delete_service
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-get-last-control-message.html" title="win32_get_last_control_message">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_get_last_control_message
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-pause-service.html" title="win32_pause_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_pause_service
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-query-service-status.html" title="win32_query_service_status">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_query_service_status
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-send-custom-control.html" title="win32_send_custom_control">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_send_custom_control
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-set-service-exit-code.html" title="win32_set_service_exit_code">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_set_service_exit_code
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-set-service-exit-mode.html" title="win32_set_service_exit_mode">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_set_service_exit_mode
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-set-service-status.html" title="win32_set_service_status">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_set_service_status
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-start-service-ctrl-dispatcher.html" title="win32_start_service_ctrl_dispatcher">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_start_service_ctrl_dispatcher
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-start-service.html" title="win32_start_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_start_service
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.win32-stop-service.html" title="win32_stop_service">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    win32_stop_service
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.win32-continue-service.html">« win32_continue_service</a></li>
+      <li style="float: right;"><a href="function.win32-delete-service.html">win32_delete_service »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.win32service.html">win32service 函数</a></li>
+    <li>Creates a new service entry in the SCM database</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.win32-create-service" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">win32_create_service</h1>
+  <p class="verinfo">(PECL win32service &gt;=0.1.0)</p><p class="refpurpose"><span class="refname">win32_create_service</span> — <span class="dc-title">Creates a new service entry in the SCM database</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.win32-create-service-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>win32_create_service</strong></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$details</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$machine</code><span class="initializer"> = ?</span></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+
+  <p class="para rdfs-comment">
+   Attempts to add a service into the SCM database. Administrative
+   privileges are required for this to succeed.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.win32-create-service-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">details</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of service details:
+       </p><dl>
+
+        
+         <dt>
+<code class="parameter">service</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The short name of the service.  This is the name that you
+           will use to control the service using the <code class="literal">net</code>
+           command.  The service must be unique (no two services can share the
+           same name), and, ideally, should avoid having spaces in the name.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">display</code></dt>
+
+         <dd>
+
+          <p class="para">The display name of the service.  This is the name that you
+          will see in the Services Applet.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">description</code></dt>
+
+         <dd>
+
+          <p class="para">The long description of the service.  This is the description
+          that you will see in the Services Applet.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">user</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The name of the user account under which you want the service to
+           run.  If omitted, the service will run as the LocalSystem account.
+           If the username is specified, you must also provide a password.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">password</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The password that corresponds to the <code class="parameter">user</code>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">path</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The full path to the executable module that will be launched when
+           the service is started.  If omitted, the path to the current PHP
+           process will be used.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">params</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Command line parameters to pass to the service when it starts.
+           If you want to run a PHP script as the service, then the first
+           parameter should be the full path to the PHP script that you intend
+           to run. If the script name or path contains spaces, then wrap the
+           full path to the PHP script with <code class="literal">"</code>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">load_order</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Controls the load_order.  This is not yet fully supported.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">svc_type</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Sets the service type.  If omitted, the default value is
+           <strong><code>WIN32_SERVICE_WIN32_OWN_PROCESS</code></strong>.
+           Don't change this unless you know what you're doing.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">start_type</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Specifies how the service should be started.  The default is
+           <strong><code>WIN32_SERVICE_AUTO_START</code></strong> which means the
+           service will be launched when the machine starts up.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">error_control</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Informs the SCM what it should do when it detects a problem with
+           the service.  The default is
+           <strong><code>WIN32_SERVER_ERROR_IGNORE</code></strong>.  Changing this
+           value is not yet fully supported.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">delayed_start</code></dt>
+
+         <dd>
+
+          <p class="para">
+           If <code class="parameter">delayed_start</code> is set to <strong><code>true</code></strong>, then this
+           will inform the SCM that this service should be started after other
+           auto-start services are started plus a short delay.
+          </p>
+          <p class="para">
+           Any service can be marked as a delayed auto-start service; however,
+           this setting has no effect unless the service's
+           <code class="parameter">start_type</code> is
+           <strong><code>WIN32_SERVICE_AUTO_START</code></strong>.
+          </p>
+          <p class="para">
+           This setting is only applicable on Windows Vista and Windows Server
+           2008 or greater.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">base_priority</code></dt>
+
+         <dd>
+
+          <p class="para">
+           To reduce the impact on processor utilisation, it may be necessary
+           to set a base priority lower than normal.
+          </p>
+          <p class="para">
+           The <code class="parameter">base_priority</code> can be set to one of the
+           constants define in
+           <a href="win32service.constants.basepriorities.html" class="link">Win32 Base Priority Classes</a>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">dependencies</code></dt>
+
+         <dd>
+
+          <p class="para">
+           To define the dependencies for your service, it may be necessary to set 
+           this parameter to the list of the services names in an array.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_delay</code></dt>
+
+         <dd>
+
+          <p class="para">
+           This parameter defines the delay between the fail and the execution 
+           of recovery action. The value is in milliseconds.
+          </p>
+          <p class="para">
+           The default value is 60000.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_action_1</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The action will be executed on first failure. The default value is 
+           <strong><code>WIN32_SC_ACTION_NONE</code></strong>.
+          </p>
+          <p class="para">
+           The <code class="parameter">recovery_action_1</code> can be set to one of the
+           constants defined in
+           <a href="win32service.constants.recovery-action.html" class="link">Win32 Recovery action</a>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_action_2</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The action will be executed on second failure. The default value is 
+           <strong><code>WIN32_SC_ACTION_NONE</code></strong>.
+          </p>
+          <p class="para">
+           The <code class="parameter">recovery_action_2</code> can be set to one of the
+           constants defined in
+           <a href="win32service.constants.recovery-action.html" class="link">Win32 Recovery action</a>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_action_3</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The action will be executed on next failures. The default value is 
+           <strong><code>WIN32_SC_ACTION_NONE</code></strong>.
+          </p>
+          <p class="para">
+           The <code class="parameter">recovery_action_3</code> can be set to one of the
+           constants defined in
+           <a href="win32service.constants.recovery-action.html" class="link">Win32 Recovery action</a>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_reset_period</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The failure count will be reset after the delay defined in the parameter. The delay is expirement in seconds.
+          </p>
+          <p class="para">
+           The default value is <code class="literal">86400</code>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_enabled</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Set this parameter at <strong><code>true</code></strong> to enable the recovery settings, <strong><code>false</code></strong> 
+           to disable. 
+          </p>
+          <p class="para">
+           The default value is <strong><code>false</code></strong>
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_reboot_msg</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Set this parameter to define the message saved into the Windows Event 
+           Log before the reboot. Used only if one action is set to 
+           <strong><code>WIN32_SC_ACTION_REBOOT</code></strong>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">recovery_command</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Set this parameter to define the command executed when one action is defined on  
+           <strong><code>WIN32_SC_ACTION_RUN_COMMAND</code></strong>.
+          </p>
+         </dd>
+
+        
+       </dl>
+
+      
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">machine</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The optional machine name on which you want to create a service.
+       If omitted, it will use the local machine.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.win32-create-service-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   没有返回值。
+  </p>
+  <p class="para">
+   Prior to version 1.0.0,  成功时返回 <strong><code>WIN32_NO_ERROR</code></strong>，参数错误时返回 <strong><code>false</code></strong>，或失败时返回一个 <a href="win32service.constants.errors.html" class="link">Win32 错误码</a>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.win32-create-service-errors">
+  <h3 class="title">错误／异常</h3>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">service</code> parameter is empty.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">path</code> parameter is missing or empty.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">svc_type</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">start_type</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">error_control</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">base_priority</code> parameter  is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">recovery_delay</code> parameter is not between 
+   0 and PHP_INT_MAX.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">recovery_action_1</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">recovery_action_2</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">recovery_action_3</code> parameter is wrong.
+  </p>
+  <p class="para">
+   A <strong class="classname">ValueError</strong> is thrown if the; 
+   value of <code class="parameter">recovery_reset_period</code> parameter is not 
+   between 0 and PHP_INT_MAX.
+  </p>
+  <p class="para">
+   A <a href="class.win32serviceexception.html" class="classname">Win32ServiceException</a> is thrown on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.win32-create-service-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   </p><table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        Throws a <strong class="classname">ValueError</strong> on invalid data in parameters,
+        previously <strong><code>false</code></strong> was returned.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        Throws a <a href="class.win32serviceexception.html" class="classname">Win32ServiceException</a> on error,
+        previously a 
+        <a href="win32service.constants.errors.html" class="link">Win32 Error Code</a>
+        was returned.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 1.0.0</td>
+       <td>
+        The return type is now <span class="type"><span class="type void">void</span></span>, previously it was <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL win32service 0.4.0</td>
+       <td>
+        The <code class="parameter">dependencies</code>, <code class="parameter">recovery_delay</code>,
+        <code class="parameter">recovery_action_1</code>, <code class="parameter">recovery_action_2</code>,
+        <code class="parameter">recovery_action_3</code>, <code class="parameter">recovery_reset_period</code>,
+        <code class="parameter">recovery_enabled</code>, <code class="parameter">recovery_reboot_msg</code>
+        and <code class="parameter">recovery_command</code> parameters have been added.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.win32-create-service-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-5348">
+    <p><strong>示例 #1 A <span class="function"><strong>win32_create_service()</strong></span> example</strong></p>
+    <div class="example-contents"><p>
+     Create a service with the short name 'dummyphp'.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$x </span><span style="color: #007700">= </span><span style="color: #0000BB">win32_create_service</span><span style="color: #007700">(array(<br>    </span><span style="color: #DD0000">'service'     </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'dummyphp'</span><span style="color: #007700">,                                           </span><span style="color: #FF8000">// the name of your service<br>    </span><span style="color: #DD0000">'display'     </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'sample dummy PHP service'</span><span style="color: #007700">,                           </span><span style="color: #FF8000">// short description<br>    </span><span style="color: #DD0000">'description' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'This is a dummy Windows service created using PHP.'</span><span style="color: #007700">, </span><span style="color: #FF8000">// long description<br>    </span><span style="color: #DD0000">'params'      </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'"' </span><span style="color: #007700">. </span><span style="color: #0000BB">__FILE__ </span><span style="color: #007700">. </span><span style="color: #DD0000">'"  run'</span><span style="color: #007700">,                            </span><span style="color: #FF8000">// path to the script and parameters<br></span><span style="color: #007700">));<br></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-5349">
+    <p><strong>示例 #2 A <span class="function"><strong>win32_create_service()</strong></span> example with dependencies</strong></p>
+    <div class="example-contents"><p>
+     Create a service with the short name 'dummyphp' and dependencies.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$x </span><span style="color: #007700">= </span><span style="color: #0000BB">win32_create_service</span><span style="color: #007700">(array(<br>    </span><span style="color: #DD0000">'service'      </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'dummyphp'</span><span style="color: #007700">,                                           </span><span style="color: #FF8000">// the name of your service<br>    </span><span style="color: #DD0000">'display'      </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'sample dummy PHP service'</span><span style="color: #007700">,                           </span><span style="color: #FF8000">// short description<br>    </span><span style="color: #DD0000">'description'  </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'This is a dummy Windows service created using PHP.'</span><span style="color: #007700">, </span><span style="color: #FF8000">// long description<br>    </span><span style="color: #DD0000">'params'       </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'"' </span><span style="color: #007700">. </span><span style="color: #0000BB">__FILE__ </span><span style="color: #007700">. </span><span style="color: #DD0000">'"  run'</span><span style="color: #007700">,                            </span><span style="color: #FF8000">// path to the script and parameters<br>    </span><span style="color: #DD0000">'dependencies' </span><span style="color: #007700">=&gt; array(</span><span style="color: #DD0000">"Netman"</span><span style="color: #007700">),                                      </span><span style="color: #FF8000">// The list of the dependencies <br></span><span style="color: #007700">));<br></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-5350">
+    <p><strong>示例 #3 A <span class="function"><strong>win32_create_service()</strong></span> example with recovery</strong></p>
+    <div class="example-contents"><p>
+     Create a service with the short name 'dummyphp' and recovery settings.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$x </span><span style="color: #007700">= </span><span style="color: #0000BB">win32_create_service</span><span style="color: #007700">(array(<br>    </span><span style="color: #DD0000">'service'               </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'dummyphp'</span><span style="color: #007700">,                                           </span><span style="color: #FF8000">// the name of your service<br>    </span><span style="color: #DD0000">'display'               </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'sample dummy PHP service'</span><span style="color: #007700">,                           </span><span style="color: #FF8000">// short description<br>    </span><span style="color: #DD0000">'description'           </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'This is a dummy Windows service created using PHP.'</span><span style="color: #007700">, </span><span style="color: #FF8000">// long description<br>    </span><span style="color: #DD0000">'params'                </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'"' </span><span style="color: #007700">. </span><span style="color: #0000BB">__FILE__ </span><span style="color: #007700">. </span><span style="color: #DD0000">'"  run'</span><span style="color: #007700">,                            </span><span style="color: #FF8000">// path to the script and parameters<br>    </span><span style="color: #DD0000">'recovery_delay'        </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">120000</span><span style="color: #007700">,                                               </span><span style="color: #FF8000">// Recovery action is executed after 2 minutes<br>    </span><span style="color: #DD0000">'recovery_action_1'     </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">WIN32_SC_ACTION_RESTART</span><span style="color: #007700">,                              </span><span style="color: #FF8000">// On first failure, restart the service<br>    </span><span style="color: #DD0000">'recovery_action_2'     </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">WIN32_SC_ACTION_RUN_COMMAND</span><span style="color: #007700">,                          </span><span style="color: #FF8000">// On second failure, execute the commmand<br>    </span><span style="color: #DD0000">'recovery_action_3'     </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">WIN32_SC_ACTION_NONE</span><span style="color: #007700">,                                 </span><span style="color: #FF8000">// On other failure, do nothing<br>    </span><span style="color: #DD0000">'recovery_reset_period' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">86400</span><span style="color: #007700">,                                                </span><span style="color: #FF8000">// Reset the fail counter after 1 day<br>    </span><span style="color: #DD0000">'recovery_enabled'      </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">,                                                 </span><span style="color: #FF8000">// Enable the recovery parameter<br>    </span><span style="color: #DD0000">'recovery_reboot_msg'   </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">null</span><span style="color: #007700">,                                                 </span><span style="color: #FF8000">// Do not define a reboot message, it's not needed here<br>    </span><span style="color: #DD0000">'recovery_command'      </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"c:\clean-service.bat"</span><span style="color: #007700">,                               </span><span style="color: #FF8000">// When the action is WIN32_SC_ACTION_RUN_COMMAND, execute this command<br></span><span style="color: #007700">));<br></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.win32-create-service-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.win32-delete-service.html" class="function" rel="rdfs-seeAlso">win32_delete_service()</a> - Deletes a service entry from the SCM database</span></li>
+    <li class="member"><a href="win32service.constants.basepriorities.html" class="link">Win32 Base Priority Classes</a></li>
+    <li class="member"><a href="win32service.constants.recovery-action.html" class="link">Win32 Recovery action</a></li>
+    <li class="member"><a href="win32service.constants.errors.html" class="link">Win32 Error Codes</a></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 5718);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

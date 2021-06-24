@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>HTTP context 选项 - 开发帮助文档</title> 
+    <meta name="keyword" content="context.http"> 
+    <meta name="description" content="context.http"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1117" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.curl.html" title="CURL context options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CURL context options
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.ftp.html" title="FTP context options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    FTP context options
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.http.html" title="HTTP context 选项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP context 选项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.params.html" title="Context 参数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Context 参数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.phar.html" title="Phar 上下文（context）选项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Phar 上下文（context）选项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.socket.html" title="套接字上下文选项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    套接字上下文选项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.ssl.html" title="SSL 上下文选项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    SSL 上下文选项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/context.zip.html" title="Zip context options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Zip context options
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="context.socket.html">« 套接字上下文选项</a></li>
+      <li style="float: right;"><a href="context.ftp.html">FTP context options »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="context.html">上下文（Context）选项和参数</a></li>
+    <li>HTTP context 的选项列表</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="context.http" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">HTTP context 选项</h1>
+  <p class="refpurpose"><span class="refname">HTTP context 选项</span> — <span class="dc-title">HTTP context 的选项列表</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-context.http-description">
+  <h3 class="title">说明</h3>
+  <p class="para">
+   提供给 <code class="literal">http://</code> 和 <code class="literal">https://</code> 传输协议的 context 选项。
+   transports.
+  </p>
+ </div>
+
+
+ <div class="refsect1 options" id="refsect1-context.http-options">
+  <h3 class="title">可选项</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt id="context.http.method">
+      <code class="parameter">method</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       远程服务器支持的 <strong><code>GET</code></strong>，<strong><code>POST</code></strong> 或其它 HTTP 方法。
+      </p>
+      <p class="para">
+       默认值是 <strong><code>GET</code></strong>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.header">
+      <code class="parameter">header</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       请求期间发送的额外 header 。在此选项的值将覆盖其他值
+       （诸如 <code class="literal">User-agent:</code>， <code class="literal">Host:</code> 和 
+       <code class="literal">Authentication:</code>）。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.user-agent">
+      <code class="parameter">user_agent</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       要发送的 header <code class="literal">User-Agent:</code> 的值。如果在上面的 
+       <code class="literal">header</code> context 选项中没有指定 user-agent，此值将被使用。
+      </p>
+      <p class="para">
+       默认使用 <var class="filename">php.ini</var>  中设置的 <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.content">
+      <code class="parameter">content</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       在 header 后面要发送的额外数据。通常使用POST或PUT请求。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.proxy">
+      <code class="parameter">proxy</code>
+      <span class="type">string</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       URI 指定的代理服务器的地址。(e.g.
+       <code class="literal">tcp://proxy.example.com:5100</code>).
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.request-fulluri">
+      <code class="parameter">request_fulluri</code>
+      <span class="type">boolean</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       当设置为 <strong><code>true</code></strong> 时，在构建请求时将使用整个 URI 。(i.e.
+       <code class="literal">GET http://www.example.com/path/to/file.html HTTP/1.0</code>)。
+       虽然这是一个非标准的请求格式，但某些代理服务器需要它。
+      </p>
+      <p class="para">
+       默认值是 <strong><code>false</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.follow-location">
+      <code class="parameter">follow_location</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       跟随 <code class="literal">Location</code> header 的重定向。设置为 <code class="literal">0</code> 以禁用。
+      </p>
+      <p class="para">
+       默认值是 <code class="literal">1</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.max-redirects">
+      <code class="parameter">max_redirects</code>
+      <span class="type">integer</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       跟随重定向的最大次数。值为 <code class="literal">1</code> 或更少则意味不跟随重定向。
+      </p>
+      <p class="para">
+       默认值是 <code class="literal">20</code>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.protocol-version">
+      <code class="parameter">protocol_version</code>
+      <span class="type">float</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       HTTP 协议版本。
+      </p>
+      <p class="para">
+       默认值是 <code class="literal">1.0</code>。
+      </p>
+      <blockquote class="note"><p><strong class="note">注意</strong>: 
+       </p><p class="para">
+        PHP 5.3.0 以前的版本没有实现分块传输解码。
+        如果此值设置为 <code class="literal">1.1</code> ，与 <code class="literal">1.1</code> 的兼容将是你的责任。
+       </p>
+      </blockquote>
+     </dd>
+
+    
+    
+     <dt id="context.http.timeout">
+      <code class="parameter">timeout</code>
+      <span class="type">float</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       读取超时时间，单位为秒（s），用 <span class="type">float</span> 指定(e.g. <code class="literal">10.5</code>)。
+      </p>
+      <p class="para">
+       默认使用 <var class="filename">php.ini</var> 中设置的 <a href="filesystem.configuration.html#ini.default-socket-timeout" class="link">default_socket_timeout</a>。
+      </p>
+     </dd>
+
+    
+    
+     <dt id="context.http.ignore-errors">
+      <code class="parameter">ignore_errors</code>
+      <span class="type">boolean</span>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       即使是故障状态码依然获取内容。
+      </p>
+      <p class="para">
+       默认值为 <strong><code>false</code></strong>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-context.http-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   </p><table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.4</td>
+       <td>
+        添加 <code class="parameter">follow_location</code>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        当 <code class="parameter">protocol_version</code> 设置为 <code class="literal">1.1</code> 时支持分块传输解码。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.10</td>
+       <td>
+        添加 <code class="parameter">ignore_errors</code>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.10</td>
+       <td>
+        <code class="parameter">header</code> 现在可以是一个数字索引的 <span class="type">array</span>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.1</td>
+       <td>
+        添加 <code class="parameter">timeout</code>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Added HTTPS proxying through HTTP proxies.
+        添加经由 HTTP 代理的 HTTPS 代理。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        添加 <code class="parameter">max_redirects</code>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        添加 <code class="parameter">protocol_version</code>。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-context.http-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-374">
+    <p><strong>示例 #1 获取一个页面并发送 POST 数据</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$postdata </span><span style="color: #007700">= </span><span style="color: #0000BB">http_build_query</span><span style="color: #007700">(<br>    array(<br>        </span><span style="color: #DD0000">'var1' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'some content'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'var2' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'doh'<br>    </span><span style="color: #007700">)<br>);<br><br></span><span style="color: #0000BB">$opts </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt;<br>    array(<br>        </span><span style="color: #DD0000">'method'  </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'POST'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'header'  </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Content-type: application/x-www-form-urlencoded'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'content' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$postdata<br>    </span><span style="color: #007700">)<br>);<br><br></span><span style="color: #0000BB">$context </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://example.com/submit.php'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+  <p class="para">
+   </p><div class="example" id="example-375">
+    <p><strong>示例 #2 忽略重定向并获取 header 和内容</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$url </span><span style="color: #007700">= </span><span style="color: #DD0000">"http://www.example.org/header.php"</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$opts </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'http' </span><span style="color: #007700">=&gt;<br>    array(<br>        </span><span style="color: #DD0000">'method' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'GET'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'max_redirects' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'0'</span><span style="color: #007700">,<br>        </span><span style="color: #DD0000">'ignore_errors' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'1'<br>    </span><span style="color: #007700">)<br>);<br><br></span><span style="color: #0000BB">$context </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$stream </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">, </span><span style="color: #DD0000">'r'</span><span style="color: #007700">, </span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// header information as well as meta data<br>// about the stream<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">));<br><br></span><span style="color: #FF8000">// actual data at $url<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">stream_get_contents</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">));<br></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-context.http-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>Underlying socket stream context options</strong><br>
+   <span class="simpara">
+    Additional context options may be supported by the
+    <a href="transports.inet.html" class="link">underlying transport</a>
+    For <code class="literal">http://</code> streams, refer to context
+    options for the <code class="literal">tcp://</code> transport.  For
+    <code class="literal">https://</code> streams, refer to context options
+    for the <code class="literal">ssl://</code> transport.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <strong>HTTP status line</strong><br>
+   <span class="simpara">
+    When this stream wrapper follows a redirect, the
+    <code class="literal">wrapper_data</code> returned by
+    <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> might not necessarily contain
+    the HTTP status line that actually applies to the content data at index
+    <code class="literal">0</code>.
+   </span>
+   </p><div class="example-contents screen">
+<div class="cdata"><pre>
+array (
+  'wrapper_data' =&gt;
+  array (
+    0 =&gt; 'HTTP/1.0 301 Moved Permantenly',
+    1 =&gt; 'Cache-Control: no-cache',
+    2 =&gt; 'Connection: close',
+    3 =&gt; 'Location: http://example.com/foo.jpg',
+    4 =&gt; 'HTTP/1.1 200 OK',
+    ...
+</pre></div>
+   </div>
+   <span class="simpara">
+    The first request returned a <code class="literal">301</code> (permanent redirect),
+    so the stream wrapper automatically followed the redirect to get a
+    <code class="literal">200</code> response (index = <code class="literal">4</code>).
+   </span>
+  </blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-context.http-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><a href="wrappers.http.html" class="xref">http://</a></li>
+    <li class="member"><a href="context.socket.html" class="xref">套接字上下文选项</a></li>
+    <li class="member"><a href="context.ssl.html" class="xref">SSL 上下文选项</a></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 1421);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

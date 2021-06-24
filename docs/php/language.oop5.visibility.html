@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>访问控制（可见性） - 开发帮助文档</title> 
+    <meta name="keyword" content="language.oop5.visibility"> 
+    <meta name="description" content="language.oop5.visibility"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1139" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.abstract.html" title="抽象类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    抽象类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.anonymous.html" title="匿名类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    匿名类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.autoload.html" title="类的自动加载">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类的自动加载
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.basic.html" title="基本概念">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基本概念
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.changelog.html" title="OOP 变更日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OOP 变更日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.cloning.html" title="对象复制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象复制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.constants.html" title="类常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.decon.html" title="构造函数和析构函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    构造函数和析构函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.final.html" title="Final 关键字">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Final 关键字
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.inheritance.html" title="对象继承">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象继承
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.interfaces.html" title="对象接口">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象接口
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.iterations.html" title="遍历对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    遍历对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.late-static-bindings.html" title="后期静态绑定">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    后期静态绑定
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.magic.html" title="魔术方法">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    魔术方法
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.object-comparison.html" title="对象比较">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象比较
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.overloading.html" title="重载">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重载
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.paamayim-nekudotayim.html" title="范围解析操作符 （::）">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范围解析操作符 （::）
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.properties.html" title="属性">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    属性
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.references.html" title="对象和引用">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象和引用
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.serialization.html" title="对象序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    对象序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.static.html" title="静态（static）关键字">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    静态（static）关键字
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.traits.html" title="Trait">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Trait
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.variance.html" title="协变与逆变">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    协变与逆变
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.oop5.visibility.html" title="访问控制（可见性）">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    访问控制（可见性）
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oop5.intro.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.decon.html">« 构造函数和析构函数</a></li>
+      <li style="float: right;"><a href="language.oop5.inheritance.html">对象继承 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">类与对象</a></li>
+    <li>访问控制（可见性）</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.visibility" class="sect1">
+  <h2 class="title">访问控制（可见性）</h2>
+  <p class="para">
+   对属性或方法的访问控制（PHP 7.1.0 以后支持常量），是通过在前面添加关键字
+   <em class="emphasis">public</em>（公有），<em class="emphasis">protected</em>（受保护）或
+   <em class="emphasis">private</em>（私有）来实现的。被定义为公有的类成员可以在任何地方被访问。被定义为受保护的类成员则可以被其自身以及其子类和父类访问。被定义为私有的类成员则只能被其定义所在的类访问。
+  </p>
+
+  <div class="sect2" id="language.oop5.visiblity-members">
+   <h3 class="title">属性的访问控制</h3>
+   <p class="para">
+    类属性必须定义为公有，受保护，私有之一。如果用
+    <em class="emphasis">var</em> 定义，则被视为公有。
+   </p>
+   <p class="para">
+    </p><div class="example" id="language.oop5.basic.class.class.object">
+     <p><strong>示例 #1 属性声明</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/**<br> * Define MyClass<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    public </span><span style="color: #0000BB">$public </span><span style="color: #007700">= </span><span style="color: #DD0000">'Public'</span><span style="color: #007700">;<br>    protected </span><span style="color: #0000BB">$protected </span><span style="color: #007700">= </span><span style="color: #DD0000">'Protected'</span><span style="color: #007700">;<br>    private </span><span style="color: #0000BB">$private </span><span style="color: #007700">= </span><span style="color: #DD0000">'Private'</span><span style="color: #007700">;<br><br>    function </span><span style="color: #0000BB">printHello</span><span style="color: #007700">()<br>    {<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">public</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protected</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br>echo </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">public</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行能被正常执行<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protected</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行会产生一个致命错误<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行也会产生一个致命错误<br></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printHello</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 输出 Public、Protected 和 Private<br><br><br>/**<br> * Define MyClass2<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// 可以对 public 和 protected 进行重定义，但 private 而不能<br>    </span><span style="color: #007700">public </span><span style="color: #0000BB">$public </span><span style="color: #007700">= </span><span style="color: #DD0000">'Public2'</span><span style="color: #007700">;<br>    protected </span><span style="color: #0000BB">$protected </span><span style="color: #007700">= </span><span style="color: #DD0000">'Protected2'</span><span style="color: #007700">;<br><br>    function </span><span style="color: #0000BB">printHello</span><span style="color: #007700">()<br>    {<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">public</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protected</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$obj2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">();<br>echo </span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">public</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行能被正常执行<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protected</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行会产生一个致命错误<br></span><span style="color: #007700">echo </span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">private</span><span style="color: #007700">; </span><span style="color: #FF8000">// 未定义 private<br></span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printHello</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 输出 Public、Protected2 和 Undefined<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     为了兼容性考虑，在 PHP 4 中使用 <em class="emphasis">var</em> 关键字对变量进行定义的方法在
+     PHP 5 中仍然有效（只是作为 public 关键字的一个别名）。在 PHP 5.1.3
+     之前的版本，该语法会产生一个 <strong><code>E_STRICT</code></strong> 警告。
+    </span>
+   </p></blockquote>
+  </div>
+
+  <div class="sect2" id="language.oop5.visiblity-methods">
+   <h3 class="title">方法的访问控制</h3>
+   <p class="para">
+    类中的方法可以被定义为公有，私有或受保护。如果没有设置这些关键字，则该方法默认为公有。
+   </p>
+   <p class="para">
+    </p><div class="example" id="example-220">
+     <p><strong>示例 #2 方法声明</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/**<br> * Define MyClass<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// 声明一个公有的构造函数<br>    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">() { }<br><br>    </span><span style="color: #FF8000">// 声明一个公有的方法<br>    </span><span style="color: #007700">public function </span><span style="color: #0000BB">MyPublic</span><span style="color: #007700">() { }<br><br>    </span><span style="color: #FF8000">// 声明一个受保护的方法<br>    </span><span style="color: #007700">protected function </span><span style="color: #0000BB">MyProtected</span><span style="color: #007700">() { }<br><br>    </span><span style="color: #FF8000">// 声明一个私有的方法<br>    </span><span style="color: #007700">private function </span><span style="color: #0000BB">MyPrivate</span><span style="color: #007700">() { }<br><br>    </span><span style="color: #FF8000">// 此方法为公有<br>    </span><span style="color: #007700">function </span><span style="color: #0000BB">Foo</span><span style="color: #007700">()<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPublic</span><span style="color: #007700">();<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyProtected</span><span style="color: #007700">();<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPrivate</span><span style="color: #007700">();<br>    }<br>}<br><br></span><span style="color: #0000BB">$myclass </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$myclass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPublic</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 这行能被正常执行<br></span><span style="color: #0000BB">$myclass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyProtected</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 这行会产生一个致命错误<br></span><span style="color: #0000BB">$myclass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPrivate</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 这行会产生一个致命错误<br></span><span style="color: #0000BB">$myclass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 公有，受保护，私有都可以执行<br><br><br>/**<br> * Define MyClass2<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// 此方法为公有<br>    </span><span style="color: #007700">function </span><span style="color: #0000BB">Foo2</span><span style="color: #007700">()<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPublic</span><span style="color: #007700">();<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyProtected</span><span style="color: #007700">();<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPrivate</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 这行会产生一个致命错误<br>    </span><span style="color: #007700">}<br>}<br><br></span><span style="color: #0000BB">$myclass2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$myclass2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MyPublic</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 这行能被正常执行<br></span><span style="color: #0000BB">$myclass2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Foo2</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 公有的和受保护的都可执行，但私有的不行<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">Bar <br></span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">test</span><span style="color: #007700">() {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">();<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testPublic</span><span style="color: #007700">();<br>    }<br><br>    public function </span><span style="color: #0000BB">testPublic</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">"Bar::testPublic\n"</span><span style="color: #007700">;<br>    }<br>    <br>    private function </span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">"Bar::testPrivate\n"</span><span style="color: #007700">;<br>    }<br>}<br><br>class </span><span style="color: #0000BB">Foo </span><span style="color: #007700">extends </span><span style="color: #0000BB">Bar <br></span><span style="color: #007700">{<br>    public function </span><span style="color: #0000BB">testPublic</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">"Foo::testPublic\n"</span><span style="color: #007700">;<br>    }<br>    <br>    private function </span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">() {<br>        echo </span><span style="color: #DD0000">"Foo::testPrivate\n"</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$myFoo </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$myFoo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">(); </span><span style="color: #FF8000">// Bar::testPrivate <br>                // Foo::testPublic<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect2" id="language.oop5.visiblity-constants">
+   <h3 class="title">常量的控制访问</h3>
+   <p class="para">
+    PHP 7.1.0 开始，类的常量可以定义为公有、私有或受保护。如果没有设置这些关键字，则该常量默认为公有。
+   </p>
+   <p class="para">
+    </p><div class="example" id="example-221">
+     <p><strong>示例 #3 PHP 7.1.0 中的常量声明</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/**<br> * Define MyClass<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// 公有常量<br>    </span><span style="color: #007700">public const </span><span style="color: #0000BB">MY_PUBLIC </span><span style="color: #007700">= </span><span style="color: #DD0000">'public'</span><span style="color: #007700">;<br><br>    </span><span style="color: #FF8000">// 受保护的常量<br>    </span><span style="color: #007700">protected const </span><span style="color: #0000BB">MY_PROTECTED </span><span style="color: #007700">= </span><span style="color: #DD0000">'protected'</span><span style="color: #007700">;<br><br>    </span><span style="color: #FF8000">// 私有常量<br>    </span><span style="color: #007700">private const </span><span style="color: #0000BB">MY_PRIVATE </span><span style="color: #007700">= </span><span style="color: #DD0000">'private'</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br>    {<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PUBLIC</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PROTECTED</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PRIVATE</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$myclass </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br></span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PUBLIC</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行可以正常执行<br></span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PROTECTED</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行会产生一个致命错误 <br></span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PRIVATE</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行会产生一个致命错误<br></span><span style="color: #0000BB">$myclass</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 将会输出：Public Protected Private<br><br><br>/**<br> * Define MyClass2<br> */<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass2 </span><span style="color: #007700">extends </span><span style="color: #0000BB">MyClass<br></span><span style="color: #007700">{<br>    </span><span style="color: #FF8000">// This is public<br>    </span><span style="color: #007700">function </span><span style="color: #0000BB">foo2</span><span style="color: #007700">()<br>    {<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PUBLIC</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PROTECTED</span><span style="color: #007700">;<br>        echo </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PRIVATE</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行会产生一个致命错误<br>    </span><span style="color: #007700">}<br>}<br><br></span><span style="color: #0000BB">$myclass2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">;<br>echo </span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">::</span><span style="color: #0000BB">MY_PUBLIC</span><span style="color: #007700">; </span><span style="color: #FF8000">// 这行可以正常执行<br></span><span style="color: #0000BB">$myclass2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo2</span><span style="color: #007700">(); </span><span style="color: #FF8000">// 将会输出：Public Protected，MY_PRIVATE 是私有常量，无法输出<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect2" id="language.oop5.visibility-other-objects">
+   <h3 class="title">其它对象的访问控制</h3>
+   <p class="para">
+    同一个类的对象即使不是同一个实例也可以互相访问对方的私有与受保护成员。这是由于在这些对象的内部具体实现的细节都是已知的。
+   </p>
+   <div class="example" id="example-222">
+    <p><strong>示例 #4 访问同一个对象类型的私有成员</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">class </span><span style="color: #0000BB">Test<br></span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo </span><span style="color: #007700">= </span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br>    }<br><br>    private function </span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br>    {<br>        echo </span><span style="color: #DD0000">'Accessed the private method.'</span><span style="color: #007700">;<br>    }<br><br>    public function </span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Test $other</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #FF8000">// We can change the private property:<br>        </span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo </span><span style="color: #007700">= </span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br>        </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">);<br><br>        </span><span style="color: #FF8000">// We can also call the private method:<br>        </span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br>    }<br>}<br><br></span><span style="color: #0000BB">$test </span><span style="color: #007700">= new </span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(new </span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #DD0000">'other'</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(5) "hello"
+Accessed the private method.
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7312);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

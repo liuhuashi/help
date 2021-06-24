@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Executing PHP files - 开发帮助文档</title> 
+    <meta name="keyword" content="features.commandline.usage"> 
+    <meta name="description" content="features.commandline.usage"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1109" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.differences.html" title="和其它 SAPI 模块的区别">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    和其它 SAPI 模块的区别
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.ini.html" title="INI 配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    INI 配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.interactive.html" title="Interactive shell">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Interactive shell
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.introduction.html" title="features.commandline.introduction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    features.commandline.introduction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.io-streams.html" title="Input/output streams">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Input/output streams
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.options.html" title="命令行模式的选项参数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    命令行模式的选项参数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.usage.html" title="Executing PHP files">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Executing PHP files
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.commandline.webserver.html" title="内置Web Server">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    内置Web Server
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.options.html">« Options</a></li>
+      <li style="float: right;"><a href="features.commandline.io-streams.html">I/O streams »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">PHP 的命令行模式</a></li>
+    <li>Executing PHP files</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.usage" class="section">
+<h2 class="title">Executing PHP files</h2>
+
+
+ <p class="para">
+  <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym> 模块有以下三种不同的方法来获取要运行的 PHP 代码：
+  </p><ol type="1">
+   <li class="listitem">
+    <p class="para">
+     让 PHP 运行指定文件。
+    </p>
+    <p class="para">
+     </p><div class="example-contents screen">
+<div class="cdata"><pre>
+php my_script.php
+
+php -f my_script.php
+</pre></div>
+     </div>
+    
+    <p class="para">
+     以上两种方法（使用或不使用 <strong class="option unknown">-f</strong> 参数）都能够运行给定的
+     <var class="filename">my_script.php</var> 文件。可以选择任何文件来运行，指定的
+     PHP 脚本并非必须要以 <code class="literal">.php</code>
+     为扩展名，它们可以有任意的文件名和扩展名。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      If arguments need to be passed to the script when using
+      <strong class="option unknown">-f</strong>, the first argument must be <code class="literal">--</code>.
+     </p>
+    </blockquote>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     在命令行直接运行 PHP 代码。
+    </p>
+    <p class="para">
+     </p><div class="example-contents screen">
+<div class="cdata"><pre>
+php -r 'print_r(get_defined_constants());'
+</pre></div>
+     </div>
+    
+    <p class="para">
+     在使用这种方法时，请注意外壳变量的替代及引号的使用。
+    </p>
+    <blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      请仔细阅读以上范例，在运行代码时没有开始和结束的标记符！加上
+      <strong class="option unknown">-r</strong> 参数后，这些标记符是不需要的，加上它们会导致语法错误。
+     </p>
+    </blockquote>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     通过标准输入（<code class="literal">stdin</code>）提供需要运行的 PHP 代码。
+    </p>
+    <p class="para">
+     以上用法提供了非常强大的功能，使得可以如下范例所示，动态地生成
+     PHP 代码并通过命令行运行这些代码：
+     </p><div class="example-contents screen">
+<div class="cdata"><pre>
+$ some_application | some_filter | php | sort -u &gt;final_output.txt
+</pre></div>
+     </div>
+    
+   </li>
+  </ol>
+  以上三种运行代码的方法不能同时使用。
+ 
+
+ <p class="para">
+  和所有的外壳应用程序一样，PHP 的二进制文件及其运行的 PHP 脚本能够接受一系列的参数。PHP
+  没有限制传送给脚本程序的参数的个数（外壳程序对命令行的字符数有限制，但通常都不会超过该限制）。传递给脚本的参数可在全局变量
+  <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var> 中获取。该数组中下标为零的成员 <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var> 为脚本的名称（当
+  PHP 代码来自标准输入获直接用 <strong class="option unknown">-r</strong>
+  参数以命令行方式运行时，该名称为“<code class="literal">-</code>”）。The same is true if the code is
+  executed via a pipe from <code class="literal">STDIN</code>.
+ </p>
+
+ <p class="para">
+ 另外，全局变量
+ <var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var> 存有 <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var>
+ 数组中成员变量的个数（而<em class="emphasis">非</em>传送给脚本程序的参数的个数）。
+ </p>
+
+ <p class="para">
+  只要传送给脚本的参数不是以 <code class="literal">-</code>
+  符号开头，就无需过多的注意什么。向脚本传送以
+  <code class="literal">-</code> 开头的参数会导致错误，因为 PHP
+  会认为应该由它自身来处理这些参数。可以用参数列表分隔符
+  <code class="literal">--</code> 来解决这个问题。在 PHP
+  解析完参数后，该符号后所有的参数将会被原样传送给脚本程序。
+ </p>
+
+<div class="informalexample">
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+# 以下命令将不会运行 PHP 代码，而只显示 PHP 命令行模式的使用说明：
+$ php -r 'var_dump($argv);' -h
+Usage: php [options] [-f] &lt;file&gt; [args...]
+[...]
+
+# 以下命令将会把“-h”参数传送给脚本程序，PHP 不会显示命令行模式的使用说明：
+$ php -r 'var_dump($argv);' -- -h
+array(2) {
+  [0]=&gt;
+  string(1) "-"
+  [1]=&gt;
+  string(2) "-h"
+}
+</pre></div>
+ </div>
+</div>
+
+ <p class="para">
+  除此之外，还有另一个方法将 PHP 用于外壳脚本。可以在写一个脚本，并在第一行以
+  <code class="literal">#!/usr/bin/php</code> 开头，在其后加上以 PHP
+  开始和结尾标记符包含的正常的 PHP
+  代码，然后为该文件设置正确的运行属性（例如：<strong class="command">chmod +x test</strong>）。
+  该方法可以使得该文件能够像外壳脚本或 PERL 脚本一样被直接执行。
+ </p>
+
+<div class="example" id="example-433">
+ <p><strong>示例 #1 Execute PHP script as shell script</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br><span style="color: #0000BB">&lt;?php<br>    var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ <div class="example-contents"><p>
+  假设改文件名为 <var class="filename">test</var> 并被放置在当前目录下，可以做如下操作：
+ </p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ chmod +x test
+$ ./test -h -- foo
+array(4) {
+  [0]=&gt;
+  string(6) "./test"
+  [1]=&gt;
+  string(2) "-h"
+  [2]=&gt;
+  string(2) "--"
+  [3]=&gt;
+  string(3) "foo"
+}
+</pre></div>
+  </div>
+</div>
+
+ <p class="para">
+  正如所看到的，在向该脚本传送以 <code class="literal">-</code> 开头的参数时，脚本仍然能够正常运行。
+ </p>
+
+ <p class="para">
+  PHP 的命令行模式能使得 PHP 脚本能完全独立于 web 服务器单独运行。如果使用
+  Unix 系统，需要在 PHP
+  脚本的最前面加上一行特殊的代码，使得它能够被执行，这样系统就能知道用哪个程序去运行该脚本。在
+  Windows 平台下可以将 <var class="filename">php.exe</var> 和 <code class="literal">.php</code>
+  文件的双击属性相关联，也可以编写一个批处理文件来用 PHP
+  执行脚本。为 Unix 系统增加的第一行代码不会影响该脚本在
+  Windows 下的运行，因此也可以用该方法编写跨平台的脚本程序。以下是一个简单的
+  PHP 命令行程序的范例。
+ </p>
+
+ <p class="para">
+  </p><div class="example" id="example-434">
+   <p><strong>示例 #2 试图以命令行方式运行的 PHP 脚本（script.php）</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br><span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">if (</span><span style="color: #0000BB">$argc </span><span style="color: #007700">!= </span><span style="color: #0000BB">2 </span><span style="color: #007700">|| </span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">], array(</span><span style="color: #DD0000">'--help'</span><span style="color: #007700">, </span><span style="color: #DD0000">'-help'</span><span style="color: #007700">, </span><span style="color: #DD0000">'-h'</span><span style="color: #007700">, </span><span style="color: #DD0000">'-?'</span><span style="color: #007700">))) {<br></span><span style="color: #0000BB">?&gt;<br></span><br>This is a command line PHP script with one option.<br><br>  Usage:<br>  <span style="color: #0000BB">&lt;?php </span><span style="color: #007700">echo </span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]; </span><span style="color: #0000BB">?&gt;</span> &lt;option&gt;<br><br>  &lt;option&gt; can be some word you would like<br>  to print out. With the --help, -help, -h,<br>  or -? options, you can get this help.<br><br><span style="color: #0000BB">&lt;?php<br></span><span style="color: #007700">} else {<br>    echo </span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ 
+
+ <p class="para">
+  在以上脚本中，用第一行特殊的代码来指明该文件应该由 PHP
+  来执行。在这里使用 <acronym title="Command Line Interpreter/Interface">CLI</acronym> 的版本，因此不会有 HTTP 头信息输出。
+ </p>
+
+ <p class="para">
+  以上程序中检查了参数的个数是大于 1 个还是小于 1
+  个。此外如果参数是 <strong class="option unknown">--help</strong>，<strong class="option unknown">-help</strong>，<strong class="option unknown">-h</strong>
+  或 <strong class="option unknown">-?</strong>
+  时，打印出帮助信息，并同时用 <var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var> 动态输出脚本的名称。如果还收到了其它参数，将其显示出来。
+ </p>
+
+ <p class="para">
+  如果希望在 Unix 下运行以上脚本，需要使其属性为可执行文件，然后简单的运行
+  <strong class="command">script.php echothis</strong> 或 <strong class="command">script.php -h</strong>。在
+  Windows 下，可以为此编写一个批处理文件：
+ </p>
+
+ <p class="para">
+  </p><div class="example" id="example-435">
+   <p><strong>示例 #3 运行 PHP 命令行脚本的批处理文件（script.bat）</strong></p>
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">@echo OFF
+"C:\php\php.exe" script.php %*</pre>
+</div>
+   </div>
+
+  </div>
+ 
+
+ <p class="para">
+  假设将上述程序命名为 <var class="filename">script.php</var>，且
+  <acronym title="Command Line Interpreter/Interface">CLI</acronym> 版的 <var class="filename">php.exe</var> 文件放置在
+  <var class="filename">c:\php\cli\php.exe</var>，该批处理文件会帮助将附加的参数传给脚本程序：<strong class="command">script.bat
+  echothis</strong> 或 <strong class="command">script.bat -h</strong>。
+ </p>
+
+ <p class="para">
+  请参阅 <a href="ref.readline.html" class="link">Readline</a>
+  扩展模块的有关文档，以获取更多的函数的信息。这些函数可以帮助完善 PHP 命令行应用程序。
+ </p>
+
+ <p class="para">
+  On Windows, PHP can be configured to run without the need to
+  supply the <var class="filename">C:\php\php.exe</var> or the <code class="literal">.php</code>
+  extension, as described in <a href="install.windows.legacy.index.html#install.windows.legacy.commandline" class="link">Command
+  Line PHP on Microsoft Windows</a>.
+ </p>
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  </p><p class="para">
+   On Windows it is recommended to run PHP under an actual user account.
+   When running under a network service certain operations will fail, because
+   "No mapping between account names and security IDs was done".
+  </p>
+ </blockquote>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2303);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

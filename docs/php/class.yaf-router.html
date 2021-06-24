@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The Yaf_Router class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.yaf-router"> 
+    <meta name="description" content="class.yaf-router"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="405" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-action-abstract.html" title="The Yaf_Action_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Action_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-application.html" title="The Yaf_Application class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Application class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-bootstrap-abstract.html" title="The Yaf_Bootstrap_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Bootstrap_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-config-abstract.html" title="The Yaf_Config_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Config_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-config-ini.html" title="The Yaf_Config_Ini class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Config_Ini class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-config-simple.html" title="The Yaf_Config_Simple class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Config_Simple class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-controller-abstract.html" title="The Yaf_Controller_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Controller_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-dispatcher.html" title="Yaf_Dispatcher 类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Yaf_Dispatcher 类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-dispatchfailed.html" title="The Yaf_Exception_DispatchFailed class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_DispatchFailed class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-loadfailed-action.html" title="The Yaf_Exception_LoadFailed_Action class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_LoadFailed_Action class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-loadfailed-controller.html" title="The Yaf_Exception_LoadFailed_Controller class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_LoadFailed_Controller class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-loadfailed-module.html" title="The Yaf_Exception_LoadFailed_Module class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_LoadFailed_Module class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-loadfailed-view.html" title="The Yaf_Exception_LoadFailed_View class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_LoadFailed_View class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-loadfailed.html" title="The Yaf_Exception_LoadFailed class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_LoadFailed class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-routerfailed.html" title="The Yaf_Exception_RouterFailed class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_RouterFailed class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-startuperror.html" title="The Yaf_Exception_StartupError class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_StartupError class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception-typeerror.html" title="The Yaf_Exception_TypeError class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception_TypeError class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-exception.html" title="The Yaf_Exception class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Exception class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-loader.html" title="The Yaf_Loader class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Loader class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-plugin-abstract.html" title="The Yaf_Plugin_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Plugin_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-registry.html" title="The Yaf_Registry class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Registry class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-request-abstract.html" title="The Yaf_Request_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Request_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-request-http.html" title="The Yaf_Request_Http class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Request_Http class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-request-simple.html" title="The Yaf_Request_Simple class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Request_Simple class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-response-abstract.html" title="The Yaf_Response_Abstract class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Response_Abstract class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-interface.html" title="The Yaf_Route_Interface class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Interface class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-map.html" title="The Yaf_Route_Map class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Map class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-regex.html" title="The Yaf_Route_Regex class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Regex class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-rewrite.html" title="The Yaf_Route_Rewrite class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Rewrite class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-simple.html" title="The Yaf_Route_Simple class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Simple class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-static.html" title="The Yaf_Route_Static class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Static class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-route-supervar.html" title="The Yaf_Route_Supervar class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Route_Supervar class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-router.html" title="The Yaf_Router class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Router class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-session.html" title="The Yaf_Session class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_Session class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-view-interface.html" title="The Yaf_View_Interface class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_View_Interface class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.yaf-view-simple.html" title="The Yaf_View_Simple Class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Yaf_View_Simple Class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.yaf.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/yaf.appconfig.html" title="应用配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    应用配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/yaf.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/yaf.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/yaf.tutorials.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="yaf-route-rewrite.route.html">« Yaf_Route_Rewrite::route</a></li>
+      <li style="float: right;"><a href="yaf-router.addconfig.html">Yaf_Router::addConfig »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.yaf.html">Yaf</a></li>
+    <li>The Yaf_Router class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.yaf-router" class="reference">
+
+ <h1 class="title">The Yaf_Router class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(Yaf &gt;=1.0.0)</p>
+
+
+  <div class="section" id="yaf-router.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+   <strong class="classname">Yaf_Router</strong>是标准的框架路由.路由是一个拿到URI端点（URL中的URI的一部分）然后分解参数得到哪一个module, controller, 和action需要接受请求。module, controller, 和action，还有一些其他的参数是打包在一个<a href="class.yaf-request-abstract.html" class="classname">Yaf_Request_Abstract</a>的对象中，然后通过<a href="class.yaf-dispatcher.html" class="classname">Yaf_Dispatcher</a>来处理的。路由只发生一次:最初接到请求并且在第一个controller分发之前。
+   <strong class="classname">Yaf_Router</strong> 是设计来允许使用纯PHP结构的类似功能模块的跳转。它非常松散的基于Ruby on Rails的路由，并且不需要你提前就知道webserver URL跳转的相关知识。它是设计来处理一个Apache 跳转模块的规则（一个）
+   <strong class="classname">Yaf_Router</strong>是设计来允许mod_rewrite
+   </p><div class="example" id="example-4026">
+    <p><strong>示例 #1 Apache的跳转规则</strong></p>
+   <div class="example-contents">
+<div class="confcode"><pre class="confcode">RewriteEngine on
+RewriteRule !\.(js|ico|gif|jpg|png|css|html)$ index.php</pre>
+</div>
+   </div>
+
+   </div>
+   or (preferred):
+   <div class="example" id="example-4027">
+   <p><strong>示例 #2 Apache的跳转规则</strong></p>
+   <div class="example-contents">
+<div class="confcode"><pre class="confcode">RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]</pre>
+</div>
+   </div>
+
+  </div>
+   如果使用Lighttpd，下面的跳转规则是有效的：
+   <div class="example" id="example-4028">
+    <p><strong>示例 #3 Lighttpd的跳转规则</strong></p>
+   <div class="example-contents">
+<div class="confcode"><pre class="confcode">url.rewrite-once = (
+  ".*\?(.*)$" =&gt; "/index.php?$1",
+  ".*\.(js|ico|gif|jpg|png|css|html)$" =&gt; "$0",
+  "" =&gt; "/index.php"
+)</pre>
+</div>
+   </div>
+
+  </div>
+   如果使用Nginx，下面的跳转规则是有效的：
+   <div class="example" id="example-4029">
+    <p><strong>示例 #4 Nginx的跳转规则</strong></p>
+   <div class="example-contents">
+<div class="confcode"><pre class="confcode">server {
+  listen ****;
+  server_name  yourdomain.com;
+  root   document_root;
+  index  index.php index.html;
+
+  if (!-e $request_filename) {
+    rewrite ^/(.*)  /index.php/$1 last;
+  }
+}</pre>
+</div>
+   </div>
+
+  </div>
+   
+  </div>
+
+
+  <div class="section" id="yaf-router.default">
+   <h2 class="title">默认路由</h2>
+   <p class="para">
+   Yaf_Router预设了一个默认路由，它将以controller/action的形式匹配URIs。此外，一个module的名字可以被指定为第一路径元素，允许URIs设置为module/controller/action的形式。最后，它也会匹配一些URI中额外附加的参数，默认形式是controller/action/var1/value1/var2/value2。
+    </p><blockquote class="note"><p><strong class="note">注意</strong>: 
+     </p><p class="para">
+      Module的名字必须要定义在配置中，就application.module="Index,Foo,Bar"而言，在这种情况下，仅仅index, foo 和 bar能被考虑作为为一个module的名称。如果没有在配置文件中定义，那么Yaf使用默认的module名字“Index”。
+     </p>
+    </blockquote>
+   
+
+   <p class="para">
+   如何匹配这些路由的一些例子：
+   </p><div class="example" id="example-4030">
+    <p><strong>示例 #5 <a href="class.yaf-route-static.html" class="classname">Yaf_Route_Static</a>(default
+     route)example</strong></p>
+   <div class="example-contents">
+<div class="confcode"><pre class="confcode">// Assuming the following configure:
+$conf = array(
+   "application" =&gt; array(
+      "modules" =&gt; "Index,Blog",
+   ),
+);
+
+Controller only:
+http://example/news
+    controller == news
+Action only(when defined yaf.action_prefer=1 in php.ini)
+    action  == news
+ 
+Invalid module maps to controller name:
+http://example/foo
+    controller == foo
+ 
+Module + controller:
+http://example/blog/archive
+    module     == blog
+    controller == archive
+ 
+Module + controller + action:
+http://example/blog/archive/list
+    module     == blog
+    controller == archive
+    action     == list
+ 
+Module + controller + action + params:
+http://example/blog/archive/list/sort/alpha/date/desc
+    module     == blog
+    controller == archive
+    action     == list
+    sort       == alpha
+    date       == desc</pre>
+</div>
+   </div>
+
+  </div>
+
+  
+  </div>
+
+  <div class="section" id="yaf-router.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">Yaf_Router</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+      <var class="varname"><a href="class.yaf-router.html#yaf-router.props.routes">$<var class="varname">_routes</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+      <var class="varname"><a href="class.yaf-router.html#yaf-router.props.current">$<var class="varname">_current</var></a></var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.addconfig.html" class="methodname">addConfig</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.yaf-config-abstract.html" class="type Yaf_Config_Abstract">Yaf_Config_Abstract</a></span> <code class="parameter">$config</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.addroute.html" class="methodname">addRoute</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type"><span class="type Yaf_Route_Abstract">Yaf_Route_Abstract</span></span> <code class="parameter">$route</code></span>
+   ) : <span class="type"><a href="class.yaf-router.html" class="type Yaf_Router">Yaf_Router</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span><span class="methodname"><a href="yaf-router.construct.html" class="methodname">__construct</a></span>
+    (
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.getcurrentroute.html" class="methodname">getCurrentRoute</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.getroute.html" class="methodname">getRoute</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.getroutes.html" class="methodname">getRoutes</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="yaf-router.route.html" class="methodname">route</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.yaf-request-abstract.html" class="type Yaf_Request_Abstract">Yaf_Request_Abstract</a></span> <code class="parameter">$request</code></span>
+   ) : <span class="type">bool</span></div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yaf-router.props">
+   <h2 class="title">属性</h2>
+   <dl>
+
+    
+     <dt id="yaf-router.props.routes"><var class="varname">_routes</var></dt>
+
+     <dd>
+
+      <p class="para"></p>
+     </dd>
+
+    
+    
+     <dt id="yaf-router.props.current"><var class="varname">_current</var></dt>
+
+     <dd>
+
+      <p class="para"></p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="yaf-router.addconfig.html">Yaf_Router::addConfig</a> — 向Router中添加配置文件中定义的路由</li><li><a href="yaf-router.addroute.html">Yaf_Router::addRoute</a> — 往Router中添加新的路由</li><li><a href="yaf-router.construct.html">Yaf_Router::__construct</a> — Yaf_Router constructor</li><li><a href="yaf-router.getcurrentroute.html">Yaf_Router::getCurrentRoute</a> — 取得当前有效的路由名</li><li><a href="yaf-router.getroute.html">Yaf_Router::getRoute</a> — The getRoute purpose</li><li><a href="yaf-router.getroutes.html">Yaf_Router::getRoutes</a> — The getRoutes purpose</li><li><a href="yaf-router.route.html">Yaf_Router::route</a> — The route purpose</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 1276);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>RarEntry::extract - 开发帮助文档</title> 
+    <meta name="keyword" content="rarentry.extract"> 
+    <meta name="description" content="rarentry.extract"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1026" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.extract.html" title="RarEntry::extract">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::extract
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getattr.html" title="RarEntry::getAttr">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getAttr
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getcrc.html" title="RarEntry::getCrc">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getCrc
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getfiletime.html" title="RarEntry::getFileTime">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getFileTime
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.gethostos.html" title="RarEntry::getHostOs">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getHostOs
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getmethod.html" title="RarEntry::getMethod">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getMethod
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getname.html" title="RarEntry::getName">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getName
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getpackedsize.html" title="RarEntry::getPackedSize">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getPackedSize
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getstream.html" title="RarEntry::getStream">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getStream
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getunpackedsize.html" title="RarEntry::getUnpackedSize">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getUnpackedSize
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.getversion.html" title="RarEntry::getVersion">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::getVersion
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.isdirectory.html" title="RarEntry::isDirectory">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::isDirectory
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.isencrypted.html" title="RarEntry::isEncrypted">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::isEncrypted
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/rarentry.tostring.html" title="RarEntry::__toString">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RarEntry::__toString
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="class.rarentry.html">« RarEntry</a></li>
+      <li style="float: right;"><a href="rarentry.getattr.html">RarEntry::getAttr »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="class.rarentry.html">RarEntry</a></li>
+    <li>Extract entry from the archive</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="rarentry.extract" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">RarEntry::extract</h1>
+  <p class="verinfo">(PECL rar &gt;= 0.1)</p><p class="refpurpose"><span class="refname">RarEntry::extract</span> — <span class="dc-title">Extract entry from the archive</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-rarentry.extract-description">
+  <h3 class="title">说明</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="modifier">public</span> <span class="methodname"><strong>RarEntry::extract</strong></span>
+     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$dir</code></span>
+    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$filepath</code><span class="initializer"> = ""</span></span>
+    , <span class="methodparam"><span class="type">string</span> <code class="parameter">$password</code><span class="initializer"> = NULL</span></span>
+    , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$extended_data</code><span class="initializer"> = <strong><code>false</code></strong></span></span>
+    ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="methodname"><strong>RarEntry::extract()</strong></span> extracts the entry's data.
+   It will create new file in the specified
+   <code class="parameter">dir</code> with the name identical to the entry's name,
+   unless the second argument is specified. See below for more information.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-rarentry.extract-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">dir</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to the directory where files should be extracted. This parameter is
+       considered if and only if <code class="parameter">filepath</code> is not. If both
+       parameters are empty an extraction to the current directory will be
+       attempted.
+      </p>
+     </dd>
+
+    
+    
+    
+     <dt>
+<code class="parameter">filepath</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path (relative or absolute) containing the directory and filename of the
+       extracted file. This parameter overrides both the parameter
+       <code class="parameter">dir</code> and the original file name.
+      </p>
+     </dd>
+
+    
+    
+    
+     <dt>
+<code class="parameter">password</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The password used to encrypt this entry. If the entry is not encrypted, this value will not be used and can
+       be omitted. If this parameter is omitted and the entry is encrypted, the password given to
+       <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span>, if any, will be used. If a wrong password is given, either explicitly
+       or implicitly via <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span>, CRC checking will fail and this method will fail and return <strong><code>false</code></strong>.
+       If no password is given and one is required, this method will fail and return <strong><code>false</code></strong>.
+       You can check whether an entry is encrypted with <span class="methodname"><a href="rarentry.isencrypted.html" class="methodname">RarEntry::isEncrypted()</a></span>.
+      </p>
+     </dd>
+
+    
+
+   
+    <dt>
+<code class="parameter">extended_data</code></dt>
+
+    <dd>
+
+     <p class="para">
+       If <strong><code>true</code></strong>, extended information such as NTFS ACLs and Unix owner information will be set in the extract
+       files, as long as it's present in the archive.
+     </p>
+    </dd>
+
+   
+   </dl>
+
+  
+  <div class="warning"><strong class="warning">警告</strong>
+      <p class="para">Prior to version 2.0.0, this function would not handle relative
+      paths correctly. Use <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> as a workaround.</p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-rarentry.extract-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-rarentry.extract-changelog">
+  <h3 class="title">更新日志</h3>
+  <p class="para">
+   </p><table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>版本</th>
+       <th>说明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL rar 3.0.0</td>
+       <td>
+        <code class="parameter">extended_data</code> was added.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL rar 3.0.0</td>
+       <td>
+        Support for RAR archives with repeated entry names is no longer defective.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-rarentry.extract-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-768">
+    <p><strong>示例 #1 <span class="methodname"><strong>RarEntry::extract()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$rar_file </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.rar'</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"Failed to open Rar archive"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_entry_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">, </span><span style="color: #DD0000">'Dir/file.txt'</span><span style="color: #007700">) or die(</span><span style="color: #DD0000">"Failed to find such entry"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #DD0000">'/dir/to'</span><span style="color: #007700">); </span><span style="color: #FF8000">// create /dir/to/Dir/file.txt<br></span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #0000BB">false</span><span style="color: #007700">, </span><span style="color: #DD0000">'/dir/to/new_name.txt'</span><span style="color: #007700">); </span><span style="color: #FF8000">// create /dir/to/new_name.txt<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-769">
+    <p><strong>示例 #2 How to extract all files in archive: </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">/* example by Erik Jenssen aka erix */<br><br></span><span style="color: #0000BB">$filename </span><span style="color: #007700">= </span><span style="color: #DD0000">"foobar.rar"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$filepath </span><span style="color: #007700">= </span><span style="color: #DD0000">"/home/foo/bar/"</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$rar_file </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #0000BB">$filepath</span><span style="color: #007700">.</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$list </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_list</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">);<br>foreach(</span><span style="color: #0000BB">$list </span><span style="color: #007700">as </span><span style="color: #0000BB">$file</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$entry </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_entry_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">, </span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$entry</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #DD0000">"."</span><span style="color: #007700">); </span><span style="color: #FF8000">// extract to the current dir<br></span><span style="color: #007700">}<br></span><span style="color: #0000BB">rar_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_file</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-rarentry.extract-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="rarentry.getstream.html" class="methodname" rel="rdfs-seeAlso">RarEntry::getStream()</a> - Get file handler for entry</span></li>
+    <li class="member"><a href="wrappers.rar.html" class="link"><code class="literal">rar://</code> wrapper</a></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8994);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

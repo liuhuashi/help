@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>is_subclass_of - 开发帮助文档</title> 
+    <meta name="keyword" content="function.is-subclass-of"> 
+    <meta name="description" content="function.is-subclass-of"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="197" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.autoload.html" title="__autoload">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    __autoload
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.class-alias.html" title="class_alias">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    class_alias
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.class-exists.html" title="class_exists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    class_exists
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-called-class.html" title="get_called_class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_called_class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-class-methods.html" title="get_class_methods">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_class_methods
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-class-vars.html" title="get_class_vars">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_class_vars
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-class.html" title="get_class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-declared-classes.html" title="get_declared_classes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_declared_classes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-declared-interfaces.html" title="get_declared_interfaces">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_declared_interfaces
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-declared-traits.html" title="get_declared_traits">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_declared_traits
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-object-vars.html" title="get_object_vars">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_object_vars
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.get-parent-class.html" title="get_parent_class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    get_parent_class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.interface-exists.html" title="interface_exists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    interface_exists
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.is-a.html" title="is_a">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    is_a
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.is-subclass-of.html" title="is_subclass_of">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    is_subclass_of
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.method-exists.html" title="method_exists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    method_exists
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.property-exists.html" title="property_exists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    property_exists
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.trait-exists.html" title="trait_exists">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    trait_exists
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.is-a.html">« is_a</a></li>
+      <li style="float: right;"><a href="function.method-exists.html">method_exists »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.classobj.html">类/对象 函数</a></li>
+    <li>如果此对象是该类的子类，则返回 true</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.is-subclass-of" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">is_subclass_of</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">is_subclass_of</span> — <span class="dc-title">如果此对象是该类的子类，则返回 <strong><code>true</code></strong></span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.is-subclass-of-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>is_subclass_of</strong></span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code></span>
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   如果对象 <code class="parameter">object</code>
+   所属类是类 <code class="parameter">class_name</code>
+   的子类，则返回 <strong><code>true</code></strong>，否则返回 <strong><code>false</code></strong>。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   </p><p class="para">
+    自 PHP 5.0.3 起也可以用一个字符串来指定 <code class="parameter">object</code>
+    参数（类名）。
+   </p>
+  </blockquote>
+  <p class="para">
+   </p><div class="example" id="example-5098">
+    <p><strong>示例 #1 <span class="function"><strong>is_subclass_of()</strong></span> 例子</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// define a class<br></span><span style="color: #007700">class </span><span style="color: #0000BB">WidgetFactory<br></span><span style="color: #007700">{<br>  var </span><span style="color: #0000BB">$oink </span><span style="color: #007700">= </span><span style="color: #DD0000">'moo'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// define a child class<br></span><span style="color: #007700">class </span><span style="color: #0000BB">WidgetFactory_Child </span><span style="color: #007700">extends </span><span style="color: #0000BB">WidgetFactory<br></span><span style="color: #007700">{<br>  var </span><span style="color: #0000BB">$oink </span><span style="color: #007700">= </span><span style="color: #DD0000">'oink'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// create a new object<br></span><span style="color: #0000BB">$WF </span><span style="color: #007700">= new </span><span style="color: #0000BB">WidgetFactory</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$WFC </span><span style="color: #007700">= new </span><span style="color: #0000BB">WidgetFactory_Child</span><span style="color: #007700">();<br><br>if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #0000BB">$WFC</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, \$WFC is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, \$WFC is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br><br>if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #0000BB">$WF</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, \$WF is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, \$WF is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// usable only since PHP 5.0.3<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #DD0000">'WidgetFactory_Child'</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, WidgetFactory_Child is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, WidgetFactory_Child is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+yes, $WFC is a subclass of WidgetFactory
+no, $WF is not a subclass of WidgetFactory
+yes, WidgetFactory_Child is a subclass of WidgetFactory
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="simpara">
+   参见 <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span>、 
+   <span class="function"><a href="function.get-parent-class.html" class="function">get_parent_class()</a></span> 和 
+   <span class="function"><a href="function.is-a.html" class="function">is_a()</a></span>。
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.is-subclass-of-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">object</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A class name or an object instance
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The class name
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">allow_string</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If this parameter set to false, string class name as <code class="parameter">object</code>
+       is not allowed. This also prevents from calling autoloader if the class doesn't exist.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.is-subclass-of-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   This function returns <strong><code>true</code></strong> if the object <code class="parameter">object</code>,
+   belongs to a class which is a subclass of 
+   <code class="parameter">class_name</code>, <strong><code>false</code></strong> otherwise.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.is-subclass-of-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-5099">
+    <p><strong>示例 #2 <span class="function"><strong>is_subclass_of()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">// define a class<br></span><span style="color: #007700">class </span><span style="color: #0000BB">WidgetFactory<br></span><span style="color: #007700">{<br>  var </span><span style="color: #0000BB">$oink </span><span style="color: #007700">= </span><span style="color: #DD0000">'moo'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// define a child class<br></span><span style="color: #007700">class </span><span style="color: #0000BB">WidgetFactory_Child </span><span style="color: #007700">extends </span><span style="color: #0000BB">WidgetFactory<br></span><span style="color: #007700">{<br>  var </span><span style="color: #0000BB">$oink </span><span style="color: #007700">= </span><span style="color: #DD0000">'oink'</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #FF8000">// create a new object<br></span><span style="color: #0000BB">$WF </span><span style="color: #007700">= new </span><span style="color: #0000BB">WidgetFactory</span><span style="color: #007700">();<br></span><span style="color: #0000BB">$WFC </span><span style="color: #007700">= new </span><span style="color: #0000BB">WidgetFactory_Child</span><span style="color: #007700">();<br><br>if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #0000BB">$WFC</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, </span><span style="color: #0000BB">$WFC</span><span style="color: #DD0000"> is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, </span><span style="color: #0000BB">$WFC</span><span style="color: #DD0000"> is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br><br><br>if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #0000BB">$WF</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, </span><span style="color: #0000BB">$WF</span><span style="color: #DD0000"> is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, </span><span style="color: #0000BB">$WF</span><span style="color: #DD0000"> is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br><br><br></span><span style="color: #FF8000">// usable only since PHP 5.0.3<br></span><span style="color: #007700">if (</span><span style="color: #0000BB">is_subclass_of</span><span style="color: #007700">(</span><span style="color: #DD0000">'WidgetFactory_Child'</span><span style="color: #007700">, </span><span style="color: #DD0000">'WidgetFactory'</span><span style="color: #007700">)) {<br>  echo </span><span style="color: #DD0000">"yes, WidgetFactory_Child is a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>} else {<br>  echo </span><span style="color: #DD0000">"no, WidgetFactory_Child is not a subclass of WidgetFactory\n"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程会输出：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+yes, $WFC is a subclass of WidgetFactory
+no, $WF is not a subclass of WidgetFactory
+yes, WidgetFactory_Child is a subclass of WidgetFactory
+</pre></div>
+    </div>
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.is-subclass-of-notes">
+  <h3 class="title">注释</h3>
+  <blockquote class="note"><p><strong class="note">注意</strong>: </p><p class="para">如果此类不是已知类，使用此函数会使用任何已注册的
+<a href="language.oop5.autoload.html" class="link">autoloader</a>。</p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.is-subclass-of-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.get-class.html" class="function" rel="rdfs-seeAlso">get_class()</a> - 返回对象的类名</span></li>
+    <li class="member"><span class="function"><a href="function.get-parent-class.html" class="function" rel="rdfs-seeAlso">get_parent_class()</a> - 返回对象或类的父类名</span></li>
+    <li class="member"><span class="function"><a href="function.is-a.html" class="function" rel="rdfs-seeAlso">is_a()</a> - 如果对象属于该类或该类是此对象的父类则返回 true</span></li>
+    <li class="member"><span class="function"><a href="function.class-parents.html" class="function" rel="rdfs-seeAlso">class_parents()</a> - 返回指定类的父类。</span></li>
+   </ul>
+  
+ </div>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 3896);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

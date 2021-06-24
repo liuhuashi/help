@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>OCI8 Transparent Application Failover (TAF) Support - 开发帮助文档</title> 
+    <meta name="keyword" content="oci8.taf"> 
+    <meta name="description" content="oci8.taf"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="813" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Collection.html" title="The OCICollection class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCICollection class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Lob.html" title="The OCILob class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCILob class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.oci8.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.connection.html" title="OCI8 Connection Handling and Connection Pooling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Connection Handling and Connection Pooling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.datatypes.html" title="Supported Datatypes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Supported Datatypes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.dtrace.html" title="OCI8 and DTrace Dynamic Tracing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 and DTrace Dynamic Tracing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.fan.html" title="OCI8 Fast Application Notification (FAN) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Fast Application Notification (FAN) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.taf.html" title="OCI8 Transparent Application Failover (TAF) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Transparent Application Failover (TAF) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oldaliases.oci8.html" title="OCI8 Obsolete Aliases and Functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Obsolete Aliases and Functions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.oci8.html" title="OCI8 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.fan.html">« OCI8 Fast Application Notification (FAN) Support</a></li>
+      <li style="float: right;"><a href="oci8.dtrace.html">OCI8 and DTrace Dynamic Tracing »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.oci8.html">OCI8</a></li>
+    <li>OCI8 Transparent Application Failover (TAF) Support</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oci8.taf" class="chapter">
+ <h1>OCI8 Transparent Application Failover (TAF) Support</h1>
+
+ <div class="section">
+  <p class="para">
+   TAF is an Oracle Database feature that provides high availability.
+   It enables PHP OCI8 applications to automatically reconnect to a
+   preconfigured database when database connectivity fails due to
+   instance or network failure.
+  </p>
+  <p class="para">
+   In a configured Oracle Database system, TAF occurs when the PHP
+   application detects that the database instance is down or
+   unreachable. It establishes a connection to another node in an
+   Oracle <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-DEF850F6-27E9-428E-B8FC-530230D78AD2" class="link external">» RAC</a>
+   configuration, a hot standby database, or the same database
+   instance
+   itself. See <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-F7817CD2-4A2C-4D37-BD36-56DBABD4725F" class="link external">» Oracle
+   Call Interface Programmer's Guide</a> for more information about
+   OCI TAF.
+  </p>
+  <p class="para">
+   An application callback can be registered
+   with <span class="function"><a href="function.oci-register-taf-callback.html" class="function">oci_register_taf_callback()</a></span>. During
+   failover, normal application processing stops and the registered
+   callback is invoked.  The callback notifies the application of the
+   failover events. If the failover succeeds, normal processing will
+   be resumed. If the failover aborts, any following database
+   operations in the application will fail due to no connection being
+   available.
+  </p>
+  <p class="para">
+   When a connection fails over to another database, the callback can
+   reset any necessary connection state, for example replaying any
+   necessary ALTER SESSION commands if the database service did not have
+   -failover_restore enabled.
+  </p>
+  <p class="para">
+   An application callback can be removed by calling <span class="function"><a href="function.oci-unregister-taf-callback.html" class="function">oci_unregister_taf_callback()</a></span>.
+  </p>
+ </div>
+ <div class="section">
+  <h2 class="title">Configuring Transparent Application Failover</h2>
+  <p class="para">
+   TAF can be configured on the PHP OCI8 side or in the database
+   configuration. If both are configured, database-side settings
+   take precedence.
+  </p>
+  <p class="para">
+   Configure TAF in PHP OCI8 (the client side) by including the
+   FAILOVER_MODE parameter in the CONNECT_DATA portion of a
+   connect descriptor. See Configuring Transparent Application
+   Failover in <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-8F532535-C401-4B51-BE0B-04FD74BB0621" class="link external">» 
+   Oracle Database Net Services Administrator's Guide</a> for
+   more information about client side configuration of TAF.
+  </p>
+  <p class="para">
+   An example tnsnames.ora to configure TAF reconnecting to the
+   same database instance:
+  </p>
+  <p class="para">
+    </p><div class="informalexample">
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+    ORCL =
+      (DESCRIPTION =
+        (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+        (CONNECT_DATA =
+          (SERVICE_NAME = orclpdb1)
+          (FAILOVER_MODE =
+            (TYPE = SELECT)
+            (METHOD = BASIC)
+            (RETRIES = 20)
+            (DELAY = 15))))
+ </pre></div>
+     </div>
+   </div>
+  
+  <p class="para">
+   Alternatively configure TAF on the database side by
+   modifying the target service with
+   <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-8DC4D5E0-CA9D-47BC-BAD0-8769405AFEC5" class="link external">» srvctl</a>
+   (for RAC) or the
+   <a href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-C11449DC-EEDE-4BB8-9D2C-0A45198C1928" class="link external">» 
+   DBMS_SERVICE.MODIFY_SERVICE</a> packaged procedure
+   (for single instance databases).
+  </p>
+ </div>
+ <div class="section">
+  <h2 class="title">Using TAF Callbacks in OCI8</h2>
+  <p class="para">
+   A TAF callback is an application function that can be
+   registered to be called during failover. It is called
+   several times while re-establishing the application's connection.
+  </p>
+  <p class="para">
+   Callback first occurs when a loss of connection is detected.
+   This allows the application to act accordingly for the
+   upcoming delay of the failover. If the failover is successful,
+   the callback is invoked after connection is re-established
+   and usable. At this time, the application can resynchronize
+   session settings and take actions such as informing the user
+   that failover occurred. If failover is unsuccessful, a
+   callback occurs to inform the application that a failover did
+   not take place and the connection is unusable.
+  </p>
+  <p class="para">
+   The interface of a TAF user-defined callback function is as
+   follows:
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>userCallbackFn</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$event</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>
+   ) : <span class="type">int</span></div>
+
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">connection</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The Oracle connection on which the TAF callback was
+       registered via <span class="function"><a href="function.oci-register-taf-callback.html" class="function">oci_register_taf_callback()</a></span>.
+       The connection is not valid until the
+       failover completes successfully.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">event</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The failover event indicates the current status of
+       the failover.
+      </p>
+      <p class="para">
+       </p><ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_BEGIN</code></strong> indicates that
+          failover has detected a lost connection and failover
+          is starting.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_END</code></strong> indicates successful
+          completion of failover.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_ABORT</code></strong> indicates that
+          failover was unsuccessful, and there is no option
+          of retrying.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_ERROR</code></strong> also indicates
+          that failover was unsuccessful, but it gives the
+          application the opportunity to handle the error
+          and return OCI_FO_RETRY to retry failover.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+           <strong><code>OCI_FO_REAUTH</code></strong> indicates
+           that an Oracle user has been re-authenticated.
+         </p>
+        </li>
+       </ul>
+      
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The failover type. This lets the callback know what
+       type of failover the application has requested. The
+       usual values are as follows:
+      </p>
+      <p class="para">
+       </p><ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_SESSION</code></strong> indicates that
+          the user has requested only session failover. For
+          example, if a user's connection is lost, then a
+          new session is automatically created for the user
+          on the backup. This type of failover does not
+          attempt to recover SELECTs.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_SELECT</code></strong> indicates that
+          the user has requested SELECT failover as well.
+          It allows users with open cursors to continue
+          fetching from them after failure.
+         </p>
+        </li>
+       </ul>
+      
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">return value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       </p><ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code>0</code></strong> indicates the failover
+          steps should continue normally.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>OCI_FO_RETRY</code></strong> indicates that
+          the failover should be attempted again by Oracle.
+          In case of an error while failing over to a new
+          connection, TAF is able to retry the failover.
+          Typically, the application code should sleep for
+          a while before returning OCI_FO_RETRY.
+         </p>
+        </li>
+       </ul>
+      
+     </dd>
+
+    
+   </dl>
+
+  
+  <div class="example" id="example-1938">
+   <div class="example-contents"><p>
+    The following example registers a TAF callback
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #FF8000">// Define userspace callback<br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass </span><span style="color: #007700">{<br>    public static </span><span style="color: #0000BB">$retry_count</span><span style="color: #007700">;<br>    public static function </span><span style="color: #0000BB">TAFCallback</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$event</span><span style="color: #007700">, </span><span style="color: #0000BB">$type</span><span style="color: #007700">)<br>    {<br>        switch (</span><span style="color: #0000BB">$event</span><span style="color: #007700">) {<br>            case </span><span style="color: #0000BB">OCI_FO_BEGIN</span><span style="color: #007700">:<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failing Over ... Please stand by\n"</span><span style="color: #007700">);<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failover type was found to be %s \n"</span><span style="color: #007700">,<br>                       ((</span><span style="color: #0000BB">$type</span><span style="color: #007700">==</span><span style="color: #0000BB">OCI_FO_SESSION</span><span style="color: #007700">) ? </span><span style="color: #DD0000">"SESSION"<br>                        </span><span style="color: #007700">:((</span><span style="color: #0000BB">$type</span><span style="color: #007700">==</span><span style="color: #0000BB">OCI_FO_SELECT</span><span style="color: #007700">) ? </span><span style="color: #DD0000">"SELECT" </span><span style="color: #007700">: </span><span style="color: #DD0000">"UNKNOWN!"</span><span style="color: #007700">)));<br>                </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$retry_count </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>                break;<br>            case </span><span style="color: #0000BB">OCI_FO_ABORT</span><span style="color: #007700">:<br>                </span><span style="color: #FF8000">// The application cannot continue using the database<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failover aborted. Failover will not take place.\n"</span><span style="color: #007700">);<br>                break;<br>            case </span><span style="color: #0000BB">OCI_FO_END</span><span style="color: #007700">:<br>                </span><span style="color: #FF8000">// Failover completes successfully. Inform users a failover occurs.<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failover ended ... resuming services\n"</span><span style="color: #007700">);<br>                break;<br>            case </span><span style="color: #0000BB">OCI_FO_REAUTH</span><span style="color: #007700">:<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failed over user ... resuming services\n"</span><span style="color: #007700">);<br>                </span><span style="color: #FF8000">// Replay any ALTER SESSION commands associated with this connection<br>                // eg. oci_parse($conn, ‘ALTER SESSION …’) ;<br>                </span><span style="color: #007700">break;<br>            case </span><span style="color: #0000BB">OCI_FO_ERROR</span><span style="color: #007700">:<br>                </span><span style="color: #FF8000">// Stop retrying if we have already attempted for 20 times.<br>                </span><span style="color: #007700">if (</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$retry_count </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">20</span><span style="color: #007700">)<br>                    return </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">" Failover error received. Sleeping...\n"</span><span style="color: #007700">);<br>                </span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br>                </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$retry_count</span><span style="color: #007700">++;<br>                return </span><span style="color: #0000BB">OCI_FO_RETRY</span><span style="color: #007700">; </span><span style="color: #FF8000">// retry failover<br>                </span><span style="color: #007700">break;<br>            default:<br>                </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Bad Failover Event: %d.\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br>                break;<br>        }<br>        return </span><span style="color: #0000BB">0</span><span style="color: #007700">;<br>    }<br>}<br><br></span><span style="color: #0000BB">$fn_name </span><span style="color: #007700">= </span><span style="color: #DD0000">'MyClass::TAFCallback'</span><span style="color: #007700">;<br><br></span><span style="color: #0000BB">$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'hr'</span><span style="color: #007700">, </span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">, </span><span style="color: #DD0000">'orcl'</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$sysconn </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'system'</span><span style="color: #007700">, </span><span style="color: #DD0000">'oracle'</span><span style="color: #007700">, </span><span style="color: #DD0000">'orcl'</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// Use a privileged connection to construct a SQL statement that will initiate failover<br></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= &lt;&lt;&lt; 'END'<br></span><span style="color: #DD0000">select unique 'alter system disconnect session '''||sid||','||serial#||''''<br>from v$session_connect_info<br>where sid = sys_context('USERENV', 'SID')<br></span><span style="color: #007700">END;<br><br></span><span style="color: #0000BB">$s </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$disconnectssql </span><span style="color: #007700">= </span><span style="color: #0000BB">$r</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br><br></span><span style="color: #0000BB">oci_register_taf_callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$fn_name</span><span style="color: #007700">); </span><span style="color: #FF8000">// Register TAFCallback to Oracle TAF<br><br></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Parsing user query\n"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"select systimestamp from dual"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// For example, if a connection loss occurs at this point, oci_execute() will<br>// detect the loss and failover begins. During failover, oci_execute() will<br>// invoke the TAF callback function several times. If the failover is successful,<br>// a new connection is transparently created and oci_execute() will continue as<br>// usual. The connection session settings can be reset in the TAF callback<br>// function. If the failover is aborted, oci_execute() will return an error<br>// because a valid connection is not available.<br><br>// Disconnect the user, which initiates failover<br></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Disconnecting the user\n"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$discsql </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$sysconn</span><span style="color: #007700">, </span><span style="color: #0000BB">$disconnectssql</span><span style="color: #007700">);<br></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$discsql</span><span style="color: #007700">);<br><br>print(</span><span style="color: #DD0000">"Executing user query\n"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$e </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br>if (!</span><span style="color: #0000BB">$e</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$m </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #DD0000">"Could not execute statement: "</span><span style="color: #007700">. </span><span style="color: #0000BB">$m</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">], </span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br>}<br></span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">oci_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">);<br>print(</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">// do other SQL statements with the new connection, if it is valid<br>// $stmt = oci_parse($conn,  . . .);<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="section">
+ <h2 class="title">See Also</h2>
+ <ul class="simplelist">
+  <li class="member"><span class="function"><a href="function.oci-register-taf-callback.html" class="function">oci_register_taf_callback()</a></span></li>
+  <li class="member"><span class="function"><a href="function.oci-unregister-taf-callback.html" class="function">oci_unregister_taf_callback()</a></span></li>
+ </ul>
+</div>
+
+
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8524);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

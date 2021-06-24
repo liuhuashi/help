@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The SessionHandler class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.sessionhandler"> 
+    <meta name="description" content="class.sessionhandler"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="239" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.sessionhandler.html" title="The SessionHandler class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The SessionHandler class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.sessionhandlerinterface.html" title="The SessionHandlerInterface class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The SessionHandlerInterface class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.session.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.session.html" title="Session 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Session 函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.security.html" title="会话和安全">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    会话和安全
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.upload-progress.html" title="Session 上传进度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Session 上传进度
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-write-close.html">« session_write_close</a></li>
+      <li style="float: right;"><a href="sessionhandler.close.html">SessionHandler::close »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.session.html">Sessions</a></li>
+    <li>The SessionHandler class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.sessionhandler" class="reference">
+
+ <h1 class="title">The SessionHandler class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.4.0, PHP 7, PHP 8)</p>
+
+
+  <div class="section" id="sessionhandler.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    <strong class="classname">SessionHandler</strong> is a special class that can be used
+    to expose the current internal PHP session save handler by inheritance.
+    There are seven methods which wrap the seven internal session save handler
+    callbacks (<code class="parameter">open</code>, <code class="parameter">close</code>,
+    <code class="parameter">read</code>, <code class="parameter">write</code>,
+    <code class="parameter">destroy</code>, <code class="parameter">gc</code> and
+    <code class="parameter">create_sid</code>).  By default, this class will wrap
+    whatever internal save handler is set as defined by the
+    <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a>
+    configuration directive which is usually <code class="parameter">files</code> by
+    default.  Other internal session save handlers are provided by PHP
+    extensions such as SQLite (as <code class="parameter">sqlite</code>), Memcache (as
+    <code class="parameter">memcache</code>), and Memcached (as
+    <code class="parameter">memcached</code>).
+   </p>
+   <p class="para">
+    When a plain instance of <strong class="classname">SessionHandler</strong> is set as the save handler using
+    <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span> it will wrap the current save handlers.
+    A class extending from <strong class="classname">SessionHandler</strong> allows you to override
+    the methods or intercept or filter them by calls the parent class methods which ultimately wrap
+    the internal PHP session handlers.
+   </p>
+   <p class="para">
+    This allows you, for example, to intercept the <code class="parameter">read</code> and <code class="parameter">write</code>
+    methods to encrypt/decrypt the session data and then pass the result to and from the parent class.
+    Alternatively one might chose to entirely override a method like the garbage collection callback
+    <code class="parameter">gc</code>.
+   </p>
+   <p class="para">
+    Because the <strong class="classname">SessionHandler</strong> wraps the current internal save handler
+    methods, the above example of encryption can be applied to any internal save handler without
+    having to know the internals of the handlers.
+   </p>
+   <p class="para">
+    To use this class, first set the save handler you wish to expose using
+    <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> and then pass an instance of
+    <strong class="classname">SessionHandler</strong> or one extending it to <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span>.
+   </p>
+   <p class="para">
+    Please note the callback methods of this class are designed to be called internally by
+    PHP and are not meant to be called from user-space code.  The return values are equally processed internally
+    by PHP.  For more information on the session workflow, please refer <span class="function"><a href="function.session-set-save-handler.html" class="function">session_set_save_handler()</a></span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="sessionhandler.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">SessionHandler</strong>
+     </span>
+
+     <span class="oointerface">implements <span class="interfacename"><a href="class.sessionhandlerinterface.html" class="interfacename">SessionHandlerInterface</a></span></span>
+     <span class="oointerface">, <span class="interfacename"><strong class="interfacename">SessionIdInterface</strong></span></span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.close.html" class="methodname">close</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.create-sid.html" class="methodname">create_sid</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.destroy.html" class="methodname">destroy</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.gc.html" class="methodname">gc</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_lifetime</code></span>
+   ) : <span class="type"><span class="type">int</span>|<span class="type">bool</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.open.html" class="methodname">open</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.read.html" class="methodname">read</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
+   ) : <span class="type"><span class="type">string</span>|<span class="type"><span class="type false">false</span></span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="sessionhandler.write.html" class="methodname">write</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   ) : <span class="type">bool</span></div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="session.notes">
+   <div class="warning"><strong class="warning">警告</strong>
+    <p class="para">
+     This class is designed to expose the current internal PHP session save handler, if you want to
+     write your own custom save handlers, please implement the <a href="class.sessionhandlerinterface.html" class="classname">SessionHandlerInterface</a>
+     interface instead of extending from <strong class="classname">SessionHandler</strong>.
+    </p>
+   </div>
+  </div>
+
+  <div class="section" id="sessionhandler.examples">
+   <div class="example" id="example-4802">
+    <p><strong>示例 #1 
+     Using <strong class="classname">SessionHandler</strong> to add encryption to internal PHP save handlers.
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br> </span><span style="color: #FF8000">/**<br>  * decrypt AES 256<br>  *<br>  * @param data $edata<br>  * @param string $password<br>  * @return decrypted data<br>  */<br></span><span style="color: #007700">function </span><span style="color: #0000BB">decrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$edata</span><span style="color: #007700">, </span><span style="color: #0000BB">$password</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">base64_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$edata</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$salt </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">16</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$ct </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">16</span><span style="color: #007700">);<br><br>    </span><span style="color: #0000BB">$rounds </span><span style="color: #007700">= </span><span style="color: #0000BB">3</span><span style="color: #007700">; </span><span style="color: #FF8000">// depends on key length<br>    </span><span style="color: #0000BB">$data00 </span><span style="color: #007700">= </span><span style="color: #0000BB">$password</span><span style="color: #007700">.</span><span style="color: #0000BB">$salt</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$hash </span><span style="color: #007700">= array();<br>    </span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">] = </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">'sha256'</span><span style="color: #007700">, </span><span style="color: #0000BB">$data00</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br>    for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$rounds</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>        </span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">] = </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">'sha256'</span><span style="color: #007700">, </span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">$i </span><span style="color: #007700">- </span><span style="color: #0000BB">1</span><span style="color: #007700">].</span><span style="color: #0000BB">$data00</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br>        </span><span style="color: #0000BB">$result </span><span style="color: #007700">.= </span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">];<br>    }<br>    </span><span style="color: #0000BB">$key </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">32</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$iv  </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">, </span><span style="color: #0000BB">32</span><span style="color: #007700">,</span><span style="color: #0000BB">16</span><span style="color: #007700">);<br><br>    return </span><span style="color: #0000BB">openssl_decrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ct</span><span style="color: #007700">, </span><span style="color: #DD0000">'AES-256-CBC'</span><span style="color: #007700">, </span><span style="color: #0000BB">$key</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">, </span><span style="color: #0000BB">$iv</span><span style="color: #007700">);<br>  }<br><br></span><span style="color: #FF8000">/**<br> * crypt AES 256<br> *<br> * @param data $data<br> * @param string $password<br> * @return base64 encrypted data<br> */<br></span><span style="color: #007700">function </span><span style="color: #0000BB">encrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">$password</span><span style="color: #007700">) {<br>    </span><span style="color: #FF8000">// Set a random salt<br>    </span><span style="color: #0000BB">$salt </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_random_pseudo_bytes</span><span style="color: #007700">(</span><span style="color: #0000BB">16</span><span style="color: #007700">);<br><br>    </span><span style="color: #0000BB">$salted </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br>    </span><span style="color: #0000BB">$dx </span><span style="color: #007700">= </span><span style="color: #DD0000">''</span><span style="color: #007700">;<br>    </span><span style="color: #FF8000">// Salt the key(32) and iv(16) = 48<br>    </span><span style="color: #007700">while (</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$salted</span><span style="color: #007700">) &lt; </span><span style="color: #0000BB">48</span><span style="color: #007700">) {<br>      </span><span style="color: #0000BB">$dx </span><span style="color: #007700">= </span><span style="color: #0000BB">hash</span><span style="color: #007700">(</span><span style="color: #DD0000">'sha256'</span><span style="color: #007700">, </span><span style="color: #0000BB">$dx</span><span style="color: #007700">.</span><span style="color: #0000BB">$password</span><span style="color: #007700">.</span><span style="color: #0000BB">$salt</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br>      </span><span style="color: #0000BB">$salted </span><span style="color: #007700">.= </span><span style="color: #0000BB">$dx</span><span style="color: #007700">;<br>    }<br><br>    </span><span style="color: #0000BB">$key </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$salted</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">32</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$iv  </span><span style="color: #007700">= </span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$salted</span><span style="color: #007700">, </span><span style="color: #0000BB">32</span><span style="color: #007700">,</span><span style="color: #0000BB">16</span><span style="color: #007700">);<br><br>    </span><span style="color: #0000BB">$encrypted_data </span><span style="color: #007700">= </span><span style="color: #0000BB">openssl_encrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #DD0000">'AES-256-CBC'</span><span style="color: #007700">, </span><span style="color: #0000BB">$key</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">, </span><span style="color: #0000BB">$iv</span><span style="color: #007700">);<br>    return </span><span style="color: #0000BB">base64_encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$salt </span><span style="color: #007700">. </span><span style="color: #0000BB">$encrypted_data</span><span style="color: #007700">);<br>}<br><br>class </span><span style="color: #0000BB">EncryptedSessionHandler </span><span style="color: #007700">extends </span><span style="color: #0000BB">SessionHandler<br></span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$key</span><span style="color: #007700">;<br><br>    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">key </span><span style="color: #007700">= </span><span style="color: #0000BB">$key</span><span style="color: #007700">;<br>    }<br><br>    public function </span><span style="color: #0000BB">read</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">read</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br><br>        if (!</span><span style="color: #0000BB">$data</span><span style="color: #007700">) {<br>            return </span><span style="color: #DD0000">""</span><span style="color: #007700">;<br>        } else {<br>            return </span><span style="color: #0000BB">decrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">key</span><span style="color: #007700">);<br>        }<br>    }<br><br>    public function </span><span style="color: #0000BB">write</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">encrypt</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">key</span><span style="color: #007700">);<br><br>        return </span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">write</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br>    }<br>}<br><br></span><span style="color: #FF8000">// we'll intercept the native 'files' handler, but will equally work<br>// with other internal native handlers like 'sqlite', 'memcache' or 'memcached'<br>// which are provided by PHP extensions.<br></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'session.save_handler'</span><span style="color: #007700">, </span><span style="color: #DD0000">'files'</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$key </span><span style="color: #007700">= </span><span style="color: #DD0000">'secret_string'</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$handler </span><span style="color: #007700">= new </span><span style="color: #0000BB">EncryptedSessionHandler</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">);<br></span><span style="color: #0000BB">session_set_save_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$handler</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">);<br></span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br><br></span><span style="color: #FF8000">// proceed to set and retrieve values by key from $_SESSION</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    </p><p class="para">
+     Since this class' methods are designed to be called internally by PHP as part of the normal session workflow,
+     child class calls to parent methods (i.e. the actual internal native handlers) will return <strong><code>false</code></strong> unless
+     the session has actually been started (either automatically, or by explicit <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span>.
+     This is important to consider when writing unit tests where the class methods might be invoked manually.
+    </p>
+   </blockquote>
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="sessionhandler.close.html">SessionHandler::close</a> — Close the session</li><li><a href="sessionhandler.create-sid.html">SessionHandler::create_sid</a> — Return a new session ID</li><li><a href="sessionhandler.destroy.html">SessionHandler::destroy</a> — Destroy a session</li><li><a href="sessionhandler.gc.html">SessionHandler::gc</a> — Cleanup old sessions</li><li><a href="sessionhandler.open.html">SessionHandler::open</a> — Initialize session</li><li><a href="sessionhandler.read.html">SessionHandler::read</a> — Read session data</li><li><a href="sessionhandler.write.html">SessionHandler::write</a> — Write session data</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 1070);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

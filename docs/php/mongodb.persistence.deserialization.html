@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Deserialization from BSON - 开发帮助文档</title> 
+    <meta name="keyword" content="mongodb.persistence.deserialization"> 
+    <meta name="description" content="mongodb.persistence.deserialization"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="948" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.persistence.deserialization.html" title="Deserialization from BSON">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deserialization from BSON
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.persistence.serialization.html" title="Serialization to BSON">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Serialization to BSON
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.persistence.serialization.html">« Serialization to BSON</a></li>
+      <li style="float: right;"><a href="mongodb.security.html">Security »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mongodb.persistence.html">Persisting Data</a></li>
+    <li>Deserialization from BSON</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.persistence.deserialization" class="section">
+   <h2 class="title">Deserialization from BSON</h2>
+
+   <p class="para">
+    The legacy <code class="code">mongo</code> extension deserialized
+    both BSON documents and arrays as PHP arrays. While PHP arrays are
+    convenient to work with, this behavior was problematic because different
+    BSON types could deserialize to the same PHP value (e.g.
+    <code class="literal">{"0": "foo"}</code> and <code class="literal">["foo"]</code>) and make it
+    impossible to infer the original BSON type. By default, the current driver
+    addresses this concern by ensuring that BSON arrays and documents are
+    converted to PHP arrays and objects, respectively.
+   </p>
+   <p class="para">
+    For compound types, there are three data types:
+   </p>
+
+   <p class="para">
+    </p><dl>
+
+     
+      <dt>
+root</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to the top-level BSON document <em class="emphasis">only</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+document</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to embedded BSON documents <em class="emphasis">only</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+array</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to a BSON array
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   
+
+   <p class="para">
+    Besides the three collective types, it is also possible to configure
+    specific fields in your document to map to the data types mentioned below.
+    As an example, the following type map allows you to
+    map each embedded document within an <code class="literal">"addresses"</code> array to
+    an <strong class="classname">Address</strong> class <em class="emphasis">and</em> each
+    <code class="literal">"city"</code> field within those embedded address documents to
+    a <strong class="classname">City</strong> class:
+
+    </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">[
+    'fieldPaths' =&gt; [
+        'addresses.$' =&gt; 'MyProject\Address',
+        'addresses.$.city' =&gt; 'MyProject\City',
+    ],
+]</pre>
+</div>
+    </div>
+
+   
+
+   <p class="para">
+    Each of those three data types, as well as the field specific mappings,
+    can be mapped against different PHP types. The possible mapping values
+    are:
+   </p>
+
+   <p class="para">
+    </p><dl>
+
+     
+      <dt>
+<em class="emphasis">not set</em> or <span class="type">NULL</span> (default)</dt>
+
+      <dd>
+
+       <p class="para">
+        </p><ul class="itemizedlist">
+         <li class="listitem">
+          <p class="para">
+           A BSON array will be deserialized as a PHP <span class="type">array</span>.
+          </p>
+         </li>
+         <li class="listitem">
+          <p class="para">
+           A BSON document (root or embedded) without a
+           <span class="property">__pclass</span> property
+           <a href="#fnidmongodb.pclass" name="fnmongodb.pclass"><sup>[1]</sup></a>
+            
+           
+           becomes a PHP <strong class="classname">stdClass</strong> object, with each
+           BSON document key set as a public <strong class="classname">stdClass</strong>
+           property.
+          </p>
+         </li>
+         <li class="listitem">
+          <p class="para">
+           A BSON document (root or embedded) with a
+           <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a> becomes a PHP object of
+           the class name as defined by the <span class="property">__pclass</span>
+           property.
+          </p>
+          <p class="para">
+           If the named class implements the
+           <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> interface,
+           then the properties of the BSON document, including the
+           <span class="property">__pclass</span> property, are sent as an associative
+           array to the
+           <span class="methodname"><a href="mongodb-bson-unserializable.bsonunserialize.html" class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize()</a></span>
+           function to initialise the object's properties.
+          </p>
+          <p class="para">
+           If the named class does not exist or does not implement the
+           <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> interface,
+           <strong class="classname">stdClass</strong> will be used and each BSON document
+           key (including <span class="property">__pclass</span>) will be set as a
+           public <strong class="classname">stdClass</strong> property.
+          </p>
+          <p class="para">
+           The <span class="property">__pclass</span> functionality relies on the
+           property being part of a retrieved MongoDB document. If you use a
+           <a href="mongodb-driver-query.construct.html#mongodb-driver-query.construct-queryOptions" class="link">projection</a>
+           when querying for documents, you need to include the
+           <span class="property">__pclass</span> field in the projection for this
+           functionality to work.
+          </p>
+         </li>
+        </ul>
+       
+      </dd>
+
+     
+
+     
+      <dt>
+<code class="literal">"array"</code></dt>
+
+      <dd>
+
+       <p class="para">
+        Turns a BSON array or BSON document into a PHP array. There will be no
+        special treatment of a <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a>,
+        but it may be set as an element in the returned array if it was
+        present in the BSON document.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt>
+<code class="literal">"object"</code> or <code class="literal">"stdClass"</code></dt>
+
+      <dd>
+
+       <p class="para">
+        Turns a BSON array or BSON document into a
+        <strong class="classname">stdClass</strong> object. There will be no special
+        treatment of a <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a>, but it may
+        be set as a public property in the returned object if it was present
+        in the BSON document.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt>
+any other string</dt>
+
+      <dd>
+
+       <p class="para">
+        Defines the class name that the BSON array or BSON object should be
+        deserialized as. For BSON objects that include
+        <span class="property">__pclass</span> properties, that class will take
+        priority.
+       </p>
+
+       <p class="para">
+        If the named class does not exist, is not concrete (i.e. it is
+        abstract or an interface), or does not implement
+        <span class="interfacename"><a href="class.mongodb-bson-unserializable.html" class="interfacename">MongoDB\BSON\Unserializable</a></span> then an
+        <a href="class.mongodb-driver-exception-invalidargumentexception.html" class="classname">MongoDB\Driver\Exception\InvalidArgumentException</a>
+        exception is thrown.
+       </p>
+
+       <p class="para">
+        If the BSON object has a <span class="property">__pclass</span> property and
+        that class exists and implements
+        <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> it will
+        supersede the class provided in the type map.
+       </p>
+
+       <p class="para">
+        The properties of the BSON document, <em class="emphasis">including</em>
+        the <span class="property">__pclass</span> property if it exists, will be sent
+        as an associative array to the
+        <span class="methodname"><a href="mongodb-bson-unserializable.bsonunserialize.html" class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize()</a></span>
+        function to initialise the object's properties.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   
+
+   <div class="section" id="mongodb.persistence.typemaps">
+    <h2 class="title">TypeMaps</h2>
+
+     <p class="para">
+      TypeMaps can be set through the
+      <span class="methodname"><a href="mongodb-driver-cursor.settypemap.html" class="methodname">MongoDB\Driver\Cursor::setTypeMap()</a></span> method on a
+      <a href="class.mongodb-driver-cursor.html" class="classname">MongoDB\Driver\Cursor</a> object, or the
+      <code class="literal">$typeMap</code> argument of
+      <span class="function"><a href="function.mongodb.bson-tophp.html" class="function">MongoDB\BSON\toPHP()</a></span>. Each of the three
+      classes (<em class="emphasis">root</em>, <em class="emphasis">document</em>, and
+      <em class="emphasis">array</em>) can be individually set, in addition to the
+      field specific types.
+     </p>
+
+     <p class="para">
+      If the value in the map is <span class="type">NULL</span>, it means the same as the
+      <em class="emphasis">default</em> value for that item.
+     </p>
+    </div>
+
+    <div class="section">
+     <h2 class="title">Examples</h2>
+
+     <p class="para">
+      These examples use the following classes:
+     </p>
+
+     <p class="para">
+      </p><dl>
+
+       
+        <dt>
+MyClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which does <em class="emphasis">not</em> implement any interface
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+YourClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which implements
+          <span class="interfacename"><a href="class.mongodb-bson-unserializable.html" class="interfacename">MongoDB\BSON\Unserializable</a></span>
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+OurClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which implements
+          <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span>
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+TheirClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which extends OurClass
+         </p>
+        </dd>
+
+       
+      </dl>
+
+     
+
+     <p class="para">
+      The <span class="methodname"><a href="mongodb-bson-unserializable.bsonunserialize.html" class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize()</a></span>
+      method of YourClass, OurClass, TheirClass iterate over the array and set
+      the properties without modifications. It <em class="emphasis">also</em> sets
+      the <code class="literal">$unserialized</code> property to <code class="literal">true</code>:
+
+      </p><div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">function </span><span style="color: #0000BB">bsonUnserialize</span><span style="color: #007700">( array </span><span style="color: #0000BB">$map </span><span style="color: #007700">)<br>{<br>    foreach ( </span><span style="color: #0000BB">$map </span><span style="color: #007700">as </span><span style="color: #0000BB">$k </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$value </span><span style="color: #007700">)<br>    {<br>        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$k </span><span style="color: #007700">= </span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br>    }<br>    </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">unserialized </span><span style="color: #007700">= </span><span style="color: #0000BB">true</span><span style="color: #007700">;<br>}</span>
+</span>
+</code></div>
+      </div>
+
+     
+
+     <p class="para">
+      </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [] (all defaults) */
+{ "foo": "yes", "bar" : false }
+  -&gt; stdClass { $foo =&gt; 'yes', $bar =&gt; false }
+
+{ "foo": "no", "array" : [ 5, 6 ] }
+  -&gt; stdClass { $foo =&gt; 'no', $array =&gt; [ 5, 6 ] }
+
+{ "foo": "no", "obj" : { "embedded" : 3.14 } }
+  -&gt; stdClass { $foo =&gt; 'no', $obj =&gt; stdClass { $embedded =&gt; 3.14 } }
+
+{ "foo": "yes", "__pclass": "MyClass" }
+  -&gt; stdClass { $foo =&gt; 'yes', $__pclass =&gt; 'MyClass' }
+
+{ "foo": "yes", "__pclass": { "$type" : "80", "$binary" : "MyClass" } }
+  -&gt; stdClass { $foo =&gt; 'yes', $__pclass =&gt; Binary(0x80, 'MyClass') }
+
+{ "foo": "yes", "__pclass": { "$type" : "80", "$binary" : "YourClass") }
+  -&gt; stdClass { $foo =&gt; 'yes', $__pclass =&gt; Binary(0x80, 'YourClass') }
+
+{ "foo": "yes", "__pclass": { "$type" : "80", "$binary" : "OurClass") }
+  -&gt; OurClass { $foo =&gt; 'yes', $__pclass =&gt; Binary(0x80, 'OurClass'), $unserialized =&gt; true }
+
+{ "foo": "yes", "__pclass": { "$type" : "44", "$binary" : "YourClass") }
+  -&gt; stdClass { $foo =&gt; 'yes', $__pclass =&gt; Binary(0x44, 'YourClass') }</pre>
+</div>
+      </div>
+
+     
+
+     <p class="para">
+      </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ "root" =&gt; "MissingClass" ] */
+{ "foo": "yes" }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException("MissingClass does not exist")
+
+/* typemap: [ "root" =&gt; "MyClass" ] */
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "MyClass" } }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException("MyClass does not implement Unserializable interface")
+
+/* typemap: [ "root" =&gt; "MongoDB\BSON\Unserializable" ] */
+{ "foo": "yes" }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException("Unserializable is not a concrete class")
+
+/* typemap: [ "root" =&gt; "YourClass" ] */
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "MongoDB\BSON\Unserializable" } }
+  -&gt; YourClass { $foo =&gt; "yes", $__pclass =&gt; Binary(0x80, "MongoDB\BSON\Unserializable"), $unserialized =&gt; true }
+
+/* typemap: [ "root" =&gt; "YourClass" ] */
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "MyClass" } }
+  -&gt; YourClass { $foo =&gt; "yes", $__pclass =&gt; Binary(0x80, "MyClass"), $unserialized =&gt; true }
+
+/* typemap: [ "root" =&gt; "YourClass" ] */
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "OurClass" } }
+  -&gt; OurClass { $foo =&gt; "yes", $__pclass =&gt; Binary(0x80, "OurClass"), $unserialized =&gt; true }
+
+/* typemap: [ "root" =&gt; "YourClass" ] */
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "TheirClass" } }
+  -&gt; TheirClass { $foo =&gt; "yes", $__pclass =&gt; Binary(0x80, "TheirClass"), $unserialized =&gt; true }
+
+/* typemap: [ "root" =&gt; "OurClass" ] */
+{ foo: "yes", "__pclass" : { "$type": "80", "$binary": "TheirClass" } }
+  -&gt; TheirClass { $foo =&gt; "yes", $__pclass =&gt; Binary(0x80, "TheirClass"), $unserialized =&gt; true }</pre>
+</div>
+      </div>
+
+     
+
+     <p class="para">
+      </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ 'root' =&gt; 'YourClass' ] */
+{ foo: "yes", "__pclass" : { "$type": "80", "$binary": "YourClass" } }
+  -&gt; YourClass { $foo =&gt; 'yes', $__pclass =&gt; Binary(0x80, 'YourClass'), $unserialized =&gt; true }</pre>
+</div>
+      </div>
+
+     
+
+     <p class="para">
+      </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ 'root' =&gt; 'array', 'document' =&gt; 'array' ] */
+{ "foo": "yes", "bar" : false }
+  -&gt; [ "foo" =&gt; "yes", "bar" =&gt; false ]
+
+{ "foo": "no", "array" : [ 5, 6 ] }
+  -&gt; [ "foo" =&gt; "no", "array" =&gt; [ 5, 6 ] ]
+
+{ "foo": "no", "obj" : { "embedded" : 3.14 } }
+  -&gt; [ "foo" =&gt; "no", "obj" =&gt; [ "embedded =&gt; 3.14 ] ]
+
+{ "foo": "yes", "__pclass": "MyClass" }
+  -&gt; [ "foo" =&gt; "yes", "__pclass" =&gt; "MyClass" ]
+
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "MyClass" } }
+  -&gt; [ "foo" =&gt; "yes", "__pclass" =&gt; Binary(0x80, "MyClass") ]
+
+{ "foo": "yes", "__pclass" : { "$type": "80", "$binary": "OurClass" } }
+  -&gt; [ "foo" =&gt; "yes", "__pclass" =&gt; Binary(0x80, "OurClass") ]</pre>
+</div>
+      </div>
+
+     
+
+     <p class="para">
+      </p><div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ 'root' =&gt; 'object', 'document' =&gt; 'object' ] */
+{ "foo": "yes", "__pclass": { "$type": "80", "$binary": "MyClass" } }
+  -&gt; stdClass { $foo =&gt; "yes", "__pclass" =&gt; Binary(0x80, "MyClass") }</pre>
+</div>
+      </div>
+
+     
+
+   </div>
+  </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7876);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Unicode 字符属性 - 开发帮助文档</title> 
+    <meta name="keyword" content="regexp.reference.unicode"> 
+    <meta name="description" content="regexp.reference.unicode"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="212" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.introduction.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.alternation.html" title="可选路径(|)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    可选路径(|)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.anchors.html" title="锚">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    锚
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.assertions.html" title="断言">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    断言
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.back-references.html" title="后向引用">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    后向引用
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.character-classes.html" title="字符类(方括号)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    字符类(方括号)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.comments.html" title="注释">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    注释
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.conditional.html" title="条件子组">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    条件子组
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.delimiters.html" title="分隔符">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    分隔符
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.dot.html" title="句点">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    句点
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.escape.html" title="转义序列(反斜线)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    转义序列(反斜线)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.internal-options.html" title="内部选项设置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    内部选项设置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.meta.html" title="元字符">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    元字符
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.onlyonce.html" title="一次性子组">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    一次性子组
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.performance.html" title="性能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    性能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.recursive.html" title="递归模式">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    递归模式
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.repetition.html" title="重复/量词">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重复/量词
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.subpatterns.html" title="子组(子模式)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    子组(子模式)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/regexp.reference.unicode.html" title="Unicode 字符属性">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unicode 字符属性
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="regexp.reference.escape.html">« 转义序列(反斜线)</a></li>
+      <li style="float: right;"><a href="regexp.reference.anchors.html">锚 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="reference.pcre.pattern.syntax.html">PCRE 正则语法</a></li>
+    <li>Unicode 字符属性</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="regexp.reference.unicode" class="section">
+  <h2 class="title">Unicode 字符属性</h2>
+  <p class="para">
+  自 PHP 5.1.0 起，
+  三个额外的转义序列在选用 <em class="emphasis">UTF-8 模式</em>时用于匹配通用字符类型。他们是：
+  </p>
+  <dl>
+
+   
+    <dt>
+<em class="emphasis">\p{xx}</em></dt>
+
+    <dd>
+<span class="simpara">一个有属性 xx 的字符</span></dd>
+
+   
+   
+    <dt>
+<em class="emphasis">\P{xx}</em></dt>
+
+    <dd>
+<span class="simpara">一个没有属性 xx 的字符</span></dd>
+
+   
+   
+    <dt>
+<em class="emphasis">\X</em></dt>
+
+    <dd>
+<span class="simpara">一个扩展的 Unicode 字符</span></dd>
+
+   
+  </dl>
+
+  <p class="para">
+  上面 <code class="literal">xx</code> 代表的属性名用于限制 Unicode 通常的类别属性。
+  每个字符都有一个这样的确定的属性，通过两个缩写的字母指定。
+   为了与 Perl 兼容，
+  可以在左花括号 { 后面增加 ^ 表示取反。比如：
+  <code class="literal">\p{^Lu}</code> 就等同于 <code class="literal">\P{Lu}</code>。
+  </p>
+  <p class="para">
+  如果通过 <code class="literal">\p</code> 或 <code class="literal">\P</code> 仅指定了一个字母，它包含所有以这个字母开头的属性。
+  在这种情况下，花括号的转义序列是可选的；以下两个例子是等同的：
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+\p{L}
+\pL
+</pre></div>
+   </div>
+
+  </div>
+  <table class="doctable table">
+   <caption><strong>支持的 Unicode 属性</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Property</th>
+      <th>Matches</th>
+      <th>Notes</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">C</code></td>
+      <td>Other</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cc</code></td>
+      <td>Control</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cf</code></td>
+      <td>Format</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cn</code></td>
+      <td>Unassigned</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Co</code></td>
+      <td>Private use</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cs</code></td>
+      <td>Surrogate</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">L</code></td>
+      <td>Letter</td>
+      <td>
+       包含以下属性：<code class="literal">Ll</code>、
+       <code class="literal">Lm</code>、<code class="literal">Lo</code>、<code class="literal">Lt</code>、
+       <code class="literal">Lu</code>.
+      </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Ll</code></td>
+      <td>小写字母</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lm</code></td>
+      <td>Modifier letter</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lo</code></td>
+      <td>Other letter</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lt</code></td>
+      <td>Title case letter</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lu</code></td>
+      <td>Upper case letter</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">M</code></td>
+      <td>Mark</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Mc</code></td>
+      <td>Spacing mark</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Me</code></td>
+      <td>Enclosing mark</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Mn</code></td>
+      <td>Non-spacing mark</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">N</code></td>
+      <td>Number</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Nd</code></td>
+      <td>Decimal number</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Nl</code></td>
+      <td>Letter number</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">No</code></td>
+      <td>Other number</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">P</code></td>
+      <td>Punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Pc</code></td>
+      <td>Connector punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Pd</code></td>
+      <td>Dash punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Pe</code></td>
+      <td>Close punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Pf</code></td>
+      <td>Final punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Pi</code></td>
+      <td>Initial punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Po</code></td>
+      <td>Other punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Ps</code></td>
+      <td>Open punctuation</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">S</code></td>
+      <td>Symbol</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Sc</code></td>
+      <td>Currency symbol</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Sk</code></td>
+      <td>Modifier symbol</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Sm</code></td>
+      <td>Mathematical symbol</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">So</code></td>
+      <td>Other symbol</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Z</code></td>
+      <td>Separator</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Zl</code></td>
+      <td>Line separator</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Zp</code></td>
+      <td>Paragraph separator</td>
+      <td class="empty"> </td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Zs</code></td>
+      <td>Space separator</td>
+      <td class="empty"> </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <p class="para">
+  <code class="literal">InMusicalSymbols</code> 等扩展属性在 PCRE 中不支持
+  </p>
+  <p class="para">
+  指定大小写不敏感匹配对这些转义序列不会产生影响，比如，
+  <code class="literal">\p{Lu}</code> 始终匹配大写字母。
+  </p>
+  <p class="para">
+      Unicode 字符集在具体文字中定义。使用文字名可以匹配这些字符集中的一个字符。例如：
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara"><code class="literal">\p{Greek}</code></span>
+   </li>
+   <li class="listitem">
+    <span class="simpara"><code class="literal">\P{Han}</code></span>
+   </li>
+  </ul>
+  <p class="para">
+   不在确定文字中的则被集中到 <code class="literal">Common</code>。当前的文字列表中有：
+  </p>
+  <table class="doctable table">
+   <caption><strong>支持的文字</strong></caption>
+   
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">Arabic</code></td>
+      <td><code class="literal">Armenian</code></td>
+      <td><code class="literal">Avestan</code></td>
+      <td><code class="literal">Balinese</code></td>
+      <td><code class="literal">Bamum</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Batak</code></td>
+      <td><code class="literal">Bengali</code></td>
+      <td><code class="literal">Bopomofo</code></td>
+      <td><code class="literal">Brahmi</code></td>
+      <td><code class="literal">Braille</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Buginese</code></td>
+      <td><code class="literal">Buhid</code></td>
+      <td><code class="literal">Canadian_Aboriginal</code></td>
+      <td><code class="literal">Carian</code></td>
+      <td><code class="literal">Chakma</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cham</code></td>
+      <td><code class="literal">Cherokee</code></td>
+      <td><code class="literal">Common</code></td>
+      <td><code class="literal">Coptic</code></td>
+      <td><code class="literal">Cuneiform</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Cypriot</code></td>
+      <td><code class="literal">Cyrillic</code></td>
+      <td><code class="literal">Deseret</code></td>
+      <td><code class="literal">Devanagari</code></td>
+      <td><code class="literal">Egyptian_Hieroglyphs</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Ethiopic</code></td>
+      <td><code class="literal">Georgian</code></td>
+      <td><code class="literal">Glagolitic</code></td>
+      <td><code class="literal">Gothic</code></td>
+      <td><code class="literal">Greek</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Gujarati</code></td>
+      <td><code class="literal">Gurmukhi</code></td>
+      <td><code class="literal">Han</code></td>
+      <td><code class="literal">Hangul</code></td>
+      <td><code class="literal">Hanunoo</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Hebrew</code></td>
+      <td><code class="literal">Hiragana</code></td>
+      <td><code class="literal">Imperial_Aramaic</code></td>
+      <td><code class="literal">Inherited</code></td>
+      <td><code class="literal">Inscriptional_Pahlavi</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Inscriptional_Parthian</code></td>
+      <td><code class="literal">Javanese</code></td>
+      <td><code class="literal">Kaithi</code></td>
+      <td><code class="literal">Kannada</code></td>
+      <td><code class="literal">Katakana</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Kayah_Li</code></td>
+      <td><code class="literal">Kharoshthi</code></td>
+      <td><code class="literal">Khmer</code></td>
+      <td><code class="literal">Lao</code></td>
+      <td><code class="literal">Latin</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lepcha</code></td>
+      <td><code class="literal">Limbu</code></td>
+      <td><code class="literal">Linear_B</code></td>
+      <td><code class="literal">Lisu</code></td>
+      <td><code class="literal">Lycian</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Lydian</code></td>
+      <td><code class="literal">Malayalam</code></td>
+      <td><code class="literal">Mandaic</code></td>
+      <td><code class="literal">Meetei_Mayek</code></td>
+      <td><code class="literal">Meroitic_Cursive</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Meroitic_Hieroglyphs</code></td>
+      <td><code class="literal">Miao</code></td>
+      <td><code class="literal">Mongolian</code></td>
+      <td><code class="literal">Myanmar</code></td>
+      <td><code class="literal">New_Tai_Lue</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Nko</code></td>
+      <td><code class="literal">Ogham</code></td>
+      <td><code class="literal">Old_Italic</code></td>
+      <td><code class="literal">Old_Persian</code></td>
+      <td><code class="literal">Old_South_Arabian</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Old_Turkic</code></td>
+      <td><code class="literal">Ol_Chiki</code></td>
+      <td><code class="literal">Oriya</code></td>
+      <td><code class="literal">Osmanya</code></td>
+      <td><code class="literal">Phags_Pa</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Phoenician</code></td>
+      <td><code class="literal">Rejang</code></td>
+      <td><code class="literal">Runic</code></td>
+      <td><code class="literal">Samaritan</code></td>
+      <td><code class="literal">Saurashtra</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Sharada</code></td>
+      <td><code class="literal">Shavian</code></td>
+      <td><code class="literal">Sinhala</code></td>
+      <td><code class="literal">Sora_Sompeng</code></td>
+      <td><code class="literal">Sundanese</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Syloti_Nagri</code></td>
+      <td><code class="literal">Syriac</code></td>
+      <td><code class="literal">Tagalog</code></td>
+      <td><code class="literal">Tagbanwa</code></td>
+      <td><code class="literal">Tai_Le</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Tai_Tham</code></td>
+      <td><code class="literal">Tai_Viet</code></td>
+      <td><code class="literal">Takri</code></td>
+      <td><code class="literal">Tamil</code></td>
+      <td><code class="literal">Telugu</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Thaana</code></td>
+      <td><code class="literal">Thai</code></td>
+      <td><code class="literal">Tibetan</code></td>
+      <td><code class="literal">Tifinagh</code></td>
+      <td><code class="literal">Ugaritic</code></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">Vai</code></td>
+      <td><code class="literal">Yi</code></td>
+      <td class="empty"> </td>
+      <td class="empty"> </td>
+      <td class="empty"> </td>
+      <td class="empty"> </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <p class="para">
+   <code class="literal">\X</code> 转义匹配了 Unicode 可扩展字符集（Unicode extended grapheme clusters）。
+   可扩展字符集是一个或多个 Unicode 字符，组合表达了单个象形字符。
+   因此无论渲染时实际使用了多少个独立字符，可以视该 Unicode 等同于 <code class="literal">.</code>，
+   会匹配单个组合后的字符。
+  </p>
+  <p class="para">
+   小于 PCRE 8.32 的版本中（对应小于 PHP 5.4.14 的内置绑定 PCRE 库），
+   <code class="literal">\X</code> 等价于 <code class="literal">(?&gt;\PM\pM*)</code>。
+  也就是说，它匹配一个没有 ”mark” 属性的字符，紧接着任意多个由 ”mark” 属性的字符。
+  并将这个序列认为是一个原子组(详见下文)。
+  典型的有 ”mark” 属性的字符是影响到前面的字符的重音符。
+  </p>
+  <p class="para">
+  用 Unicode 属性来匹配字符的速度并不快，
+  因为 PCRE 需要去搜索一个包含超过 15000 字符的数据结构。
+  这就是为什么在 PCRE中 要使用传统的转义序列<code class="literal">\d</code>、
+  <code class="literal">\w</code> 而不使用 Unicode 属性的原因。
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9506);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

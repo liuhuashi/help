@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Pattern based caching - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-qc.pattern-based-caching"> 
+    <meta name="description" content="mysqlnd-qc.pattern-based-caching"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="840" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.cache-candidates.html" title="Finding cache candidates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Finding cache candidates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.cache-efficiency.html" title="Measuring cache efficiency">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Measuring cache efficiency
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.pattern-based-caching.html" title="Pattern based caching">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Pattern based caching
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.per-query-ttl.html" title="Setting the TTL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setting the TTL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.caching.html" title="Caching queries">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Caching queries
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.concepts.html" title="Architecture and Concepts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Architecture and Concepts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.configuration.html" title="Setup">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setup
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.set-user-handlers.html" title="Beyond TTL: user-defined storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Beyond TTL: user-defined storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.slam-defense.html" title="Slam defense">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Slam defense
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-qc.per-query-ttl.html">« Setting the TTL</a></li>
+      <li style="float: right;"><a href="mysqlnd-qc.slam-defense.html">Slam defense »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-qc.quickstart.html">Quickstart and Examples</a></li>
+    <li>Pattern based caching</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-qc.pattern-based-caching" class="section">
+  <h2 class="title">Pattern based caching</h2>
+  <p class="para">
+   An application has three options for telling PECL/mysqlnd_qc whether a particular
+   statement shall be used. The most basic approach is to cache all statements by
+   setting <code class="literal"><a href="mysqlnd-qc.configuration.html" class="link">
+   mysqlnd_qc.cache_by_default = 1</a></code>. This approach is often of little
+   practical value. But it enables users to make a quick estimation about
+   the maximum performance gains from caching. An application designed to
+   use a cache may be able to prefix selected statements with the appropriate SQL
+   hints. However, altering an applications source code may not always be possible
+   or desired, for example, to avoid problems with software updates. Therefore,
+   PECL/mysqlnd_qc allows setting a callback which decides if a query is to be
+   cached.
+  </p>
+  <p class="para">
+   The callback is installed with the <span class="function"><a href="function.mysqlnd-qc-set-is-select.html" class="function">mysqlnd_qc_set_is_select()</a></span>
+   function. The callback is given the statement string of every statement
+   inspected by the plugin. Then, the callback can decide whether to cache
+   the function. The callback is supposed to return <strong><code>false</code></strong>
+   if the statement shall not be cached. A return value of <strong><code>true</code></strong>
+   makes the plugin try to add the statement into the cache. The cache entry
+   will be given the default TTL (<code class="literal"><a href="mysqlnd-qc.configuration.html" class="link">
+   mysqlnd_qc.ttl</a></code>). If the callback returns
+   a numerical value it is used as the TTL instead of the global default.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1847">
+    <p><strong>示例 #1 Setting a callback with <span class="function"><a href="function.mysqlnd-qc-set-is-select.html" class="function">mysqlnd_qc_set_is_select()</a></span></strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1
+mysqlnd_qc.collect_statistics=1</pre>
+</div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* callback which decides if query is cached */<br></span><span style="color: #007700">function </span><span style="color: #0000BB">is_select</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">) {<br>    static </span><span style="color: #0000BB">$patterns </span><span style="color: #007700">= array(<br>      </span><span style="color: #FF8000">/* true - use default from mysqlnd_qc.ttl */<br>      </span><span style="color: #DD0000">"@SELECT\s+.*\s+FROM\s+test@ismU" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">,<br>      </span><span style="color: #FF8000">/* 3 - use TTL = 3 seconds */<br>      </span><span style="color: #DD0000">"@SELECT\s+.*\s+FROM\s+news@ismU" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">3<br>    </span><span style="color: #007700">);<br><br>    </span><span style="color: #FF8000">/* check if query does match pattern */<br>    </span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$patterns </span><span style="color: #007700">as </span><span style="color: #0000BB">$pattern </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$ttl</span><span style="color: #007700">) {<br>        if (</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">)) {<br>            </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"is_select(%45s): cache\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>            return </span><span style="color: #0000BB">$ttl</span><span style="color: #007700">;<br>        }<br>    }<br>    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"is_select(%45s): do not cache\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>    return </span><span style="color: #0000BB">false</span><span style="color: #007700">;<br>}<br></span><span style="color: #FF8000">/* install callback */<br></span><span style="color: #0000BB">mysqlnd_qc_set_is_select</span><span style="color: #007700">(</span><span style="color: #DD0000">"is_select"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Connect, create and populate test table */<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"schema"</span><span style="color: #007700">, </span><span style="color: #DD0000">"port"</span><span style="color: #007700">, </span><span style="color: #DD0000">"socket"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1), (2), (3)"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* cache put */<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT id FROM test WHERE id = 1"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* cache hit */<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT id FROM test WHERE id = 1"</span><span style="color: #007700">);<br></span><span style="color: #FF8000">/* cache put */<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT * FROM test"</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$stats </span><span style="color: #007700">= </span><span style="color: #0000BB">mysqlnd_qc_get_core_stats</span><span style="color: #007700">();<br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Cache put: %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$stats</span><span style="color: #007700">[</span><span style="color: #DD0000">'cache_put'</span><span style="color: #007700">]);<br></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Cache hit: %d\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$stats</span><span style="color: #007700">[</span><span style="color: #DD0000">'cache_hit'</span><span style="color: #007700">]);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+is_select(                    DROP TABLE IF EXISTS test): do not cache
+is_select(                    CREATE TABLE test(id INT)): do not cache
+is_select(    INSERT INTO test(id) VALUES (1), (2), (3)): do not cache
+is_select(             SELECT id FROM test WHERE id = 1): cache
+is_select(             SELECT id FROM test WHERE id = 1): cache
+is_select(                           SELECT * FROM test): cache
+Cache put: 2
+Cache hit: 1
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   The examples callback tests if a statement string matches a pattern.
+   If this is the case, it either returns <strong><code>true</code></strong> to cache
+   the statement using the global default TTL or an alternative TTL.
+  </p>
+  <p class="para">
+   To minimize application changes the callback can put into and registered
+   in an auto prepend file.
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8311);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

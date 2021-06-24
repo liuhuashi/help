@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Eloquent: 入门 - 开发帮助文档</title> 
+    <meta name="keyword" content="eloquent"> 
+    <meta name="description" content="eloquent"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Eloquent: 入门</h1>
+<ul>
+<li><a href="#introduction">简介</a></li>
+<li><a href="#defining-models">定义模型</a>
+<ul>
+<li><a href="#eloquent-model-conventions">Eloquent 模型约定</a></li>
+</ul></li>
+<li><a href="#retrieving-models">检索多个模型</a>
+<ul>
+<li><a href="#collections">集合</a></li>
+<li><a href="#chunking-results">分块结果</a></li>
+</ul></li>
+<li><a href="#retrieving-single-models">检索单个模型或集合</a>
+<ul>
+<li><a href="#retrieving-aggregates">检索集合</a></li>
+</ul></li>
+<li><a href="#inserting-and-updating-models">插入 &amp; 更新模型</a>
+<ul>
+<li><a href="#inserts">插入</a></li>
+<li><a href="#updates">更新</a></li>
+<li><a href="#mass-assignment">批量赋值</a></li>
+<li><a href="#other-creation-methods">其他创建方法</a></li>
+</ul></li>
+<li><a href="#deleting-models">删除模型</a>
+<ul>
+<li><a href="#soft-deleting">软删除</a></li>
+<li><a href="#querying-soft-deleted-models">查询被软删除的模型</a></li>
+</ul></li>
+<li><a href="#query-scopes">查询作用域</a>
+<ul>
+<li><a href="#global-scopes">全局作用域</a></li>
+<li><a href="#local-scopes">本地作用域</a></li>
+</ul></li>
+<li><a href="#events">事件</a>
+<ul>
+<li><a href="#observers">观察器</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>简介</h2>
+<p>Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和数据库交互。每个数据库表都有一个对应的「模型」用来与该表交互。你可以通过模型查询数据表中的数据，并将新记录添加到数据表中。</p>
+<p>在开始之前，请确保在 <code>config/database.php</code> 中配置数据库连接。更多关于数据库的配置信息，请查看 <a href="/docs/laravel_5.8_zh/database.html#configuration">文档</a>。</p>
+<p><a name="defining-models"></a></p>
+<h2>定义模型</h2>
+<p>首先，创建一个 Eloquent 模型，生成的模型通常放在 <code>app</code> 目录中，但你可以通过 <code>composer.json</code> 随意地将它们放在可被自动加载的地方。所有的 Eloquent 模型都继承了 <code>Illuminate\Database\Eloquent\Model</code> 类。</p>
+<p>创建模型实例的最简单方法是使用 <a href="/docs/laravel_5.8_zh/artisan.html">Artisan 命令</a> <code>make:model</code>：</p>
+<pre><code>php artisan make:model User</code></pre>
+<p>如果要在生成模型时生成 <a href="/docs/laravel_5.8_zh/migrations.html">数据库迁移</a>，可以使用 <code>--migration</code> 或 <code>-m</code> 选项：</p>
+<pre><code>php artisan make:model User --migration
+
+php artisan make:model User -m</code></pre>
+<p><a name="eloquent-model-conventions"></a></p>
+<h3>Eloquent 模型约定</h3>
+<p>现在，我们来看一个 <code>Flight</code> 模型类的例子，我们将会用它从 <code>flights</code> 数据表中检索和存储信息：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    //
+}</code></pre>
+<h4>数据表名称</h4>
+<p>请注意，我们并没有告诉 Eloquent，<code>Flight</code> 模型该使用哪一个数据表。除非数据表明确地指定了其它名称，否则将使用类的复数形式「蛇形命名」来作为表名。因此，在这种情况下，Eloquent 会假定 <code>Flight</code> 模型存储的是 <code>flights</code> 数据表中的记录。你可以通过在模型上定义 <code>table</code> 属性，来指定自定义数据表：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 与模型关联的数据表
+     *
+     * @var string
+     */
+    protected $table = 'my_flights';
+}</code></pre>
+<h4>主键</h4>
+<p>Eloquent 也会假定每个数据表都有一个名为 <code>id</code> 的主键字段。你可以定义一个受保护的 <code>$primaryKey</code> 属性来覆盖这个约定。</p>
+<p>另外，Eloquent 假定主键是一个递增的整数值，这意味着在默认情况下主键会自动转换为 <code>int</code>。 如果使用的是非递增或者非数字的主键，则必须在模型上设置 <code>public $incrementing = false</code>。如果主键不是一个整数，则应该在模型上设置 <code>protected $keyType = string</code>。</p>
+<h4>时间戳</h4>
+<p>默认情况下，Eloquent 会默认数据表中存在 <code>created_at</code> 和 <code>updated_at</code> 这两个字段。如果你不需要这两个字段，则需要在模型内将 <code>$timestamps</code> 属性设置为 <code>false</code>：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 该模型是否被自动维护时间戳
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+}</code></pre>
+<p>如果你需要自定义时间戳格式，可在模型内设置 <code>$dateFormat</code> 属性。这个属性决定了日期属性应如何存储在数据库中，以及模型被序列化成数组或 JSON 时的格式：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 模型的日期字段的存储格式
+     *
+     * @var string
+     */
+    protected $dateFormat = 'U';
+}</code></pre>
+<p>如果需要自定义用于存储时间戳的字段名，可在模型中通过设置 <code>CREATED_AT</code> 和 <code>UPDATED_AT</code> 常量来实现：</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    const CREATED_AT = 'creation_date';
+    const UPDATED_AT = 'last_update';
+}</code></pre>
+<h4>数据库连接</h4>
+<p>默认情况下，所有的 Eloquent 模型都会使用应用程序中默认的数据库连接设置。如果你想为模型指定不同的连接，可以使用 <code>$connection</code> 属性：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 此模型的连接名称。
+     *
+     * @var string
+     */
+    protected $connection = 'connection-name';
+}</code></pre>
+<p><a name="retrieving-models"></a></p>
+<h2>检索多个模型</h2>
+<p>创建完模型 <a href="/docs/laravel_5.8_zh/schema">及其关联的数据表</a> 之后，就可以开始从数据库中检索数据。可把每个 Eloquent 模型想像成强大的 <a href="/docs/laravel_5.html.8_zh/queries">查询构造器</a>，它让你可以流畅地查询与该模型相关联的数据库表。例如：</p>
+<pre><code>&lt;?php
+
+use App\Flight;
+
+$flights = App\Flight::all();
+
+foreach ($flights as $flight) {
+    echo $flight-&gt;name;
+}</code></pre>
+<h4>添加其他约束</h4>
+<p>Eloquent 的 <code>all</code> 方法会返回模型表中所有的结果。由于每个 Eloquent 模型都可以当作一个 <a href="/docs/laravel_5.8_zh/queries.html">查询构造器</a>，因此你还可以在查询中添加约束，然后使用 <code>get</code> 方法来获取结果：</p>
+<pre><code>$flights = App\Flight::where('active', 1)
+               -&gt;orderBy('name', 'desc')
+               -&gt;take(10)
+               -&gt;get();</code></pre>
+<blockquote>
+<p>{tip} Eloquent 模型是查询构造器，因此你应当去阅读 <a href="/docs/laravel_5.8_zh/queries.html">查询构造器</a> 提供的所有方法，以便你可以在 Eloquent 查询中使用。</p>
+</blockquote>
+<p><a name="collections"></a></p>
+<h3>集合</h3>
+<p>使用 Eloquent 中的方法比如 <code>all</code> 和 <code>get</code> 可以检索多个结果，并且会返回一个 <code>Illuminate\Database\Eloquent\Collection</code> 实例。<code>Collection</code> 类提供了 <a href="/docs/laravel_5.8_zh/eloquent-collections.html#available-methods">很多辅助函数</a> 来处理Eloquent 结果。</p>
+<pre><code>$flights = $flights-&gt;reject(function ($flight) {
+    return $flight-&gt;cancelled;
+});</code></pre>
+<p>你也可以像数组一样简单地来遍历集合：</p>
+<pre><code>foreach ($flights as $flight) {
+    echo $flight-&gt;name;
+}</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3>分块结果</h3>
+<p>如果你需要处理数千个 Eloquent 记录，可以使用 <code>chunk</code> 命令。<code>chunk</code> 方法会检索 Eloquent 模型的「分块」，将它们提供给指定的 <code>Closure</code> 进行处理。在处理大型结果集时，使用 <code>chunk</code> 方法可节省内存：</p>
+<pre><code>Flight::chunk(200, function ($flights) {
+    foreach ($flights as $flight) {
+        //
+    }
+});</code></pre>
+<p>传递到方法的第一个参数是希望每个「分块」接收的数据量。闭包则被作为第二个参数传递，它会在每次执行数据库查询传递每个块时被调用。</p>
+<h4>使用游标</h4>
+<p><code>cursor</code> 允许你使用游标来遍历数据库数据，该游标只执行一个查询。处理大量数据时，可以使用 <code>cursor</code> 方法可以大幅度减少内存的使用量：</p>
+<pre><code>foreach (Flight::where('foo', 'bar')-&gt;cursor() as $flight) {
+    //
+}</code></pre>
+<p><a name="retrieving-single-models"></a></p>
+<h2>检索单个模型／集合</h2>
+<p>除了从指定的数据表检索所有记录外，你也可以通过 <code>find</code> 或 <code>first</code> 方法来检索单条记录。这些方法不是返回一组模型，而是返回一个模型实例：</p>
+<pre><code>// 通过主键取回一个模型...
+$flight = App\Flight::find(1);
+
+// 取回符合查询限制的第一个模型 ...
+$flight = App\Flight::where('active', 1)-&gt;first();</code></pre>
+<p>你也可以用主键数组为参数调用 <code>find</code> 方法，它将返回匹配记录的集合：</p>
+<pre><code>$flights = App\Flight::find([1, 2, 3]);</code></pre>
+<h4>「找不到」异常</h4>
+<p>如果你希望在找不到模型时抛出异常，可以使用 <code>findOrFail</code> 以及 <code>firstOrFail</code> 方法。这些方法会检索查询的第一个结果。如果没有找到相应结果，就会抛出一个 <code>Illuminate\Database\Eloquent\ModelNotFoundException</code>：</p>
+<pre><code>$model = App\Flight::findOrFail(1);
+
+$model = App\Flight::where('legs', '&gt;', 100)-&gt;firstOrFail();</code></pre>
+<p>如果没有对异常进行捕获，则会自动返回 HTTP <code>404</code> 响应给用户。也就是说，在使用这些方法时，不需要另外写个检查来返回 <code>404</code> 响应：</p>
+<pre><code>Route::get('/api/flights/{id}', function ($id) {
+    return App\Flight::findOrFail($id);
+});</code></pre>
+<p><a name="retrieving-aggregates"></a></p>
+<h3>检索集合</h3>
+<p>你还可以使用 <a href="/docs/laravel_5.8_zh/queries">查询构造器</a> 提供的 <code>count</code>、<code>sum</code>、<code>max</code> 以及其它 <a href="/docs/laravel_5.html.8_zh/queries#aggregates">聚合函数</a>。这些方法只会返回适当的标量值而不是整个模型实例：</p>
+<pre><code>$count = App\Flight::where('active', 1)-&gt;count();
+
+$max = App\Flight::where('active', 1)-&gt;max('price');</code></pre>
+<p><a name="inserting-and-updating-models"></a></p>
+<h2>插入 &amp; 更新模型</h2>
+<p><a name="inserts"></a></p>
+<h3>插入</h3>
+<p>要在数据库中创建新记录，只需创建一个新的模型实例，并在模型上设置属性，然后调用 <code>save</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Flight;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class FlightController extends Controller
+{
+    /**
+     * 创建一个新的航班实例。
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // 验证请求...
+
+        $flight = new Flight;
+
+        $flight-&gt;name = $request-&gt;name;
+
+        $flight-&gt;save();
+    }
+}</code></pre>
+<p>在这个例子中，我们把来自 HTTP 请求中的 <code>name</code> 参数简单地指定给 <code>App\Flight</code> 模型实例的 <code>name</code> 属性。当我们调用 <code>save</code> 方法时，就会添加一条记录到数据库中。<code>created_at</code> 以及 <code>updated_at</code> 时间戳将在 <code>save</code> 方法被调用时会被自动设置，因此我们不需要去手动设置它们。</p>
+<p><a name="updates"></a></p>
+<h3>更新</h3>
+<p><code>save</code> 方法也可以用来更新数据库中已经存在的模型。要更新模型，则须先检索模型，再设置要更新的属性，然后再调用 <code>save</code> 方法。同样的，<code>updated_at</code> 时间戳将会被自动更新，所以我们不需要手动设置它的值：</p>
+<pre><code>$flight = App\Flight::find(1);
+
+$flight-&gt;name = 'New Flight Name';
+
+$flight-&gt;save();</code></pre>
+<h4>批量更新</h4>
+<p>还可以对与给定查询匹配的任意数量的模型执行更新。在这个例子中，所有 <code>active</code> 为 1 且 <code>destination</code> 为 <code>San Diego</code> 的航班的 <code>delayed</code> 都会更新为 1：</p>
+<pre><code>App\Flight::where('active', 1)
+          -&gt;where('destination', 'San Diego')
+          -&gt;update(['delayed' =&gt; 1]);</code></pre>
+<p><code>update</code> 方法需要传入表示要更新的字段的字段的值的键值对数组。</p>
+<blockquote>
+<p>{note} 通过 Eloquent 执行批量更新时，<code>saved</code> 和 <code>updated</code> 的模型事件不会被更新的模型触发。这是因为执行批量更新时，不会有任何模型被检索出来。</p>
+</blockquote>
+<p><a name="mass-assignment"></a></p>
+<h3>批量赋值</h3>
+<p>你也可以使用 <code>create</code> 方法来保存新模型，然后被插入数据库的模型实例会从方法返回。不过，在这之前，你需要先在你的模型上指定 <code>fillable</code> 或 <code>guarded</code> 的属性，因为所有的 Eloquent 模型在默认情况下都不能进行批量赋值。</p>
+<p>当用户通过 HTTP 请求传入了一个意料之外的参数，并且该参数更改了数据库中你并不打算要更改的字段时，就会发生批量赋值漏洞。例如，恶意用户可能会通过 HTTP 请求发送 <code>is_admin</code> 参数，然后将其传递到模型的 <code>create</code> 方法中，此操作能让该用户把自己升级为管理者。</p>
+<p>所以，在开始之前，你应该定义好哪些模型属性是可以被批量赋值的。你可以使用模型上的 <code>$fillable</code> 属性来实现。例如，让 <code>Flight</code> 模型的 <code>name</code> 属性可以被批量赋值：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 可以被批量赋值的属性。
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+}</code></pre>
+<p>只有我们设置好可以被批量赋值的属性，才能通过 <code>create</code> 方法来为数据库添加新记录到。<code>create</code> 方法会返回已保存的模型实例：</p>
+<pre><code>$flight = App\Flight::create(['name' =&gt; 'Flight 10']);</code></pre>
+<p>如果你已经有一个模型实例，你可以传递数组给 <code>fill</code> 方法：</p>
+<pre><code>$flight-&gt;fill(['name' =&gt; 'Flight 22']);</code></pre>
+<h4>保护属性</h4>
+<p><code>$fillable</code> 可以作为设置被批量赋值的属性的「白名单」，同样的 <code>$guarded</code> 属性也可以实现这个需求。但不同的是，<code>$guarded</code> 属性包含的是不想被批量赋值的属性的数组。即所有不在数组里面的属性都是可以被批量赋值的。也就是说，<code>$guarded</code> 从功能上讲更像是一个「黑名单」。而在使用的时候，也要注意只能是 <code>$fillable</code> 或 <code>$guarded</code> 二选一。 下面这个例子中，<strong>除了 <code>price</code></strong> 所有的属性都可以被批量赋值：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * 不可被批量赋值的属性。
+     *
+     * @var array
+     */
+    protected $guarded = ['price'];
+}</code></pre>
+<p>如果想让所有的属性都可以被批量赋值，就把 <code>$guarded</code> 定义为空数组。</p>
+<pre><code>/**
+ * 不可被批量赋值的属性。
+ *
+ * @var array
+ */
+protected $guarded = [];</code></pre>
+<p><a name="other-creation-methods"></a></p>
+<h3>其他创建方法</h3>
+<h4><code>firstOrCreate</code>/ <code>firstOrNew</code></h4>
+<p>你还可以使用其他两种方法来创建模型：<code>firstOrCreate</code> 和 <code>firstOrNew</code>。<code>firstOrCreate</code> 方法会使用给定的字段及其值在数据库中查找记录。如果在数据库中找不到模型，则将使用第一个参数中的属性以及可选的第二个参数中的属性插入记录。</p>
+<p><code>firstOrNew</code> 方法就类似 <code>firstOrCreate</code> 方法，会在数据库中查找匹配给定属性的记录。如果模型未被找到，则会返回一个新的模型实例。请注意，在这里面，<code>firstOrnew</code> 返回的模型还尚未保存到数据库，必须要手动调用 <code>save</code> 方法才能保存它：</p>
+<pre><code>// 通过 name 属性检索航班，当结果不存在时创建它...
+$flight = App\Flight::firstOrCreate(['name' =&gt; 'Flight 10']);
+
+// 通过 name 属性检索航班，当结果不存在的时候用 name 属性和 delayed 属性去创建它
+$flight = App\Flight::firstOrCreate(
+    ['name' =&gt; 'Flight 10'], ['delayed' =&gt; 1]
+);
+
+// 通过 name 属性检索航班，当结果不存在时实例化...
+$flight = App\Flight::firstOrNew(['name' =&gt; 'Flight 10']);
+
+// 通过 name 属性检索航班，当结果不存在的时候用 name 属性和 delayed 属性实例化
+$flight = App\Flight::firstOrNew(
+    ['name' =&gt; 'Flight 10'], ['delayed' =&gt; 1]
+);</code></pre>
+<h4><code>updateOrCreate</code></h4>
+<p>你也可能会遇到想要更新现有模型或创建新模型（如果不存在）的情况。Laravel 提供了 <code>updateOrCreate</code> 方法来完成该操作，像 <code>firstOrCreate</code> 方法一样，<code>updateOrCreate</code> 方法会保存模型，所以不需要调用 <code>save()</code> :</p>
+<pre><code>// 如果有从奥克兰飞往圣地亚哥的航班，将价格设为 99 美元
+// 如果不存在匹配的模型就创建一个
+$flight = App\Flight::updateOrCreate(
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego'],
+    ['price' =&gt; 99]
+);</code></pre>
+<p><a name="deleting-models"></a></p>
+<h2>删除模型</h2>
+<p>可以在模型实例上调用 <code>delete</code> 方法来删除模型：</p>
+<pre><code>$flight = App\Flight::find(1);
+
+$flight-&gt;delete();</code></pre>
+<h4>通过主键删除模型</h4>
+<p>上面的例子是在调用 <code>delete</code> 方法之前先从数据库中检索模型。不过，如果你已知道了这个模型的主键，则可以直接调用 <code>destroy</code> 方法删除它：</p>
+<pre><code>App\Flight::destroy(1);
+
+App\Flight::destroy([1, 2, 3]);
+
+App\Flight::destroy(1, 2, 3);</code></pre>
+<h4>通过查询删除模型</h4>
+<p>你也可以在模型上运行删除语句。在下面例子中删除了所有被标记为不活跃的航班。 像批量更新那样，批量删除不会为删除的模型启动任何模型事件：</p>
+<pre><code>$deletedRows = App\Flight::where('active', 0)-&gt;delete();</code></pre>
+<blockquote>
+<p>{note} 使用 Eloquent 执行批量删除语句时，<code>deleting</code> 和 <code>deleted</code> 模型事件不会为已删除的模型触发。因为在执行删除语句时，不会检索模型实例。</p>
+</blockquote>
+<p><a name="soft-deleting"></a></p>
+<h3>软删除</h3>
+<p>除了真的从数据库中删除记录，Eloquent 也可以「软删除」模型。当模型被软删除时，它们并不是真的从数据库中被删除。模型上设置了一个 <code>deleted_at</code> 属性并将其添加到数据库，也就是说，如果模型具有非空的 <code>deleted_at</code> 值，那就代表模型已经被软删除了。要启动模型上的软删除，则必须在模型上使用 <code>Illuminate\Database\Eloquent\SoftDeletes</code> trait 并添加 <code>deleted_at</code> 字段到 <code>$dates</code> 属性上：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Flight extends Model
+{
+    use SoftDeletes;
+
+    /**
+     * 需要被转换成日期的属性。
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+}</code></pre>
+<p>你也应该添加 <code>deleted_at</code> 字段到数据表中。Laravel <a href="/docs/laravel_5.8_zh/migrations.html">结构生成器</a> 包含了一个辅助函数用来创建此字段：</p>
+<pre><code>Schema::table('flights', function ($table) {
+    $table-&gt;softDeletes();
+});</code></pre>
+<p>当你调用模型上 <code>delete</code> 方法时，<code>deleted_at</code> 字段会被设置为当前的日期和时间。而且，当查询使用软删除的模型时，被软删除的模型将自动从所有查询结果中排除。</p>
+<p>要给定模型实例是否已被软删除，可以使用 <code>trashed</code> 方法：</p>
+<pre><code>if ($flight-&gt;trashed()) {
+    //
+}</code></pre>
+<p><a name="querying-soft-deleted-models"></a></p>
+<h3>查询被软删除的模型</h3>
+<h4>包括被软删除的模型</h4>
+<p>如上所述，被软删除的模型将自动从查询结果中排除。但是，你可以使用查询中的 <code>withTrashed</code> 方法强制软删除的模型出现在结果集中：</p>
+<pre><code>$flights = App\Flight::withTrashed()
+                -&gt;where('account_id', 1)
+                -&gt;get();</code></pre>
+<p><code>withTrashed</code> 方法也可用于 <a href="/docs/laravel_5.8_zh/eloquent-relationships.html">关联</a> 查询：</p>
+<pre><code>$flight-&gt;history()-&gt;withTrashed()-&gt;get();</code></pre>
+<h4>只检索被软删除的模型</h4>
+<p><code>onlyTrashed</code> 方法只会取出被软删除的模型：</p>
+<pre><code>$flights = App\Flight::onlyTrashed()
+                -&gt;where('airline_id', 1)
+                -&gt;get();</code></pre>
+<h4>恢复被软删除的模型</h4>
+<p>如果想「取消删除」被软删除的模型。可在模型实例上使用 <code>restore</code> 方法将一个被软删除的模型恢复到有效状态：</p>
+<pre><code>$flight-&gt;restore();</code></pre>
+<p>你也可以在查询上使用 <code>restore</code> 方法来快速地恢复多个模型。像其他「批量赋值」操作一样，这并不会触发任何模型事件：</p>
+<pre><code>App\Flight::withTrashed()
+        -&gt;where('airline_id', 1)
+        -&gt;restore();</code></pre>
+<p>与 <code>withTrashed</code> 方法类似，<code>restore</code> 方法也可以被用在 <a href="/docs/laravel_5.8_zh/eloquent-relationships.html">关联</a> 查询上:</p>
+<pre><code>$flight-&gt;history()-&gt;restore();</code></pre>
+<h4>永久删除模型</h4>
+<p>如果要真正地从数据库中永久删除软删除的模型，可以使用 <code>forceDelete</code> 方法：</p>
+<pre><code>// 强制删除单个模型实例...
+$flight-&gt;forceDelete();
+
+// 强制删除所有相关模型...
+$flight-&gt;history()-&gt;forceDelete();</code></pre>
+<p><a name="query-scopes"></a></p>
+<h2>查询作用域</h2>
+<p><a name="global-scopes"></a></p>
+<h3>全局作用域</h3>
+<p>全局范围能为给定模型的所有查询添加约束。Laravel 自带的 <a href="#soft-deleting">软删除功能</a> 就利用全局作用域从数据库中提取「未删除」的模型。编写自定义的全局作用域可以提供一个方便、简单的方法来确保给定模型的每个查询都受到一定的约束。</p>
+<h4>编写全局作用域</h4>
+<p>编写全局作用域很简单。首先定义一个实现 <code>Illuminate\Database\Eloquent\Scope</code> 接口的类。这个接口要求你实现一个方法：<code>apply</code>。<code>apply</code> 方法可以根据需要添加 <code>where</code> 条件到查询：</p>
+<pre><code>&lt;?php
+
+namespace App\Scopes;
+
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
+class AgeScope implements Scope
+{
+    /**
+     * 将范围应用于给定的 Eloquent 查询生成器
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function apply(Builder $builder, Model $model)
+    {
+        return $builder-&gt;where('age', '&gt;', 200);
+    }
+}</code></pre>
+<blockquote>
+<p>{tip} 如果全局作用域要将字段添加到查询的 select 语句中，则应该使用 <code>addSelect</code> 方法而不是 <code>select</code>。这是用来防止可能会无意中替换了查询的现有 select 语句。</p>
+</blockquote>
+<h4>应用全局作用域</h4>
+<p>要将全局作用域分配给模型，需要重写给定模型的 <code>boot</code> 方法并使用 <code>addGlobalScope</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use App\Scopes\AgeScope;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 模型的「启动」方法
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new AgeScope);
+    }
+}</code></pre>
+<p>添加作用域后，如果使用 <code>User::all()</code> 查询则会生成如下 SQL 语句：</p>
+<pre><code>select * from `users` where `age` &gt; 200</code></pre>
+<h4>匿名的全局作用域</h4>
+<p>Eloquent 还能使用闭包定义全局作用域，如此一来，便就没必要定义一个单独的类了：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
+class User extends Model
+{
+    /**
+     * 模型的「启动」方法
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('age', function(Builder $builder) {
+            $builder-&gt;where('age', '&gt;', 200);
+        });
+    }
+}</code></pre>
+<h4>删除全局作用域</h4>
+<p>如果要删除给定的查询的全局作用域，则可以使用 <code>withoutGlobalScope</code> 方法。该方法接受全局作用域的类名作为其唯一参数：</p>
+<pre><code>User::withoutGlobalScope(AgeScope::class)-&gt;get();</code></pre>
+<p>如果你想要删除几个甚至全部的全局作用域，可以使用 <code>withoutGlobalScopes</code> 方法：</p>
+<pre><code>// 删除所有的全局作用域
+User::withoutGlobalScopes()-&gt;get();
+
+// 删除一些全局作用域
+User::withoutGlobalScopes([
+    FirstScope::class, SecondScope::class
+])-&gt;get();</code></pre>
+<p><a name="local-scopes"></a></p>
+<h3>本地作用域</h3>
+<p>本地作用域能定义通用的约束集合以便在应用中复用。例如，你可能经常需要检索最受欢迎的用户，为此要定义一个作用域，只需要在 <code>scope</code> 前加上一个 Eloquent 模型方法即可。</p>
+<p>作用域应始终返回查询生成器实例：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 限制查询只包括受欢迎的用户。
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopular($query)
+    {
+        return $query-&gt;where('votes', '&gt;', 100);
+    }
+
+    /**
+     * 限制查询只包括活跃的用户。
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query-&gt;where('active', 1);
+    }
+}</code></pre>
+<h4>利用本地作用域</h4>
+<p>定义了范围之后，可以在查询模型时调用 <code>scope</code> 方法。注意，在调用方法时，不应包含 <code>scope</code> 前缀。你甚至可以链式调用到不同的 <code>scope</code>，例如：</p>
+<pre><code>$users = App\User::popular()-&gt;active()-&gt;orderBy('created_at')-&gt;get();</code></pre>
+<h4>动态作用域</h4>
+<p>只需将附加参数添加到作用域。作用域参数应该在 <code>$query</code> 参数之后定义：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 限制查询只包括指定类型的用户。
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query-&gt;where('type', $type);
+    }
+}</code></pre>
+<p>现在，你可以在调用作用域时传递参数：</p>
+<pre><code>$users = App\User::ofType('admin')-&gt;get();</code></pre>
+<p><a name="events"></a></p>
+<h2>事件</h2>
+<p>Eloquent 的模型触发了几个事件，可以在模型的生命周期的以下几点进行监控： <code>retrieved</code>、<code>creating</code>、<code>created</code>、<code>updating</code>、<code>updated</code>、<code>saving</code>、<code>saved</code>、<code>deleting</code>、<code>deleted</code>、<code>restoring</code>、<code>restored</code>。事件能在每次在数据库中保存或更新特定模型类时轻松地执行代码。</p>
+<p>从数据库中检索现有模型时会触发 <code>retrieved</code> 事件。当新模型第一次被保存时， <code>creating</code> 以及 <code>created</code> 事件会被触发。如果模型已经存在于数据库中并且调用了 <code>save</code> 方法，会触发 <code>updating</code> 和 <code>updated</code> 事件。在这两种情况下，<code>saving</code> / <code>saved</code> 事件都会触发。</p>
+<p>开始前，在 Eloquent 模型上定义一个 <code>$dispatchesEvents</code> 属性，将 Eloquent 模型的生命周期的各个点映射到你的 <a href="/docs/laravel_5.8_zh/events.html">事件类</a> 中。</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use App\Events\UserSaved;
+use App\Events\UserDeleted;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * 模型的事件映射。
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' =&gt; UserSaved::class,
+        'deleted' =&gt; UserDeleted::class,
+    ];
+}</code></pre>
+<p><a name="observers"></a></p>
+<h3>观察器</h3>
+<p>如果要给某个模型监听很多事件，则可以使用观察器将所有监听器分组到一个类中。观察器类里的方法名应该对应 Eloquent 中你想监听的事件。 每种方法接收 model 作为其唯一的参数。Laravel 没有为观察器设置默认的目录，所以你可以创建任何你喜欢你的目录来存放：</p>
+<pre><code>&lt;?php
+
+namespace App\Observers;
+
+use App\User;
+
+class UserObserver
+{
+    /**
+     * 监听用户创建的事件。
+     *
+     * @param  User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+
+    /**
+     * 监听用户删除事件。
+     *
+     * @param  User  $user
+     * @return void
+     */
+    public function deleting(User $user)
+    {
+        //
+    }
+}</code></pre>
+<p>要注册一个观察器，需要在模型上使用 <code>observe</code> 方法。你可以在服务提供器中的 <code>boot</code> 方法注册观察器。在这个例子中，我们将在 <code>AppServiceProvider</code> 注册观察器：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use App\User;
+use App\Observers\UserObserver;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 运行所有应用.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        User::observe(UserObserver::class);
+    }
+
+    /**
+     * 注册服务提供.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 171);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

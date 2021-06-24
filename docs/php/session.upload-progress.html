@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Session 上传进度 - 开发帮助文档</title> 
+    <meta name="keyword" content="session.upload-progress"> 
+    <meta name="description" content="session.upload-progress"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="239" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.sessionhandler.html" title="The SessionHandler class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The SessionHandler class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.sessionhandlerinterface.html" title="The SessionHandlerInterface class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The SessionHandlerInterface class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.session.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.session.html" title="Session 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Session 函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.security.html" title="会话和安全">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    会话和安全
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/session.upload-progress.html" title="Session 上传进度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Session 上传进度
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="session.customhandler.html">« 自定义会话管理器</a></li>
+      <li style="float: right;"><a href="session.security.html">会话和安全 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.session.html">Sessions</a></li>
+    <li>Session 上传进度</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="session.upload-progress" class="chapter">
+ <h1>Session 上传进度</h1>
+
+
+ <blockquote class="note"><p><strong class="note">注意</strong>: 
+  <span class="simpara">
+   此特性自 PHP 5.4.0 后可用。
+  </span>
+ </p></blockquote>
+
+ <p class="para">
+  当
+  <a href="session.configuration.html#ini.session.upload-progress.enabled" class="link">session.upload_progress.enabled</a>
+  INI 选项开启时，PHP 能够在每一个文件上传时监测上传进度。
+  这个信息对上传请求自身并没有什么帮助，但在文件上传时应用可以发送一个POST请求到终端（例如通过<acronym>XHR</acronym>）来检查这个状态
+ </p>
+ <p class="para">
+  当一个上传在处理中，同时POST一个与INI中设置的<a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a>同名变量时，上传进度可以在<var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>中获得。
+  当PHP检测到这种POST请求时，它会在<var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>中添加一组数据, 索引是
+  <a href="session.configuration.html#ini.session.upload-progress.prefix" class="link">session.upload_progress.prefix</a>
+  与
+  <a href="session.configuration.html#ini.session.upload-progress.name" class="link">session.upload_progress.name</a>连接在一起的值。
+  通常这些键值可以通过读取INI设置来获得，例如
+  </p><div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$key </span><span style="color: #007700">= </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"session.upload_progress.prefix"</span><span style="color: #007700">) . </span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">"session.upload_progress.name"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]);<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ 
+ <p class="para">
+  通过将<code class="literal">$_SESSION[$key]["cancel_upload"]</code>设置为<strong><code>true</code></strong>，还可以<em class="emphasis">取消</em>一个正在处理中的文件上传。
+  当在同一个请求中上传多个文件，它仅会取消当前正在处理的文件上传和未处理的文件上传，但是不会移除那些已经完成的上传。
+  当一个上传请求被这么取消时，<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var>中的<code class="literal">error</code>将会被设置为
+  <strong><code>UPLOAD_ERR_EXTENSION</code></strong>。
+ </p>
+ <p class="para">
+  <a href="session.configuration.html#ini.session.upload-progress.freq" class="link">session.upload_progress.freq</a>
+  和
+  <a href="session.configuration.html#ini.session.upload-progress.min-freq" class="link">session.upload_progress.min_freq</a>
+  INI选项控制了上传进度信息应该多久被重新计算一次。
+  通过合理设置这两个选项的值，这个功能的开销几乎可以忽略不计。
+ </p>
+ <p class="para">
+  </p><div class="example" id="example-4787">
+   <p><strong>示例 #1 样例信息</strong></p>
+   <div class="example-contents"><p>
+    一个上传进度数组的结构的例子
+   </p></div>
+   <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;form action="upload.php" method="POST" enctype="multipart/form-data"&gt;
+ &lt;input type="hidden" name="&lt;?php echo ini_get("session.upload_progress.name"); ?&gt;" value="123" /&gt;
+ &lt;input type="file" name="file1" /&gt;
+ &lt;input type="file" name="file2" /&gt;
+ &lt;input type="submit" /&gt;
+&lt;/form&gt;</pre>
+</div>
+   </div>
+
+   <div class="example-contents"><p>
+    在session中存放的数据看上去是这样子的：
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">"upload_progress_123"</span><span style="color: #007700">] = array(<br> </span><span style="color: #DD0000">"start_time" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1234567890</span><span style="color: #007700">,   </span><span style="color: #FF8000">// The request time<br> </span><span style="color: #DD0000">"content_length" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">57343257</span><span style="color: #007700">, </span><span style="color: #FF8000">// POST content length<br> </span><span style="color: #DD0000">"bytes_processed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">453489</span><span style="color: #007700">,  </span><span style="color: #FF8000">// Amount of bytes received and processed<br> </span><span style="color: #DD0000">"done" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">false</span><span style="color: #007700">,              </span><span style="color: #FF8000">// true when the POST handler has finished, successfully or not<br> </span><span style="color: #DD0000">"files" </span><span style="color: #007700">=&gt; array(<br>  </span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; array(<br>   </span><span style="color: #DD0000">"field_name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"file1"</span><span style="color: #007700">,       </span><span style="color: #FF8000">// Name of the &lt;input/&gt; field<br>   // The following 3 elements equals those in $_FILES<br>   </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"foo.avi"</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"tmp_name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"/tmp/phpxxxxxx"</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"error" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"done" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">,                </span><span style="color: #FF8000">// True when the POST handler has finished handling this file<br>   </span><span style="color: #DD0000">"start_time" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1234567890</span><span style="color: #007700">,    </span><span style="color: #FF8000">// When this file has started to be processed<br>   </span><span style="color: #DD0000">"bytes_processed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">57343250</span><span style="color: #007700">, </span><span style="color: #FF8000">// Amount of bytes received and processed for this file<br>  </span><span style="color: #007700">),<br>  </span><span style="color: #FF8000">// An other file, not finished uploading, in the same request<br>  </span><span style="color: #0000BB">1 </span><span style="color: #007700">=&gt; array(<br>   </span><span style="color: #DD0000">"field_name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"file2"</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"name" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"bar.avi"</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"tmp_name" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">NULL</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"error" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">0</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"done" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">false</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"start_time" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1234567899</span><span style="color: #007700">,<br>   </span><span style="color: #DD0000">"bytes_processed" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">54554</span><span style="color: #007700">,<br>  ),<br> )<br>);</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ 
+ <div class="warning"><strong class="warning">警告</strong>
+  <p class="para">
+   为了使这个正常工作，web服务器的请求缓冲区需要禁用，否则 PHP可能仅当文件完全上传完成时才能收到文件上传请求。
+   已知会缓冲这种大请求的程序有Nginx。
+  </p>
+ </div>
+ <div class="caution"><strong class="caution">警告</strong>
+  <p class="para">
+   这个进度信息是在任意脚本被执行前写入session的，因此通过
+   <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>或<span class="function"><a href="function.session-name.html" class="function">session_name()</a></span>修改session名将会导致一个没有上传进度信息的session。
+  </p>
+ </div>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9648);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

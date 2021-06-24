@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>OCI8 Fast Application Notification (FAN) Support - 开发帮助文档</title> 
+    <meta name="keyword" content="oci8.fan"> 
+    <meta name="description" content="oci8.fan"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="813" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Collection.html" title="The OCICollection class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCICollection class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Lob.html" title="The OCILob class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCILob class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.oci8.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.connection.html" title="OCI8 Connection Handling and Connection Pooling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Connection Handling and Connection Pooling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.datatypes.html" title="Supported Datatypes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Supported Datatypes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.dtrace.html" title="OCI8 and DTrace Dynamic Tracing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 and DTrace Dynamic Tracing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.fan.html" title="OCI8 Fast Application Notification (FAN) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Fast Application Notification (FAN) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.taf.html" title="OCI8 Transparent Application Failover (TAF) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Transparent Application Failover (TAF) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oldaliases.oci8.html" title="OCI8 Obsolete Aliases and Functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Obsolete Aliases and Functions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.oci8.html" title="OCI8 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.connection.html">« OCI8 Connection Handling and Connection Pooling</a></li>
+      <li style="float: right;"><a href="oci8.taf.html">OCI8 Transparent Application Failover (TAF) Support »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.oci8.html">OCI8</a></li>
+    <li>OCI8 Fast Application Notification (FAN) Support</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="oci8.fan" class="chapter">
+ <h1>OCI8 Fast Application Notification (FAN) Support</h1>
+
+ <div class="section">
+  <p class="para">
+   FAN support gives fast connection failover, an Oracle Database high availability
+   feature.  This allows PHP OCI8 scripts to be notified when a
+   database machine or database instance becomes unavailable.  Without
+   FAN, OCI8 can hang until a TCP timeout occurs and an error is
+   returned, which might be several minutes.  Enabling FAN in OCI8 can
+   allow applications to detect errors and re-connect to an available
+   database instance without the web user being aware of an outage.
+  </p>
+  <p class="para">
+   FAN support is available when the Oracle client libraries that PHP
+   links with and the Oracle Database are either version 10gR2 or later.
+  </p>
+  <p class="para">
+   FAN benefits users of Oracle's clustering technology (RAC) because
+   connections to surviving database instances can be immediately
+   made.  Users of Oracle's Data Guard with a broker will see the FAN
+   events generated when the standby database goes online.  Standalone
+   databases will send FAN events when the database restarts.
+  </p>
+  <p class="para">
+   For active connections, when a machine or database instance becomes
+   unavailable, a connection failure error will be returned by the
+   OCI8 extension function currently being called.  On a subsequent
+   PHP script re-connect, a connection to a surviving database
+   instance will be established.  The OCI8 extension also
+   transparently cleans up any idle connections affected by a database
+   machine or instance failure so PHP connect calls will establish a
+   fresh connection without the script being aware of any service
+   disruption.
+  </p>
+  <p class="para">
+   When <a href="oci8.configuration.html#ini.oci8.events" class="link">oci8.events</a>
+   is <code class="literal">On</code>, it is suggested to
+   set <a href="oci8.configuration.html#ini.oci8.ping-interval" class="link">oci8.ping_interval</a>
+   to -1 to disable pinging, since enabling FAN events provide
+   pro-active connection management of idle connections made invalid
+   by a service disruption.
+  </p>
+  <p class="para">
+   To enable FAN support in PHP OCI8, build PHP OCI8 with Oracle 10gR2 or later
+   libraries and then follow these steps:
+  </p>
+  <p class="para">
+   </p><ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      As a privileged database administrator, use a program like
+      SQL*Plus to enable the database service to post FAN events, for
+      example:
+     </span>
+     <p class="para">
+      </p><div class="informalexample">
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+    SQL&gt; execute dbms_service.modify_service(
+                   SERVICE_NAME        =&gt; 'sales',
+                   AQ_HA_NOTIFICATIONS =&gt; TRUE);
+</pre></div>
+       </div>
+      </div>
+     
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Edit php.ini and add
+     </span>
+     <p class="para">
+      </p><div class="informalexample">
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+    oci8.events = On
+</pre></div>
+       </div>
+      </div>
+     
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      If the application does not already handle OCI8 error
+      conditions, modify it to detect failures and take appropriate
+      action.  This may include re-connecting and re-executing
+      statements.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Run the application, connecting to Oracle Database 10gR2 or later.
+     </span>
+    </li>
+   </ul>
+  
+ </div>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8520);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

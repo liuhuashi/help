@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Connection handling and persistence - 开发帮助文档</title> 
+    <meta name="keyword" content="mongodb.connection-handling"> 
+    <meta name="description" content="mongodb.connection-handling"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="947" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.connection-handling.html" title="Connection handling and persistence">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Connection handling and persistence
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.overview.html" title="Architecture Overview">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Architecture Overview
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.persistence.html" title="Serialization and deserialization of PHP variables into MongoDB">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Serialization and deserialization of PHP variables into MongoDB
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.overview.html">« Architecture</a></li>
+      <li style="float: right;"><a href="mongodb.persistence.html">Persisting Data »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mongodb.architecture.html">Driver Architecture and Internals</a></li>
+    <li>Connection handling and persistence</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.connection-handling" class="article">
+  
+  <h1>Connection handling and persistence</h1>
+
+
+  
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     On Unix platforms, the MongoDB driver is sensitive to scripts that use the
+     fork() system call without also calling exec(). Users are advised not to
+     re-use <a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a> instances in a forked
+     child process.
+    </span>
+   </p></blockquote>
+
+
+  <div class="section">
+   <h2 class="title">Connection and topology persistence (PHP version since 1.2.0)</h2>
+
+   <p class="para">
+    All versions of the driver since 1.2.0 persist the
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external">» libmongoc</a> client object in
+    the PHP worker process, which allows it to re-use database connections,
+    authentication states, <em class="emphasis">and</em> topology information across
+    multiple requests.
+   </p>
+
+   <p class="para">
+    When <span class="methodname"><a href="mongodb-driver-manager.construct.html" class="methodname">MongoDB\Driver\Manager::__construct()</a></span> is
+    invoked, a hash is created from its arguments (i.e. URI string and array
+    options). The driver will attempt to find a previously persisted
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external">» libmongoc</a> client object for
+    that hash. If an existing client cannot be found for the hash, a new client
+    will be created (and persisted for future use).
+   </p>
+
+   <p class="para">
+    Each client contains its own database connections and a view of the server
+    topology (e.g. standalone, replica set, shard cluster). By persisting the
+    client between PHP requests, the driver is able to re-use established
+    database connections and remove the need for
+    <a href="https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.rst" class="link external">» discovering the server topology</a>
+    on each request.
+   </p>
+
+   <p class="para">
+    Consider the following example:
+   </p>
+
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br>$managers </span><span style="color: #007700">= [<br>    new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1'</span><span style="color: #007700">),<br>    new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1'</span><span style="color: #007700">),<br>    new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://127.0.0.1:27017'</span><span style="color: #007700">),<br>    new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://rs1.example.com,rs2.example.com/'</span><span style="color: #007700">, [</span><span style="color: #DD0000">'replicaSet' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'myReplicaSet'</span><span style="color: #007700">]),<br>];<br><br>foreach (</span><span style="color: #0000BB">$managers </span><span style="color: #007700">as </span><span style="color: #0000BB">$manager</span><span style="color: #007700">) {<br>    </span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">, new </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">([</span><span style="color: #DD0000">'ping' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">]));<br>}<br><br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+
+   <p class="para">
+    The first two Manager objects will share the same
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external">» libmongoc</a> client since
+    their constructor arguments are identical. The third and fourth objects will
+    each use their own client. In total, three clients will be created and the
+    PHP worker executing this script will open two connections to
+    <code class="literal">127.0.0.1</code> and one connection to each of
+    <code class="literal">rs1.example.com</code> and <code class="literal">rs2.example.com</code>.
+    If the driver discovers additional members of the replica set after issuing
+    <code class="literal">hello</code> commands, it will open additional connections to
+    those servers as well.
+   </p>
+
+   <p class="para">
+    If the same worker executes the script again in a second request, the three
+    clients will be re-used and no new connections should be made. Depending on
+    how long ago the previous request was served, the driver may need to issue
+    additional <code class="literal">hello</code> commands to update its view of the
+    topologies.
+   </p>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Socket persistence (PHP versions before 1.2.0)</h2>
+
+   <p class="para">
+    Versions of the PHP driver before 1.2.0 utilize PHP's Streams API for
+    database connections, using an API within
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external">» libmongoc</a> to designate
+    custom handlers for socket communication; however, a new libmongoc client is
+    created for each <a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a>. As a result,
+    the driver persists individual database connections but not authentication
+    state or topology information. This means that the driver needs to issue
+    commands at the start of each request to authenticate and
+    <a href="https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.rst" class="link external">» discover the server topology</a>.
+   </p>
+
+   <p class="para">
+    Database connections are persisted by a hash derived from the server's
+    host, port, and the URI string used to construct the
+    <a href="class.mongodb-driver-manager.html" class="classname">MongoDB\Driver\Manager</a>. The constructor's array
+    options are not included in this hash.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     Versions of the driver &gt;= 1.1.8 and &lt; 1.2.0 do not persist sockets
+     for SSL connections. See
+     <a href="https://jira.mongodb.org/browse/PHPC-720" class="link external">» PHPC-720</a> for
+     additional information.
+    </span>
+   </p></blockquote>
+
+   <p class="para">
+    Despite its shortcomings with persisting SSL connections when and topology
+    information, this version of the driver supports all
+    <a href="context.ssl.html" class="link">SSL context options</a> since it uses
+    PHP's Streams API.
+   </p>
+  </div>
+ </div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7866);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

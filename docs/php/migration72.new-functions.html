@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>新函数 - 开发帮助文档</title> 
+    <meta name="keyword" content="migration72.new-functions"> 
+    <meta name="description" content="migration72.new-functions"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="23" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.constants.html" title="新全局常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    新全局常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.deprecated.html" title="PHP 7.2.x 中废弃的功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 7.2.x 中废弃的功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.incompatible.html" title="不向下兼容的变更">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    不向下兼容的变更
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.new-features.html" title="新特性">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    新特性
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.new-functions.html" title="新函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    新函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/migration72.other-changes.html" title="其他变更">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    其他变更
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration72.new-features.html">« 新特性</a></li>
+      <li style="float: right;"><a href="migration72.constants.html">新全局常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="migration72.html">从 PHP 7.1.x 移植到 PHP 7.2.x</a></li>
+    <li>新函数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration72.new-functions" class="sect1">
+ <h2 class="title">新函数</h2>
+
+ <div class="sect2" id="migration72.new-functions.core">
+  <h3 class="title">PHP 内核</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.stream-isatty.html" class="function">stream_isatty()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sapi-windows-vt100-support.html" class="function">sapi_windows_vt100_support()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.spl">
+  <h3 class="title"><a href="book.spl.html" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.spl-object-id.html" class="function">spl_object_id()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.dom">
+  <h3 class="title"><a href="book.dom.html" class="link">DOM</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="domnodelist.count.html" class="methodname">DomNodeList::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="domnamednodemap.count.html" class="methodname">DOMNamedNodeMap::count()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.ftp">
+  <h3 class="title"><a href="book.ftp.html" class="link">FTP</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.ftp-append.html" class="function">ftp_append()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.image">
+  <h3 class="title"><a href="book.image.html" class="link">GD</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagesetclip.html" class="function">imagesetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagegetclip.html" class="function">imagegetclip()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imageopenpolygon.html" class="function">imageopenpolygon()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imageresolution.html" class="function">imageresolution()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagecreatefrombmp.html" class="function">imagecreatefrombmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.imagebmp.html" class="function">imagebmp()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.hash">
+  <h3 class="title"><a href="book.hash.html" class="link">Hash</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.hash-hmac-algos.html" class="function">hash_hmac_algos()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.ldap">
+  <h3 class="title"><a href="book.ldap.html" class="link">LDAP</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.ldap-parse-exop.html" class="function">ldap_parse_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.ldap-exop.html" class="function">ldap_exop()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.ldap-exop-passwd.html" class="function">ldap_exop_passwd()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.ldap-exop-whoami.html" class="function">ldap_exop_whoami()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.mbstring">
+  <h3 class="title"><a href="book.mbstring.html" class="link">Multibyte String</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-chr.html" class="function">mb_chr()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-ord.html" class="function">mb_ord()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mb-scrub.html" class="function">mb_scrub()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.oci8">
+  <h3 class="title"><a href="book.oci8.html" class="link">Oracle OCI8</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.oci-register-taf-callback.html" class="function">oci_register_taf_callback()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.oci-unregister-taf-callback.html" class="function">oci_unregister_taf_callback()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.sockets">
+  <h3 class="title"><a href="book.sockets.html" class="link">Sockets</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.socket-addrinfo-lookup.html" class="function">socket_addrinfo_lookup()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.socket-addrinfo-connect.html" class="function">socket_addrinfo_connect()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.socket-addrinfo-bind.html" class="function">socket_addrinfo_bind()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.socket-addrinfo-explain.html" class="function">socket_addrinfo_explain()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.sodium">
+  <h3 class="title"><a href="book.sodium.html" class="link">Sodium</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-add.html" class="function">sodium_add()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-bin2hex.html" class="function">sodium_bin2hex()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-compare.html" class="function">sodium_compare()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-aes256gcm-decrypt.html" class="function">sodium_crypto_aead_aes256gcm_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-aes256gcm-encrypt.html" class="function">sodium_crypto_aead_aes256gcm_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-aes256gcm-is-available.html" class="function">sodium_crypto_aead_aes256gcm_is_available()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-aes256gcm-keygen.html" class="function">sodium_crypto_aead_aes256gcm_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-decrypt.html" class="function">sodium_crypto_aead_chacha20poly1305_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-encrypt.html" class="function">sodium_crypto_aead_chacha20poly1305_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-ietf-decrypt.html" class="function">sodium_crypto_aead_chacha20poly1305_ietf_decrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-ietf-encrypt.html" class="function">sodium_crypto_aead_chacha20poly1305_ietf_encrypt()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-ietf-keygen.html" class="function">sodium_crypto_aead_chacha20poly1305_ietf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-aead-chacha20poly1305-keygen.html" class="function">sodium_crypto_aead_chacha20poly1305_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-auth-keygen.html" class="function">sodium_crypto_auth_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-auth-verify.html" class="function">sodium_crypto_auth_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-auth.html" class="function">sodium_crypto_auth()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-keypair-from-secretkey-and-publickey.html" class="function">sodium_crypto_box_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-keypair.html" class="function">sodium_crypto_box_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-open.html" class="function">sodium_crypto_box_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-publickey-from-secretkey.html" class="function">sodium_crypto_box_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-publickey.html" class="function">sodium_crypto_box_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-seal-open.html" class="function">sodium_crypto_box_seal_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-seal.html" class="function">sodium_crypto_box_seal()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-secretkey.html" class="function">sodium_crypto_box_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box-seed-keypair.html" class="function">sodium_crypto_box_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-box.html" class="function">sodium_crypto_box()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-generichash-final.html" class="function">sodium_crypto_generichash_final()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-generichash-init.html" class="function">sodium_crypto_generichash_init()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-generichash-keygen.html" class="function">sodium_crypto_generichash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-generichash-update.html" class="function">sodium_crypto_generichash_update()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-generichash.html" class="function">sodium_crypto_generichash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kdf-derive-from-key.html" class="function">sodium_crypto_kdf_derive_from_key()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kdf-keygen.html" class="function">sodium_crypto_kdf_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-client-session-keys.html" class="function">sodium_crypto_kx_client_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-keypair.html" class="function">sodium_crypto_kx_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-publickey.html" class="function">sodium_crypto_kx_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-secretkey.html" class="function">sodium_crypto_kx_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-seed-keypair.html" class="function">sodium_crypto_kx_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-kx-server-session-keys.html" class="function">sodium_crypto_kx_server_session_keys()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash-scryptsalsa208sha256-str-verify.html" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash-scryptsalsa208sha256-str.html" class="function">sodium_crypto_pwhash_scryptsalsa208sha256_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash-scryptsalsa208sha256.html" class="function">sodium_crypto_pwhash_scryptsalsa208sha256()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash-str-verify.html" class="function">sodium_crypto_pwhash_str_verify()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash-str.html" class="function">sodium_crypto_pwhash_str()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-pwhash.html" class="function">sodium_crypto_pwhash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-scalarmult-base.html" class="function">sodium_crypto_scalarmult_base()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-scalarmult.html" class="function">sodium_crypto_scalarmult()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-secretbox-keygen.html" class="function">sodium_crypto_secretbox_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-secretbox-open.html" class="function">sodium_crypto_secretbox_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-secretbox.html" class="function">sodium_crypto_secretbox()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-shorthash-keygen.html" class="function">sodium_crypto_shorthash_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-shorthash.html" class="function">sodium_crypto_shorthash()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-detached.html" class="function">sodium_crypto_sign_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-ed25519-pk-to-curve25519.html" class="function">sodium_crypto_sign_ed25519_pk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-ed25519-sk-to-curve25519.html" class="function">sodium_crypto_sign_ed25519_sk_to_curve25519()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-keypair-from-secretkey-and-publickey.html" class="function">sodium_crypto_sign_keypair_from_secretkey_and_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-keypair.html" class="function">sodium_crypto_sign_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-open.html" class="function">sodium_crypto_sign_open()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-publickey-from-secretkey.html" class="function">sodium_crypto_sign_publickey_from_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-publickey.html" class="function">sodium_crypto_sign_publickey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-secretkey.html" class="function">sodium_crypto_sign_secretkey()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-seed-keypair.html" class="function">sodium_crypto_sign_seed_keypair()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign-verify-detached.html" class="function">sodium_crypto_sign_verify_detached()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-sign.html" class="function">sodium_crypto_sign()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-stream-keygen.html" class="function">sodium_crypto_stream_keygen()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-stream-xor.html" class="function">sodium_crypto_stream_xor()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-crypto-stream.html" class="function">sodium_crypto_stream()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-hex2bin.html" class="function">sodium_hex2bin()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-increment.html" class="function">sodium_increment()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-memcmp.html" class="function">sodium_memcmp()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-memzero.html" class="function">sodium_memzero()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-pad.html" class="function">sodium_pad()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.sodium-unpad.html" class="function">sodium_unpad()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration72.new-functions.zip">
+  <h3 class="title"><a href="book.zip.html" class="link">ZIP</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="ziparchive.count.html" class="methodname">ZipArchive::count()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="ziparchive.setencryptionname.html" class="methodname">ZipArchive::setEncryptionName()</a></span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="methodname"><a href="ziparchive.setencryptionindex.html" class="methodname">ZipArchive::setEncryptionIndex()</a></span>
+    </span>
+   </li>
+  </ul>
+ </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7623);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

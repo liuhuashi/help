@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>sqlsrv_rollback - 开发帮助文档</title> 
+    <meta name="keyword" content="function.sqlsrv-rollback"> 
+    <meta name="description" content="function.sqlsrv-rollback"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="802" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-begin-transaction.html" title="sqlsrv_begin_transaction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_begin_transaction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-cancel.html" title="sqlsrv_cancel">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_cancel
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-client-info.html" title="sqlsrv_client_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_client_info
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-close.html" title="sqlsrv_close">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_close
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-commit.html" title="sqlsrv_commit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_commit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-configure.html" title="sqlsrv_configure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_configure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-connect.html" title="sqlsrv_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-errors.html" title="sqlsrv_errors">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_errors
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-execute.html" title="sqlsrv_execute">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_execute
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-fetch-array.html" title="sqlsrv_fetch_array">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_fetch_array
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-fetch-object.html" title="sqlsrv_fetch_object">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_fetch_object
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-fetch.html" title="sqlsrv_fetch">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_fetch
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-field-metadata.html" title="sqlsrv_field_metadata">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_field_metadata
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-free-stmt.html" title="sqlsrv_free_stmt">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_free_stmt
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-get-config.html" title="sqlsrv_get_config">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_get_config
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-get-field.html" title="sqlsrv_get_field">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_get_field
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-has-rows.html" title="sqlsrv_has_rows">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_has_rows
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-next-result.html" title="sqlsrv_next_result">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_next_result
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-num-fields.html" title="sqlsrv_num_fields">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_num_fields
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-num-rows.html" title="sqlsrv_num_rows">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_num_rows
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-prepare.html" title="sqlsrv_prepare">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_prepare
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-query.html" title="sqlsrv_query">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_query
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-rollback.html" title="sqlsrv_rollback">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_rollback
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-rows-affected.html" title="sqlsrv_rows_affected">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_rows_affected
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-send-stream-data.html" title="sqlsrv_send_stream_data">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_send_stream_data
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.sqlsrv-server-info.html" title="sqlsrv_server_info">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    sqlsrv_server_info
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sqlsrv-query.html">« sqlsrv_query</a></li>
+      <li style="float: right;"><a href="function.sqlsrv-rows-affected.html">sqlsrv_rows_affected »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.sqlsrv.html">SQLSRV 函数</a></li>
+    <li>Rolls back a transaction that was begun with 
+  sqlsrv_begin_transaction</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sqlsrv-rollback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlsrv_rollback</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">sqlsrv_rollback</span> — <span class="dc-title">Rolls back a transaction that was begun with 
+  <span class="function"><a href="function.sqlsrv-begin-transaction.html" class="function">sqlsrv_begin_transaction()</a></span></span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.sqlsrv-rollback-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>sqlsrv_rollback</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$conn</code></span>
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Rolls back a transaction that was begun with <span class="function"><a href="function.sqlsrv-begin-transaction.html" class="function">sqlsrv_begin_transaction()</a></span> 
+   and returns the connection to auto-commit mode.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.sqlsrv-rollback-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">conn</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The connection resource returned by a call to <span class="function"><a href="function.sqlsrv-connect.html" class="function">sqlsrv_connect()</a></span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlsrv-rollback-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   成功时返回 <strong><code>true</code></strong>， 或者在失败时返回 <strong><code>false</code></strong>。
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.sqlsrv-rollback-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="example-2126">
+    <p><strong>示例 #1 <span class="function"><strong>sqlsrv_rollback()</strong></span> example</strong></p>
+    <div class="example-contents"><p>
+    The following example demonstrates how to use <span class="function"><a href="function.sqlsrv-begin-transaction.html" class="function">sqlsrv_begin_transaction()</a></span> 
+    together with <span class="function"><a href="function.sqlsrv-commit.html" class="function">sqlsrv_commit()</a></span> and <span class="function"><strong>sqlsrv_rollback()</strong></span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$serverName </span><span style="color: #007700">= </span><span style="color: #DD0000">"serverName\sqlexpress"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$connectionInfo </span><span style="color: #007700">= array( </span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"dbName"</span><span style="color: #007700">, </span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"userName"</span><span style="color: #007700">, </span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">( </span><span style="color: #0000BB">$serverName</span><span style="color: #007700">, </span><span style="color: #0000BB">$connectionInfo</span><span style="color: #007700">);<br>if( </span><span style="color: #0000BB">$conn </span><span style="color: #007700">=== </span><span style="color: #0000BB">false </span><span style="color: #007700">) {<br>    die( </span><span style="color: #0000BB">print_r</span><span style="color: #007700">( </span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(), </span><span style="color: #0000BB">true </span><span style="color: #007700">));<br>}<br><br></span><span style="color: #FF8000">/* Begin the transaction. */<br></span><span style="color: #007700">if ( </span><span style="color: #0000BB">sqlsrv_begin_transaction</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn </span><span style="color: #007700">) === </span><span style="color: #0000BB">false </span><span style="color: #007700">) {<br>     die( </span><span style="color: #0000BB">print_r</span><span style="color: #007700">( </span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(), </span><span style="color: #0000BB">true </span><span style="color: #007700">));<br>}<br><br></span><span style="color: #FF8000">/* Initialize parameter values. */<br></span><span style="color: #0000BB">$orderId </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$qty </span><span style="color: #007700">= </span><span style="color: #0000BB">10</span><span style="color: #007700">; </span><span style="color: #0000BB">$productId </span><span style="color: #007700">= </span><span style="color: #0000BB">100</span><span style="color: #007700">;<br><br></span><span style="color: #FF8000">/* Set up and execute the first query. */<br></span><span style="color: #0000BB">$sql1 </span><span style="color: #007700">= </span><span style="color: #DD0000">"INSERT INTO OrdersTable (ID, Quantity, ProductID)<br>         VALUES (?, ?, ?)"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$params1 </span><span style="color: #007700">= array( </span><span style="color: #0000BB">$orderId</span><span style="color: #007700">, </span><span style="color: #0000BB">$qty</span><span style="color: #007700">, </span><span style="color: #0000BB">$productId </span><span style="color: #007700">);<br></span><span style="color: #0000BB">$stmt1 </span><span style="color: #007700">= </span><span style="color: #0000BB">sqlsrv_query</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql1</span><span style="color: #007700">, </span><span style="color: #0000BB">$params1 </span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* Set up and execute the second query. */<br></span><span style="color: #0000BB">$sql2 </span><span style="color: #007700">= </span><span style="color: #DD0000">"UPDATE InventoryTable <br>         SET Quantity = (Quantity - ?) <br>         WHERE ProductID = ?"</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$params2 </span><span style="color: #007700">= array(</span><span style="color: #0000BB">$qty</span><span style="color: #007700">, </span><span style="color: #0000BB">$productId</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$stmt2 </span><span style="color: #007700">= </span><span style="color: #0000BB">sqlsrv_query</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql2</span><span style="color: #007700">, </span><span style="color: #0000BB">$params2 </span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* If both queries were successful, commit the transaction. */<br>/* Otherwise, rollback the transaction. */<br></span><span style="color: #007700">if( </span><span style="color: #0000BB">$stmt1 </span><span style="color: #007700">&amp;&amp; </span><span style="color: #0000BB">$stmt2 </span><span style="color: #007700">) {<br>     </span><span style="color: #0000BB">sqlsrv_commit</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn </span><span style="color: #007700">);<br>     echo </span><span style="color: #DD0000">"Transaction committed.&lt;br /&gt;"</span><span style="color: #007700">;<br>} else {<br>     </span><span style="color: #0000BB">sqlsrv_rollback</span><span style="color: #007700">( </span><span style="color: #0000BB">$conn </span><span style="color: #007700">);<br>     echo </span><span style="color: #DD0000">"Transaction rolled back.&lt;br /&gt;"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.sqlsrv-rollback-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.sqlsrv-begin-transaction.html" class="function" rel="rdfs-seeAlso">sqlsrv_begin_transaction()</a> - Begins a database transaction</span></li>
+    <li class="member"><span class="function"><a href="function.sqlsrv-commit.html" class="function" rel="rdfs-seeAlso">sqlsrv_commit()</a> - Commits a transaction that was begun with sqlsrv_begin_transaction</span></li>
+   </ul>
+  
+ </div>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 5210);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>在新版本的 PHP 中使用旧的 PHP 代码 - 开发帮助文档</title> 
+    <meta name="keyword" content="tutorial.oldcode"> 
+    <meta name="description" content="tutorial.oldcode"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1157" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.firstpage.html" title="第一个 PHP 页面">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    第一个 PHP 页面
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.forms.html" title="处理表单">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    处理表单
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.oldcode.html" title="在新版本的 PHP 中使用旧的 PHP 代码">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    在新版本的 PHP 中使用旧的 PHP 代码
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.requirements.html" title="需要些什么？">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    需要些什么？
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.useful.html" title="实用的脚本">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    实用的脚本
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/tutorial.whatsnext.html" title="下一步做什么？">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    下一步做什么？
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tutorial.forms.html">« 处理表单</a></li>
+      <li style="float: right;"><a href="tutorial.whatsnext.html">下一步做什么？ »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="tutorial.html">简明教程</a></li>
+    <li>在新版本的 PHP 中使用旧的 PHP 代码</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tutorial.oldcode" class="section">
+  <div class="info"><h1 class="title">在新版本的 PHP 中使用旧的 PHP 代码</h1></div>
+  <p class="para">
+   现在，PHP 已经发展成为一种流行的脚本语言，可以在很多公共的资源里找到可以在自己的脚本中重新利用的代码。PHP
+   语言的开发者为向下兼容性下了很多功夫，因此在新版本的
+   PHP 下，老版本的代码应该可以在不作任何改动的情况下（理想地）运行。不过实际上，还是必须对老的代码做一些改动。
+  </p>
+  <p class="para">
+   有可能影响到老版本的代码的最重要的两点改动分别是：
+   </p><ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      旧的 <var class="varname">$HTTP_*_VARS</var> 数组从 PHP 5.4.0 开始将不再有效。
+      PHP <a href="https://www.php.net/releases/4_1_0.php" class="link external">» 4.1.0</a>
+      版本引入了如下<a href="language.variables.superglobals.html" class="link">超全局数组变量</a>：
+      <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var>、<var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var>、<var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var>、
+      <var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var>、<var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var>、<var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var>、
+      <var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var> 以及 <var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var>。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      外部变量不再被默认注册为全局变量。也就是说，从
+      PHP <a href="https://www.php.net/releases/4_2_0.php" class="link external">» 4.2.0</a>
+      版开始，<var class="filename">php.ini</var> 中的设置选项
+      <code class="literal">register_globals</code>
+      默认值变成了
+      <em class="emphasis">off</em>。建议用以上提到的超全局数组变量来访问这些值。但可能老的脚本、书籍以及教程都可能建立在该设置为
+      on 的基础上。如果该选项被设置为
+      on，则可以在
+      URL <code class="literal">http://www.example.com/foo.php?id=42</code>
+      中直接使用变量 <var class="varname">$id</var>。但不管被设置为 on 还是
+      off，<var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['id']</a></var> 一直有效。
+     </span>
+    </li>
+   </ul>
+  
+  <p class="para">
+   如果希望了解关于这些改动的细节，请参阅“<a href="language.variables.predefined.html" class="link">预定义变量</a>”一章以及其中的连接。
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 10874);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The MongoDB\Driver\ReadPreference class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.mongodb-driver-readpreference"> 
+    <meta name="description" content="class.mongodb-driver-readpreference"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="932" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-bulkwrite.html" title="The MongoDB\Driver\BulkWrite class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\BulkWrite class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-command.html" title="The MongoDB\Driver\Command class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\Command class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-cursor.html" title="The MongoDB\Driver\Cursor class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\Cursor class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-cursorid.html" title="The MongoDB\Driver\CursorId class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\CursorId class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-manager.html" title="The MongoDB\Driver\Manager class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\Manager class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-query.html" title="The MongoDB\Driver\Query class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\Query class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-readconcern.html" title="The MongoDB\Driver\ReadConcern class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\ReadConcern class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-readpreference.html" title="The MongoDB\Driver\ReadPreference class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\ReadPreference class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-server.html" title="The MongoDB\Driver\Server class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\Server class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-writeconcern.html" title="The MongoDB\Driver\WriteConcern class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\WriteConcern class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-writeconcernerror.html" title="The MongoDB\Driver\WriteConcernError class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\WriteConcernError class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-writeerror.html" title="The MongoDB\Driver\WriteError class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\WriteError class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.mongodb-driver-writeresult.html" title="The MongoDB\Driver\WriteResult class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The MongoDB\Driver\WriteResult class
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb-driver-writeconcern.unserialize.html">« MongoDB\Driver\WriteConcern::unserialize</a></li>
+      <li style="float: right;"><a href="mongodb-driver-readpreference.bsonserialize.html">MongoDB\Driver\ReadPreference::bsonSerialize »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.mongodb.html">MongoDB\Driver</a></li>
+    <li>The MongoDB\Driver\ReadPreference class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.mongodb-driver-readpreference" class="reference">
+
+ <h1 class="title">The MongoDB\Driver\ReadPreference class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=1.0.0)</p>
+
+
+  <div class="section" id="mongodb-driver-readpreference.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-readpreference.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+      <strong class="classname">MongoDB\Driver\ReadPreference</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename"><strong class="interfacename">Serializable</strong></span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.rp-primary"><var class="varname">RP_PRIMARY</var></a></var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.rp-primary-preferred"><var class="varname">RP_PRIMARY_PREFERRED</var></a></var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.rp-secondary"><var class="varname">RP_SECONDARY</var></a></var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.rp-secondary-preferred"><var class="varname">RP_SECONDARY_PREFERRED</var></a></var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.rp-nearest"><var class="varname">RP_NEAREST</var></a></var>
+     <span class="initializer"> = 10</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.primary"><var class="varname">PRIMARY</var></a></var>
+     <span class="initializer"> = primary</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.primary-preferred"><var class="varname">PRIMARY_PREFERRED</var></a></var>
+     <span class="initializer"> = primaryPreferred</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.secondary"><var class="varname">SECONDARY</var></a></var>
+     <span class="initializer"> = secondary</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.secondary-preferred"><var class="varname">SECONDARY_PREFERRED</var></a></var>
+     <span class="initializer"> = secondaryPreferred</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.nearest"><var class="varname">NEAREST</var></a></var>
+     <span class="initializer"> = nearest</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.no-max-staleness"><var class="varname">NO_MAX_STALENESS</var></a></var>
+     <span class="initializer"> = -1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.mongodb-driver-readpreference.html#mongodb-driver-readpreference.constants.smallest-max-staleness-seconds"><var class="varname">SMALLEST_MAX_STALENESS_SECONDS</var></a></var>
+     <span class="initializer"> = 90</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.bsonserialize.html" class="methodname">bsonSerialize</a></span>
+    (
+   ) : <span class="type">object</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.construct.html" class="methodname">__construct</a></span>
+    ( <span class="methodparam"><span class="type"><span class="type">string</span>|<span class="type">int</span></span> <code class="parameter">$mode</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$tagSets</code><span class="initializer"> = <strong><code>null</code></strong></span></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = array()</span></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.gethedge.html" class="methodname">getHedge</a></span>
+    (
+   ) : <span class="type"><span class="type">object</span>|<span class="type">null</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.getmaxstalenessseconds.html" class="methodname">getMaxStalenessSeconds</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.getmode.html" class="methodname">getMode</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.getmodestring.html" class="methodname">getModeString</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.gettagsets.html" class="methodname">getTagSets</a></span>
+    (
+   ) : <span class="type">array</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.serialize.html" class="methodname">serialize</a></span>
+    (
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="methodname"><a href="mongodb-driver-readpreference.unserialize.html" class="methodname">unserialize</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   ) : <span class="type"><span class="type void">void</span></span></div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-readpreference.constants">
+   <h2 class="title">预定义常量</h2>
+   <dl>
+
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-primary"><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the current replica set primary. This is the
+       default read preference for MongoDB.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-primary-preferred"><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from the primary but if it is
+       unavailable, operations read from secondary members.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-secondary"><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the secondary members of the replica set.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-secondary-preferred"><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from secondary members but if no
+       secondary members are available, operations read from the primary.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-nearest"><strong><code>MongoDB\Driver\ReadPreference::RP_NEAREST</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Operations read from member of the replica set with the least network
+       latency, irrespective of the member's type.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.primary"><strong><code>MongoDB\Driver\ReadPreference::PRIMARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the current replica set primary. This is the
+       default read preference for MongoDB.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.primary-preferred"><strong><code>MongoDB\Driver\ReadPreference::PRIMARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from the primary but if it is
+       unavailable, operations read from secondary members.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.secondary"><strong><code>MongoDB\Driver\ReadPreference::SECONDARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the secondary members of the replica set.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.secondary-preferred"><strong><code>MongoDB\Driver\ReadPreference::SECONDARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from secondary members but if no
+       secondary members are available, operations read from the primary.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.nearest"><strong><code>MongoDB\Driver\ReadPreference::NEAREST</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Operations read from member of the replica set with the least network
+       latency, irrespective of the member's type.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.no-max-staleness"><strong><code>MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The default value for the <code class="literal">"maxStalenessSeconds"</code>
+       option is to specify no limit on maximum staleness, which means that the
+       driver will not consider a secondary's lag when choosing where to
+       direct a read operation.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.smallest-max-staleness-seconds"><strong><code>MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The minimum value for the <code class="literal">"maxStalenessSeconds"</code> option
+       is 90 seconds. The driver estimates secondaries' staleness by
+       periodically checking the latest write date of each replica set member.
+       Since these checks are infrequent, the staleness estimate is coarse.
+       Thus, the driver cannot enforce a max staleness value of less than 90
+       seconds.
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">更新日志</h2>
+   <p class="para">
+    </p><table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>版本</th>
+        <th>说明</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>PECL mongodb 1.7.0</td>
+        <td>
+         <p class="para">
+          Added the
+          <strong><code>MongoDB\Driver\ReadPreference::PRIMARY</code></strong>,
+          <strong><code>MongoDB\Driver\ReadPreference::PRIMARY_PREFERRED</code></strong>,
+          <strong><code>MongoDB\Driver\ReadPreference::SECONDARY</code></strong>,
+          <strong><code>MongoDB\Driver\ReadPreference::SECONDARY_PREFERRED</code></strong>,
+          <strong><code>MongoDB\Driver\ReadPreference::NEAREST</code></strong> constants.
+         </p>
+         <p class="para">
+          Implements <span class="interfacename"><strong class="interfacename">Serializable</strong></span>.
+         </p>
+        </td>
+       </tr>
+
+       <tr>
+        <td>PECL mongodb 1.2.0</td>
+        <td>
+         <p class="para">
+          Added the
+          <strong><code>MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</code></strong>
+          and
+          <strong><code>MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</code></strong>
+          constants.
+         </p>
+         <p class="para">
+          Implements <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span>.
+         </p>
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-readpreference.bsonserialize.html">MongoDB\Driver\ReadPreference::bsonSerialize</a> — Returns an object for BSON serialization</li><li><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a> — Create a new ReadPreference</li><li><a href="mongodb-driver-readpreference.gethedge.html">MongoDB\Driver\ReadPreference::getHedge</a> — Returns the ReadPreference's "hedge" option</li><li><a href="mongodb-driver-readpreference.getmaxstalenessseconds.html">MongoDB\Driver\ReadPreference::getMaxStalenessSeconds</a> — Returns the ReadPreference's "maxStalenessSeconds" option</li><li><a href="mongodb-driver-readpreference.getmode.html">MongoDB\Driver\ReadPreference::getMode</a> — Returns the ReadPreference's "mode" option</li><li><a href="mongodb-driver-readpreference.getmodestring.html">MongoDB\Driver\ReadPreference::getModeString</a> — Returns the ReadPreference's "mode" option as a string</li><li><a href="mongodb-driver-readpreference.gettagsets.html">MongoDB\Driver\ReadPreference::getTagSets</a> — Returns the ReadPreference's "tagSets" option</li><li><a href="mongodb-driver-readpreference.serialize.html">MongoDB\Driver\ReadPreference::serialize</a> — Serialize a ReadPreference</li><li><a href="mongodb-driver-readpreference.unserialize.html">MongoDB\Driver\ReadPreference::unserialize</a> — Unserialize a ReadPreference</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 937);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

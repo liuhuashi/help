@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Measuring cache efficiency - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-qc.cache-efficiency"> 
+    <meta name="description" content="mysqlnd-qc.cache-efficiency"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="840" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.cache-candidates.html" title="Finding cache candidates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Finding cache candidates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.cache-efficiency.html" title="Measuring cache efficiency">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Measuring cache efficiency
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.pattern-based-caching.html" title="Pattern based caching">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Pattern based caching
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.per-query-ttl.html" title="Setting the TTL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setting the TTL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.caching.html" title="Caching queries">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Caching queries
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.concepts.html" title="Architecture and Concepts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Architecture and Concepts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.quickstart.configuration.html" title="Setup">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Setup
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.set-user-handlers.html" title="Beyond TTL: user-defined storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Beyond TTL: user-defined storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.slam-defense.html" title="Slam defense">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Slam defense
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-qc.cache-candidates.html">« Finding cache candidates</a></li>
+      <li style="float: right;"><a href="mysqlnd-qc.set-user-handlers.html">Beyond TTL: user-defined storage »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-qc.quickstart.html">Quickstart and Examples</a></li>
+    <li>Measuring cache efficiency</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-qc.cache-efficiency" class="section">
+  <h2 class="title">Measuring cache efficiency</h2>
+  <p class="para">
+   PECL/mysqlnd_qc offers three ways to measure the cache efficiency.
+   The function
+   <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
+   returns statistics aggregated by the normalized query string,
+   <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
+   gives storage handler specific information which includes a list
+   of all cached items, depending on the storage handler. Additionally, the
+   core of PECL/mysqlnd_qc collects high-level summary statistics aggregated
+   per PHP process. The high-level statistics are returned by
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>.
+  </p>
+  <p class="para">
+   The functions
+   <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span>
+   and
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>
+   will not collect data unless data collection has been
+   enabled through their corresponding PHP configuration directives. Data collection
+   is disabled by default for performance considerations. It is configurable with the
+   <a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.time-statistics" class="link">mysqlnd_qc.time_statistics</a> 
+   option, which determines if timing information should be collected.
+   Collection of time statistics is enabled by default
+   but only performed if data collection as such has been enabled.
+   Recording time statistics causes extra system calls. In most cases,
+   the benefit of the monitoring outweighs any potential performance penalty of
+   the additional system calls.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1851">
+    <p><strong>示例 #1 Collecting statistics data with the <code class="literal">mysqlnd_qc.time_statistics</code> ini setting</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1
+mysqlnd_qc.collect_statistics=1</pre>
+</div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* connect to MySQL */<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"schema"</span><span style="color: #007700">, </span><span style="color: #DD0000">"port"</span><span style="color: #007700">, </span><span style="color: #DD0000">"socket"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1), (2), (3)"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* dummy queries */<br></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">4</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>    </span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"/*%s*/SELECT id FROM test WHERE id = %d"</span><span style="color: #007700">, </span><span style="color: #0000BB">MYSQLND_QC_ENABLE_SWITCH</span><span style="color: #007700">, </span><span style="color: #0000BB">$i </span><span style="color: #007700">% </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$res   </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>    <br>    </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqlnd_qc_get_core_stats</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(26) {
+  ["cache_hit"]=&gt;
+  string(1) "2"
+  ["cache_miss"]=&gt;
+  string(1) "2"
+  ["cache_put"]=&gt;
+  string(1) "2"
+  ["query_should_cache"]=&gt;
+  string(1) "4"
+  ["query_should_not_cache"]=&gt;
+  string(1) "3"
+  ["query_not_cached"]=&gt;
+  string(1) "3"
+  ["query_could_cache"]=&gt;
+  string(1) "4"
+  ["query_found_in_cache"]=&gt;
+  string(1) "2"
+  ["query_uncached_other"]=&gt;
+  string(1) "0"
+  ["query_uncached_no_table"]=&gt;
+  string(1) "0"
+  ["query_uncached_no_result"]=&gt;
+  string(1) "0"
+  ["query_uncached_use_result"]=&gt;
+  string(1) "0"
+  ["query_aggr_run_time_cache_hit"]=&gt;
+  string(2) "28"
+  ["query_aggr_run_time_cache_put"]=&gt;
+  string(3) "900"
+  ["query_aggr_run_time_total"]=&gt;
+  string(3) "928"
+  ["query_aggr_store_time_cache_hit"]=&gt;
+  string(2) "14"
+  ["query_aggr_store_time_cache_put"]=&gt;
+  string(2) "40"
+  ["query_aggr_store_time_total"]=&gt;
+  string(2) "54"
+  ["receive_bytes_recorded"]=&gt;
+  string(3) "136"
+  ["receive_bytes_replayed"]=&gt;
+  string(3) "136"
+  ["send_bytes_recorded"]=&gt;
+  string(2) "84"
+  ["send_bytes_replayed"]=&gt;
+  string(2) "84"
+  ["slam_stale_refresh"]=&gt;
+  string(1) "0"
+  ["slam_stale_hit"]=&gt;
+  string(1) "0"
+  ["request_counter"]=&gt;
+  int(1)
+  ["process_hash"]=&gt;
+  int(1929695233)
+}
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   For a quick overview, call
+   <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>. It delivers
+   cache usage, cache timing and traffic related statistics. Values are aggregated
+   on a per process basis for all queries issued by any PHP MySQL API call.
+  </p>
+  <p class="para">
+   Some storage handler, such as the default handler, can report cache entries,
+   statistics related to the entries and meta data for the underlying query through the
+   <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span>
+   function.  Please note, that the information returned depends
+   on the storage handler. Values are aggregated on a per process basis.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1852">
+    <p><strong>示例 #2 Example <span class="function"><a href="function.mysqlnd-qc-get-cache-info.html" class="function">mysqlnd_qc_get_cache_info()</a></span> usage</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1</pre>
+</div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* connect to MySQL */<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"schema"</span><span style="color: #007700">, </span><span style="color: #DD0000">"port"</span><span style="color: #007700">, </span><span style="color: #DD0000">"socket"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1), (2), (3)"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* dummy queries to fill the query trace */<br></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">4</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>    </span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"/*%s*/SELECT id FROM test WHERE id = %d"</span><span style="color: #007700">, </span><span style="color: #0000BB">MYSQLND_QC_ENABLE_SWITCH</span><span style="color: #007700">, </span><span style="color: #0000BB">$i </span><span style="color: #007700">% </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$res   </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>  <br>    </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqlnd_qc_get_cache_info</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  ["num_entries"]=&gt;
+  int(2)
+  ["handler"]=&gt;
+  string(7) "default"
+  ["handler_version"]=&gt;
+  string(5) "1.0.0"
+  ["data"]=&gt;
+  array(2) {
+    ["Localhost via UNIX socket
+3306
+root
+test|/*qc=on*/SELECT id FROM test WHERE id = 1"]=&gt;
+    array(2) {
+      ["statistics"]=&gt;
+      array(11) {
+        ["rows"]=&gt;
+        int(1)
+        ["stored_size"]=&gt;
+        int(71)
+        ["cache_hits"]=&gt;
+        int(1)
+        ["run_time"]=&gt;
+        int(391)
+        ["store_time"]=&gt;
+        int(27)
+        ["min_run_time"]=&gt;
+        int(16)
+        ["max_run_time"]=&gt;
+        int(16)
+        ["min_store_time"]=&gt;
+        int(8)
+        ["max_store_time"]=&gt;
+        int(8)
+        ["avg_run_time"]=&gt;
+        int(8)
+        ["avg_store_time"]=&gt;
+        int(4)
+      }
+      ["metadata"]=&gt;
+      array(1) {
+        [0]=&gt;
+        array(8) {
+          ["name"]=&gt;
+          string(2) "id"
+          ["orig_name"]=&gt;
+          string(2) "id"
+          ["table"]=&gt;
+          string(4) "test"
+          ["orig_table"]=&gt;
+          string(4) "test"
+          ["db"]=&gt;
+          string(4) "test"
+          ["max_length"]=&gt;
+          int(1)
+          ["length"]=&gt;
+          int(11)
+          ["type"]=&gt;
+          int(3)
+        }
+      }
+    }
+    ["Localhost via UNIX socket
+3306
+root
+test|/*qc=on*/SELECT id FROM test WHERE id = 0"]=&gt;
+    array(2) {
+      ["statistics"]=&gt;
+      array(11) {
+        ["rows"]=&gt;
+        int(0)
+        ["stored_size"]=&gt;
+        int(65)
+        ["cache_hits"]=&gt;
+        int(1)
+        ["run_time"]=&gt;
+        int(299)
+        ["store_time"]=&gt;
+        int(13)
+        ["min_run_time"]=&gt;
+        int(11)
+        ["max_run_time"]=&gt;
+        int(11)
+        ["min_store_time"]=&gt;
+        int(6)
+        ["max_store_time"]=&gt;
+        int(6)
+        ["avg_run_time"]=&gt;
+        int(5)
+        ["avg_store_time"]=&gt;
+        int(3)
+      }
+      ["metadata"]=&gt;
+      array(1) {
+        [0]=&gt;
+        array(8) {
+          ["name"]=&gt;
+          string(2) "id"
+          ["orig_name"]=&gt;
+          string(2) "id"
+          ["table"]=&gt;
+          string(4) "test"
+          ["orig_table"]=&gt;
+          string(4) "test"
+          ["db"]=&gt;
+          string(4) "test"
+          ["max_length"]=&gt;
+          int(0)
+          ["length"]=&gt;
+          int(11)
+          ["type"]=&gt;
+          int(3)
+        }
+      }
+    }
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   It is possible to further break down the granularity of statistics
+   to the level of the normalized statement string.
+   The normalized statement string is the statements string with all parameters
+   replaced with question marks. For example, the two statements
+   <code class="literal">SELECT id FROM test WHERE id = 0</code> and
+   <code class="literal">SELECT id FROM test WHERE id = 1</code> are normalized into
+   <code class="literal">SELECT id FROM test WHERE id = ?</code>. Their both
+   statistics are aggregated into one entry for
+   <code class="literal">SELECT id FROM test WHERE id = ?</code>.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1853">
+    <p><strong>示例 #3 Example <span class="function"><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html" class="function">mysqlnd_qc_get_normalized_query_trace_log()</a></span> usage</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">mysqlnd_qc.enable_qc=1
+mysqlnd_qc.collect_normalized_query_trace=1</pre>
+</div>
+    </div>
+
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br></span><span style="color: #FF8000">/* connect to MySQL */<br></span><span style="color: #0000BB">$mysqli </span><span style="color: #007700">= new </span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"host"</span><span style="color: #007700">, </span><span style="color: #DD0000">"user"</span><span style="color: #007700">, </span><span style="color: #DD0000">"password"</span><span style="color: #007700">, </span><span style="color: #DD0000">"schema"</span><span style="color: #007700">, </span><span style="color: #DD0000">"port"</span><span style="color: #007700">, </span><span style="color: #DD0000">"socket"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"DROP TABLE IF EXISTS test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE TABLE test(id INT)"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT INTO test(id) VALUES (1), (2), (3)"</span><span style="color: #007700">);<br><br></span><span style="color: #FF8000">/* dummy queries to fill the query trace */<br></span><span style="color: #007700">for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">4</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {<br>    </span><span style="color: #0000BB">$query </span><span style="color: #007700">= </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"/*%s*/SELECT id FROM test WHERE id = %d"</span><span style="color: #007700">, </span><span style="color: #0000BB">MYSQLND_QC_ENABLE_SWITCH</span><span style="color: #007700">, </span><span style="color: #0000BB">$i </span><span style="color: #007700">% </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br>    </span><span style="color: #0000BB">$res   </span><span style="color: #007700">= </span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$query</span><span style="color: #007700">);<br>  <br>    </span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">free</span><span style="color: #007700">();<br>}<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mysqlnd_qc_get_normalized_query_trace_log</span><span style="color: #007700">());<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>以上例程的输出类似于：</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  [0]=&gt;
+  array(9) {
+    ["query"]=&gt;
+    string(25) "DROP TABLE IF EXISTS test"
+    ["occurences"]=&gt;
+    int(0)
+    ["eligible_for_caching"]=&gt;
+    bool(false)
+    ["avg_run_time"]=&gt;
+    int(0)
+    ["min_run_time"]=&gt;
+    int(0)
+    ["max_run_time"]=&gt;
+    int(0)
+    ["avg_store_time"]=&gt;
+    int(0)
+    ["min_store_time"]=&gt;
+    int(0)
+    ["max_store_time"]=&gt;
+    int(0)
+  }
+  [1]=&gt;
+  array(9) {
+    ["query"]=&gt;
+    string(27) "CREATE TABLE test (id INT )"
+    ["occurences"]=&gt;
+    int(0)
+    ["eligible_for_caching"]=&gt;
+    bool(false)
+    ["avg_run_time"]=&gt;
+    int(0)
+    ["min_run_time"]=&gt;
+    int(0)
+    ["max_run_time"]=&gt;
+    int(0)
+    ["avg_store_time"]=&gt;
+    int(0)
+    ["min_store_time"]=&gt;
+    int(0)
+    ["max_store_time"]=&gt;
+    int(0)
+  }
+  [2]=&gt;
+  array(9) {
+    ["query"]=&gt;
+    string(46) "INSERT INTO test (id ) VALUES (? ), (? ), (? )"
+    ["occurences"]=&gt;
+    int(0)
+    ["eligible_for_caching"]=&gt;
+    bool(false)
+    ["avg_run_time"]=&gt;
+    int(0)
+    ["min_run_time"]=&gt;
+    int(0)
+    ["max_run_time"]=&gt;
+    int(0)
+    ["avg_store_time"]=&gt;
+    int(0)
+    ["min_store_time"]=&gt;
+    int(0)
+    ["max_store_time"]=&gt;
+    int(0)
+  }
+  [3]=&gt;
+  array(9) {
+    ["query"]=&gt;
+    string(31) "SELECT id FROM test WHERE id =?"
+    ["occurences"]=&gt;
+    int(4)
+    ["eligible_for_caching"]=&gt;
+    bool(true)
+    ["avg_run_time"]=&gt;
+    int(179)
+    ["min_run_time"]=&gt;
+    int(11)
+    ["max_run_time"]=&gt;
+    int(393)
+    ["avg_store_time"]=&gt;
+    int(12)
+    ["min_store_time"]=&gt;
+    int(7)
+    ["max_store_time"]=&gt;
+    int(25)
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  
+  <p class="para">
+   The source distribution of PECL/mysqlnd_qc contains a directory
+   <code class="literal">web/</code> in which web based monitoring
+   scripts can be found which give an example how to write a cache monitor.
+   Please, follow the instructions given in the source.
+  </p>
+  <p class="para">
+   Since PECL/mysqlnd_qc 1.1.0 it is possible to write statistics into a
+   log file. Please, see <code class="literal"><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.collect-statistics-log-file" class="link">
+   mysqlnd_qc.collect_statistics_log_file</a></code>.
+  </p>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8303);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

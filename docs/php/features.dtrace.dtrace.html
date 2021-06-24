@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>使用 PHP 和 DTrace - 开发帮助文档</title> 
+    <meta name="keyword" content="features.dtrace.dtrace"> 
+    <meta name="description" content="features.dtrace.dtrace"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1107" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.dtrace.dtrace.html" title="使用 PHP 和 DTrace">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    使用 PHP 和 DTrace
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.dtrace.introduction.html" title="PHP 和 DTrace 介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    PHP 和 DTrace 介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/features.dtrace.systemtap.html" title="使用 SystemTap 监控 PHP DTrace 静态探针">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    使用 SystemTap 监控 PHP DTrace 静态探针
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.dtrace.introduction.html">« PHP 和 DTrace 介绍</a></li>
+      <li style="float: right;"><a href="features.dtrace.systemtap.html">使用 SystemTap 监控 PHP DTrace 静态探针 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="features.dtrace.html">DTrace 动态跟踪</a></li>
+    <li>使用 PHP 和 DTrace</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.dtrace.dtrace" class="sect1">
+  <h2 class="title">使用 PHP 和 DTrace</h2>
+  <p class="para">
+   在支持 DTrace 动态跟踪的平台上，可以配置 PHP 打开 DTrace 静态探针。
+  </p>
+
+  <div class="sect2" id="features.dtrace.install">
+   <h3 class="title">PHP DTrace 静态探针配置</h3>
+
+   <p class="para">
+    请参考操作系统文档获取启用操作系统 DTrace 支持的信息。
+    例如，在 Oracle Linux 系统上启动 UEK3 内核，并进行如下操作：
+     </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+# modprobe fasttrap<br># chmod 666 /dev/dtrace/helper</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <p class="para">
+    除了 <code class="literal">chmod</code> 命令，您也可以使用 ACL 包规则来限制特定用户对于设备的访问权限。
+   </p>
+
+   <p class="para">
+    使用 <code class="literal">--enable-dtrace</code> 配置参数构建 PHP：
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+# ./configure --enable-dtrace ...<br># make<br># make install</span>
+</code></div>
+     </div>
+
+    </div>
+   
+   <p class="para">
+    这样就启用了 PHP 核心的静态探针。对于提供了自有探针的 PHP 扩展需要分别构建。
+   </p>
+  </div>
+
+  <div class="sect2" id="features.dtrace.static-probes">
+  <h3 class="title">PHP 核心的 DTrace 静态探针</h3>
+  <table class="doctable table">
+   <caption><strong>PHP 中包括以下可用的静态探针</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>探针名称</th>
+      <th>探针描述</th>
+      <th>探针参数</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><code class="literal">request-startup</code></td>
+      <td>请求开始时触发。</td>
+      <td>char *<var class="varname">file</var>, char *<var class="varname">request_uri</var>, char *<var class="varname">request_method</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">request-shutdown</code></td>
+      <td>请求关闭时触发。</td>
+      <td>char *<var class="varname">file</var>, char *<var class="varname">request_uri</var>, char *<var class="varname">request_method</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">compile-file-entry</code></td>
+      <td>脚本开始编译时触发。</td>
+      <td>char *<var class="varname">compile_file</var>, char *<var class="varname">compile_file_translated</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">compile-file-return</code></td>
+      <td>脚本完成编译时触发。</td>
+      <td>char *<var class="varname">compile_file</var>, char *<var class="varname">compile_file_translated</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">execute-entry</code></td>
+      <td>操作数数组开始执行时触发。例如：函数调用，文件包含以及生成器恢复时会被触发。</td>
+      <td>char *<var class="varname">request_file</var>, int <var class="varname">lineno</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">execute-return</code></td>
+      <td>操作数数组执行完毕之后触发。</td>
+      <td>char *<var class="varname">request_file</var>, int <var class="varname">lineno</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">function-entry</code></td>
+      <td>PHP 引擎进入 PHP 函数或者方法调用时触发。</td>
+      <td>char *<var class="varname">function_name</var>, char *<var class="varname">request_file</var>, int <var class="varname">lineno</var>, char *<var class="varname">classname</var>, char *<var class="varname">scope</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">function-return</code></td>
+      <td>PHP 引擎从 PHP 函数或者方法调用返回后触发。.</td>
+      <td>char *<var class="varname">function_name</var>, char *<var class="varname">request_file</var>, int <var class="varname">lineno</var>, char *<var class="varname">classname</var>, char *<var class="varname">scope</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">exception-thrown</code></td>
+      <td>有异常抛出时触发。</td>
+      <td>char *<var class="varname">classname</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">exception-caught</code></td>
+      <td>有异常被捕获时触发。</td>
+      <td>char *<var class="varname">classname</var></td>
+     </tr>
+
+     <tr>
+      <td><code class="literal">error</code></td>
+      <td>无论 <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> 的设定如何，在发生错误时都会触发。</td>
+      <td>char *<var class="varname">errormsg</var>, char *<var class="varname">request_file</var>, int <var class="varname">lineno</var></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <p class="para">
+   PHP 扩展可以拥有额外的静态探针。
+  </p>
+  </div>
+
+  <div class="sect2" id="features.dtrace.list-probes">
+   <h3 class="title">列出 PHP 中可用的静态探针</h3>
+   <p class="para">
+    要列出 PHP 中可用的静态探针，开启一个 PHP 进程，然后运行：
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+# dtrace -l
+</pre></div>
+     </div>
+
+    </div>
+   
+
+   <p class="para">
+    输出信息类似如下所示：
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+   ID   PROVIDER            MODULE                          FUNCTION NAME
+   [ . . . ]
+    4   php15271               php               dtrace_compile_file compile-file-entry
+    5   php15271               php               dtrace_compile_file compile-file-return
+    6   php15271               php                        zend_error error
+    7   php15271               php  ZEND_CATCH_SPEC_CONST_CV_HANDLER exception-caught
+    8   php15271               php     zend_throw_exception_internal exception-thrown
+    9   php15271               php                 dtrace_execute_ex execute-entry
+   10   php15271               php           dtrace_execute_internal execute-entry
+   11   php15271               php                 dtrace_execute_ex execute-return
+   12   php15271               php           dtrace_execute_internal execute-return
+   13   php15271               php                 dtrace_execute_ex function-entry
+   14   php15271               php                 dtrace_execute_ex function-return
+   15   php15271               php              php_request_shutdown request-shutdown
+   16   php15271               php               php_request_startup request-startup
+</pre></div>
+     </div>
+
+    </div>
+   
+
+   <p class="para">
+    Provider 一列由 <code class="literal">php</code> 和当前进程 id 的组成。
+   </p>
+
+   <p class="para">
+    如果运行的是 Apache web 服务器，那么模块名称可能是 <var class="filename">libphp5.so</var>，
+    并且可能会出现多块信息，每个运行中的 Apache 进程对应一个输出块。
+   </p>
+
+   <p class="para">
+    Function Name 一列表示 Provider 对应的 PHP 内部 C 实现函数名称。
+   </p>
+
+   <p class="para">
+    如果没有运行任何 PHP 进程，那么就不会显示任何 PHP 探针。
+   </p>
+  </div>
+
+  <div class="sect2" id="features.dtrace.examples">
+   <h3 class="title">PHP DTrace 示例</h3>
+   <p class="para">
+    下例展示了基本的 DTrace D 脚本。
+    </p><div class="example" id="example-456">
+     <p><strong>示例 #1 <var class="filename">all_probes.d</var> for tracing all PHP Static Probes with DTrace</strong></p>
+     <div class="example-contents">
+<div class="cdata"><pre>
+#!/usr/sbin/dtrace -Zs
+
+#pragma D option quiet
+
+php*:::compile-file-entry
+{
+    printf("PHP compile-file-entry\n");
+    printf("  compile_file              %s\n", copyinstr(arg0));
+    printf("  compile_file_translated   %s\n", copyinstr(arg1));
+}
+
+php*:::compile-file-return
+{
+    printf("PHP compile-file-return\n");
+    printf("  compile_file              %s\n", copyinstr(arg0));
+    printf("  compile_file_translated   %s\n", copyinstr(arg1));
+}
+
+php*:::error
+{
+    printf("PHP error\n");
+    printf("  errormsg                  %s\n", copyinstr(arg0));
+    printf("  request_file              %s\n", copyinstr(arg1));
+    printf("  lineno                    %d\n", (int)arg2);
+}
+
+php*:::exception-caught
+{
+    printf("PHP exception-caught\n");
+    printf("  classname                 %s\n", copyinstr(arg0));
+}
+
+php*:::exception-thrown
+{
+    printf("PHP exception-thrown\n");
+    printf("  classname                 %s\n", copyinstr(arg0));
+}
+
+php*:::execute-entry
+{
+    printf("PHP execute-entry\n");
+    printf("  request_file              %s\n", copyinstr(arg0));
+    printf("  lineno                    %d\n", (int)arg1);
+}
+
+php*:::execute-return
+{
+    printf("PHP execute-return\n");
+    printf("  request_file              %s\n", copyinstr(arg0));
+    printf("  lineno                    %d\n", (int)arg1);
+}
+
+php*:::function-entry
+{
+    printf("PHP function-entry\n");
+    printf("  function_name             %s\n", copyinstr(arg0));
+    printf("  request_file              %s\n", copyinstr(arg1));
+    printf("  lineno                    %d\n", (int)arg2);
+    printf("  classname                 %s\n", copyinstr(arg3));
+    printf("  scope                     %s\n", copyinstr(arg4));
+}
+
+php*:::function-return
+{
+    printf("PHP function-return\n");
+    printf("  function_name             %s\n", copyinstr(arg0));
+    printf("  request_file              %s\n", copyinstr(arg1));
+    printf("  lineno                    %d\n", (int)arg2);
+    printf("  classname                 %s\n", copyinstr(arg3));
+    printf("  scope                     %s\n", copyinstr(arg4));
+}
+
+php*:::request-shutdown
+{
+    printf("PHP request-shutdown\n");
+    printf("  file                      %s\n", copyinstr(arg0));
+    printf("  request_uri               %s\n", copyinstr(arg1));
+    printf("  request_method            %s\n", copyinstr(arg2));
+}
+
+php*:::request-startup
+{
+    printf("PHP request-startup\n");
+    printf("  file                      %s\n", copyinstr(arg0));
+    printf("  request_uri               %s\n", copyinstr(arg1));
+    printf("  request_method            %s\n", copyinstr(arg2));
+}
+</pre></div>
+     </div>
+
+    </div>
+   
+
+   <p class="para">
+    此脚本在 <var class="filename">dtrace</var> 命令中使用了 <code class="literal">-Z</code> 选项。
+    此选项保证即使在没有任何 PHP 进程运行的时候脚本也能够正确执行。
+    如果省略了此选项，当没有任何探针可监控的时候，脚本会立即终止执行。
+   </p>
+
+   <p class="para">
+    在运行此脚本的过程中，它将监控全部 PHP 核心静态探针。
+    运行 D 脚本：
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+# ./all_probes.d
+</pre></div>
+     </div>
+
+    </div>
+   
+
+   <p class="para">
+    再运行一个 PHP 脚本或者 PHP 应用，用来进行监控的 D 脚本会输出每个探针被触发时所携带的参数。
+   </p>
+
+   <p class="para">
+    监控完成之后，使用
+    <code class="literal">^C</code> 来终止 D 脚本的执行。
+   </p>
+
+   <p class="para">
+    在多 CPU 的主机上，探针的显示顺序可能不是连续的，这取决于哪颗 CPU 执行探针以及多个 CPU 之间的线程迁移情况。
+    可以通过显示探针时间戳来减少混淆，例如：
+    </p><div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+php*:::function-entry
+{
+      printf("%lld: PHP function-entry ", walltimestamp);
+      [ . . .]
+}
+</pre></div>
+     </div>
+
+    </div>
+   
+  </div>
+
+  <div class="sect2" id="features.dtrace.references">
+   <h3 class="title">参见</h3>
+   <ul class="simplelist">
+    <li class="member"><a href="oci8.dtrace.html" class="link">OCI8 和 DTrace 动态跟踪</a></li>
+   </ul>
+  </div>
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 2307);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

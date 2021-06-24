@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The GmagickDraw class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.gmagickdraw"> 
+    <meta name="description" content="class.gmagickdraw"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="694" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.gmagick.html" title="The Gmagick class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Gmagick class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.gmagickdraw.html" title="The GmagickDraw class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The GmagickDraw class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.gmagickpixel.html" title="The GmagickPixel class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The GmagickPixel class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/gmagick.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/gmagick.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/gmagick.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.gmagick.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="gmagick.writeimage.html">« Gmagick::writeimage</a></li>
+      <li style="float: right;"><a href="gmagickdraw.annotate.html">GmagickDraw::annotate »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.gmagick.html">Gmagick</a></li>
+    <li>The GmagickDraw class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.gmagickdraw" class="reference">
+
+ <h1 class="title">The GmagickDraw class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL gmagick &gt;= Unknown)</p>
+
+
+  <div class="section" id="gmagickdraw.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gmagickdraw.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">GmagickDraw</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.annotate.html" class="methodname">annotate</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$text</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.arc.html" class="methodname">arc</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$sx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ex</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ey</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sd</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ed</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.bezier.html" class="methodname">bezier</a></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinate_array</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.ellipse.html" class="methodname">ellipse</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$ox</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$oy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$rx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ry</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$start</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$end</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfillcolor.html" class="methodname">getfillcolor</a></span>
+    (
+   ) : <span class="type"><a href="class.gmagickpixel.html" class="type GmagickPixel">GmagickPixel</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfillopacity.html" class="methodname">getfillopacity</a></span>
+    (
+   ) : <span class="type">float</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfont.html" class="methodname">getfont</a></span>
+    (
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfontsize.html" class="methodname">getfontsize</a></span>
+    (
+   ) : <span class="type">float</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfontstyle.html" class="methodname">getfontstyle</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getfontweight.html" class="methodname">getfontweight</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getstrokecolor.html" class="methodname">getstrokecolor</a></span>
+    (
+   ) : <span class="type"><a href="class.gmagickpixel.html" class="type GmagickPixel">GmagickPixel</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getstrokeopacity.html" class="methodname">getstrokeopacity</a></span>
+    (
+   ) : <span class="type">float</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.getstrokewidth.html" class="methodname">getstrokewidth</a></span>
+    (
+   ) : <span class="type">float</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.gettextdecoration.html" class="methodname">gettextdecoration</a></span>
+    (
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.gettextencoding.html" class="methodname">gettextencoding</a></span>
+    (
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.line.html" class="methodname">line</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$sx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ex</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ey</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.point.html" class="methodname">point</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.polygon.html" class="methodname">polygon</a></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinates</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.polyline.html" class="methodname">polyline</a></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinate_array</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.rectangle.html" class="methodname">rectangle</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y2</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.rotate.html" class="methodname">rotate</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$degrees</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.roundrectangle.html" class="methodname">roundrectangle</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$rx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ry</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.scale.html" class="methodname">scale</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfillcolor.html" class="methodname">setfillcolor</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$color</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfillopacity.html" class="methodname">setfillopacity</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$fill_opacity</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfont.html" class="methodname">setfont</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$font</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfontsize.html" class="methodname">setfontsize</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$pointsize</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfontstyle.html" class="methodname">setfontstyle</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$style</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setfontweight.html" class="methodname">setfontweight</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$weight</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setstrokecolor.html" class="methodname">setstrokecolor</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$color</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setstrokeopacity.html" class="methodname">setstrokeopacity</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$stroke_opacity</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.setstrokewidth.html" class="methodname">setstrokewidth</a></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$width</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.settextdecoration.html" class="methodname">settextdecoration</a></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$decoration</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="gmagickdraw.settextencoding.html" class="methodname">settextencoding</a></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   ) : <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="gmagickdraw.annotate.html">GmagickDraw::annotate</a> — Draws text on the image</li><li><a href="gmagickdraw.arc.html">GmagickDraw::arc</a> — Draws an arc</li><li><a href="gmagickdraw.bezier.html">GmagickDraw::bezier</a> — Draws a bezier curve</li><li><a href="gmagickdraw.ellipse.html">GmagickDraw::ellipse</a> — Draws an ellipse on the image</li><li><a href="gmagickdraw.getfillcolor.html">GmagickDraw::getfillcolor</a> — Returns the fill color</li><li><a href="gmagickdraw.getfillopacity.html">GmagickDraw::getfillopacity</a> — Returns the opacity used when drawing</li><li><a href="gmagickdraw.getfont.html">GmagickDraw::getfont</a> — Returns the font</li><li><a href="gmagickdraw.getfontsize.html">GmagickDraw::getfontsize</a> — Returns the font pointsize</li><li><a href="gmagickdraw.getfontstyle.html">GmagickDraw::getfontstyle</a> — Returns the font style</li><li><a href="gmagickdraw.getfontweight.html">GmagickDraw::getfontweight</a> — Returns the font weight</li><li><a href="gmagickdraw.getstrokecolor.html">GmagickDraw::getstrokecolor</a> — Returns the color used for stroking object outlines</li><li><a href="gmagickdraw.getstrokeopacity.html">GmagickDraw::getstrokeopacity</a> — Returns the opacity of stroked object outlines</li><li><a href="gmagickdraw.getstrokewidth.html">GmagickDraw::getstrokewidth</a> — Returns the width of the stroke used to draw object outlines</li><li><a href="gmagickdraw.gettextdecoration.html">GmagickDraw::gettextdecoration</a> — Returns the text decoration</li><li><a href="gmagickdraw.gettextencoding.html">GmagickDraw::gettextencoding</a> — Returns the code set used for text annotations</li><li><a href="gmagickdraw.line.html">GmagickDraw::line</a> — The line purpose</li><li><a href="gmagickdraw.point.html">GmagickDraw::point</a> — Draws a point</li><li><a href="gmagickdraw.polygon.html">GmagickDraw::polygon</a> — Draws a polygon</li><li><a href="gmagickdraw.polyline.html">GmagickDraw::polyline</a> — Draws a polyline</li><li><a href="gmagickdraw.rectangle.html">GmagickDraw::rectangle</a> — Draws a rectangle</li><li><a href="gmagickdraw.rotate.html">GmagickDraw::rotate</a> — Applies the specified rotation to the current coordinate space</li><li><a href="gmagickdraw.roundrectangle.html">GmagickDraw::roundrectangle</a> — Draws a rounded rectangle</li><li><a href="gmagickdraw.scale.html">GmagickDraw::scale</a> — Adjusts the scaling factor</li><li><a href="gmagickdraw.setfillcolor.html">GmagickDraw::setfillcolor</a> — Sets the fill color to be used for drawing filled objects</li><li><a href="gmagickdraw.setfillopacity.html">GmagickDraw::setfillopacity</a> — The setfillopacity purpose</li><li><a href="gmagickdraw.setfont.html">GmagickDraw::setfont</a> — Sets the fully-specified font to use when annotating with text</li><li><a href="gmagickdraw.setfontsize.html">GmagickDraw::setfontsize</a> — Sets the font pointsize to use when annotating with text</li><li><a href="gmagickdraw.setfontstyle.html">GmagickDraw::setfontstyle</a> — Sets the font style to use when annotating with text</li><li><a href="gmagickdraw.setfontweight.html">GmagickDraw::setfontweight</a> — Sets the font weight</li><li><a href="gmagickdraw.setstrokecolor.html">GmagickDraw::setstrokecolor</a> — Sets the color used for stroking object outlines</li><li><a href="gmagickdraw.setstrokeopacity.html">GmagickDraw::setstrokeopacity</a> — Specifies the opacity of stroked object outlines</li><li><a href="gmagickdraw.setstrokewidth.html">GmagickDraw::setstrokewidth</a> — Sets the width of the stroke used to draw object outlines</li><li><a href="gmagickdraw.settextdecoration.html">GmagickDraw::settextdecoration</a> — Specifies a decoration</li><li><a href="gmagickdraw.settextencoding.html">GmagickDraw::settextencoding</a> — Specifies the text code set</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 839);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

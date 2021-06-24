@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>The EventBuffer class - 开发帮助文档</title> 
+    <meta name="keyword" content="class.eventbuffer"> 
+    <meta name="description" content="class.eventbuffer"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="365" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.event.html" title="The Event class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The Event class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventbase.html" title="The EventBase class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventBase class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventbuffer.html" title="The EventBuffer class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventBuffer class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventbufferevent.html" title="The EventBufferEvent class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventBufferEvent class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventconfig.html" title="The EventConfig class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventConfig class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventdnsbase.html" title="The EventDnsBase class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventDnsBase class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventhttp.html" title="The EventHttp class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventHttp class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventhttpconnection.html" title="The EventHttpConnection class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventHttpConnection class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventhttprequest.html" title="The EventHttpRequest class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventHttpRequest class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventlistener.html" title="The EventListener class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventListener class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventsslcontext.html" title="The EventSslContext class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventSslContext class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.eventutil.html" title="The EventUtil class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The EventUtil class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.callbacks.html" title="Event callbacks">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Event callbacks
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.constructing.signal.events.html" title="Constructing signal events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Constructing signal events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.flags.html" title="Event flags">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Event flags
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.persistence.html" title="About event persistence">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    About event persistence
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/event.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/eventbufferevent.about.callbacks.html" title="About buffer event callbacks">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    About buffer event callbacks
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.event.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="eventbase.stop.html">« EventBase::stop</a></li>
+      <li style="float: right;"><a href="eventbuffer.add.html">EventBuffer::add »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.event.html">Event</a></li>
+    <li>The EventBuffer class</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="class.eventbuffer" class="reference">
+ <h1 class="title">The EventBuffer class</h1>
+ 
+ <div class="partintro"><p class="verinfo">(PECL event &gt;= 1.5.0)</p>
+
+  <div class="section" id="eventbuffer.intro">
+   <h2 class="title">简介</h2>
+   <p class="para">
+    <strong class="classname">EventBuffer</strong>
+    represents Libevent's "evbuffer", an utility functionality for buffered
+    I/O.
+   </p>
+   <p class="para">
+    Event buffers are meant to be generally useful for doing the "buffer" part
+    of buffered network I/O.
+   </p>
+  </div>
+
+  <div class="section" id="eventbuffer.synopsis">
+   <h2 class="title">类摘要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">EventBuffer</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.eol-any"><var class="varname">EOL_ANY</var></a></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.eol-crlf"><var class="varname">EOL_CRLF</var></a></var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.eol-crlf-strict"><var class="varname">EOL_CRLF_STRICT</var></a></var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.eol-lf"><var class="varname">EOL_LF</var></a></var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.ptr-set"><var class="varname">PTR_SET</var></a></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.eventbuffer.html#eventbuffer.constants.ptr-add"><var class="varname">PTR_ADD</var></a></var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 属性 */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.eventbuffer.html#eventbuffer.props.length">$<var class="varname">length</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.eventbuffer.html#eventbuffer.props.contiguous-space">$<var class="varname">contiguous_space</var></a></var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* 方法 */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.add.html" class="methodname">add</a></span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.addbuffer.html" class="methodname">addBuffer</a></span>
+    ( <span class="methodparam">
+    <span class="type"><a href="class.eventbuffer.html" class="type EventBuffer">EventBuffer</a></span>
+     <code class="parameter">$buf</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.appendfrom.html" class="methodname">appendFrom</a></span>
+    ( <span class="methodparam">
+    <span class="type"><a href="class.eventbuffer.html" class="type EventBuffer">EventBuffer</a></span>
+     <code class="parameter">$buf</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="methodname"><a href="eventbuffer.construct.html" class="methodname">__construct</a></span>
+    (
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.copyout.html" class="methodname">copyout</a></span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter reference">&amp;$data</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_bytes</code>
+   </span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.drain.html" class="methodname">drain</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.enablelocking.html" class="methodname">enableLocking</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.expand.html" class="methodname">expand</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.freeze.html" class="methodname">freeze</a></span>
+    ( <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$at_front</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.lock.html" class="methodname">lock</a></span>
+    (
+   ) : <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.prepend.html" class="methodname">prepend</a></span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.prependbuffer.html" class="methodname">prependBuffer</a></span>
+    ( <span class="methodparam">
+    <span class="type"><a href="class.eventbuffer.html" class="type EventBuffer">EventBuffer</a></span>
+     <code class="parameter">$buf</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.pullup.html" class="methodname">pullup</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$size</code>
+   </span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.read.html" class="methodname">read</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_bytes</code>
+   </span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.read.html" class="methodname">read</a></span>
+    ( <span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$howmuch</code>
+   </span>
+   ) : <span class="type">int</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.readline.html" class="methodname">readLine</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$eol_style</code>
+   </span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.search.html" class="methodname">search</a></span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$what</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+    <span class="initializer"> = -1</span>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$end</code>
+    <span class="initializer"> = -1</span>
+   </span>
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.searcheol.html" class="methodname">searchEol</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+    <span class="initializer"> = -1</span>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$eol_style</code>
+    <span class="initializer"> = 
+     <strong><code>EventBuffer::EOL_ANY</code></strong>
+    </span>
+   </span>
+   ) : <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.substr.html" class="methodname">substr</a></span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$length</code>
+   <span class="initializer"> = ?</span></span>
+   ) : <span class="type">string</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.unfreeze.html" class="methodname">unfreeze</a></span>
+    ( <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$at_front</code>
+   </span>
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.unlock.html" class="methodname">unlock</a></span>
+    (
+   ) : <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   
+   <span class="methodname"><a href="eventbuffer.write.html" class="methodname">write</a></span>
+    ( <span class="methodparam">
+    <span class="type"><a href="language.types.declarations.html#language.types.declarations.mixed" class="type mixed">mixed</a></span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$howmuch</code>
+   <span class="initializer"> = ?</span></span>
+   ) : <span class="type">int</span></div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventbuffer.props">
+   <h2 class="title">属性</h2>
+   <dl>
+
+    
+     <dt id="eventbuffer.props.length">
+      <var class="varname">length</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of bytes stored in an event buffer.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.props.contiguous-space">
+      <var class="varname">contiguous_space</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of bytes stored contiguously at the front of the buffer. The
+       bytes in a buffer may be stored in multiple separate chunks of memory;
+       the property returns the number of bytes currently stored in the first
+       chunk.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="eventbuffer.constants">
+   <h2 class="title">预定义常量</h2>
+   <dl>
+
+    
+     <dt id="eventbuffer.constants.eol-any">
+      <strong><code>EventBuffer::EOL_ANY</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of line is any sequence of any number of carriage return and
+       linefeed characters. This format is not very useful; it exists mainly
+       for backward compatibility.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-crlf">
+      <strong><code>EventBuffer::EOL_CRLF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of the line is an optional carriage return, followed by a
+       linefeed. (In other words, it is either a
+       <code class="literal">"\r\n"</code>
+       or a
+       <code class="literal">"\n"</code>
+       .) This format is useful in parsing text-based Internet protocols,
+       since the standards generally prescribe a
+       <code class="literal">"\r\n"</code>
+       line-terminator, but nonconformant clients sometimes say just
+       <code class="literal">"\n"</code>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-crlf-strict">
+      <strong><code>EventBuffer::EOL_CRLF_STRICT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of a line is a single carriage return, followed by a single
+       linefeed. (This is also known as
+       <code class="literal">"\r\n"</code>
+       . The ASCII values are
+       <strong><code>0x0D</code></strong>
+       <strong><code>0x0A</code></strong>
+       ).
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-lf">
+      <strong><code>EventBuffer::EOL_LF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of a line is a single linefeed character. (This is also known
+       as
+       <code class="literal">"\n"</code>
+       . It is ASCII value is
+       <strong><code>0x0A</code></strong>
+       .)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.ptr-set">
+      <strong><code>EventBuffer::PTR_SET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Flag used as argument of
+       <span class="methodname"><strong>EventBuffer::setPosition()</strong></span>
+       method. If this flag specified, the position pointer is moved to an
+       absolute position within the buffer.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.ptr-add">
+      <strong><code>EventBuffer::PTR_ADD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The same as
+       <strong><code>EventBuffer::PTR_SET</code></strong>
+       , except this flag causes
+       <span class="methodname"><strong>EventBuffer::setPosition()</strong></span>
+       method to move position forward up to the specified number of
+       bytes(instead of setting absolute position).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="eventbuffer.add.html">EventBuffer::add</a> — Append data to the end of an event buffer</li><li><a href="eventbuffer.addbuffer.html">EventBuffer::addBuffer</a> — Move all data from a buffer provided to the current instance of EventBuffer</li><li><a href="eventbuffer.appendfrom.html">EventBuffer::appendFrom</a> — Moves the specified number of bytes from a source buffer to the
+  end of the current buffer</li><li><a href="eventbuffer.construct.html">EventBuffer::__construct</a> — Constructs EventBuffer object</li><li><a href="eventbuffer.copyout.html">EventBuffer::copyout</a> — Copies out specified number of bytes from the front of the buffer</li><li><a href="eventbuffer.drain.html">EventBuffer::drain</a> — Removes specified number of bytes from the front of the buffer
+  without copying it anywhere</li><li><a href="eventbuffer.enablelocking.html">EventBuffer::enableLocking</a> — 说明</li><li><a href="eventbuffer.expand.html">EventBuffer::expand</a> — Reserves space in buffer</li><li><a href="eventbuffer.freeze.html">EventBuffer::freeze</a> — Prevent calls that modify an event buffer from succeeding</li><li><a href="eventbuffer.lock.html">EventBuffer::lock</a> — Acquires a lock on buffer</li><li><a href="eventbuffer.prepend.html">EventBuffer::prepend</a> — Prepend data to the front of the buffer</li><li><a href="eventbuffer.prependbuffer.html">EventBuffer::prependBuffer</a> — Moves all data from source buffer to the front of current buffer</li><li><a href="eventbuffer.pullup.html">EventBuffer::pullup</a> — Linearizes data within buffer
+  and returns it's contents as a string</li><li><a href="eventbuffer.read.html">EventBuffer::read</a> — Read data from an evbuffer and drain the bytes read</li><li><a href="eventbuffer.readfrom.html">EventBuffer::readFrom</a> — Read data from a file onto the end of the buffer</li><li><a href="eventbuffer.readline.html">EventBuffer::readLine</a> — Extracts a line from the front of the buffer</li><li><a href="eventbuffer.search.html">EventBuffer::search</a> — Scans the buffer for an occurrence of a string</li><li><a href="eventbuffer.searcheol.html">EventBuffer::searchEol</a> — Scans the buffer for an occurrence of an end of line</li><li><a href="eventbuffer.substr.html">EventBuffer::substr</a> — Substracts a portion of the buffer data</li><li><a href="eventbuffer.unfreeze.html">EventBuffer::unfreeze</a> — Re-enable calls that modify an event buffer</li><li><a href="eventbuffer.unlock.html">EventBuffer::unlock</a> — Releases lock acquired by EventBuffer::lock</li><li><a href="eventbuffer.write.html">EventBuffer::write</a> — Write contents of the buffer to a file or socket</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 800);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>基于数据模型的表格 - 开发帮助文档</title> 
+    <meta name="keyword" content="model-grid"> 
+    <meta name="description" content="model-grid"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="3" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/change-log.html" title="Change log">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Change log
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/content-layout.html" title="页面内容">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    页面内容
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-authentication.html" title="自定义登陆">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义登陆
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-chart.html" title="自定义图表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义图表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-navbar.html" title="自定义头部导航条">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义头部导航条
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-api-tester.html" title="Laravel API测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel API测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-config.html" title="配置管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    配置管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-helpers.html" title="帮助工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    帮助工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-media-manager.html" title="文件管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    文件管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-scheduling.html" title="定时任务">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    定时任务
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/LICENSE.html" title="LICENSE">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LICENSE
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-callback.html" title="模型表单回调">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型表单回调
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-field-management.html" title="组件管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    组件管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-fields.html" title="表单组件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单组件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-upload.html" title="文件/图片上传">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    文件/图片上传
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-validation.html" title="表单验证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单验证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form.html" title="基于数据模型的表单">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基于数据模型的表单
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-actions.html" title="模型表格行操作">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型表格行操作
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-column.html" title="列操作">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    列操作
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-custom-tools.html" title="自定义工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-data.html" title="表格数据源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表格数据源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-export.html" title="数据导出">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据导出
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-exporter.html" title="自定义导出">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义导出
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-filters.html" title="数据查询过滤">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据查询过滤
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid.html" title="基于数据模型的表格">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基于数据模型的表格
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-tree.html" title="模型树">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型树
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/permission.html" title="权限控制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    权限控制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/qa.html" title="常见问题汇总">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    常见问题汇总
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/quick-start.html" title="快速开始">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    快速开始
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/README.html" title="laravel-admin">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    laravel-admin
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/upgrade.html" title="升级注意事项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    升级注意事项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/widgets.html" title="前端组件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    前端组件
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>基于数据模型的表格</h1>
+<p><code>Encore\Admin\Grid</code>类用于生成基于数据模型的表格，先来个例子，数据库中有<code>movies</code>表</p>
+<pre><code class="language-sql">CREATE TABLE `movies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `director` int(10) unsigned NOT NULL,
+  `describe` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rate` tinyint unsigned NOT NULL,
+  `released` enum(0, 1),
+  `release_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+</code></pre>
+<p>对应的数据模型为<code>App\Models\Movie</code>，下面的代码可以生成表<code>movies</code>的数据表格：</p>
+<pre><code class="language-php">
+use App\Models\Movie;
+use Encore\Admin\Grid;
+use Encore\Admin\Facades\Admin;
+
+$grid = Admin::grid(Movie::class, function(Grid $grid){
+
+    // 第一列显示id字段，并将这一列设置为可排序列
+    $grid-&gt;id('ID')-&gt;sortable();
+
+    // 第二列显示title字段，由于title字段名和Grid对象的title方法冲突，所以用Grid的column()方法代替
+    $grid-&gt;column('title');
+
+    // 第三列显示director字段，通过display($callback)方法设置这一列的显示内容为users表中对应的用户名
+    $grid-&gt;director()-&gt;display(function($userId) {
+        return User::find($userId)-&gt;name;
+    });
+
+    // 第四列显示为describe字段
+    $grid-&gt;describe();
+
+    // 第五列显示为rate字段
+    $grid-&gt;rate();
+
+    // 第六列显示released字段，通过display($callback)方法来格式化显示输出
+    $grid-&gt;released('上映?')-&gt;display(function ($released) {
+        return $released ? '是' : '否';
+    });
+
+    // 下面为三个时间字段的列显示
+    $grid-&gt;release_at();
+    $grid-&gt;created_at();
+    $grid-&gt;updated_at();
+
+    // filter($callback)方法用来设置表格的简单搜索框
+    $grid-&gt;filter(function ($filter) {
+
+        // 设置created_at字段的范围查询
+        $filter-&gt;between('created_at', 'Created Time')-&gt;datetime();
+    });
+});
+</code></pre>
+<h2>基本使用方法</h2>
+<h4>添加列</h4>
+<pre><code class="language-php">
+// 直接通过字段名`username`添加列
+$grid-&gt;username('用户名');
+
+// 效果和上面一样
+$grid-&gt;column('username', '用户名');
+
+// 添加多列
+$grid-&gt;columns('email', 'username' ...);</code></pre>
+<h4>修改来源数据</h4>
+<pre><code class="language-php">$grid-&gt;model()-&gt;where('id', '&gt;', 100);
+
+$grid-&gt;model()-&gt;orderBy('id', 'desc');
+
+$grid-&gt;model()-&gt;take(100);
+
+...
+</code></pre>
+<p>其它查询方法可以参考<code>eloquent</code>的查询方法.</p>
+<h4>设置每页显示行数</h4>
+<pre><code class="language-php">// 默认为每页20条
+$grid-&gt;paginate(15);</code></pre>
+<h4>修改显示输出</h4>
+<pre><code class="language-php">use Illuminate\Support\Str;
+$grid-&gt;text()-&gt;display(function($text) {
+    return Str::limit($text, 30, '...');
+});
+
+$grid-&gt;name()-&gt;display(function ($name) {
+    return "&lt;span class='label'&gt;$name&lt;/span&gt;";
+});
+
+$grid-&gt;email()-&gt;display(function ($email) {
+    return "mailto:$email";
+});
+
+// 添加不存在的字段
+$grid-&gt;column('column_not_in_table')-&gt;display(function () {
+    return 'blablabla....';
+});</code></pre>
+<p><code>display()</code>方法接收的匿名函数绑定了当前行的数据对象，可以在里面调用当前行的其它字段数据</p>
+<pre><code class="language-php">$grid-&gt;first_name();
+$grid-&gt;last_name();
+
+// 不存的字段列
+$grid-&gt;column('full_name')-&gt;display(function () {
+    return $this-&gt;first_name.' '.$this-&gt;last_name;
+});</code></pre>
+<h4>禁用创建按钮</h4>
+<pre><code class="language-php">$grid-&gt;disableCreateButton();</code></pre>
+<h4>禁用分页条</h4>
+<pre><code class="language-php">$grid-&gt;disablePagination();</code></pre>
+<h4>禁用查询过滤器</h4>
+<pre><code class="language-php">$grid-&gt;disableFilter();</code></pre>
+<h4>禁用导出数据按钮</h4>
+<pre><code class="language-php">$grid-&gt;disableExport();</code></pre>
+<h4>禁用行选择checkbox</h4>
+<pre><code class="language-php">$grid-&gt;disableRowSelector();</code></pre>
+<h4>禁用行操作列</h4>
+<pre><code class="language-php">$grid-&gt;disableActions();</code></pre>
+<h4>设置分页选择器选项</h4>
+<pre><code class="language-php">$grid-&gt;perPages([10, 20, 30, 40, 50]);</code></pre>
+<h2>关联模型</h2>
+<h3>一对一</h3>
+<p><code>users</code>表和<code>profiles</code>表通过<code>profiles.user_id</code>字段生成一对一关联</p>
+<pre><code class="language-sql">
+CREATE TABLE `users` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `profiles` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`user_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`age` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`gender` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;</code></pre>
+<p>对应的数据模分别为:</p>
+<pre><code class="language-php">
+class User extends Model
+{
+    public function profile()
+    {
+        return $this-&gt;hasOne(Profile::class);
+    }
+}
+
+class Profile extends Model
+{
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class);
+    }
+}
+</code></pre>
+<p>通过下面的代码可以关联在一个grid里面:</p>
+<pre><code class="language-php">Admin::grid(User::class, function (Grid $grid) {
+
+    $grid-&gt;id('ID')-&gt;sortable();
+
+    $grid-&gt;name();
+    $grid-&gt;email();
+
+    $grid-&gt;column('profile.age');
+    $grid-&gt;column('profile.gender');
+
+    //or
+    $grid-&gt;profile()-&gt;age();
+    $grid-&gt;profile()-&gt;gender();
+
+    $grid-&gt;created_at();
+    $grid-&gt;updated_at();
+});
+</code></pre>
+<h3>一对多</h3>
+<p><code>posts</code>表和<code>comments</code>表通过<code>comments.post_id</code>字段生成一对多关联</p>
+<pre><code class="language-sql">
+CREATE TABLE `posts` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `comments` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`post_id` int(10) unsigned NOT NULL,
+`content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;</code></pre>
+<p>对应的数据模分别为:</p>
+<pre><code class="language-php">
+class Post extends Model
+{
+    public function comments()
+    {
+        return $this-&gt;hasMany(Comment::class);
+    }
+}
+
+class Comment extends Model
+{
+    public function post()
+    {
+        return $this-&gt;belongsTo(Post::class);
+    }
+}
+</code></pre>
+<p>通过下面的代码可以让两个模型在grid里面互相关联:</p>
+<pre><code class="language-php">
+return Admin::grid(Post::class, function (Grid $grid) {
+    $grid-&gt;id('id')-&gt;sortable();
+    $grid-&gt;title();
+    $grid-&gt;content();
+
+    $grid-&gt;comments('评论数')-&gt;display(function ($comments) {
+        $count = count($comments);
+        return "&lt;span class='label label-warning'&gt;{$count}&lt;/span&gt;";
+    });
+
+    $grid-&gt;created_at();
+    $grid-&gt;updated_at();
+});
+
+return Admin::grid(Comment::class, function (Grid $grid) {
+    $grid-&gt;id('id');
+    $grid-&gt;post()-&gt;title();
+    $grid-&gt;content();
+
+    $grid-&gt;created_at()-&gt;sortable();
+    $grid-&gt;updated_at();
+});
+</code></pre>
+<h3>多对多</h3>
+<p><code>users</code>和<code>roles</code>表通过中间表<code>role_users</code>产生多对多关系</p>
+<pre><code class="language-sql">
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(190) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_username_unique` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `role_users` (
+  `role_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  KEY `role_users_role_id_user_id_index` (`role_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</code></pre>
+<p>对应的数据模分别为:</p>
+<pre><code class="language-php">
+class User extends Model
+{
+    public function roles()
+    {
+        return $this-&gt;belongsToMany(Role::class);
+    }
+}
+
+class Role extends Model
+{
+    public function users()
+    {
+        return $this-&gt;belongsToMany(User::class);
+    }
+}
+</code></pre>
+<p>通过下面的代码可以让两个模型在grid里面互相关联:</p>
+<pre><code class="language-php">return Admin::grid(User::class, function (Grid $grid) {
+    $grid-&gt;id('ID')-&gt;sortable();
+    $grid-&gt;username();
+    $grid-&gt;name();
+
+    $grid-&gt;roles()-&gt;display(function ($roles) {
+
+        $roles = array_map(function ($role) {
+            return "&lt;span class='label label-success'&gt;{$role['name']}&lt;/span&gt;";
+        }, $roles);
+
+        return join('&amp;nbsp;', $roles);
+    });
+
+    $grid-&gt;created_at();
+    $grid-&gt;updated_at();
+});
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 56);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

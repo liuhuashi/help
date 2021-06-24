@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel 的 API 认证系统 Passport - 开发帮助文档</title> 
+    <meta name="keyword" content="passport"> 
+    <meta name="description" content="passport"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="5" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/about.html" title="Laravel 5.8 中文文档">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 5.8 中文文档
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/api-authentication.html" title="API Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    API Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/artisan.html" title="Laravel 的 Artisan 命令行工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Artisan 命令行工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authentication.html" title="Laravel 的用户认证系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户认证系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/authorization.html" title="Laravel 的用户授权系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的用户授权系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/billing.html" title="Laravel 的收费系统 Cashier">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的收费系统 Cashier
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/blade.html" title="Laravel 的 Blade 模板引擎">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Blade 模板引擎
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/braintree.html" title="Laravel Cashier (Braintree)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Braintree)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/broadcasting.html" title="Laravel 的事件广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/cache.html" title="Laravel 的缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/collections.html" title="Laravel 的集合 Collection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的集合 Collection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/configuration.html" title="Laravel 的配置信息">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的配置信息
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/container.html" title="Laravel 服务容器解析">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 服务容器解析
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contracts.html" title="Laravel 的契约 (Contracts)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的契约 (Contracts)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/contributions.html" title="Laravel 源代码贡献指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 源代码贡献指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/controllers.html" title="Laravel 的 HTTP 控制器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 控制器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/csrf.html" title="Laravel 下的伪造跨站请求保护 CSRF">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 下的伪造跨站请求保护 CSRF
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database-testing.html" title="Laravel 测试之 - 数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/database.html" title="数据库：入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/deployment.html" title="Laravel 的部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/documentation.html" title="主页(Index)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    主页(Index)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/dusk.html" title="Laravel 测试之 - 浏览器测试 (Laravel Dusk)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之 - 浏览器测试 (Laravel Dusk)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-collections.html" title="Eloquent：集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-mutators.html" title="Eloquent： 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent： 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-relationships.html" title="Eloquent：关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent：关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/encryption.html" title="Laravel 的加密解密机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的加密解密机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/envoy.html" title="Laravel 的远程服务器任务处理器 Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的远程服务器任务处理器 Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/errors.html" title="Laravel 的错误和日志记录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的错误和日志记录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/events.html" title="Laravel 的事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/facades.html" title="Laravel 的 Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/filesystem.html" title="Laravel 的文件系统和云存储功能集成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件系统和云存储功能集成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/frontend.html" title="Laravel 的前端资源处理 JavaScript＆CSS 构建">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的前端资源处理 JavaScript＆CSS 构建
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/hashing.html" title="Laravel 的哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/helpers.html" title="Laravel 的辅助函数列表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的辅助函数列表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/homestead.html" title="Laravel 虚拟开发环境 Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 虚拟开发环境 Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/horizon.html" title="Laravel 队列监控面板 - Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 队列监控面板 - Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/http-tests.html" title="Laravel 测试之：HTTP 测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：HTTP 测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/installation.html" title="Laravel 安装指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 安装指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/lifecycle.html" title="Laravel 的请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/localization.html" title="Laravel 的本地化功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的本地化功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mail.html" title="Laravel 的 邮件发送功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 邮件发送功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/middleware.html" title="Laravel 的路由中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的路由中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/migrations.html" title="Laravel 的数据库迁移 Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的数据库迁移 Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mix.html" title="Laravel 的资源任务编译器 Laravel Mix">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的资源任务编译器 Laravel Mix
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/mocking.html" title="Laravel 测试之：测试模拟器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试之：测试模拟器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/notifications.html" title="Laravel 的消息通知系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的消息通知系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/packages.html" title="Laravel 的扩展插件开发指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的扩展插件开发指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/pagination.html" title="Laravel 的分页功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的分页功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passport.html" title="Laravel 的 API 认证系统 Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 API 认证系统 Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/passwords.html" title="Laravel 的密码重置功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的密码重置功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/providers.html" title="Laravel 的服务提供器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的服务提供器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queries.html" title="Laravel 数据库之：数据库请求构建器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据库请求构建器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/queues.html" title="Laravel 的队列系统介绍">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的队列系统介绍
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redirects.html" title="Laravel 的 HTTP 重定向 Redirect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 重定向 Redirect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/redis.html" title="Laravel 的 Redis 使用指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 Redis 使用指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/requests.html" title="Laravel 的 HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/responses.html" title="Laravel 的请求响应">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的请求响应
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/routing.html" title="Laravel HTTP 路由功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel HTTP 路由功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scheduling.html" title="Laravel 的任务调度（计划任务）功能 Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的任务调度（计划任务）功能 Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/scout.html" title="Laravel 的搜索系统 Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的搜索系统 Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/seeding.html" title="Laravel 数据库之：数据填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 数据库之：数据填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/session.html" title="Laravel 的 HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/socialite.html" title="Laravel 的 社会化登录功能">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 社会化登录功能
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/structure.html" title="Laravel 的文件夹结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的文件夹结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/testing.html" title="Laravel 测试: 入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 测试: 入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/upgrade.html" title="Laravel 升级索引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 升级索引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/urls.html" title="Laravel 的 URL 生成">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的 URL 生成
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/valet.html" title="Laravel 的开发环境 Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的开发环境 Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/validation.html" title="Laravel 的表单验证机制详解">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的表单验证机制详解
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_5.8_zh/views.html" title="Laravel 的视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 的视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel 的 API 认证系统 Passport</h1>
+<ul>
+<li><a href="#introduction">介绍</a></li>
+<li><a href="#installation">安装</a>
+<ul>
+<li><a href="#frontend-quickstart">前端快速上手</a></li>
+<li><a href="#deploying-passport">部署 Passport</a></li>
+</ul></li>
+<li><a href="#configuration">配置</a>
+<ul>
+<li><a href="#token-lifetimes">令牌的使用期限</a></li>
+</ul></li>
+<li><a href="#issuing-access-tokens">发放访问令牌</a>
+<ul>
+<li><a href="#managing-clients">管理客户端</a></li>
+<li><a href="#requesting-tokens">请求令牌</a></li>
+<li><a href="#refreshing-tokens">刷新令牌</a></li>
+</ul></li>
+<li><a href="#password-grant-tokens">密码授权令牌</a>
+<ul>
+<li><a href="#creating-a-password-grant-client">创建密码授权客户端</a></li>
+<li><a href="#requesting-password-grant-tokens">请求密码授权令牌</a></li>
+<li><a href="#requesting-all-scopes">请求所有作用域</a></li>
+</ul></li>
+<li><a href="#implicit-grant-tokens">简化授权令牌</a></li>
+<li><a href="#client-credentials-grant-tokens">客户端授权令牌</a></li>
+<li><a href="#personal-access-tokens">个人访问令牌</a>
+<ul>
+<li><a href="#creating-a-personal-access-client">创建个人访问令牌的客户端</a></li>
+<li><a href="#managing-personal-access-tokens">管理个人访问令牌</a></li>
+</ul></li>
+<li><a href="#protecting-routes">路由保护</a>
+<ul>
+<li><a href="#via-middleware">通过中间件</a></li>
+<li><a href="#passing-the-access-token">传递访问令牌</a></li>
+</ul></li>
+<li><a href="#token-scopes">令牌作用域</a>
+<ul>
+<li><a href="#defining-scopes">定义作用域</a></li>
+<li><a href="#assigning-scopes-to-tokens">给令牌分配作用域</a></li>
+<li><a href="#checking-scopes">检查作用域</a></li>
+</ul></li>
+<li><a href="#consuming-your-api-with-javascript">使用 JavaScript 接入 API</a></li>
+<li><a href="#events">事件</a></li>
+<li><a href="#testing">测试</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>介绍</h2>
+<p>在 Laravel 中，实现基于传统表单的登陆和授权已经非常简单，但是如何满足 API 场景下的授权需求呢？在 API 场景里通常通过令牌来实现用户授权，而非维护请求之间的 Session 状态。在 Laravel 项目中使用 Passport 可以轻而易举地实现 API 授权认证，Passport 可以在几分钟之内为你的应用程序提供完整的 OAuth2 服务端实现。Passport 是基于由 <a href="https://github.com/alexbilbie">Alex Bilbie</a> 维护的 <a href="https://github.com/thephpleague/oauth2-server">League OAuth2 server</a> 建立的。</p>
+<blockquote>
+<p>{note} 本文档假定你已熟悉 OAuth2 。如果你并不了解 OAuth2 ，阅读之前请先熟悉下 OAuth2 的常用术语和功能。</p>
+</blockquote>
+<p><a name="installation"></a></p>
+<h2>安装</h2>
+<p>使用 Composer 安装 Passport ：</p>
+<pre><code>composer require laravel/passport</code></pre>
+<p>接下来，将 Passport 的服务提供者注册到配置文件 <code>config/app.php</code> 的 <code>providers</code> 数组中：</p>
+<pre><code>Laravel\Passport\PassportServiceProvider::class,</code></pre>
+<p>Passport 服务提供器使用框架注册自己的数据库迁移目录，因此在注册提供器后，就应该运行 Passport 的迁移命令来自动创建存储客户端和令牌的数据表：</p>
+<pre><code>php artisan migrate</code></pre>
+<blockquote>
+<p>{note} 如果你不打算使用 Passport 的默认迁移，你应该在 <code>AppServiceProvider</code> 的 <code>register</code> 方法中调用 <code>Passport::ignoreMigrations</code> 方法。 你可以用这个命令 <code>php artisan vendor:publish --tag=passport-migrations</code> 导出默认迁移。</p>
+</blockquote>
+<p>接下来，运行 <code>passport:install</code> 命令来创建生成安全访问令牌时所需的加密密钥，同时，这条命令也会创建用于生成访问令牌的「个人访问」客户端和「密码授权」客户端：</p>
+<pre><code>php artisan passport:install</code></pre>
+<p>上面命令执行后，请将 <code>Laravel\Passport\HasApiTokens</code> Trait 添加到 <code>App\User</code> 模型中，这个 Trait 会给你的模型提供一些辅助函数，用于检查已认证用户的令牌和使用范围：</p>
+<pre><code>&lt;?php
+
+namespace App;
+
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+}</code></pre>
+<p>接下来，在 <code>AuthServiceProvider</code> 的 <code>boot</code> 方法中调用 <code>Passport::routes</code> 函数。这个函数会注册发出访问令牌并撤销访问令牌、客户端和个人访问令牌所必需的路由：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Laravel\Passport\Passport;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * 应用程序的策略映射。
+     *
+     * @var array
+     */
+    protected $policies = [
+        'App\Model' =&gt; 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this-&gt;registerPolicies();
+
+        Passport::routes();
+    }
+}</code></pre>
+<p>最后，将配置文件 <code>config/auth.php</code> 中授权看守器 <code>guards</code> 的 <code>api</code> 的 <code>driver</code> 选项改为 <code>passport</code>。此调整会让你的应用程序在在验证传入的 API 的请求时使用 Passport 的 <code>TokenGuard</code> 来处理：</p>
+<pre><code>'guards' =&gt; [
+    'web' =&gt; [
+        'driver' =&gt; 'session',
+        'provider' =&gt; 'users',
+    ],
+
+    'api' =&gt; [
+        'driver' =&gt; 'passport',
+        'provider' =&gt; 'users',
+    ],
+],</code></pre>
+<p><a name="frontend-quickstart"></a></p>
+<h3>前端快速上手</h3>
+<blockquote>
+<p>{note} 如果想要使用 Passport 的 Vue 组件，那么你必须使用 <a href="https://vuejs.org">Vue</a> Javascript 框架，另外这些组件还用到了 Bootstrap CSS 框架。当然你也可以不使用上面的任何工具，但在实现你自己的前端部分时，Passport 的 Vue 组件仍旧有很高的参考价值。</p>
+</blockquote>
+<p>Passport 配备了一些可以让你的用户自行创建客户端和个人访问令牌的 JSON API。然而，编写一些前端代码来与这些 API 进行交互很是耗时。因此 Passport 也引入了预先构建的 <a href="https://vuejs.org">Vue</a> 组件，你可以直接使用，也可以基于这些代码实现自己的前端部分。</p>
+<p>使用 Artisan 命令 <code>vendor:publish</code> 来发布 Passport 的 Vue 组件：</p>
+<pre><code>php artisan vendor:publish --tag=passport-components</code></pre>
+<p>已发布的组件将被放置在 <code>resources/assets/js/components</code> 目录中，可以在 <code>resources/assets/js/app.js</code> 文件中注册它们：</p>
+<pre><code>Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);</code></pre>
+<p>这些组件注册后，运行 <code>npm install</code>安装vue所依赖的文件，运行<code>npm run dev</code> 命令以确保重新编译你的资源。重新编译资源后，你可以将这些组件放入应用程序的模板中，然后开始创建客户端和个人访问令牌：</p>
+<pre><code>&lt;passport-clients&gt;&lt;/passport-clients&gt;
+&lt;passport-authorized-clients&gt;&lt;/passport-authorized-clients&gt;
+&lt;passport-personal-access-tokens&gt;&lt;/passport-personal-access-tokens&gt;</code></pre>
+<p><a name="deploying-passport"></a></p>
+<h3>部署 Passport</h3>
+<p>第一次将 Passport 部署到生产服务器时，需要运行 <code>passport:keys</code> 命令。该命令生成 Passport 所需要的用来产生访问令牌的加密密钥。生成的这些密钥不会保存在源码控制中：</p>
+<pre><code>php artisan passport:keys</code></pre>
+<p><a name="configuration"></a></p>
+<h2>配置</h2>
+<p><a name="token-lifetimes"></a></p>
+<h3>令牌的有效期</h3>
+<p>默认情况下，Passport 发放的访问令牌是永久有效的，不需要刷新。但是如果你想自定义访问令牌的有效期，可以使用 <code>tokensExpireIn</code> 和 <code>refreshTokensExpireIn</code> 方法。上述两个方法同样需要在 <code>AuthServiceProvider</code> 的 <code>boot</code> 方法中调用：</p>
+<pre><code>use Carbon\Carbon;
+
+/**
+ * Register any authentication / authorization services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    $this-&gt;registerPolicies();
+
+    Passport::routes();
+
+    Passport::tokensExpireIn(Carbon::now()-&gt;addDays(15));
+
+    Passport::refreshTokensExpireIn(Carbon::now()-&gt;addDays(30));
+}</code></pre>
+<p><a name="issuing-access-tokens"></a></p>
+<h2>发放访问令牌</h2>
+<p>熟悉 OAuth2 的开发者一定知道， OAuth2 中必不可少的部分就是授权码。当使用授权码时，客户端应用程序会将用户重定向到你的服务器，他们将批准或拒绝向客户端发出访问令牌的请求。</p>
+<p><a name="managing-clients"></a></p>
+<h3>管理客户端</h3>
+<p>首先，构建需要与应用程序 API 交互的应用程序，开发人员将需要通过创建一个「客户端」来注册自己的应用程序。一般来说，这包括在用户批准其授权请求后，提供其应用程序的名称和应用程序可以重定向到的 URL。</p>
+<h4><code>passport:client</code> 命令</h4>
+<p>创建客户端最简单的方式是使用 Artisan 命令 <code>passport:client</code>，你可以使用此命令创建自己的客户端，用于测试你的 OAuth2 的功能。在你执行 <code>client</code> 命令时，Passport 会提示你输入有关客户端的信息，最终会给你提供客户端的 ID 和 密钥：</p>
+<pre><code>php artisan passport:client</code></pre>
+<h4>JSON API</h4>
+<p>考虑到你的用户无法使用 <code>client</code> 命令，Passport 为此提供了可用于创建客户端的 JSON API。这样你就不用再花时间编写控制器来创建、更新和删除客户端。</p>
+<p>然而，你仍旧需要基于 Passport 的 JSON API 开发一套前端界面，为你的用户提供管理客户端的仪表板。下面我们会列出所有用于管理客户端的 API，为了方便起见，我们使用 <a href="https://github.com/mzabriskie/axios">Axios</a> 来演示对端口发出 HTTP 请求。</p>
+<blockquote>
+<p>{tip} 如果你不想自己实现整个客户端管理的前端界面，可以使用 <a href="#frontend-quickstart">前端快速上手</a> 在几分钟内组建一套功能齐全的前端界面。</p>
+</blockquote>
+<h4><code>GET /oauth/clients</code></h4>
+<p>此路由会返回认证用户的所有客户端。主要用途是列出所有用户的客户端，以便他们可以编辑或删除它们：</p>
+<pre><code>axios.get('/oauth/clients')
+    .then(response =&gt; {
+        console.log(response.data);
+    });</code></pre>
+<h4><code>POST /oauth/clients</code></h4>
+<p>此路由用于创建新客户端。它需要两部分数据：客户端的 <code>name</code> 和 <code>redirect</code> 的链接。在批准或拒绝授权请求后，用户会被重定向 <code>redirect</code> 到这个链接。</p>
+<p>创建客户端时，会发出此客户端的 ID 和密钥。客户端可以使用这两个值从你的应用程序请求访问令牌。该路由会返回新的客户端实例：</p>
+<pre><code>const data = {
+    name: 'Client Name',
+    redirect: 'http://example.com/callback'
+};
+
+axios.post('/oauth/clients', data)
+    .then(response =&gt; {
+        console.log(response.data);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });</code></pre>
+<h4><code>PUT /oauth/clients/{client-id}</code></h4>
+<p>此路由用于更新客户端信息。它需要两部分数据：客户端的 <code>name</code> 和 <code>redirect</code> 的链接。在批准或拒绝授权请求后，用户会被重定向 <code>redirect</code> 到这个链接。此路由会返回更新的客户端实例：</p>
+<pre><code>const data = {
+    name: 'New Client Name',
+    redirect: 'http://example.com/callback'
+};
+
+axios.put('/oauth/clients/' + clientId, data)
+    .then(response =&gt; {
+        console.log(response.data);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });</code></pre>
+<h4><code>DELETE /oauth/clients/{client-id}</code></h4>
+<p>此路由用于删除客户端：</p>
+<pre><code>axios.delete('/oauth/clients/' + clientId)
+    .then(response =&gt; {
+        //
+    });</code></pre>
+<p><a name="requesting-tokens"></a></p>
+<h3>请求令牌</h3>
+<h4>授权时的重定向</h4>
+<p>客户端创建之后，开发者会使用此客户端的 ID 和密钥来请求授权代码，并从应用程序访问令牌。首先，接入应用的用户向你应用程序的 <code>/oauth/authorize</code> 路由发出重定向请求，示例如下：</p>
+<pre><code>Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' =&gt; 'client-id',
+        'redirect_uri' =&gt; 'http://example.com/callback',
+        'response_type' =&gt; 'code',
+        'scope' =&gt; '',
+    ]);
+
+    return redirect('http://your-app.com/oauth/authorize?'.$query);
+});</code></pre>
+<blockquote>
+<p>{tip} 注意，路由 <code>/oauth/authorize</code> 已经在 <code>Passport::routes</code> 方法中定义。你不需要手动定义此路由。</p>
+</blockquote>
+<h4>批准请求</h4>
+<p>接收到授权请求时，Passport 会自动向用户显示一个模版页面，允许用户批准或拒绝授权请求。如果用户批准请求，他们会被重定向回接入的应用程序指定的 <code>redirect_uri</code>。<code>redirect_uri</code> 必须和客户端创建时指定的 <code>redirect</code> 链接完全一致。</p>
+<p>如果你想自定义授权确认页面，可以使用 Artisan 命令 <code>vendor:publish</code> 发布 Passport 的视图。发布后的视图文件存放在 <code>resources/views/vendor/passport</code>：</p>
+<pre><code>php artisan vendor:publish --tag=passport-views</code></pre>
+<h4>将授权码转换为访问令牌</h4>
+<p>用户批准授权请求后，会被重定向回接入的应用程序。然后接入应用应该将通过 <code>POST</code> 请求向你的应用程序申请访问令牌。请求应该包括当用户批准授权请求时由应用程序发出的授权码。在下面的例子中，我们使用 Guzzle HTTP 库来实现这次 <code>POST</code> 请求：</p>
+<pre><code>Route::get('/callback', function (Request $request) {
+    $http = new GuzzleHttp\Client;
+
+    $response = $http-&gt;post('http://your-app.com/oauth/token', [
+        'form_params' =&gt; [
+            'grant_type' =&gt; 'authorization_code',
+            'client_id' =&gt; 'client-id',
+            'client_secret' =&gt; 'client-secret',
+            'redirect_uri' =&gt; 'http://example.com/callback',
+            'code' =&gt; $request-&gt;code,
+        ],
+    ]);
+
+    return json_decode((string) $response-&gt;getBody(), true);
+});</code></pre>
+<p>路由 <code>/oauth/token</code> 返回的 JSON 响应中会包含 <code>access_token</code> 、<code>refresh_token</code> 和 <code>expires_in</code> 属性。<code>expires_in</code> 属性包含访问令牌的有效期（单位：秒）。</p>
+<blockquote>
+<p>{tip} 像 <code>/oauth/authorize</code> 路由一样，<code>/oauth/token</code> 路由在 <code>Passport::routes</code> 方法中定义了。</p>
+</blockquote>
+<p><a name="refreshing-tokens"></a></p>
+<h3>刷新令牌</h3>
+<p>如果你的应用程序发放了短期的访问令牌，用户将需要通过在发出访问令牌时提供给他们的刷新令牌来刷新其访问令牌。在下面的例子中，我们使用 Guzzle HTTP 库来刷新令牌：</p>
+<pre><code>$http = new GuzzleHttp\Client;
+
+$response = $http-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'refresh_token',
+        'refresh_token' =&gt; 'the-refresh-token',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'scope' =&gt; '',
+    ],
+]);
+
+return json_decode((string) $response-&gt;getBody(), true);</code></pre>
+<p>路由 <code>/oauth/token</code> 会返回一个 JSON 响应，其中包含 <code>access_token</code> 、<code>refresh_token</code> 和 <code>expires_in</code> 属性。<code>expires_in</code> 属性包含访问令牌的有效时间（单位：秒）。</p>
+<p><a name="password-grant-tokens"></a></p>
+<h1>密码授权令牌</h1>
+<p>OAuth2 密码授权机制可以让你自己的客户端（如移动应用程序）邮箱地址或者用户名和密码获取访问令牌。如此一来你就可以安全地向自己的客户端发出访问令牌，而不需要遍历整个 OAuth2 授权代码重定向流程。</p>
+<p><a name="creating-a-password-grant-client"></a></p>
+<h3>创建密码授权客户端</h3>
+<p>在应用程序通过密码授权机制来发布令牌之前，在 <code>passport:client</code> 命令后加上 <code>--password</code> 参数来创建密码授权的客户端。如果你已经运行了 <code>passport:install</code> 命令，则不需要再运行此命令：</p>
+<pre><code>php artisan passport:client --password</code></pre>
+<p><a name="requesting-password-grant-tokens"></a></p>
+<h3>请求令牌</h3>
+<p>创建密码授权的客户端后，就可以通过向用户的电子邮件地址和密码向 <code>/oauth/token</code> 路由发出 <code>POST</code> 请求来获取访问令牌。而该路由已经由 <code>Passport::routes</code> 方法注册，因此不需要手动定义它。如果请求成功，会在服务端返回的 JSON 响应中收到一个 <code>access_token</code> 和 <code>refresh_token</code>：</p>
+<pre><code>$http = new GuzzleHttp\Client;
+
+$response = $http-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'password',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'username' =&gt; 'taylor@laravel.com',
+        'password' =&gt; 'my-password',
+        'scope' =&gt; '',
+    ],
+]);
+
+return json_decode((string) $response-&gt;getBody(), true);</code></pre>
+<blockquote>
+<p>{tip} 默认情况下，访问令牌是永久有效的。你可以根据需要 <a href="#configuration">配置访问令牌的有效时间</a>。</p>
+</blockquote>
+<p><a name="requesting-all-scopes"></a></p>
+<h3>请求所有作用域</h3>
+<p>使用密码授权机制时，可以通过请求 scope 参数 <code>*</code> 来授权应用程序支持的所有范围的令牌。如果你的请求中包含 scope 为 <code>*</code> 的参数，令牌实例上的 <code>can</code> 方法会始终返回 <code>true</code>。这种作用域的授权只能分配给使用 <code>password</code> 授权时发出的令牌：</p>
+<pre><code>$response = $http-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'password',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'username' =&gt; 'taylor@laravel.com',
+        'password' =&gt; 'my-password',
+        'scope' =&gt; '*',
+    ],
+]);</code></pre>
+<p><a name="implicit-grant-tokens"></a></p>
+<h2>隐式授权令牌</h2>
+<p>隐式授权类似于授权码授权，但是它只将令牌返回给客户端而不交换授权码。这种授权最常用于无法安全存储客户端凭据的 JavaScript 或移动应用程序。通过调用 <code>AuthServiceProvider</code> 中的 <code>enableImplicitGrant</code> 方法来启用这种授权：</p>
+<pre><code>/**
+ * 注册任何身份验证/授权服务。
+ *
+ * @return void
+ */
+public function boot()
+{
+    $this-&gt;registerPolicies();
+
+    Passport::routes();
+
+    Passport::enableImplicitGrant();
+}</code></pre>
+<p>调用上面方法开启授权后，开发者可以使用他们的客户端 ID 从应用程序请求访问令牌。接入的应用程序应该向你的应用程序的 <code>/oauth/authorize</code> 路由发出重定向请求，如下所示：</p>
+<pre><code>Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' =&gt; 'client-id',
+        'redirect_uri' =&gt; 'http://example.com/callback',
+        'response_type' =&gt; 'token',
+        'scope' =&gt; '',
+    ]);
+
+    return redirect('http://your-app.com/oauth/authorize?'.$query);
+});</code></pre>
+<blockquote>
+<p>{tip} <code>/oauth/authorize</code> 路由在 <code>Passport::routes</code> 定义中，所以无需再次手动定义此路由。</p>
+</blockquote>
+<p><a name="client-credentials-grant-tokens"></a></p>
+<h2>客户端凭据授权令牌</h2>
+<p>客户端凭据授权适用于机器到机器的认证。例如，你可以在通过 API 执行维护任务中使用此授权。要使用这种授权，你首先需要在 <code>app/Http/Kernel.php</code> 的 <code>$routeMiddleware</code> 变量中添加新的中间件：</p>
+<pre><code>use Laravel\Passport\Http\Middleware\CheckClientCredentials::class;
+
+protected $routeMiddleware = [
+    'client' =&gt; CheckClientCredentials::class,
+];</code></pre>
+<p>然后在路由上追加这个中间件：</p>
+<pre><code>Route::get('/user', function(Request $request) {
+    ...
+})-&gt;middleware('client');</code></pre>
+<p>接下来通过向 <code>oauth/token</code> 接口发出请求来获取令牌:</p>
+<pre><code>$guzzle = new GuzzleHttp\Client;
+
+$response = $guzzle-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'client_credentials',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'scope' =&gt; 'your-scope',
+    ],
+]);
+
+echo json_decode((string) $response-&gt;getBody(), true);</code></pre>
+<p><a name="personal-access-tokens"></a></p>
+<h2>个人访问令牌</h2>
+<p>如果用户要在不经过典型的授权码重定向流的情况下向自己发出访问令牌，可以允许用户通过应用程序的用户界面对自己发出令牌，用户可以因此顺便测试你的 API，或者也可以将其作为一种更简单的发布访问令牌的方式。</p>
+<blockquote>
+<p>{note} 个人访问令牌是永久有效的，就算使用了 <code>tokensExpireIn</code> 和 <code>refreshTokensExpireIn</code> 方法也不会修改它的生命周期。</p>
+</blockquote>
+<p><a name="creating-a-personal-access-client"></a></p>
+<h3>创建个人访问客户端</h3>
+<p>在你的应用程序发布个人访问令牌之前，你需要在 <code>passport:client</code> 命令后带上 <code>--personal</code> 参数来创建对应的客户端。如果你已经运行了 <code>passport:install</code> 命令，则无需再运行此命令：</p>
+<pre><code>php artisan passport:client --personal</code></pre>
+<p><a name="managing-personal-access-tokens"></a></p>
+<h3>管理个人访问令牌</h3>
+<p>创建个人访问客户端后，你可以使用 <code>User</code> 模型实例上的 <code>createToken</code> 方法来为给定用户发布令牌。<code>createToken</code> 方法接受令牌的名称作为其第一个参数和可选的  <a href="#token-scopes">作用域</a> 数组作为其第二个参数：</p>
+<pre><code>$user = App\User::find(1);
+
+// Creating a token without scopes...
+$token = $user-&gt;createToken('Token Name')-&gt;accessToken;
+
+// Creating a token with scopes...
+$token = $user-&gt;createToken('My Token', ['place-orders'])-&gt;accessToken;</code></pre>
+<h4>JSON API</h4>
+<p>Passport 中也有用来管理个人访问令牌的 JSON API，你可以将其与自己的前端配对，为用户提供管理个人访问令牌的仪表板。下面我们会介绍用于管理个人访问令牌的所有 API 接口。方便起见，我们使用 <a href="https://github.com/mzabriskie/axios">Axios</a> 来演示对 API 的接口发出 HTTP 请求。</p>
+<blockquote>
+<p>{tip} 如果你不想实现自己的个人访问令牌管理的前端界面，可以根据 <a href="#frontend-quickstart">前端快速上手</a> 在几分钟内组建功能齐全的前端界面。</p>
+</blockquote>
+<h4><code>GET /oauth/scopes</code></h4>
+<p>此路由会返回应用程序中定义的所有 <a href="#scopes">作用域</a>。你可以使用此路由列出用户可能分配给个人访问令牌的范围：</p>
+<pre><code>axios.get('/oauth/scopes')
+    .then(response =&gt; {
+        console.log(response.data);
+    });</code></pre>
+<h4><code>GET /oauth/personal-access-tokens</code></h4>
+<p>此路由返回认证用户创建的所有个人访问令牌。这主要用于列出所有用户的令牌，以便他们可以编辑或删除它们：</p>
+<pre><code>axios.get('/oauth/personal-access-tokens')
+    .then(response =&gt; {
+        console.log(response.data);
+    });</code></pre>
+<h4><code>POST /oauth/personal-access-tokens</code></h4>
+<p>此路由创建新的个人访问令牌。它需要两个数据：令牌的名称和应该分配给令牌的作用范围：</p>
+<pre><code>const data = {
+    name: 'Token Name',
+    scopes: []
+};
+
+axios.post('/oauth/personal-access-tokens', data)
+    .then(response =&gt; {
+        console.log(response.data.accessToken);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });</code></pre>
+<h4><code>DELETE /oauth/personal-access-tokens/{token-id}</code></h4>
+<p>此路由可用于删除个人访问令牌：</p>
+<pre><code>axios.delete('/oauth/personal-access-tokens/' + tokenId);</code></pre>
+<p><a name="protecting-routes"></a></p>
+<h2>路由保护</h2>
+<p><a name="via-middleware"></a></p>
+<h3>通过中间件</h3>
+<p>Passport 包含一个 <a href="/docs/laravel_5.8_zh/authentication.html#adding-custom-guards">验证保护机制</a> 可以验证请求中传入的访问令牌。配置 <code>api</code> 的看守器使用 <code>passport</code> 驱动程序后，只需要在需要有效访问令牌的任何路由上指定 <code>auth:api</code> 中间件：</p>
+<pre><code>Route::get('/user', function () {
+    //
+})-&gt;middleware('auth:api');</code></pre>
+<p><a name="passing-the-access-token"></a></p>
+<h3>传递访问令牌</h3>
+<p>当调用 Passport 保护下的路由时，接入的 API 应用需要将访问令牌作为 <code>Bearer</code> 令牌放在请求头 <code>Authorization</code> 中。例如，使用 Guzzle HTTP 库时：</p>
+<pre><code>$response = $client-&gt;request('GET', '/api/user', [
+    'headers' =&gt; [
+        'Accept' =&gt; 'application/json',
+        'Authorization' =&gt; 'Bearer '.$accessToken,
+    ],
+]);</code></pre>
+<p><a name="token-scopes"></a></p>
+<h2>令牌作用域</h2>
+<p><a name="defining-scopes"></a></p>
+<h3>定义作用域</h3>
+<p>作用域可以让 API 客户端在请求账户授权时请求特定的权限。例如，如果你正在构建电子商务应用程序，并不是所有接入的 API 应用都需要下订单的功能。你可以让接入的 API 应用只被允许授权访问订单发货状态。换句话说，作用域允许应用程序的用户限制第三方应用程序执行的操作。</p>
+<p>你可以在 <code>AuthServiceProvider</code> 的 <code>boot</code> 方法中使用 <code>Passport::tokensCan</code> 方法来定义 API 的作用域。<code>tokensCan</code> 方法接受一个作用域名称、描述的数组作为参数。作用域描述将会在授权确认页中直接展示给用户，你可以将其定义为任何你需要的内容：</p>
+<pre><code>use Laravel\Passport\Passport;
+
+Passport::tokensCan([
+    'place-orders' =&gt; 'Place orders',
+    'check-status' =&gt; 'Check order status',
+]);</code></pre>
+<p><a name="assigning-scopes-to-tokens"></a></p>
+<h3>给令牌分配作用域</h3>
+<h4>请求授权码时</h4>
+<p>使用授权码授权请求访问令牌时，接入的应用应该将其所需的作用域指定为 <code>scope</code> 查询字符串参数。<code>scope</code> 包含多个作用域名称时，名称之间使用空格分隔：</p>
+<pre><code>Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' =&gt; 'client-id',
+        'redirect_uri' =&gt; 'http://example.com/callback',
+        'response_type' =&gt; 'code',
+        'scope' =&gt; 'place-orders check-status',
+    ]);
+
+    return redirect('http://your-app.com/oauth/authorize?'.$query);
+});</code></pre>
+<h4>个人访问令牌</h4>
+<p>使用 <code>User</code> 模型的 <code>createToken</code> 方法发放个人访问令牌时，可以将所需作用域的数组作为第二个参数传给此方法：</p>
+<pre><code>$token = $user-&gt;createToken('My Token', ['place-orders'])-&gt;accessToken;</code></pre>
+<p><a name="checking-scopes"></a></p>
+<h3>检查作用域</h3>
+<p>Passport 包含两个中间件，可用于验证传入的请求是否已被授予给定作用域的令牌进行身份验证。使用之前，需要将下面的中间件添加到 <code>app/Http/Kernel.php</code> 文件的 <code>$routeMiddleware</code> 属性中：</p>
+<pre><code>'scopes' =&gt; \Laravel\Passport\Http\Middleware\CheckScopes::class,
+'scope' =&gt; \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,</code></pre>
+<h4>检查所有作用域</h4>
+<p>路由可以使用 <code>scopes</code> 中间件来检查当前请求是否拥有指定的 <em>所有</em> 作用域：</p>
+<pre><code>Route::get('/orders', function () {
+    // 访问令牌具有 "check-status" and "place-orders" 的作用域...
+})-&gt;middleware('scopes:check-status,place-orders');</code></pre>
+<h4>检查任意作用域</h4>
+<p>路由可以使用 <code>scope</code> 中间件来检查当前请求是否拥有指定的 <em>任意</em> 作用域：</p>
+<pre><code>Route::get('/orders', function () {
+    // Access token has either "check-status" or "place-orders" scope...
+})-&gt;middleware('scope:check-status,place-orders');</code></pre>
+<h4>检查令牌实例上的作用域</h4>
+<p>就算访问令牌验证的请求已经通过应用程序的验证，你仍然可以使用当前授权 <code>User</code> 实例上的 <code>tokenCan</code> 方法来验证令牌是否拥有指定的作用域：</p>
+<pre><code>use Illuminate\Http\Request;
+
+Route::get('/orders', function (Request $request) {
+    if ($request-&gt;user()-&gt;tokenCan('place-orders')) {
+        //
+    }
+});</code></pre>
+<p><a name="consuming-your-api-with-javascript"></a></p>
+<h2>使用 JavaScript 接入 API</h2>
+<p>在构建 API 时，如果能通过 JavaScript 应用接入自己的 API 将会给开发过程带来极大的便利。这种 API 开发方法允许你使用自己的应用程序的 API 和别人共享的 API。你的 Web 应用程序、移动应用程序、第三方应用程序以及可能在各种软件包管理器上发布的任何 SDK 都可能会使用相同的API。</p>
+<p>通常，如果要从 JavaScript 应用程序中使用 API，则需要手动向应用程序发送访问令牌，并将其传递给应用程序。但是，Passport 有一个可以处理这个问题的中间件。将 <code>CreateFreshApiToken</code> 中间件添加到 <code>web</code> 中间件组就可以了：</p>
+<pre><code>'web' =&gt; [
+    // Other middleware...
+    \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+],</code></pre>
+<p>Passport 的这个中间件将会在你所有的对外请求中添加一个 <code>laravel_token</code> cookie。该 cookie 将包含一个加密后的 <a href="https://jwt.io/">JWT</a> ，Passport 将用来验证来自 JavaScript 应用程序的 API 请求。至此，你可以在不明确传递访问令牌的情况下向应用程序的 API 发出请求</p>
+<pre><code>axios.get('/user')
+    .then(response =&gt; {
+        console.log(response.data);
+    });</code></pre>
+<p>当使用上面的授权方法时，Axios 会自动带上 <code>X-CSRF-TOKEN</code> 请求头传递。另外，默认的 Laravel JavaScript 脚手架会让 Axios 发送 <code>X-Requested-With</code> 请求头:</p>
+<pre><code>window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+};</code></pre>
+<blockquote>
+<p>{note} 如果你用了其他的 JavaScript 框架，应确保配置了每次对外请求都会带有 <code>X-CSRF-TOKEN</code> 和 <code>X-Requested-With</code> 请求头。</p>
+</blockquote>
+<p><a name="events"></a></p>
+<h2>事件</h2>
+<p>Passport 在发出访问令牌和刷新令牌时触发事件。 在应用程序的 <code>EventServiceProvider</code> 中为这些事件追加监听器，可以通过触发这些事件来修改或删除数据库中的其他访问令牌：</p>
+<pre><code class="language-php">/**
+ * The event listener mappings for the application.
+ *
+ * @var array
+ */
+protected $listen = [
+    'Laravel\Passport\Events\AccessTokenCreated' =&gt; [
+        'App\Listeners\RevokeOldTokens',
+    ],
+
+    'Laravel\Passport\Events\RefreshTokenCreated' =&gt; [
+        'App\Listeners\PruneOldTokens',
+    ],
+];</code></pre>
+<p><a name="testing"></a></p>
+<h2>测试</h2>
+<p>Passport 的 <code>actingAs</code> 方法可以用于指定当前已认证的用户及其作用域。 <code>actingAs</code> 方法第一个参数是用户实例，第二个参数是应该授予用户令牌的作用范围的数组:</p>
+<pre><code>public function testServerCreation()
+{
+    Passport::actingAs(
+        factory(User::class)-&gt;create(),
+        ['create-servers']
+    );
+
+    $response = $this-&gt;post('/api/create-server');
+
+    $response-&gt;assertStatus(200);
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 197);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

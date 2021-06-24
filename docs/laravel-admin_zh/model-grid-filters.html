@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>数据查询过滤 - 开发帮助文档</title> 
+    <meta name="keyword" content="model-grid-filters"> 
+    <meta name="description" content="model-grid-filters"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="3" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/change-log.html" title="Change log">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Change log
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/content-layout.html" title="页面内容">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    页面内容
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-authentication.html" title="自定义登陆">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义登陆
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-chart.html" title="自定义图表">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义图表
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/custom-navbar.html" title="自定义头部导航条">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义头部导航条
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-api-tester.html" title="Laravel API测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel API测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-config.html" title="配置管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    配置管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-helpers.html" title="帮助工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    帮助工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-media-manager.html" title="文件管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    文件管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/extension-scheduling.html" title="定时任务">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    定时任务
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/LICENSE.html" title="LICENSE">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LICENSE
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-callback.html" title="模型表单回调">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型表单回调
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-field-management.html" title="组件管理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    组件管理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-fields.html" title="表单组件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单组件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-upload.html" title="文件/图片上传">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    文件/图片上传
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form-validation.html" title="表单验证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单验证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-form.html" title="基于数据模型的表单">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基于数据模型的表单
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-actions.html" title="模型表格行操作">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型表格行操作
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-column.html" title="列操作">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    列操作
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-custom-tools.html" title="自定义工具">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义工具
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-data.html" title="表格数据源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表格数据源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-export.html" title="数据导出">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据导出
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-exporter.html" title="自定义导出">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    自定义导出
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid-filters.html" title="数据查询过滤">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据查询过滤
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-grid.html" title="基于数据模型的表格">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    基于数据模型的表格
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/model-tree.html" title="模型树">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    模型树
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/permission.html" title="权限控制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    权限控制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/qa.html" title="常见问题汇总">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    常见问题汇总
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/quick-start.html" title="快速开始">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    快速开始
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/README.html" title="laravel-admin">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    laravel-admin
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/upgrade.html" title="升级注意事项">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    升级注意事项
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel-admin_zh/widgets.html" title="前端组件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    前端组件
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>数据查询过滤</h1>
+<p><code>model-grid</code>提供了一系列的方法实现表格数据的查询过滤：</p>
+<pre><code class="language-php">$grid-&gt;filter(function($filter){
+
+    // 去掉默认的id过滤器
+    $filter-&gt;disableIdFilter();
+
+    // 自定义id过滤器，在去掉默认id过滤器后必须调用 setId 方法，
+    // 并设置一个和主键不同的值，自定义的id过滤器才会显示。
+    $filter-&gt;equal('id', '产品序列号')-&gt;setId('product_id');
+
+    // 在这里添加字段过滤器
+    $filter-&gt;like('name', 'name');
+    ...
+
+});
+</code></pre>
+<h2>查询类型</h2>
+<p>目前支持的过滤类型有下面这些:</p>
+<h3>equal</h3>
+<p><code>sql: ... WHERE</code>column<code>= "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;equal('column', $label);</code></pre>
+<h3>not equal</h3>
+<p><code>sql: ... WHERE</code>column<code>!= "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;notEqual('column', $label);</code></pre>
+<h3>like</h3>
+<p><code>sql: ... WHERE</code>column<code>LIKE "%$input%"</code>：</p>
+<pre><code class="language-php">$filter-&gt;like('column', $label);</code></pre>
+<h3>ilike</h3>
+<p><code>sql: ... WHERE</code>column<code>ILIKE "%$input%"</code>：</p>
+<pre><code class="language-php">$filter-&gt;ilike('column', $label);</code></pre>
+<h3>大于</h3>
+<p><code>sql: ... WHERE</code>column<code>&gt; "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;gt('column', $label);</code></pre>
+<h3>小于</h3>
+<p><code>sql: ... WHERE</code>column<code>&lt; "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;lt('column', $label);</code></pre>
+<h3>between</h3>
+<p><code>sql: ... WHERE</code>column<code>BETWEEN "$start" AND "$end"</code>：</p>
+<pre><code class="language-php">$filter-&gt;between('column', $label);
+
+// 设置datetime类型
+$filter-&gt;between('column', $label)-&gt;datetime();
+
+// 设置time类型
+$filter-&gt;between('column', $label)-&gt;time();</code></pre>
+<h3>in</h3>
+<p><code>sql: ... WHERE</code>column<code>in (...$inputs)</code>：</p>
+<pre><code class="language-php">$filter-&gt;in('column', $label)-&gt;multipleSelect(['key' =&gt; 'value']);</code></pre>
+<h3>notIn</h3>
+<p><code>sql: ... WHERE</code>column<code>not in (...$inputs)</code>：</p>
+<pre><code class="language-php">$filter-&gt;notIn('column', $label)-&gt;multipleSelect(['key' =&gt; 'value']);</code></pre>
+<h3>date</h3>
+<p><code>sql: ... WHERE DATE(</code>column<code>) = "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;date('column', $label);</code></pre>
+<h3>day</h3>
+<p><code>sql: ... WHERE DAY(</code>column<code>) = "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;day('column', $label);</code></pre>
+<h3>month</h3>
+<p><code>sql: ... WHERE MONTH(</code>column<code>) = "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;month('column', $label);</code></pre>
+<h3>year</h3>
+<p><code>sql: ... WHERE YEAR(</code>column<code>) = "$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;year('column', $label);</code></pre>
+<h3>where</h3>
+<p>可以用where来构建比较复杂的查询过滤</p>
+<p><code>sql: ... WHERE</code>title<code>LIKE "%$input" OR</code>content<code>LIKE "%$input"</code>：</p>
+<pre><code class="language-php">$filter-&gt;where(function ($query) {
+
+    $query-&gt;where('title', 'like', "%{$this-&gt;input}%")
+        -&gt;orWhere('content', 'like', "%{$this-&gt;input}%");
+
+}, 'Text');</code></pre>
+<p><code>sql: ... WHERE</code>rate<code>&gt;= 6 AND</code>created_at<code>= {$input}</code>:</p>
+<pre><code class="language-php">$filter-&gt;where(function ($query) {
+
+    $query-&gt;whereRaw("`rate` &gt;= 6 AND `created_at` = {$this-&gt;input}");
+
+}, 'Text');</code></pre>
+<p>关系查询，查询对应关系<code>profile</code>的字段：</p>
+<pre><code class="language-php">$filter-&gt;where(function ($query) {
+
+    $query-&gt;whereHas('profile', function ($query) {
+        $query-&gt;where('address', 'like', "%{$this-&gt;input}%")-&gt;orWhere('email', 'like', "%{$this-&gt;input}%");
+    });
+
+}, '地址或手机号');</code></pre>
+<h2>表单类型</h2>
+<h3>text</h3>
+<p>表单类型默认是text input，可以设置placeholder：</p>
+<pre><code class="language-php">$filter-&gt;equal('column')-&gt;placeholder('请输入。。。');</code></pre>
+<p>也可以通过下面的一些方法来限制用户输入格式：</p>
+<pre><code class="language-php">$filter-&gt;equal('column')-&gt;url();
+
+$filter-&gt;equal('column')-&gt;email();
+
+$filter-&gt;equal('column')-&gt;integer();
+
+$filter-&gt;equal('column')-&gt;ip();
+
+$filter-&gt;equal('column')-&gt;mac();
+
+$filter-&gt;equal('column')-&gt;mobile();
+
+// $options 参考 https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
+$filter-&gt;equal('column')-&gt;decimal($options = []);
+
+// $options 参考 https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
+$filter-&gt;equal('column')-&gt;currency($options = []);
+
+// $options 参考 https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
+$filter-&gt;equal('column')-&gt;percentage($options = []);
+
+// $options 参考 https://github.com/RobinHerbots/Inputmask, $icon为input前面的图标
+$filter-&gt;equal('column')-&gt;inputmask($options = [], $icon = 'pencil');</code></pre>
+<h3>select</h3>
+<pre><code class="language-php">$filter-&gt;equal('column')-&gt;select(['key' =&gt; 'value'...]);
+
+// 或者从api获取数据，api的格式参考model-form的select组件
+$filter-&gt;equal('column')-&gt;select('api/users');</code></pre>
+<h3>multipleSelect</h3>
+<p>一般用来配合<code>in</code>和<code>notIn</code>两个需要查询数组的查询类型使用，也可以在<code>where</code>类型的查询中使用：</p>
+<pre><code class="language-php">$filter-&gt;in('column')-&gt;multipleSelect(['key' =&gt; 'value'...]);
+
+// 或者从api获取数据，api的格式参考model-form的multipleSelect组件
+$filter-&gt;in('column')-&gt;multipleSelect('api/users');</code></pre>
+<h3>radio</h3>
+<p>比较常见的场景是选择分类</p>
+<pre><code class="language-php">$filter-&gt;equal('released')-&gt;radio([
+    ''   =&gt; 'All',
+    0    =&gt; 'Unreleased',
+    1    =&gt; 'Released',
+]);</code></pre>
+<h3>checkbox</h3>
+<p>比较常见的场景是配合<code>whereIn</code>来做范围筛选</p>
+<pre><code class="language-php">$filter-&gt;in('gender')-&gt;checkbox([
+    'm'    =&gt; 'Male',
+    'f'    =&gt; 'Female',
+]);</code></pre>
+<h3>datetime</h3>
+<p>通过日期时间组件来查询，<code>$options</code>的参数和值参考<a href="http://eonasdan.github.io/bootstrap-datetimepicker/Options/">bootstrap-datetimepicker</a></p>
+<pre><code class="language-php">$filter-&gt;equal('column')-&gt;datetime($options);
+
+// `date()` 相当于 `datetime(['format' =&gt; 'YYYY-MM-DD'])`
+$filter-&gt;equal('column')-&gt;date();
+
+// `time()` 相当于 `datetime(['format' =&gt; 'HH:mm:ss'])`
+$filter-&gt;equal('column')-&gt;time();
+
+// `day()` 相当于 `datetime(['format' =&gt; 'DD'])`
+$filter-&gt;equal('column')-&gt;day();
+
+// `month()` 相当于 `datetime(['format' =&gt; 'MM'])`
+$filter-&gt;equal('column')-&gt;month();
+
+// `year()` 相当于 `datetime(['format' =&gt; 'YYYY'])`
+$filter-&gt;equal('column')-&gt;year();
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 55);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

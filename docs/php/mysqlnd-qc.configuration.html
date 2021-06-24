@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>运行时配置 - 开发帮助文档</title> 
+    <meta name="keyword" content="mysqlnd-qc.configuration"> 
+    <meta name="description" content="mysqlnd-qc.configuration"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="839" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.configuration.html" title="运行时配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    运行时配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mysqlnd-qc.requirements.html" title="需求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    需求
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mysqlnd-qc.installation.html">« 安装</a></li>
+      <li style="float: right;"><a href="mysqlnd-qc.constants.html">预定义常量 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mysqlnd-qc.setup.html">安装／配置</a></li>
+    <li>运行时配置</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mysqlnd-qc.configuration" class="section">
+ <h2 class="title">运行时配置</h2>
+ <p class="simpara">
+这些函数的行为受 <var class="filename">php.ini</var> 中的设置影响。
+</p>
+ <p class="para">
+  </p><table class="doctable table">
+   <caption><strong>mysqlnd_qc 配置选项</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名字</th>
+      <th>默认</th>
+      <th>可修改范围</th>
+      <th>更新日志</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.enable-qc" class="link">mysqlnd_qc.enable_qc</a></td>
+      <td>1</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.ttl" class="link">mysqlnd_qc.ttl</a></td>
+      <td>30</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.cache-by-default" class="link">mysqlnd_qc.cache_by_default</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.cache-no-table" class="link">mysqlnd_qc.cache_no_table</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.use-request-time" class="link">mysqlnd_qc.use_request_time</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.time-statistics" class="link">mysqlnd_qc.time_statistics</a></td>
+      <td>1</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.collect-statistics" class="link">mysqlnd_qc.collect_statistics</a></td>
+      <td>0</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.collect-statistics-log-file" class="link">mysqlnd_qc.collect_statistics_log_file</a></td>
+      <td>/tmp/mysqlnd_qc.stats</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.collect-query-trace" class="link">mysqlnd_qc.collect_query_trace</a></td>
+      <td>0</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.query-trace-bt-depth" class="link">mysqlnd_qc.query_trace_bt_depth</a></td>
+      <td>3</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.collect-normalized-query-trace" class="link">mysqlnd_qc.collect_normalized_query_trace</a></td>
+      <td>0</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.ignore-sql-comments" class="link">mysqlnd_qc.ignore_sql_comments</a></td>
+      <td>1</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.slam-defense" class="link">mysqlnd_qc.slam_defense</a></td>
+      <td>0</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.slam-defense-ttl" class="link">mysqlnd_qc.slam_defense_ttl</a></td>
+      <td>30</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.std-data-copy" class="link">mysqlnd_qc.std_data_copy</a></td>
+      <td>0</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.apc-prefix" class="link">mysqlnd_qc.apc_prefix</a></td>
+      <td>qc_</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.memc-server" class="link">mysqlnd_qc.memc_server</a></td>
+      <td>127.0.0.1</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.memc-port" class="link">mysqlnd_qc.memc_port</a></td>
+      <td>11211</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+     <tr>
+      <td><a href="mysqlnd-qc.configuration.html#ini.mysqlnd-qc.sqlite-data-file" class="link">mysqlnd_qc.sqlite_data_file</a></td>
+      <td>:memory:</td>
+      <td>PHP_INI_ALL</td>
+      <td>
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ 
+
+ <p class="para">这是配置指令的简短说明。</p>
+
+ <p class="para">
+  </p><dl>
+
+   
+    <dt id="ini.mysqlnd-qc.enable-qc">
+     <code class="parameter">mysqlnd_qc.enable_qc</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Enables or disables the plugin. If disabled the extension will not plug
+      into
+      <a href="book.mysqlnd.html" class="link">mysqlnd</a> to proxy internal
+      <a href="book.mysqlnd.html" class="link">mysqlnd</a> C API calls.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.ttl">
+     <code class="parameter">mysqlnd_qc.ttl</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+             Default Time-to-Live (TTL) for cache entries in seconds.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.cache-by-default">
+     <code class="parameter">mysqlnd_qc.cache_by_default</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Cache all queries regardless if they begin with the SQL hint that
+      enables caching of a query or not. Storage handler cannot overrule
+      the setting. It is evaluated by the core of the plugin.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.cache-no-table">
+     <code class="parameter">mysqlnd_qc.cache_no_table</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Whether to cache queries with no table name in any of columns meta data
+      of their result set, for example,
+      <code class="literal">SELECT SLEEP(1)</code>, <code class="literal">SELECT NOW()</code>,
+      <code class="literal">SELECT SUBSTRING()</code>.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.use-request-time">
+     <code class="parameter">mysqlnd_qc.use_request_time</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Use PHP global request time to avoid
+      <code class="literal">gettimeofday()</code> system calls?
+      If using
+      <code class="literal">APC</code> storage handler
+      it should be set to the value of
+      <code class="literal">apc.use_request_time</code>, if not
+      warnings will be generated.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.time-statistics">
+     <code class="parameter">mysqlnd_qc.time_statistics</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Collect run time and store time statistics using
+      <code class="literal">gettimeofday()</code> system call? Data will be
+      collected only if you also set
+      <code class="literal">mysqlnd_qc.collect_statistics = 1</code>,
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.collect-statistics">
+     <code class="parameter">mysqlnd_qc.collect_statistics</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Collect statistics for
+      <span class="function"><a href="function.mysqlnd-qc-get-core-stats.html" class="function">mysqlnd_qc_get_core_stats()</a></span>?
+      Does not influence storage handler statistics! Handler statistics
+      can be an integral part of the handler internal storage format.
+      Therefore, collection of some handler statistics cannot be disabled.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.collect-statistics-log-file">
+     <code class="parameter">mysqlnd_qc.collect_statistics-log-file</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      If <code class="literal">mysqlnd_qc.collect_statistics</code> and
+      <code class="literal">mysqlnd_qc.collect_statistics_log_file</code>
+      are set, the plugin will dump statistics into the specified
+      log file at every 10th web request during PHP request shutdown.
+      The log file needs to be writable by the web server user.
+     </p>
+     <p class="para">
+      Since 1.1.0.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.collect-query-trace">
+     <code class="parameter">mysqlnd_qc.collect_query_trace</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Collect query back traces?
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.query-trace-bt-depth">
+     <code class="parameter">mysqlnd_qc.query_trace_bt_depth</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Maximum depth/level of a query code backtrace.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.ignore-sql-comments">
+     <code class="parameter">mysqlnd_qc.ignore_sql_comments</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Whether to remove SQL comments from a query string before
+      hashing it to generate a cache key. Disable if you do not want
+      two statemts such as <code class="literal">SELECT /*my_source_ip=123*/ id FROM test</code>
+      and <code class="literal">SELECT /*my_source_ip=456*/ id FROM test</code> to refer
+      to the same cache entry.
+     </p>
+     <p class="para">
+      Since 1.1.0.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.slam-defense">
+     <code class="parameter">mysqlnd_qc.slam_defense</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Activates handler based slam defense (cache stampeding protection) if available.
+      Supported by
+      <code class="literal">Default</code> and
+      <code class="literal">APC</code> storage handler
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.slam-defense-ttl">
+     <code class="parameter">mysqlnd_qc.slam_defense_ttl</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="literal">TTL</code> for stale cache entries which are
+      served while another client updates the entries. Supported by
+      <code class="literal">APC</code> storage handler.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.collect-normalized-query-trace">
+     <code class="parameter">mysqlnd_qc.collect_normalized_query_trace</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Collect aggregated normalized query traces? The setting
+      has no effect by default. You compile the extension
+      using the define
+      <code class="literal">NORM_QUERY_TRACE_LOG</code> to make use of the setting.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.std-data-copy">
+     <code class="parameter">mysqlnd_qc.std_data_copy</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Default storage handler: copy cached wire data?
+      EXPERIMENTAL – use default setting!
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.apc-prefix">
+     <code class="parameter">mysqlnd_qc.apc_prefix</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      The
+      <code class="literal">APC</code> storage handler stores data in the
+      <code class="literal">APC</code> user cache. The setting sets a prefix to be
+      used for cache entries.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.memc-server">
+     <code class="parameter">mysqlnd_qc.memc_server</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="literal">MEMCACHE</code> storage handler: memcache server host.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.memc-port">
+     <code class="parameter">mysqlnd_qc.memc_port</code>
+     <span class="type">int</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="literal">MEMCACHE</code> storage handler: memcached server port.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.mysqlnd-qc.sqlite-data-file">
+     <code class="parameter">mysqlnd_qc.sqlite_data_file</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="literal">sqlite</code> storage handler: data file. Any setting
+      but <code class="literal">:memory:</code> may be of little practical value.
+     </p>
+    </dd>
+
+   
+
+  </dl>
+
+ 
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8308);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

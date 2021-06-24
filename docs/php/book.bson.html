@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>BSON type classes and serialization functions - 开发帮助文档</title> 
+    <meta name="keyword" content="book.bson"> 
+    <meta name="description" content="book.bson"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="898" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/book.bson.html" title="BSON type classes and serialization functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    BSON type classes and serialization functions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/book.mongodb.html" title="MongoDB 驱动类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    MongoDB 驱动类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.architecture.html" title="Explains the driver architecture, and special features">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Explains the driver architecture, and special features
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.exceptions.html" title="Exception 类">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Exception 类
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.monitoring.html" title="Monitoring classes and subscriber functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Monitoring classes and subscriber functions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.security.html" title="Security">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Security
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.tutorial.html" title="Tutorials">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Tutorials
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb-driver-writeresult.isacknowledged.html">« MongoDB\Driver\WriteResult::isAcknowledged</a></li>
+      <li style="float: right;"><a href="ref.bson.functions.html">函数 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="set.mongodb.html">MongoDB</a></li>
+    <li>BSON type classes and serialization functions</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="book.bson" class="book">
+  <h1 class="title">BSON type classes and serialization functions</h1>
+  
+
+  
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+ <ul class="chunklist chunklist_book"><li><a href="ref.bson.functions.html">函数</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.mongodb.bson-fromjson.html">MongoDB\BSON\fromJSON</a> — Returns the BSON representation of a JSON value</li><li><a href="function.mongodb.bson-fromphp.html">MongoDB\BSON\fromPHP</a> — Returns the BSON representation of a PHP value</li><li><a href="function.mongodb.bson-tocanonicalextendedjson.html">MongoDB\BSON\toCanonicalExtendedJSON</a> — Returns the Canonical Extended JSON representation of a BSON value</li><li><a href="function.mongodb.bson-tojson.html">MongoDB\BSON\toJSON</a> — Returns the Legacy Extended JSON representation of a BSON value</li><li><a href="function.mongodb.bson-tophp.html">MongoDB\BSON\toPHP</a> — Returns the PHP representation of a BSON value</li><li><a href="function.mongodb.bson-torelaxedextendedjson.html">MongoDB\BSON\toRelaxedExtendedJSON</a> — Returns the Relaxed Extended JSON representation of a BSON value</li></ul></li><li><a href="class.mongodb-bson-binary.html">MongoDB\BSON\Binary</a> — The MongoDB\BSON\Binary class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-binary.construct.html">MongoDB\BSON\Binary::__construct</a> — Construct a new Binary</li><li><a href="mongodb-bson-binary.getdata.html">MongoDB\BSON\Binary::getData</a> — Returns the Binary's data</li><li><a href="mongodb-bson-binary.gettype.html">MongoDB\BSON\Binary::getType</a> — Returns the Binary's type</li><li><a href="mongodb-bson-binary.jsonserialize.html">MongoDB\BSON\Binary::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-binary.serialize.html">MongoDB\BSON\Binary::serialize</a> — Serialize a Binary</li><li><a href="mongodb-bson-binary.tostring.html">MongoDB\BSON\Binary::__toString</a> — Returns the Binary's data</li><li><a href="mongodb-bson-binary.unserialize.html">MongoDB\BSON\Binary::unserialize</a> — Unserialize a Binary</li></ul></li><li><a href="class.mongodb-bson-decimal128.html">MongoDB\BSON\Decimal128</a> — The MongoDB\BSON\Decimal128 class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-decimal128.construct.html">MongoDB\BSON\Decimal128::__construct</a> — Construct a new Decimal128</li><li><a href="mongodb-bson-decimal128.jsonserialize.html">MongoDB\BSON\Decimal128::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-decimal128.serialize.html">MongoDB\BSON\Decimal128::serialize</a> — Serialize a Decimal128</li><li><a href="mongodb-bson-decimal128.tostring.html">MongoDB\BSON\Decimal128::__toString</a> — Returns the string representation of this Decimal128</li><li><a href="mongodb-bson-decimal128.unserialize.html">MongoDB\BSON\Decimal128::unserialize</a> — Unserialize a Decimal128</li></ul></li><li><a href="class.mongodb-bson-javascript.html">MongoDB\BSON\Javascript</a> — The MongoDB\BSON\Javascript class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-javascript.construct.html">MongoDB\BSON\Javascript::__construct</a> — Construct a new Javascript</li><li><a href="mongodb-bson-javascript.getcode.html">MongoDB\BSON\Javascript::getCode</a> — Returns the Javascript's code</li><li><a href="mongodb-bson-javascript.getscope.html">MongoDB\BSON\Javascript::getScope</a> — Returns the Javascript's scope document</li><li><a href="mongodb-bson-javascript.jsonserialize.html">MongoDB\BSON\Javascript::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-javascript.serialize.html">MongoDB\BSON\Javascript::serialize</a> — Serialize a Javascript</li><li><a href="mongodb-bson-javascript.tostring.html">MongoDB\BSON\Javascript::__toString</a> — Returns the Javascript's code</li><li><a href="mongodb-bson-javascript.unserialize.html">MongoDB\BSON\Javascript::unserialize</a> — Unserialize a Javascript</li></ul></li><li><a href="class.mongodb-bson-maxkey.html">MongoDB\BSON\MaxKey</a> — The MongoDB\BSON\MaxKey class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-maxkey.construct.html">MongoDB\BSON\MaxKey::__construct</a> — Construct a new MaxKey</li><li><a href="mongodb-bson-maxkey.jsonserialize.html">MongoDB\BSON\MaxKey::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-maxkey.serialize.html">MongoDB\BSON\MaxKey::serialize</a> — Serialize a MaxKey</li><li><a href="mongodb-bson-maxkey.unserialize.html">MongoDB\BSON\MaxKey::unserialize</a> — Unserialize a MaxKey</li></ul></li><li><a href="class.mongodb-bson-minkey.html">MongoDB\BSON\MinKey</a> — The MongoDB\BSON\MinKey class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-minkey.construct.html">MongoDB\BSON\MinKey::__construct</a> — Construct a new MinKey</li><li><a href="mongodb-bson-minkey.jsonserialize.html">MongoDB\BSON\MinKey::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-minkey.serialize.html">MongoDB\BSON\MinKey::serialize</a> — Serialize a MinKey</li><li><a href="mongodb-bson-minkey.unserialize.html">MongoDB\BSON\MinKey::unserialize</a> — Unserialize a MinKey</li></ul></li><li><a href="class.mongodb-bson-objectid.html">MongoDB\BSON\ObjectId</a> — The MongoDB\BSON\ObjectId class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-objectid.construct.html">MongoDB\BSON\ObjectId::__construct</a> — Construct a new ObjectId</li><li><a href="mongodb-bson-objectid.gettimestamp.html">MongoDB\BSON\ObjectId::getTimestamp</a> — Returns the timestamp component of this ObjectId</li><li><a href="mongodb-bson-objectid.jsonserialize.html">MongoDB\BSON\ObjectId::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-objectid.serialize.html">MongoDB\BSON\ObjectId::serialize</a> — Serialize an ObjectId</li><li><a href="mongodb-bson-objectid.tostring.html">MongoDB\BSON\ObjectId::__toString</a> — Returns the hexidecimal representation of this ObjectId</li><li><a href="mongodb-bson-objectid.unserialize.html">MongoDB\BSON\ObjectId::unserialize</a> — Unserialize an ObjectId</li></ul></li><li><a href="class.mongodb-bson-regex.html">MongoDB\BSON\Regex</a> — The MongoDB\BSON\Regex class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-regex.construct.html">MongoDB\BSON\Regex::__construct</a> — Construct a new Regex</li><li><a href="mongodb-bson-regex.getflags.html">MongoDB\BSON\Regex::getFlags</a> — Returns the Regex's flags</li><li><a href="mongodb-bson-regex.getpattern.html">MongoDB\BSON\Regex::getPattern</a> — Returns the Regex's pattern</li><li><a href="mongodb-bson-regex.jsonserialize.html">MongoDB\BSON\Regex::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-regex.serialize.html">MongoDB\BSON\Regex::serialize</a> — Serialize a Regex</li><li><a href="mongodb-bson-regex.tostring.html">MongoDB\BSON\Regex::__toString</a> — Returns the string representation of this Regex</li><li><a href="mongodb-bson-regex.unserialize.html">MongoDB\BSON\Regex::unserialize</a> — Unserialize a Regex</li></ul></li><li><a href="class.mongodb-bson-timestamp.html">MongoDB\BSON\Timestamp</a> — The MongoDB\BSON\Timestamp class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-timestamp.construct.html">MongoDB\BSON\Timestamp::__construct</a> — Construct a new Timestamp</li><li><a href="mongodb-bson-timestamp.getincrement.html">MongoDB\BSON\Timestamp::getIncrement</a> — Returns the increment component of this Timestamp</li><li><a href="mongodb-bson-timestamp.gettimestamp.html">MongoDB\BSON\Timestamp::getTimestamp</a> — Returns the timestamp component of this Timestamp</li><li><a href="mongodb-bson-timestamp.jsonserialize.html">MongoDB\BSON\Timestamp::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-timestamp.serialize.html">MongoDB\BSON\Timestamp::serialize</a> — Serialize a Timestamp</li><li><a href="mongodb-bson-timestamp.tostring.html">MongoDB\BSON\Timestamp::__toString</a> — Returns the string representation of this Timestamp</li><li><a href="mongodb-bson-timestamp.unserialize.html">MongoDB\BSON\Timestamp::unserialize</a> — Unserialize a Timestamp</li></ul></li><li><a href="class.mongodb-bson-utcdatetime.html">MongoDB\BSON\UTCDateTime</a> — The MongoDB\BSON\UTCDateTime class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-utcdatetime.construct.html">MongoDB\BSON\UTCDateTime::__construct</a> — Construct a new UTCDateTime</li><li><a href="mongodb-bson-utcdatetime.jsonserialize.html">MongoDB\BSON\UTCDateTime::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-utcdatetime.serialize.html">MongoDB\BSON\UTCDateTime::serialize</a> — Serialize a UTCDateTime</li><li><a href="mongodb-bson-utcdatetime.todatetime.html">MongoDB\BSON\UTCDateTime::toDateTime</a> — Returns the DateTime representation of this UTCDateTime</li><li><a href="mongodb-bson-utcdatetime.tostring.html">MongoDB\BSON\UTCDateTime::__toString</a> — Returns the string representation of this UTCDateTime</li><li><a href="mongodb-bson-utcdatetime.unserialize.html">MongoDB\BSON\UTCDateTime::unserialize</a> — Unserialize a UTCDateTime</li></ul></li><li><a href="class.mongodb-bson-type.html">MongoDB\BSON\Type</a> — The MongoDB\BSON\Type interface</li><li><a href="class.mongodb-bson-persistable.html">MongoDB\BSON\Persistable</a> — The MongoDB\BSON\Persistable interface</li><li><a href="class.mongodb-bson-serializable.html">MongoDB\BSON\Serializable</a> — The MongoDB\BSON\Serializable interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-serializable.bsonserialize.html">MongoDB\BSON\Serializable::bsonSerialize</a> — Provides an array or document to serialize as BSON</li></ul></li><li><a href="class.mongodb-bson-unserializable.html">MongoDB\BSON\Unserializable</a> — The MongoDB\BSON\Unserializable interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-unserializable.bsonunserialize.html">MongoDB\BSON\Unserializable::bsonUnserialize</a> — Constructs the object from a BSON array or document</li></ul></li><li><a href="class.mongodb-bson-binaryinterface.html">MongoDB\BSON\BinaryInterface</a> — The MongoDB\BSON\BinaryInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-binaryinterface.getdata.html">MongoDB\BSON\BinaryInterface::getData</a> — Returns the BinaryInterface's data</li><li><a href="mongodb-bson-binaryinterface.gettype.html">MongoDB\BSON\BinaryInterface::getType</a> — Returns the BinaryInterface's type</li><li><a href="mongodb-bson-binaryinterface.tostring.html">MongoDB\BSON\BinaryInterface::__toString</a> — Returns the BinaryInterface's data</li></ul></li><li><a href="class.mongodb-bson-decimal128interface.html">MongoDB\BSON\Decimal128Interface</a> — The MongoDB\BSON\Decimal128Interface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-decimal128interface.tostring.html">MongoDB\BSON\Decimal128Interface::__toString</a> — Returns the string representation of this Decimal128Interface</li></ul></li><li><a href="class.mongodb-bson-javascriptinterface.html">MongoDB\BSON\JavascriptInterface</a> — The MongoDB\BSON\JavascriptInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-javascriptinterface.getcode.html">MongoDB\BSON\JavascriptInterface::getCode</a> — Returns the JavascriptInterface's code</li><li><a href="mongodb-bson-javascriptinterface.getscope.html">MongoDB\BSON\JavascriptInterface::getScope</a> — Returns the JavascriptInterface's scope document</li><li><a href="mongodb-bson-javascriptinterface.tostring.html">MongoDB\BSON\JavascriptInterface::__toString</a> — Returns the JavascriptInterface's code</li></ul></li><li><a href="class.mongodb-bson-maxkeyinterface.html">MongoDB\BSON\MaxKeyInterface</a> — The MongoDB\BSON\MaxKeyInterface interface</li><li><a href="class.mongodb-bson-minkeyinterface.html">MongoDB\BSON\MinKeyInterface</a> — The MongoDB\BSON\MinKeyInterface interface</li><li><a href="class.mongodb-bson-objectidinterface.html">MongoDB\BSON\ObjectIdInterface</a> — The MongoDB\BSON\ObjectIdInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-objectidinterface.gettimestamp.html">MongoDB\BSON\ObjectIdInterface::getTimestamp</a> — Returns the timestamp component of this ObjectIdInterface</li><li><a href="mongodb-bson-objectidinterface.tostring.html">MongoDB\BSON\ObjectIdInterface::__toString</a> — Returns the hexidecimal representation of this ObjectIdInterface</li></ul></li><li><a href="class.mongodb-bson-regexinterface.html">MongoDB\BSON\RegexInterface</a> — The MongoDB\BSON\RegexInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-regexinterface.getflags.html">MongoDB\BSON\RegexInterface::getFlags</a> — Returns the RegexInterface's flags</li><li><a href="mongodb-bson-regexinterface.getpattern.html">MongoDB\BSON\RegexInterface::getPattern</a> — Returns the RegexInterface's pattern</li><li><a href="mongodb-bson-regexinterface.tostring.html">MongoDB\BSON\RegexInterface::__toString</a> — Returns the string representation of this RegexInterface</li></ul></li><li><a href="class.mongodb-bson-timestampinterface.html">MongoDB\BSON\TimestampInterface</a> — The MongoDB\BSON\TimestampInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-timestampinterface.getincrement.html">MongoDB\BSON\TimestampInterface::getIncrement</a> — Returns the increment component of this TimestampInterface</li><li><a href="mongodb-bson-timestampinterface.gettimestamp.html">MongoDB\BSON\TimestampInterface::getTimestamp</a> — Returns the timestamp component of this TimestampInterface</li><li><a href="mongodb-bson-timestampinterface.tostring.html">MongoDB\BSON\TimestampInterface::__toString</a> — Returns the string representation of this TimestampInterface</li></ul></li><li><a href="class.mongodb-bson-utcdatetimeinterface.html">MongoDB\BSON\UTCDateTimeInterface</a> — The MongoDB\BSON\UTCDateTimeInterface interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-utcdatetimeinterface.todatetime.html">MongoDB\BSON\UTCDateTimeInterface::toDateTime</a> — Returns the DateTime representation of this UTCDateTimeInterface</li><li><a href="mongodb-bson-utcdatetimeinterface.tostring.html">MongoDB\BSON\UTCDateTimeInterface::__toString</a> — Returns the string representation of this UTCDateTimeInterface</li></ul></li><li><a href="class.mongodb-bson-dbpointer.html">MongoDB\BSON\DBPointer</a> — The MongoDB\BSON\DBPointer class (deprecated)<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-dbpointer.construct.html">MongoDB\BSON\DBPointer::__construct</a> — Construct a new DBPointer (unused)</li><li><a href="mongodb-bson-dbpointer.jsonserialize.html">MongoDB\BSON\DBPointer::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-dbpointer.serialize.html">MongoDB\BSON\DBPointer::serialize</a> — Serialize a DBPointer</li><li><a href="mongodb-bson-dbpointer.tostring.html">MongoDB\BSON\DBPointer::__toString</a> — Returns an empty string</li><li><a href="mongodb-bson-dbpointer.unserialize.html">MongoDB\BSON\DBPointer::unserialize</a> — Unserialize a DBPointer</li></ul></li><li><a href="class.mongodb-bson-int64.html">MongoDB\BSON\Int64</a> — The MongoDB\BSON\Int64 class<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-int64.construct.html">MongoDB\BSON\Int64::__construct</a> — Construct a new Int64 (unused)</li><li><a href="mongodb-bson-int64.jsonserialize.html">MongoDB\BSON\Int64::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-int64.serialize.html">MongoDB\BSON\Int64::serialize</a> — Serialize an Int64</li><li><a href="mongodb-bson-int64.tostring.html">MongoDB\BSON\Int64::__toString</a> — Returns the string representation of this Int64</li><li><a href="mongodb-bson-int64.unserialize.html">MongoDB\BSON\Int64::unserialize</a> — Unserialize an Int64</li></ul></li><li><a href="class.mongodb-bson-symbol.html">MongoDB\BSON\Symbol</a> — The MongoDB\BSON\Symbol class (deprecated)<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-symbol.construct.html">MongoDB\BSON\Symbol::__construct</a> — Construct a new Symbol (unused)</li><li><a href="mongodb-bson-symbol.jsonserialize.html">MongoDB\BSON\Symbol::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-symbol.serialize.html">MongoDB\BSON\Symbol::serialize</a> — Serialize a Symbol</li><li><a href="mongodb-bson-symbol.tostring.html">MongoDB\BSON\Symbol::__toString</a> — Returns the Symbol as a string</li><li><a href="mongodb-bson-symbol.unserialize.html">MongoDB\BSON\Symbol::unserialize</a> — Unserialize a Symbol</li></ul></li><li><a href="class.mongodb-bson-undefined.html">MongoDB\BSON\Undefined</a> — The MongoDB\BSON\Undefined class (deprecated)<ul class="chunklist chunklist_book chunklist_children"><li><a href="mongodb-bson-undefined.construct.html">MongoDB\BSON\Undefined::__construct</a> — Construct a new Undefined (unused)</li><li><a href="mongodb-bson-undefined.jsonserialize.html">MongoDB\BSON\Undefined::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-undefined.serialize.html">MongoDB\BSON\Undefined::serialize</a> — Serialize a Undefined</li><li><a href="mongodb-bson-undefined.tostring.html">MongoDB\BSON\Undefined::__toString</a> — Returns an empty string</li><li><a href="mongodb-bson-undefined.unserialize.html">MongoDB\BSON\Undefined::unserialize</a> — Unserialize a Undefined</li></ul></li></ul></div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 490);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

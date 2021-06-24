@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>队列 - 开发帮助文档</title> 
+    <meta name="keyword" content="queues"> 
+    <meta name="description" content="queues"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="7" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/artisan.html" title="Artisan 命令行">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan 命令行
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authentication.html" title="用户认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/authorization.html" title="用户授权">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    用户授权
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/blade.html" title="Blade 模板">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade 模板
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/broadcasting.html" title="广播系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    广播系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/cache.html" title="缓存系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    缓存系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/collections.html" title="集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/console-tests.html" title="控制台测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    控制台测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/container.html" title="服务容器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务容器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contracts.html" title="契约">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    契约
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/contributions.html" title="贡献导引">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    贡献导引
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/csrf.html" title="CSRF 保护">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF 保护
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database-testing.html" title="数据库测试">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库测试
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/database.html" title="数据库: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/deployment.html" title="部署">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    部署
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/documentation.html" title="前言">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    前言
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-collections.html" title="Eloquent: 集合">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 集合
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-mutators.html" title="Eloquent: 修改器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 修改器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-relationships.html" title="Eloquent: 关联">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 关联
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-resources.html" title="Eloquent: API 资源">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API 资源
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent-serialization.html" title="Eloquent: 序列化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 序列化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/eloquent.html" title="Eloquent: 入门">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: 入门
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/encryption.html" title="加密解密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    加密解密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/errors.html" title="错误处理">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    错误处理
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/events.html" title="事件系统">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    事件系统
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/frontend.html" title="JavaScript &amp; CSS 脚手架">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    JavaScript &amp; CSS 脚手架
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/hashing.html" title="哈希加密">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    哈希加密
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/helpers.html" title="辅助函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    辅助函数
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-client.html" title="HTTP 客户端">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 客户端
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/installation.html" title="安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/lifecycle.html" title="请求生命周期">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    请求生命周期
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/localization.html" title="本地化">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    本地化
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/logging.html" title="日志">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    日志
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mail.html" title="邮件发送">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    邮件发送
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/middleware.html" title="中间件">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    中间件
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/migrations.html" title="数据库：迁移">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：迁移
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mix.html" title="编辑资源 (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    编辑资源 (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/notifications.html" title="消息通知">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    消息通知
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/pagination.html" title="数据库: 分页">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库: 分页
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/passwords.html" title="重置密码">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    重置密码
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/providers.html" title="服务提供者">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    服务提供者
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queries.html" title="数据库：查询构造器">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：查询构造器
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/queues.html" title="队列">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    队列
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/releases.html" title="发行说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    发行说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/requests.html" title="HTTP 请求">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 请求
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/routing.html" title="路由">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    路由
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scheduling.html" title="任务调度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    任务调度
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/seeding.html" title="数据库：填充">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    数据库：填充
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/session.html" title="HTTP 会话机制">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP 会话机制
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/socialite.html" title="Laravel 社会化登录">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel 社会化登录
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/structure.html" title="目录结构">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    目录结构
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/testing.html" title="测试：入门指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    测试：入门指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/upgrade.html" title="升级指南">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    升级指南
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/urls.html" title="生成 URL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    生成 URL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/validation.html" title="表单验证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    表单验证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/verification.html" title="Email 认证">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email 认证
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8_zh/views.html" title="视图">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    视图
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>队列</h1>
+<ul>
+<li><a href="#introduction">介绍</a>
+<ul>
+<li><a href="#connections-vs-queues">连接 Vs. 队列</a></li>
+<li><a href="#driver-prerequisites">驱动程序说明 &amp; 先决条件</a></li>
+</ul></li>
+<li><a href="#creating-jobs">创建任务</a>
+<ul>
+<li><a href="#generating-job-classes">生成任务类</a></li>
+<li><a href="#class-structure">任务类结构</a></li>
+<li><a href="#job-middleware">任务中间件</a></li>
+</ul></li>
+<li><a href="#dispatching-jobs">分发任务</a>
+<ul>
+<li><a href="#delayed-dispatching">延迟分发</a></li>
+<li><a href="#synchronous-dispatching">同步调度</a></li>
+<li><a href="#job-chaining">任务链</a></li>
+<li><a href="#customizing-the-queue-and-connection">自定义队列 &amp; 连接</a></li>
+<li><a href="#max-job-attempts-and-timeout">指定任务最大尝试次数 / 超时值</a></li>
+<li><a href="#rate-limiting">访问限制</a></li>
+<li><a href="#error-handling">错误处理</a></li>
+</ul></li>
+<li><a href="#job-batching">任务批处理</a>
+<ul>
+<li><a href="#defining-batchable-jobs">定义批处理任务</a></li>
+<li><a href="#dispatching-batches">分发批处理</a></li>
+<li><a href="#adding-jobs-to-batches">将任务加入批处理</a></li>
+<li><a href="#inspecting-batches">校验批处理</a></li>
+<li><a href="#cancelling-batches">取消批处理</a></li>
+<li><a href="#batch-failures">批处理失败</a></li>
+</ul></li>
+<li><a href="#queueing-closures">队列闭包</a></li>
+<li><a href="#running-the-queue-worker">运行队列处理器</a>
+<ul>
+<li><a href="#queue-priorities">队列优先级</a></li>
+<li><a href="#queue-workers-and-deployment">队列处理器 &amp; 部署</a></li>
+<li><a href="#job-expirations-and-timeouts">任务过期 &amp; 超时</a></li>
+</ul></li>
+<li><a href="#supervisor-configuration">Supervisor 配置</a></li>
+<li><a href="#dealing-with-failed-jobs">处理失败队列</a>
+<ul>
+<li><a href="#cleaning-up-after-failed-jobs">清理失败任务</a></li>
+<li><a href="#failed-job-events">任务失败事件</a></li>
+<li><a href="#retrying-failed-jobs">尝试失败任务</a></li>
+<li><a href="#ignoring-missing-models">忽略缺失的模型</a></li>
+</ul></li>
+<li><a href="#job-events">任务事件</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>介绍</h2>
+<blockquote>
+<p>技巧：现在，Laravel 为你的 Redis 队列提供了 Horizon，一个漂亮的仪表盘和配置系统。查看完整的 <a href="/docs/laravel_8_zh/horizon.html">Horizon 文档</a> 了解更多信息。</p>
+</blockquote>
+<p>Laravel 队列提供了可以跨各种不同队列后台的统一 API，例如 Beanstalk、Amazon SQS、Redis 甚至关系数据库。通过队列，你可以将耗时任务 (如发送电子邮件) 的处理往后推延。延迟这些耗时的任务可以极大地提升 web 请求响应速度。</p>
+<p>队列配置文件存储在 <code>config/queue.php</code> 中。 在这个文件中，你可以找到框架中包含的每个队列驱动程序的连接配置，其中包括数据库，<a href="https://beanstalkd.github.io/">Beanstalkd</a>，<a href="https://aws.amazon.com/sqs/">Amazon SQS</a>，<a href="https://redis.io">Redis</a>，和一个同步驱动程序（供本地使用）。还包括一个用于丢弃排队任务的 <code>null</code> 队列驱动。</p>
+<p><a name="connections-vs-queues"></a></p>
+<h3>连接 Vs. 队列</h3>
+<p>在开始使用 Laravel 队列之前，理解「连接」和「队列」之间的区别非常重要。 在 <code>config/queue.php</code> 配置文件中，有一个 <code>connections</code> 配置选项。 此选项定义到后端服务（如 Amazon SQS、Beanstalk 或 Redis）的特定连接。 然而，任何给定的队列连接都可能有多个「队列」，这些「队列」可能被认为是不同的堆栈或成堆的排队任务。</p>
+<p>请注意， <code>queue</code> 配置文件中的每个连接配置示例都包含一个 <code>queue</code> 属性。 这是将任务发送到给定连接时将被分配到的默认队列。换句话说，如果您没有显式地定义任务应该被发送到哪个队列，那么该任务将被放置在连接配置的 <code>queue</code> 属性中定义的队列上:</p>
+<pre><code>// 这个任务将被推送到默认队列...
+Job::dispatch();
+
+// 这个任务将被推送到 "emails" 队列...
+Job::dispatch()-&gt;onQueue('emails');</code></pre>
+<p>有些应用程序可能不需要将任务推到多个队列中，而是倾向于使用一个简单的队列。然而，如果希望对任务的处理方式进行优先级排序或分段时，将任务推送到多个队列就显得特别有用，因为 Laravel 队列工作程序允许您指定哪些队列应该按优先级处理。例如，如果您将任务推送到一个 <code>high</code> 队列，你可能会运行一个赋予它们更高处理优先级的 worker:</p>
+<pre><code>php artisan queue:work --queue=high,default</code></pre>
+<p><a name="driver-prerequisites"></a></p>
+<h3>驱动程序说明和先决条件</h3>
+<h4>数据库</h4>
+<p>要使用 <code>database</code> 队列驱动程序，你需要一个数据库表来保存任务。要生成创建此表的迁移，请运行 <code>queue:table</code> Artisan 命令。一旦迁移已经创建，你可以使用 <code>migrate</code> 命令迁移你的数据库:</p>
+<pre><code>php artisan queue:table
+
+php artisan migrate</code></pre>
+<h4>Redis</h4>
+<p>要使用 <code>redis</code> 队列驱动程序，需要在 <code>config/database.php</code> 配置文件中配置一个 redis 数据库连接。</p>
+<p><strong>Redis 集群</strong></p>
+<p>如果你的 <code>Redis</code> 队列连接使用一个 <code>Redis</code> 集群，那么你的队列名称就必须包含一个 <a href="https://redis.io/topics/cluster-spec#keys-hash-tags">key hash tag</a>。这是为了确保一个给定队列的所有 <code>Redis</code> 键都被放在同一个哈希插槽：</p>
+<pre><code>'redis' =&gt; [
+    'driver' =&gt; 'redis',
+    'connection' =&gt; 'default',
+    'queue' =&gt; '{default}',
+    'retry_after' =&gt; 90,
+],</code></pre>
+<p><strong>阻塞</strong></p>
+<p>在使用 Redis 队列时，您可以使用 <code>block_for</code> 配置选项来指定在遍历 worker 循环和重新轮询 Redis 数据库之前，驱动程序需要等待多长时间才能使任务变得可用。</p>
+<p>根据您的队列负载调整此值要比连续轮询 Redis 数据库中的新任务更加有效。例如，您可以将值设置为 <code>5</code>，以指示驱动程序在等待任务变得可用时应该阻塞 5 秒：</p>
+<pre><code>'redis' =&gt; [
+    'driver' =&gt; 'redis',
+    'connection' =&gt; 'default',
+    'queue' =&gt; 'default',
+    'retry_after' =&gt; 90,
+    'block_for' =&gt; 5,
+],</code></pre>
+<blockquote>
+<p>注意：将 <code>block_for</code> 设置为 <code>0</code> 将导致队列 <code>workers</code> 一直阻塞，直到某一个任务变得可用。这还能防止在下一个任务被处理之前处理诸如 <code>SIGTERM</code> 之类的信号。</p>
+</blockquote>
+<h4>其他驱动的先决条件</h4>
+<p>列出的队列驱动需要如下的依赖：</p>
+<div class="content-list">
+<ul>
+<li>Amazon SQS: <code>aws/aws-sdk-php ~3.0</code></li>
+<li>Beanstalkd: <code>pda/pheanstalk ~4.0</code></li>
+<li>Redis: <code>predis/predis ~1.0</code> 或 phpredis PHP 扩展</li>
+</ul>
+</div>
+<p><a name="creating-jobs"></a></p>
+<h2>创建任务</h2>
+<p><a name="generating-job-classes"></a></p>
+<h3>生成任务类</h3>
+<p>默认情况下，应用程序的所有的可排队任务都被存储在了 <code>app/Jobs</code> 目录中。如果 <code>app/Jobs</code> 目录不存在，当您运行 <code>make:job</code> Artisan 命令时，将会自动创建它。您可以使用 Artisan CLI 来生成一个新的队列任务：</p>
+<pre><code>php artisan make:job ProcessPodcast</code></pre>
+<p>生成的类将会实现 <code>Illuminate\Contracts\Queue\ShouldQueue</code> 接口，告诉 Laravel ，该任务应该推入队列以异步的方式运行。</p>
+<blockquote>
+<p>技巧：您可以使用 <a href="/docs/laravel_8_zh/artisan.html#stub-customization">stub 发布</a> 来自定义任务 stub 。</p>
+</blockquote>
+<p><a name="class-structure"></a></p>
+<h3>类结构</h3>
+<p>任务类非常简单，通常只包含一个 <code>handle</code> 方法，在队列处理任务时将会调用它。让我们从一个任务类的例子看起。在这个例子中，我们假设我们管理一个 podcast 服务，并且需要在上传的 podcast 文件发布之前对其进行处理：</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use App\Models\Podcast;
+use App\Services\AudioProcessor;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class ProcessPodcast implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $podcast;
+
+    /**
+     * 创建一个新的任务实例。
+     *
+     * @param  Podcast  $podcast
+     * @return void
+     */
+    public function __construct(Podcast $podcast)
+    {
+        $this-&gt;podcast = $podcast;
+    }
+
+    /**
+     * 运行任务
+     *
+     * @param  AudioProcessor  $processor
+     * @return void
+     */
+    public function handle(AudioProcessor $processor)
+    {
+        // Process uploaded podcast...
+    }
+}</code></pre>
+<p>在本例中，请注意我们能够将一个 <a href="/docs/laravel_8_zh/eloquent.html">Eloquent model</a> 直接传递到已排队任务的构造函数中。由于任务所使用的 <code>SerializesModels</code> ，在任务处理时，Eloquent 模型及其加载的关系将被优雅地序列化和非序列化。如果你的队列任务在其构造函数中接受一个 Eloquent 模型，那么只有模型的标识符才会被序列化到队列中。当实际处理任务时，队列系统将自动重新从数据库中获取完整的模型实例及其加载的关系。它对你的应用程序来说是完全透明的，并且可以防止在序列化完整的 Eloquent 模型实例时可能出现的问题。</p>
+<p>当任务由队列处理时，将调用 <code>handle</code> 方法。注意，我们可以对任务的 <code>handle</code> 方法进行类型提示依赖。Laravel <a href="/docs/laravel_8_zh/container.html">服务容器</a> 会自动注入这些依赖项。</p>
+<p>如果您想完全控制容器如何将依赖注入 <code>handle</code> 方法，你可以使用容器的 <code>bindMethod</code> 方法。<code>bindMethod</code> 方法接受一个回调，该回调接收任务和容器。在回调中，你可以随意调用 <code>handle</code> 方法。通常，您应该从<a href="/docs/laravel_8_zh/providers.html">服务提供者</a>中调用此方法：</p>
+<pre><code>use App\Jobs\ProcessPodcast;
+
+$this-&gt;app-&gt;bindMethod(ProcessPodcast::class.'@handle', function ($job, $app) {
+    return $job-&gt;handle($app-&gt;make(AudioProcessor::class));
+});</code></pre>
+<blockquote>
+<p>注意：二进制数据，例如原始图像内容，应该在传递到队列任务之前通过 <code>base64_encode</code> 函数传递。否则，在将任务放入队列时，可能无法正确地序列化为 JSON。</p>
+</blockquote>
+<h4>处理关联关系</h4>
+<p>因为要加载的 Model 关联关系也会被序列化，导致序列化的任务字符串可能会变得非常大。为了防止关系被序列化，您可以在设置属性值时调用模型上的 <code>withoutRelations</code> 方法。这个方法会返回一个没有加载关系的模型实例：</p>
+<pre><code>/**
+ * 创建一个新的 job 实例
+ *
+ * @param  \App\Models\Podcast  $podcast
+ * @return void
+ */
+public function __construct(Podcast $podcast)
+{
+    $this-&gt;podcast = $podcast-&gt;withoutRelations();
+}</code></pre>
+<p><a name="job-middleware"></a></p>
+<h3>任务中间件</h3>
+<p>任务中间件允许你围绕排队任务的执行封装自定义逻辑，从而减少了任务本身的样板代码。例如，看下面的 <code>handle</code> 方法，它利用了 Laravel 的 Redis 速率限制特性，允许每 5 秒只处理一个任务：</p>
+<pre><code>/**
+ * 执行任务
+ *
+ * @return void
+ */
+public function handle()
+{
+    Redis::throttle('key')-&gt;block(0)-&gt;allow(1)-&gt;every(5)-&gt;then(function () {
+        info('获取锁 ...');
+
+        // 处理任务 ...
+    }, function () {
+        // 无法获取锁 ...
+
+        return $this-&gt;release(5);
+    });
+}</code></pre>
+<p>虽然这段代码是有效的， 但是 <code>handle</code> 方法的结构却变得杂乱，因为它掺杂了 Redis 速率限制逻辑。此外，其他任务需要使用速率限制的时候，只能将限制逻辑复制一次。</p>
+<p>我们可以定义一个处理速率限制的任务中间件，而不是在 <code>handle</code> 方法中定义速率限制。Laravel 没有任务中间件的默认位置，所以你可以将任务中间件放置在你喜欢的任何位置。在本例中，我们将把中间件放在 <code>app/Jobs/Middleware</code> 目录：</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs\Middleware;
+
+use Illuminate\Support\Facades\Redis;
+
+class RateLimited
+{
+    /**
+     * 让队列任务慢慢执行
+     *
+     * @param  mixed  $job
+     * @param  callable  $next
+     * @return mixed
+     */
+    public function handle($job, $next)
+    {
+        Redis::throttle('key')
+                -&gt;block(0)-&gt;allow(1)-&gt;every(5)
+                -&gt;then(function () use ($job, $next) {
+                    // 获取锁 ...
+
+                    $next($job);
+                }, function () use ($job) {
+                    // 无法获取锁 ...
+
+                    $job-&gt;release(5);
+                });
+    }
+}</code></pre>
+<p>正如你看到的, 类似于 <a href="/docs/laravel_8_zh/middleware.html">路由中间件</a>，任务中间件接收一个被生成的任务以及一个为了任务被继续进行而需要被注入的回调。</p>
+<p>在任务中间件被创建以后, 他们可能被关联到通过从任务的 <code>middleware</code> 方法返回的任务。这个方法并不存在于 <code>make:job</code> Artisan 命令搭建的任务中，所以你需要将它添加到你自己的任务类的定义中:</p>
+<pre><code>use App\Jobs\Middleware\RateLimited;
+
+/**
+ * 获取一个可以被传递通过的中间件任务
+ *
+ * @return array
+ */
+public function middleware()
+{
+    return [new RateLimited];
+}</code></pre>
+<p><a name="dispatching-jobs"></a></p>
+<h2>分发队列</h2>
+<p>一旦编写了任务类，就可以使用任务本身的 <code>dispatch</code> 方法来分派它。传递给 <code>dispatch</code>方法的参数将被传递给任务的构造函数：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPodcast;
+use Illuminate\Http\Request;
+
+class PodcastController extends Controller
+{
+    /**
+     * Store a new podcast.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // Create podcast...
+
+        ProcessPodcast::dispatch($podcast);
+    }
+}</code></pre>
+<p>如果你希望有条件地分派任务，可以使用 <code>dispatchIf</code> 和 <code>dispatchUnless</code> 方法:</p>
+<pre><code>ProcessPodcast::dispatchIf($accountActive === true, $podcast);
+
+ProcessPodcast::dispatchUnless($accountSuspended === false, $podcast);</code></pre>
+<p><a name="delayed-dispatching"></a></p>
+<h3>延迟分发</h3>
+<p>如果你希望有条件地执行队列任务，可以在分发任务时使用 <code>delay</code> 方法 。例如，让我们指定调度任务在10分钟后他被调度后才执行，在这之前它将是无效的：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPodcast;
+use Illuminate\Http\Request;
+
+class PodcastController extends Controller
+{
+    /**
+     * Store a new podcast.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // Create podcast...
+
+        ProcessPodcast::dispatch($podcast)
+                -&gt;delay(now()-&gt;addMinutes(10));
+    }
+}</code></pre>
+<blockquote>
+<p>注意：亚马逊 SQS 队列服务最大延时执行时间是 15 分钟</p>
+</blockquote>
+<h4>响应发送到浏览器后的调度</h4>
+<p>另外， <code>dispatchAfterResponse</code> 方法会延迟发送任务，直到将响应发送到用户的浏览器之后。这仍然允许用户开始使用应用程序，即使队列任务仍然在执行。这通常只适用于需要 1 秒钟的任务，比如发送电子邮件：</p>
+<pre><code>use App\Jobs\SendNotification;
+
+SendNotification::dispatchAfterResponse();</code></pre>
+<p>你可以 <code>dispatch</code> 一个闭包，并将 <code>afterResponse</code> 方法链到帮助程序上，在响应发送到浏览器后执行闭包：</p>
+<pre><code>use App\Mail\WelcomeMessage;
+use Illuminate\Support\Facades\Mail;
+
+dispatch(function () {
+    Mail::to('taylor@laravel.com')-&gt;send(new WelcomeMessage);
+})-&gt;afterResponse();</code></pre>
+<p><a name="synchronous-dispatching"></a></p>
+<h3>同步调度</h3>
+<p>如果您想要立即 (同步地) 调度任务，您可以使用 <code>dispatchSync</code> 方法。当使用此方法时，任务将不会排队，并将立即运行在当前进程：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPodcast;
+use Illuminate\Http\Request;
+
+class PodcastController extends Controller
+{
+    /**
+     * 存储一个新的podcast
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // 创建 podcast...
+
+        ProcessPodcast::dispatchSync($podcast);
+    }
+}</code></pre>
+<p><a name="job-chaining"></a></p>
+<h3>任务链</h3>
+<p>任务链允许您指定一组应在主任务成功执行后按顺序运行的排队任务。如果序列中的一个任务失败，其余的任务将不会运行。要执行一个排队的任务链，你可以使用 <code>Bus</code> facade 提供的 <code>chain</code> 方法：</p>
+<pre><code>use Illuminate\Support\Facades\Bus;
+
+Bus::chain([
+    new ProcessPodcast,
+    new OptimizePodcast,
+    new ReleasePodcast,
+])-&gt;dispatch();</code></pre>
+<p>除了链接作业任务实例，你还可以链接闭包：</p>
+<pre><code>Bus::chain([
+    new ProcessPodcast,
+    new OptimizePodcast,
+    function () {
+        Podcast::update(...);
+    },
+])-&gt;dispatch();</code></pre>
+<blockquote>
+<p>注意：使用 <code>$this-&gt;delete()</code> 方法删除作业不会阻止已被链接的任务被处理。只有当链中的任务失败时，该链才会停止执行。</p>
+</blockquote>
+<h4>链式连接 &amp; 队列</h4>
+<p>如果你想指定应该用于已连接任务的默认连接和队列，可以使用 <code>allOnConnection</code> 和 <code>allOnQueue</code> 方法。这些方法指定了应该使用的队列连接和队列名称，除非队列任务被显式地分配了一个不同的<strong>连接 / 队列</strong>:</p>
+<pre><code>Bus::chain([
+    new ProcessPodcast,
+    new OptimizePodcast,
+    new ReleasePodcast,
+])-&gt;dispatch()-&gt;allOnConnection('redis')-&gt;allOnQueue('podcasts');</code></pre>
+<h4>链式故障</h4>
+<p>当链接作业时，可以使用 <code>chain</code> 方法指定一个闭包，如果链中的作业失败，则应调用该该闭包。 给定的回调将接收导致作业失败的异常实例：</p>
+<pre><code>use Illuminate\Support\Facades\Bus;
+use Throwable;
+
+Bus::chain([
+    new ProcessPodcast,
+    new OptimizePodcast,
+    new ReleasePodcast,
+])-&gt;catch(function (Throwable $e) {
+    // 链式中的作业失败...
+})-&gt;dispatch();</code></pre>
+<p><a name="customizing-the-queue-and-connection"></a></p>
+<h3>自定义队列和连接</h3>
+<h4>调度到特定队列</h4>
+<p>通过将任务推到不同的队列，你可以对排队的任务进行<strong>分类</strong>，甚至可以对分配给不同队列的任务进行优先排序。请记住，这并不是将任务推到你的队列配置文件定义的不同队列<strong>连接</strong>，而是仅推到单个连接中的特定队列。若要指定队列，请在分派任务时使用 <code>onQueue</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPodcast;
+use Illuminate\Http\Request;
+
+class PodcastController extends Controller
+{
+    /**
+     * 存储一个新的 podcast
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // 创建 podcast...
+
+        ProcessPodcast::dispatch($podcast)-&gt;onQueue('processing');
+    }
+}</code></pre>
+<h4>发送到特定连接</h4>
+<p>如果你正在使用多个队列连接，可以指定将任务推送到哪个连接。要指定连接，在调度作业时使用 <code>onConnection</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\ProcessPodcast;
+use Illuminate\Http\Request;
+
+class PodcastController extends Controller
+{
+    /**
+     * 创建一个新的 podcast
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        // 创建 podcast...
+
+        ProcessPodcast::dispatch($podcast)-&gt;onConnection('sqs');
+    }
+}</code></pre>
+<p>你可以使用 <code>onConnection</code> 和 <code>onQueue</code> 方法来指定任务的连接和队列：</p>
+<pre><code>ProcessPodcast::dispatch($podcast)
+              -&gt;onConnection('sqs')
+              -&gt;onQueue('processing');</code></pre>
+<p><a name="max-job-attempts-and-timeout"></a></p>
+<h3>指定任务最大尝试次数 / 超时值</h3>
+<h4>最大尝试次数</h4>
+<p>指定任务可尝试的最大次数的其中一个方法是，通过 Artisan 命令行上的 <code>--tries</code> 开关：</p>
+<pre><code>php artisan queue:work --tries=3</code></pre>
+<p>但是，可以采用更细粒度的方法：定义任务类本身的最大尝试次数。如果在任务类上指定了最大尝试次数，它将优先于命令行上提供的值：</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+class ProcessPodcast implements ShouldQueue
+{
+    /**
+     * 任务尝试次数
+     *
+     * @var int
+     */
+    public $tries = 5;
+}</code></pre>
+<p><a name="time-based-attempts"></a></p>
+<h4>基于时间的尝试</h4>
+<p>除了定义任务失败前尝试的次数之外，还可以定义任务应该超时的时间。这允许在给定的时间范围内尝试任意次数的任务。要定义任务超时的时间，请在任务类中添加 <code>retryUntil</code> 方法：</p>
+<pre><code>/**
+ * Determine the time at which the job should timeout.
+ *
+ * @return \DateTime
+ */
+public function retryUntil()
+{
+    return now()-&gt;addSeconds(5);
+}</code></pre>
+<blockquote>
+<p>技巧：你也可以在队列事件监听器上定义一个 <code>retryUntil</code> 方法。</p>
+</blockquote>
+<h4>最大异常数</h4>
+<p>有时，你可能希望指定某个任务可尝试很多次，但如果重试次数超过了给定数量，触发了异常，则该任务应该失败。为了实现这一点，你可以在你的任务类中定义一个 <code>maxExceptions</code> 属性:</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+class ProcessPodcast implements ShouldQueue
+{
+    /**
+     * 任务可尝试的次数
+     *
+     * @var int
+     */
+    public $tries = 25;
+
+    /**
+     * 任务失败前允许的最大异常数
+     *
+     * @var int
+     */
+    public $maxExceptions = 3;
+
+    /**
+     * 执行任务
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        Redis::throttle('key')-&gt;allow(10)-&gt;every(60)-&gt;then(function () {
+            // 获得锁，处理podcast...
+        }, function () {
+            // 无法获得锁...
+            return $this-&gt;release(10);
+        });
+    }
+}</code></pre>
+<p>在此示例中，如果应用程序无法获得 Redis 锁，则任务将释放十秒钟，并将继续重试 25 次。但是，如果任务抛出三个未处理的异常，则该任务将失败。</p>
+<h4>超时</h4>
+<blockquote>
+<p>注意：必须安装 <code>pcntl</code> PHP扩展名才能指定任务超时。</p>
+</blockquote>
+<p>同样，任务可以运行的最大秒数可以使用 Artisan 命令行上的 --timeout 开关来指定:</p>
+<pre><code>php artisan queue:work --timeout=30</code></pre>
+<p>但是，你也可以定义允许任务在任务类本身上运行的最大秒数。如果在任务上指定了超时，它将优先于在命令行上指定的任何超时:</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+class ProcessPodcast implements ShouldQueue
+{
+    /**
+     * 在超时之前任务可以运行的秒数
+     *
+     * @var int
+     */
+    public $timeout = 120;
+}</code></pre>
+<p>有些时候，诸如 socket 或在 HTTP 连接之类的 IO 阻止进程可能不会遵守你指定的超时。 因此，在使用这些功能时，也应始终尝试使用其API指定超时。 例如，在使用 Guzzle 时，应始终指定连接并请求的超时时间。</p>
+<p><a name="rate-limiting"></a></p>
+<h3>速率限制</h3>
+<blockquote>
+<p>注意：该特性要求你的应用程序可以与 <a href="/docs/laravel_8_zh/redis.html">Redis 服务器</a> 交互。</p>
+</blockquote>
+<p>如果你的应用程序与 Redis 交互，你可能会根据时间或并发性限制排队任务。当排队的任务与同样有速率限制的 api 交互时，此特性可以派上用场。</p>
+<p>例如，使用 <code>throttle</code> 方法，您可以将给定类型的作业限制为每 60 秒只运行 10 次。如果无法获得锁，通常应将任务释放回队列，以便稍后重试：</p>
+<pre><code>Redis::throttle('key')-&gt;allow(10)-&gt;every(60)-&gt;then(function () {
+    // 任务逻辑...
+}, function () {
+    // 无法获得锁...
+
+    return $this-&gt;release(10);
+});</code></pre>
+<blockquote>
+<p>技巧：在上面的示例中， <code>key</code> 可以是唯一标识你希望对其进行速率限制的任务类型的任何字符串。例如，你可能希望基于任务的类名和它所操作的 Eloquent 模型的 id 来构造密钥。</p>
+<p>注意： 将一个已被限流的任务释放回队列仍然会增加该任务的 <code>attempts</code> 的总数。</p>
+</blockquote>
+<p>或者，你可以指定可以同时处理给定任务的 worker 的最大数量。当队列作业正在修改一个每次只能修改一个任务的资源时，这是很有用的。例如，使用 funnel 方法，你可以限制一个给定类型的任务一次只能由一个 worker 处理：</p>
+<pre><code>Redis::funnel('key')-&gt;limit(1)-&gt;then(function () {
+    // 任务逻辑...
+}, function () {
+    // 无法获得锁...
+
+    return $this-&gt;release(10);
+});</code></pre>
+<blockquote>
+<p>技巧：在使用速率限制时，很难确定任务成功运行所需的尝试次数。因此，将速率限制与 <a href="#time-based-attempts">基于时间的尝试</a> 结合起来是很有用的。</p>
+</blockquote>
+<p><a name="error-handling"></a></p>
+<h3>错误处理</h3>
+<p>如果在处理任务时抛出异常，则任务将自动释放回队列，以便再次尝试。直到它被尝试的次数达到你的申请允许的最大次数，该任务才将继续被释放。最大尝试次数由 <code>queue:work</code> Artisan 命令上使用的 <code>--tries</code> 开关定义。或者，可以在任务类本身上定义尝试的最大次数。有关运行队列 <code>worker</code> 的更多信息可以 <a href="#running-the-queue-worker">在下面找到</a>。</p>
+<p><a name="job-batching"></a></p>
+<h2>任务批处理</h2>
+<p>Laravel 的任务批处理功能使你可以轻松地执行一些任务，然后在任务完成执行后执行一些操作。 在开始之前，你应该创建数据库迁移以构建一个包含任务批处理元信息的表。可以使用 Artisan 命令 <code>queue：batches-table</code> 生成此迁移：</p>
+<pre><code>php artisan queue:batches-table
+
+php artisan migrate</code></pre>
+<p><a name="defining-batchable-jobs"></a></p>
+<h3>定义批处理任务</h3>
+<p>要构建可批处理的任务，你应该先 <a href="#creating-jobs">创建任务</a>，
+然后将 <code>Illuminate\Bus\Batchable</code> trait 添加到任务类，该 trait 提供了对 <code>betch</code> 方法的访问，该方法可用于检索任务当前执行的批处理：</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use App\Models\Podcast;
+use App\Services\AudioProcessor;
+use Illuminate\Bus\Batchable;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class ProcessPodcast implements ShouldQueue
+{
+    use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * 执行任务
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        if ($this-&gt;batch()-&gt;cancelled()) {
+            // 检测到批处理取消...
+
+            return;
+        }
+
+        // 批处理任务执行...
+    }
+}</code></pre>
+<p><a name="dispatching-batches"></a></p>
+<h3>分发批处理</h3>
+<p>要分发任务，你应该使用 <code>Bus</code> facade 的 <code>batch</code> 方法。当然，你可以和批处理的回调结合使用。因此，你可以使用 <code>then</code> ，<code>catch</code> 和 <code>finally</code>方法来定义批处理的回调，这些回调中每一个在调用时都会接收到一个 <code>Illuminate\Bus\Batch</code> 实例：</p>
+<pre><code>use App\Jobs\ProcessPodcast;
+use App\Podcast;
+use Illuminate\Bus\Batch;
+use Illuminate\Support\Facades\Batch;
+use Throwable;
+
+$batch = Bus::batch([
+    new ProcessPodcast(Podcast::find(1)),
+    new ProcessPodcast(Podcast::find(2)),
+    new ProcessPodcast(Podcast::find(3)),
+    new ProcessPodcast(Podcast::find(4)),
+    new ProcessPodcast(Podcast::find(5)),
+])-&gt;then(function (Batch $batch) {
+    // 所有任务已成功完成...
+})-&gt;catch(function (Batch $batch, Throwable $e) {
+    // 检测到第一个失败的任务...
+})-&gt;finally(function (Batch $batch) {
+    // 批处理执行完毕...
+})-&gt;dispatch();
+
+return $batch-&gt;id;</code></pre>
+<h4>批处理命名</h4>
+<p>如果已经命名批处理，则某些工具（例如 Laravel Horizon 和 Laravel Telescope ）可能为批处理提供更加友好的调试信息，要为批处理命名，可以在定义批处理时调用 <code>name</code> 方法：</p>
+<pre><code>$batch = Bus::batch([
+    // ...
+])-&gt;then(function (Batch $batch) {
+    // 所有任务已成功完成...
+})-&gt;name('Process Podcasts')-&gt;dispatch();</code></pre>
+<p><a name="adding-jobs-to-batches"></a></p>
+<h3>将任务加入批处理</h3>
+<p>有时候，你需要将批处理的某些任务添加其他批处理中，尤其当你需要批处理成千上万的队列任务时，这些任务可能在 web 请求期间进行分发时间过长。因此，你可能希望先分发一个初始化的任务加载器批处理，这个加载器可以在后续支持添加更多的任务到这个批处理：</p>
+<pre><code>$batch = Bus::batch([
+    new LoadImportBatch,
+    new LoadImportBatch,
+    new LoadImportBatch,
+])-&gt;then(function (Batch $batch) {
+    // 所有任务已成功完成...
+})-&gt;name('Import Contacts')-&gt;dispatch();</code></pre>
+<p>在这个示例中，我们将使用 <code>LoadImportBatch</code> 实例将其他任务添加到批处理，要实现这个功能，我们还需要在任务当中调用批处理的 <code>add</code> 来完成添加：</p>
+<pre><code>use App\Jobs\ImportContacts;
+use Illuminate\Support\Collection;
+
+/**
+ * 执行任务
+ *
+ * @return void
+ */
+public function handle()
+{
+    if ($this-&gt;batch()-&gt;cancelled()) {
+        return;
+    }
+
+    $this-&gt;batch()-&gt;add(Collection::times(1000, function () {
+        return new ImportContacts;
+    }));
+}</code></pre>
+<blockquote>
+<p>注意：你只能将任务添加到当前任务所属的批处理中。</p>
+</blockquote>
+<p><a name="inspecting-batches"></a></p>
+<h3>校验批处理</h3>
+<p>批处理的完成回调提供的 <code>Illuminate\Bus\Batch</code> 实例有很多属性和方法来帮助你指定的批处理任务进行交互和检查。</p>
+<pre><code>// 批处理的UUID...
+$batch-&gt;id;
+
+// 批处理的名称（如果已经设置的话）...
+$batch-&gt;name;
+
+// 分配给批处理的任务数量...
+$batch-&gt;totalJobs;
+
+// 队列还没处理的任务数量...
+$batch-&gt;pendingJobs;
+
+// 失败的任务数量...
+$batch-&gt;failedJobs;
+
+// 到目前为止已经处理的任务数量...
+$batch-&gt;processedJobs();
+
+// 批处理已经完成的百分比（0-100）...
+$batch-&gt;progress();
+
+// 批处理是否已经完成执行...
+$batch-&gt;finished();
+
+// 取消批处理的运行...
+$batch-&gt;cancel();
+
+// 批处理是否已经取消...
+$batch-&gt;cancelled();</code></pre>
+<h4>从路由返回批处理</h4>
+<p>所有 <code>Illuminate\Bus\Batch</code> 实例都是 JSON 可序列化的，这意味着你可以直接从应用程序路由中将批处理返回，得到的是 JSON 的批处理信息，包括批处理完成进度，要通过批处理 ID 来获取对应的批处理，可以使用 <code>Bus</code> facade 的 <code>findBatch</code> 方法：</p>
+<pre><code>use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/batch/{batchId}', function (string $batchId) {
+    return Bus::findBatch($batchId);
+});</code></pre>
+<p><a name="cancelling-batches"></a></p>
+<h3>取消批处理</h3>
+<p>有时候你可能需要取消指定的批处理的执行，可以通过 <code>Illuminate\Bus\Batch</code> 实例调用 <code>cancel</code> 方法来完成：</p>
+<pre><code>/**
+ * 执行任务
+ *
+ * @return void
+ */
+public function handle()
+{
+    if ($this-&gt;user-&gt;exceedsImportLimit()) {
+        return $this-&gt;batch()-&gt;cancel();
+    }
+
+    if ($this-&gt;batch()-&gt;cancelled()) {
+        return;
+    }
+}</code></pre>
+<p><a name="batch-failures"></a></p>
+<h3>批处理失败</h3>
+<p>当一个批处理的任务失败时，会调用 <code>catch</code> 回调（如果已定义），该回调只有在批处理中的任务运行失败才会调用。</p>
+<h4>允许失败</h4>
+<p>当批处理中的任务失败时，Laravel 会自动将该批处理标记为「已取消」，如果需要的话，你可以禁用该行为，可以通过分发批处理时调用 <code>allowFailures</code> 方法来实现：</p>
+<pre><code>$batch = Bus::batch([
+    // ...
+])-&gt;then(function (Batch $batch) {
+    // 所有任务已成功完成...
+})-&gt;allowFailures()-&gt;dispatch();</code></pre>
+<h4>重试失败的批处理任务</h4>
+<p>为了方便操作，Laravel提供了一个 Artisan 命令 <code>queue:retry-batch</code>，该命令可以让你轻松重试批处理中所有失败的任务。<code>queue:retry-batch</code> 命令接收需要重试失败任务的批处理的 UUID ：</p>
+<pre><code>php artisan queue:retry-batch 32dbc76c-4f82-4749-b610-a639fe0099b5</code></pre>
+<p><a name="queueing-closures"></a></p>
+<h2>队列闭包</h2>
+<p>除了将作业类推送到队列之外，你还可以推送闭包到队列。这对于需要在当前请求周期之外执行简单快捷的任务时非常方便。在将闭包推送到队列时，闭包的代码内容是经过加密签名的，因为在传输过程中没有办法进行修改：</p>
+<pre><code>$podcast = App\Podcast::find(1);
+
+dispatch(function () use ($podcast) {
+    $podcast-&gt;publish();
+});</code></pre>
+<p>当队列的闭包方法失败重试次数达到上限后仍没有成功运行时，会执行 <code>catch</code> 方法中的闭包：</p>
+<pre><code>use Throwable;
+
+dispatch(function () use ($podcast) {
+    $podcast-&gt;publish();
+})-&gt;catch(function (Throwable $e) {
+    // 任务失败了
+});</code></pre>
+<p><a name="running-the-queue-worker"></a></p>
+<h2>运行队列处理器</h2>
+<p>Laravel 有一个队列处理器对新推入队列的任务进行处理。通过 Artisan 命令 <code>queue:work</code> 来启动队列处理器。需要注意的是，一旦 <code>queue:work</code> 命令启动，将一直保持运行，直到它被手动停止或你关闭你的终端：</p>
+<pre><code>php artisan queue:work</code></pre>
+<blockquote>
+<p>技巧：为了让 <code>queue:work</code> 进程永久地在后台运行，您应该使用一个进程监视器，如<a href="#supervisor-configuration">Supervisor</a>，以确保队列worker不会停止运行。</p>
+</blockquote>
+<p>请记住，队列处理器是长生命周期的进程，并将启动的应用程序状态存储在内存中。因此，在启动它们之后，代码库中的更改对其不起作用。因此，在部署过程中，一定要<a href="#queue-workers-and-deployment">重新启动你的队列处理器</a>。此外，请记住，应用程序创建或修改的任何静态状态不会在任务之间自动重置。</p>
+<p>或者，你可以运行 <code>queue:listen</code> 命令。在使用 <code>queue:listen</code> 命令时，当你想要重新加载更新的代码或重置应用程序状态时，你不必手动重新启动worker；但是，这个命令的效率不如 <code>queue:work</code> :</p>
+<pre><code>php artisan queue:listen</code></pre>
+<h4>指定连接 &amp; 队列</h4>
+<p>你可以指定任务处理器使用哪个连接。传递给 <code>work</code> 命令的连接名应该与 <code>config/queue.php</code> 配置文件中定义的一个连接相对应：</p>
+<pre><code>php artisan queue:work redis</code></pre>
+<p>你甚至可以通过仅处理特定连接的特定队列来进一步定制你的队列任务处理器。例如，如果你所有的电子邮件都在你的 <code>redis</code> 队列连接的 <code>emails</code> 队列中处理，你可以发出以下命令来启动一个只处理该队列的任务处理器：</p>
+<pre><code>php artisan queue:work redis --queue=emails</code></pre>
+<h4>处理给定数量的任务</h4>
+<p><code>--once</code> 参数可以用来指定任务处理器只处理一个队列中的任务:</p>
+<pre><code>php artisan queue:work --once</code></pre>
+<p><code>--max-jobs</code> 参数可以指定任务处理器处理了多少个任务后关闭。这个参数可以用来结合 <a href="supervisor-configuration">Supervisor</a> 设置任务处理器执行多少个任务后重启：</p>
+<pre><code>php artisan queue:work --max-jobs=1000</code></pre>
+<h4>处理所有队列中的任务 &amp; 然后退出</h4>
+<p><code>--stop-when-empty</code> 参数可以指定任务处理器处理所有任务后关闭。如果您希望在队列为空后关闭该容器，请在 Docker 容器中处理 Laravel 队列时使用此选项：</p>
+<pre><code>php artisan queue:work --stop-when-empty</code></pre>
+<h4>处理给定时间的任务</h4>
+<p><code>--max-time</code> 参数可以指定任务处理器处理了多少秒后关闭。这个参数可以用来结合 <a href="supervisor-configuration">Supervisor</a> 设置任务处理器执行多少秒后重启：</p>
+<pre><code>// 一小时后关闭
+php artisan queue:work --max-time=3600</code></pre>
+<h4>资源方面的考虑</h4>
+<p>守护进程队列 worker 程序在处理每个任务之前不会「重新启动」框架。因此，你应该在每个任务完成后释放所有繁重的资源。例如，如果你正在使用 GD 库进行图像处理，那么在完成之后，应该使用 <code>imagedestroy</code> 来释放内存。</p>
+<p><a name="queue-priorities"></a></p>
+<h3>队列优先级</h3>
+<p>有时，你可能希望优先考虑如何处理队列。例如，在 <code>config/queue.php</code> 中，你可以将你的 <code>redis</code> 连接的默认 <code>queue</code> 设置为 <code>low</code>。然而，有时你可能希望将一个任务推到一个 <code>high</code> 优先级队列，就像这样:</p>
+<pre><code>dispatch((new Job)-&gt;onQueue('high'));</code></pre>
+<p>要启动一个 worker，它在继续执行 <code>low</code> 队列上的任何作业之前，验证所有的 <code>high</code> 队列任务都被处理了，请将一个以逗号分隔的队列名称列表传递给 <code>work</code> 命令：</p>
+<pre><code>php artisan queue:work --queue=high,low</code></pre>
+<p><a name="queue-workers-and-deployment"></a></p>
+<h3>队列 worker &amp; 部署</h3>
+<p>因为队列 worker 是长生命周期的进程，所以在重启之前，任何的代码更改都不会生效。因此，使用队列 worker 部署应用程序的最简单方法是在部署过程中重新启动 worker。你可以通过执行 <code>queue:restart</code> 命令来优雅地重新启动所有的 worker：</p>
+<pre><code>php artisan queue:restart</code></pre>
+<p>该命令将指示所有队列 worker 在完成当前任务后优雅地 “死亡”，这样就不会丢失现有的任务。由于在执行 <code>queue:restart</code> 命令时，队列 worker 将被杀掉，因此你应该运行一个进程管理器 (如 <a href="#supervisor-configuration">Supervisor</a>) 来自动重新启动队列 worker。</p>
+<blockquote>
+<p>提示： 队列使用 <a href="/docs/laravel_8_zh/cache.html">缓存</a> 来存储重启信号，因此在使用该特性之前，你应该检查应用程序的缓存驱动程序是否正确配置。</p>
+</blockquote>
+<p><a name="job-expirations-and-timeouts"></a></p>
+<h3>任务到期 &amp; 超时</h3>
+<h4>任务到期</h4>
+<p>在你的 <code>config/queue.php</code> 配置文件，每个队列连接定义一个 <code>retry_after</code> 选项。此选项指定在重试正在处理的任务之前，队列连接应等待多少秒。例如，如果 <code>retry_after</code> 的值被设置为 <code>90</code>，那么如果任务已经处理了 90 秒而没有被删除，那么它将被释放回队列。通常，您应该将 <code>retry_after</code> 值设置为你的任务完成处理所需的最大秒数。</p>
+<blockquote>
+<p>注意： 唯一不包含 <code>retry_after</code> 值的队列连接是 Amazon SQS。SQS 将基于在 AWS 控制台中管理的 <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">默认可见性超时</a> 重试任务。</p>
+</blockquote>
+<h4>Worker 超时</h4>
+<p><code>queue:work</code> Artisan 命令暴露一个 <code>--timeout</code> 选项。<code>--timeout</code> 选项指定在杀死正在处理作业的子队列 worker 之前，Laravel 队列主进程将等待多长时间。有时，由于各种原因，子队列进程可能会被“冻结”。 <code>--timeout</code> 选项用来删除超过指定时间限制的冻结进程：</p>
+<pre><code>php artisan queue:work --timeout=60</code></pre>
+<p><code>retry_after</code> 配置选项和 <code>--timeout</code> CLI 选项是不同的，但它们共同确保不会丢失任务，并且任务只被成功处理一次。</p>
+<blockquote>
+<p>注意：<code>--timeout</code> 值应该总是比 <code>retry_after</code> 配置值至少短几秒。这将确保处理给定任务的 worker 总是在重试作业之前被杀死。如果你的 <code>--timeout</code> 选项比你的 <code>retry_after</code> 配置值长，你的任务可能会被处理两次。</p>
+</blockquote>
+<h4>worker 休眠时间</h4>
+<p>当任务在队列中可用时，worker 将继续处理任务，中间没有任何延迟。然而， <code>sleep</code> 选项决定了如果没有新的 worker 可用，worker 将”sleep” 多长时间 (以秒为单位)。在休眠时，worker 将不处理任何新任务 —— 这些任务将在 worker 再次醒来后处理。</p>
+<pre><code>php artisan queue:work --sleep=3</code></pre>
+<p><a name="supervisor-configuration"></a></p>
+<h2>Supervisor 配置</h2>
+<h4>安装 Supervisor</h4>
+<p>Supervisor 是一个用于 Linux 操作系统的进程监视器，如果 <code>queue:work</code> 进程失败，它将自动重启该进程。要在 Ubuntu 上安装 Supervisor，你可以使用以下命令：</p>
+<pre><code>sudo apt-get install supervisor</code></pre>
+<blockquote>
+<p>提示：如果你觉得自己配置 Supervisor 很困难，可以考虑使用 <a href="https://forge.laravel.com/">Laravel Forge</a>，它将自动为你的 Laravel 项目安装和配置 Supervisor。</p>
+</blockquote>
+<h4>Supervisor 配置</h4>
+<p>Supervisor 配置文件通常存储在 <code>/etc/supervisor/conf.d</code> 目录。在此目录中，你可以创建任意数量的配置文件，这些配置文件将指示 supervisor 如何监视你的进程。例如，让我们创建一个 <code>laravel-worker.conf</code> 文件，启动并监视 <code>queue:work</code> 进程：</p>
+<pre><code>[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /home/forge/app.com/artisan queue:work sqs --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=forge
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/home/forge/app.com/worker.log
+stopwaitsecs=3600</code></pre>
+<p>在本例中， <code>numprocs</code> 指令将指示监控器运行 8 个 <code>queue:work</code> 进程并监视所有进程，如果它们失败，将自动重新启动它们。你应该更改 <code>command</code> 指令的 <code>queue:work sqs</code> 部分，以反映所需的队列连接。</p>
+<blockquote>
+<p>注意：应该确保 <code>stopwaitsecs</code> 的值大于运行时间最长的任务所消耗的秒数。否则，Supervisor 可能会在任务完成前终止任务。</p>
+</blockquote>
+<h4>启动 Supervisor</h4>
+<p>创建了配置文件后，你可以使用以下命令更新 Supervisor 配置并启动进程：</p>
+<pre><code>sudo supervisorctl reread
+
+sudo supervisorctl update
+
+sudo supervisorctl start laravel-worker:*</code></pre>
+<p>有关 Supervisor 的更多信息，请参考 <a href="http://supervisord.org/index.html">Supervisor documentation</a>。</p>
+<p><a name="dealing-with-failed-jobs"></a></p>
+<h2>处理失败任务</h2>
+<p>有时你排队的任务会失败。别担心，事情并不总是按计划进行！Laravel 提供了一种方便的方法来指定一个任务应该尝试的最大次数。当任务超过这个尝试数量后，它将被插入到 <code>failed_jobs</code> 数据库表中。 要为 <code>failed_jobs</code> 表创建一个迁移， 你可以使用 <code>queue:failed-table</code> 命令：</p>
+<pre><code>php artisan queue:failed-table
+
+php artisan migrate</code></pre>
+<p>然后，在运行你的 <a href="#run-the-queue-worker">队列处理器</a> 时，你可以使用 <code>--tries</code> 在 <code>queue:work</code> 命令上指定应该尝试一个任务的最大次数。如果你没有为 <code>--tries</code> 选项指定一个值，那么任务将只被尝试一次：</p>
+<pre><code>php artisan queue:work redis --tries=3</code></pre>
+<p>此外，您可以使用 <code>--backoff</code> 选项指定Laravel在重试失败的任务之前应该等待多少秒。默认情况下，任务会立即重试：</p>
+<pre><code>php artisan queue:work redis --tries=3 --backoff=3</code></pre>
+<p>如果你想在每个任务的基础上配置失败的任务重试延迟，你可以通过在你的排队job类中定义一个 <code>backoff</code> 属性来实现：</p>
+<pre><code>/**
+ * The number of seconds to wait before retrying the job.
+ *
+ * @var int
+ */
+public $backoff = 3;</code></pre>
+<p>如果你需要更复杂的逻辑来确定重试延迟，可以在排队的任务类上定义一个 <code>backoff</code> 方法：</p>
+<pre><code>/**
+* 计算在重试任务之前需等待的秒数
+*
+* @return int
+*/
+public function backoff()
+{
+    return 3;
+}</code></pre>
+<p>你可以通过 <code>backoff</code> 方法返回一个数组，来轻松配置 「指数式」延迟，在本实例中，第一次重试延迟为 1 秒，第二次重试延迟为 5 秒，第三次重试延迟为 10 秒：</p>
+<pre><code>/**
+* 计算在重试任务之前需等待的秒数
+*
+* @return array
+*/
+public function backoff()
+{
+    return [1, 5, 10];
+}</code></pre>
+<p><a name="cleaning-up-after-failed-jobs"></a></p>
+<h3>任务失败后的清理工作</h3>
+<p>你可以直接在 job 类上定义一个 <code>failed</code> 方法，它允许你在发生故障时执行特定于任务的清理。这是向用户发送警报或还原任务执行的任何操作的最佳位置。导致作业失败的 <code>Throwable</code> 将被传递给 <code>failed</code> 方法：</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use App\Models\Podcast;
+use App\Services\AudioProcessor;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Throwable;
+
+class ProcessPodcast implements ShouldQueue
+{
+    use InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $podcast;
+
+    /**
+     * 创建一个新的任务实例
+     *
+     * @param  \App\Models\Podcast  $podcast
+     * @return void
+     */
+    public function __construct(Podcast $podcast)
+    {
+        $this-&gt;podcast = $podcast;
+    }
+
+    /**
+     * 执行任务
+     *
+     * @param  \App\Services\AudioProcessor  $processor
+     * @return void
+     */
+    public function handle(AudioProcessor $processor)
+    {
+        // 处理上传的 podcast...
+    }
+
+    /**
+     * 任务未能处理
+     *
+     * @param  \Throwable  $exception
+     * @return void
+     */
+    public function failed(Throwable $exception)
+    {
+        // 给用户发送失败通知, 等等...
+    }
+}</code></pre>
+<p><a name="failed-job-events"></a></p>
+<h3>任务失败事件</h3>
+<p>如果你想要注册一个将在任务失败时调用的事件，你可以使用 <code>Queue::failing</code> 方法。这是一个通过电子邮件或 <a href="https://www.slack.com/">Slack</a> 通知你的团队的好机会。例如，我们可以在 Laravel 里的 <code>AppServiceProvider</code> 里附加一个回调到这个事件：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Queue\Events\JobFailed;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 注册任何应用程序服务
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * 引导任何应用程序服务
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Queue::failing(function (JobFailed $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;exception
+        });
+    }
+}</code></pre>
+<p><a name="retrying-failed-jobs"></a></p>
+<h3>重试失败的任务</h3>
+<p>要查看所有插入到 <code>failed_jobs</code> 数据库表中的失败任务，可以使用 <code>queue:failed</code> Artisan 命令：</p>
+<pre><code>php artisan queue:failed</code></pre>
+<p><code>queue:failed</code> 命令将列出任务 ID、连接、队列和故障时间。任务 ID 可用于重试失败的任务。例如，要重试 ID 为 <code>5</code> 的失败任务，请执行以下命令：</p>
+<pre><code>php artisan queue:retry 5</code></pre>
+<p>如果需要，您可以传递多个ID或一个ID范围(使用数字ID时)到命令：</p>
+<pre><code>php artisan queue:retry 5 6 7 8 9 10
+
+php artisan queue:retry --range=5-10</code></pre>
+<p>要重试所有失败的任务，请执行 <code>queue:retry</code> 命令，并将 <code>all</code> 作为 ID 传递：</p>
+<pre><code>php artisan queue:retry all</code></pre>
+<p>如果你想删除一个失败的任务，你可以使用 <code>queue:forget</code> 命令：</p>
+<pre><code>php artisan queue:forget 5</code></pre>
+<p>要删除所有失败的任务，您可以使用 <code>queue:flush</code> 命令：</p>
+<pre><code>php artisan queue:flush</code></pre>
+<p><a name="ignoring-missing-models"></a></p>
+<h3>忽略丢失的 Models</h3>
+<p>当向任务注入一个 Eloquent 模型时，它会在被放入队列之前自动序列化，并在处理任务时恢复。但是，如果在任务等待 worker 处理时删除了模型，你的任务可能会失败，出现 <code>ModelNotFoundException</code>。</p>
+<p>为方便起见，你可以通过设置你的任务的 <code>deleteWhenMissingModels</code> 属性为 <code>true</code> 来自动删除缺少模型的作业：</p>
+<pre><code>/**
+ * 如果任务的模型不再存在，则删除该任务
+ *
+ * @var bool
+ */
+public $deleteWhenMissingModels = true;</code></pre>
+<p><a name="job-events"></a></p>
+<h2>任务事件</h2>
+<p>使用 <code>Queue</code> <a href="/docs/laravel_8_zh/facades">facade</a> 上的 <code>before</code> 和 <code>after</code> 方法，可以指定在处理排队任务之前或之后执行的回调。如果要为控制面板执行附加日志记录或增量统计，这些回调会是绝佳时机。通常，你应该从 <a href="/docs/laravel_8_zh/providers.html">服务提供者</a> 调用这些方法。例如，我们可以使用 Laravel 的 <code>AppServiceProvider</code>：</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Queue\Events\JobProcessed;
+use Illuminate\Queue\Events\JobProcessing;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 注册任何应用程序服务
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * 启动任何应用程序服务.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Queue::before(function (JobProcessing $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;job-&gt;payload()
+        });
+
+        Queue::after(function (JobProcessed $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;job-&gt;payload()
+        });
+    }
+}</code></pre>
+<p>使用 <code>Queue</code> <a href="/docs/laravel_8_zh/facades.html">facade</a> 上的 <code>looping</code> 方法，你可以指定在 worker 尝试从队列获取任务之前执行的回调。例如，你可以注册一个闭包来回滚以前失败的任务留下的任何事务：</p>
+<pre><code>Queue::looping(function () {
+    while (DB::transactionLevel() &gt; 0) {
+        DB::rollBack();
+    }
+});</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 359);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

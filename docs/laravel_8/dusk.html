@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Laravel Dusk - 开发帮助文档</title> 
+    <meta name="keyword" content="dusk"> 
+    <meta name="description" content="dusk"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="6" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/artisan.html" title="Artisan Console">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Artisan Console
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authentication.html" title="Authentication">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authentication
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/authorization.html" title="Authorization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Authorization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/billing.html" title="Laravel Cashier (Stripe)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Stripe)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/blade.html" title="Blade Templates">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Blade Templates
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/broadcasting.html" title="Broadcasting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Broadcasting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cache.html" title="Cache">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Cache
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/cashier-paddle.html" title="Laravel Cashier (Paddle)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Cashier (Paddle)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/collections.html" title="Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/configuration.html" title="Configuration">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Configuration
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/console-tests.html" title="Console Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Console Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/container.html" title="Service Container">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Container
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contracts.html" title="Contracts">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contracts
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/contributions.html" title="Contribution Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Contribution Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/controllers.html" title="Controllers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Controllers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/csrf.html" title="CSRF Protection">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CSRF Protection
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database-testing.html" title="Database Testing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database Testing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/database.html" title="Database: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/deployment.html" title="Deployment">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deployment
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/documentation.html" title="Prologue">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Prologue
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/dusk.html" title="Laravel Dusk">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Dusk
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-collections.html" title="Eloquent: Collections">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Collections
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-mutators.html" title="Eloquent: Mutators &amp; Casting">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Mutators &amp; Casting
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-relationships.html" title="Eloquent: Relationships">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Relationships
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-resources.html" title="Eloquent: API Resources">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: API Resources
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent-serialization.html" title="Eloquent: Serialization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Serialization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/eloquent.html" title="Eloquent: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Eloquent: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/encryption.html" title="Encryption">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Encryption
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/envoy.html" title="Laravel Envoy">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Envoy
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/errors.html" title="Error Handling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Error Handling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/events.html" title="Events">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Events
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/facades.html" title="Facades">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Facades
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/filesystem.html" title="File Storage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    File Storage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/fortify.html" title="Laravel Fortify">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Fortify
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/hashing.html" title="Hashing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Hashing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/helpers.html" title="Helpers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Helpers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/homestead.html" title="Laravel Homestead">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Homestead
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/horizon.html" title="Laravel Horizon">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Horizon
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-client.html" title="HTTP Client">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Client
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/http-tests.html" title="HTTP Tests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Tests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/installation.html" title="Installation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Installation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/license.html" title="license">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    license
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/lifecycle.html" title="Request Lifecycle">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Request Lifecycle
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/localization.html" title="Localization">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Localization
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/logging.html" title="Logging">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Logging
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mail.html" title="Mail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/middleware.html" title="Middleware">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Middleware
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/migrations.html" title="Database: Migrations">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Migrations
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mix.html" title="Compiling Assets (Mix)">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Compiling Assets (Mix)
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/mocking.html" title="Mocking">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Mocking
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/notifications.html" title="Notifications">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Notifications
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/packages.html" title="Package Development">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Package Development
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/pagination.html" title="Database: Pagination">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Pagination
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passport.html" title="Laravel Passport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Passport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/passwords.html" title="Resetting Passwords">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resetting Passwords
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/providers.html" title="Service Providers">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Service Providers
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queries.html" title="Database: Query Builder">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Query Builder
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/queues.html" title="Queues">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Queues
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/readme.html" title="Laravel Documentation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Documentation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redirects.html" title="HTTP Redirects">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Redirects
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/redis.html" title="Redis">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Redis
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/releases.html" title="Release Notes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Release Notes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/requests.html" title="HTTP Requests">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Requests
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/responses.html" title="HTTP Responses">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Responses
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/routing.html" title="Routing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Routing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sail.html" title="Laravel Sail">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sail
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/sanctum.html" title="Laravel Sanctum">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Sanctum
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scheduling.html" title="Task Scheduling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Task Scheduling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/scout.html" title="Laravel Scout">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Scout
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/seeding.html" title="Database: Seeding">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Database: Seeding
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/session.html" title="HTTP Session">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    HTTP Session
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/socialite.html" title="Laravel Socialite">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Socialite
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/starter-kits.html" title="Starter Kits">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Starter Kits
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/structure.html" title="Directory Structure">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Directory Structure
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/telescope.html" title="Laravel Telescope">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Telescope
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/testing.html" title="Testing: Getting Started">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Testing: Getting Started
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/upgrade.html" title="Upgrade Guide">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Upgrade Guide
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/urls.html" title="URL Generation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    URL Generation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/valet.html" title="Laravel Valet">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Laravel Valet
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/validation.html" title="Validation">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Validation
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/verification.html" title="Email Verification">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Email Verification
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/laravel_8/views.html" title="Views">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Views
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <h1>Laravel Dusk</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#managing-chromedriver-installations">Managing ChromeDriver Installations</a></li>
+<li><a href="#using-other-browsers">Using Other Browsers</a></li>
+</ul></li>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#generating-tests">Generating Tests</a></li>
+<li><a href="#migrations">Database Migrations</a></li>
+<li><a href="#running-tests">Running Tests</a></li>
+<li><a href="#environment-handling">Environment Handling</a></li>
+</ul></li>
+<li><a href="#browser-basics">Browser Basics</a>
+<ul>
+<li><a href="#creating-browsers">Creating Browsers</a></li>
+<li><a href="#navigation">Navigation</a></li>
+<li><a href="#resizing-browser-windows">Resizing Browser Windows</a></li>
+<li><a href="#browser-macros">Browser Macros</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#cookies">Cookies</a></li>
+<li><a href="#executing-javascript">Executing JavaScript</a></li>
+<li><a href="#taking-a-screenshot">Taking A Screenshot</a></li>
+<li><a href="#storing-console-output-to-disk">Storing Console Output To Disk</a></li>
+<li><a href="#storing-page-source-to-disk">Storing Page Source To Disk</a></li>
+</ul></li>
+<li><a href="#interacting-with-elements">Interacting With Elements</a>
+<ul>
+<li><a href="#dusk-selectors">Dusk Selectors</a></li>
+<li><a href="#text-values-and-attributes">Text, Values, &amp; Attributes</a></li>
+<li><a href="#interacting-with-forms">Interacting With Forms</a></li>
+<li><a href="#attaching-files">Attaching Files</a></li>
+<li><a href="#pressing-buttons">Pressing Buttons</a></li>
+<li><a href="#clicking-links">Clicking Links</a></li>
+<li><a href="#using-the-keyboard">Using The Keyboard</a></li>
+<li><a href="#using-the-mouse">Using The Mouse</a></li>
+<li><a href="#javascript-dialogs">JavaScript Dialogs</a></li>
+<li><a href="#scoping-selectors">Scoping Selectors</a></li>
+<li><a href="#waiting-for-elements">Waiting For Elements</a></li>
+<li><a href="#scrolling-an-element-into-view">Scrolling An Element Into View</a></li>
+</ul></li>
+<li><a href="#available-assertions">Available Assertions</a></li>
+<li><a href="#pages">Pages</a>
+<ul>
+<li><a href="#generating-pages">Generating Pages</a></li>
+<li><a href="#configuring-pages">Configuring Pages</a></li>
+<li><a href="#navigating-to-pages">Navigating To Pages</a></li>
+<li><a href="#shorthand-selectors">Shorthand Selectors</a></li>
+<li><a href="#page-methods">Page Methods</a></li>
+</ul></li>
+<li><a href="#components">Components</a>
+<ul>
+<li><a href="#generating-components">Generating Components</a></li>
+<li><a href="#using-components">Using Components</a></li>
+</ul></li>
+<li><a href="#continuous-integration">Continuous Integration</a>
+<ul>
+<li><a href="#running-tests-on-heroku-ci">Heroku CI</a></li>
+<li><a href="#running-tests-on-travis-ci">Travis CI</a></li>
+<li><a href="#running-tests-on-github-actions">GitHub Actions</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2>Introduction</h2>
+<p>Laravel Dusk provides an expressive, easy-to-use browser automation and testing API. By default, Dusk does not require you to install JDK or Selenium on your local computer. Instead, Dusk uses a standalone <a href="https://sites.google.com/a/chromium.org/chromedriver/home">ChromeDriver</a> installation. However, you are free to utilize any other Selenium compatible driver you wish.</p>
+<p><a name="installation"></a></p>
+<h2>Installation</h2>
+<p>To get started, you should add the <code>laravel/dusk</code> Composer dependency to your project:</p>
+<pre><code>composer require --dev laravel/dusk</code></pre>
+<blockquote>
+<p>{note} If you are manually registering Dusk's service provider, you should <strong>never</strong> register it in your production environment, as doing so could lead to arbitrary users being able to authenticate with your application.</p>
+</blockquote>
+<p>After installing the Dusk package, execute the <code>dusk:install</code> Artisan command. The <code>dusk:install</code> command will create a <code>tests/Browser</code> directory and an example Dusk test:</p>
+<pre><code>php artisan dusk:install</code></pre>
+<p>Next, set the <code>APP_URL</code> environment variable in your application's <code>.env</code> file. This value should match the URL you use to access your application in a browser.</p>
+<blockquote>
+<p>{tip} If you are using <a href="/docs/laravel_8/sail">Laravel Sail</a> to manage your local development environment, please also consult the Sail documentation on <a href="/docs/laravel_8/sail.html#laravel-dusk">configuring and running Dusk tests</a>.</p>
+</blockquote>
+<p><a name="managing-chromedriver-installations"></a></p>
+<h3>Managing ChromeDriver Installations</h3>
+<p>If you would like to install a different version of ChromeDriver than what is included with Laravel Dusk, you may use the <code>dusk:chrome-driver</code> command:</p>
+<pre><code># Install the latest version of ChromeDriver for your OS...
+php artisan dusk:chrome-driver
+
+# Install a given version of ChromeDriver for your OS...
+php artisan dusk:chrome-driver 86
+
+# Install a given version of ChromeDriver for all supported OSs...
+php artisan dusk:chrome-driver --all
+
+# Install the version of ChromeDriver that matches the detected version of Chrome / Chromium for your OS...
+php artisan dusk:chrome-driver --detect</code></pre>
+<blockquote>
+<p>{note} Dusk requires the <code>chromedriver</code> binaries to be executable. If you're having problems running Dusk, you should ensure the binaries are executable using the following command: <code>chmod -R 0755 vendor/laravel/dusk/bin/</code>.</p>
+</blockquote>
+<p><a name="using-other-browsers"></a></p>
+<h3>Using Other Browsers</h3>
+<p>By default, Dusk uses Google Chrome and a standalone <a href="https://sites.google.com/a/chromium.org/chromedriver/home">ChromeDriver</a> installation to run your browser tests. However, you may start your own Selenium server and run your tests against any browser you wish.</p>
+<p>To get started, open your <code>tests/DuskTestCase.php</code> file, which is the base Dusk test case for your application. Within this file, you can remove the call to the <code>startChromeDriver</code> method. This will stop Dusk from automatically starting the ChromeDriver:</p>
+<pre><code>/**
+ * Prepare for Dusk test execution.
+ *
+ * @beforeClass
+ * @return void
+ */
+public static function prepare()
+{
+    // static::startChromeDriver();
+}</code></pre>
+<p>Next, you may modify the <code>driver</code> method to connect to the URL and port of your choice. In addition, you may modify the &quot;desired capabilities&quot; that should be passed to the WebDriver:</p>
+<pre><code>/**
+ * Create the RemoteWebDriver instance.
+ *
+ * @return \Facebook\WebDriver\Remote\RemoteWebDriver
+ */
+protected function driver()
+{
+    return RemoteWebDriver::create(
+        'http://localhost:4444/wd/hub', DesiredCapabilities::phantomjs()
+    );
+}</code></pre>
+<p><a name="getting-started"></a></p>
+<h2>Getting Started</h2>
+<p><a name="generating-tests"></a></p>
+<h3>Generating Tests</h3>
+<p>To generate a Dusk test, use the <code>dusk:make</code> Artisan command. The generated test will be placed in the <code>tests/Browser</code> directory:</p>
+<pre><code>php artisan dusk:make LoginTest</code></pre>
+<p><a name="migrations"></a></p>
+<h3>Database Migrations</h3>
+<p>Most of the tests you write will interact with pages that retrieve data from your application's database; however, your Dusk tests should never use the <code>RefreshDatabase</code>trait. The <code>RefreshDatabase</code> trait leverages database transactions which will not be applicable or available across HTTP requests. Instead, use the <code>DatabaseMigrations</code> trait, which re-migrates the database for each test:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Browser;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+}</code></pre>
+<blockquote>
+<p>{note} SQLite in-memory databases may not be used when executing Dusk tests. Since the browser executes within its own process, it will not be able to access the in-memory databases of other processes.</p>
+</blockquote>
+<p><a name="running-tests"></a></p>
+<h3>Running Tests</h3>
+<p>To run your browser tests, execute the <code>dusk</code> Artisan command:</p>
+<pre><code>php artisan dusk</code></pre>
+<p>If you had test failures the last time you ran the <code>dusk</code> command, you may save time by re-running the failing tests first using the <code>dusk:fails</code> command:</p>
+<pre><code>php artisan dusk:fails</code></pre>
+<p>The <code>dusk</code> command accepts any argument that is normally accepted by the PHPUnit test runner, such as allowing you to only run the tests for a given <a href="https://phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.group">group</a>:</p>
+<pre><code>php artisan dusk --group=foo</code></pre>
+<blockquote>
+<p>{tip} If you are using <a href="/docs/laravel_8/sail">Laravel Sail</a> to manage your local development environment, please consult the Sail documentation on <a href="/docs/laravel_8/sail.html#laravel-dusk">configuring and running Dusk tests</a>.</p>
+</blockquote>
+<p><a name="manually-starting-chromedriver"></a></p>
+<h4>Manually Starting ChromeDriver</h4>
+<p>By default, Dusk will automatically attempt to start ChromeDriver. If this does not work for your particular system, you may manually start ChromeDriver before running the <code>dusk</code> command. If you choose to start ChromeDriver manually, you should comment out the following line of your <code>tests/DuskTestCase.php</code> file:</p>
+<pre><code>/**
+ * Prepare for Dusk test execution.
+ *
+ * @beforeClass
+ * @return void
+ */
+public static function prepare()
+{
+    // static::startChromeDriver();
+}</code></pre>
+<p>In addition, if you start ChromeDriver on a port other than 9515, you should modify the <code>driver</code> method of the same class to reflect the correct port:</p>
+<pre><code>/**
+ * Create the RemoteWebDriver instance.
+ *
+ * @return \Facebook\WebDriver\Remote\RemoteWebDriver
+ */
+protected function driver()
+{
+    return RemoteWebDriver::create(
+        'http://localhost:9515', DesiredCapabilities::chrome()
+    );
+}</code></pre>
+<p><a name="environment-handling"></a></p>
+<h3>Environment Handling</h3>
+<p>To force Dusk to use its own environment file when running tests, create a <code>.env.dusk.{environment}</code> file in the root of your project. For example, if you will be initiating the <code>dusk</code> command from your <code>local</code> environment, you should create a <code>.env.dusk.local</code> file.</p>
+<p>When running tests, Dusk will back-up your <code>.env</code> file and rename your Dusk environment to <code>.env</code>. Once the tests have completed, your <code>.env</code> file will be restored.</p>
+<p><a name="browser-basics"></a></p>
+<h2>Browser Basics</h2>
+<p><a name="creating-browsers"></a></p>
+<h3>Creating Browsers</h3>
+<p>To get started, let's write a test that verifies we can log into our application. After generating a test, we can modify it to navigate to the login page, enter some credentials, and click the &quot;Login&quot; button. To create a browser instance, you may call the <code>browse</code> method from within your Dusk test:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Browser;
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+
+    /**
+     * A basic browser test example.
+     *
+     * @return void
+     */
+    public function test_basic_example()
+    {
+        $user = User::factory()-&gt;create([
+            'email' =&gt; 'taylor@laravel.com',
+        ]);
+
+        $this-&gt;browse(function ($browser) use ($user) {
+            $browser-&gt;visit('/login')
+                    -&gt;type('email', $user-&gt;email)
+                    -&gt;type('password', 'password')
+                    -&gt;press('Login')
+                    -&gt;assertPathIs('/home');
+        });
+    }
+}</code></pre>
+<p>As you can see in the example above, the <code>browse</code> method accepts a closure. A browser instance will automatically be passed to this closure by Dusk and is the main object used to interact with and make assertions against your application.</p>
+<p><a name="creating-multiple-browsers"></a></p>
+<h4>Creating Multiple Browsers</h4>
+<p>Sometimes you may need multiple browsers in order to properly carry out a test. For example, multiple browsers may be needed to test a chat screen that interacts with websockets. To create multiple browsers, simply add more browser arguments to the signature of the closure given to the <code>browse</code> method:</p>
+<pre><code>$this-&gt;browse(function ($first, $second) {
+    $first-&gt;loginAs(User::find(1))
+          -&gt;visit('/home')
+          -&gt;waitForText('Message');
+
+    $second-&gt;loginAs(User::find(2))
+           -&gt;visit('/home')
+           -&gt;waitForText('Message')
+           -&gt;type('message', 'Hey Taylor')
+           -&gt;press('Send');
+
+    $first-&gt;waitForText('Hey Taylor')
+          -&gt;assertSee('Jeffrey Way');
+});</code></pre>
+<p><a name="navigation"></a></p>
+<h3>Navigation</h3>
+<p>The <code>visit</code> method may be used to navigate to a given URI within your application:</p>
+<pre><code>$browser-&gt;visit('/login');</code></pre>
+<p>You may use the <code>visitRoute</code> method to navigate to a <a href="/docs/laravel_8/routing.html#named-routes">named route</a>:</p>
+<pre><code>$browser-&gt;visitRoute('login');</code></pre>
+<p>You may navigate &quot;back&quot; and &quot;forward&quot; using the <code>back</code> and <code>forward</code> methods:</p>
+<pre><code>$browser-&gt;back();
+
+$browser-&gt;forward();</code></pre>
+<p>You may use the <code>refresh</code> method to refresh the page:</p>
+<pre><code>$browser-&gt;refresh();</code></pre>
+<p><a name="resizing-browser-windows"></a></p>
+<h3>Resizing Browser Windows</h3>
+<p>You may use the <code>resize</code> method to adjust the size of the browser window:</p>
+<pre><code>$browser-&gt;resize(1920, 1080);</code></pre>
+<p>The <code>maximize</code> method may be used to maximize the browser window:</p>
+<pre><code>$browser-&gt;maximize();</code></pre>
+<p>The <code>fitContent</code> method will resize the browser window to match the size of its content:</p>
+<pre><code>$browser-&gt;fitContent();</code></pre>
+<p>When a test fails, Dusk will automatically resize the browser to fit the content prior to taking a screenshot. You may disable this feature by calling the <code>disableFitOnFailure</code> method within your test:</p>
+<pre><code>$browser-&gt;disableFitOnFailure();</code></pre>
+<p>You may use the <code>move</code> method to move the browser window to a different position on your screen:</p>
+<pre><code>$browser-&gt;move($x = 100, $y = 100);</code></pre>
+<p><a name="browser-macros"></a></p>
+<h3>Browser Macros</h3>
+<p>If you would like to define a custom browser method that you can re-use in a variety of your tests, you may use the <code>macro</code> method on the <code>Browser</code> class. Typically, you should call this method from a <a href="/docs/laravel_8/providers.html">service provider's</a> <code>boot</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\Browser;
+
+class DuskServiceProvider extends ServiceProvider
+{
+    /**
+     * Register Dusk's browser macros.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Browser::macro('scrollToElement', function ($element = null) {
+            $this-&gt;script("$('html, body').animate({ scrollTop: $('$element').offset().top }, 0);");
+
+            return $this;
+        });
+    }
+}</code></pre>
+<p>The <code>macro</code> function accepts a name as its first argument, and a closure as its second. The macro's closure will be executed when calling the macro as a method on a <code>Browser</code> instance:</p>
+<pre><code>$this-&gt;browse(function ($browser) use ($user) {
+    $browser-&gt;visit('/pay')
+            -&gt;scrollToElement('#credit-card-details')
+            -&gt;assertSee('Enter Credit Card Details');
+});</code></pre>
+<p><a name="authentication"></a></p>
+<h3>Authentication</h3>
+<p>Often, you will be testing pages that require authentication. You can use Dusk's <code>loginAs</code> method in order to avoid interacting with your application's login screen during every test. The <code>loginAs</code> method accepts a primary key associated with your authenticatable model or an authenticatable model instance:</p>
+<pre><code>use App\Models\User;
+
+$this-&gt;browse(function ($browser) {
+    $browser-&gt;loginAs(User::find(1))
+          -&gt;visit('/home');
+});</code></pre>
+<blockquote>
+<p>{note} After using the <code>loginAs</code> method, the user session will be maintained for all tests within the file.</p>
+</blockquote>
+<p><a name="cookies"></a></p>
+<h3>Cookies</h3>
+<p>You may use the <code>cookie</code> method to get or set an encrypted cookie's value. By default, all of the cookies created by Laravel are encrypted:</p>
+<pre><code>$browser-&gt;cookie('name');
+
+$browser-&gt;cookie('name', 'Taylor');</code></pre>
+<p>You may use the <code>plainCookie</code> method to get or set an unencrypted cookie's value:</p>
+<pre><code>$browser-&gt;plainCookie('name');
+
+$browser-&gt;plainCookie('name', 'Taylor');</code></pre>
+<p>You may use the <code>deleteCookie</code> method to delete the given cookie:</p>
+<pre><code>$browser-&gt;deleteCookie('name');</code></pre>
+<p><a name="executing-javascript"></a></p>
+<h3>Executing JavaScript</h3>
+<p>You may use the <code>script</code> method to execute arbitrary JavaScript statements within the browser:</p>
+<pre><code>$output = $browser-&gt;script('document.documentElement.scrollTop = 0');
+
+$output = $browser-&gt;script([
+    'document.body.scrollTop = 0',
+    'document.documentElement.scrollTop = 0',
+]);</code></pre>
+<p><a name="taking-a-screenshot"></a></p>
+<h3>Taking A Screenshot</h3>
+<p>You may use the <code>screenshot</code> method to take a screenshot and store it with the given filename. All screenshots will be stored within the <code>tests/Browser/screenshots</code> directory:</p>
+<pre><code>$browser-&gt;screenshot('filename');</code></pre>
+<p><a name="storing-console-output-to-disk"></a></p>
+<h3>Storing Console Output To Disk</h3>
+<p>You may use the <code>storeConsoleLog</code> method to write the current browser's console output to disk with the given filename. Console output will be stored within the <code>tests/Browser/console</code> directory:</p>
+<pre><code>$browser-&gt;storeConsoleLog('filename');</code></pre>
+<p><a name="storing-page-source-to-disk"></a></p>
+<h3>Storing Page Source To Disk</h3>
+<p>You may use the <code>storeSource</code> method to write the current page's source to disk with the given filename. The page source will be stored within the <code>tests/Browser/source</code> directory:</p>
+<pre><code>$browser-&gt;storeSource('filename');</code></pre>
+<p><a name="interacting-with-elements"></a></p>
+<h2>Interacting With Elements</h2>
+<p><a name="dusk-selectors"></a></p>
+<h3>Dusk Selectors</h3>
+<p>Choosing good CSS selectors for interacting with elements is one of the hardest parts of writing Dusk tests. Over time, frontend changes can cause CSS selectors like the following to break your tests:</p>
+<pre><code>// HTML...
+
+&lt;button&gt;Login&lt;/button&gt;
+
+// Test...
+
+$browser-&gt;click('.login-page .container div &gt; button');</code></pre>
+<p>Dusk selectors allow you to focus on writing effective tests rather than remembering CSS selectors. To define a selector, add a <code>dusk</code> attribute to your HTML element. Then, when interacting with a Dusk browser, prefix the selector with <code>@</code> to manipulate the attached element within your test:</p>
+<pre><code>// HTML...
+
+&lt;button dusk="login-button"&gt;Login&lt;/button&gt;
+
+// Test...
+
+$browser-&gt;click('@login-button');</code></pre>
+<p><a name="text-values-and-attributes"></a></p>
+<h3>Text, Values, &amp; Attributes</h3>
+<p><a name="retrieving-setting-values"></a></p>
+<h4>Retrieving &amp; Setting Values</h4>
+<p>Dusk provides several methods for interacting with the current display text, value, and attributes of elements on the page. For example, to get the &quot;value&quot; of an element that matches a given CSS or Dusk selector, use the <code>value</code> method:</p>
+<pre><code>// Retrieve the value...
+$value = $browser-&gt;value('selector');
+
+// Set the value...
+$browser-&gt;value('selector', 'value');</code></pre>
+<p>You may use the <code>inputValue</code> method to get the &quot;value&quot; of an input element that has a given field name:</p>
+<pre><code>$value = $browser-&gt;inputValue('field');</code></pre>
+<p><a name="retrieving-text"></a></p>
+<h4>Retrieving Text</h4>
+<p>The <code>text</code> method may be used to retrieve the display text of an element that matches the given selector:</p>
+<pre><code>$text = $browser-&gt;text('selector');</code></pre>
+<p><a name="retrieving-attributes"></a></p>
+<h4>Retrieving Attributes</h4>
+<p>Finally, the <code>attribute</code> method may be used to retrieve the value of an attribute of an element matching the given selector:</p>
+<pre><code>$attribute = $browser-&gt;attribute('selector', 'value');</code></pre>
+<p><a name="interacting-with-forms"></a></p>
+<h3>Interacting With Forms</h3>
+<p><a name="typing-values"></a></p>
+<h4>Typing Values</h4>
+<p>Dusk provides a variety of methods for interacting with forms and input elements. First, let's take a look at an example of typing text into an input field:</p>
+<pre><code>$browser-&gt;type('email', 'taylor@laravel.com');</code></pre>
+<p>Note that, although the method accepts one if necessary, we are not required to pass a CSS selector into the <code>type</code> method. If a CSS selector is not provided, Dusk will search for an <code>input</code> or <code>textarea</code> field with the given <code>name</code> attribute.</p>
+<p>To append text to a field without clearing its content, you may use the <code>append</code> method:</p>
+<pre><code>$browser-&gt;type('tags', 'foo')
+        -&gt;append('tags', ', bar, baz');</code></pre>
+<p>You may clear the value of an input using the <code>clear</code> method:</p>
+<pre><code>$browser-&gt;clear('email');</code></pre>
+<p>You can instruct Dusk to type slowly using the <code>typeSlowly</code> method. By default, Dusk will pause for 100 milliseconds between key presses. To customize the amount of time between key presses, you may pass the appropriate number of milliseconds as the third argument to the method:</p>
+<pre><code>$browser-&gt;typeSlowly('mobile', '+1 (202) 555-5555');
+
+$browser-&gt;typeSlowly('mobile', '+1 (202) 555-5555', 300);</code></pre>
+<p>You may use the <code>appendSlowly</code> method to append text slowly:</p>
+<pre><code>$browser-&gt;type('tags', 'foo')
+        -&gt;appendSlowly('tags', ', bar, baz');</code></pre>
+<p><a name="dropdowns"></a></p>
+<h4>Dropdowns</h4>
+<p>To select a value available on a <code>select</code> element, you may use the <code>select</code> method. Like the <code>type</code> method, the <code>select</code> method does not require a full CSS selector. When passing a value to the <code>select</code> method, you should pass the underlying option value instead of the display text:</p>
+<pre><code>$browser-&gt;select('size', 'Large');</code></pre>
+<p>You may select a random option by omitting the second argument:</p>
+<pre><code>$browser-&gt;select('size');</code></pre>
+<p><a name="checkboxes"></a></p>
+<h4>Checkboxes</h4>
+<p>To &quot;check&quot; a checkbox input, you may use the <code>check</code> method. Like many other input related methods, a full CSS selector is not required. If a CSS selector match can't be found, Dusk will search for a checkbox with a matching <code>name</code> attribute:</p>
+<pre><code>$browser-&gt;check('terms');</code></pre>
+<p>The <code>uncheck</code> method may be used to &quot;uncheck&quot; a checkbox input:</p>
+<pre><code>$browser-&gt;uncheck('terms');</code></pre>
+<p><a name="radio-buttons"></a></p>
+<h4>Radio Buttons</h4>
+<p>To &quot;select&quot; a <code>radio</code> input option, you may use the <code>radio</code> method. Like many other input related methods, a full CSS selector is not required. If a CSS selector match can't be found, Dusk will search for a <code>radio</code> input with matching <code>name</code> and <code>value</code> attributes:</p>
+<pre><code>$browser-&gt;radio('size', 'large');</code></pre>
+<p><a name="attaching-files"></a></p>
+<h3>Attaching Files</h3>
+<p>The <code>attach</code> method may be used to attach a file to a <code>file</code> input element. Like many other input related methods, a full CSS selector is not required. If a CSS selector match can't be found, Dusk will search for a <code>file</code> input with a matching <code>name</code> attribute:</p>
+<pre><code>$browser-&gt;attach('photo', __DIR__.'/photos/mountains.png');</code></pre>
+<blockquote>
+<p>{note} The attach function requires the <code>Zip</code> PHP extension to be installed and enabled on your server.</p>
+</blockquote>
+<p><a name="pressing-buttons"></a></p>
+<h3>Pressing Buttons</h3>
+<p>The <code>press</code> method may be used to click a button element on the page. The first argument given to the <code>press</code> method may be either the display text of the button or a CSS / Dusk selector:</p>
+<pre><code>$browser-&gt;press('Login');</code></pre>
+<p>When submitting forms, many application's disable the form's submission button after it are pressed and then re-enable the button when the form submission's HTTP request is complete. To press a button and wait for the button to be re-enabled, you may use the <code>pressAndWaitFor</code> method:</p>
+<pre><code>// Press the button and wait a maximum of 5 seconds for it to be enabled...
+$browser-&gt;pressAndWaitFor('Save');
+
+// Press the button and wait a maximum of 1 second for it to be enabled...
+$browser-&gt;pressAndWaitFor('Save', 1);</code></pre>
+<p><a name="clicking-links"></a></p>
+<h3>Clicking Links</h3>
+<p>To click a link, you may use the <code>clickLink</code> method on the browser instance. The <code>clickLink</code> method will click the link that has the given display text:</p>
+<pre><code>$browser-&gt;clickLink($linkText);</code></pre>
+<p>You may use the <code>seeLink</code> method to determine if a link with the given display text is visible on the page:</p>
+<pre><code>if ($browser-&gt;seeLink($linkText)) {
+    // ...
+}</code></pre>
+<blockquote>
+<p>{note} These methods interact with jQuery. If jQuery is not available on the page, Dusk will automatically inject it into the page so it is available for the test's duration.</p>
+</blockquote>
+<p><a name="using-the-keyboard"></a></p>
+<h3>Using The Keyboard</h3>
+<p>The <code>keys</code> method allows you to provide more complex input sequences to a given element than normally allowed by the <code>type</code> method. For example, you may instruct Dusk to hold modifier keys while entering values. In this example, the <code>shift</code> key will be held while <code>taylor</code> is entered into the element matching the given selector. After <code>taylor</code> is typed, <code>swift</code> will be typed without any modifier keys:</p>
+<pre><code>$browser-&gt;keys('selector', ['{shift}', 'taylor'], 'swift');</code></pre>
+<p>Another valuable use case for the <code>keys</code> method is sending a &quot;keyboard shortcut&quot; combination to the primary CSS selector for your application:</p>
+<pre><code>$browser-&gt;keys('.app', ['{command}', 'j']);</code></pre>
+<blockquote>
+<p>{tip} All modifier keys such as <code>{command}</code> are wrapped in <code>{}</code> characters, and match the constants defined in the <code>Facebook\WebDriver\WebDriverKeys</code> class, which can be <a href="https://github.com/php-webdriver/php-webdriver/blob/master/lib/WebDriverKeys.php">found on GitHub</a>.</p>
+</blockquote>
+<p><a name="using-the-mouse"></a></p>
+<h3>Using The Mouse</h3>
+<p><a name="clicking-on-elements"></a></p>
+<h4>Clicking On Elements</h4>
+<p>The <code>click</code> method may be used to click on an element matching the given CSS or Dusk selector:</p>
+<pre><code>$browser-&gt;click('.selector');</code></pre>
+<p>The <code>clickAtXPath</code> method may be used to click on an element matching the given XPath expression:</p>
+<pre><code>$browser-&gt;clickAtXPath('//div[@class = "selector"]');</code></pre>
+<p>The <code>clickAtPoint</code> method may be used to click on the topmost element at a given pair of coordinates relative to the viewable area of the browser:</p>
+<pre><code>$browser-&gt;clickAtPoint($x = 0, $y = 0);</code></pre>
+<p>The <code>doubleClick</code> method may be used to simulate the double click of a mouse:</p>
+<pre><code>$browser-&gt;doubleClick();</code></pre>
+<p>The <code>rightClick</code> method may be used to simulate the right click of a mouse:</p>
+<pre><code>$browser-&gt;rightClick();
+
+$browser-&gt;rightClick('.selector');</code></pre>
+<p>The <code>clickAndHold</code> method may be used to simulate a mouse button being clicked and held down. A subsequent call to the <code>releaseMouse</code> method will undo this behavior and release the mouse button:</p>
+<pre><code>$browser-&gt;clickAndHold()
+        -&gt;pause(1000)
+        -&gt;releaseMouse();</code></pre>
+<p><a name="mouseover"></a></p>
+<h4>Mouseover</h4>
+<p>The <code>mouseover</code> method may be used when you need to move the mouse over an element matching the given CSS or Dusk selector:</p>
+<pre><code>$browser-&gt;mouseover('.selector');</code></pre>
+<p><a name="drag-drop"></a></p>
+<h4>Drag &amp; Drop</h4>
+<p>The <code>drag</code> method may be used to drag an element matching the given selector to another element:</p>
+<pre><code>$browser-&gt;drag('.from-selector', '.to-selector');</code></pre>
+<p>Or, you may drag an element in a single direction:</p>
+<pre><code>$browser-&gt;dragLeft('.selector', $pixels = 10);
+$browser-&gt;dragRight('.selector', $pixels = 10);
+$browser-&gt;dragUp('.selector', $pixels = 10);
+$browser-&gt;dragDown('.selector', $pixels = 10);</code></pre>
+<p>Finally, you may drag an element by a given offset:</p>
+<pre><code>$browser-&gt;dragOffset('.selector', $x = 10, $y = 10);</code></pre>
+<p><a name="javascript-dialogs"></a></p>
+<h3>JavaScript Dialogs</h3>
+<p>Dusk provides various methods to interact with JavaScript Dialogs. For example, you may use the <code>waitForDialog</code> method to wait for a JavaScript dialog to appear. This method accepts an optional argument indicating how many seconds to wait for the dialog to appear:</p>
+<pre><code>$browser-&gt;waitForDialog($seconds = null);</code></pre>
+<p>The <code>assertDialogOpened</code> method may be used to assert that a dialog has been displayed and contains the given message:</p>
+<pre><code>$browser-&gt;assertDialogOpened('Dialog message');</code></pre>
+<p>If the JavaScript dialog contains a prompt, you may use the <code>typeInDialog</code> method to type a value into the prompt:</p>
+<pre><code>$browser-&gt;typeInDialog('Hello World');</code></pre>
+<p>To close an open JavaScript dialog by clicking the &quot;OK&quot; button, you may invoke the <code>acceptDialog</code> method:</p>
+<pre><code>$browser-&gt;acceptDialog();</code></pre>
+<p>To close an open JavaScript dialog by clicking the &quot;Cancel&quot; button, you may invoke the <code>dismissDialog</code> method:</p>
+<pre><code>$browser-&gt;dismissDialog();</code></pre>
+<p><a name="scoping-selectors"></a></p>
+<h3>Scoping Selectors</h3>
+<p>Sometimes you may wish to perform several operations while scoping all of the operations within a given selector. For example, you may wish to assert that some text exists only within a table and then click a button within that table. You may use the <code>with</code> method to accomplish this. All operations performed within the closure given to the <code>with</code> method will be scoped to the original selector:</p>
+<pre><code>$browser-&gt;with('.table', function ($table) {
+    $table-&gt;assertSee('Hello World')
+          -&gt;clickLink('Delete');
+});</code></pre>
+<p>You may occasionally need to execute assertions outside of the current scope. You may use the <code>elsewhere</code> method to accomplish this:</p>
+<pre><code> $browser-&gt;with('.table', function ($table) {
+    // Current scope is `body .table`...
+
+    $browser-&gt;elsewhere('.page-title', function ($title) {
+        // Current scope is `body .page-title`...
+        $title-&gt;assertSee('Hello World');
+    });
+ });</code></pre>
+<p><a name="waiting-for-elements"></a></p>
+<h3>Waiting For Elements</h3>
+<p>When testing applications that use JavaScript extensively, it often becomes necessary to &quot;wait&quot; for certain elements or data to be available before proceeding with a test. Dusk makes this a cinch. Using a variety of methods, you may wait for elements to be visible on the page or even wait until a given JavaScript expression evaluates to <code>true</code>.</p>
+<p><a name="waiting"></a></p>
+<h4>Waiting</h4>
+<p>If you just need to pause the test for a given number of milliseconds, use the <code>pause</code> method:</p>
+<pre><code>$browser-&gt;pause(1000);</code></pre>
+<p><a name="waiting-for-selectors"></a></p>
+<h4>Waiting For Selectors</h4>
+<p>The <code>waitFor</code> method may be used to pause the execution of the test until the element matching the given CSS or Dusk selector is displayed on the page. By default, this will pause the test for a maximum of five seconds before throwing an exception. If necessary, you may pass a custom timeout threshold as the second argument to the method:</p>
+<pre><code>// Wait a maximum of five seconds for the selector...
+$browser-&gt;waitFor('.selector');
+
+// Wait a maximum of one second for the selector...
+$browser-&gt;waitFor('.selector', 1);</code></pre>
+<p>You may also wait until the element matching the given selector contains the given text:</p>
+<pre><code>// Wait a maximum of five seconds for the selector to contain the given text...
+$browser-&gt;waitForTextIn('.selector', 'Hello World');
+
+// Wait a maximum of one second for the selector to contain the given text...
+$browser-&gt;waitForTextIn('.selector', 'Hello World', 1);</code></pre>
+<p>You may also wait until the element matching the given selector is missing from the page:</p>
+<pre><code>// Wait a maximum of five seconds until the selector is missing...
+$browser-&gt;waitUntilMissing('.selector');
+
+// Wait a maximum of one second until the selector is missing...
+$browser-&gt;waitUntilMissing('.selector', 1);</code></pre>
+<p><a name="scoping-selectors-when-available"></a></p>
+<h4>Scoping Selectors When Available</h4>
+<p>Occasionally, you may wish to wait for an element to appear that matches a given selector and then interact with the element. For example, you may wish to wait until a modal window is available and then press the &quot;OK&quot; button within the modal. The <code>whenAvailable</code> method may be used to accomplish this. All element operations performed within the given closure will be scoped to the original selector:</p>
+<pre><code>$browser-&gt;whenAvailable('.modal', function ($modal) {
+    $modal-&gt;assertSee('Hello World')
+          -&gt;press('OK');
+});</code></pre>
+<p><a name="waiting-for-text"></a></p>
+<h4>Waiting For Text</h4>
+<p>The <code>waitForText</code> method may be used to wait until the given text is displayed on the page:</p>
+<pre><code>// Wait a maximum of five seconds for the text...
+$browser-&gt;waitForText('Hello World');
+
+// Wait a maximum of one second for the text...
+$browser-&gt;waitForText('Hello World', 1);</code></pre>
+<p>You may use the <code>waitUntilMissingText</code> method to wait until the displayed text has been removed from the page:</p>
+<pre><code>// Wait a maximum of five seconds for the text to be removed...
+$browser-&gt;waitUntilMissingText('Hello World');
+
+// Wait a maximum of one second for the text to be removed...
+$browser-&gt;waitUntilMissingText('Hello World', 1);</code></pre>
+<p><a name="waiting-for-links"></a></p>
+<h4>Waiting For Links</h4>
+<p>The <code>waitForLink</code> method may be used to wait until the given link text is displayed on the page:</p>
+<pre><code>// Wait a maximum of five seconds for the link...
+$browser-&gt;waitForLink('Create');
+
+// Wait a maximum of one second for the link...
+$browser-&gt;waitForLink('Create', 1);</code></pre>
+<p><a name="waiting-on-the-page-location"></a></p>
+<h4>Waiting On The Page Location</h4>
+<p>When making a path assertion such as <code>$browser-&gt;assertPathIs('/home')</code>, the assertion can fail if <code>window.location.pathname</code> is being updated asynchronously. You may use the <code>waitForLocation</code> method to wait for the location to be a given value:</p>
+<pre><code>$browser-&gt;waitForLocation('/secret');</code></pre>
+<p>You may also wait for a <a href="/docs/laravel_8/routing.html#named-routes">named route's</a> location:</p>
+<pre><code>$browser-&gt;waitForRoute($routeName, $parameters);</code></pre>
+<p><a name="waiting-for-page-reloads"></a></p>
+<h4>Waiting for Page Reloads</h4>
+<p>If you need to make assertions after a page has been reloaded, use the <code>waitForReload</code> method:</p>
+<pre><code>$browser-&gt;click('.some-action')
+        -&gt;waitForReload()
+        -&gt;assertSee('something');</code></pre>
+<p><a name="waiting-on-javascript-expressions"></a></p>
+<h4>Waiting On JavaScript Expressions</h4>
+<p>Sometimes you may wish to pause the execution of a test until a given JavaScript expression evaluates to <code>true</code>. You may easily accomplish this using the <code>waitUntil</code> method. When passing an expression to this method, you do not need to include the <code>return</code> keyword or an ending semi-colon:</p>
+<pre><code>// Wait a maximum of five seconds for the expression to be true...
+$browser-&gt;waitUntil('App.data.servers.length &gt; 0');
+
+// Wait a maximum of one second for the expression to be true...
+$browser-&gt;waitUntil('App.data.servers.length &gt; 0', 1);</code></pre>
+<p><a name="waiting-on-vue-expressions"></a></p>
+<h4>Waiting On Vue Expressions</h4>
+<p>The <code>waitUntilVue</code> and <code>waitUntilVueIsNot</code> methods may be used to wait until a <a href="https://vuejs.org">Vue component</a> attribute has a given value:</p>
+<pre><code>// Wait until the component attribute contains the given value...
+$browser-&gt;waitUntilVue('user.name', 'Taylor', '@user');
+
+// Wait until the component attribute doesn't contain the given value...
+$browser-&gt;waitUntilVueIsNot('user.name', null, '@user');</code></pre>
+<p><a name="waiting-with-a-callback"></a></p>
+<h4>Waiting With A Callback</h4>
+<p>Many of the &quot;wait&quot; methods in Dusk rely on the underlying <code>waitUsing</code> method. You may use this method directly to wait for a given closure to return <code>true</code>. The <code>waitUsing</code> method accepts the maximum number of seconds to wait, the interval at which the closure should be evaluated, the closure, and an optional failure message:</p>
+<pre><code>$browser-&gt;waitUsing(10, 1, function () use ($something) {
+    return $something-&gt;isReady();
+}, "Something wasn't ready in time.");</code></pre>
+<p><a name="scrolling-an-element-into-view"></a></p>
+<h3>Scrolling An Element Into View</h3>
+<p>Sometimes you may not be able to click on an element because it is outside of the viewable area of the browser. The <code>scrollIntoView</code> method will scroll the browser window until the element at the given selector is within the view:</p>
+<pre><code>$browser-&gt;scrollIntoView('.selector')
+        -&gt;click('.selector');</code></pre>
+<p><a name="available-assertions"></a></p>
+<h2>Available Assertions</h2>
+<p>Dusk provides a variety of assertions that you may make against your application. All of the available assertions are documented in the list below:</p>
+<style>
+    .collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    .collection-method-list a {
+        display: block;
+    }
+</style>
+<div class="collection-method-list">
+<p><a href="#assert-title">assertTitle</a>
+<a href="#assert-title-contains">assertTitleContains</a>
+<a href="#assert-url-is">assertUrlIs</a>
+<a href="#assert-scheme-is">assertSchemeIs</a>
+<a href="#assert-scheme-is-not">assertSchemeIsNot</a>
+<a href="#assert-host-is">assertHostIs</a>
+<a href="#assert-host-is-not">assertHostIsNot</a>
+<a href="#assert-port-is">assertPortIs</a>
+<a href="#assert-port-is-not">assertPortIsNot</a>
+<a href="#assert-path-begins-with">assertPathBeginsWith</a>
+<a href="#assert-path-is">assertPathIs</a>
+<a href="#assert-path-is-not">assertPathIsNot</a>
+<a href="#assert-route-is">assertRouteIs</a>
+<a href="#assert-query-string-has">assertQueryStringHas</a>
+<a href="#assert-query-string-missing">assertQueryStringMissing</a>
+<a href="#assert-fragment-is">assertFragmentIs</a>
+<a href="#assert-fragment-begins-with">assertFragmentBeginsWith</a>
+<a href="#assert-fragment-is-not">assertFragmentIsNot</a>
+<a href="#assert-has-cookie">assertHasCookie</a>
+<a href="#assert-has-plain-cookie">assertHasPlainCookie</a>
+<a href="#assert-cookie-missing">assertCookieMissing</a>
+<a href="#assert-plain-cookie-missing">assertPlainCookieMissing</a>
+<a href="#assert-cookie-value">assertCookieValue</a>
+<a href="#assert-plain-cookie-value">assertPlainCookieValue</a>
+<a href="#assert-see">assertSee</a>
+<a href="#assert-dont-see">assertDontSee</a>
+<a href="#assert-see-in">assertSeeIn</a>
+<a href="#assert-dont-see-in">assertDontSeeIn</a>
+<a href="#assert-see-anything-in">assertSeeAnythingIn</a>
+<a href="#assert-see-nothing-in">assertSeeNothingIn</a>
+<a href="#assert-script">assertScript</a>
+<a href="#assert-source-has">assertSourceHas</a>
+<a href="#assert-source-missing">assertSourceMissing</a>
+<a href="#assert-see-link">assertSeeLink</a>
+<a href="#assert-dont-see-link">assertDontSeeLink</a>
+<a href="#assert-input-value">assertInputValue</a>
+<a href="#assert-input-value-is-not">assertInputValueIsNot</a>
+<a href="#assert-checked">assertChecked</a>
+<a href="#assert-not-checked">assertNotChecked</a>
+<a href="#assert-radio-selected">assertRadioSelected</a>
+<a href="#assert-radio-not-selected">assertRadioNotSelected</a>
+<a href="#assert-selected">assertSelected</a>
+<a href="#assert-not-selected">assertNotSelected</a>
+<a href="#assert-select-has-options">assertSelectHasOptions</a>
+<a href="#assert-select-missing-options">assertSelectMissingOptions</a>
+<a href="#assert-select-has-option">assertSelectHasOption</a>
+<a href="#assert-select-missing-option">assertSelectMissingOption</a>
+<a href="#assert-value">assertValue</a>
+<a href="#assert-attribute">assertAttribute</a>
+<a href="#assert-aria-attribute">assertAriaAttribute</a>
+<a href="#assert-data-attribute">assertDataAttribute</a>
+<a href="#assert-visible">assertVisible</a>
+<a href="#assert-present">assertPresent</a>
+<a href="#assert-missing">assertMissing</a>
+<a href="#assert-dialog-opened">assertDialogOpened</a>
+<a href="#assert-enabled">assertEnabled</a>
+<a href="#assert-disabled">assertDisabled</a>
+<a href="#assert-button-enabled">assertButtonEnabled</a>
+<a href="#assert-button-disabled">assertButtonDisabled</a>
+<a href="#assert-focused">assertFocused</a>
+<a href="#assert-not-focused">assertNotFocused</a>
+<a href="#assert-authenticated">assertAuthenticated</a>
+<a href="#assert-guest">assertGuest</a>
+<a href="#assert-authenticated-as">assertAuthenticatedAs</a>
+<a href="#assert-vue">assertVue</a>
+<a href="#assert-vue-is-not">assertVueIsNot</a>
+<a href="#assert-vue-contains">assertVueContains</a>
+<a href="#assert-vue-does-not-contain">assertVueDoesNotContain</a></p>
+</div>
+<p><a name="assert-title"></a></p>
+<h4>assertTitle</h4>
+<p>Assert that the page title matches the given text:</p>
+<pre><code>$browser-&gt;assertTitle($title);</code></pre>
+<p><a name="assert-title-contains"></a></p>
+<h4>assertTitleContains</h4>
+<p>Assert that the page title contains the given text:</p>
+<pre><code>$browser-&gt;assertTitleContains($title);</code></pre>
+<p><a name="assert-url-is"></a></p>
+<h4>assertUrlIs</h4>
+<p>Assert that the current URL (without the query string) matches the given string:</p>
+<pre><code>$browser-&gt;assertUrlIs($url);</code></pre>
+<p><a name="assert-scheme-is"></a></p>
+<h4>assertSchemeIs</h4>
+<p>Assert that the current URL scheme matches the given scheme:</p>
+<pre><code>$browser-&gt;assertSchemeIs($scheme);</code></pre>
+<p><a name="assert-scheme-is-not"></a></p>
+<h4>assertSchemeIsNot</h4>
+<p>Assert that the current URL scheme does not match the given scheme:</p>
+<pre><code>$browser-&gt;assertSchemeIsNot($scheme);</code></pre>
+<p><a name="assert-host-is"></a></p>
+<h4>assertHostIs</h4>
+<p>Assert that the current URL host matches the given host:</p>
+<pre><code>$browser-&gt;assertHostIs($host);</code></pre>
+<p><a name="assert-host-is-not"></a></p>
+<h4>assertHostIsNot</h4>
+<p>Assert that the current URL host does not match the given host:</p>
+<pre><code>$browser-&gt;assertHostIsNot($host);</code></pre>
+<p><a name="assert-port-is"></a></p>
+<h4>assertPortIs</h4>
+<p>Assert that the current URL port matches the given port:</p>
+<pre><code>$browser-&gt;assertPortIs($port);</code></pre>
+<p><a name="assert-port-is-not"></a></p>
+<h4>assertPortIsNot</h4>
+<p>Assert that the current URL port does not match the given port:</p>
+<pre><code>$browser-&gt;assertPortIsNot($port);</code></pre>
+<p><a name="assert-path-begins-with"></a></p>
+<h4>assertPathBeginsWith</h4>
+<p>Assert that the current URL path begins with the given path:</p>
+<pre><code>$browser-&gt;assertPathBeginsWith('/home');</code></pre>
+<p><a name="assert-path-is"></a></p>
+<h4>assertPathIs</h4>
+<p>Assert that the current path matches the given path:</p>
+<pre><code>$browser-&gt;assertPathIs('/home');</code></pre>
+<p><a name="assert-path-is-not"></a></p>
+<h4>assertPathIsNot</h4>
+<p>Assert that the current path does not match the given path:</p>
+<pre><code>$browser-&gt;assertPathIsNot('/home');</code></pre>
+<p><a name="assert-route-is"></a></p>
+<h4>assertRouteIs</h4>
+<p>Assert that the current URL matches the given <a href="/docs/laravel_8/routing.html#named-routes">named route's</a> URL:</p>
+<pre><code>$browser-&gt;assertRouteIs($name, $parameters);</code></pre>
+<p><a name="assert-query-string-has"></a></p>
+<h4>assertQueryStringHas</h4>
+<p>Assert that the given query string parameter is present:</p>
+<pre><code>$browser-&gt;assertQueryStringHas($name);</code></pre>
+<p>Assert that the given query string parameter is present and has a given value:</p>
+<pre><code>$browser-&gt;assertQueryStringHas($name, $value);</code></pre>
+<p><a name="assert-query-string-missing"></a></p>
+<h4>assertQueryStringMissing</h4>
+<p>Assert that the given query string parameter is missing:</p>
+<pre><code>$browser-&gt;assertQueryStringMissing($name);</code></pre>
+<p><a name="assert-fragment-is"></a></p>
+<h4>assertFragmentIs</h4>
+<p>Assert that the URL's current hash fragment matches the given fragment:</p>
+<pre><code>$browser-&gt;assertFragmentIs('anchor');</code></pre>
+<p><a name="assert-fragment-begins-with"></a></p>
+<h4>assertFragmentBeginsWith</h4>
+<p>Assert that the URL's current hash fragment begins with the given fragment:</p>
+<pre><code>$browser-&gt;assertFragmentBeginsWith('anchor');</code></pre>
+<p><a name="assert-fragment-is-not"></a></p>
+<h4>assertFragmentIsNot</h4>
+<p>Assert that the URL's current hash fragment does not match the given fragment:</p>
+<pre><code>$browser-&gt;assertFragmentIsNot('anchor');</code></pre>
+<p><a name="assert-has-cookie"></a></p>
+<h4>assertHasCookie</h4>
+<p>Assert that the given encrypted cookie is present:</p>
+<pre><code>$browser-&gt;assertHasCookie($name);</code></pre>
+<p><a name="assert-has-plain-cookie"></a></p>
+<h4>assertHasPlainCookie</h4>
+<p>Assert that the given unencrypted cookie is present:</p>
+<pre><code>$browser-&gt;assertHasPlainCookie($name);</code></pre>
+<p><a name="assert-cookie-missing"></a></p>
+<h4>assertCookieMissing</h4>
+<p>Assert that the given encrypted cookie is not present:</p>
+<pre><code>$browser-&gt;assertCookieMissing($name);</code></pre>
+<p><a name="assert-plain-cookie-missing"></a></p>
+<h4>assertPlainCookieMissing</h4>
+<p>Assert that the given unencrypted cookie is not present:</p>
+<pre><code>$browser-&gt;assertPlainCookieMissing($name);</code></pre>
+<p><a name="assert-cookie-value"></a></p>
+<h4>assertCookieValue</h4>
+<p>Assert that an encrypted cookie has a given value:</p>
+<pre><code>$browser-&gt;assertCookieValue($name, $value);</code></pre>
+<p><a name="assert-plain-cookie-value"></a></p>
+<h4>assertPlainCookieValue</h4>
+<p>Assert that an unencrypted cookie has a given value:</p>
+<pre><code>$browser-&gt;assertPlainCookieValue($name, $value);</code></pre>
+<p><a name="assert-see"></a></p>
+<h4>assertSee</h4>
+<p>Assert that the given text is present on the page:</p>
+<pre><code>$browser-&gt;assertSee($text);</code></pre>
+<p><a name="assert-dont-see"></a></p>
+<h4>assertDontSee</h4>
+<p>Assert that the given text is not present on the page:</p>
+<pre><code>$browser-&gt;assertDontSee($text);</code></pre>
+<p><a name="assert-see-in"></a></p>
+<h4>assertSeeIn</h4>
+<p>Assert that the given text is present within the selector:</p>
+<pre><code>$browser-&gt;assertSeeIn($selector, $text);</code></pre>
+<p><a name="assert-dont-see-in"></a></p>
+<h4>assertDontSeeIn</h4>
+<p>Assert that the given text is not present within the selector:</p>
+<pre><code>$browser-&gt;assertDontSeeIn($selector, $text);</code></pre>
+<p><a name="assert-see-anything-in"></a></p>
+<h4>assertSeeAnythingIn</h4>
+<p>Assert that any text is present within the selector:</p>
+<pre><code>$browser-&gt;assertSeeAnythingIn($selector);</code></pre>
+<p><a name="assert-see-nothing-in"></a></p>
+<h4>assertSeeNothingIn</h4>
+<p>Assert that no text is present within the selector:</p>
+<pre><code>$browser-&gt;assertSeeNothingIn($selector);</code></pre>
+<p><a name="assert-script"></a></p>
+<h4>assertScript</h4>
+<p>Assert that the given JavaScript expression evaluates to the given value:</p>
+<pre><code>$browser-&gt;assertScript('window.isLoaded')
+        -&gt;assertScript('document.readyState', 'complete');</code></pre>
+<p><a name="assert-source-has"></a></p>
+<h4>assertSourceHas</h4>
+<p>Assert that the given source code is present on the page:</p>
+<pre><code>$browser-&gt;assertSourceHas($code);</code></pre>
+<p><a name="assert-source-missing"></a></p>
+<h4>assertSourceMissing</h4>
+<p>Assert that the given source code is not present on the page:</p>
+<pre><code>$browser-&gt;assertSourceMissing($code);</code></pre>
+<p><a name="assert-see-link"></a></p>
+<h4>assertSeeLink</h4>
+<p>Assert that the given link is present on the page:</p>
+<pre><code>$browser-&gt;assertSeeLink($linkText);</code></pre>
+<p><a name="assert-dont-see-link"></a></p>
+<h4>assertDontSeeLink</h4>
+<p>Assert that the given link is not present on the page:</p>
+<pre><code>$browser-&gt;assertDontSeeLink($linkText);</code></pre>
+<p><a name="assert-input-value"></a></p>
+<h4>assertInputValue</h4>
+<p>Assert that the given input field has the given value:</p>
+<pre><code>$browser-&gt;assertInputValue($field, $value);</code></pre>
+<p><a name="assert-input-value-is-not"></a></p>
+<h4>assertInputValueIsNot</h4>
+<p>Assert that the given input field does not have the given value:</p>
+<pre><code>$browser-&gt;assertInputValueIsNot($field, $value);</code></pre>
+<p><a name="assert-checked"></a></p>
+<h4>assertChecked</h4>
+<p>Assert that the given checkbox is checked:</p>
+<pre><code>$browser-&gt;assertChecked($field);</code></pre>
+<p><a name="assert-not-checked"></a></p>
+<h4>assertNotChecked</h4>
+<p>Assert that the given checkbox is not checked:</p>
+<pre><code>$browser-&gt;assertNotChecked($field);</code></pre>
+<p><a name="assert-radio-selected"></a></p>
+<h4>assertRadioSelected</h4>
+<p>Assert that the given radio field is selected:</p>
+<pre><code>$browser-&gt;assertRadioSelected($field, $value);</code></pre>
+<p><a name="assert-radio-not-selected"></a></p>
+<h4>assertRadioNotSelected</h4>
+<p>Assert that the given radio field is not selected:</p>
+<pre><code>$browser-&gt;assertRadioNotSelected($field, $value);</code></pre>
+<p><a name="assert-selected"></a></p>
+<h4>assertSelected</h4>
+<p>Assert that the given dropdown has the given value selected:</p>
+<pre><code>$browser-&gt;assertSelected($field, $value);</code></pre>
+<p><a name="assert-not-selected"></a></p>
+<h4>assertNotSelected</h4>
+<p>Assert that the given dropdown does not have the given value selected:</p>
+<pre><code>$browser-&gt;assertNotSelected($field, $value);</code></pre>
+<p><a name="assert-select-has-options"></a></p>
+<h4>assertSelectHasOptions</h4>
+<p>Assert that the given array of values are available to be selected:</p>
+<pre><code>$browser-&gt;assertSelectHasOptions($field, $values);</code></pre>
+<p><a name="assert-select-missing-options"></a></p>
+<h4>assertSelectMissingOptions</h4>
+<p>Assert that the given array of values are not available to be selected:</p>
+<pre><code>$browser-&gt;assertSelectMissingOptions($field, $values);</code></pre>
+<p><a name="assert-select-has-option"></a></p>
+<h4>assertSelectHasOption</h4>
+<p>Assert that the given value is available to be selected on the given field:</p>
+<pre><code>$browser-&gt;assertSelectHasOption($field, $value);</code></pre>
+<p><a name="assert-select-missing-option"></a></p>
+<h4>assertSelectMissingOption</h4>
+<p>Assert that the given value is not available to be selected:</p>
+<pre><code>$browser-&gt;assertSelectMissingOption($field, $value);</code></pre>
+<p><a name="assert-value"></a></p>
+<h4>assertValue</h4>
+<p>Assert that the element matching the given selector has the given value:</p>
+<pre><code>$browser-&gt;assertValue($selector, $value);</code></pre>
+<p><a name="assert-attribute"></a></p>
+<h4>assertAttribute</h4>
+<p>Assert that the element matching the given selector has the given value in the provided attribute:</p>
+<pre><code>$browser-&gt;assertAttribute($selector, $attribute, $value);</code></pre>
+<p><a name="assert-aria-attribute"></a></p>
+<h4>assertAriaAttribute</h4>
+<p>Assert that the element matching the given selector has the given value in the provided aria attribute:</p>
+<pre><code>$browser-&gt;assertAriaAttribute($selector, $attribute, $value);</code></pre>
+<p>For example, given the markup <code>&lt;button aria-label="Add"&gt;&lt;/button&gt;</code>, you may assert against the <code>aria-label</code> attribute like so:</p>
+<pre><code>$browser-&gt;assertAriaAttribute('button', 'label', 'Add')</code></pre>
+<p><a name="assert-data-attribute"></a></p>
+<h4>assertDataAttribute</h4>
+<p>Assert that the element matching the given selector has the given value in the provided data attribute:</p>
+<pre><code>$browser-&gt;assertDataAttribute($selector, $attribute, $value);</code></pre>
+<p>For example, given the markup <code>&lt;tr id="row-1" data-content="attendees"&gt;&lt;/tr&gt;</code>, you may assert against the <code>data-label</code> attribute like so:</p>
+<pre><code>$browser-&gt;assertDataAttribute('#row-1', 'content', 'attendees')</code></pre>
+<p><a name="assert-visible"></a></p>
+<h4>assertVisible</h4>
+<p>Assert that the element matching the given selector is visible:</p>
+<pre><code>$browser-&gt;assertVisible($selector);</code></pre>
+<p><a name="assert-present"></a></p>
+<h4>assertPresent</h4>
+<p>Assert that the element matching the given selector is present:</p>
+<pre><code>$browser-&gt;assertPresent($selector);</code></pre>
+<p><a name="assert-missing"></a></p>
+<h4>assertMissing</h4>
+<p>Assert that the element matching the given selector is not visible:</p>
+<pre><code>$browser-&gt;assertMissing($selector);</code></pre>
+<p><a name="assert-dialog-opened"></a></p>
+<h4>assertDialogOpened</h4>
+<p>Assert that a JavaScript dialog with the given message has been opened:</p>
+<pre><code>$browser-&gt;assertDialogOpened($message);</code></pre>
+<p><a name="assert-enabled"></a></p>
+<h4>assertEnabled</h4>
+<p>Assert that the given field is enabled:</p>
+<pre><code>$browser-&gt;assertEnabled($field);</code></pre>
+<p><a name="assert-disabled"></a></p>
+<h4>assertDisabled</h4>
+<p>Assert that the given field is disabled:</p>
+<pre><code>$browser-&gt;assertDisabled($field);</code></pre>
+<p><a name="assert-button-enabled"></a></p>
+<h4>assertButtonEnabled</h4>
+<p>Assert that the given button is enabled:</p>
+<pre><code>$browser-&gt;assertButtonEnabled($button);</code></pre>
+<p><a name="assert-button-disabled"></a></p>
+<h4>assertButtonDisabled</h4>
+<p>Assert that the given button is disabled:</p>
+<pre><code>$browser-&gt;assertButtonDisabled($button);</code></pre>
+<p><a name="assert-focused"></a></p>
+<h4>assertFocused</h4>
+<p>Assert that the given field is focused:</p>
+<pre><code>$browser-&gt;assertFocused($field);</code></pre>
+<p><a name="assert-not-focused"></a></p>
+<h4>assertNotFocused</h4>
+<p>Assert that the given field is not focused:</p>
+<pre><code>$browser-&gt;assertNotFocused($field);</code></pre>
+<p><a name="assert-authenticated"></a></p>
+<h4>assertAuthenticated</h4>
+<p>Assert that the user is authenticated:</p>
+<pre><code>$browser-&gt;assertAuthenticated();</code></pre>
+<p><a name="assert-guest"></a></p>
+<h4>assertGuest</h4>
+<p>Assert that the user is not authenticated:</p>
+<pre><code>$browser-&gt;assertGuest();</code></pre>
+<p><a name="assert-authenticated-as"></a></p>
+<h4>assertAuthenticatedAs</h4>
+<p>Assert that the user is authenticated as the given user:</p>
+<pre><code>$browser-&gt;assertAuthenticatedAs($user);</code></pre>
+<p><a name="assert-vue"></a></p>
+<h4>assertVue</h4>
+<p>Dusk even allows you to make assertions on the state of <a href="https://vuejs.org">Vue component</a> data. For example, imagine your application contains the following Vue component:</p>
+<pre><code>// HTML...
+
+&lt;profile dusk="profile-component"&gt;&lt;/profile&gt;
+
+// Component Definition...
+
+Vue.component('profile', {
+    template: '&lt;div&gt;{{ user.name }}&lt;/div&gt;',
+
+    data: function () {
+        return {
+            user: {
+                name: 'Taylor'
+            }
+        };
+    }
+});</code></pre>
+<p>You may assert on the state of the Vue component like so:</p>
+<pre><code>/**
+ * A basic Vue test example.
+ *
+ * @return void
+ */
+public function testVue()
+{
+    $this-&gt;browse(function (Browser $browser) {
+        $browser-&gt;visit('/')
+                -&gt;assertVue('user.name', 'Taylor', '@profile-component');
+    });
+}</code></pre>
+<p><a name="assert-vue-is-not"></a></p>
+<h4>assertVueIsNot</h4>
+<p>Assert that a given Vue component data property does not match the given value:</p>
+<pre><code>$browser-&gt;assertVueIsNot($property, $value, $componentSelector = null);</code></pre>
+<p><a name="assert-vue-contains"></a></p>
+<h4>assertVueContains</h4>
+<p>Assert that a given Vue component data property is an array and contains the given value:</p>
+<pre><code>$browser-&gt;assertVueContains($property, $value, $componentSelector = null);</code></pre>
+<p><a name="assert-vue-does-not-contain"></a></p>
+<h4>assertVueDoesNotContain</h4>
+<p>Assert that a given Vue component data property is an array and does not contain the given value:</p>
+<pre><code>$browser-&gt;assertVueDoesNotContain($property, $value, $componentSelector = null);</code></pre>
+<p><a name="pages"></a></p>
+<h2>Pages</h2>
+<p>Sometimes, tests require several complicated actions to be performed in sequence. This can make your tests harder to read and understand. Dusk Pages allow you to define expressive actions that may then be performed on a given page via a single method. Pages also allow you to define short-cuts to common selectors for your application or for a single page.</p>
+<p><a name="generating-pages"></a></p>
+<h3>Generating Pages</h3>
+<p>To generate a page object, execute the <code>dusk:page</code> Artisan command. All page objects will be placed in your application's <code>tests/Browser/Pages</code> directory:</p>
+<pre><code>php artisan dusk:page Login</code></pre>
+<p><a name="configuring-pages"></a></p>
+<h3>Configuring Pages</h3>
+<p>By default, pages have three methods: <code>url</code>, <code>assert</code>, and <code>elements</code>. We will discuss the <code>url</code> and <code>assert</code> methods now. The <code>elements</code> method will be <a href="#shorthand-selectors">discussed in more detail below</a>.</p>
+<p><a name="the-url-method"></a></p>
+<h4>The <code>url</code> Method</h4>
+<p>The <code>url</code> method should return the path of the URL that represents the page. Dusk will use this URL when navigating to the page in the browser:</p>
+<pre><code>/**
+ * Get the URL for the page.
+ *
+ * @return string
+ */
+public function url()
+{
+    return '/login';
+}</code></pre>
+<p><a name="the-assert-method"></a></p>
+<h4>The <code>assert</code> Method</h4>
+<p>The <code>assert</code> method may make any assertions necessary to verify that the browser is actually on the given page. It is not actually necessary to place anything within this method; however, you are free to make these assertions if you wish. These assertions will be run automatically when navigating to the page:</p>
+<pre><code>/**
+ * Assert that the browser is on the page.
+ *
+ * @return void
+ */
+public function assert(Browser $browser)
+{
+    $browser-&gt;assertPathIs($this-&gt;url());
+}</code></pre>
+<p><a name="navigating-to-pages"></a></p>
+<h3>Navigating To Pages</h3>
+<p>Once a page has been defined, you may navigate to it using the <code>visit</code> method:</p>
+<pre><code>use Tests\Browser\Pages\Login;
+
+$browser-&gt;visit(new Login);</code></pre>
+<p>Sometimes you may already be on a given page and need to &quot;load&quot; the page's selectors and methods into the current test context. This is common when pressing a button and being redirected to a given page without explicitly navigating to it. In this situation, you may use the <code>on</code> method to load the page:</p>
+<pre><code>use Tests\Browser\Pages\CreatePlaylist;
+
+$browser-&gt;visit('/dashboard')
+        -&gt;clickLink('Create Playlist')
+        -&gt;on(new CreatePlaylist)
+        -&gt;assertSee('@create');</code></pre>
+<p><a name="shorthand-selectors"></a></p>
+<h3>Shorthand Selectors</h3>
+<p>The <code>elements</code> method within page classes allow you to define quick, easy-to-remember shortcuts for any CSS selector on your page. For example, let's define a shortcut for the &quot;email&quot; input field of the application's login page:</p>
+<pre><code>/**
+ * Get the element shortcuts for the page.
+ *
+ * @return array
+ */
+public function elements()
+{
+    return [
+        '@email' =&gt; 'input[name=email]',
+    ];
+}</code></pre>
+<p>Once the shortcut has been defined, you may use the shorthand selector anywhere you would typically use a full CSS selector:</p>
+<pre><code>$browser-&gt;type('@email', 'taylor@laravel.com');</code></pre>
+<p><a name="global-shorthand-selectors"></a></p>
+<h4>Global Shorthand Selectors</h4>
+<p>After installing Dusk, a base <code>Page</code> class will be placed in your <code>tests/Browser/Pages</code> directory. This class contains a <code>siteElements</code> method which may be used to define global shorthand selectors that should be available on every page throughout your application:</p>
+<pre><code>/**
+ * Get the global element shortcuts for the site.
+ *
+ * @return array
+ */
+public static function siteElements()
+{
+    return [
+        '@element' =&gt; '#selector',
+    ];
+}</code></pre>
+<p><a name="page-methods"></a></p>
+<h3>Page Methods</h3>
+<p>In addition to the default methods defined on pages, you may define additional methods which may be used throughout your tests. For example, let's imagine we are building a music management application. A common action for one page of the application might be to create a playlist. Instead of re-writing the logic to create a playlist in each test, you may define a <code>createPlaylist</code> method on a page class:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Browser\Pages;
+
+use Laravel\Dusk\Browser;
+
+class Dashboard extends Page
+{
+    // Other page methods...
+
+    /**
+     * Create a new playlist.
+     *
+     * @param  \Laravel\Dusk\Browser  $browser
+     * @param  string  $name
+     * @return void
+     */
+    public function createPlaylist(Browser $browser, $name)
+    {
+        $browser-&gt;type('name', $name)
+                -&gt;check('share')
+                -&gt;press('Create Playlist');
+    }
+}</code></pre>
+<p>Once the method has been defined, you may use it within any test that utilizes the page. The browser instance will automatically be passed as the first argument to custom page methods:</p>
+<pre><code>use Tests\Browser\Pages\Dashboard;
+
+$browser-&gt;visit(new Dashboard)
+        -&gt;createPlaylist('My Playlist')
+        -&gt;assertSee('My Playlist');</code></pre>
+<p><a name="components"></a></p>
+<h2>Components</h2>
+<p>Components are similar to Dusk’s “page objects”, but are intended for pieces of UI and functionality that are re-used throughout your application, such as a navigation bar or notification window. As such, components are not bound to specific URLs.</p>
+<p><a name="generating-components"></a></p>
+<h3>Generating Components</h3>
+<p>To generate a component, execute the <code>dusk:component</code> Artisan command. New components are placed in the <code>tests/Browser/Components</code> directory:</p>
+<pre><code>php artisan dusk:component DatePicker</code></pre>
+<p>As shown above, a &quot;date picker&quot; is an example of a component that might exist throughout your application on a variety of pages. It can become cumbersome to manually write the browser automation logic to select a date in dozens of tests throughout your test suite. Instead, we can define a Dusk component to represent the date picker, allowing us to encapsulate that logic within the component:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Browser\Components;
+
+use Laravel\Dusk\Browser;
+use Laravel\Dusk\Component as BaseComponent;
+
+class DatePicker extends BaseComponent
+{
+    /**
+     * Get the root selector for the component.
+     *
+     * @return string
+     */
+    public function selector()
+    {
+        return '.date-picker';
+    }
+
+    /**
+     * Assert that the browser page contains the component.
+     *
+     * @param  Browser  $browser
+     * @return void
+     */
+    public function assert(Browser $browser)
+    {
+        $browser-&gt;assertVisible($this-&gt;selector());
+    }
+
+    /**
+     * Get the element shortcuts for the component.
+     *
+     * @return array
+     */
+    public function elements()
+    {
+        return [
+            '@date-field' =&gt; 'input.datepicker-input',
+            '@year-list' =&gt; 'div &gt; div.datepicker-years',
+            '@month-list' =&gt; 'div &gt; div.datepicker-months',
+            '@day-list' =&gt; 'div &gt; div.datepicker-days',
+        ];
+    }
+
+    /**
+     * Select the given date.
+     *
+     * @param  \Laravel\Dusk\Browser  $browser
+     * @param  int  $year
+     * @param  int  $month
+     * @param  int  $day
+     * @return void
+     */
+    public function selectDate(Browser $browser, $year, $month, $day)
+    {
+        $browser-&gt;click('@date-field')
+                -&gt;within('@year-list', function ($browser) use ($year) {
+                    $browser-&gt;click($year);
+                })
+                -&gt;within('@month-list', function ($browser) use ($month) {
+                    $browser-&gt;click($month);
+                })
+                -&gt;within('@day-list', function ($browser) use ($day) {
+                    $browser-&gt;click($day);
+                });
+    }
+}</code></pre>
+<p><a name="using-components"></a></p>
+<h3>Using Components</h3>
+<p>Once the component has been defined, we can easily select a date within the date picker from any test. And, if the logic necessary to select a date changes, we only need to update the component:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Browser;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Components\DatePicker;
+use Tests\DuskTestCase;
+
+class ExampleTest extends DuskTestCase
+{
+    /**
+     * A basic component test example.
+     *
+     * @return void
+     */
+    public function testBasicExample()
+    {
+        $this-&gt;browse(function (Browser $browser) {
+            $browser-&gt;visit('/')
+                    -&gt;within(new DatePicker, function ($browser) {
+                        $browser-&gt;selectDate(2019, 1, 30);
+                    })
+                    -&gt;assertSee('January');
+        });
+    }
+}</code></pre>
+<p><a name="continuous-integration"></a></p>
+<h2>Continuous Integration</h2>
+<blockquote>
+<p>{note} Most Dusk continuous integration configurations expect your Laravel application to be served using the built-in PHP development server on port 8000. Therefore, before continuing, you should ensure that your continous integration environment has an <code>APP_URL</code> environment variable value of <code>http://127.0.0.1:8000</code>.</p>
+</blockquote>
+<p><a name="running-tests-on-heroku-ci"></a></p>
+<h3>Heroku CI</h3>
+<p>To run Dusk tests on <a href="https://www.heroku.com/continuous-integration">Heroku CI</a>, add the following Google Chrome buildpack and scripts to your Heroku <code>app.json</code> file:</p>
+<pre><code>{
+  "environments": {
+    "test": {
+      "buildpacks": [
+        { "url": "heroku/php" },
+        { "url": "https://github.com/heroku/heroku-buildpack-google-chrome" }
+      ],
+      "scripts": {
+        "test-setup": "cp .env.testing .env",
+        "test": "nohup bash -c './vendor/laravel/dusk/bin/chromedriver-linux &gt; /dev/null 2&gt;&amp;1 &amp;' &amp;&amp; nohup bash -c 'php artisan serve &gt; /dev/null 2&gt;&amp;1 &amp;' &amp;&amp; php artisan dusk"
+      }
+    }
+  }
+}</code></pre>
+<p><a name="running-tests-on-travis-ci"></a></p>
+<h3>Travis CI</h3>
+<p>To run your Dusk tests on <a href="https://travis-ci.org">Travis CI</a>, use the following <code>.travis.yml</code> configuration. Since Travis CI is not a graphical environment, we will need to take some extra steps in order to launch a Chrome browser. In addition, we will use <code>php artisan serve</code> to launch PHP's built-in web server:</p>
+<pre><code>language: php
+
+php:
+  - 7.3
+
+addons:
+  chrome: stable
+
+install:
+  - cp .env.testing .env
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - php artisan key:generate
+  - php artisan dusk:chrome-driver
+
+before_script:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &amp;
+  - php artisan serve &amp;
+
+script:
+  - php artisan dusk</code></pre>
+<p><a name="running-tests-on-github-actions"></a></p>
+<h3>GitHub Actions</h3>
+<p>If you are using <a href="https://github.com/features/actions">Github Actions</a> to run your Dusk tests, you may use the following configuration file as a starting point. Like TravisCI, we will use the <code>php artisan serve</code> command to launch PHP's built-in web server:</p>
+<pre><code>name: CI
+on: [push]
+jobs:
+
+  dusk-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare The Environment
+        run: cp .env.example .env
+      - name: Create Database
+        run: |
+          sudo systemctl start mysql
+          mysql --user="root" --password="root" -e "CREATE DATABASE 'my-database' character set UTF8mb4 collate utf8mb4_bin;"
+      - name: Install Composer Dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+      - name: Generate Application Key
+        run: php artisan key:generate
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver `/opt/google/chrome/chrome --version | cut -d " " -f3 | cut -d "." -f1`
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux &amp;
+      - name: Run Laravel Server
+        run: php artisan serve &amp;
+      - name: Run Dusk Tests
+        env:
+          APP_URL: "http://127.0.0.1:8000"
+        run: php artisan dusk
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: console
+          path: tests/Browser/console</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 243);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

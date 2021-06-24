@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>OCI8 函数 - 开发帮助文档</title> 
+    <meta name="keyword" content="ref.oci8"> 
+    <meta name="description" content="ref.oci8"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="813" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Collection.html" title="The OCICollection class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCICollection class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/class.OCI-Lob.html" title="The OCILob class">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    The OCILob class
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/intro.oci8.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.connection.html" title="OCI8 Connection Handling and Connection Pooling">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Connection Handling and Connection Pooling
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.constants.html" title="预定义常量">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    预定义常量
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.datatypes.html" title="Supported Datatypes">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Supported Datatypes
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.dtrace.html" title="OCI8 and DTrace Dynamic Tracing">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 and DTrace Dynamic Tracing
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.examples.html" title="范例">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    范例
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.fan.html" title="OCI8 Fast Application Notification (FAN) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Fast Application Notification (FAN) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.setup.html" title="安装／配置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    安装／配置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oci8.taf.html" title="OCI8 Transparent Application Failover (TAF) Support">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Transparent Application Failover (TAF) Support
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/oldaliases.oci8.html" title="OCI8 Obsolete Aliases and Functions">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 Obsolete Aliases and Functions
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/ref.oci8.html" title="OCI8 函数">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    OCI8 函数
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="oci8.datatypes.html">« Supported Datatypes</a></li>
+      <li style="float: right;"><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="book.oci8.html">OCI8</a></li>
+    <li>OCI8 函数</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ref.oci8" class="reference">
+  <h1 class="title">OCI8 函数</h1>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目录</h2><ul class="chunklist chunklist_reference"><li><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name</a> — Binds a PHP array to an Oracle PL/SQL array parameter</li><li><a href="function.oci-bind-by-name.html">oci_bind_by_name</a> — 绑定一个 PHP 变量到一个 Oracle 位置标志符</li><li><a href="function.oci-cancel.html">oci_cancel</a> — 中断游标读取数据</li><li><a href="function.oci-client-version.html">oci_client_version</a> — Returns the Oracle client library version</li><li><a href="function.oci-close.html">oci_close</a> — 关闭 Oracle 连接</li><li><a href="function.oci-commit.html">oci_commit</a> — 提交未执行的事务处理</li><li><a href="function.oci-connect.html">oci_connect</a> — 建立一个到 Oracle 服务器的连接</li><li><a href="function.oci-define-by-name.html">oci_define_by_name</a> — 在 SELECT 中使用 PHP 变量作为定义的步骤</li><li><a href="function.oci-error.html">oci_error</a> — 返回上一个错误</li><li><a href="function.oci-execute.html">oci_execute</a> — 执行一条语句</li><li><a href="function.oci-fetch-all.html">oci_fetch_all</a> — 获取结果数据的所有行到一个数组</li><li><a href="function.oci-fetch-array.html">oci_fetch_array</a> — Returns the next row from a query as an associative or numeric array</li><li><a href="function.oci-fetch-assoc.html">oci_fetch_assoc</a> — Returns the next row from a query as an associative array</li><li><a href="function.oci-fetch-object.html">oci_fetch_object</a> — Returns the next row from a query as an object</li><li><a href="function.oci-fetch-row.html">oci_fetch_row</a> — Returns the next row from a query as a numeric array</li><li><a href="function.oci-fetch.html">oci_fetch</a> — Fetches the next row into result-buffer</li><li><a href="function.oci-field-is-null.html">oci_field_is_null</a> — 检查字段是否为 null</li><li><a href="function.oci-field-name.html">oci_field_name</a> — 返回字段名</li><li><a href="function.oci-field-precision.html">oci_field_precision</a> — 返回字段精度</li><li><a href="function.oci-field-scale.html">oci_field_scale</a> — 返回字段范围</li><li><a href="function.oci-field-size.html">oci_field_size</a> — 返回字段大小</li><li><a href="function.oci-field-type-raw.html">oci_field_type_raw</a> — 返回字段的原始 Oracle 数据类型</li><li><a href="function.oci-field-type.html">oci_field_type</a> — 返回字段的数据类型</li><li><a href="function.oci-free-descriptor.html">oci_free_descriptor</a> — Frees a descriptor</li><li><a href="function.oci-free-statement.html">oci_free_statement</a> — 释放关联于语句或游标的所有资源</li><li><a href="function.oci-get-implicit-resultset.html">oci_get_implicit_resultset</a> — Returns the next child statement resource from a parent statement resource that has Oracle Database Implicit Result Sets</li><li><a href="function.oci-lob-copy.html">oci_lob_copy</a> — Copies large object</li><li><a href="function.oci-lob-is-equal.html">oci_lob_is_equal</a> — Compares two LOB/FILE locators for equality</li><li><a href="function.oci-new-collection.html">oci_new_collection</a> — 分配新的 collection 对象</li><li><a href="function.oci-new-connect.html">oci_new_connect</a> — 建定一个到 Oracle 服务器的新连接</li><li><a href="function.oci-new-cursor.html">oci_new_cursor</a> — 分配并返回一个新的游标（语句句柄）</li><li><a href="function.oci-new-descriptor.html">oci_new_descriptor</a> — 初始化一个新的空 LOB 或 FILE 描述符</li><li><a href="function.oci-num-fields.html">oci_num_fields</a> — 返回结果列的数目</li><li><a href="function.oci-num-rows.html">oci_num_rows</a> — 返回语句执行后受影响的行数</li><li><a href="function.oci-parse.html">oci_parse</a> — 配置 Oracle 语句预备执行</li><li><a href="function.oci-password-change.html">oci_password_change</a> — 修改 Oracle 用户的密码</li><li><a href="function.oci-pconnect.html">oci_pconnect</a> — 使用一个持久连接连到 Oracle 数据库</li><li><a href="function.oci-register-taf-callback.html">oci_register_taf_callback</a> — Register a user-defined callback function for Oracle Database TAF</li><li><a href="function.oci-result.html">oci_result</a> — 返回所取得行中字段的值</li><li><a href="function.oci-rollback.html">oci_rollback</a> — 回滚未提交的事务</li><li><a href="function.oci-server-version.html">oci_server_version</a> — 返回服务器版本信息</li><li><a href="function.oci-set-action.html">oci_set_action</a> — Sets the action name</li><li><a href="function.oci-set-call-timout.html">oci_set_call_timeout</a> — Sets a millisecond timeout for database calls</li><li><a href="function.oci-set-client-identifier.html">oci_set_client_identifier</a> — Sets the client identifier</li><li><a href="function.oci-set-client-info.html">oci_set_client_info</a> — Sets the client information</li><li><a href="function.oci-set-db-operation.html">oci_set_db_operation</a> — Sets the database operation</li><li><a href="function.oci-set-edition.html">oci_set_edition</a> — Sets the database edition</li><li><a href="function.oci-set-module-name.html">oci_set_module_name</a> — Sets the module name</li><li><a href="function.oci-set-prefetch.html">oci_set_prefetch</a> — 设置预提取行数</li><li><a href="function.oci-statement-type.html">oci_statement_type</a> — 返回 OCI 语句的类型</li><li><a href="function.oci-unregister-taf-callback.html">oci_unregister_taf_callback</a> — Unregister a user-defined callback function for Oracle Database TAF</li></ul>
+</div>
+</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 9155);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>socket_get_option - 开发帮助文档</title> 
+    <meta name="keyword" content="function.socket-get-option"> 
+    <meta name="description" content="function.socket-get-option"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="319" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-accept.html" title="socket_accept">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_accept
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-addrinfo-bind.html" title="socket_addrinfo_bind">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_addrinfo_bind
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-addrinfo-connect.html" title="socket_addrinfo_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_addrinfo_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-addrinfo-explain.html" title="socket_addrinfo_explain">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_addrinfo_explain
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-addrinfo-lookup.html" title="socket_addrinfo_lookup">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_addrinfo_lookup
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-bind.html" title="socket_bind">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_bind
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-clear-error.html" title="socket_clear_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_clear_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-close.html" title="socket_close">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_close
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-cmsg-space.html" title="socket_cmsg_space">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_cmsg_space
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-connect.html" title="socket_connect">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_connect
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-create-listen.html" title="socket_create_listen">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_create_listen
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-create-pair.html" title="socket_create_pair">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_create_pair
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-create.html" title="socket_create">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_create
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-export-stream.html" title="socket_export_stream">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_export_stream
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-get-option.html" title="socket_get_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_get_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-getopt.html" title="socket_getopt">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_getopt
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-getpeername.html" title="socket_getpeername">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_getpeername
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-getsockname.html" title="socket_getsockname">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_getsockname
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-import-stream.html" title="socket_import_stream">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_import_stream
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-last-error.html" title="socket_last_error">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_last_error
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-listen.html" title="socket_listen">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_listen
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-read.html" title="socket_read">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_read
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-recv.html" title="socket_recv">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_recv
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-recvfrom.html" title="socket_recvfrom">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_recvfrom
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-recvmsg.html" title="socket_recvmsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_recvmsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-select.html" title="socket_select">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_select
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-send.html" title="socket_send">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_send
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-sendmsg.html" title="socket_sendmsg">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_sendmsg
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-sendto.html" title="socket_sendto">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_sendto
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-set-block.html" title="socket_set_block">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_set_block
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-set-nonblock.html" title="socket_set_nonblock">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_set_nonblock
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-set-option.html" title="socket_set_option">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_set_option
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-setopt.html" title="socket_setopt">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_setopt
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-shutdown.html" title="socket_shutdown">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_shutdown
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-strerror.html" title="socket_strerror">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_strerror
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-write.html" title="socket_write">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_write
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-wsaprotocol-info-export.html" title="socket_wsaprotocol_info_export">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_wsaprotocol_info_export
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-wsaprotocol-info-import.html" title="socket_wsaprotocol_info_import">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_wsaprotocol_info_import
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/function.socket-wsaprotocol-info-release.html" title="socket_wsaprotocol_info_release">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    socket_wsaprotocol_info_release
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.socket-export-stream.html">« socket_export_stream</a></li>
+      <li style="float: right;"><a href="function.socket-getopt.html">socket_getopt »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="ref.sockets.html">Socket 函数</a></li>
+    <li>Gets socket options for the socket</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.socket-get-option" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_get_option</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">socket_get_option</span> — <span class="dc-title">Gets socket options for the socket </span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-get-option-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>socket_get_option</strong></span>
+    ( <span class="methodparam"><span class="type"><span class="type Socket">Socket</span></span> <code class="parameter">$socket</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$level</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   ) : <span class="type"><span class="type">array</span>|<span class="type">int</span>|<span class="type"><span class="type false">false</span></span></span></div>
+
+  <p class="para rdfs-comment">
+   The <span class="function"><strong>socket_get_option()</strong></span> function retrieves the value for
+   the option specified by the <code class="parameter">option</code> parameter for the
+   specified <code class="parameter">socket</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.socket-get-option-parameters">
+  <h3 class="title">参数</h3>
+  <p class="para">
+   </p><dl>
+
+    
+     <dt>
+<code class="parameter">socket</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A <strong class="classname">Socket</strong> instance created with <span class="function"><a href="function.socket-create.html" class="function">socket_create()</a></span>
+       or <span class="function"><a href="function.socket-accept.html" class="function">socket_accept()</a></span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">level</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">level</code> parameter specifies the protocol
+       level at which the option resides. For example, to retrieve options at
+       the socket level, a <code class="parameter">level</code> parameter of
+       <strong><code>SOL_SOCKET</code></strong> would be used. Other levels, such as
+       <strong><code>TCP</code></strong>, can be used by
+       specifying the protocol number of that level. Protocol numbers can be
+       found by using the <span class="function"><a href="function.getprotobyname.html" class="function">getprotobyname()</a></span> function.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">option</code></dt>
+
+     <dd>
+
+      <table class="doctable table">
+       <caption><strong>Available Socket Options</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Option</th>
+          <th>Description</th>
+          <th>Type</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><strong><code>SO_DEBUG</code></strong></td>
+          <td>
+           Reports whether debugging information is being recorded.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_BROADCAST</code></strong></td>
+          <td>
+           Reports whether transmission of broadcast messages is supported.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_REUSEADDR</code></strong></td>
+          <td>
+           Reports whether local addresses can be reused.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_REUSEPORT</code></strong></td>
+          <td>
+           Reports whether local ports can be reused.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_KEEPALIVE</code></strong></td>
+          <td>
+           Reports whether connections are kept active with periodic transmission
+           of messages. If the connected socket fails to respond to these messages,
+           the connection is broken and processes writing to that socket are notified
+           with a SIGPIPE signal.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_LINGER</code></strong></td>
+          <td>
+           <p class="para">
+            Reports whether the <code class="parameter">socket</code> lingers on 
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> if data is present. By default, 
+            when the socket is closed, it attempts to send all unsent data.
+            In the case of a connection-oriented socket, 
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> will wait for its peer to
+            acknowledge the data. 
+           </p>
+           <p class="para">
+            If <var class="varname">l_onoff</var> is non-zero and 
+            <var class="varname">l_linger</var> is zero, all the 
+            unsent data will be discarded and RST (reset) is sent to the 
+            peer in the case of a connection-oriented socket. 
+           </p>
+           <p class="para">
+            On the other hand, if <var class="varname">l_onoff</var> is 
+            non-zero and <var class="varname">l_linger</var> is non-zero,
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> will block until all the data 
+            is sent or the time specified in <var class="varname">l_linger</var>
+            elapses. If the socket is non-blocking, 
+            <span class="function"><a href="function.socket-close.html" class="function">socket_close()</a></span> will fail and return an error.
+           </p>
+          </td>
+          <td>
+           <span class="type">array</span>. The array will contain two keys:
+           <var class="varname">l_onoff</var> and 
+           <var class="varname">l_linger</var>. 
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_OOBINLINE</code></strong></td>
+          <td>
+           Reports whether the <code class="parameter">socket</code> leaves out-of-band data inline.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_SNDBUF</code></strong></td>
+          <td>
+           Reports the size of the send buffer.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>          
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_RCVBUF</code></strong></td>
+          <td>
+           Reports the size of the receive buffer.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>         
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_ERROR</code></strong></td>
+          <td>
+           Reports information about error status and clears it.
+          </td>
+          <td>
+           <span class="type">int</span> (cannot be set by <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_TYPE</code></strong></td>
+          <td>
+           Reports the <code class="parameter">socket</code> type (e.g. 
+           <strong><code>SOCK_STREAM</code></strong>).
+          </td>
+          <td>
+           <span class="type">int</span> (cannot be set by <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_DONTROUTE</code></strong></td>
+          <td>
+           Reports whether outgoing messages bypass the standard routing facilities.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_RCVLOWAT</code></strong></td>
+          <td>
+           Reports the minimum number of bytes to process for <code class="parameter">socket</code> 
+           input operations.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_RCVTIMEO</code></strong></td>
+          <td>
+           Reports the timeout value for input operations.
+          </td>
+          <td>
+           <span class="type">array</span>. The array will contain two keys:
+           <var class="varname">sec</var> which is the seconds part on the timeout
+           value and <var class="varname">usec</var> which is the microsecond part 
+           of the timeout value. 
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_SNDTIMEO</code></strong></td>
+          <td>
+           Reports the timeout value specifying the amount of time that an output
+           function blocks because flow control prevents data from being sent.
+          </td>
+          <td>
+           <span class="type">array</span>. The array will contain two keys:
+           <var class="varname">sec</var> which is the seconds part on the timeout
+           value and <var class="varname">usec</var> which is the microsecond part 
+           of the timeout value. 
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SO_SNDLOWAT</code></strong></td>
+          <td>
+           Reports the minimum number of bytes to process for <code class="parameter">socket</code> output operations.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>TCP_NODELAY</code></strong></td>
+          <td>
+           Reports whether the Nagle TCP algorithm is disabled.
+          </td>
+          <td>
+           <span class="type">int</span>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_JOIN_GROUP</code></strong></td>
+          <td>
+           Joins a multicast group.
+          </td>
+          <td>
+           <span class="type">array</span> with keys <code class="literal">"group"</code>, specifying
+           a <span class="type">string</span> with an IPv4 or IPv6 multicast address and
+           <code class="literal">"interface"</code>, specifying either an interface
+           number (type <span class="type">int</span>) or a <code class="literal">string</code> with
+           the interface name, like <code class="literal">"eth0"</code>.
+           <code class="literal">0</code> can be specified to indicate the interface
+           should be selected using routing rules. (can only be used in
+           <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_LEAVE_GROUP</code></strong></td>
+          <td>
+           Leaves a multicast group.
+          </td>
+          <td>
+           <span class="type">array</span>. See <strong><code>MCAST_JOIN_GROUP</code></strong> for
+           more information. (can only be used in
+           <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_BLOCK_SOURCE</code></strong></td>
+          <td>
+           Blocks packets arriving from a specific source to a specific
+           multicast group, which must have been previously joined.
+          </td>
+          <td>
+           <span class="type">array</span> with the same keys as
+           <strong><code>MCAST_JOIN_GROUP</code></strong>, plus one extra key,
+           <code class="literal">source</code>, which maps to a <span class="type">string</span>
+           specifying an IPv4 or IPv6 address of the source to be blocked.
+           (can only be used in <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_UNBLOCK_SOURCE</code></strong></td>
+          <td>
+           Unblocks (start receiving again) packets arriving from a specific
+           source address to a specific multicast group, which must have been
+           previously joined.
+          </td>
+          <td>
+           <span class="type">array</span> with the same format as
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (can only be used in <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_JOIN_SOURCE_GROUP</code></strong></td>
+          <td>
+           Receive packets destined to a specific multicast group whose source
+           address matches a specific value.
+          </td>
+          <td>
+           <span class="type">array</span> with the same format as
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (can only be used in <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MCAST_LEAVE_SOURCE_GROUP</code></strong></td>
+          <td>
+           Stop receiving packets destined to a specific multicast group whose
+           source address matches a specific value.
+          </td>
+          <td>
+           <span class="type">array</span> with the same format as
+           <strong><code>MCAST_BLOCK_SOURCE</code></strong>.
+           (can only be used in <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>)
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_IF</code></strong></td>
+          <td>
+           The outgoing interface for IPv4 multicast packets.
+          </td>
+          <td>
+           Either <span class="type">int</span> specifying the interface number or a
+           <span class="type">string</span> with an interface name, like
+           <code class="literal">eth0</code>. The value <span class="type"><span class="type 0">0</span></span> can be used to
+           indicate the routing table is to used in the interface selection.
+           The function <span class="function"><strong>socket_get_option()</strong></span> returns an
+           interface index.
+           Note that, unlike the C API, this option does NOT take an IP
+           address. This eliminates the interface difference between
+           <strong><code>IP_MULTICAST_IF</code></strong> and
+           <strong><code>IPV6_MULTICAST_IF</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_IF</code></strong></td>
+          <td>
+           The outgoing interface for IPv6 multicast packets.
+          </td>
+          <td>
+           The same as <strong><code>IP_MULTICAST_IF</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_LOOP</code></strong></td>
+          <td>
+           The multicast loopback policy for IPv4 packets, which
+           determines whether multicast packets sent by this socket also reach
+           receivers in the same host that have joined the same multicast group
+           on the outgoing interface used by this socket. This is the case by
+           default.
+          </td>
+          <td>
+           <span class="type">int</span> (either <code class="literal">0</code> or
+           <code class="literal">1</code>). For <span class="function"><a href="function.socket-set-option.html" class="function">socket_set_option()</a></span>
+           any value will be accepted and will be converted to a boolean
+           following the usual PHP rules.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_LOOP</code></strong></td>
+          <td>
+           Analogous to <strong><code>IP_MULTICAST_LOOP</code></strong>, but for IPv6.
+          </td>
+          <td>
+           <span class="type">int</span>. See <strong><code>IP_MULTICAST_LOOP</code></strong>.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IP_MULTICAST_TTL</code></strong></td>
+          <td>
+           The time-to-live of outgoing IPv4 multicast packets. This should be
+           a value between 0 (don't leave the interface) and 255. The default
+           value is 1 (only the local network is reached).
+          </td>
+          <td>
+           <span class="type">int</span> between 0 and 255.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>IPV6_MULTICAST_HOPS</code></strong></td>
+          <td>
+           Analogous to <strong><code>IP_MULTICAST_TTL</code></strong>, but for IPv6
+           packets. The value -1 is also accepted, meaning the route default
+           should be used.
+          </td>
+          <td>
+           <span class="type">int</span> between -1 and 255.
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+   </dl>
+
+  
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-get-option-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns the value of the given option, or <strong><code>false</code></strong> on errors.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.socket-get-option-changelog">
+  <h3 class="title">更新日志</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>版本</th>
+      <th>说明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+  <td>8.0.0</td>
+  <td>
+   <code class="parameter">socket</code> is a <strong class="classname">Socket</strong> instance now;
+   previously, it was a <span class="type">resource</span>.
+  </td>
+ </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.socket-get-option-examples">
+  <h3 class="title">范例</h3>
+  <p class="para">
+   </p><div class="example" id="snmp.geterrno.example.basic">
+    <p><strong>示例 #1 <span class="function"><strong>socket_get_option()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$socket </span><span style="color: #007700">= </span><span style="color: #0000BB">socket_create_listen</span><span style="color: #007700">(</span><span style="color: #0000BB">1223</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">$linger </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'l_linger' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #DD0000">'l_onoff' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">);<br></span><span style="color: #0000BB">socket_set_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_LINGER</span><span style="color: #007700">, </span><span style="color: #0000BB">$linger</span><span style="color: #007700">);<br><br></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">socket_get_option</span><span style="color: #007700">(</span><span style="color: #0000BB">$socket</span><span style="color: #007700">, </span><span style="color: #0000BB">SOL_SOCKET</span><span style="color: #007700">, </span><span style="color: #0000BB">SO_REUSEADDR</span><span style="color: #007700">));<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-get-option-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.socket-create-listen.html" class="function" rel="rdfs-seeAlso">socket_create_listen()</a> - Opens a socket on port to accept connections</span></li>
+    <li class="member"><span class="function"><a href="function.socket-set-option.html" class="function" rel="rdfs-seeAlso">socket_set_option()</a> - Sets socket options for the socket</span></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 5062);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

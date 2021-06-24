@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Unix 系统下的 Nginx 1.4.x - 开发帮助文档</title> 
+    <meta name="keyword" content="install.unix.nginx"> 
+    <meta name="description" content="install.unix.nginx"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1155" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.apache.html" title="Unix 系统下的 Apache 1.3.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix 系统下的 Apache 1.3.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.apache2.html" title="Unix 系统下的 Apache 2.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix 系统下的 Apache 2.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.commandline.html" title="CGI 和命令行设置">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    CGI 和命令行设置
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.debian.html" title="Debian GNU/Linux 安装说明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Debian GNU/Linux 安装说明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.hpux.html" title="针对 HP-UX 平台的安装提示">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    针对 HP-UX 平台的安装提示
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.lighttpd-14.html" title="Unix 平台的 Lighttpd 1.4">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix 平台的 Lighttpd 1.4
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.litespeed.html" title="Unix系统下的LiteSpeed、OpenLiteSpeed服务">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix系统下的LiteSpeed、OpenLiteSpeed服务
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.nginx.html" title="Unix 系统下的 Nginx 1.4.x">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Unix 系统下的 Nginx 1.4.x
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.openbsd.html" title="在 OpenBSD 系统下的安装">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    在 OpenBSD 系统下的安装
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/install.unix.solaris.html" title="针对 Solaris 的安装提示">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    针对 Solaris 的安装提示
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.unix.apache2.html">« Unix 系统下的 Apache 2.x</a></li>
+      <li style="float: right;"><a href="install.unix.lighttpd-14.html">Unix 平台的 Lighttpd 1.4 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="install.unix.html">Unix 系统下的安装</a></li>
+    <li>Unix 系统下的 Nginx 1.4.x</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.unix.nginx" class="sect1">
+ <h2 class="title">Unix 系统下的 Nginx 1.4.x</h2>
+
+ <p class="para">
+  本文档包括使用 PHP-FPM 为 Nginx 1.4.x HTTP 服务器安装和配置 PHP 的说明和提示。
+ </p>
+
+ <p class="para">
+  本指南假定您已经从源代码成功构建 Nginx，并且其二进制文件和配置文件都位于 <code class="literal">/usr/local/nginx</code>。
+  如果您使用其他方式获取的 Nginx，请参考 <a href="https://www.nginx.com/resources/wiki/" class="link external">» Nginx Wiki</a> 并对照本文档完成安装。
+ </p>
+
+ <p class="para">
+  本文档仅包含 Nginx 服务器的基本配置，它将通过 80 端口提供 PHP 应用的处理能力。
+  如果您需要超出本文档范围的安装配置指导，建议您查阅 Nginx 和 PHP-FPM 的文档。
+ </p>
+
+ <p class="para">
+  需要注意的是，本文档一律使用 'x' 来表示版本号，请根据实际情况将 'x' 替换为对应的版本号。
+ </p>
+
+ <ol type="1">
+  <li class="listitem">
+   <p class="para">
+    建议您访问 Nginx Wiki
+    <a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" class="link external">» 安装</a> 页面以获取并在您的系统上安装 Nginx。 
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    获取并解压 PHP 源代码:
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+tar zxf php-x.x.x
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    配置并构建 PHP。在此步骤您可以使用很多选项自定义 PHP，例如启用某些扩展等。
+    运行 ./configure --help 命令来获得完整的可用选项清单。
+    在本示例中，我们仅进行包含 PHP-FPM 和 MySQL 支持的简单配置。
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+cd ../php-x.x.x
+./configure --enable-fpm --with-mysql
+make
+sudo make install
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    创建配置文件，并将其复制到正确的位置。
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+cp php.ini-development /usr/local/php/php.ini
+cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
+cp sapi/fpm/php-fpm /usr/local/bin
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    需要着重提醒的是，如果文件不存在，则阻止 Nginx 将请求发送到后端的 PHP-FPM 模块，
+    以避免遭受恶意脚本注入的攻击。
+   </p>
+   <p class="para">
+    将 php.ini 文件中的配置项
+    <a href="ini.core.html#ini.cgi.fix-pathinfo" class="link">cgi.fix_pathinfo</a>
+    设置为 <code class="literal">0</code> 。
+   </p>
+   <p class="para">
+    打开 php.ini:
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+vim /usr/local/php/php.ini
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    定位到 <code class="literal">cgi.fix_pathinfo=</code> 并将其修改为如下所示：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+cgi.fix_pathinfo=0
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    在启动服务之前，需要修改 php-fpm.conf 配置文件，确保 php-fpm 模块使用
+    www-data 用户和 www-data 用户组的身份运行。
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+vim /usr/local/etc/php-fpm.d/www.conf
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    找到以下内容并修改： 
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+; Unix user/group of processes
+; Note: The user is mandatory. If the group is not set, the default user's group
+;       will be used.
+user = www-data
+group = www-data
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    然后启动 php-fpm 服务：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+/usr/local/bin/php-fpm
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    本文档未涵盖对 php-fpm 进行进一步配置的信息，如果您需要更多信息，请查阅相关文档。
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    配置 Nginx 使其支持 PHP 应用：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="cdata"><pre>
+vim /usr/local/nginx/conf/nginx.conf
+</pre></div>
+    </div>
+
+   </div>
+
+   <p class="para">
+    修改默认的 location 块，使其支持 .php 文件：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="nginx-confcode"><pre class="nginx-confcode">location / {
+    root   html;
+    index  index.php index.html index.htm;
+}</pre>
+</div>
+    </div>
+
+   </div>
+
+   <p class="para">
+    下一步配置来保证对于 .php 文件的请求将被传送到后端的 PHP-FPM 模块，
+    取消默认的 PHP 配置块的注释，并修改为下面的内容：
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="nginx-confcode"><pre class="nginx-confcode">location ~* \.php$ {
+    fastcgi_index   index.php;
+    fastcgi_pass    127.0.0.1:9000;
+    include         fastcgi_params;
+    fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+    fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+}</pre>
+</div>
+    </div>
+
+   </div>
+
+   <p class="para">
+    重启 Nginx。
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+sudo /usr/local/nginx/sbin/nginx -s stop
+sudo /usr/local/nginx/sbin/nginx
+</pre></div>
+    </div>
+   </div>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    创建测试文件。
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+rm /usr/local/nginx/html/index.html
+echo "&lt;?php phpinfo(); ?&gt;" &gt;&gt; /usr/local/nginx/html/index.php
+</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    打开浏览器，访问 http://localhost，将会显示 phpinfo() 。
+   </p>
+  </li>
+ </ol>
+
+ <p class="para">
+  通过以上步骤的配置，Nginx 服务器现在可以以 <code class="literal">SAPI</code> <code class="literal">SAPI</code> 模块的方式支持 PHP 应用了。
+  当然，对于 Nginx 和 PHP 的配置，还有很多可用的选项，
+  请在对应的源代码目录执行 <strong class="command">./configure --help</strong> 来查阅更多配置选项。
+ </p>
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 6852);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

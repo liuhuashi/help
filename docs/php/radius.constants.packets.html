@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>RADIUS Packet Types - 开发帮助文档</title> 
+    <meta name="keyword" content="radius.constants.packets"> 
+    <meta name="description" content="radius.constants.packets"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1051" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/radius.constants.attributes.html" title="RADIUS Attribute Types">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RADIUS Attribute Types
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/radius.constants.options.html" title="RADIUS Options">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RADIUS Options
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/radius.constants.packets.html" title="RADIUS Packet Types">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RADIUS Packet Types
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/radius.constants.vendor-specific.html" title="RADIUS Vendor Specific Attribute Types">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    RADIUS Vendor Specific Attribute Types
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="radius.constants.options.html">« RADIUS Options</a></li>
+      <li style="float: right;"><a href="radius.constants.attributes.html">RADIUS Attribute Types »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="radius.constants.html">预定义常量</a></li>
+    <li>RADIUS Packet Types</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="radius.constants.packets" class="section">
+  <h2 class="title">RADIUS Packet Types</h2>
+
+  <p class="para">
+   RADIUS packets, whether requests or responses, always include a type. These
+   constants are provided to make it easier to specify types when using
+   <span class="function"><a href="function.radius-create-request.html" class="function">radius_create_request()</a></span> and when comparing the result of
+   <span class="function"><a href="function.radius-send-request.html" class="function">radius_send_request()</a></span>.
+  </p>
+
+  <dl>
+
+   
+    <dt id="constant.radius-access-request">
+     <strong><code>RADIUS_ACCESS_REQUEST</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Access-Request, used to authenticate a user against a RADIUS server.
+      Access request packets must include a
+      <a href="radius.constants.attributes.html#constant.radius-nas-ip-address" class="link"><strong><code>RADIUS_NAS_IP_ADDRESS</code></strong></a>
+      or a
+      <a href="radius.constants.attributes.html#constant.radius-nas-identifier" class="link"><strong><code>RADIUS_NAS_IDENTIFIER</code></strong></a>
+      attribute, must also include a
+      <a href="radius.constants.attributes.html#constant.radius-user-password" class="link"><strong><code>RADIUS_USER_PASSWORD</code></strong></a>,
+      <a href="radius.constants.attributes.html#constant.radius-chap-password" class="link"><strong><code>RADIUS_CHAP_PASSWORD</code></strong></a>
+      or a
+      <a href="radius.constants.attributes.html#constant.radius-state" class="link"><strong><code>RADIUS_STATE</code></strong></a>
+      attribute, and should include a
+      <a href="radius.constants.attributes.html#constant.radius-user-name" class="link"><strong><code>RADIUS_USER_NAME</code></strong></a>
+      attribute.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-access-accept">
+     <strong><code>RADIUS_ACCESS_ACCEPT</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Access-Accept response to an Access-Request indicating that the
+      RADIUS server authenticated the user successfully.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-access-reject">
+     <strong><code>RADIUS_ACCESS_REJECT</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Access-Reject response to an Access-Request indicating that the
+      RADIUS server could not authenticate the user.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-access-challenge">
+     <strong><code>RADIUS_ACCESS_CHALLENGE</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Access-Challenge response to an Access-Request indicating that the
+      RADIUS server requires further information in another Access-Request
+      before authenticating the user.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-accounting-request">
+     <strong><code>RADIUS_ACCOUNTING_REQUEST</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Accounting-Request, used to convey accounting information for a
+      service to the RADIUS server.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-accounting-response">
+     <strong><code>RADIUS_ACCOUNTING_RESPONSE</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      An Accounting-Response response to an Accounting-Request.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-coa-request">
+     <strong><code>RADIUS_COA_REQUEST</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A CoA-Request, sent from the RADIUS server to indicate that the
+      authorisations within the user session have changed. A response must be
+      sent in the form of a CoA-ACK or a CoA-NAK.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-coa-ack">
+     <strong><code>RADIUS_COA_ACK</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A CoA-ACK, sent to the RADIUS server to indicate that the user
+      authorisations have been updated.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-coa-nak">
+     <strong><code>RADIUS_COA_NAK</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A CoA-NAK, sent to the RADIUS server to indicate that the user
+      authorisations could not be updated.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-disconnect-request">
+     <strong><code>RADIUS_DISCONNECT_REQUEST</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A Disconnect-Request, sent from the RADIUS server to indicate that the
+      user session must be terminated.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-disconnect-ack">
+     <strong><code>RADIUS_DISCONNECT_ACK</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A Disconnect-ACK, sent to the RADIUS server to indicate that the user
+      session has been terminated.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+   
+    <dt id="constant.radius-disconnect-nak">
+     <strong><code>RADIUS_DISCONNECT_NAK</code></strong> 
+     (<span class="type">int</span>)
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      A Disconnect-NAK, sent to the RADIUS server to indicate that the user
+      session could not be terminated.
+     </p>
+     <p class="para">
+      This constant is available in PECL radius 1.3.0 and later.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 8971);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

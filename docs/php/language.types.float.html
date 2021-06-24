@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>浮点数的精度 - 开发帮助文档</title> 
+    <meta name="keyword" content="language.types.float"> 
+    <meta name="description" content="language.types.float"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="1145" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.array.html" title="Array 数组">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Array 数组
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.boolean.html" title="Boolean 布尔类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Boolean 布尔类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.callable.html" title="Callback / Callable 类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Callback / Callable 类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.declarations.html" title="类型声明">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类型声明
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.float.html" title="浮点数的精度">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    浮点数的精度
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.integer.html" title="Integer 整型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Integer 整型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.intro.html" title="简介">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    简介
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.iterable.html" title="Iterable 可迭代对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Iterable 可迭代对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.null.html" title="NULL">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    NULL
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.numeric-strings.html" title="Numeric strings">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Numeric strings
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.object.html" title="Object 对象">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Object 对象
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.resource.html" title="Resource 资源类型">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Resource 资源类型
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.string.html" title="String 字符串">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    String 字符串
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/language.types.type-juggling.html" title="类型转换的判别">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    类型转换的判别
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.integer.html">« Integer 整型</a></li>
+      <li style="float: right;"><a href="language.types.string.html">String 字符串 »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="language.types.html">类型</a></li>
+    <li>Float 浮点型</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.float" class="sect1">
+ <h2 class="title">Float 浮点型</h2>
+
+ <p class="para">
+  浮点型（也叫浮点数 float，双精度数 double 或实数 real）可以用以下任一语法定义：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1.234</span><span style="color: #007700">; <br></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">1.2e3</span><span style="color: #007700">; <br></span><span style="color: #0000BB">$c </span><span style="color: #007700">= </span><span style="color: #0000BB">7E-10</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$d </span><span style="color: #007700">= </span><span style="color: #0000BB">1_234.567</span><span style="color: #007700">; </span><span style="color: #FF8000">// 从 PHP 7.4.0 开始支持<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ </div>
+
+ <p class="para">
+  浮点数的形式表示（PHP 7.4.0 之前不支持下划线）：
+ </p>
+
+ <div class="informalexample">
+  <div class="example-contents">
+<div class="cdata"><pre>
+LNUM          [0-9]+(_[0-9]+)*
+DNUM          ([0-9]*(_[0-9]+)*[\.]{LNUM}) | ({LNUM}[\.][0-9]*(_[0-9]+)*)
+EXPONENT_DNUM (({LNUM} | {DNUM}) [eE][+-]? {LNUM})
+</pre></div>
+  </div>
+
+ </div>
+
+ <p class="para">
+  浮点数的字长和平台相关，尽管通常最大值是 1.8e308 并具有 14 位十进制数字的精度（64
+  位 IEEE 格式）。
+ </p>
+
+ <div class="warning"><strong class="warning">警告</strong>
+  <h1 class="title">浮点数的精度</h1>
+
+  <p class="para">
+   浮点数的精度有限。尽管取决于系统，PHP 通常使用 IEEE 754
+   双精度格式，则由于取整而导致的最大相对误差为
+   1.11e-16。非基本数学运算可能会给出更大误差，并且要考虑到进行复合运算时的误差传递。
+  </p>
+  <p class="para">
+   此外，以十进制能够精确表示的有理数如 <code class="literal">0.1</code> 或
+   <code class="literal">0.7</code>，无论有多少尾数都不能被内部所使用的二进制精确表示，因此不能在不丢失一点点精度的情况下转换为二进制的格式。这就会造成混乱的结果：例如，<code class="literal">floor((0.1+0.7)*10)</code>
+   通常会返回 <code class="literal">7</code> 而不是预期中的
+   <code class="literal">8</code>，因为该结果内部的表示其实是类似
+   <code class="literal">7.9999999999999991118...</code>。
+  </p>
+
+  <p class="para">
+   所以永远不要相信浮点数结果精确到了最后一位，也永远不要比较两个浮点数是否相等。如果确实需要更高的精度，应该使用<a href="ref.bc.html" class="link">任意精度数学函数</a>或者 <a href="ref.gmp.html" class="link">gmp 函数</a>。
+  </p>
+  <p class="para">
+   参见<a href="http://floating-point-gui.de/" class="link external">» 浮点数指南</a>网页的简单解释。
+  </p>
+ </div>
+
+ <div class="sect2" id="language.types.float.casting">
+  <h3 class="title">转换为浮点数</h3>
+
+  <div class="sect3" id="language.types.float.casting.from-string">
+   <h4 class="title">From strings</h4>
+
+   <p class="simpara">
+    If the string is
+    <a href="language.types.numeric-strings.html" class="link">numeric</a>
+    or leading numeric then it will resolve to the
+    corresponding float value, otherwise it is converted to zero
+    (<code class="literal">0</code>).
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.float.casting.from-other">
+   <h4 class="title">From other types</h4>
+
+   <p class="para">
+    对于其它类型的值，其情况类似于先将值转换成 <span class="type">int</span>，然后再转换成 <span class="type">float</span>。
+    请参阅“<a href="language.types.integer.html#language.types.integer.casting" class="link">转换为整型</a>”一节以获取更多信息。
+   </p>
+
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    </p><p class="para">
+     As certain types have undefined behavior when converting to
+     <span class="type">int</span>, this is also the case when converting to
+     <span class="type">float</span>.
+    </p>
+   </blockquote>
+  </div>
+
+ </div>
+ <div class="sect2" id="language.types.float.comparison">
+  <h3 class="title">比较浮点数</h3>
+
+  <p class="para">
+   如上述警告信息所言，由于内部表达方式的原因，比较两个浮点数是否相等是有问题的。不过还是有迂回的方法来比较浮点数值的。
+  </p>
+
+  <p class="para">
+   要测试浮点数是否相等，要使用一个仅比该数值大一丁点的最小误差值。该值也被称为机器极小值（epsilon）或最小单元取整数，是计算中所能接受的最小的差别值。
+  </p>
+  
+  <div class="informalexample">
+   <p class="simpara">
+    <var class="varname">$a</var> 和 <var class="varname">$b</var> 在小数点后五位精度内都是相等的。
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1.23456789</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">1.23456780</span><span style="color: #007700">;<br></span><span style="color: #0000BB">$epsilon </span><span style="color: #007700">= </span><span style="color: #0000BB">0.00001</span><span style="color: #007700">;<br><br>if(</span><span style="color: #0000BB">abs</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">-</span><span style="color: #0000BB">$b</span><span style="color: #007700">) &lt; </span><span style="color: #0000BB">$epsilon</span><span style="color: #007700">) {<br>    echo </span><span style="color: #DD0000">"true"</span><span style="color: #007700">;<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+ 
+ <div class="sect2" id="language.types.float.nan">
+  <h3 class="title">NaN</h3>
+  <p class="para">
+   某些数学运算会产生一个由常量 <strong><code>NAN</code></strong>
+   所代表的结果。此结果代表着一个在浮点数运算中未定义或不可表述的值。任何拿此值与其它任何值（除了  <strong><code>true</code></strong>）进行的松散或严格比较的结果都是
+   <strong><code>false</code></strong>。
+  </p>
+  <p class="para">
+   由于 <strong><code>NAN</code></strong> 代表着任何不同值，不应拿
+   <strong><code>NAN</code></strong> 去和其它值进行比较，包括其自身，应该用
+   <span class="function"><a href="function.is-nan.html" class="function">is_nan()</a></span> 来检查。
+  </p>
+ </div>
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7338);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

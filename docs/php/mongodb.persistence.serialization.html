@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>Serialization to BSON - 开发帮助文档</title> 
+    <meta name="keyword" content="mongodb.persistence.serialization"> 
+    <meta name="description" content="mongodb.persistence.serialization"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="948" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.persistence.deserialization.html" title="Deserialization from BSON">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Deserialization from BSON
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/mongodb.persistence.serialization.html" title="Serialization to BSON">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    Serialization to BSON
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="mongodb.persistence.html">« Persisting Data</a></li>
+      <li style="float: right;"><a href="mongodb.persistence.deserialization.html">Deserialization from BSON »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="mongodb.persistence.html">Persisting Data</a></li>
+    <li>Serialization to BSON</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="mongodb.persistence.serialization" class="section">
+   <h2 class="title">Serialization to BSON</h2>
+
+   <div class="section">
+    <h2 class="title">Arrays</h2>
+
+    <p class="para">
+     If an array is a <em class="emphasis">packed array</em> — i.e. the keys start
+     at 0 and are sequential without gaps: <em class="emphasis">BSON array</em>.
+    </p>
+
+    <p class="para">
+     If the array is not packed — i.e. having associative (string) keys, the
+     keys don't start at 0, or when there are gaps:: <em class="emphasis">BSON
+     object</em>
+    </p>
+
+    <p class="para">
+     A top-level (root) document, <em class="emphasis">always</em> serializes as a
+     BSON document.
+    </p>
+
+    <div class="section">
+     <h2 class="title">Examples</h2>
+
+     <p class="para">
+      These serialize as a BSON array:
+     </p>
+
+     <div class="example-contents">
+<div class="textcode"><pre class="textcode">[ 8, 5, 2, 3 ] =&gt; [ 8, 5, 2, 3 ]
+[ 0 =&gt; 4, 1 =&gt; 9 ] =&gt; [ 4, 9 ]</pre>
+</div>
+     </div>
+
+
+     <p class="para">
+      These serialize as a BSON document:
+     </p>
+
+     <div class="example-contents">
+<div class="textcode"><pre class="textcode">[ 0 =&gt; 1, 2 =&gt; 8, 3 =&gt; 12 ] =&gt; { "0" : 1, "2" : 8, "3" : 12 }
+[ "foo" =&gt; 42 ] =&gt; { "foo" : 42 }
+[ 1 =&gt; 9, 0 =&gt; 10 ] =&gt; { "1" : 9, "0" : 10 }</pre>
+</div>
+     </div>
+
+
+     <p class="para">
+      Note that the five examples are <em class="emphasis">extracts</em> of a full
+      document, and represent only <em class="emphasis">one</em> value inside a
+      document.
+     </p>
+
+    </div>
+   </div>
+
+   <div class="section">
+    <h2 class="title">Objects</h2>
+
+     <p class="para">
+      If an object is of the <strong class="classname">stdClass</strong> class, serialize
+      as a <em class="emphasis">BSON document</em>.
+     </p>
+
+     <p class="para">
+      If an object is a supported class that implements
+      <span class="interfacename"><a href="class.mongodb-bson-type.html" class="interfacename">MongoDB\BSON\Type</a></span>, then use the BSON
+      serialization logic for that specific type.
+      <span class="interfacename"><a href="class.mongodb-bson-type.html" class="interfacename">MongoDB\BSON\Type</a></span> instances (excluding
+      <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span> may only be
+      serialized as a document field value. Attempting to serialize such an
+      object as a root document will throw a
+      <a href="class.mongodb-driver-exception-unexpectedvalueexception.html" class="classname">MongoDB\Driver\Exception\UnexpectedValueException</a>
+     </p>
+
+     <p class="para">
+      If an object is of an unknown class implementing the
+      <span class="interfacename"><a href="class.mongodb-bson-type.html" class="interfacename">MongoDB\BSON\Type</a></span> interface, then throw a
+      <a href="class.mongodb-driver-exception-unexpectedvalueexception.html" class="classname">MongoDB\Driver\Exception\UnexpectedValueException</a>
+     </p>
+
+     <p class="para">
+      If an object is of any other class, without implementing any special
+      interface, serialize as a <em class="emphasis">BSON document</em>. Keep only
+      <em class="emphasis">public</em> properties, and ignore
+      <em class="emphasis">protected</em> and <em class="emphasis">private</em>
+      properties.
+     </p>
+
+     <p class="para">
+      If an object is of a class that implements the
+      <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span> interface, call
+      <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span> and use
+      the returned array or <strong class="classname">stdClass</strong> to serialize as a
+      BSON document or array. The BSON type will be determined by the following:
+     </p>
+
+     <p class="para">
+      </p><ol type="1">
+       <li class="listitem">
+        <p class="para">Root documents must be serialized as a BSON
+        document.
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> objects must be
+         serialized as a BSON document.
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         If <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span>
+         returns a packed array, serialize as a BSON array.
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         If <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span>
+         returns a non-packed array or <strong class="classname">stdClass</strong>,
+         serialize as a BSON document.
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         If <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span>
+         did not return an array or <strong class="classname">stdClass</strong>, throw an
+         <a href="class.mongodb-driver-exception-unexpectedvalueexception.html" class="classname">MongoDB\Driver\Exception\UnexpectedValueException</a>
+         exception.
+        </p>
+       </li>
+      </ol>
+     
+
+     <p class="para">
+      If an object is of a class that implements the
+      <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> interface (which
+      implies <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span>), obtain
+      the properties in a similar way as in the previous paragraphs, but
+      <em class="emphasis">also</em> add an additional property
+      <span class="property">__pclass</span> as a Binary value, with subtype
+      <code class="literal">0x80</code> and data bearing the fully qualified class name
+      of the object that is being serialized.
+     </p>
+
+     <p class="para">
+      The <span class="property">__pclass</span> property is added to the array or
+      object returned by
+      <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span>, which
+      means it will overwrite any <span class="property">__pclass</span> key/property in
+      the <span class="methodname"><a href="mongodb-bson-serializable.bsonserialize.html" class="methodname">MongoDB\BSON\Serializable::bsonSerialize()</a></span>
+      return value. If you want to avoid this behaviour and set your own
+      <span class="property">__pclass</span> value, you must <em class="emphasis">not</em>
+      implement <span class="interfacename"><a href="class.mongodb-bson-persistable.html" class="interfacename">MongoDB\BSON\Persistable</a></span> and
+      should instead implement
+      <span class="interfacename"><a href="class.mongodb-bson-serializable.html" class="interfacename">MongoDB\BSON\Serializable</a></span> directly.
+     </p>
+
+     <div class="section">
+      <h2 class="title">Examples</h2>
+
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">stdClass </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>} </span><span style="color: #FF8000">// =&gt; { "foo" : 42 }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>  protected </span><span style="color: #0000BB">$prot </span><span style="color: #007700">= </span><span style="color: #DD0000">"wine"</span><span style="color: #007700">;<br>  private </span><span style="color: #0000BB">$fpr </span><span style="color: #007700">= </span><span style="color: #DD0000">"cheese"</span><span style="color: #007700">;<br>} </span><span style="color: #FF8000">// =&gt; { "foo" : 42 }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">AnotherClass1 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>  protected </span><span style="color: #0000BB">$prot </span><span style="color: #007700">= </span><span style="color: #DD0000">"wine"</span><span style="color: #007700">;<br>  private </span><span style="color: #0000BB">$fpr </span><span style="color: #007700">= </span><span style="color: #DD0000">"cheese"</span><span style="color: #007700">;<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return [ </span><span style="color: #DD0000">'foo' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">, </span><span style="color: #DD0000">'prot' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prot </span><span style="color: #007700">];<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "foo" : 42, "prot" : "wine" }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">AnotherClass2 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return </span><span style="color: #0000BB">$this</span><span style="color: #007700">;<br>  }<br>} </span><span style="color: #FF8000">// =&gt; MongoDB\Driver\Exception\UnexpectedValueException("bsonSerialize() did not return an array or stdClass")<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">AnotherClass3 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  private </span><span style="color: #0000BB">$elements </span><span style="color: #007700">= [ </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bar' </span><span style="color: #007700">];<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">elements</span><span style="color: #007700">;<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "0" : "foo", "1" : "bar" }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">ContainerClass </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$things </span><span style="color: #007700">= </span><span style="color: #0000BB">AnotherClass4 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$elements </span><span style="color: #007700">= [ </span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'bar' </span><span style="color: #007700">];<br>    function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">elements</span><span style="color: #007700">;<br>    }<br>  }<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return [ </span><span style="color: #DD0000">'things' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">things </span><span style="color: #007700">];<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "things" : { "0" : "foo", "2" : "bar" } }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">ContainerClass </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$things </span><span style="color: #007700">= </span><span style="color: #0000BB">AnotherClass5 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$elements </span><span style="color: #007700">= [ </span><span style="color: #0000BB">0 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #0000BB">2 </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'bar' </span><span style="color: #007700">];<br>    function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return </span><span style="color: #0000BB">array_values</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">elements</span><span style="color: #007700">);<br>    }<br>  }<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return [ </span><span style="color: #DD0000">'things' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">things </span><span style="color: #007700">];<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "things" : [ "foo", "bar" ] }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">ContainerClass </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$things </span><span style="color: #007700">= </span><span style="color: #0000BB">AnotherClass6 </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable </span><span style="color: #007700">{<br>    private </span><span style="color: #0000BB">$elements </span><span style="color: #007700">= [ </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bar' </span><span style="color: #007700">];<br>    function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return (object) </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">elements</span><span style="color: #007700">;<br>    }<br>  }<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return [ </span><span style="color: #DD0000">'things' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">things </span><span style="color: #007700">];<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "things" : { "0" : "foo", "1" : "bar" } }<br><br></span><span style="color: #007700">class </span><span style="color: #0000BB">UpperClass </span><span style="color: #007700">implements </span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Persistable </span><span style="color: #007700">{<br>  public </span><span style="color: #0000BB">$foo </span><span style="color: #007700">= </span><span style="color: #0000BB">42</span><span style="color: #007700">;<br>  protected </span><span style="color: #0000BB">$prot </span><span style="color: #007700">= </span><span style="color: #DD0000">"wine"</span><span style="color: #007700">;<br>  private </span><span style="color: #0000BB">$fpr </span><span style="color: #007700">= </span><span style="color: #DD0000">"cheese"</span><span style="color: #007700">;<br>  function </span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">() {<br>      return [ </span><span style="color: #DD0000">'foo' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">, </span><span style="color: #DD0000">'prot' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prot </span><span style="color: #007700">];<br>  }<br>} </span><span style="color: #FF8000">// =&gt; { "foo" : 42, "prot" : "wine", "__pclass" : { "$type" : "80", "$binary" : "VXBwZXJDbGFzcw==" } }</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </div>
+  </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7878);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

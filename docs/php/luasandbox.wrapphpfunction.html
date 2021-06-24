@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> 
+    <meta name="csrf-token" content=""> 
+    <title>LuaSandbox::wrapPhpFunction - 开发帮助文档</title> 
+    <meta name="keyword" content="luasandbox.wrapphpfunction"> 
+    <meta name="description" content="luasandbox.wrapphpfunction"> 
+    <meta name="author" content="Moments"> 
+    <link href="/favicon.ico" rel="shortcut icon"> 
+    <link href="/css/blog.css" rel="stylesheet"> 
+    <script src="/js/blog.js"></script> 
+</head>
+<body>
+<header class="sticky-top">
+    <nav class="navbar navbar-expand navbar-dark bg-secondary justify-content-between text-uppercase">
+        <div class="navbar-nav" style="overflow:hidden;">
+            <a class="navbar-brand" href="https://help.pythonschool.com">
+                <span class="d-md-none">
+                    <svg class="text-warning" width="24" height="24" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#emoji-sunglasses"/>
+                    </svg>
+                </span>
+                <span class="d-none d-md-flex">开发帮助文档</span>
+            </a>
+            <div class="navbar-nav-scroll" style="overflow: hidden;">
+                <ul class="navbar-nav text-nowrap pb-4" style="overflow:auto;">
+                                            <li class="nav-item">
+                            <a class="nav-link" href="/docs/laravel/index.html">laravel</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a class="nav-link active" href="/docs/php/index.html">php</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        <div class="d-inline-flex">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/liuhuashi">
+                        <svg class="text-light" width="24" height="24" fill="currentColor">
+                            <use xlink:href="/css/bootstrap-icons.svg#github"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div id="aside-hidden" class="position-fixed" style="left:0;top: 58px;cursor:pointer;z-index: 10000;">
+        <svg class="align-text-bottom text-warning" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <use xlink:href="/css/bootstrap-icons.svg#arrow-left-square"/>
+        </svg>
+    </div>
+    <div class="row">
+        <div class="aside col-md-3 col-lg-2 border-right shadow position-sticky" style="overflow:auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+    <form class="row border-bottom p-3 bg-white sticky-top">
+        <input id="search-version" class="form-control" data-version="546" type="search" placeholder="英文逗号分隔,分词搜索">
+    </form>
+    <ul class="nav navbar-nav nav-pills flex-column pt-2 figure-caption">
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.callfunction.html" title="LuaSandbox::callFunction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::callFunction
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.disableprofiler.html" title="LuaSandbox::disableProfiler">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::disableProfiler
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.enableprofiler.html" title="LuaSandbox::enableProfiler">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::enableProfiler
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.getcpuusage.html" title="LuaSandbox::getCPUUsage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::getCPUUsage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.getmemoryusage.html" title="LuaSandbox::getMemoryUsage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::getMemoryUsage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.getpeakmemoryusage.html" title="LuaSandbox::getPeakMemoryUsage">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::getPeakMemoryUsage
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.getprofilerfunctionreport.html" title="LuaSandbox::getProfilerFunctionReport">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::getProfilerFunctionReport
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.getversioninfo.html" title="LuaSandbox::getVersionInfo">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::getVersionInfo
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.loadbinary.html" title="LuaSandbox::loadBinary">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::loadBinary
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.loadstring.html" title="LuaSandbox::loadString">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::loadString
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.pauseusagetimer.html" title="LuaSandbox::pauseUsageTimer">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::pauseUsageTimer
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.registerlibrary.html" title="LuaSandbox::registerLibrary">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::registerLibrary
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.setcpulimit.html" title="LuaSandbox::setCPULimit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::setCPULimit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.setmemorylimit.html" title="LuaSandbox::setMemoryLimit">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::setMemoryLimit
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.unpauseusagetimer.html" title="LuaSandbox::unpauseUsageTimer">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::unpauseUsageTimer
+                </a>
+            </li>
+                    <li class="nav-item">
+                <a class="nav-link" href="/docs/php/luasandbox.wrapphpfunction.html" title="LuaSandbox::wrapPhpFunction">
+                    <svg class="align-text-bottom text-dark" width="16" height="16" fill="currentColor">
+                        <use xlink:href="/css/bootstrap-icons.svg#eyeglasses"/>
+                    </svg>
+                    LuaSandbox::wrapPhpFunction
+                </a>
+            </li>
+            </ul>
+</div>        <div class="aside-middle col-md-9 col-lg-10 row">
+    <div class="col-md-9 col-xl-10" style="overflow: auto;height: calc(100vh - 58px);padding-bottom: calc(100vh/3);">
+        <div class="container main-h4-1">
+            <div class="page-content">
+                <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="luasandbox.unpauseusagetimer.html">« LuaSandbox::unpauseUsageTimer</a></li>
+      <li style="float: right;"><a href="class.luasandboxfunction.html">LuaSandboxFunction »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="documentation.html">PHP Manual</a></li>
+    <li><a href="class.luasandbox.html">LuaSandbox</a></li>
+    <li>Wrap a PHP callable in a LuaSandboxFunction</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="luasandbox.wrapphpfunction" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">LuaSandbox::wrapPhpFunction</h1>
+  <p class="verinfo">(PECL luasandbox &gt;= 1.2.0)</p><p class="refpurpose"><span class="refname">LuaSandbox::wrapPhpFunction</span> — <span class="dc-title">Wrap a PHP callable in a <a href="class.luasandboxfunction.html" class="classname">LuaSandboxFunction</a></span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-luasandbox.wrapphpfunction-description">
+  <h3 class="title">说明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><strong>LuaSandbox::wrapPhpFunction</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$function</code></span>
+   ) : <span class="type"><a href="class.luasandboxfunction.html" class="type LuaSandboxFunction">LuaSandboxFunction</a></span></div>
+
+  <p class="para rdfs-comment">
+   Wraps a PHP callable in a <a href="class.luasandboxfunction.html" class="classname">LuaSandboxFunction</a>, so it
+   can be passed into Lua as an anonymous function.
+  </p>
+  <p class="para">
+   The function must return either an array of values (which may be empty),
+   or <strong><code>null</code></strong> which is equivalent to returning the empty array.
+  </p>
+  <p class="para">
+   Exceptions will be raised as errors in Lua, however only
+   <a href="class.luasandboxruntimeerror.html" class="classname">LuaSandboxRuntimeError</a> exceptions may be caught
+   inside Lua with <code class="literal">pcall()</code> or <code class="literal">xpcall()</code>.
+  </p>
+  <p class="para">
+   For more information about calling Lua functions and the return values,
+   see <span class="methodname"><a href="luasandboxfunction.call.html" class="methodname">LuaSandboxFunction::call()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-luasandbox.wrapphpfunction-parameters">
+  <h3 class="title">参数</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">function</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Callable to wrap.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-luasandbox.wrapphpfunction-returnvalues">
+  <h3 class="title">返回值</h3>
+  <p class="para">
+   Returns a <a href="class.luasandboxfunction.html" class="classname">LuaSandboxFunction</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-luasandbox.wrapphpfunction-seealso">
+  <h3 class="title">参见</h3>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="luasandbox.loadstring.html" class="methodname" rel="rdfs-seeAlso">LuaSandbox::loadString()</a> - Load Lua code into the Lua environment</span></li>
+    <li class="member"><span class="methodname"><a href="luasandbox.registerlibrary.html" class="methodname" rel="rdfs-seeAlso">LuaSandbox::registerLibrary()</a> - Register a set of PHP functions as a Lua library</span></li>
+   </ul>
+  
+ </div>
+
+
+</div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xl-2" id="toc-list">
+        <ul></ul>
+    </div>
+</div>    </div>
+</div>
+<span id="back-top">
+<svg width="20" height="20" fill="currentColor">
+    <use xlink:href="/css/bootstrap-icons.svg#chevron-up"/>
+</svg>
+</span>
+ 
+<script>
+    // 浏览量统计
+    $(function () {
+        let formdata = new FormData();
+        formdata.append('_token', '');
+        formdata.append('id', 7435);
+        $.ajax({
+            url: $(".sticky-top .navbar-brand").attr('href') + "/api/doc/clicks",
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false
+        });
+    });
+    // aside-hidden
+    $(function () {
+        $('#aside-hidden').on('click', function () {
+            $('.aside').toggle(0, function () {
+                if ($(this).is(':visible')) {
+                    $('.aside-middle').removeClass('col-md-12 col-lg-12').addClass('col-md-9 col-lg-10');
+                } else {
+                    $('.aside-middle').removeClass('col-md-9 col-lg-10').addClass('col-md-12 col-lg-12');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1522d01c436f59ddc8389f25bfa9d53e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
